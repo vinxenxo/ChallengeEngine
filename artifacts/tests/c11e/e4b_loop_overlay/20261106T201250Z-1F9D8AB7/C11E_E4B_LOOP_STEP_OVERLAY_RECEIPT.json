@@ -1,0 +1,155 @@
+﻿{
+    "schema":  "C11E-E4B-LOOP-STEP-OVERLAY-RECEIPT-V1",
+    "status":  "PASS_ADD_ONLY",
+    "run_id":  "20261106T201250Z-1F9D8AB7",
+    "completed_at":  "2026-11-06T21:12:51.2613220+01:00",
+    "powershell_version":  "5.1.26100.9818",
+    "source_pin_count":  27,
+    "payload_file_count":  17,
+    "installed_new":  17,
+    "reused_identical":  0,
+    "files":  [
+                  {
+                      "path":  "docs/current/e/C11E_CURRENT_AUTHORITY_20261106_V73.md",
+                      "source":  "C:\\Users\\vinxe\\Downloads\\C11E_E4B_LOOP_STEP_V1\\C11E_E4B_LOOP_STEP_V1\\payload\\files\\docs\\current\\e\\C11E_CURRENT_AUTHORITY_20261106_V73.md",
+                      "target":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\current\\e\\C11E_CURRENT_AUTHORITY_20261106_V73.md",
+                      "bytes":  6518,
+                      "sha256":  "1eaf6149804528bd2ddf2b0b6979440084cbadecacaa007b8ce491433634b9a0",
+                      "disposition":  "NEW"
+                  },
+                  {
+                      "path":  "docs/current/e/C11E_CURRENT_DOC_INDEX_20261106_V33.md",
+                      "source":  "C:\\Users\\vinxe\\Downloads\\C11E_E4B_LOOP_STEP_V1\\C11E_E4B_LOOP_STEP_V1\\payload\\files\\docs\\current\\e\\C11E_CURRENT_DOC_INDEX_20261106_V33.md",
+                      "target":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\current\\e\\C11E_CURRENT_DOC_INDEX_20261106_V33.md",
+                      "bytes":  1440,
+                      "sha256":  "dbb0bf8859c86068636d041cf8db833be4e8a0a8fdab1ca78321ffc260724448",
+                      "disposition":  "NEW"
+                  },
+                  {
+                      "path":  "docs/current/e/C11E_E3_EXECUTION_BACKLOG_20261106_V48.md",
+                      "source":  "C:\\Users\\vinxe\\Downloads\\C11E_E4B_LOOP_STEP_V1\\C11E_E4B_LOOP_STEP_V1\\payload\\files\\docs\\current\\e\\C11E_E3_EXECUTION_BACKLOG_20261106_V48.md",
+                      "target":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\current\\e\\C11E_E3_EXECUTION_BACKLOG_20261106_V48.md",
+                      "bytes":  3139,
+                      "sha256":  "4cae0e95e714f2324ae5afeee314019098f050b694d852a66950f59fb573c565",
+                      "disposition":  "NEW"
+                  },
+                  {
+                      "path":  "docs/current/e/C11E_E4A_CHALLENGE_LOOP_DRILL_ALIGNMENT_20261106_V27.md",
+                      "source":  "C:\\Users\\vinxe\\Downloads\\C11E_E4B_LOOP_STEP_V1\\C11E_E4B_LOOP_STEP_V1\\payload\\files\\docs\\current\\e\\C11E_E4A_CHALLENGE_LOOP_DRILL_ALIGNMENT_20261106_V27.md",
+                      "target":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\current\\e\\C11E_E4A_CHALLENGE_LOOP_DRILL_ALIGNMENT_20261106_V27.md",
+                      "bytes":  1658,
+                      "sha256":  "6b1aa211444741644cb3f871528202f34e3aa938a1c27391447fde2166e16793",
+                      "disposition":  "NEW"
+                  },
+                  {
+                      "path":  "docs/current/e/C11E_E4B_LOOP_CLI_PREPARATION_PLAN_20261106_V1.md",
+                      "source":  "C:\\Users\\vinxe\\Downloads\\C11E_E4B_LOOP_STEP_V1\\C11E_E4B_LOOP_STEP_V1\\payload\\files\\docs\\current\\e\\C11E_E4B_LOOP_CLI_PREPARATION_PLAN_20261106_V1.md",
+                      "target":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\current\\e\\C11E_E4B_LOOP_CLI_PREPARATION_PLAN_20261106_V1.md",
+                      "bytes":  2013,
+                      "sha256":  "7d7a7c16e259d490c3b7e5ce6e4c153103e7dcebe49d8fa84fd0266cafc05529",
+                      "disposition":  "NEW"
+                  },
+                  {
+                      "path":  "docs/current/e/C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_20261106_V1.md",
+                      "source":  "C:\\Users\\vinxe\\Downloads\\C11E_E4B_LOOP_STEP_V1\\C11E_E4B_LOOP_STEP_V1\\payload\\files\\docs\\current\\e\\C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_20261106_V1.md",
+                      "target":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\current\\e\\C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_20261106_V1.md",
+                      "bytes":  2726,
+                      "sha256":  "f4793263c59c98af4d2bfd072eba6fa3c0eaf3a30680a0951838f7864ea770a4",
+                      "disposition":  "NEW"
+                  },
+                  {
+                      "path":  "docs/current/e/C11E_E4B_LOOP_GUI_CLI_PARITY_REVIEW_20261106_V1.md",
+                      "source":  "C:\\Users\\vinxe\\Downloads\\C11E_E4B_LOOP_STEP_V1\\C11E_E4B_LOOP_STEP_V1\\payload\\files\\docs\\current\\e\\C11E_E4B_LOOP_GUI_CLI_PARITY_REVIEW_20261106_V1.md",
+                      "target":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\current\\e\\C11E_E4B_LOOP_GUI_CLI_PARITY_REVIEW_20261106_V1.md",
+                      "bytes":  2215,
+                      "sha256":  "677473139950d5b534041cd950afc907fa112f9c13f37c042b47087eddc187be",
+                      "disposition":  "NEW"
+                  },
+                  {
+                      "path":  "docs/current/e/C11E_E4B_LOOP_SOURCE_REVIEW_20261106_V2.md",
+                      "source":  "C:\\Users\\vinxe\\Downloads\\C11E_E4B_LOOP_STEP_V1\\C11E_E4B_LOOP_STEP_V1\\payload\\files\\docs\\current\\e\\C11E_E4B_LOOP_SOURCE_REVIEW_20261106_V2.md",
+                      "target":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\current\\e\\C11E_E4B_LOOP_SOURCE_REVIEW_20261106_V2.md",
+                      "bytes":  2640,
+                      "sha256":  "fd56585b5be14e19ee5d7b915255a8bb9178a7735337448dc11038742a2e8376",
+                      "disposition":  "NEW"
+                  },
+                  {
+                      "path":  "docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261106_V71.md",
+                      "source":  "C:\\Users\\vinxe\\Downloads\\C11E_E4B_LOOP_STEP_V1\\C11E_E4B_LOOP_STEP_V1\\payload\\files\\docs\\current\\e\\C11E_GATES_ACCEPTANCE_MATRIX_20261106_V71.md",
+                      "target":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\current\\e\\C11E_GATES_ACCEPTANCE_MATRIX_20261106_V71.md",
+                      "bytes":  2386,
+                      "sha256":  "13b95fcf1037957a75004dfbac1b9f87c04dabb6d96e0b89794dc5cdc778901a",
+                      "disposition":  "NEW"
+                  },
+                  {
+                      "path":  "docs/history/c11d/C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261106_V61.md",
+                      "source":  "C:\\Users\\vinxe\\Downloads\\C11E_E4B_LOOP_STEP_V1\\C11E_E4B_LOOP_STEP_V1\\payload\\files\\docs\\history\\c11d\\C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261106_V61.md",
+                      "target":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\history\\c11d\\C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261106_V61.md",
+                      "bytes":  1373,
+                      "sha256":  "81bd2ff75b349cbcc0db102bfcfa442a242c785938b5826b1c4aedcbddbff2e9",
+                      "disposition":  "NEW"
+                  },
+                  {
+                      "path":  "prompts/C11E_CONTINUATION_MASTER_PROMPT_20261106_V71.md",
+                      "source":  "C:\\Users\\vinxe\\Downloads\\C11E_E4B_LOOP_STEP_V1\\C11E_E4B_LOOP_STEP_V1\\payload\\files\\prompts\\C11E_CONTINUATION_MASTER_PROMPT_20261106_V71.md",
+                      "target":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\prompts\\C11E_CONTINUATION_MASTER_PROMPT_20261106_V71.md",
+                      "bytes":  2736,
+                      "sha256":  "7b392fc4beeb833972ab33197759fa48d4e01de0fbc6f67c562ca6dfae8dee40",
+                      "disposition":  "NEW"
+                  },
+                  {
+                      "path":  "prompts/C11E_FIRST_PROMPT_20261106_V15.md",
+                      "source":  "C:\\Users\\vinxe\\Downloads\\C11E_E4B_LOOP_STEP_V1\\C11E_E4B_LOOP_STEP_V1\\payload\\files\\prompts\\C11E_FIRST_PROMPT_20261106_V15.md",
+                      "target":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\prompts\\C11E_FIRST_PROMPT_20261106_V15.md",
+                      "bytes":  1503,
+                      "sha256":  "e6274d661eb2c245e1a805b4b4cd353d0790d2c9509e46ef7097c8d20c2c5ca3",
+                      "disposition":  "NEW"
+                  },
+                  {
+                      "path":  "prompts/C11E_NEXT_WINDOW_START_PROMPT_20261106_V71.md",
+                      "source":  "C:\\Users\\vinxe\\Downloads\\C11E_E4B_LOOP_STEP_V1\\C11E_E4B_LOOP_STEP_V1\\payload\\files\\prompts\\C11E_NEXT_WINDOW_START_PROMPT_20261106_V71.md",
+                      "target":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\prompts\\C11E_NEXT_WINDOW_START_PROMPT_20261106_V71.md",
+                      "bytes":  1461,
+                      "sha256":  "4d5d27f30b66ceb7737d51d468e3d23a620fe000f636142441b8f45db7b043b7",
+                      "disposition":  "NEW"
+                  },
+                  {
+                      "path":  "definitions/c11d/production/C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_V1.json",
+                      "source":  "C:\\Users\\vinxe\\Downloads\\C11E_E4B_LOOP_STEP_V1\\C11E_E4B_LOOP_STEP_V1\\payload\\files\\definitions\\c11d\\production\\C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_V1.json",
+                      "target":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\definitions\\c11d\\production\\C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_V1.json",
+                      "bytes":  5528,
+                      "sha256":  "9e206704665ea85226ecc10854be9f679c32fe9ed7efb690a829f6e8456d43da",
+                      "disposition":  "NEW"
+                  },
+                  {
+                      "path":  "tools/c11d/d9/e4b_loop_editorial_composition_proposal.py",
+                      "source":  "C:\\Users\\vinxe\\Downloads\\C11E_E4B_LOOP_STEP_V1\\C11E_E4B_LOOP_STEP_V1\\payload\\files\\tools\\c11d\\d9\\e4b_loop_editorial_composition_proposal.py",
+                      "target":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\tools\\c11d\\d9\\e4b_loop_editorial_composition_proposal.py",
+                      "bytes":  8994,
+                      "sha256":  "3956282bfc29bbe919cf70ae6b76046095f24325d7de2391c38a3765fcf2b93d",
+                      "disposition":  "NEW"
+                  },
+                  {
+                      "path":  "tools/c11d/d9/test_c11e_e4b_loop_editorial_composition_proposal.py",
+                      "source":  "C:\\Users\\vinxe\\Downloads\\C11E_E4B_LOOP_STEP_V1\\C11E_E4B_LOOP_STEP_V1\\payload\\files\\tools\\c11d\\d9\\test_c11e_e4b_loop_editorial_composition_proposal.py",
+                      "target":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\tools\\c11d\\d9\\test_c11e_e4b_loop_editorial_composition_proposal.py",
+                      "bytes":  10596,
+                      "sha256":  "3dd877a473bd15a593238f32799dbd566bae887021aaa09a90873e158d8847f9",
+                      "disposition":  "NEW"
+                  },
+                  {
+                      "path":  "tools/c11d/d9/RUN_C11E_E4B_LOOP_CLI_PREPARATION_V1.ps1",
+                      "source":  "C:\\Users\\vinxe\\Downloads\\C11E_E4B_LOOP_STEP_V1\\C11E_E4B_LOOP_STEP_V1\\payload\\files\\tools\\c11d\\d9\\RUN_C11E_E4B_LOOP_CLI_PREPARATION_V1.ps1",
+                      "target":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\tools\\c11d\\d9\\RUN_C11E_E4B_LOOP_CLI_PREPARATION_V1.ps1",
+                      "bytes":  19545,
+                      "sha256":  "98bfe2c7507f5bad1557a493d50fd028a80ba46d30925a20131844c0412175ea",
+                      "disposition":  "NEW"
+                  }
+              ],
+    "git_invoked":  false,
+    "source_files_modified":  false,
+    "c11c_baseline_modified":  false,
+    "renderer":  false,
+    "media_created":  false,
+    "release_authority":  "NONE"
+}

@@ -1,0 +1,40 @@
+{
+  "schema": "C11-D-D9-UNIVERSAL-EDITORIAL-RESOLUTION-V1",
+  "model_id": "C11D_UNIVERSAL_EDITORIAL_MODEL",
+  "selection": {
+    "content_type": "visual_loops",
+    "family_id": "c11c_geometric_waves_v1",
+    "subtype_id": "harmonic_membrane",
+    "variant_id": null,
+    "variant_scope_id": "visual-loop:c11c_geometric_waves_v1/harmonic_membrane",
+    "scope_keys": {
+      "content_type": "visual_loops",
+      "family": "visual-loop-family:c11c_geometric_waves_v1",
+      "subtype": "visual-loop-grammar:c11c_geometric_waves_v1/harmonic_membrane",
+      "variant": "visual-loop:c11c_geometric_waves_v1/harmonic_membrane"
+    },
+    "request_plan_compatible": false,
+    "editable_fields": [
+      "title",
+      "subtitle",
+      "call_to_action",
+      "language"
+    ],
+    "request_plan_compatibility": "PENDING_D9_9_UNIVERSAL_REQUEST_ADAPTER"
+  },
+  "values": {
+    "title": "Título editorial Loop — composición armónica en movimiento",
+    "subtitle": "Explora el patrón geométrico, observa sus ciclos y descubre cómo evoluciona la forma",
+    "call_to_action": "Guarda este loop y comparte tu patrón favorito",
+    "language": "es"
+  },
+  "applied_layers": [
+    "production_override"
+  ],
+  "request_plan_compatible": false,
+  "request_plan_state": "PENDING_D9_9_UNIVERSAL_REQUEST_ADAPTER",
+  "runtime_authority": "NONE",
+  "renderer_activation": false,
+  "production_execution": false,
+  "release_authority": "NONE"
+}

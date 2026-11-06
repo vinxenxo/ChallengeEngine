@@ -1,0 +1,104 @@
+{
+  "schema": "C11E-E4B-LOOP-EDITORIAL-COMPOSITION-PROPOSAL-V1",
+  "schema_version": "1.0",
+  "status": "PROPOSED_NOT_APPROVED_NOT_RENDERER_INPUT",
+  "purpose": "Non-destructive D-owned coexistence candidate for canonical Loop editorial copy alongside the complete C11-C native visual frame.",
+  "authority": {
+    "active_checkout_is_authority": true,
+    "frozen_c11c_manifest_path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "source_snapshot": "ChallengeEngineV01_STATELESS C11-E Current Authority V70.zip",
+    "source_snapshot_is_read_only_reference": true
+  },
+  "scope": {
+    "content_type": "visual_loops",
+    "family_ids": [
+      "c11c_geometric_waves_v1",
+      "c11c_fractal_bloom_v1",
+      "c11c_sacred_symmetry_v1",
+      "c11c_living_particles_v1",
+      "c11c_invisible_forces_v1"
+    ],
+    "concrete_grammar_count": 27,
+    "canonical_editorial_fields": ["title", "subtitle", "call_to_action", "language"],
+    "visible_fields": ["title", "subtitle", "call_to_action"],
+    "metadata_only_fields": ["language"],
+    "max_field_length_codepoints": 160,
+    "unknown_sentinel": "UNKNOWN",
+    "unknown_value_is_suppressed_visually_but_key_is_preserved": true
+  },
+  "candidate_activation": {
+    "when_any_visible_field_is_nonempty_and_not_unknown": "INSET_CONTAIN_COMPOSITION",
+    "when_all_visible_fields_are_empty_or_unknown": "UNCHANGED_FULL_FRAME_PASSTHROUGH",
+    "layout_is_static_for_entire_source_sequence": true,
+    "visible_field_time_policy": "FULL_CONTINUOUS_SOURCE_SPAN_AFTER_APPROVAL",
+    "frame_count_source": "ACTUAL_C11C_FAMILY_PAYLOAD_ONLY; NEVER_INFER_FROM_D9_REQUEST",
+    "frame_rate_and_frame_order": "UNCHANGED_ONE_TO_ONE"
+  },
+  "geometry": {
+    "delivery_profile_id": "REVIEW_720",
+    "canvas": {"width": 720, "height": 1280, "aspect_ratio": "9:16"},
+    "background_rgb_hex": "05070B",
+    "top_editorial_band": {"x": 0, "y": 0, "width": 720, "height": 192},
+    "source_frame_viewport": {"x": 108, "y": 192, "width": 504, "height": 896},
+    "bottom_editorial_band": {"x": 0, "y": 1088, "width": 720, "height": 192},
+    "source_frame_transform": {
+      "mode": "UNIFORM_CONTAIN",
+      "scale_x": 0.7,
+      "scale_y": 0.7,
+      "aspect_ratio_preserved": true,
+      "cropping": false,
+      "nonuniform_stretch": false,
+      "temporal_resampling": false,
+      "source_frame_count_mutation": false,
+      "source_frame_order_mutation": false,
+      "source_frame_index_mapping": "IDENTITY",
+      "yuv420p_chroma_alignment": "EVEN_X_Y_WIDTH_HEIGHT"
+    },
+    "editorial_text_blocks": {
+      "title": {"region": "TOP_BAND", "x": 36, "y": 0, "width": 648, "height": 92, "font": "Inter-Bold", "font_size_px": 15, "line_height_px": 19, "max_lines": 4, "max_chars_per_line_conservative": 41, "padding_vertical_px": 8},
+      "subtitle": {"region": "TOP_BAND", "x": 36, "y": 100, "width": 648, "height": 92, "font": "Inter-Bold", "font_size_px": 15, "line_height_px": 19, "max_lines": 4, "max_chars_per_line_conservative": 41, "padding_vertical_px": 8},
+      "call_to_action": {"region": "BOTTOM_BAND", "x": 36, "y": 1151, "width": 648, "height": 66, "font": "NotoSansMono-Regular", "font_size_px": 15, "line_height_px": 22, "max_lines": 3, "max_chars_per_line_conservative": 71, "padding_vertical_px": 0}
+    },
+    "overflow_policy": "NO_TRUNCATION_NO_ELLIPSIS_FAIL_CLOSED_IF_FONT_COVERAGE_OR_LAYOUT_CAPACITY_IS_NOT_PROVEN",
+    "line_break_policy": "D_OWNED_LAYOUT_BREAKS_ONLY; SOURCE_EDITORIAL_VALUE_AND_HASH_REMAIN_UNCHANGED"
+  },
+  "ownership_invariants": {
+    "c11c_native_header_footer_source_strings": "PRESERVED_IN_SOURCE_FRAME; NOT_REPLACED_OR_REWRITTEN",
+    "c11c_matrix_sequence_and_timing": "PRESERVED_IN_SOURCE_FRAME; NO_D_FRAME_INDEX_OR_ANIMATOR_CONTROL",
+    "c11c_grammar_math_metrics_and_technobabble": "PRESERVED_IN_SOURCE_FRAME",
+    "c11c_seed_duration_fps_loop_count_palette_family_music_and_version_data": "PRESERVED_IN_SOURCE_FRAME",
+    "c11c_shared_layer_modified": false,
+    "c11c_family_scenes_modified": false,
+    "c11c_binders_modified": false,
+    "c11c_timeline_or_rng_modified": false,
+    "c11c_generator_or_music_source_modified": false
+  },
+  "music_boundary": {
+    "music_authority": "EXISTING_C11C_FAMILY_MUSIC_V4",
+    "gameplay_seed": "request.seed; VISUAL_ONLY",
+    "music_seed": "request.music_seed; EXISTING_FAMILY_MUSIC_ONLY",
+    "d3_v5_invoked": false,
+    "family_profile_mapping_preserved": true,
+    "mux_video_codec_action_after_composition": "STREAM_COPY; NO_H264_REENCODE_DURING_AUDIO_MUX"
+  },
+  "font_lineage": {
+    "header_font_path": "assets/fonts/Inter-Bold.otf",
+    "header_font_bytes": 631880,
+    "header_font_sha256": "9fc6261e817d0b1b2bf1953d8799bb1c837d11aeebbf83ae352e7b4d6de6425d",
+    "footer_font_path": "assets/fonts/NotoSansMono-Regular.ttf",
+    "footer_font_bytes": 510612,
+    "footer_font_sha256": "6b692c4b6d15ccf59f1c1fe8d11cb8a92f51960f3e9f1f523781755a3af7e29f",
+    "font_measurement_note": "PIL measurements made against the pinned bundled font bytes. Godot runtime text shaping, fallback glyphs and visual legibility remain unverified until isolated review render."
+  },
+  "approval_gates": {
+    "loop_field_mapping_approved": false,
+    "loop_composition_approved": false,
+    "renderer_native_input_emitted": false,
+    "renderer_activation": false,
+    "production_dispatch": false,
+    "media_created": false,
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE"
+  }
+}

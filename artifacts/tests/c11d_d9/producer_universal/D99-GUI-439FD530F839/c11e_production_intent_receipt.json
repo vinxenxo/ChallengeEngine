@@ -1,0 +1,16 @@
+{
+  "schema": "C11-E-E1-PRODUCTION-INTENT-RECEIPT-V1",
+  "status": "PASS_E1_PREPARATION_ONLY",
+  "request_id": "D99-GUI-439FD530F839",
+  "intent_sha256": "ad0eb3968237b3753d386fb9f383f69acdb56c93618364387827675d7383145c",
+  "request_hash": "11d51a30b470696a2289a40b6e349fac01f40230ea9394abfec0fdab934942fc",
+  "editorial_hash": "283e63025fa1a4e6f185a33d81f5a3c40a6defa4a047b9b7e089f5a159a2c214",
+  "plan_hash": "04c6eb8c3f2727200726de7b3123ed9ee7f44befa3e38108e288def0cac49ff9",
+  "gui_cli_parity": "PASS",
+  "renderer_input_emitted": false,
+  "renderer_dispatch_invoked": false,
+  "production_execution": false,
+  "media_created": false,
+  "release_authority": "NONE",
+  "evidence_root": "artifacts\\tests\\c11d_d9\\producer_universal\\D99-GUI-439FD530F839"
+}

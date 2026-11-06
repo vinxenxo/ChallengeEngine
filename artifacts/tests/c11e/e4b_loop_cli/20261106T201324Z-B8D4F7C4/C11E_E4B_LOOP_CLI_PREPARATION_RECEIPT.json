@@ -1,0 +1,226 @@
+﻿{
+    "schema":  "C11E-E4B-LOOP-CLI-PREPARATION-RECEIPT-V1",
+    "status":  "PASS_CLI_PREPARATION_ONLY",
+    "run_id":  "20261106T201324Z-B8D4F7C4",
+    "completed_at":  "2026-11-06T21:13:28.2824787+01:00",
+    "project_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+    "python_executable":  "C:\\Users\\vinxe\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+    "python_version":  "Python 3.13.14",
+    "source_pin_count":  27,
+    "source_pins":  [
+                        {
+                            "path":  "c11c-suite/c11c-producer/main.py",
+                            "sha256":  "4141072659f307468900c1cfb09774479abc6c10abae6ae638a11192cfcd04e6"
+                        },
+                        {
+                            "path":  "c11c-suite/c11c-producer/c11e_production_service.py",
+                            "sha256":  "348997e575d985fe153a4f433f089c5f205be5d4d8f3853baf07be917a134951"
+                        },
+                        {
+                            "path":  "c11c-suite/c11c-producer/c11e_production_cli.py",
+                            "sha256":  "e7272231dca2eb730506308b092fce9b3644f7f8cfd9f2c2bbbbd1b695e82fc4"
+                        },
+                        {
+                            "path":  "tools/c11d/d9/universal_producer.py",
+                            "sha256":  "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1"
+                        },
+                        {
+                            "path":  "tools/c11d/d9/universal_producer_cli.py",
+                            "sha256":  "c648a3722299b4700a9b74d1cabc6cac1fa48ad6275497ae8073bc07f442bb54"
+                        },
+                        {
+                            "path":  "tools/c11d/d9/universal_editorial_model.py",
+                            "sha256":  "5c575be1942ba0613d66579d14db5cf9d7786e7062dfb001bd7be8a2e9c18ae5"
+                        },
+                        {
+                            "path":  "tools/c11d/d9/editorial_render_bridge.py",
+                            "sha256":  "fe9d40052b0f4ff6f1c862c010ae7b3b13070b6ce935be6d62f9dcaec63a644a"
+                        },
+                        {
+                            "path":  "tools/c11d/d9/d_render_adapter.py",
+                            "sha256":  "222742677cd498368429a3ec0dcdd922c44197bb5ada3638081138fb77c31bf1"
+                        },
+                        {
+                            "path":  "c11c-suite/c11c-producer/producer_schema.json",
+                            "sha256":  "564f11fb4fee9221910dc373550650172eda4f106d6dc25532cc43cb8e6314a0"
+                        },
+                        {
+                            "path":  "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+                            "sha256":  "50655c82521a353f1db6920f4d099cad92452ae369251f9fbde45cbaee4e8c53"
+                        },
+                        {
+                            "path":  "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json",
+                            "sha256":  "342a61338c80a2f1616e8e9f38986bd90f410257c0e321f99840380fb0fd804b"
+                        },
+                        {
+                            "path":  "profiles/delivery/c11c_video_delivery_profiles.json",
+                            "sha256":  "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3"
+                        },
+                        {
+                            "path":  "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+                            "sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+                        },
+                        {
+                            "path":  "assets/fonts/Inter-Bold.otf",
+                            "sha256":  "9fc6261e817d0b1b2bf1953d8799bb1c837d11aeebbf83ae352e7b4d6de6425d"
+                        },
+                        {
+                            "path":  "assets/fonts/NotoSansMono-Regular.ttf",
+                            "sha256":  "6b692c4b6d15ccf59f1c1fe8d11cb8a92f51960f3e9f1f523781755a3af7e29f"
+                        },
+                        {
+                            "path":  "core/presentation/C11CVisualEditorialLayer.gd",
+                            "sha256":  "f8f718c067a4d7a088cc16f244cc40209e7183bec93e44d8cb66eb6dd404cf7d"
+                        },
+                        {
+                            "path":  "core/presentation/UnifiedSocialFrame.gd",
+                            "sha256":  "d80c07103f56a2abfe34be60547285e61b0d03b50a5ed93c3c72d4241f6585ba"
+                        },
+                        {
+                            "path":  "tools/prototypes/c11c_common/C11CHeaderAnimatorV2.gd",
+                            "sha256":  "44c4a9a11c334e6e84fcc1413667accac175781787866c3d6b894beeba3ea255"
+                        },
+                        {
+                            "path":  "core/presentation/C11CVisualTypography.gd",
+                            "sha256":  "9ee823a28cef721a26f66436b5b168d92f5b9d1597ed6e4e3f518debb0910633"
+                        },
+                        {
+                            "path":  "tools/prototypes/c11c_common/C11CSafeAmbient.py",
+                            "sha256":  "c376fd44a3115f0d800213d95e28143363748e16c7b5800369fcadbf237fb02c"
+                        },
+                        {
+                            "path":  "tools/prototypes/c11c_common/generate_c11c_family_music.py",
+                            "sha256":  "41bb8f9842ac941ea86c838f272b11bd0642973b26e92defa006721a3d8cb84d"
+                        },
+                        {
+                            "path":  "profiles/presentation/c11c_visual_music_profiles.json",
+                            "sha256":  "b78706c5a9adbf1581d925f522b76cc3419983177de213734cc79996af5cbf58"
+                        },
+                        {
+                            "path":  "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesPrototype.gd",
+                            "sha256":  "ab2560cbe7fa42c5cad3b143aa59d1f2a0dc047682f7667983c7c0a0f6dbb61c"
+                        },
+                        {
+                            "path":  "tools/prototypes/c11c_fractal_bloom_v1/FractalBloomPrototype.gd",
+                            "sha256":  "b596ecba5eeae80ba615d7cb8a741dffcab9db4c44296e660f4f9d6919cc5c55"
+                        },
+                        {
+                            "path":  "tools/prototypes/c11c_sacred_symmetry_v1/SacredSymmetryPrototype.gd",
+                            "sha256":  "12fdbc13e05df28b26cf95fe1907d150bd41f29196287700153521e9baee336b"
+                        },
+                        {
+                            "path":  "tools/prototypes/c11c_living_particles_v1/LivingParticlesPrototype.gd",
+                            "sha256":  "835ba0df2c160a259be39bd1977bfac0e6a66f903ce1aa6b4247af7c508ad94a"
+                        },
+                        {
+                            "path":  "tools/prototypes/c11c_invisible_forces_v1/InvisibleForcesPrototype.gd",
+                            "sha256":  "a68661a5fdf792aa7fe701afa6fbf1631a2b8215c214032f58ecfe0c69d8374a"
+                        }
+                    ],
+    "request_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_loop_cli\\20261106T201324Z-B8D4F7C4\\universal_request.json",
+    "request_file_sha256":  "3098420cdb68a2d63a4f56ada1afd832197a60b5d39f80b30fea7d19119b20e5",
+    "request_id":  "E4B_LOOP_CLI_20261106T201324Z_B8D4F7C4",
+    "d9_output_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_loop_cli\\20261106T201324Z-B8D4F7C4\\d9_universal_result.json",
+    "d9_output_sha256":  "cbea6d50da1870290deefa395f345786a5846f7c7399aac1b136f6ce2dae81dd",
+    "e1_output_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_loop_cli\\20261106T201324Z-B8D4F7C4\\e1_production_intent_result.json",
+    "e1_output_sha256":  "b402986aee52f6c73884ca7ac5db35b41baa3532a3e43638d1f4c9e36bae5b5a",
+    "identity":  {
+                     "request_hash":  "fc77e88306082f9275099a11bdb652c3adf87674adee99082f6a2d4f07e943c7",
+                     "editorial_hash":  "6c8be245ed3faa22f1dc805cfa09f700cf887e5ea98be05c05920ae3a7ac5f88",
+                     "plan_hash":  "80762e9ff67d50d8bcf0214216c71ae828fa71e0f42e1db79fac6827728e2194",
+                     "bridge_record_hash":  "7a5e3cbd89961e3882dc6e7300730f7eba3517e91a265ae6deba0b6dfbb4a1a8",
+                     "adapter_envelope_hash":  "6d1ae336c99db8f47494ac9b8262b1aa98e9b3b1c7aff351c605318686150978",
+                     "e1_intent_hash":  "f5f7c491e64446e09f4ce29ebd48eb871f954f436dc3aae314e08e1c633b4c12"
+                 },
+    "selection":  {
+                      "content_type":  "visual_loops",
+                      "family_id":  "c11c_geometric_waves_v1",
+                      "subtype_id":  "harmonic_membrane"
+                  },
+    "editorial":  {
+                      "title":  "TÃ­tulo editorial Loop â€” composiciÃ³n armÃ³nica en movimiento",
+                      "subtitle":  "Explora el patrÃ³n geomÃ©trico, observa sus ciclos y descubre cÃ³mo evoluciona la forma",
+                      "call_to_action":  "Guarda este loop y comparte tu patrÃ³n favorito",
+                      "language":  "es"
+                  },
+    "seeds":  {
+                  "gameplay":  314159,
+                  "music":  840001,
+                  "independent":  true
+              },
+    "tests":  [
+                  {
+                      "name":  "E4B static proposal tests 15/15",
+                      "executable":  "C:\\Users\\vinxe\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+                      "arguments":  [
+                                        "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\tools\\c11d\\d9\\test_c11e_e4b_loop_editorial_composition_proposal.py"
+                                    ],
+                      "working_directory":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\tools\\c11d\\d9",
+                      "exit_code":  0,
+                      "stdout_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_loop_cli\\20261106T201324Z-B8D4F7C4\\process_logs\\proposal_tests.stdout.txt",
+                      "stderr_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_loop_cli\\20261106T201324Z-B8D4F7C4\\process_logs\\proposal_tests.stderr.txt",
+                      "stdout_sha256":  "d6da0f9d47688f6601415626a6c687be10b8ab5d94f80b00a18e8274df7aec14",
+                      "stderr_sha256":  "1445eb32d75d95a67e2bddcd97e45af02439f69a577ddd06becd69d7a578971a"
+                  },
+                  {
+                      "name":  "D9.9 universal Producer CLI",
+                      "executable":  "C:\\Users\\vinxe\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+                      "arguments":  [
+                                        "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\tools\\c11d\\d9\\universal_producer_cli.py",
+                                        "--request",
+                                        "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_loop_cli\\20261106T201324Z-B8D4F7C4\\universal_request.json",
+                                        "--output",
+                                        "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_loop_cli\\20261106T201324Z-B8D4F7C4\\d9_universal_result.json"
+                                    ],
+                      "working_directory":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\tools\\c11d\\d9",
+                      "exit_code":  0,
+                      "stdout_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_loop_cli\\20261106T201324Z-B8D4F7C4\\process_logs\\d9_cli.stdout.txt",
+                      "stderr_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_loop_cli\\20261106T201324Z-B8D4F7C4\\process_logs\\d9_cli.stderr.txt",
+                      "stdout_sha256":  "d41ee24685cfb9322808d72888d0fb26f05253740c976d97a9c832adfeb2d8ae",
+                      "stderr_sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                  },
+                  {
+                      "name":  "E1 shared production intent CLI",
+                      "executable":  "C:\\Users\\vinxe\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+                      "arguments":  [
+                                        "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\c11c-suite\\c11c-producer\\c11e_production_cli.py",
+                                        "--request",
+                                        "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_loop_cli\\20261106T201324Z-B8D4F7C4\\universal_request.json",
+                                        "--origin",
+                                        "CLI",
+                                        "--output",
+                                        "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_loop_cli\\20261106T201324Z-B8D4F7C4\\e1_production_intent_result.json"
+                                    ],
+                      "working_directory":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\c11c-suite\\c11c-producer",
+                      "exit_code":  0,
+                      "stdout_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_loop_cli\\20261106T201324Z-B8D4F7C4\\process_logs\\e1_cli.stdout.txt",
+                      "stderr_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_loop_cli\\20261106T201324Z-B8D4F7C4\\process_logs\\e1_cli.stderr.txt",
+                      "stdout_sha256":  "bdc322a326e0785599e953603cbcbde71173af15f058c857dec9bf872ef355e7",
+                      "stderr_sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                  }
+              ],
+    "checks":  [
+                   "proposal_static_tests_17_17",
+                   "d9_9_cli_planned",
+                   "d9_editorial_four_fields_preserved",
+                   "d9_plan_request_and_editorial_hashes_consistent",
+                   "bridge_plan_only_not_renderable",
+                   "d_only_adapter_prepared_not_dispatched",
+                   "e1_cli_preparation_only",
+                   "e1_d9_request_editorial_plan_hashes_equal",
+                   "four_editorial_fields_not_consumed_until_e4",
+                   "family_music_route_preserved_without_d3_v5",
+                   "independent_gameplay_music_seeds",
+                   "renderer_dispatch_media_false_release_none"
+               ],
+    "execution_boundary":  {
+                               "renderer":  false,
+                               "renderer_dispatch_invoked":  false,
+                               "production_execution":  false,
+                               "media_created":  false,
+                               "d3_v5_invoked":  false,
+                               "ffmpeg_mux_invoked":  false,
+                               "d4_8":  "BLOCKED",
+                               "release_authority":  "NONE"
+                           }
+}
