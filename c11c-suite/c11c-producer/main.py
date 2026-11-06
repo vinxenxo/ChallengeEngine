@@ -788,6 +788,15 @@ class MainWindow(QMainWindow):
         self.d9_validate.clicked.connect(self._run_d9_universal_plan)
         form.addWidget(self.d9_validate, row, 0, 1, 4)
         row += 1
+        self.d9_loop_family_matrix_button = QPushButton(
+            "C11-E E4B · VALIDAR 5 FAMILIAS / 27 GRAMÁTICAS · PLAN ONLY"
+        )
+        self.d9_loop_family_matrix_button.setToolTip(
+            "Ejecuta la matriz completa Loop mediante D9.9, D9.10 y E1. No invoca Godot, música, FFmpeg ni renderer."
+        )
+        self.d9_loop_family_matrix_button.clicked.connect(self._run_e4b_loop_family_matrix)
+        form.addWidget(self.d9_loop_family_matrix_button, row, 0, 1, 4)
+        row += 1
         self.d9_certification_preflight = QPushButton("D9.14 REAL-MEDIA CERTIFICATION PREFLIGHT · NO MEDIA")
         self.d9_certification_preflight.clicked.connect(self._run_d914_certification_preflight)
         form.addWidget(self.d9_certification_preflight, row, 0, 1, 4)
@@ -835,7 +844,12 @@ class MainWindow(QMainWindow):
         )
         self.d9_e1_view = QPlainTextEdit()
         self.d9_e1_view.setPlainText("C11-E E1 shared service has not prepared a request yet. E1 is preparation-only; no dispatch or media.")
-        for view in (self.d9_request_view, self.d9_editorial_view, self.d9_plan_view, self.d9_bridge_view, self.d9_adapter_view, self.d9_lifecycle_view, self.d9_certification_view, self.d9_e3_audio_view, self.d9_e1_view, self.d9_parity_view):
+        self.d9_loop_matrix_view = QPlainTextEdit()
+        self.d9_loop_matrix_view.setPlainText(
+            "E4B full-family matrix not run. Use the diagnostic button for all 5 C11-C Loop families / 27 grammars. "
+            "This remains D9.9/D9.10/E1 plan-only; no renderer or family media is invoked."
+        )
+        for view in (self.d9_request_view, self.d9_editorial_view, self.d9_plan_view, self.d9_bridge_view, self.d9_adapter_view, self.d9_lifecycle_view, self.d9_certification_view, self.d9_e3_audio_view, self.d9_e1_view, self.d9_parity_view, self.d9_loop_matrix_view):
             view.setReadOnly(True)
             view.setLineWrapMode(QPlainTextEdit.NoWrap)
         for title, view in (
@@ -848,6 +862,7 @@ class MainWindow(QMainWindow):
             ("D9.14 · REAL-MEDIA CERTIFICATION GATE (BLOCKED)", self.d9_certification_view),
             ("C11-E · E3 AUDIO + MUX PILOT (TEST ONLY)", self.d9_e3_audio_view),
             ("C11-E · SERVICIO COMPARTIDO (E1 · SIN DISPATCH)", self.d9_e1_view),
+            ("E4B · MATRIZ 5 FAMILIAS / 27 GRAMÁTICAS", self.d9_loop_matrix_view),
             ("GUI ↔ CLI PARITY", self.d9_parity_view),
         ):
             self.d9_output_tabs.addTab(view, title)
@@ -1242,6 +1257,89 @@ class MainWindow(QMainWindow):
         except Exception as exc:
             self.statusBar().showMessage("D9.9 universal plan failed; no product was created.")
             QMessageBox.warning(self, "C11-D Editorial Universal", str(exc))
+
+    def _run_e4b_loop_family_matrix(self) -> None:
+        """Run the D9.9/D9.10/E1 preparation matrix for all existing Loop grammars."""
+        try:
+            self._d9_save_universal_editorial_inputs()
+            if str(self.d9_content_type.currentData() or "") != "visual_loops":
+                raise RuntimeError("Selecciona Visual Loop en el formulario D9.9 antes de ejecutar la matriz E4B.")
+            if str(self.d9_mode.currentData() or "") != "REVIEW":
+                raise RuntimeError("La matriz E4B solo admite REVIEW · PLAN; no se acepta modo PRODUCTION.")
+            if not self.d9_audio.isChecked() or not self.d9_personalization.isChecked():
+                raise RuntimeError("La matriz E4B requiere Audio ON y Personalization ON.")
+            matrix_dir = PROJECT / "tools" / "c11d" / "d9"
+            if str(matrix_dir) not in sys.path:
+                sys.path.insert(0, str(matrix_dir))
+            from c11e_e4b_loop_family_matrix import run_loop_family_matrix
+
+            run_id = "E4B_LOOP_GUI_" + datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ") + "_" + uuid.uuid4().hex[:8].upper()
+            template_request = {
+                "schema": D9_UNIVERSAL.REQUEST_SCHEMA_ID,
+                "schema_version": "1.0",
+                "request_id": run_id + "_TEMPLATE",
+                "mode": "REVIEW",
+                "selection": self._d9_universal_selection_input(),
+                "seed": int(self.d9_seed.value()),
+                "music_seed": int(self.d9_music_seed.value()),
+                "delivery_profile_id": str(self.d9_delivery.currentData()),
+                "presentation_profile_id": self.d9_presentation.text().strip() or "UNKNOWN",
+                "variation_index": int(self.d9_variation.value()),
+                "audio_enabled": True,
+                "personalization_enabled": True,
+                "editorial_profile": {
+                    layer: {key: value for key, value in values.items() if key in {"title", "subtitle", "call_to_action", "language"}}
+                    for layer, values in self.d9_profile_values.items()
+                },
+                "production_override": {
+                    key: value for key, value in self.d9_production_override.items()
+                    if key in {"title", "subtitle", "call_to_action", "language"}
+                },
+                "provenance": {"source_revision": "C11E-E4B-LOOP-FAMILY-MATRIX-V1", "request_origin": "GUI"},
+            }
+            evidence_root = PROJECT / "artifacts" / "tests" / "c11e" / "e4b_loop_family_matrix" / run_id
+            report = run_loop_family_matrix(
+                PROJECT,
+                template_request,
+                request_origin="GUI",
+                output_root=evidence_root,
+                run_id=run_id,
+            )
+            if report.get("status") != "PASS_LOOP_FAMILY_PLAN_MATRIX_ONLY":
+                raise AssertionError("E4B Loop family matrix did not return PASS")
+            summary = {
+                "status": report["status"],
+                "run_id": run_id,
+                "families": report["scope"]["family_count"],
+                "grammars": report["scope"]["grammar_count"],
+                "cases": report["scope"]["case_count"],
+                "deterministic_repeats": report["scope"]["deterministic_repeats"],
+                "seed_relations": len(report["seed_domain_relations"]),
+                "music_route": "PRESERVE_EXISTING_C11C_FAMILY_MUSIC_PATH",
+                "renderer": False,
+                "dispatch": False,
+                "media_created": False,
+                "d4_8": "BLOCKED",
+                "release_authority": "NONE",
+                "evidence_root": str(evidence_root),
+            }
+            self.d9_loop_matrix_view.setPlainText(json.dumps(summary, ensure_ascii=False, indent=2))
+            self.d9_output_tabs.setCurrentWidget(self.d9_loop_matrix_view)
+            self.d9_evidence_label.setText(
+                f"E4B LOOP FAMILY MATRIX · {report['scope']['family_count']} familias / "
+                f"{report['scope']['grammar_count']} gramáticas / {report['scope']['case_count']} casos · {evidence_root}"
+            )
+            self.statusBar().showMessage("E4B LOOP FAMILY MATRIX PASS · D9.9/D9.10/E1 PLAN-ONLY · RENDERER OFF")
+            QMessageBox.information(
+                self,
+                "C11-E E4B Loop",
+                f"Matriz PASS: {report['scope']['family_count']} familias, "
+                f"{report['scope']['grammar_count']} gramáticas y {report['scope']['case_count']} escenarios.\n\n"
+                f"Evidencia: {evidence_root}\n\nRenderer OFF · Media OFF · Release NONE.",
+            )
+        except Exception as exc:
+            self.statusBar().showMessage("E4B Loop family matrix failed; no product or media was created.")
+            QMessageBox.warning(self, "C11-E E4B Loop Family Matrix", str(exc))
 
     def _run_c11e_e3_audio_pilot(self) -> None:
         """Run the isolated E3 Challenge audio/mux pilot from the existing Producer GUI."""

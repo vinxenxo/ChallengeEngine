@@ -1,0 +1,390 @@
+{
+    "schema":  "C11E-E4B-LOOP-FAMILY-MATRIX-OVERLAY-RECEIPT-V1",
+    "run_id":  "20261106T211659Z-8F8FDE91",
+    "completed_at":  "2026-11-06T22:17:00.1566869+01:00",
+    "powershell_version":  "5.1.26100.9818",
+    "project_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+    "manifest_sha256":  "d552d6b5ea6fb58c1da600ae8343d14733468fa557b69b93adc8338e6476ee1c",
+    "frozen_c11c_manifest_sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "support_source_pin_count":  31,
+    "support_source_pins":  [
+                                {
+                                    "path":  "c11c-suite/c11c-producer/c11e_production_service.py",
+                                    "sha256":  "348997e575d985fe153a4f433f089c5f205be5d4d8f3853baf07be917a134951"
+                                },
+                                {
+                                    "path":  "c11c-suite/c11c-producer/c11e_production_cli.py",
+                                    "sha256":  "e7272231dca2eb730506308b092fce9b3644f7f8cfd9f2c2bbbbd1b695e82fc4"
+                                },
+                                {
+                                    "path":  "tools/c11d/d9/universal_producer.py",
+                                    "sha256":  "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1"
+                                },
+                                {
+                                    "path":  "tools/c11d/d9/universal_producer_cli.py",
+                                    "sha256":  "c648a3722299b4700a9b74d1cabc6cac1fa48ad6275497ae8073bc07f442bb54"
+                                },
+                                {
+                                    "path":  "tools/c11d/d9/universal_editorial_model.py",
+                                    "sha256":  "5c575be1942ba0613d66579d14db5cf9d7786e7062dfb001bd7be8a2e9c18ae5"
+                                },
+                                {
+                                    "path":  "tools/c11d/d9/editorial_render_bridge.py",
+                                    "sha256":  "fe9d40052b0f4ff6f1c862c010ae7b3b13070b6ce935be6d62f9dcaec63a644a"
+                                },
+                                {
+                                    "path":  "tools/c11d/d9/d_render_adapter.py",
+                                    "sha256":  "222742677cd498368429a3ec0dcdd922c44197bb5ada3638081138fb77c31bf1"
+                                },
+                                {
+                                    "path":  "c11c-suite/c11c-producer/producer_schema.json",
+                                    "sha256":  "564f11fb4fee9221910dc373550650172eda4f106d6dc25532cc43cb8e6314a0"
+                                },
+                                {
+                                    "path":  "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+                                    "sha256":  "50655c82521a353f1db6920f4d099cad92452ae369251f9fbde45cbaee4e8c53"
+                                },
+                                {
+                                    "path":  "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json",
+                                    "sha256":  "342a61338c80a2f1616e8e9f38986bd90f410257c0e321f99840380fb0fd804b"
+                                },
+                                {
+                                    "path":  "profiles/delivery/c11c_video_delivery_profiles.json",
+                                    "sha256":  "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3"
+                                },
+                                {
+                                    "path":  "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+                                    "sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+                                },
+                                {
+                                    "path":  "assets/fonts/Inter-Bold.otf",
+                                    "sha256":  "9fc6261e817d0b1b2bf1953d8799bb1c837d11aeebbf83ae352e7b4d6de6425d"
+                                },
+                                {
+                                    "path":  "assets/fonts/NotoSansMono-Regular.ttf",
+                                    "sha256":  "6b692c4b6d15ccf59f1c1fe8d11cb8a92f51960f3e9f1f523781755a3af7e29f"
+                                },
+                                {
+                                    "path":  "core/presentation/C11CVisualEditorialLayer.gd",
+                                    "sha256":  "f8f718c067a4d7a088cc16f244cc40209e7183bec93e44d8cb66eb6dd404cf7d"
+                                },
+                                {
+                                    "path":  "core/presentation/UnifiedSocialFrame.gd",
+                                    "sha256":  "d80c07103f56a2abfe34be60547285e61b0d03b50a5ed93c3c72d4241f6585ba"
+                                },
+                                {
+                                    "path":  "tools/prototypes/c11c_common/C11CHeaderAnimatorV2.gd",
+                                    "sha256":  "44c4a9a11c334e6e84fcc1413667accac175781787866c3d6b894beeba3ea255"
+                                },
+                                {
+                                    "path":  "core/presentation/C11CVisualTypography.gd",
+                                    "sha256":  "9ee823a28cef721a26f66436b5b168d92f5b9d1597ed6e4e3f518debb0910633"
+                                },
+                                {
+                                    "path":  "tools/prototypes/c11c_common/C11CSafeAmbient.py",
+                                    "sha256":  "c376fd44a3115f0d800213d95e28143363748e16c7b5800369fcadbf237fb02c"
+                                },
+                                {
+                                    "path":  "tools/prototypes/c11c_common/generate_c11c_family_music.py",
+                                    "sha256":  "41bb8f9842ac941ea86c838f272b11bd0642973b26e92defa006721a3d8cb84d"
+                                },
+                                {
+                                    "path":  "profiles/presentation/c11c_visual_music_profiles.json",
+                                    "sha256":  "b78706c5a9adbf1581d925f522b76cc3419983177de213734cc79996af5cbf58"
+                                },
+                                {
+                                    "path":  "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesPrototype.gd",
+                                    "sha256":  "ab2560cbe7fa42c5cad3b143aa59d1f2a0dc047682f7667983c7c0a0f6dbb61c"
+                                },
+                                {
+                                    "path":  "tools/prototypes/c11c_fractal_bloom_v1/FractalBloomPrototype.gd",
+                                    "sha256":  "b596ecba5eeae80ba615d7cb8a741dffcab9db4c44296e660f4f9d6919cc5c55"
+                                },
+                                {
+                                    "path":  "tools/prototypes/c11c_sacred_symmetry_v1/SacredSymmetryPrototype.gd",
+                                    "sha256":  "12fdbc13e05df28b26cf95fe1907d150bd41f29196287700153521e9baee336b"
+                                },
+                                {
+                                    "path":  "tools/prototypes/c11c_living_particles_v1/LivingParticlesPrototype.gd",
+                                    "sha256":  "835ba0df2c160a259be39bd1977bfac0e6a66f903ce1aa6b4247af7c508ad94a"
+                                },
+                                {
+                                    "path":  "tools/prototypes/c11c_invisible_forces_v1/InvisibleForcesPrototype.gd",
+                                    "sha256":  "a68661a5fdf792aa7fe701afa6fbf1631a2b8215c214032f58ecfe0c69d8374a"
+                                },
+                                {
+                                    "path":  "definitions/c11d/production/C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_V1.json",
+                                    "sha256":  "9e206704665ea85226ecc10854be9f679c32fe9ed7efb690a829f6e8456d43da"
+                                },
+                                {
+                                    "path":  "tools/c11d/d9/e4b_loop_editorial_composition_proposal.py",
+                                    "sha256":  "3956282bfc29bbe919cf70ae6b76046095f24325d7de2391c38a3765fcf2b93d"
+                                },
+                                {
+                                    "path":  "tools/c11d/d9/test_c11e_e4b_loop_editorial_composition_proposal.py",
+                                    "sha256":  "3dd877a473bd15a593238f32799dbd566bae887021aaa09a90873e158d8847f9"
+                                },
+                                {
+                                    "path":  "tools/c11d/d9/e4b_loop_gui_cli_parity_v2.py",
+                                    "sha256":  "d1a98f9962ae912531ae5920c071cb98a60cdcc91e3a1b420d1178b49ef89b73"
+                                },
+                                {
+                                    "path":  "tools/c11d/d9/test_c11e_e4b_loop_gui_cli_parity_v2.py",
+                                    "sha256":  "3f32fcbd52034f4f8b774954860a9da24231f9b84ca42acea62fd76498cadcda"
+                                }
+                            ],
+    "payload_file_count":  19,
+    "payload_files":  [
+                          {
+                              "path":  "docs/current/e/C11E_CURRENT_AUTHORITY_20261106_V76.md",
+                              "kind":  "ADD_ONLY",
+                              "bytes":  6875,
+                              "sha256":  "45ceb89692ba357f5350a964f7f2bb7ed962fdf70e10b602808af6d6faeadcf6",
+                              "disposition":  "NEW"
+                          },
+                          {
+                              "path":  "docs/current/e/C11E_CURRENT_DOC_INDEX_20261106_V36.md",
+                              "kind":  "ADD_ONLY",
+                              "bytes":  1953,
+                              "sha256":  "3c74ceea2babd7ad3b2541d9e485e4aee74ed4f26c8513b4c0be009597debaca",
+                              "disposition":  "NEW"
+                          },
+                          {
+                              "path":  "docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261106_V74.md",
+                              "kind":  "ADD_ONLY",
+                              "bytes":  3312,
+                              "sha256":  "099007ab42453d2f578f962204f74d08c37ca4ec48da25557a4edbe90164216f",
+                              "disposition":  "NEW"
+                          },
+                          {
+                              "path":  "docs/current/e/C11E_E3_EXECUTION_BACKLOG_20261106_V51.md",
+                              "kind":  "ADD_ONLY",
+                              "bytes":  2983,
+                              "sha256":  "a19eb73b3d8e5a36bc446c9c5de0f8b2b3dfa4dc3c7c1e5c0c03f194e2d8c1b4",
+                              "disposition":  "NEW"
+                          },
+                          {
+                              "path":  "docs/current/e/C11E_E4A_CHALLENGE_LOOP_DRILL_ALIGNMENT_20261106_V30.md",
+                              "kind":  "ADD_ONLY",
+                              "bytes":  1765,
+                              "sha256":  "0a7f8c0d20387aac3d9b0867aa6b663b3f0e9636d6cf1c40069110c715f3d1a0",
+                              "disposition":  "NEW"
+                          },
+                          {
+                              "path":  "docs/current/e/C11E_E4B_LOOP_SOURCE_REVIEW_20261106_V5.md",
+                              "kind":  "ADD_ONLY",
+                              "bytes":  3235,
+                              "sha256":  "3000bd8389bef29f6716fa93ba3c4e887cc6486d981d6ae0d9529eef2200b828",
+                              "disposition":  "NEW"
+                          },
+                          {
+                              "path":  "docs/current/e/C11E_E4B_LOOP_COMPOSITION_REVIEW_20261106_V4.md",
+                              "kind":  "ADD_ONLY",
+                              "bytes":  1674,
+                              "sha256":  "a8b6e1da4812017dae0717915519e23b407ab71f1692c934768daa7a21f2c3ee",
+                              "disposition":  "NEW"
+                          },
+                          {
+                              "path":  "docs/current/e/C11E_E4B_LOOP_GUI_CLI_PARITY_REVIEW_20261106_V4.md",
+                              "kind":  "ADD_ONLY",
+                              "bytes":  1406,
+                              "sha256":  "a0150fe55e6cccdbe8944649672fba724e00cec84c629b1c09316553de15edde",
+                              "disposition":  "NEW"
+                          },
+                          {
+                              "path":  "docs/current/e/C11E_E4B_LOOP_FAMILY_MATRIX_REVIEW_20261106_V1.md",
+                              "kind":  "ADD_ONLY",
+                              "bytes":  3535,
+                              "sha256":  "62901c6dec9b10d9cf6a7a6c36974e4f3aba4439ace583c0c7f01a6ba04f6008",
+                              "disposition":  "NEW"
+                          },
+                          {
+                              "path":  "docs/current/e/C11E_E4B_LOOP_FAMILY_MATRIX_EXECUTION_PLAN_20261106_V1.md",
+                              "kind":  "ADD_ONLY",
+                              "bytes":  2974,
+                              "sha256":  "7cc91e6cf2b40794b661822903b32d2fbad19b17d988972e8003c89cab1f2cc1",
+                              "disposition":  "NEW"
+                          },
+                          {
+                              "path":  "docs/current/e/C11E_POWERSHELL_RUNNER_STYLE_GUIDE_20261106_V10.md",
+                              "kind":  "ADD_ONLY",
+                              "bytes":  1594,
+                              "sha256":  "7505f7615d4611528013c3b79d1bb86db74f872cf2a694d0bf2324840a5cb099",
+                              "disposition":  "NEW"
+                          },
+                          {
+                              "path":  "docs/history/c11d/C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261106_V64.md",
+                              "kind":  "ADD_ONLY",
+                              "bytes":  1889,
+                              "sha256":  "69991e4025dd0b69d90462b043549cdc535986f568d948d09cb33c3d8f312d47",
+                              "disposition":  "NEW"
+                          },
+                          {
+                              "path":  "prompts/C11E_CONTINUATION_MASTER_PROMPT_20261106_V74.md",
+                              "kind":  "ADD_ONLY",
+                              "bytes":  2676,
+                              "sha256":  "47b29d5aecb5f7a2f2ce498fd45ff6d7c59a7e0c047b33e72899da9cf097751f",
+                              "disposition":  "NEW"
+                          },
+                          {
+                              "path":  "prompts/C11E_NEXT_WINDOW_START_PROMPT_20261106_V74.md",
+                              "kind":  "ADD_ONLY",
+                              "bytes":  1631,
+                              "sha256":  "2ac630e6bed0de651a18bd2d78c4fd4361b46e329b1b92e28f741bc2ce9fb20d",
+                              "disposition":  "NEW"
+                          },
+                          {
+                              "path":  "prompts/C11E_FIRST_PROMPT_20261106_V18.md",
+                              "kind":  "ADD_ONLY",
+                              "bytes":  1973,
+                              "sha256":  "c3fcabbd863914813e4fb1d1d7cd91778dfb460640b608215c2d7c4643eb2dff",
+                              "disposition":  "NEW"
+                          },
+                          {
+                              "path":  "tools/c11d/d9/c11e_e4b_loop_family_matrix.py",
+                              "kind":  "ADD_ONLY",
+                              "bytes":  32368,
+                              "sha256":  "bd83489b8154d692d7b226d0edd84ed3fe2375db62ebc4385adf01223324fa35",
+                              "disposition":  "NEW"
+                          },
+                          {
+                              "path":  "tools/c11d/d9/test_c11e_e4b_loop_family_matrix.py",
+                              "kind":  "ADD_ONLY",
+                              "bytes":  8792,
+                              "sha256":  "37eb3c94fccff9a368d9f441cd8aed427e8af3dfc25c88c8bd5766783343f349",
+                              "disposition":  "NEW"
+                          },
+                          {
+                              "path":  "tools/c11d/d9/RUN_C11E_E4B_LOOP_FAMILY_MATRIX_V1.ps1",
+                              "kind":  "ADD_ONLY",
+                              "bytes":  17144,
+                              "sha256":  "190b85c46ba75ceee505a224bcbe60adac5b33c9864120e08593781c4616dbbe",
+                              "disposition":  "NEW"
+                          },
+                          {
+                              "path":  "c11c-suite/c11c-producer/main.py",
+                              "kind":  "MAIN_PATCH",
+                              "bytes":  116025,
+                              "sha256":  "982bce475811c5e4f9cad2e84b33cee9a3460f6add4f095476e950db15b806ab",
+                              "disposition":  "MAIN_PATCH_PENDING"
+                          }
+                      ],
+    "add_only_new_file_count":  18,
+    "add_only_identical_reuse_count":  0,
+    "add_only_installed":  [
+                               {
+                                   "path":  "docs/current/e/C11E_CURRENT_AUTHORITY_20261106_V76.md",
+                                   "sha256":  "45ceb89692ba357f5350a964f7f2bb7ed962fdf70e10b602808af6d6faeadcf6",
+                                   "result":  "INSTALLED"
+                               },
+                               {
+                                   "path":  "docs/current/e/C11E_CURRENT_DOC_INDEX_20261106_V36.md",
+                                   "sha256":  "3c74ceea2babd7ad3b2541d9e485e4aee74ed4f26c8513b4c0be009597debaca",
+                                   "result":  "INSTALLED"
+                               },
+                               {
+                                   "path":  "docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261106_V74.md",
+                                   "sha256":  "099007ab42453d2f578f962204f74d08c37ca4ec48da25557a4edbe90164216f",
+                                   "result":  "INSTALLED"
+                               },
+                               {
+                                   "path":  "docs/current/e/C11E_E3_EXECUTION_BACKLOG_20261106_V51.md",
+                                   "sha256":  "a19eb73b3d8e5a36bc446c9c5de0f8b2b3dfa4dc3c7c1e5c0c03f194e2d8c1b4",
+                                   "result":  "INSTALLED"
+                               },
+                               {
+                                   "path":  "docs/current/e/C11E_E4A_CHALLENGE_LOOP_DRILL_ALIGNMENT_20261106_V30.md",
+                                   "sha256":  "0a7f8c0d20387aac3d9b0867aa6b663b3f0e9636d6cf1c40069110c715f3d1a0",
+                                   "result":  "INSTALLED"
+                               },
+                               {
+                                   "path":  "docs/current/e/C11E_E4B_LOOP_SOURCE_REVIEW_20261106_V5.md",
+                                   "sha256":  "3000bd8389bef29f6716fa93ba3c4e887cc6486d981d6ae0d9529eef2200b828",
+                                   "result":  "INSTALLED"
+                               },
+                               {
+                                   "path":  "docs/current/e/C11E_E4B_LOOP_COMPOSITION_REVIEW_20261106_V4.md",
+                                   "sha256":  "a8b6e1da4812017dae0717915519e23b407ab71f1692c934768daa7a21f2c3ee",
+                                   "result":  "INSTALLED"
+                               },
+                               {
+                                   "path":  "docs/current/e/C11E_E4B_LOOP_GUI_CLI_PARITY_REVIEW_20261106_V4.md",
+                                   "sha256":  "a0150fe55e6cccdbe8944649672fba724e00cec84c629b1c09316553de15edde",
+                                   "result":  "INSTALLED"
+                               },
+                               {
+                                   "path":  "docs/current/e/C11E_E4B_LOOP_FAMILY_MATRIX_REVIEW_20261106_V1.md",
+                                   "sha256":  "62901c6dec9b10d9cf6a7a6c36974e4f3aba4439ace583c0c7f01a6ba04f6008",
+                                   "result":  "INSTALLED"
+                               },
+                               {
+                                   "path":  "docs/current/e/C11E_E4B_LOOP_FAMILY_MATRIX_EXECUTION_PLAN_20261106_V1.md",
+                                   "sha256":  "7cc91e6cf2b40794b661822903b32d2fbad19b17d988972e8003c89cab1f2cc1",
+                                   "result":  "INSTALLED"
+                               },
+                               {
+                                   "path":  "docs/current/e/C11E_POWERSHELL_RUNNER_STYLE_GUIDE_20261106_V10.md",
+                                   "sha256":  "7505f7615d4611528013c3b79d1bb86db74f872cf2a694d0bf2324840a5cb099",
+                                   "result":  "INSTALLED"
+                               },
+                               {
+                                   "path":  "docs/history/c11d/C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261106_V64.md",
+                                   "sha256":  "69991e4025dd0b69d90462b043549cdc535986f568d948d09cb33c3d8f312d47",
+                                   "result":  "INSTALLED"
+                               },
+                               {
+                                   "path":  "prompts/C11E_CONTINUATION_MASTER_PROMPT_20261106_V74.md",
+                                   "sha256":  "47b29d5aecb5f7a2f2ce498fd45ff6d7c59a7e0c047b33e72899da9cf097751f",
+                                   "result":  "INSTALLED"
+                               },
+                               {
+                                   "path":  "prompts/C11E_NEXT_WINDOW_START_PROMPT_20261106_V74.md",
+                                   "sha256":  "2ac630e6bed0de651a18bd2d78c4fd4361b46e329b1b92e28f741bc2ce9fb20d",
+                                   "result":  "INSTALLED"
+                               },
+                               {
+                                   "path":  "prompts/C11E_FIRST_PROMPT_20261106_V18.md",
+                                   "sha256":  "c3fcabbd863914813e4fb1d1d7cd91778dfb460640b608215c2d7c4643eb2dff",
+                                   "result":  "INSTALLED"
+                               },
+                               {
+                                   "path":  "tools/c11d/d9/c11e_e4b_loop_family_matrix.py",
+                                   "sha256":  "bd83489b8154d692d7b226d0edd84ed3fe2375db62ebc4385adf01223324fa35",
+                                   "result":  "INSTALLED"
+                               },
+                               {
+                                   "path":  "tools/c11d/d9/test_c11e_e4b_loop_family_matrix.py",
+                                   "sha256":  "37eb3c94fccff9a368d9f441cd8aed427e8af3dfc25c88c8bd5766783343f349",
+                                   "result":  "INSTALLED"
+                               },
+                               {
+                                   "path":  "tools/c11d/d9/RUN_C11E_E4B_LOOP_FAMILY_MATRIX_V1.ps1",
+                                   "sha256":  "190b85c46ba75ceee505a224bcbe60adac5b33c9864120e08593781c4616dbbe",
+                                   "result":  "INSTALLED"
+                               }
+                           ],
+    "main_patch":  {
+                       "path":  "c11c-suite/c11c-producer/main.py",
+                       "preimage_sha256":  "4141072659f307468900c1cfb09774479abc6c10abae6ae638a11192cfcd04e6",
+                       "postimage_sha256":  "982bce475811c5e4f9cad2e84b33cee9a3460f6add4f095476e950db15b806ab",
+                       "disposition":  "PATCHED_ATOMICALLY_WITH_PREIMAGE_BACKUP",
+                       "backup_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_loop_family_matrix\\source_backup\\main.py.preimage_4141072659f307468900c1cfb09774479abc6c10abae6ae638a11192cfcd04e6.bak",
+                       "backup_sha256":  "4141072659f307468900c1cfb09774479abc6c10abae6ae638a11192cfcd04e6"
+                   },
+    "document_file_count":  15,
+    "tool_file_count":  3,
+    "governance":  {
+                       "git_invoked":  false,
+                       "c11c_baseline_modified":  false,
+                       "renderer":  false,
+                       "renderer_dispatch_invoked":  false,
+                       "production_execution":  false,
+                       "media_created":  false,
+                       "godot_invoked":  false,
+                       "c11c_family_visual_generators_invoked":  false,
+                       "c11c_family_music_generator_invoked":  false,
+                       "d3_v5_invoked":  false,
+                       "ffmpeg_invoked":  false,
+                       "release_authority":  "NONE"
+                   }
+}

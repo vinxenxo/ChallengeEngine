@@ -1,0 +1,22 @@
+test_01_proposal_is_static_valid_and_unapproved (__main__.LoopEditorialCompositionProposalTests.test_01_proposal_is_static_valid_and_unapproved) ... ok
+test_02_geometry_is_exact_9_16_and_yuv420p_aligned (__main__.LoopEditorialCompositionProposalTests.test_02_geometry_is_exact_9_16_and_yuv420p_aligned) ... ok
+test_03_bands_do_not_overlap_source_frame (__main__.LoopEditorialCompositionProposalTests.test_03_bands_do_not_overlap_source_frame) ... ok
+test_04_empty_visible_fields_keep_full_frame_and_all_keys (__main__.LoopEditorialCompositionProposalTests.test_04_empty_visible_fields_keep_full_frame_and_all_keys) ... ok
+test_05_nonempty_visible_field_activates_contain_layout (__main__.LoopEditorialCompositionProposalTests.test_05_nonempty_visible_field_activates_contain_layout) ... ok
+test_06_language_is_metadata_only (__main__.LoopEditorialCompositionProposalTests.test_06_language_is_metadata_only) ... ok
+test_07_full_span_windows_use_only_actual_supplied_frame_count (__main__.LoopEditorialCompositionProposalTests.test_07_full_span_windows_use_only_actual_supplied_frame_count) ... ok
+test_08_all_160_char_fields_fit_declared_line_budget (__main__.LoopEditorialCompositionProposalTests.test_08_all_160_char_fields_fit_declared_line_budget) ... ok
+test_09_native_c11c_and_matrix_invariants_are_explicit (__main__.LoopEditorialCompositionProposalTests.test_09_native_c11c_and_matrix_invariants_are_explicit) ... ok
+test_10_no_editorial_truncation_policy (__main__.LoopEditorialCompositionProposalTests.test_10_no_editorial_truncation_policy) ... ok
+test_11_reject_missing_or_extra_canonical_fields (__main__.LoopEditorialCompositionProposalTests.test_11_reject_missing_or_extra_canonical_fields) ... ok
+test_12_reject_non_string_and_overlength_fields (__main__.LoopEditorialCompositionProposalTests.test_12_reject_non_string_and_overlength_fields) ... ok
+test_13_reject_invalid_frame_counts (__main__.LoopEditorialCompositionProposalTests.test_13_reject_invalid_frame_counts) ... ok
+test_14_proposal_cannot_be_promoted_by_editing_status (__main__.LoopEditorialCompositionProposalTests.test_14_proposal_cannot_be_promoted_by_editing_status) ... ok
+test_15_execution_boundary_is_fail_closed (__main__.LoopEditorialCompositionProposalTests.test_15_execution_boundary_is_fail_closed) ... ok
+test_16_active_catalog_retains_five_families_and_27_concrete_grammars (__main__.LoopEditorialCompositionProposalTests.test_16_active_catalog_retains_five_families_and_27_concrete_grammars) ... ok
+test_17_family_music_profiles_are_preserved_for_all_loop_families (__main__.LoopEditorialCompositionProposalTests.test_17_family_music_profiles_are_preserved_for_all_loop_families) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.019s
+
+OK

@@ -1,0 +1,1 @@
+C11E E4B LOOP EDITORIAL COMPOSITION PROPOSAL PASS | tests=17 | geometry=720x1280 | frame=504x896@0.7 | title/subtitle=4x19px | cta=3x22px | families=5/27 | proposal=NOT_APPROVED | renderer=OFF | media_created=false | release_authority=NONE

@@ -1,0 +1,18 @@
+test_case_builder_preserves_family_selector_and_mutates_one_seed_domain (__main__.LoopFamilyMatrixTests.test_case_builder_preserves_family_selector_and_mutates_one_seed_domain) ... ok
+test_cli_rejects_gui_evidence_if_integrity_sidecar_is_tampered (__main__.LoopFamilyMatrixTests.test_cli_rejects_gui_evidence_if_integrity_sidecar_is_tampered) ... ok
+test_existing_producer_gui_exposes_matrix_action_in_d99_tab (__main__.LoopFamilyMatrixTests.test_existing_producer_gui_exposes_matrix_action_in_d99_tab) ... ok
+test_family_music_profile_map_is_read_from_frozen_c11c_registry (__main__.LoopFamilyMatrixTests.test_family_music_profile_map_is_read_from_frozen_c11c_registry) ... ok
+test_full_27_grammar_three_seed_scenario_d9_e1_matrix_passes (__main__.LoopFamilyMatrixTests.test_full_27_grammar_three_seed_scenario_d9_e1_matrix_passes) ... ok
+test_gui_cli_matrix_parity_checks_editorial_and_family_semantics (__main__.LoopFamilyMatrixTests.test_gui_cli_matrix_parity_checks_editorial_and_family_semantics) ... ok
+test_gui_matrix_action_is_review_only_and_exports_reusable_template (__main__.LoopFamilyMatrixTests.test_gui_matrix_action_is_review_only_and_exports_reusable_template) ... ok
+test_registry_has_exactly_five_families_and_27_concrete_grammars (__main__.LoopFamilyMatrixTests.test_registry_has_exactly_five_families_and_27_concrete_grammars) ... ok
+test_report_written_add_only_and_hash_sidecar_matches (__main__.LoopFamilyMatrixTests.test_report_written_add_only_and_hash_sidecar_matches) ... ok
+test_template_rejects_challenge_presentation_options (__main__.LoopFamilyMatrixTests.test_template_rejects_challenge_presentation_options) ... ok
+test_template_rejects_equal_seed_domains (__main__.LoopFamilyMatrixTests.test_template_rejects_equal_seed_domains) ... ok
+test_template_rejects_non_loop_content (__main__.LoopFamilyMatrixTests.test_template_rejects_non_loop_content) ... ok
+test_template_rejects_production_mode (__main__.LoopFamilyMatrixTests.test_template_rejects_production_mode) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 10.989s
+
+OK
