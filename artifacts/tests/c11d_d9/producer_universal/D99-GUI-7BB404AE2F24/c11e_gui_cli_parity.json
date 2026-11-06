@@ -1,0 +1,24 @@
+{
+  "schema": "C11-E-E1-GUI-CLI-SHARED-SERVICE-PARITY-V1",
+  "status": "PASS",
+  "checks": {
+    "semantic_intent_hash_equal": true,
+    "request_hash_equal": true,
+    "editorial_hash_equal": true,
+    "plan_hash_equal": true,
+    "selection_equal": true,
+    "editorial_equal": true,
+    "presentation_options_equal": true,
+    "seed_domains_equal": true,
+    "gui_origin_preserved": true,
+    "cli_origin_preserved": true,
+    "both_fail_closed": true
+  },
+  "gui_intent_sha256": "dc60ed60d14cd5aed0696d0b0d8a2af8f9de971dc67a9e07efea1d37efd068a8",
+  "cli_intent_sha256": "e7b757e085b97231f9b425fb817d3d3d0bfc5a7a10522b1c713a627d1ccc24ca",
+  "semantic_intent_hash": "68a2ae4fa834aa98e32e523685f7f8ec7f69adff8914a16c261b15b4e49f58c4",
+  "renderer": false,
+  "production_execution": false,
+  "media_created": false,
+  "release_authority": "NONE"
+}

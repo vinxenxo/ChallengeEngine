@@ -1,0 +1,29 @@
+{
+  "schema": "C11-D-D9.10-PRODUCER-BRIDGE-PLANNING-RECEIPT-V1",
+  "phase": "D9.10",
+  "result": "PASS_BRIDGE_PLANNING_ONLY",
+  "status": "PLANNED",
+  "request_id": "D99-GUI-7BB404AE2F24",
+  "request_hash": "1f4fc63e5ca293653ba58abe956c3813ae8d41a793a091511faae1daea05492a",
+  "editorial_hash": "c4a13dde991ea799c85fc20c1593edbab56adc0be9d583d503cd8ea03f35f76a",
+  "plan_hash": "4019430158efc8a22bbd308c094b6cd3a68e59abe4d169032cae8f35c2abe7a8",
+  "bridge_record_hash": "1b06cadbc4600c76ba4da87e651ced8fd60681769a8be6592f2f3bac506eb335",
+  "d_only_adapter_envelope_hash": "8f98b47e1665ee2f5ffb6d24c596f2c54c6bfb5cdae506251ade08d879ac3a77",
+  "d_only_adapter_status": "PREPARED_NOT_DISPATCHED_RENDERER_DISABLED",
+  "renderer_dispatch_invoked": false,
+  "gui_cli_parity": "PASS",
+  "content_type": "visual_loops",
+  "selection": {
+    "content_type": "visual_loops",
+    "family_id": "c11c_geometric_waves_v1",
+    "subtype_id": "harmonic_membrane",
+    "variant_id": null,
+    "variant_scope_id": "visual-loop:c11c_geometric_waves_v1/harmonic_membrane",
+    "difficulty_tier": null
+  },
+  "renderer_execution": false,
+  "production_execution": false,
+  "release_authority": "NONE",
+  "d4_8": "BLOCKED",
+  "evidence_root": "artifacts\\tests\\c11d_d9\\producer_universal\\D99-GUI-7BB404AE2F24"
+}
