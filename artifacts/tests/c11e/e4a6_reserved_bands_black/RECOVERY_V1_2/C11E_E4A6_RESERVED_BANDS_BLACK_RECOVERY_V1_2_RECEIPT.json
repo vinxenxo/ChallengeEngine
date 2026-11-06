@@ -1,0 +1,523 @@
+{
+    "schema":  "C11E-E4A6-RESERVED-BANDS-BLACK-RECOVERY-RECEIPT-V1_2",
+    "status":  "PASS_TEST_ONLY_RESERVED_BANDS_BLACK_CAPTURED",
+    "timestamp_local":  "2026-11-06T00:04:50.6138510+01:00",
+    "project_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+    "evidence_root":  "C:\\Users\\vinxe\\Documents\\C11E_E4A6_RESERVED_BANDS_BLACK_V2_20261105_224805",
+    "recovery_run_root":  "C:\\Users\\vinxe\\Documents\\C11E_E4A6_RESERVED_BANDS_BLACK_V2_20261105_224805\\RECOVERY_V1_2_20261106_000444_380",
+    "powershell_version":  "5.1.26100.9818",
+    "ffmpeg_version":  "ffmpeg version 9.0-full_build-www.gyan.dev Copyright (c) 2000-2026 the FFmpeg developers",
+    "ffprobe_version":  "ffprobe version 9.0-full_build-www.gyan.dev Copyright (c) 2007-2026 the FFmpeg developers",
+    "source_write_performed":  false,
+    "generadormaestro_written":  false,
+    "c11c_shared_layer_written":  false,
+    "python_tests_reused":  "22/22_PASS_FROM_V2_EVIDENCE",
+    "godot_runtime_reused":  "PASS_900_FRAMES_ONE_MOUNT_900_BLACK_BAND_FRAMES",
+    "movie_maker_capture_reused":  "PASS_900_FRAMES_540x960_60FPS_15S",
+    "movie_maker_log_validation":  "PASS_TEXT_HELPER_WITH_MODE_SPECIFIC_MARKERS",
+    "process_records":  [
+                            {
+                                "name":  "recovery_ffmpeg_version",
+                                "command":  "C:\\Users\\vinxe\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-9.0-full_build\\bin\\ffmpeg.exe -version",
+                                "working_directory":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+                                "exit_code":  0,
+                                "timed_out":  false,
+                                "stdout_path":  "C:\\Users\\vinxe\\Documents\\C11E_E4A6_RESERVED_BANDS_BLACK_V2_20261105_224805\\RECOVERY_V1_2_20261106_000444_380\\recovery_tool_logs\\recovery_ffmpeg_version.stdout.txt",
+                                "stdout_bytes":  2275,
+                                "stdout_sha256":  "a78a87b103cd6d845ff3a525a88eb2e0163e17641602f95e1ecca860feff1a38",
+                                "stderr_path":  "C:\\Users\\vinxe\\Documents\\C11E_E4A6_RESERVED_BANDS_BLACK_V2_20261105_224805\\RECOVERY_V1_2_20261106_000444_380\\recovery_tool_logs\\recovery_ffmpeg_version.stderr.txt",
+                                "stderr_bytes":  0,
+                                "stderr_sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                            },
+                            {
+                                "name":  "recovery_ffprobe_version",
+                                "command":  "C:\\Users\\vinxe\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-9.0-full_build\\bin\\ffprobe.exe -version",
+                                "working_directory":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+                                "exit_code":  0,
+                                "timed_out":  false,
+                                "stdout_path":  "C:\\Users\\vinxe\\Documents\\C11E_E4A6_RESERVED_BANDS_BLACK_V2_20261105_224805\\RECOVERY_V1_2_20261106_000444_380\\recovery_tool_logs\\recovery_ffprobe_version.stdout.txt",
+                                "stdout_bytes":  2248,
+                                "stdout_sha256":  "8ba50584144e7a1f0c499d57490a142aab2f5fa112b0a18c1c40a3329d294e59",
+                                "stderr_path":  "C:\\Users\\vinxe\\Documents\\C11E_E4A6_RESERVED_BANDS_BLACK_V2_20261105_224805\\RECOVERY_V1_2_20261106_000444_380\\recovery_tool_logs\\recovery_ffprobe_version.stderr.txt",
+                                "stderr_bytes":  0,
+                                "stderr_sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                            },
+                            {
+                                "name":  "recovery_ffprobe_source_avi",
+                                "command":  "C:\\Users\\vinxe\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-9.0-full_build\\bin\\ffprobe.exe -v error -count_frames -show_streams -show_format -of json -- \"C:\\Users\\vinxe\\Documents\\C11E_E4A6_RESERVED_BANDS_BLACK_V2_20261105_224805\\CHALLENGE_004_D_BLACK_BANDS_SOURCE_CANDIDATE.avi\"",
+                                "working_directory":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+                                "exit_code":  0,
+                                "timed_out":  false,
+                                "stdout_path":  "C:\\Users\\vinxe\\Documents\\C11E_E4A6_RESERVED_BANDS_BLACK_V2_20261105_224805\\RECOVERY_V1_2_20261106_000444_380\\recovery_tool_logs\\recovery_ffprobe_source_avi.stdout.txt",
+                                "stdout_bytes":  3777,
+                                "stdout_sha256":  "eac5a2d0e4a9120921c79ce38fd3cf21f33e8a187b5a8e93b8c33e23178542fd",
+                                "stderr_path":  "C:\\Users\\vinxe\\Documents\\C11E_E4A6_RESERVED_BANDS_BLACK_V2_20261105_224805\\RECOVERY_V1_2_20261106_000444_380\\recovery_tool_logs\\recovery_ffprobe_source_avi.stderr.txt",
+                                "stderr_bytes":  0,
+                                "stderr_sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                            },
+                            {
+                                "name":  "recovery_ffmpeg_silent_review_encode",
+                                "command":  "C:\\Users\\vinxe\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-9.0-full_build\\bin\\ffmpeg.exe -y -hide_banner -loglevel error -i \"C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a6_reserved_bands_black\\RECOVERY_V1_2\\CHALLENGE_004_D_BLACK_BANDS_SOURCE_540x960_60FPS.avi\" -map 0:v:0 -an -vf \"fps=30,scale=720:1280:flags=lanczos:in_range=pc:out_range=tv,format=yuv420p\" -c:v libx264 -preset fast -crf 18 -profile:v high -pix_fmt yuv420p -color_range tv -g 90 -keyint_min 90 -sc_threshold 0 -movflags +faststart \"C:\\Users\\vinxe\\Documents\\C11E_E4A6_RESERVED_BANDS_BLACK_V2_20261105_224805\\RECOVERY_V1_2_20261106_000444_380\\C11E_E4A6_RECOVERY_V1_2_REVIEW_CANDIDATE.mp4\"",
+                                "working_directory":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+                                "exit_code":  0,
+                                "timed_out":  false,
+                                "stdout_path":  "C:\\Users\\vinxe\\Documents\\C11E_E4A6_RESERVED_BANDS_BLACK_V2_20261105_224805\\RECOVERY_V1_2_20261106_000444_380\\recovery_tool_logs\\recovery_ffmpeg_silent_review_encode.stdout.txt",
+                                "stdout_bytes":  0,
+                                "stdout_sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                                "stderr_path":  "C:\\Users\\vinxe\\Documents\\C11E_E4A6_RESERVED_BANDS_BLACK_V2_20261105_224805\\RECOVERY_V1_2_20261106_000444_380\\recovery_tool_logs\\recovery_ffmpeg_silent_review_encode.stderr.txt",
+                                "stderr_bytes":  0,
+                                "stderr_sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                            },
+                            {
+                                "name":  "recovery_ffprobe_new_review_mp4",
+                                "command":  "C:\\Users\\vinxe\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-9.0-full_build\\bin\\ffprobe.exe -v error -count_frames -show_streams -show_format -of json -- \"C:\\Users\\vinxe\\Documents\\C11E_E4A6_RESERVED_BANDS_BLACK_V2_20261105_224805\\RECOVERY_V1_2_20261106_000444_380\\C11E_E4A6_RECOVERY_V1_2_REVIEW_CANDIDATE.mp4\"",
+                                "working_directory":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+                                "exit_code":  0,
+                                "timed_out":  false,
+                                "stdout_path":  "C:\\Users\\vinxe\\Documents\\C11E_E4A6_RESERVED_BANDS_BLACK_V2_20261105_224805\\RECOVERY_V1_2_20261106_000444_380\\recovery_tool_logs\\recovery_ffprobe_new_review_mp4.stdout.txt",
+                                "stdout_bytes":  3010,
+                                "stdout_sha256":  "37c67ce52e7ea0682006e0ea9662c984a3f662fae8d4ff67b0c79a80a0f89ce9",
+                                "stderr_path":  "C:\\Users\\vinxe\\Documents\\C11E_E4A6_RESERVED_BANDS_BLACK_V2_20261105_224805\\RECOVERY_V1_2_20261106_000444_380\\recovery_tool_logs\\recovery_ffprobe_new_review_mp4.stderr.txt",
+                                "stderr_bytes":  0,
+                                "stderr_sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                            },
+                            {
+                                "name":  "recovery_ffmpeg_boundary_stills",
+                                "command":  "C:\\Users\\vinxe\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-9.0-full_build\\bin\\ffmpeg.exe -y -hide_banner -loglevel error -i \"C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a6_reserved_bands_black\\RECOVERY_V1_2\\CHALLENGE_004_D_BLACK_BANDS_720x1280_30FPS_SILENT.mp4\" -vf \"select=eq(n\\,0)+eq(n\\,89)+eq(n\\,90)+eq(n\\,299)+eq(n\\,300)+eq(n\\,389)+eq(n\\,390)+eq(n\\,449)\" -fps_mode vfr -frames:v 8 -start_number 0 \"C:\\Users\\vinxe\\Documents\\C11E_E4A6_RESERVED_BANDS_BLACK_V2_20261105_224805\\RECOVERY_V1_2_20261106_000444_380\\boundary_stills_stage\\D_LIVE_DELIVERY_FRAME_%02d.png\"",
+                                "working_directory":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+                                "exit_code":  0,
+                                "timed_out":  false,
+                                "stdout_path":  "C:\\Users\\vinxe\\Documents\\C11E_E4A6_RESERVED_BANDS_BLACK_V2_20261105_224805\\RECOVERY_V1_2_20261106_000444_380\\recovery_tool_logs\\recovery_ffmpeg_boundary_stills.stdout.txt",
+                                "stdout_bytes":  0,
+                                "stdout_sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                                "stderr_path":  "C:\\Users\\vinxe\\Documents\\C11E_E4A6_RESERVED_BANDS_BLACK_V2_20261105_224805\\RECOVERY_V1_2_20261106_000444_380\\recovery_tool_logs\\recovery_ffmpeg_boundary_stills.stderr.txt",
+                                "stderr_bytes":  0,
+                                "stderr_sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                            }
+                        ],
+    "envelope_sha256":  "2a62637072d34f2b68e11f92ddb1d7d981d870507e696c800396a8e15f8a527e",
+    "consumer_sha256":  "eba81fff4c24ca75033c8f963665df1961136046c41fee0e88681fe55a631203",
+    "focused_test_sha256":  "9845eda094037f8748493171755b32d3479ddf6548612e9a6ecebba187cbc512",
+    "embedded_document_archive_sha256":  "b14300197cd1a7f54e4446b5ba9d7ea8391bb9faaeac8abe3a4e3a2ce6ea80fe",
+    "frozen_manifest_sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "generadormaestro_sha256":  "d42782e8f5bb94ff0ede653a1c4624dc91541cc8203abf136b09a8fc288a7d82",
+    "c11c_shared_layer_sha256":  "f8f718c067a4d7a088cc16f244cc40209e7183bec93e44d8cb66eb6dd404cf7d",
+    "source_avi":  {
+                       "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a6_reserved_bands_black\\RECOVERY_V1_2\\CHALLENGE_004_D_BLACK_BANDS_SOURCE_540x960_60FPS.avi",
+                       "sha256":  "2f6d0c73cb09571584db68e37760c933706473a07e559fc93113f26eabb89f45",
+                       "width":  540,
+                       "height":  960,
+                       "fps":  60,
+                       "frames":  900,
+                       "duration_seconds":  15,
+                       "audio_streams_detected":  1,
+                       "audio_streams_discarded":  true,
+                       "audio_stream_details":  [
+                                                    {
+                                                        "codec_name":  "pcm_s16le",
+                                                        "sample_rate":  "48000",
+                                                        "channels":  2
+                                                    }
+                                                ]
+                   },
+    "review_mp4":  {
+                       "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a6_reserved_bands_black\\RECOVERY_V1_2\\CHALLENGE_004_D_BLACK_BANDS_720x1280_30FPS_SILENT.mp4",
+                       "sha256":  "841b03531301c7e70c0e09ce3e9f536241d2072a87792e099ed7a955bef8c52f",
+                       "width":  720,
+                       "height":  1280,
+                       "fps":  30,
+                       "frames":  450,
+                       "duration_seconds":  15,
+                       "codec":  "h264",
+                       "profile":  "High",
+                       "pixel_format":  "yuv420p",
+                       "color_range":  "tv",
+                       "audio_streams":  0
+                   },
+    "boundary_frames":  [
+                            0,
+                            89,
+                            90,
+                            299,
+                            300,
+                            389,
+                            390,
+                            449
+                        ],
+    "boundary_still_count":  8,
+    "pixel_audit_rows":  [
+                             {
+                                 "still_index":  2,
+                                 "delivery_frame":  90,
+                                 "region":  "HEADER",
+                                 "expected":  "BLACK",
+                                 "actual":  "PASS",
+                                 "stats":  {
+                                               "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a6_reserved_bands_black\\RECOVERY_V1_2\\boundary_stills\\D_LIVE_DELIVERY_FRAME_02.png",
+                                               "samples":  31680,
+                                               "non_black_samples":  0,
+                                               "non_black_ratio":  0,
+                                               "max_rgb_sample":  2
+                                           }
+                             },
+                             {
+                                 "still_index":  3,
+                                 "delivery_frame":  299,
+                                 "region":  "HEADER",
+                                 "expected":  "BLACK",
+                                 "actual":  "PASS",
+                                 "stats":  {
+                                               "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a6_reserved_bands_black\\RECOVERY_V1_2\\boundary_stills\\D_LIVE_DELIVERY_FRAME_03.png",
+                                               "samples":  31680,
+                                               "non_black_samples":  0,
+                                               "non_black_ratio":  0,
+                                               "max_rgb_sample":  2
+                                           }
+                             },
+                             {
+                                 "still_index":  4,
+                                 "delivery_frame":  300,
+                                 "region":  "HEADER",
+                                 "expected":  "BLACK",
+                                 "actual":  "PASS",
+                                 "stats":  {
+                                               "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a6_reserved_bands_black\\RECOVERY_V1_2\\boundary_stills\\D_LIVE_DELIVERY_FRAME_04.png",
+                                               "samples":  31680,
+                                               "non_black_samples":  0,
+                                               "non_black_ratio":  0,
+                                               "max_rgb_sample":  2
+                                           }
+                             },
+                             {
+                                 "still_index":  5,
+                                 "delivery_frame":  389,
+                                 "region":  "HEADER",
+                                 "expected":  "BLACK",
+                                 "actual":  "PASS",
+                                 "stats":  {
+                                               "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a6_reserved_bands_black\\RECOVERY_V1_2\\boundary_stills\\D_LIVE_DELIVERY_FRAME_05.png",
+                                               "samples":  31680,
+                                               "non_black_samples":  0,
+                                               "non_black_ratio":  0,
+                                               "max_rgb_sample":  2
+                                           }
+                             },
+                             {
+                                 "still_index":  6,
+                                 "delivery_frame":  390,
+                                 "region":  "HEADER",
+                                 "expected":  "BLACK",
+                                 "actual":  "PASS",
+                                 "stats":  {
+                                               "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a6_reserved_bands_black\\RECOVERY_V1_2\\boundary_stills\\D_LIVE_DELIVERY_FRAME_06.png",
+                                               "samples":  31680,
+                                               "non_black_samples":  0,
+                                               "non_black_ratio":  0,
+                                               "max_rgb_sample":  2
+                                           }
+                             },
+                             {
+                                 "still_index":  7,
+                                 "delivery_frame":  449,
+                                 "region":  "HEADER",
+                                 "expected":  "BLACK",
+                                 "actual":  "PASS",
+                                 "stats":  {
+                                               "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a6_reserved_bands_black\\RECOVERY_V1_2\\boundary_stills\\D_LIVE_DELIVERY_FRAME_07.png",
+                                               "samples":  31680,
+                                               "non_black_samples":  0,
+                                               "non_black_ratio":  0,
+                                               "max_rgb_sample":  2
+                                           }
+                             },
+                             {
+                                 "still_index":  0,
+                                 "delivery_frame":  0,
+                                 "region":  "FOOTER",
+                                 "expected":  "BLACK",
+                                 "actual":  "PASS",
+                                 "stats":  {
+                                               "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a6_reserved_bands_black\\RECOVERY_V1_2\\boundary_stills\\D_LIVE_DELIVERY_FRAME_00.png",
+                                               "samples":  31680,
+                                               "non_black_samples":  0,
+                                               "non_black_ratio":  0,
+                                               "max_rgb_sample":  2
+                                           }
+                             },
+                             {
+                                 "still_index":  1,
+                                 "delivery_frame":  89,
+                                 "region":  "FOOTER",
+                                 "expected":  "BLACK",
+                                 "actual":  "PASS",
+                                 "stats":  {
+                                               "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a6_reserved_bands_black\\RECOVERY_V1_2\\boundary_stills\\D_LIVE_DELIVERY_FRAME_01.png",
+                                               "samples":  31680,
+                                               "non_black_samples":  0,
+                                               "non_black_ratio":  0,
+                                               "max_rgb_sample":  2
+                                           }
+                             },
+                             {
+                                 "still_index":  2,
+                                 "delivery_frame":  90,
+                                 "region":  "FOOTER",
+                                 "expected":  "BLACK",
+                                 "actual":  "PASS",
+                                 "stats":  {
+                                               "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a6_reserved_bands_black\\RECOVERY_V1_2\\boundary_stills\\D_LIVE_DELIVERY_FRAME_02.png",
+                                               "samples":  31680,
+                                               "non_black_samples":  0,
+                                               "non_black_ratio":  0,
+                                               "max_rgb_sample":  2
+                                           }
+                             },
+                             {
+                                 "still_index":  3,
+                                 "delivery_frame":  299,
+                                 "region":  "FOOTER",
+                                 "expected":  "BLACK",
+                                 "actual":  "PASS",
+                                 "stats":  {
+                                               "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a6_reserved_bands_black\\RECOVERY_V1_2\\boundary_stills\\D_LIVE_DELIVERY_FRAME_03.png",
+                                               "samples":  31680,
+                                               "non_black_samples":  0,
+                                               "non_black_ratio":  0,
+                                               "max_rgb_sample":  2
+                                           }
+                             },
+                             {
+                                 "still_index":  4,
+                                 "delivery_frame":  300,
+                                 "region":  "FOOTER",
+                                 "expected":  "BLACK",
+                                 "actual":  "PASS",
+                                 "stats":  {
+                                               "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a6_reserved_bands_black\\RECOVERY_V1_2\\boundary_stills\\D_LIVE_DELIVERY_FRAME_04.png",
+                                               "samples":  31680,
+                                               "non_black_samples":  0,
+                                               "non_black_ratio":  0,
+                                               "max_rgb_sample":  2
+                                           }
+                             },
+                             {
+                                 "still_index":  5,
+                                 "delivery_frame":  389,
+                                 "region":  "FOOTER",
+                                 "expected":  "BLACK",
+                                 "actual":  "PASS",
+                                 "stats":  {
+                                               "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a6_reserved_bands_black\\RECOVERY_V1_2\\boundary_stills\\D_LIVE_DELIVERY_FRAME_05.png",
+                                               "samples":  31680,
+                                               "non_black_samples":  0,
+                                               "non_black_ratio":  0,
+                                               "max_rgb_sample":  3
+                                           }
+                             },
+                             {
+                                 "still_index":  0,
+                                 "delivery_frame":  0,
+                                 "region":  "HEADER",
+                                 "expected":  "ACTIVE_EDITORIAL",
+                                 "actual":  "PASS",
+                                 "stats":  {
+                                               "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a6_reserved_bands_black\\RECOVERY_V1_2\\boundary_stills\\D_LIVE_DELIVERY_FRAME_00.png",
+                                               "samples":  31680,
+                                               "non_black_samples":  7199,
+                                               "non_black_ratio":  0.22724116161616162,
+                                               "max_rgb_sample":  255
+                                           }
+                             },
+                             {
+                                 "still_index":  1,
+                                 "delivery_frame":  89,
+                                 "region":  "HEADER",
+                                 "expected":  "ACTIVE_EDITORIAL",
+                                 "actual":  "PASS",
+                                 "stats":  {
+                                               "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a6_reserved_bands_black\\RECOVERY_V1_2\\boundary_stills\\D_LIVE_DELIVERY_FRAME_01.png",
+                                               "samples":  31680,
+                                               "non_black_samples":  7188,
+                                               "non_black_ratio":  0.2268939393939394,
+                                               "max_rgb_sample":  255
+                                           }
+                             },
+                             {
+                                 "still_index":  6,
+                                 "delivery_frame":  390,
+                                 "region":  "FOOTER",
+                                 "expected":  "ACTIVE_EDITORIAL",
+                                 "actual":  "PASS",
+                                 "stats":  {
+                                               "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a6_reserved_bands_black\\RECOVERY_V1_2\\boundary_stills\\D_LIVE_DELIVERY_FRAME_06.png",
+                                               "samples":  31680,
+                                               "non_black_samples":  1136,
+                                               "non_black_ratio":  0.035858585858585861,
+                                               "max_rgb_sample":  255
+                                           }
+                             },
+                             {
+                                 "still_index":  7,
+                                 "delivery_frame":  449,
+                                 "region":  "FOOTER",
+                                 "expected":  "ACTIVE_EDITORIAL",
+                                 "actual":  "PASS",
+                                 "stats":  {
+                                               "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a6_reserved_bands_black\\RECOVERY_V1_2\\boundary_stills\\D_LIVE_DELIVERY_FRAME_07.png",
+                                               "samples":  31680,
+                                               "non_black_samples":  1140,
+                                               "non_black_ratio":  0.035984848484848488,
+                                               "max_rgb_sample":  255
+                                           }
+                             }
+                         ],
+    "operator_visual_review":  "PASS_REPORTED_BY_OPERATOR_2026-11-05",
+    "documentation_apply":  [
+                                {
+                                    "path":  "docs/current/e/C11E_CURRENT_AUTHORITY_20261105_V67.md",
+                                    "sha256":  "aa1d5efef819c09c755406515b2ad982e6b4e4b020f277d863d9121c0954e669",
+                                    "state":  "ADDED"
+                                },
+                                {
+                                    "path":  "docs/current/e/C11E_CURRENT_DOC_INDEX_20261105_V27.md",
+                                    "sha256":  "2c5a16bf3a2b05e844c8f9a6de6cdc6b794b039d05049cc175a414a379b8b806",
+                                    "state":  "ADDED"
+                                },
+                                {
+                                    "path":  "docs/current/e/C11E_E3_EXECUTION_BACKLOG_20261105_V42.md",
+                                    "sha256":  "7ef829febe0d07b766a138013249fc7a889ffddaaaf59c688d5d336e1822a64c",
+                                    "state":  "ADDED"
+                                },
+                                {
+                                    "path":  "docs/current/e/C11E_E4A_CHALLENGE_LOOP_DRILL_ALIGNMENT_20261105_V21.md",
+                                    "sha256":  "5199b33a95601c4269636b93b4dfe73269060d69c49b75d91bb9cbf701df0770",
+                                    "state":  "ADDED"
+                                },
+                                {
+                                    "path":  "docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261105_V65.md",
+                                    "sha256":  "2e608406f0bacbc653c5a45e3c94ede66d9af561de84bc48bdbdfb0cc8f06807",
+                                    "state":  "ADDED"
+                                },
+                                {
+                                    "path":  "docs/current/e/C11E_POWERSHELL_RUNNER_STYLE_GUIDE_V3.md",
+                                    "sha256":  "5f5a84b94bd293f974e52a3654518e8a07f86555b38f9783eba244edc0fd7f5c",
+                                    "state":  "ADDED"
+                                },
+                                {
+                                    "path":  "docs/history/c11d/C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261105_V55.md",
+                                    "sha256":  "b391b6f488998f71cbfe263ceaebe6a716c34c5a94311006c5181e7188a96e18",
+                                    "state":  "ADDED"
+                                },
+                                {
+                                    "path":  "docs/history/c11e/C11E_C11C_GENERADORMAESTRO_MANIFEST_DIVERGENCE_20261105_V1.md",
+                                    "sha256":  "5be35d39954f3289821a35c189be1b1a23aef24c7c96a07f2806839f6c4ecd68",
+                                    "state":  "ALREADY_PRESENT_IDENTICAL"
+                                },
+                                {
+                                    "path":  "docs/history/c11e/C11E_E4A6_LIVE_PIXEL_CAPTURE_POSTMORTEM_20261105_V10.md",
+                                    "sha256":  "aae9f27ad3d1f971fba9f66105a7626c6ba4f8a8ae25b5b6616c73c127528778",
+                                    "state":  "ADDED"
+                                },
+                                {
+                                    "path":  "docs/history/c11e/C11E_E4A6_LIVE_PIXEL_POSTPROCESS_PLAN_20261105_V12.md",
+                                    "sha256":  "a1157b3b9fd0074e7179b7ee39e172dd7878acfba2d680ceacd57c2b70ec2939",
+                                    "state":  "ADDED"
+                                },
+                                {
+                                    "path":  "docs/history/c11e/C11E_E4A6_RESERVED_BANDS_VISUAL_REQUIREMENT_20261105_V5.md",
+                                    "sha256":  "33fb75c209e74015465c550e0f3b5b3121bdf3f04fd5ef43111e95a7921e606c",
+                                    "state":  "ADDED"
+                                },
+                                {
+                                    "path":  "docs/history/c11e/C11E_ROOT_DOCS_MANIFEST_SHA_ERRATUM_20261105_V1.md",
+                                    "sha256":  "afa339d724e0b69a1713adff88cf159bf076be5dc5efa3c1c83b8564503ff9f9",
+                                    "state":  "ALREADY_PRESENT_IDENTICAL"
+                                },
+                                {
+                                    "path":  "prompts/C11E_CONTINUATION_MASTER_PROMPT_20261105_V65.md",
+                                    "sha256":  "f1a520512d18f706c992323a2b356bc5446758cbf1794ed730c7dcbf0c899563",
+                                    "state":  "ADDED"
+                                },
+                                {
+                                    "path":  "prompts/C11E_FIRST_PROMPT_20261105_V9.md",
+                                    "sha256":  "dcaf5432e388f19936b22d38b5733c9a191b13f0ab77fe017b37181179bd1886",
+                                    "state":  "ADDED"
+                                },
+                                {
+                                    "path":  "prompts/C11E_NEXT_WINDOW_START_PROMPT_20261105_V65.md",
+                                    "sha256":  "c1a0409b89e4b6cced22682f46243fc5fc3580f45c0a2210d6af1fabef8c177e",
+                                    "state":  "ADDED"
+                                }
+                            ],
+    "outputs":  [
+                    {
+                        "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a6_reserved_bands_black\\RECOVERY_V1_2\\CHALLENGE_004_D_BLACK_BANDS_SOURCE_540x960_60FPS.avi",
+                        "bytes":  20865790,
+                        "sha256":  "2f6d0c73cb09571584db68e37760c933706473a07e559fc93113f26eabb89f45"
+                    },
+                    {
+                        "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a6_reserved_bands_black\\RECOVERY_V1_2\\CHALLENGE_004_D_BLACK_BANDS_720x1280_30FPS_SILENT.mp4",
+                        "bytes":  671647,
+                        "sha256":  "841b03531301c7e70c0e09ce3e9f536241d2072a87792e099ed7a955bef8c52f"
+                    },
+                    {
+                        "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a6_reserved_bands_black\\RECOVERY_V1_2\\review_mp4_source.json",
+                        "bytes":  706,
+                        "sha256":  "71378fbe01e9b3776877e05283613ecd36645bc80389ccfa83c2054ec3589a34"
+                    },
+                    {
+                        "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a6_reserved_bands_black\\RECOVERY_V1_2\\boundary_stills_source.json",
+                        "bytes":  2207,
+                        "sha256":  "bbea7a923d7946455928eb37203d9719a427158aa6cbaee05980ad47a91d28b3"
+                    },
+                    {
+                        "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a6_reserved_bands_black\\RECOVERY_V1_2\\D_LIVE_DELIVERY_CONTACT_4x2.png",
+                        "bytes":  87325,
+                        "sha256":  "f45c911e97194020d0487ad6d8f22e3bb3370b15a87d8cd6d5e2884e7f61d4af"
+                    },
+                    {
+                        "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a6_reserved_bands_black\\RECOVERY_V1_2\\boundary_stills\\D_LIVE_DELIVERY_FRAME_00.png",
+                        "bytes":  197410,
+                        "sha256":  "657a97410808c39ed7318e8a492d30197f33b5dfe201243219e9700042f5e897"
+                    },
+                    {
+                        "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a6_reserved_bands_black\\RECOVERY_V1_2\\boundary_stills\\D_LIVE_DELIVERY_FRAME_01.png",
+                        "bytes":  192988,
+                        "sha256":  "340cb4a7870455c3a2c0986653646ae637f901d72e17773be8da05cb960fbb2e"
+                    },
+                    {
+                        "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a6_reserved_bands_black\\RECOVERY_V1_2\\boundary_stills\\D_LIVE_DELIVERY_FRAME_02.png",
+                        "bytes":  129424,
+                        "sha256":  "a29096fe0fff2c28f6ab3233f1025f97551b0a2b95c02f308c20790efedc6620"
+                    },
+                    {
+                        "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a6_reserved_bands_black\\RECOVERY_V1_2\\boundary_stills\\D_LIVE_DELIVERY_FRAME_03.png",
+                        "bytes":  73284,
+                        "sha256":  "51e5916557322cfcfe84d087bde46e82ca4cdc06963fc70b318cf00ed7df2c6d"
+                    },
+                    {
+                        "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a6_reserved_bands_black\\RECOVERY_V1_2\\boundary_stills\\D_LIVE_DELIVERY_FRAME_04.png",
+                        "bytes":  96787,
+                        "sha256":  "86cce1928b3ba62240e7c1dbe3dd139c53e0cdaefc87003226bb48f04c8096bb"
+                    },
+                    {
+                        "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a6_reserved_bands_black\\RECOVERY_V1_2\\boundary_stills\\D_LIVE_DELIVERY_FRAME_05.png",
+                        "bytes":  95713,
+                        "sha256":  "f8a9d4c89c00677eaa6b9dbcb86dda9a2f81750fff8697076e10de485ebe28ed"
+                    },
+                    {
+                        "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a6_reserved_bands_black\\RECOVERY_V1_2\\boundary_stills\\D_LIVE_DELIVERY_FRAME_06.png",
+                        "bytes":  106644,
+                        "sha256":  "0626b1489b364895e08764c22461920cd09c9043c1b8a9a1470bbf1765a3937d"
+                    },
+                    {
+                        "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4a6_reserved_bands_black\\RECOVERY_V1_2\\boundary_stills\\D_LIVE_DELIVERY_FRAME_07.png",
+                        "bytes":  106723,
+                        "sha256":  "3adffa3bd301ca21a21dd630a85b810105867ef857b3e219d7d8c67f58739de4"
+                    }
+                ],
+    "production_renderer":  "OFF",
+    "production_dispatch":  "OFF",
+    "production_media":  "OFF",
+    "release_authority":  "NONE"
+}

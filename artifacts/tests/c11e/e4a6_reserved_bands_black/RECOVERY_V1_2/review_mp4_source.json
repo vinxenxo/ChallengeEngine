@@ -1,0 +1,18 @@
+{
+    "schema":  "C11E-E4A6-BLACK-BANDS-REVIEW-MP4-SOURCE-RECOVERY-V1",
+    "source_avi_sha256":  "2f6d0c73cb09571584db68e37760c933706473a07e559fc93113f26eabb89f45",
+    "mp4_sha256":  "841b03531301c7e70c0e09ce3e9f536241d2072a87792e099ed7a955bef8c52f",
+    "ffmpeg_version":  "9.0",
+    "video":  {
+                  "codec":  "h264",
+                  "profile":  "High",
+                  "width":  720,
+                  "height":  1280,
+                  "fps":  30,
+                  "frames":  450,
+                  "duration_seconds":  15,
+                  "pixel_format":  "yuv420p",
+                  "color_range":  "tv",
+                  "audio_streams":  0
+              }
+}

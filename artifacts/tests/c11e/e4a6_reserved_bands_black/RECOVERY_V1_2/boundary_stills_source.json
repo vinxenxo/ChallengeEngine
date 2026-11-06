@@ -1,0 +1,48 @@
+{
+    "schema":  "C11E-E4A6-BOUNDARY-STILLS-SOURCE-V1",
+    "source_mp4_sha256":  "841b03531301c7e70c0e09ce3e9f536241d2072a87792e099ed7a955bef8c52f",
+    "delivery_frames":  [
+                            0,
+                            89,
+                            90,
+                            299,
+                            300,
+                            389,
+                            390,
+                            449
+                        ],
+    "frames":  [
+                   {
+                       "name":  "D_LIVE_DELIVERY_FRAME_00.png",
+                       "sha256":  "657a97410808c39ed7318e8a492d30197f33b5dfe201243219e9700042f5e897"
+                   },
+                   {
+                       "name":  "D_LIVE_DELIVERY_FRAME_01.png",
+                       "sha256":  "340cb4a7870455c3a2c0986653646ae637f901d72e17773be8da05cb960fbb2e"
+                   },
+                   {
+                       "name":  "D_LIVE_DELIVERY_FRAME_02.png",
+                       "sha256":  "a29096fe0fff2c28f6ab3233f1025f97551b0a2b95c02f308c20790efedc6620"
+                   },
+                   {
+                       "name":  "D_LIVE_DELIVERY_FRAME_03.png",
+                       "sha256":  "51e5916557322cfcfe84d087bde46e82ca4cdc06963fc70b318cf00ed7df2c6d"
+                   },
+                   {
+                       "name":  "D_LIVE_DELIVERY_FRAME_04.png",
+                       "sha256":  "86cce1928b3ba62240e7c1dbe3dd139c53e0cdaefc87003226bb48f04c8096bb"
+                   },
+                   {
+                       "name":  "D_LIVE_DELIVERY_FRAME_05.png",
+                       "sha256":  "f8a9d4c89c00677eaa6b9dbcb86dda9a2f81750fff8697076e10de485ebe28ed"
+                   },
+                   {
+                       "name":  "D_LIVE_DELIVERY_FRAME_06.png",
+                       "sha256":  "0626b1489b364895e08764c22461920cd09c9043c1b8a9a1470bbf1765a3937d"
+                   },
+                   {
+                       "name":  "D_LIVE_DELIVERY_FRAME_07.png",
+                       "sha256":  "3adffa3bd301ca21a21dd630a85b810105867ef857b3e219d7d8c67f58739de4"
+                   }
+               ]
+}
