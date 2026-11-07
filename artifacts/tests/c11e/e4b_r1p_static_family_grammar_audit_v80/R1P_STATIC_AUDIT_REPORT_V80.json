@@ -1,0 +1,81 @@
+{
+  "schema": "C11E-E4B-R1P-STATIC-FAMILY-GRAMMAR-AUDIT-V1",
+  "status": "PASS_STATIC_SOURCE_MAPPING",
+  "scope": "READ_ONLY_SCHEMA_PROFILE_PROTOTYPE_AND_LAUNCHER_CONTRACT",
+  "project_root": "V80_SNAPSHOT_EXTRACTED_SOURCE_BYTES",
+  "source_snapshot": {
+    "filename": "ChallengeEngineV01_STATELESS-C11-E-SNAPSHOT-NIGHTLY-V80.zip",
+    "sha256": "98a370a6017f00a6d01b690bd5450284758a14a13b00084c97b4d13bea01bdde"
+  },
+  "validator": {
+    "path": "tools/c11d/d9/test_c11e_e4b_r1p_family_grammar_static_audit.py",
+    "sha256": "600c22dafe2e377cb02b4a69f8823a44745d705b71cdb0d6bcec38da52df3e92",
+    "py_compile": "PASS",
+    "executed_against": "V80 source files extracted to a temporary isolated folder"
+  },
+  "family_count": 5,
+  "explicit_selector_count": 27,
+  "families": [
+    {
+      "family_id": "c11c_fractal_bloom_v1",
+      "internal_family_id": "fractal",
+      "grammar_count": 5,
+      "selectors": ["radial_bloom", "dendritic_tunnel", "spiral_fractal", "fractal_filigree", "nested_worlds"],
+      "mapping": "PASS_SCHEMA_PROFILE_PROTOTYPE_EXACT_ORDER",
+      "prototype_sha256": "b596ecba5eeae80ba615d7cb8a741dffcab9db4c44296e660f4f9d6919cc5c55",
+      "launcher_sha256": "02e3721c92046f1f69119e5bbc6c69709dd0b97fad7191c08213ecc233930801"
+    },
+    {
+      "family_id": "c11c_geometric_waves_v1",
+      "internal_family_id": "geometric",
+      "grammar_count": 5,
+      "selectors": ["harmonic_membrane", "interference_plane", "parametric_ribbon", "lattice_wave", "orbital_wave"],
+      "mapping": "PASS_SCHEMA_PROFILE_PROTOTYPE_EXACT_ORDER",
+      "prototype_sha256": "ab2560cbe7fa42c5cad3b143aa59d1f2a0dc047682f7667983c7c0a0f6dbb61c",
+      "launcher_sha256": "661bd61df61bc633e4b87cd4b9413c4317c8d4b6068194245aea7d40fcb5c7cd"
+    },
+    {
+      "family_id": "c11c_invisible_forces_v1",
+      "internal_family_id": "invisible_forces",
+      "grammar_count": 7,
+      "selectors": ["dipole_field", "vortex_field", "saddle_field", "quadrupole_field", "gravitational_lens", "topographic_basin", "scalar_potential"],
+      "mapping": "PASS_SCHEMA_PROFILE_PROTOTYPE_EXACT_ORDER",
+      "prototype_sha256": "a68661a5fdf792aa7fe701afa6fbf1631a2b8215c214032f58ecfe0c69d8374a",
+      "launcher_sha256": "88924dd86ebdc9b51a51f354ec22f40beb75cf6daafbe869283fa187568b6f60"
+    },
+    {
+      "family_id": "c11c_living_particles_v1",
+      "internal_family_id": "living_particles",
+      "grammar_count": 5,
+      "selectors": ["swarm", "vortex", "collision_cloud", "organic_pulse", "magnetic_filament_cloud"],
+      "mapping": "PASS_SCHEMA_PROFILE_PROTOTYPE_EXACT_ORDER",
+      "prototype_sha256": "835ba0df2c160a259be39bd1977bfac0e6a66f903ce1aa6b4247af7c508ad94a",
+      "launcher_sha256": "3674fdf778927022d2ebc1d1a96865b441479c5e4e71802e90837d654278a638"
+    },
+    {
+      "family_id": "c11c_sacred_symmetry_v1",
+      "internal_family_id": "sacred_symmetry",
+      "grammar_count": 5,
+      "selectors": ["astrolabe", "gear_train", "polygon_orrery", "origami_mandala", "celestial_chart"],
+      "mapping": "PASS_SCHEMA_PROFILE_PROTOTYPE_EXACT_ORDER",
+      "prototype_sha256": "12fdbc13e05df28b26cf95fe1907d150bd41f29196287700153521e9baee336b",
+      "launcher_sha256": "8eea21f7b72f679d8951410597f0ecf968ac0a6f1ee629a48de965ea62b60b6e"
+    }
+  ],
+  "governance": {
+    "repository_files_written": false,
+    "godot_invoked": false,
+    "prototype_nodes_instantiated": false,
+    "renderer_instantiated": false,
+    "shader_created": false,
+    "launchers_invoked": false,
+    "renderer_input_emitted": false,
+    "renderer_dispatch_invoked": false,
+    "frame_buffers_created": false,
+    "pixels_created": false,
+    "audio_or_d3_invoked": false,
+    "ffmpeg_invoked": false,
+    "media_created": false,
+    "release_authority": "NONE"
+  }
+}
