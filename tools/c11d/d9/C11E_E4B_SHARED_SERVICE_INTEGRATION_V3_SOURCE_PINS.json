@@ -1,0 +1,168 @@
+{
+  "schema": "C11E-E4B-SHARED-SERVICE-INTEGRATION-RECOVERY-PINS-V3",
+  "schema_version": "3.0",
+  "purpose": "READ_ONLY_RECONCILIATION_OF_V2_INSTALL_EFFECTS_AND_V3_ADD_ONLY_TOOLING",
+  "v2_overlay_zip_sha256": "074c0aa317b2cb77d29399f02fa74948f909ff6aaaa00254c353ab3f5e59c8c1",
+  "v2_payload_manifest_sha256": "7acb35de9a8aea5201148c58cd52f262ca2d3e74cc2870a31a8cc6fdad30ab7b",
+  "v2_source_pin_manifest_sha256": "c57c20abab5f58f32174d0b0cbef51d72b5c2ef473812d6d309a962c116df7be",
+  "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+  "source_patches": [
+    {
+      "path": "c11c-suite/c11c-producer/c11e_production_service.py",
+      "preimage_sha256": "348997e575d985fe153a4f433f089c5f205be5d4d8f3853baf07be917a134951",
+      "postimage_sha256": "08ab5a278de8ebb55795a57391c83a27207ce01920704c419b8e28be25ddcf65",
+      "postimage_bytes": 47090,
+      "backup_path": "artifacts/tests/c11e/e4b_shared_service_integration_overlay/<RUN_ID>/b/01.bak",
+      "reason": "E1 shared boundary orchestration for Loop; updates D9 resolver pin and fail-closed approvals/payload hashes",
+      "backup_slot": "01.bak"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/main.py",
+      "preimage_sha256": "982bce475811c5e4f9cad2e84b33cee9a3460f6add4f095476e950db15b806ab",
+      "postimage_sha256": "ad88ac99a4582a6a470b8885425144ab7265188c3771ed4c48d8857c43343c55",
+      "postimage_bytes": 117144,
+      "backup_path": "artifacts/tests/c11e/e4b_shared_service_integration_overlay/<RUN_ID>/b/02.bak",
+      "reason": "GUI consumes the Loop boundary from shared E service and records parity/stage contract",
+      "backup_slot": "02.bak"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/test_c11e_production_service.py",
+      "preimage_sha256": "bf35a33b1b4f3ede4993e310206a3bf7b68dd2bfd0c046f5d21ffaf3cc309724",
+      "postimage_sha256": "6fecc35f3f3d8dc0e138a70452b1eee9acadbcd8f95db05dc6518baad80ed285",
+      "postimage_bytes": 21774,
+      "backup_path": "artifacts/tests/c11e/e4b_shared_service_integration_overlay/<RUN_ID>/b/03.bak",
+      "reason": "Adds all-27 shared service, GUI/CLI parity, tamper and governance tests",
+      "backup_slot": "03.bak"
+    },
+    {
+      "path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+      "preimage_sha256": "50655c82521a353f1db6920f4d099cad92452ae369251f9fbde45cbaee4e8c53",
+      "postimage_sha256": "dabb458fc2215156ddb5ebea7e8ebec811098886ce2858733ba9fb13f6075ccb",
+      "postimage_bytes": 12932,
+      "backup_path": "artifacts/tests/c11e/e4b_shared_service_integration_overlay/<RUN_ID>/b/04.bak",
+      "reason": "Separates D9.9 plan compatibility from D4 executable compatibility for Loop/Drill",
+      "backup_slot": "04.bak"
+    },
+    {
+      "path": "tools/c11d/d9/universal_editorial_model.py",
+      "preimage_sha256": "5c575be1942ba0613d66579d14db5cf9d7786e7062dfb001bd7be8a2e9c18ae5",
+      "postimage_sha256": "dac95fb698b52f96432a517d8ec3196a397e5e6bd3c025300350dd55ddce3afd",
+      "postimage_bytes": 27585,
+      "backup_path": "artifacts/tests/c11e/e4b_shared_service_integration_overlay/<RUN_ID>/b/05.bak",
+      "reason": "Returns explicit D9.9 and D4 compatibility flags and plan state",
+      "backup_slot": "05.bak"
+    },
+    {
+      "path": "tools/c11d/d9/test_universal_editorial_model.py",
+      "preimage_sha256": "0b9c34d793af5aca2a164f89cb63d300612e9fde433b161d2e3ef0a812a45a72",
+      "postimage_sha256": "d36319e49fcc93c530a7fd2747d6db2536aa70f4fcd02825d1836d0795045e4c",
+      "postimage_bytes": 9577,
+      "backup_path": "artifacts/tests/c11e/e4b_shared_service_integration_overlay/<RUN_ID>/b/06.bak",
+      "reason": "Asserts plan-only compatibility and preserved D4 block",
+      "backup_slot": "06.bak"
+    }
+  ],
+  "v2_add_only_files": [
+    {
+      "path": "docs/current/e/C11D_E_BLOCKER_REMEDIATION_REGISTER_20261107_V2.md",
+      "bytes": 4502,
+      "sha256": "678056d30c58a275273613d3c01827fad4d20be9021887c8adf59005acc1eda0"
+    },
+    {
+      "path": "docs/current/e/C11E_CURRENT_AUTHORITY_20261107_V81.md",
+      "bytes": 4164,
+      "sha256": "6e3d08bcd1cdb38196d801a57e8cf6f8ef8a00c248075baa4ebae91945720dc4"
+    },
+    {
+      "path": "docs/current/e/C11E_CURRENT_DOC_INDEX_20261107_V41.md",
+      "bytes": 1438,
+      "sha256": "17b7d1a7c223ac538fe969974433de309fad0ce4c32e3de38ea7ef6d87122814"
+    },
+    {
+      "path": "docs/current/e/C11E_E3_EXECUTION_BACKLOG_20261107_V56.md",
+      "bytes": 2967,
+      "sha256": "bd2dd1b211834b14f3b348ff2de5634009d04d42e3af960a88e5304ef92a30f0"
+    },
+    {
+      "path": "docs/current/e/C11E_E4B_D98_D99_SEMANTIC_RECONCILIATION_20261107_V3.md",
+      "bytes": 1247,
+      "sha256": "3facf318b0fbe3b6858fd44514e7a21e5e38a536cfe4d854fbdd3b408268ccfa"
+    },
+    {
+      "path": "docs/current/e/C11E_E4B_LOOP_SHARED_SERVICE_INTEGRATION_REVIEW_20261107_V2.md",
+      "bytes": 2569,
+      "sha256": "c44328f6193e314d98ef8c038d079268b5ed4b3c400f10c33117b3b4e0b6c114"
+    },
+    {
+      "path": "docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261107_V79.md",
+      "bytes": 1957,
+      "sha256": "3dd4aa8b7cfd9d270a3efbe8301c9435d88ee24471568ce277fb2f10b7602848"
+    },
+    {
+      "path": "docs/history/c11d/C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261107_V69.md",
+      "bytes": 1948,
+      "sha256": "40b3b4c089e1c6fcbde59206dd551ac0143625e1986bd40dae1f2617bed55325"
+    },
+    {
+      "path": "docs/history/c11d/C11E_E4B_LOOP_INTEGRATION_DECISION_HISTORY_20261107_V2.md",
+      "bytes": 1581,
+      "sha256": "30fad3b963b4b217995a1fdad4283bb399a5dff95f89b86249916e508ba5f88b"
+    },
+    {
+      "path": "prompts/C11E_CONTINUATION_MASTER_PROMPT_20261107_V79.md",
+      "bytes": 2078,
+      "sha256": "bfdc54033834455579b2de3cb02537133e5e129a7b20bee75cdfbbdba2a897cd"
+    },
+    {
+      "path": "prompts/C11E_FIRST_PROMPT_20261107_V23.md",
+      "bytes": 1394,
+      "sha256": "9a266e3e2aebd4b99b76868d7792b991c690ff6c97631fa690def914e285318b"
+    },
+    {
+      "path": "prompts/C11E_NEXT_WINDOW_START_PROMPT_20261107_V79.md",
+      "bytes": 1447,
+      "sha256": "4865646fdd161869241d66bee58f07bfdbf4f8dee5d04c80615552d756fd8ef4"
+    },
+    {
+      "path": "tools/c11d/d9/C11E_D_BASELINE_READ_ONLY_DIAGNOSTIC_V1.py",
+      "bytes": 2307,
+      "sha256": "3ea3b0cc75f2401fd940434ab8d6cd1da6ac1eb4a5f64fa3fe9677c26382b0e2"
+    },
+    {
+      "path": "tools/c11d/d9/C11E_E4B_SHARED_SERVICE_INTEGRATION_V2_SOURCE_PINS.json",
+      "bytes": 4810,
+      "sha256": "c57c20abab5f58f32174d0b0cbef51d72b5c2ef473812d6d309a962c116df7be"
+    },
+    {
+      "path": "tools/c11d/d9/RUN_C11E_E4B_SHARED_SERVICE_INTEGRATION_V2.ps1",
+      "bytes": 13115,
+      "sha256": "eea455fd1ef7bcff3700cc3c04f75ae9a215387ad485588df632687f1a79e97d"
+    }
+  ],
+  "backup_contract": {
+    "root": "artifacts/tests/c11e/e4b_shared_service_integration_overlay/<RUN_ID>/b",
+    "slots": [
+      "01.bak",
+      "02.bak",
+      "03.bak",
+      "04.bak",
+      "05.bak",
+      "06.bak"
+    ],
+    "sha256_must_equal_source_preimage": true
+  },
+  "repair_reason": {
+    "failure": "Windows PowerShell 5.1 ArgumentException: Argument types do not match after BACKUP_PATH_PREFLIGHT",
+    "root_cause": "Generic List[object] instances created with New-Object were placed directly in array-subexpression @($list) during post-install receipt construction; Windows PowerShell 5.1 may throw this ArgumentException. Known reduced case documented in PowerShell issue #27558.",
+    "fix": "V3 verification/runner uses native arrays and List[object]::new()/ToArray() where applicable; V3 installer does not repeat V2 source patches and verifies exact V2 postimages/add-only outputs/backups first."
+  },
+  "governance": {
+    "git_invoked": false,
+    "source_files_modified_by_v3_installer": false,
+    "c11c_baseline_modified": false,
+    "renderer": "OFF",
+    "dispatch": false,
+    "media_created": false,
+    "release_authority": "NONE"
+  }
+}

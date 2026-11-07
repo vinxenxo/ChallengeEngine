@@ -342,7 +342,7 @@
     "visual_loops": {
       "operator_label": "Visual Loop",
       "model_state": "ACTIVE_MODEL_ONLY",
-      "request_plan_compatibility": "PENDING_D9_9_UNIVERSAL_REQUEST_ADAPTER",
+      "request_plan_compatibility": "D9_9_UNIVERSAL_EDITORIAL_INTENT_PLAN_ONLY; D4_EXECUTABLE_COMPATIBILITY_NOT_PROVEN",
       "inventory": {
         "source": "c11c-suite/c11c-producer/producer_schema.json",
         "collection": "families",
@@ -368,12 +368,14 @@
         "call_to_action",
         "language"
       ],
-      "technical_generator_parameters": "NOT_EDITORIAL; remain on existing C11-C Producer surface"
+      "technical_generator_parameters": "NOT_EDITORIAL; remain on existing C11-C Producer surface",
+      "d9_9_plan_compatible": true,
+      "d4_executable_compatible": false
     },
     "visual_drills": {
       "operator_label": "Visual Drill",
       "model_state": "ACTIVE_MODEL_ONLY",
-      "request_plan_compatibility": "PENDING_D9_9_UNIVERSAL_REQUEST_ADAPTER",
+      "request_plan_compatibility": "D9_9_UNIVERSAL_EDITORIAL_INTENT_PLAN_ONLY; D4_EXECUTABLE_COMPATIBILITY_NOT_PROVEN",
       "inventory": {
         "source": "c11c-suite/c11c-producer/producer_schema.json",
         "collection": "drills",
@@ -394,7 +396,9 @@
         "call_to_action",
         "language"
       ],
-      "difficulty_tier": "DERIVED_VARIANT_SELECTOR_NOT_AN_EDITORIAL_FIELD"
+      "difficulty_tier": "DERIVED_VARIANT_SELECTOR_NOT_AN_EDITORIAL_FIELD",
+      "d9_9_plan_compatible": true,
+      "d4_executable_compatible": false
     },
     "longform": {
       "operator_label": "Longform",

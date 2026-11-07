@@ -243,5 +243,127 @@ class C11EProductionServiceTests(unittest.TestCase):
             self.assertFalse(payload["execution_boundary"]["renderer_activation"])
 
 
+    @staticmethod
+    def loop_request(*, family_id: str = "c11c_geometric_waves_v1", grammar_id: str = "harmonic_membrane", seed: int = 12345, music_seed: int = 840001, request_id: str = "C11E-E4B-SHARED-LOOP-001") -> dict:
+        raw = request(seed=seed, music_seed=music_seed, request_id=request_id)
+        raw["mode"] = "PRODUCTION"
+        raw["selection"] = {
+            "content_type": "visual_loops",
+            "family_id": family_id,
+            "subtype_id": grammar_id,
+        }
+        raw["production_override"] = {
+            "title": "E4B shared service",
+            "subtitle": "UNKNOWN",
+            "call_to_action": "Continue",
+            "language": "en",
+        }
+        return raw
+
+    def test_loop_shared_service_prepares_existing_d_boundary_and_keeps_locks(self):
+        intent = prepare_c11e_production_intent(self.loop_request(), ROOT, request_origin="GUI")["intent"]
+        self.assertEqual(intent["schema_version"], "1.2")
+        self.assertEqual(intent["status"], "PREPARED_E1_NOT_DISPATCHED")
+        preparation = intent["d9_boundary_preparation"]
+        self.assertEqual(preparation["status"], "LOOP_FAMILY_STAGE_PREPARED_NOT_DISPATCHABLE")
+        self.assertEqual(preparation["bridge_planning_record"]["status"], "PLANNING_ONLY_NOT_RENDERABLE")
+        stage = preparation["loop_family_stage_contract"]
+        self.assertEqual(stage["status"], "FAMILY_BOUND_PREPARATION_NOT_DISPATCHABLE")
+        self.assertEqual(stage["governance"]["d4_8"], "BLOCKED")
+        self.assertEqual(stage["governance"]["d9_10"], "PREPARE_ONLY")
+        self.assertFalse(stage["governance"]["renderer_native_input_emitted"])
+        self.assertFalse(stage["governance"]["renderer_dispatch_invoked"])
+        self.assertFalse(stage["governance"]["launcher_invoked"])
+        self.assertFalse(stage["governance"]["media_created"])
+        self.assertEqual(intent["family_adapter"]["status"], "NOT_CONNECTED_E1")
+        self.assertTrue({
+            "tools/c11d/d9/editorial_render_bridge.py",
+            "tools/c11d/d9/d_render_adapter.py",
+            "tools/c11d/d9/c11e_e4b_loop_family_stage_contract.py",
+        }.issubset({row["path"] for row in intent["source_identity"]["source_pins"]}))
+        self.assertEqual(validate_c11e_production_intent(intent, ROOT)["status"], "PASS_E1_PREPARATION_ONLY")
+
+    def test_all_27_loop_grammars_prepare_through_the_shared_e_service(self):
+        schema = json.loads((ROOT / "c11c-suite" / "c11c-producer" / "producer_schema.json").read_text(encoding="utf-8-sig"))
+        prepared_count = 0
+        family_counts = {}
+        for family_id, family in sorted(schema["families"].items()):
+            for grammar in family["grammars"]:
+                grammar_id = grammar[0]
+                if grammar_id == "auto":
+                    continue
+                serial = prepared_count + 1
+                raw = self.loop_request(
+                    family_id=family_id,
+                    grammar_id=grammar_id,
+                    seed=100000 + serial,
+                    music_seed=500000 + serial,
+                    request_id=f"C11E-E4B-SHARED-{serial:02d}",
+                )
+                intent = prepare_c11e_production_intent(raw, ROOT, request_origin="TEST")["intent"]
+                self.assertEqual(validate_c11e_production_intent(intent, ROOT)["status"], "PASS_E1_PREPARATION_ONLY")
+                stage = intent["d9_boundary_preparation"]["loop_family_stage_contract"]
+                self.assertEqual(stage["content_identity"]["family_id"], family_id)
+                self.assertEqual(stage["content_identity"]["grammar_id"], grammar_id)
+                visual = stage["family_visual_stage"]
+                args = visual["argument_vector"]
+                self.assertIn("-NoSound", args)
+                self.assertIn(str(raw["seed"]), args)
+                self.assertNotIn(str(raw["music_seed"]), args)
+                self.assertFalse(visual["music_seed_passed_to_visual_launcher"])
+                self.assertFalse(visual["launcher_execution"])
+                self.assertTrue(stage["composition"]["materialized_payload_receipt_required"])
+                self.assertFalse(stage["governance"]["renderer_native_input_emitted"])
+                self.assertFalse(stage["governance"]["media_created"])
+                self.assertEqual(stage["governance"]["d4_8"], "BLOCKED")
+                family_counts[family_id] = family_counts.get(family_id, 0) + 1
+                prepared_count += 1
+        self.assertEqual(prepared_count, 27)
+        self.assertEqual(sorted(family_counts.values()), [5, 5, 5, 5, 7])
+
+    def test_loop_shared_boundary_is_repeatable_and_gui_cli_semantics_match(self):
+        raw = self.loop_request(request_id="C11E-E4B-REPEATABLE-001")
+        gui = prepare_c11e_production_intent(raw, ROOT, request_origin="GUI")["intent"]
+        cli = prepare_c11e_production_intent(raw, ROOT, request_origin="CLI")["intent"]
+        repeat = prepare_c11e_production_intent(raw, ROOT, request_origin="GUI")["intent"]
+        self.assertEqual(gui["d9_boundary_preparation"], cli["d9_boundary_preparation"])
+        self.assertEqual(gui["d9_boundary_preparation"], repeat["d9_boundary_preparation"])
+        self.assertEqual(gui["identity"]["intent_hash"], cli["identity"]["intent_hash"])
+        self.assertNotEqual(gui["intent_sha256"], cli["intent_sha256"])
+
+    def test_loop_shared_boundary_tampering_fails_closed(self):
+        intent = copy.deepcopy(prepare_c11e_production_intent(self.loop_request(request_id="C11E-E4B-TAMPER-001"), ROOT)["intent"])
+        intent["d9_boundary_preparation"]["loop_family_stage_contract"]["family_visual_stage"]["argument_vector"].append("-Sound")
+        with self.assertRaises(C11EProductionServiceError):
+            validate_c11e_production_intent(intent, ROOT)
+
+    def test_cli_loop_request_emits_the_same_shared_boundary_contract(self):
+        with tempfile.TemporaryDirectory(prefix="c11e-e4b-loop-cli-") as temp:
+            temp_root = Path(temp)
+            request_path = temp_root / "request.json"
+            output_path = temp_root / "intent.json"
+            request_path.write_text(json.dumps(self.loop_request(request_id="C11E-E4B-CLI-LOOP-001")), encoding="utf-8")
+            cli = ROOT / "c11c-suite" / "c11c-producer" / "c11e_production_cli.py"
+            run = subprocess.run(
+                [sys.executable, str(cli), "--request", str(request_path), "--origin", "CLI", "--output", str(output_path)],
+                cwd=ROOT, capture_output=True, text=True, encoding="utf-8", timeout=45,
+            )
+            self.assertEqual(run.returncode, 0, run.stdout + "\n" + run.stderr)
+            payload = json.loads(output_path.read_text(encoding="utf-8"))
+            self.assertEqual(payload["status"], "PASS_E1_PREPARATION_ONLY")
+            self.assertEqual(payload["intent"]["request_origin"], "CLI")
+            self.assertEqual(payload["intent"]["d9_boundary_preparation"]["status"], "LOOP_FAMILY_STAGE_PREPARED_NOT_DISPATCHABLE")
+            self.assertEqual(payload["intent"]["d9_boundary_preparation"]["loop_family_stage_contract"]["status"], "FAMILY_BOUND_PREPARATION_NOT_DISPATCHABLE")
+            self.assertEqual(payload["validation"]["status"], "PASS_E1_PREPARATION_ONLY")
+            self.assertFalse(payload["execution_boundary"]["renderer_activation"])
+
+    def test_gui_uses_shared_loop_boundary_contract_instead_of_rebuilding_it(self):
+        gui_source = (ROOT / "c11c-suite" / "c11c-producer" / "main.py").read_text(encoding="utf-8-sig")
+        self.assertIn('d9_boundary_preparation = e1_intent.get("d9_boundary_preparation")', gui_source)
+        self.assertIn('"loop_boundary_preparation_equal": e1_intent.get("d9_boundary_preparation") == e_cli_intent.get("d9_boundary_preparation")', gui_source)
+        self.assertIn('write_json(run_root / "loop_family_stage_contract.json", loop_family_stage_contract)', gui_source)
+
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

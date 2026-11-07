@@ -190,6 +190,8 @@ def build_catalog(project_root: Path | str | None = None) -> dict[str, Any]:
     catalog["content_types"]["visual_loops"] = {
         "state": model["content_types"]["visual_loops"]["model_state"],
         "request_plan_compatible": False,
+        "d9_9_plan_compatible": bool(model["content_types"]["visual_loops"].get("d9_9_plan_compatible", False)),
+        "d4_executable_compatible": bool(model["content_types"]["visual_loops"].get("d4_executable_compatible", False)),
         "compatibility_reason": model["content_types"]["visual_loops"]["request_plan_compatibility"],
         "editable_fields": _enabled_fields(model, "visual_loops"),
         "families": loop_families,
@@ -222,6 +224,8 @@ def build_catalog(project_root: Path | str | None = None) -> dict[str, Any]:
     catalog["content_types"]["visual_drills"] = {
         "state": model["content_types"]["visual_drills"]["model_state"],
         "request_plan_compatible": False,
+        "d9_9_plan_compatible": bool(model["content_types"]["visual_drills"].get("d9_9_plan_compatible", False)),
+        "d4_executable_compatible": bool(model["content_types"]["visual_drills"].get("d4_executable_compatible", False)),
         "compatibility_reason": model["content_types"]["visual_drills"]["request_plan_compatibility"],
         "editable_fields": _enabled_fields(model, "visual_drills"),
         "families": drills,
@@ -279,6 +283,8 @@ def resolve_selection(selection: Mapping[str, Any], project_root: Path | str | N
         "variant_scope_id": None,
         "scope_keys": {"content_type": content_type, "family": None, "subtype": None, "variant": None},
         "request_plan_compatible": bool(catalog["content_types"][content_type]["request_plan_compatible"]),
+        "d9_9_plan_compatible": bool(catalog["content_types"][content_type].get("d9_9_plan_compatible", content_type == "challenges")),
+        "d4_executable_compatible": bool(catalog["content_types"][content_type].get("d4_executable_compatible", content_type == "challenges")),
     }
 
     if content_type == "challenges":
@@ -463,7 +469,13 @@ def resolve_editorial_values(
         "values": effective,
         "applied_layers": [name for name, values in selected_layers if bool(values)] + (["production_override"] if normalized_override else []),
         "request_plan_compatible": node["request_plan_compatible"],
-        "request_plan_state": "CURRENT_D4_CHALLENGE_PATH" if node["request_plan_compatible"] else "PENDING_D9_9_UNIVERSAL_REQUEST_ADAPTER",
+        "d9_9_plan_compatible": node["d9_9_plan_compatible"],
+        "d4_executable_compatible": node["d4_executable_compatible"],
+        "request_plan_state": (
+            "CURRENT_D4_CHALLENGE_PATH" if node["request_plan_compatible"]
+            else "D9_9_UNIVERSAL_EDITORIAL_INTENT_PLAN_ONLY" if node["d9_9_plan_compatible"]
+            else "PENDING_D9_9_UNIVERSAL_REQUEST_ADAPTER"
+        ),
         "runtime_authority": "NONE",
         "renderer_activation": False,
         "production_execution": False,

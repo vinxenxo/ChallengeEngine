@@ -1,0 +1,17 @@
+{
+  "status": "D9.15_OPERATOR_EVIDENCE_PASS_CLOSED",
+  "required_pairings": 13,
+  "recorded_pass_pairings": 13,
+  "blocked_pairings": 0,
+  "pending_pairings": 0,
+  "events": 13,
+  "ledger_exists": true,
+  "ledger_sha256": "dda1c150ab18a7fbe0c4e531997b6f3d30fc121b58f22552762d53b79ed488fa",
+  "acceptance_checkpoint": "PASS_CLOSED",
+  "complete": true,
+  "freeze_eligible": false,
+  "renderer_activation": false,
+  "media_created": false,
+  "d4_8": "BLOCKED",
+  "release_authority": "NONE"
+}

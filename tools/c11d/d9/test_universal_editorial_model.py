@@ -83,7 +83,9 @@ loop = {
     "subtype_id": "harmonic_membrane",
 }
 loop_node = editorial.resolve_selection(loop, ROOT)
-assert loop_node["request_plan_compatible"] is False
+assert loop_node["request_plan_compatible"] is False  # legacy D4-executable compatibility remains false
+assert loop_node["d9_9_plan_compatible"] is True
+assert loop_node["d4_executable_compatible"] is False
 loop_values = editorial.resolve_editorial_values(
     loop,
     profile={
@@ -96,13 +98,17 @@ loop_values = editorial.resolve_editorial_values(
 assert loop_values["values"]["title"] == "Waves"
 assert loop_values["values"]["subtitle"] == "Membrane"
 assert loop_values["values"]["language"] == "es"
-assert loop_values["request_plan_state"] == "PENDING_D9_9_UNIVERSAL_REQUEST_ADAPTER"
+assert loop_values["request_plan_state"] == "D9_9_UNIVERSAL_EDITORIAL_INTENT_PLAN_ONLY"
+assert loop_values["d9_9_plan_compatible"] is True
+assert loop_values["d4_executable_compatible"] is False
 
 # Visual Drill includes type + explicit declared difficulty tier; telemetry stays read-only.
 drill = {"content_type": "visual_drills", "family_id": "tracking", "variant_id": "tier-1"}
 drill_node = editorial.resolve_selection(drill, ROOT)
 assert drill_node["difficulty_tier"] == 1
-assert drill_node["request_plan_compatible"] is False
+assert drill_node["request_plan_compatible"] is False  # no D4 executable plan
+assert drill_node["d9_9_plan_compatible"] is True
+assert drill_node["d4_executable_compatible"] is False
 assert catalog["content_types"]["visual_drills"]["variant_count"] == 20
 
 # Negative selection and editorial boundary cases.

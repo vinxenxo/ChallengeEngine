@@ -1,0 +1,66 @@
+{
+    "schema":  "C11E-E4B-SHARED-SERVICE-INTEGRATION-RUN-RECEIPT-V3",
+    "status":  "PASS_TEST_ONLY_SHARED_LOOP_BOUNDARY_PREPARATION_V3",
+    "run_id":  "20261107T010113Z-CCE37AD9",
+    "report_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_shared_service_integration_v3\\20261107T010113Z-CCE37AD9\\C11E_E4B_SHARED_SERVICE_INTEGRATION_RUN_REPORT_V3.json",
+    "report_sha256":  "8135fd0b365dd09af52d6f9d32d5c28a946131b392fcb52b6115a3510f5befa6",
+    "v3_recovery_receipt_sha256":  "09f78d97c8797885056882b343e1ee54e3fc2bb75cf2320338c037f6ea893048",
+    "service_tests":  "25/25_PASS",
+    "loop_selectors":  "27/27_PREPARED_NOT_RENDERED",
+    "d98_model_test":  "PASS",
+    "d915_live_status":  "PASS_CLOSED",
+    "d_baseline_status":  "BLOCKED_OR_REVALIDATION_REQUIRED",
+    "stage_log_hashes":  [
+                             {
+                                 "name":  "PYTHON_313_VERSION",
+                                 "exit_code":  0,
+                                 "stdout_sha256":  "f133aa4c375d22e9226cb4ee8a71740d78c77f15c82b7842a0b93e594eed1884",
+                                 "stderr_sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                             },
+                             {
+                                 "name":  "E4B_SHARED_SERVICE_TESTS",
+                                 "exit_code":  0,
+                                 "stdout_sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                                 "stderr_sha256":  "c8087a0e3f5e16a07e9962b79adf1963cf65119dbef4baa87bdfba44840151b4"
+                             },
+                             {
+                                 "name":  "D98_UNIVERSAL_EDITORIAL_MODEL_TEST",
+                                 "exit_code":  0,
+                                 "stdout_sha256":  "380994365119e43beb0c93bf2e97ecdb45704895e022ced9b11f63960b240c2a",
+                                 "stderr_sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                             },
+                             {
+                                 "name":  "PYTHON_SYNTAX_COMPILE_IN_MEMORY",
+                                 "exit_code":  0,
+                                 "stdout_sha256":  "73fbcb19cdb91888d174183f38a9924a549772a57f1de36fc53469db6d628823",
+                                 "stderr_sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                             },
+                             {
+                                 "name":  "D915_LIVE_READ_ONLY_STATUS",
+                                 "exit_code":  0,
+                                 "stdout_sha256":  "75254a8b9a019b590fcd61f27513dbba405d013e408ff1c31a5f21db4323f73c",
+                                 "stderr_sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                             },
+                             {
+                                 "name":  "D_BASELINE_READ_ONLY_DIAGNOSTIC",
+                                 "exit_code":  2,
+                                 "stdout_sha256":  "b37f63fbd3634bc7e446a4770a35a3fc34239aa12743be64ca8ea7327b369dfb",
+                                 "stderr_sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                             }
+                         ],
+    "governance":  {
+                       "renderer":  "OFF",
+                       "launcher_invoked":  false,
+                       "dispatch":  false,
+                       "audio":  false,
+                       "media":  false,
+                       "c11c_baseline_modified":  false,
+                       "d4_8":  "BLOCKED",
+                       "d9_10":  "PREPARE_ONLY",
+                       "d9_14":  "BLOCKED",
+                       "d9_16":  "BLOCKED",
+                       "d9_17":  "BLOCKED_NO_GO",
+                       "d10":  "BLOCKED_FOR_PROMOTION",
+                       "release_authority":  "NONE"
+                   }
+}

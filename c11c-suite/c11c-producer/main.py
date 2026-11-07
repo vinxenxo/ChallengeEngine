@@ -1089,8 +1089,17 @@ class MainWindow(QMainWindow):
             )
             e1_intent = e1_prepared["intent"]
             result = e1_prepared["resolver_result"]
-            bridge_record = build_d9_bridge_planning_record(result, PROJECT)
-            adapter_envelope = prepare_d9_d_only_adapter_envelope(result, bridge_record, PROJECT)
+            loop_family_stage_contract = None
+            if content_type == "visual_loops":
+                d9_boundary_preparation = e1_intent.get("d9_boundary_preparation")
+                if not isinstance(d9_boundary_preparation, dict):
+                    raise RuntimeError("C11-E shared service did not return the Loop D9.10/family-stage preparation")
+                bridge_record = d9_boundary_preparation["bridge_planning_record"]
+                adapter_envelope = d9_boundary_preparation["d_only_adapter_envelope"]
+                loop_family_stage_contract = d9_boundary_preparation["loop_family_stage_contract"]
+            else:
+                bridge_record = build_d9_bridge_planning_record(result, PROJECT)
+                adapter_envelope = prepare_d9_d_only_adapter_envelope(result, bridge_record, PROJECT)
             evidence_root = PROJECT / "artifacts" / "tests" / "c11d_d9" / "producer_universal"
             evidence_root.mkdir(parents=True, exist_ok=True)
             run_root = evidence_root / request_id
@@ -1136,6 +1145,7 @@ class MainWindow(QMainWindow):
                 "gui_origin_preserved": e1_intent["request_origin"] == "GUI",
                 "cli_origin_preserved": e_cli_intent["request_origin"] == "CLI",
                 "both_fail_closed": e1_intent["execution_boundary"] == e_cli_intent["execution_boundary"],
+                "loop_boundary_preparation_equal": e1_intent.get("d9_boundary_preparation") == e_cli_intent.get("d9_boundary_preparation"),
             }
             e1_parity = {
                 "schema": "C11-E-E1-GUI-CLI-SHARED-SERVICE-PARITY-V1",
@@ -1186,6 +1196,8 @@ class MainWindow(QMainWindow):
             write_json(run_root / "universal_plan.json", result["plan"])
             write_json(run_root / "editorial_render_bridge_plan.json", bridge_record)
             write_json(run_root / "d_render_adapter_envelope.json", adapter_envelope)
+            if loop_family_stage_contract is not None:
+                write_json(run_root / "loop_family_stage_contract.json", loop_family_stage_contract)
             write_json(run_root / "d4_subplan_evidence.json", result["d4_evidence"] or {"status": "NOT_APPLICABLE"})
             write_json(run_root / "gui_cli_parity.json", parity)
             write_json(run_root / "c11e_production_intent.json", e1_intent)
@@ -1199,6 +1211,7 @@ class MainWindow(QMainWindow):
                 "editorial_hash": e1_intent["identity"]["editorial_hash"],
                 "plan_hash": e1_intent["identity"]["plan_hash"],
                 "gui_cli_parity": e1_parity["status"],
+                "loop_family_stage_contract_sha256": (loop_family_stage_contract or {}).get("contract_sha256"),
                 "renderer_input_emitted": False,
                 "renderer_dispatch_invoked": False,
                 "production_execution": False,
@@ -1240,7 +1253,7 @@ class MainWindow(QMainWindow):
             self.d9_adapter_view.setPlainText(json.dumps(adapter_envelope, ensure_ascii=False, indent=2))
             self.d9_lifecycle_view.setPlainText(json.dumps(lifecycle_receipt, ensure_ascii=False, indent=2))
             self.d9_parity_view.setPlainText(json.dumps(parity, ensure_ascii=False, indent=2))
-            self.d9_e1_view.setPlainText(json.dumps({"intent": e1_intent, "gui_cli_parity": e1_parity, "receipt": e1_receipt}, ensure_ascii=False, indent=2))
+            self.d9_e1_view.setPlainText(json.dumps({"intent": e1_intent, "loop_family_stage_contract": loop_family_stage_contract, "gui_cli_parity": e1_parity, "receipt": e1_receipt}, ensure_ascii=False, indent=2))
             self.d9_evidence_label.setText(f"D9.9/D9.10/D9.13 + C11-E E1 · GUI/CLI={e1_parity['status']} · {run_root} · lifecycle={lifecycle_receipt['lifecycle_id']}")
             self.d9_output_tabs.setCurrentWidget(self.d9_e1_view if e1_parity["status"] == "PASS" else self.d9_parity_view)
             if parity["status"] != "PASS":

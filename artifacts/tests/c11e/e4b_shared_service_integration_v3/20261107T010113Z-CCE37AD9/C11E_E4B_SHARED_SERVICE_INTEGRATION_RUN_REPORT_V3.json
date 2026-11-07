@@ -1,0 +1,156 @@
+{
+    "schema":  "C11E-E4B-SHARED-SERVICE-INTEGRATION-RUN-REPORT-V3",
+    "run_id":  "20261107T010113Z-CCE37AD9",
+    "created_utc":  "2026-11-07T01:01:26.7260693Z",
+    "project_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+    "powershell_version":  "5.1.26100.9818",
+    "python_version":  "Python 3.13.14",
+    "frozen_c11c_manifest_sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "v2_report_sha256":  "788ab1352a3e11bd91cc2ddf34fc8f11334b7713b9bc1a2b246156c79f40444e",
+    "v3_recovery_receipt_sha256":  "09f78d97c8797885056882b343e1ee54e3fc2bb75cf2320338c037f6ea893048",
+    "source_postimages":  [
+                              {
+                                  "path":  "c11c-suite/c11c-producer/c11e_production_service.py",
+                                  "sha256":  "08ab5a278de8ebb55795a57391c83a27207ce01920704c419b8e28be25ddcf65"
+                              },
+                              {
+                                  "path":  "c11c-suite/c11c-producer/main.py",
+                                  "sha256":  "ad88ac99a4582a6a470b8885425144ab7265188c3771ed4c48d8857c43343c55"
+                              },
+                              {
+                                  "path":  "c11c-suite/c11c-producer/test_c11e_production_service.py",
+                                  "sha256":  "6fecc35f3f3d8dc0e138a70452b1eee9acadbcd8f95db05dc6518baad80ed285"
+                              },
+                              {
+                                  "path":  "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+                                  "sha256":  "dabb458fc2215156ddb5ebea7e8ebec811098886ce2858733ba9fb13f6075ccb"
+                              },
+                              {
+                                  "path":  "tools/c11d/d9/universal_editorial_model.py",
+                                  "sha256":  "dac95fb698b52f96432a517d8ec3196a397e5e6bd3c025300350dd55ddce3afd"
+                              },
+                              {
+                                  "path":  "tools/c11d/d9/test_universal_editorial_model.py",
+                                  "sha256":  "d36319e49fcc93c530a7fd2747d6db2536aa70f4fcd02825d1836d0795045e4c"
+                              }
+                          ],
+    "stage_results":  [
+                          {
+                              "name":  "PYTHON_313_VERSION",
+                              "executable":  "C:\\Users\\vinxe\\AppData\\Local\\Programs\\Python\\Launcher\\py.exe",
+                              "arguments":  [
+                                                "-3.13",
+                                                "-B",
+                                                "--version"
+                                            ],
+                              "working_directory":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+                              "exit_code":  0,
+                              "stdout_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_shared_service_integration_v3\\20261107T010113Z-CCE37AD9\\PYTHON_313_VERSION.stdout.log",
+                              "stdout_sha256":  "f133aa4c375d22e9226cb4ee8a71740d78c77f15c82b7842a0b93e594eed1884",
+                              "stderr_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_shared_service_integration_v3\\20261107T010113Z-CCE37AD9\\PYTHON_313_VERSION.stderr.log",
+                              "stderr_sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                          },
+                          {
+                              "name":  "E4B_SHARED_SERVICE_TESTS",
+                              "executable":  "C:\\Users\\vinxe\\AppData\\Local\\Programs\\Python\\Launcher\\py.exe",
+                              "arguments":  [
+                                                "-3.13",
+                                                "-B",
+                                                "-m",
+                                                "unittest",
+                                                "-v",
+                                                "test_c11e_production_service"
+                                            ],
+                              "working_directory":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\c11c-suite\\c11c-producer",
+                              "exit_code":  0,
+                              "stdout_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_shared_service_integration_v3\\20261107T010113Z-CCE37AD9\\E4B_SHARED_SERVICE_TESTS.stdout.log",
+                              "stdout_sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                              "stderr_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_shared_service_integration_v3\\20261107T010113Z-CCE37AD9\\E4B_SHARED_SERVICE_TESTS.stderr.log",
+                              "stderr_sha256":  "c8087a0e3f5e16a07e9962b79adf1963cf65119dbef4baa87bdfba44840151b4"
+                          },
+                          {
+                              "name":  "D98_UNIVERSAL_EDITORIAL_MODEL_TEST",
+                              "executable":  "C:\\Users\\vinxe\\AppData\\Local\\Programs\\Python\\Launcher\\py.exe",
+                              "arguments":  [
+                                                "-3.13",
+                                                "-B",
+                                                "tools\\c11d\\d9\\test_universal_editorial_model.py"
+                                            ],
+                              "working_directory":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+                              "exit_code":  0,
+                              "stdout_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_shared_service_integration_v3\\20261107T010113Z-CCE37AD9\\D98_UNIVERSAL_EDITORIAL_MODEL_TEST.stdout.log",
+                              "stdout_sha256":  "380994365119e43beb0c93bf2e97ecdb45704895e022ced9b11f63960b240c2a",
+                              "stderr_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_shared_service_integration_v3\\20261107T010113Z-CCE37AD9\\D98_UNIVERSAL_EDITORIAL_MODEL_TEST.stderr.log",
+                              "stderr_sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                          },
+                          {
+                              "name":  "PYTHON_SYNTAX_COMPILE_IN_MEMORY",
+                              "executable":  "C:\\Users\\vinxe\\AppData\\Local\\Programs\\Python\\Launcher\\py.exe",
+                              "arguments":  [
+                                                "-3.13",
+                                                "-B",
+                                                "-c",
+                                                "\"from pathlib import Path; files=[\u0027c11c-suite/c11c-producer/c11e_production_service.py\u0027,\u0027c11c-suite/c11c-producer/main.py\u0027,\u0027c11c-suite/c11c-producer/test_c11e_production_service.py\u0027,\u0027tools/c11d/d9/universal_editorial_model.py\u0027,\u0027tools/c11d/d9/test_universal_editorial_model.py\u0027]; [compile(Path(p).read_bytes(),p,\u0027exec\u0027) for p in files]; print(\u0027PYTHON_SYNTAX_COMPILE_IN_MEMORY=PASS\u0027)\""
+                                            ],
+                              "working_directory":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+                              "exit_code":  0,
+                              "stdout_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_shared_service_integration_v3\\20261107T010113Z-CCE37AD9\\PYTHON_SYNTAX_COMPILE_IN_MEMORY.stdout.log",
+                              "stdout_sha256":  "73fbcb19cdb91888d174183f38a9924a549772a57f1de36fc53469db6d628823",
+                              "stderr_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_shared_service_integration_v3\\20261107T010113Z-CCE37AD9\\PYTHON_SYNTAX_COMPILE_IN_MEMORY.stderr.log",
+                              "stderr_sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                          },
+                          {
+                              "name":  "D915_LIVE_READ_ONLY_STATUS",
+                              "executable":  "C:\\Users\\vinxe\\AppData\\Local\\Programs\\Python\\Launcher\\py.exe",
+                              "arguments":  [
+                                                "-3.13",
+                                                "-B",
+                                                "tools\\c11d\\baseline_candidate\\operator_evidence.py",
+                                                "status"
+                                            ],
+                              "working_directory":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+                              "exit_code":  0,
+                              "stdout_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_shared_service_integration_v3\\20261107T010113Z-CCE37AD9\\D915_LIVE_READ_ONLY_STATUS.stdout.log",
+                              "stdout_sha256":  "75254a8b9a019b590fcd61f27513dbba405d013e408ff1c31a5f21db4323f73c",
+                              "stderr_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_shared_service_integration_v3\\20261107T010113Z-CCE37AD9\\D915_LIVE_READ_ONLY_STATUS.stderr.log",
+                              "stderr_sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                          },
+                          {
+                              "name":  "D_BASELINE_READ_ONLY_DIAGNOSTIC",
+                              "executable":  "C:\\Users\\vinxe\\AppData\\Local\\Programs\\Python\\Launcher\\py.exe",
+                              "arguments":  [
+                                                "-3.13",
+                                                "-B",
+                                                "tools\\c11d\\d9\\C11E_D_BASELINE_READ_ONLY_DIAGNOSTIC_V1.py"
+                                            ],
+                              "working_directory":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+                              "exit_code":  2,
+                              "stdout_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_shared_service_integration_v3\\20261107T010113Z-CCE37AD9\\D_BASELINE_READ_ONLY_DIAGNOSTIC.stdout.log",
+                              "stdout_sha256":  "b37f63fbd3634bc7e446a4770a35a3fc34239aa12743be64ca8ea7327b369dfb",
+                              "stderr_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_shared_service_integration_v3\\20261107T010113Z-CCE37AD9\\D_BASELINE_READ_ONLY_DIAGNOSTIC.stderr.log",
+                              "stderr_sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                          }
+                      ],
+    "service_test_count":  25,
+    "loop_grammars_prepared":  27,
+    "d98_model_test":  "PASS",
+    "python_syntax_compile":  "PASS_IN_MEMORY",
+    "d915_live_status":  "PASS_CLOSED",
+    "d_baseline_status":  "BLOCKED_OR_REVALIDATION_REQUIRED",
+    "governance":  {
+                       "renderer":  "OFF",
+                       "launcher_invoked":  false,
+                       "dispatch":  false,
+                       "audio":  false,
+                       "media":  false,
+                       "c11c_baseline_modified":  false,
+                       "d4_8":  "BLOCKED",
+                       "d9_10":  "PREPARE_ONLY",
+                       "d9_14":  "BLOCKED",
+                       "d9_16":  "BLOCKED",
+                       "d9_17":  "BLOCKED_NO_GO",
+                       "d10":  "BLOCKED_FOR_PROMOTION",
+                       "release_authority":  "NONE"
+                   },
+    "status":  "PASS_TEST_ONLY_SHARED_LOOP_BOUNDARY_PREPARATION_V3"
+}

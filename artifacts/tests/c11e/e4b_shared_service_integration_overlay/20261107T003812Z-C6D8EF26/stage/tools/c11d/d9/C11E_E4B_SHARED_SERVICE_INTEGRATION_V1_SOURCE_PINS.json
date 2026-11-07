@@ -1,0 +1,70 @@
+{
+  "schema": "C11E-E4B-SHARED-SERVICE-INTEGRATION-SOURCE-PINS-V1",
+  "schema_version": "1.0",
+  "snapshot": {
+    "name": "ChallengeEngineV01_STATELESS_C11-E Current Authority V79 NIGHTLY LATEST.zip",
+    "sha256": "75987d4c353f951c2cede95b6a904355d8925e8ccd413526af3e9ad08fadc465",
+    "read_only": true
+  },
+  "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+  "source_patch_count": 6,
+  "source_patches": [
+    {
+      "path": "c11c-suite/c11c-producer/c11e_production_service.py",
+      "preimage_sha256": "348997e575d985fe153a4f433f089c5f205be5d4d8f3853baf07be917a134951",
+      "postimage_sha256": "08ab5a278de8ebb55795a57391c83a27207ce01920704c419b8e28be25ddcf65",
+      "postimage_bytes": 47090,
+      "backup_path": "artifacts/tests/c11e/e4b_shared_service_integration_overlay/<RUN_ID>/source_backup/c11e_production_service.py.preimage_348997e575d985fe153a4f433f089c5f205be5d4d8f3853baf07be917a134951.bak",
+      "reason": "E1 shared boundary orchestration for Loop; updates D9 resolver pin and fail-closed approvals/payload hashes"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/main.py",
+      "preimage_sha256": "982bce475811c5e4f9cad2e84b33cee9a3460f6add4f095476e950db15b806ab",
+      "postimage_sha256": "ad88ac99a4582a6a470b8885425144ab7265188c3771ed4c48d8857c43343c55",
+      "postimage_bytes": 117144,
+      "backup_path": "artifacts/tests/c11e/e4b_shared_service_integration_overlay/<RUN_ID>/source_backup/main.py.preimage_982bce475811c5e4f9cad2e84b33cee9a3460f6add4f095476e950db15b806ab.bak",
+      "reason": "GUI consumes the Loop boundary from shared E service and records parity/stage contract"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/test_c11e_production_service.py",
+      "preimage_sha256": "bf35a33b1b4f3ede4993e310206a3bf7b68dd2bfd0c046f5d21ffaf3cc309724",
+      "postimage_sha256": "6fecc35f3f3d8dc0e138a70452b1eee9acadbcd8f95db05dc6518baad80ed285",
+      "postimage_bytes": 21774,
+      "backup_path": "artifacts/tests/c11e/e4b_shared_service_integration_overlay/<RUN_ID>/source_backup/test_c11e_production_service.py.preimage_bf35a33b1b4f3ede4993e310206a3bf7b68dd2bfd0c046f5d21ffaf3cc309724.bak",
+      "reason": "Adds all-27 shared service, GUI/CLI parity, tamper and governance tests"
+    },
+    {
+      "path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+      "preimage_sha256": "50655c82521a353f1db6920f4d099cad92452ae369251f9fbde45cbaee4e8c53",
+      "postimage_sha256": "dabb458fc2215156ddb5ebea7e8ebec811098886ce2858733ba9fb13f6075ccb",
+      "postimage_bytes": 12932,
+      "backup_path": "artifacts/tests/c11e/e4b_shared_service_integration_overlay/<RUN_ID>/source_backup/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json.preimage_50655c82521a353f1db6920f4d099cad92452ae369251f9fbde45cbaee4e8c53.bak",
+      "reason": "Separates D9.9 plan compatibility from D4 executable compatibility for Loop/Drill"
+    },
+    {
+      "path": "tools/c11d/d9/universal_editorial_model.py",
+      "preimage_sha256": "5c575be1942ba0613d66579d14db5cf9d7786e7062dfb001bd7be8a2e9c18ae5",
+      "postimage_sha256": "dac95fb698b52f96432a517d8ec3196a397e5e6bd3c025300350dd55ddce3afd",
+      "postimage_bytes": 27585,
+      "backup_path": "artifacts/tests/c11e/e4b_shared_service_integration_overlay/<RUN_ID>/source_backup/universal_editorial_model.py.preimage_5c575be1942ba0613d66579d14db5cf9d7786e7062dfb001bd7be8a2e9c18ae5.bak",
+      "reason": "Returns explicit D9.9 and D4 compatibility flags and plan state"
+    },
+    {
+      "path": "tools/c11d/d9/test_universal_editorial_model.py",
+      "preimage_sha256": "0b9c34d793af5aca2a164f89cb63d300612e9fde433b161d2e3ef0a812a45a72",
+      "postimage_sha256": "d36319e49fcc93c530a7fd2747d6db2536aa70f4fcd02825d1836d0795045e4c",
+      "postimage_bytes": 9577,
+      "backup_path": "artifacts/tests/c11e/e4b_shared_service_integration_overlay/<RUN_ID>/source_backup/test_universal_editorial_model.py.preimage_0b9c34d793af5aca2a164f89cb63d300612e9fde433b161d2e3ef0a812a45a72.bak",
+      "reason": "Asserts plan-only compatibility and preserved D4 block"
+    }
+  ],
+  "governance": {
+    "git_invoked": false,
+    "c11c_source_patch_count": 0,
+    "renderer": false,
+    "renderer_dispatch_invoked": false,
+    "launcher_invoked": false,
+    "media_created": false,
+    "release_authority": "NONE"
+  }
+}

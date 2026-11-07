@@ -1,0 +1,235 @@
+{
+    "schema":  "C11E-E4B-SHARED-SERVICE-INTEGRATION-RECOVERY-RECEIPT-V3",
+    "status":  "PASS_V2_INSTALL_EFFECTS_CONFIRMED_AND_V3_ADD_ONLY_INSTALLED",
+    "run_id":  "20261107T010101Z-A05C1878",
+    "created_utc":  "2026-11-07T01:01:02.9567784Z",
+    "project_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+    "powershell_version":  "5.1.26100.9818",
+    "v2_overlay_zip_sha256":  "074c0aa317b2cb77d29399f02fa74948f909ff6aaaa00254c353ab3f5e59c8c1",
+    "v2_source_pin_manifest_sha256":  "c57c20abab5f58f32174d0b0cbef51d72b5c2ef473812d6d309a962c116df7be",
+    "v2_source_postimages":  [
+                                 {
+                                     "path":  "c11c-suite/c11c-producer/c11e_production_service.py",
+                                     "sha256":  "08ab5a278de8ebb55795a57391c83a27207ce01920704c419b8e28be25ddcf65",
+                                     "status":  "POSTIMAGE_CONFIRMED"
+                                 },
+                                 {
+                                     "path":  "c11c-suite/c11c-producer/main.py",
+                                     "sha256":  "ad88ac99a4582a6a470b8885425144ab7265188c3771ed4c48d8857c43343c55",
+                                     "status":  "POSTIMAGE_CONFIRMED"
+                                 },
+                                 {
+                                     "path":  "c11c-suite/c11c-producer/test_c11e_production_service.py",
+                                     "sha256":  "6fecc35f3f3d8dc0e138a70452b1eee9acadbcd8f95db05dc6518baad80ed285",
+                                     "status":  "POSTIMAGE_CONFIRMED"
+                                 },
+                                 {
+                                     "path":  "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+                                     "sha256":  "dabb458fc2215156ddb5ebea7e8ebec811098886ce2858733ba9fb13f6075ccb",
+                                     "status":  "POSTIMAGE_CONFIRMED"
+                                 },
+                                 {
+                                     "path":  "tools/c11d/d9/universal_editorial_model.py",
+                                     "sha256":  "dac95fb698b52f96432a517d8ec3196a397e5e6bd3c025300350dd55ddce3afd",
+                                     "status":  "POSTIMAGE_CONFIRMED"
+                                 },
+                                 {
+                                     "path":  "tools/c11d/d9/test_universal_editorial_model.py",
+                                     "sha256":  "d36319e49fcc93c530a7fd2747d6db2536aa70f4fcd02825d1836d0795045e4c",
+                                     "status":  "POSTIMAGE_CONFIRMED"
+                                 }
+                             ],
+    "v2_add_only_outputs":  [
+                                {
+                                    "path":  "docs/current/e/C11D_E_BLOCKER_REMEDIATION_REGISTER_20261107_V2.md",
+                                    "sha256":  "678056d30c58a275273613d3c01827fad4d20be9021887c8adf59005acc1eda0",
+                                    "status":  "IDENTICAL_CONFIRMED"
+                                },
+                                {
+                                    "path":  "docs/current/e/C11E_CURRENT_AUTHORITY_20261107_V81.md",
+                                    "sha256":  "6e3d08bcd1cdb38196d801a57e8cf6f8ef8a00c248075baa4ebae91945720dc4",
+                                    "status":  "IDENTICAL_CONFIRMED"
+                                },
+                                {
+                                    "path":  "docs/current/e/C11E_CURRENT_DOC_INDEX_20261107_V41.md",
+                                    "sha256":  "17b7d1a7c223ac538fe969974433de309fad0ce4c32e3de38ea7ef6d87122814",
+                                    "status":  "IDENTICAL_CONFIRMED"
+                                },
+                                {
+                                    "path":  "docs/current/e/C11E_E3_EXECUTION_BACKLOG_20261107_V56.md",
+                                    "sha256":  "bd2dd1b211834b14f3b348ff2de5634009d04d42e3af960a88e5304ef92a30f0",
+                                    "status":  "IDENTICAL_CONFIRMED"
+                                },
+                                {
+                                    "path":  "docs/current/e/C11E_E4B_D98_D99_SEMANTIC_RECONCILIATION_20261107_V3.md",
+                                    "sha256":  "3facf318b0fbe3b6858fd44514e7a21e5e38a536cfe4d854fbdd3b408268ccfa",
+                                    "status":  "IDENTICAL_CONFIRMED"
+                                },
+                                {
+                                    "path":  "docs/current/e/C11E_E4B_LOOP_SHARED_SERVICE_INTEGRATION_REVIEW_20261107_V2.md",
+                                    "sha256":  "c44328f6193e314d98ef8c038d079268b5ed4b3c400f10c33117b3b4e0b6c114",
+                                    "status":  "IDENTICAL_CONFIRMED"
+                                },
+                                {
+                                    "path":  "docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261107_V79.md",
+                                    "sha256":  "3dd4aa8b7cfd9d270a3efbe8301c9435d88ee24471568ce277fb2f10b7602848",
+                                    "status":  "IDENTICAL_CONFIRMED"
+                                },
+                                {
+                                    "path":  "docs/history/c11d/C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261107_V69.md",
+                                    "sha256":  "40b3b4c089e1c6fcbde59206dd551ac0143625e1986bd40dae1f2617bed55325",
+                                    "status":  "IDENTICAL_CONFIRMED"
+                                },
+                                {
+                                    "path":  "docs/history/c11d/C11E_E4B_LOOP_INTEGRATION_DECISION_HISTORY_20261107_V2.md",
+                                    "sha256":  "30fad3b963b4b217995a1fdad4283bb399a5dff95f89b86249916e508ba5f88b",
+                                    "status":  "IDENTICAL_CONFIRMED"
+                                },
+                                {
+                                    "path":  "prompts/C11E_CONTINUATION_MASTER_PROMPT_20261107_V79.md",
+                                    "sha256":  "bfdc54033834455579b2de3cb02537133e5e129a7b20bee75cdfbbdba2a897cd",
+                                    "status":  "IDENTICAL_CONFIRMED"
+                                },
+                                {
+                                    "path":  "prompts/C11E_FIRST_PROMPT_20261107_V23.md",
+                                    "sha256":  "9a266e3e2aebd4b99b76868d7792b991c690ff6c97631fa690def914e285318b",
+                                    "status":  "IDENTICAL_CONFIRMED"
+                                },
+                                {
+                                    "path":  "prompts/C11E_NEXT_WINDOW_START_PROMPT_20261107_V79.md",
+                                    "sha256":  "4865646fdd161869241d66bee58f07bfdbf4f8dee5d04c80615552d756fd8ef4",
+                                    "status":  "IDENTICAL_CONFIRMED"
+                                },
+                                {
+                                    "path":  "tools/c11d/d9/C11E_D_BASELINE_READ_ONLY_DIAGNOSTIC_V1.py",
+                                    "sha256":  "3ea3b0cc75f2401fd940434ab8d6cd1da6ac1eb4a5f64fa3fe9677c26382b0e2",
+                                    "status":  "IDENTICAL_CONFIRMED"
+                                },
+                                {
+                                    "path":  "tools/c11d/d9/C11E_E4B_SHARED_SERVICE_INTEGRATION_V2_SOURCE_PINS.json",
+                                    "sha256":  "c57c20abab5f58f32174d0b0cbef51d72b5c2ef473812d6d309a962c116df7be",
+                                    "status":  "IDENTICAL_CONFIRMED"
+                                },
+                                {
+                                    "path":  "tools/c11d/d9/RUN_C11E_E4B_SHARED_SERVICE_INTEGRATION_V2.ps1",
+                                    "sha256":  "eea455fd1ef7bcff3700cc3c04f75ae9a215387ad485588df632687f1a79e97d",
+                                    "status":  "IDENTICAL_CONFIRMED"
+                                }
+                            ],
+    "v2_source_backups":  [
+                              {
+                                  "source_path":  "c11c-suite/c11c-producer/c11e_production_service.py",
+                                  "backup_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_shared_service_integration_overlay\\20261107T005116Z-B9D97544\\b\\01.bak",
+                                  "sha256":  "348997e575d985fe153a4f433f089c5f205be5d4d8f3853baf07be917a134951"
+                              },
+                              {
+                                  "source_path":  "c11c-suite/c11c-producer/main.py",
+                                  "backup_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_shared_service_integration_overlay\\20261107T005116Z-B9D97544\\b\\02.bak",
+                                  "sha256":  "982bce475811c5e4f9cad2e84b33cee9a3460f6add4f095476e950db15b806ab"
+                              },
+                              {
+                                  "source_path":  "c11c-suite/c11c-producer/test_c11e_production_service.py",
+                                  "backup_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_shared_service_integration_overlay\\20261107T005116Z-B9D97544\\b\\03.bak",
+                                  "sha256":  "bf35a33b1b4f3ede4993e310206a3bf7b68dd2bfd0c046f5d21ffaf3cc309724"
+                              },
+                              {
+                                  "source_path":  "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+                                  "backup_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_shared_service_integration_overlay\\20261107T005116Z-B9D97544\\b\\04.bak",
+                                  "sha256":  "50655c82521a353f1db6920f4d099cad92452ae369251f9fbde45cbaee4e8c53"
+                              },
+                              {
+                                  "source_path":  "tools/c11d/d9/universal_editorial_model.py",
+                                  "backup_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_shared_service_integration_overlay\\20261107T005116Z-B9D97544\\b\\05.bak",
+                                  "sha256":  "5c575be1942ba0613d66579d14db5cf9d7786e7062dfb001bd7be8a2e9c18ae5"
+                              },
+                              {
+                                  "source_path":  "tools/c11d/d9/test_universal_editorial_model.py",
+                                  "backup_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_shared_service_integration_overlay\\20261107T005116Z-B9D97544\\b\\06.bak",
+                                  "sha256":  "0b9c34d793af5aca2a164f89cb63d300612e9fde433b161d2e3ef0a812a45a72"
+                              }
+                          ],
+    "v2_backup_run_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_shared_service_integration_overlay\\20261107T005116Z-B9D97544",
+    "v3_add_only_files":  [
+                              {
+                                  "path":  "docs/current/e/C11D_E_BLOCKER_REMEDIATION_REGISTER_20261107_V3.md",
+                                  "status":  "NEW",
+                                  "sha256":  "cbb10d002d63edd237487f462c87ca6354a52c8ab8e8af098d849db0e949ce48"
+                              },
+                              {
+                                  "path":  "docs/current/e/C11E_CURRENT_AUTHORITY_20261107_V82.md",
+                                  "status":  "NEW",
+                                  "sha256":  "142df0404c7e67f7e6ab572d04a781c1115c1f7cbaa88e12e1d0028b4d27bc21"
+                              },
+                              {
+                                  "path":  "docs/current/e/C11E_CURRENT_DOC_INDEX_20261107_V42.md",
+                                  "status":  "NEW",
+                                  "sha256":  "7bb9ca842be2fa85ea8dc97a642d32395a214c08167c58f6529557160832ba38"
+                              },
+                              {
+                                  "path":  "docs/current/e/C11E_E3_EXECUTION_BACKLOG_20261107_V57.md",
+                                  "status":  "NEW",
+                                  "sha256":  "893e1ed1650204bece5e7e1520f2f987084f3625c3aea9495427f059794ef97c"
+                              },
+                              {
+                                  "path":  "docs/current/e/C11E_E4B_D98_D99_SEMANTIC_RECONCILIATION_20261107_V4.md",
+                                  "status":  "NEW",
+                                  "sha256":  "8ec940c0eafddfdea2ded77d2f6319d1c64ca512f1d690d217329a3b4944c751"
+                              },
+                              {
+                                  "path":  "docs/current/e/C11E_E4B_LOOP_SHARED_SERVICE_INTEGRATION_REVIEW_20261107_V3.md",
+                                  "status":  "NEW",
+                                  "sha256":  "ed17c190bf12e2d109938de4d9061be6f78b2cd3e82628795fac309e612574eb"
+                              },
+                              {
+                                  "path":  "docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261107_V80.md",
+                                  "status":  "NEW",
+                                  "sha256":  "dc1bc45b39a196c9a3c30e40245254d83aa5c29ed0539f6237bf59ec2af66a65"
+                              },
+                              {
+                                  "path":  "docs/history/c11d/C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261107_V70.md",
+                                  "status":  "NEW",
+                                  "sha256":  "0d896c42a981f6f2354c34a973f4ec76e9a32f9c0c3063a7a90b4529e24341c9"
+                              },
+                              {
+                                  "path":  "docs/history/c11d/C11E_E4B_LOOP_INTEGRATION_DECISION_HISTORY_20261107_V3.md",
+                                  "status":  "NEW",
+                                  "sha256":  "d8fdac035ce7af8e15b4a8b5cd8f7d6ba91fde95501088ae1770e6d4cdf1f9dd"
+                              },
+                              {
+                                  "path":  "prompts/C11E_CONTINUATION_MASTER_PROMPT_20261107_V80.md",
+                                  "status":  "NEW",
+                                  "sha256":  "cc959b698bd33747bc33d038c400912e11358fb5f2c5d6daa039c0236915849a"
+                              },
+                              {
+                                  "path":  "prompts/C11E_FIRST_PROMPT_20261107_V24.md",
+                                  "status":  "NEW",
+                                  "sha256":  "e951cd11a46681a17f6ff279e29f4480b170f86ab4c204787e12f07db95ed39c"
+                              },
+                              {
+                                  "path":  "prompts/C11E_NEXT_WINDOW_START_PROMPT_20261107_V80.md",
+                                  "status":  "NEW",
+                                  "sha256":  "c8bb7d276f4393d89f38f448968d1d7eb4bae9d82de4dfe8e8ccba2dea4843b9"
+                              },
+                              {
+                                  "path":  "tools/c11d/d9/C11E_E4B_SHARED_SERVICE_INTEGRATION_V3_SOURCE_PINS.json",
+                                  "status":  "NEW",
+                                  "sha256":  "dc97cf4a3361414e46bf5996b1cbdb6adda384853da702104cd6876134e43328"
+                              },
+                              {
+                                  "path":  "tools/c11d/d9/RUN_C11E_E4B_SHARED_SERVICE_INTEGRATION_V3.ps1",
+                                  "status":  "NEW",
+                                  "sha256":  "72b4573dba8e546e261f6332190e2aa7dee915a36e87cf1bf0cf522cf3537892"
+                              }
+                          ],
+    "v2_install_receipt":  "NOT_CREATED_BY_V2_POSTIMAGE_RECEIPT_SERIALIZATION_EXCEPTION",
+    "governance":  {
+                       "git_invoked":  false,
+                       "v2_source_patches_reapplied":  false,
+                       "v3_source_files_modified":  false,
+                       "c11c_baseline_modified":  false,
+                       "renderer":  "OFF",
+                       "dispatch":  false,
+                       "media_created":  false,
+                       "release_authority":  "NONE"
+                   }
+}
