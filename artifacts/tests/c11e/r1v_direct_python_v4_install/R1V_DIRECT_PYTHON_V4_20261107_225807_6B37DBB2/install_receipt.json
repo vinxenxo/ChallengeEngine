@@ -1,0 +1,82 @@
+﻿{
+    "schema":  "C11E-R1V-DIRECT-PYTHON-INSTALL-RECEIPT-V4",
+    "install_id":  "R1V_DIRECT_PYTHON_V4_20261107_225807_6B37DBB2",
+    "started_utc":  "2026-11-07T22:58:07.7627705Z",
+    "completed_utc":  "2026-11-07T22:58:09.0265941Z",
+    "project_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+    "package_manifest_sha256":  "7db780f08905887a0b4c863c690ef85f0599cb59847002b3f6eb85ad59ca3ce2",
+    "frozen_c11c_manifest_sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "static_audit_sha256":  "600c22dafe2e377cb02b4a69f8823a44745d705b71cdb0d6bcec38da52df3e92",
+    "r1v_policy_sha256":  "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+    "approval_record_raw_sha256":  "fc26f9af81658f4a4e24977c5f3dbcd800bc11eb511062cff3918d1d69ae5789",
+    "files_created":  [
+                          {
+                              "path":  "docs/current/e/C11D_E_BLOCKER_REMEDIATION_REGISTER_20261107_V14.md",
+                              "sha256":  "28ab49982f8102edafc8b67bb867bfcbcd73aa50167dddcf5ab9fbdc1161f649"
+                          },
+                          {
+                              "path":  "docs/current/e/C11E_CURRENT_AUTHORITY_20261107_V93.md",
+                              "sha256":  "24c71a53ae102e22095cd8db106d9cfdafdcfab5c018325ebd0551d1e831c141"
+                          },
+                          {
+                              "path":  "docs/current/e/C11E_CURRENT_DOC_INDEX_20261107_V53.md",
+                              "sha256":  "fb35c382638fb25f14ab8cccabd247dcbf6f56e23d1149330f71e6b07156e336"
+                          },
+                          {
+                              "path":  "docs/current/e/C11E_D4_8_R1V_QUALIFICATION_AUTHORIZATION_REQUIREMENTS_20261107_V8.md",
+                              "sha256":  "f6cb7758c0a4538e56116e420667aa0aec39df1ad817110f1cf6c154ac00c949"
+                          },
+                          {
+                              "path":  "docs/current/e/C11E_E3_EXECUTION_BACKLOG_20261107_V68.md",
+                              "sha256":  "79a7be84c474d96c25662067ac93747d1cc2c99561a19c1a9f832867c8f3328c"
+                          },
+                          {
+                              "path":  "docs/current/e/C11E_E4B_R1V_ACTUAL_FRAME_INVENTORY_20261107_V7.md",
+                              "sha256":  "504c0c5b2fa7522c03a0e6b99b2ca2ffc89b9b0a78c3db418adefb2db28f8fa7"
+                          },
+                          {
+                              "path":  "docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261107_V91.md",
+                              "sha256":  "75b889c8780cd8c95e082f8e595346cf288f00aac5592786c277dd6f039b9cde"
+                          },
+                          {
+                              "path":  "docs/current/e/C11E_OPTION_C_CONSUMER_AND_E4A6_BASELINE_REMEDIATION_20261107_V6.md",
+                              "sha256":  "515273555b306bd7b3f483ae3fd50aaa4b2ae5f1f706b369b0948c98abaf41c9"
+                          },
+                          {
+                              "path":  "docs/current/e/C11E_R1V_FIVE_FAMILY_QUALIFICATION_RUNBOOK_20261107_V6.md",
+                              "sha256":  "d8fd98049a59b963902fbfb6a3da5cf810d1a82328be276d4726a1dec300efb9"
+                          },
+                          {
+                              "path":  "docs/history/c11e/C11E_R1V_PYTHON_EXECUTABLE_RESOLUTION_RECOVERY_20261107_V3.md",
+                              "sha256":  "176b79351ae356bad1d49aa7fd1b86e36c342076b9beafc5099fca8016d22ca6"
+                          },
+                          {
+                              "path":  "docs/prompts/C11E_CONTINUATION_MASTER_PROMPT_20261107_V93.md",
+                              "sha256":  "25df9ccb1b008c925d9ae5d421df28522e9e73f0e9a15fb0aa2ef17beb876144"
+                          },
+                          {
+                              "path":  "docs/prompts/C11E_NEXT_WINDOW_START_PROMPT_20261107_V93.md",
+                              "sha256":  "277364a6e3d00485d801aa8fad0c19b772f4955cf6ce88157951c1bfa03f5328"
+                          },
+                          {
+                              "path":  "tools/c11d/d9/RUN_C11E_E4B_R1V_FIVE_FAMILY_QUALIFICATION_V3.ps1",
+                              "sha256":  "c5f470a577bd8a1887cdd2b695e64e24e67e01f6a2d93e246463aa31e6ac4cd3"
+                          },
+                          {
+                              "path":  "tools/c11d/d9/c11e_r1v_five_family_qualification_v3.py",
+                              "sha256":  "9d1baba14ca8cf96e3f2f466cedc104ec4b9cf1b94ef4b11690abe7a6de9e019"
+                          },
+                          {
+                              "path":  "tools/c11d/d9/test_c11e_r1v_five_family_qualification_v3.py",
+                              "sha256":  "464f7c505dcfa6ae47fac5b2a42c9b9f704ab90a9f6c73d6692ddf898763d80b"
+                          }
+                      ],
+    "preexisting_identical_files":  [
+
+                                    ],
+    "verified_payload_file_count":  15,
+    "python_invoked_by_installer":  false,
+    "python_preflight":  "DEFERRED_TO_R1V_WRAPPER",
+    "status":  "PASS_ADD_ONLY_INSTALL",
+    "error":  ""
+}

@@ -1,0 +1,37 @@
+test_active_checkout_d4_policy_and_r1v_approval (__main__.R1VActiveCheckoutIntegrationTests.test_active_checkout_d4_policy_and_r1v_approval) ... ok
+test_active_checkout_option_c_receipts (__main__.R1VActiveCheckoutIntegrationTests.test_active_checkout_option_c_receipts) ... ok
+test_active_checkout_r1p_receipts_and_all_source_pins (__main__.R1VActiveCheckoutIntegrationTests.test_active_checkout_r1p_receipts_and_all_source_pins) ... ok
+test_wrapper_probes_python_313_before_running_tests (__main__.R1VPowerShellWrapperSafetyTests.test_wrapper_probes_python_313_before_running_tests) ... ok
+test_wrapper_records_process_exit_codes_before_branching (__main__.R1VPowerShellWrapperSafetyTests.test_wrapper_records_process_exit_codes_before_branching) ... ok
+test_wrapper_redirects_native_stderr_without_powershell_error_stream (__main__.R1VPowerShellWrapperSafetyTests.test_wrapper_redirects_native_stderr_without_powershell_error_stream) ... ok
+test_wrapper_uses_direct_python_executable_without_launcher_switch (__main__.R1VPowerShellWrapperSafetyTests.test_wrapper_uses_direct_python_executable_without_launcher_switch) ... ok
+test_all_source_pins_are_finalized (__main__.R1VStaticTests.test_all_source_pins_are_finalized) ... ok
+test_c11c_authentic_nested_sidecar_schema_passes (__main__.R1VStaticTests.test_c11c_authentic_nested_sidecar_schema_passes) ... ok
+test_c11c_sidecar_audio_enabled_is_rejected (__main__.R1VStaticTests.test_c11c_sidecar_audio_enabled_is_rejected) ... ok
+test_c11c_sidecar_audio_mux_is_rejected (__main__.R1VStaticTests.test_c11c_sidecar_audio_mux_is_rejected) ... ok
+test_c11c_sidecar_gif_and_avi_retention_are_rejected (__main__.R1VStaticTests.test_c11c_sidecar_gif_and_avi_retention_are_rejected) ... ok
+test_canonical_json_is_stable (__main__.R1VStaticTests.test_canonical_json_is_stable) ... ok
+test_compare_repeats_passes_identical_source_inventory (__main__.R1VStaticTests.test_compare_repeats_passes_identical_source_inventory) ... ok
+test_compare_repeats_rejects_pixel_divergence (__main__.R1VStaticTests.test_compare_repeats_rejects_pixel_divergence) ... ok
+test_exactly_five_family_selectors (__main__.R1VStaticTests.test_exactly_five_family_selectors) ... ok
+test_launcher_command_exactly_limited (__main__.R1VStaticTests.test_launcher_command_exactly_limited) ... ok
+test_launcher_command_uses_only_allowed_switch_count (__main__.R1VStaticTests.test_launcher_command_uses_only_allowed_switch_count) ... ok
+test_override_created_unknown_is_left_untouched (__main__.R1VStaticTests.test_override_created_unknown_is_left_untouched) ... ok
+test_override_restore_never_clobbers_unknown_external_bytes (__main__.R1VStaticTests.test_override_restore_never_clobbers_unknown_external_bytes) ... ok
+test_override_restore_recovers_only_exact_known_c11c_temporary_bytes (__main__.R1VStaticTests.test_override_restore_recovers_only_exact_known_c11c_temporary_bytes) ... ok
+test_policy_and_approval_hashes (__main__.R1VStaticTests.test_policy_and_approval_hashes) ... ok
+test_policy_encodes_only_exact_native_silent_encode_argv (__main__.R1VStaticTests.test_policy_encodes_only_exact_native_silent_encode_argv) ... ok
+test_policy_enforces_exact_approval_scope (__main__.R1VStaticTests.test_policy_enforces_exact_approval_scope) ... ok
+test_policy_hash_changes_when_tampered (__main__.R1VStaticTests.test_policy_hash_changes_when_tampered) ... ok
+test_rational_rejects_invalid (__main__.R1VStaticTests.test_rational_rejects_invalid) ... ok
+test_rational_time_base (__main__.R1VStaticTests.test_rational_time_base) ... ok
+test_read_exact_reads_full_buffer (__main__.R1VStaticTests.test_read_exact_reads_full_buffer) ... ok
+test_read_exact_reports_short_buffer (__main__.R1VStaticTests.test_read_exact_reports_short_buffer) ... ok
+test_report_and_policy_constants_are_pinned (__main__.R1VStaticTests.test_report_and_policy_constants_are_pinned) ... ok
+test_safe_project_file_rejects_parent_traversal (__main__.R1VStaticTests.test_safe_project_file_rejects_parent_traversal) ... ok
+test_selector_timing_matches_r1p (__main__.R1VStaticTests.test_selector_timing_matches_r1p) ... ok
+
+----------------------------------------------------------------------
+Ran 32 tests in 1.515s
+
+OK

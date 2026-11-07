@@ -1,0 +1,21 @@
+﻿{
+    "schema":  "C11E-R1V-WRAPPER-PROCESS-RECEIPT-V3",
+    "run_id":  "R1V_WRAPPER_V3_20261107_225821_6D0D7C0F",
+    "started_utc":  "2026-11-07T22:58:21.2682413Z",
+    "completed_utc":  "2026-11-07T22:59:21.2981098Z",
+    "project_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+    "powershell_version":  "5.1.26100.9818",
+    "python_executable":  "C:\\Users\\vinxe\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+    "python_tests_exit_code":  0,
+    "r1v_capture_exit_code":  1,
+    "test_stdout_sha256":  "9675271b39aaa1057888119dbde917f8f3922f81bab398e88bd71875c9a22ce3",
+    "test_stderr_sha256":  "11743ddce9a02228dbf812a78f4969bc2970eef0a51a2dd61703aa68e01f645b",
+    "capture_stdout_sha256":  "f5f6b907142ff960a22be87d1bb24f19ac7882c1f685bb44326d01947bec3d6c",
+    "capture_stderr_sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "test_stdout_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\r1v_five_family_qualification_process\\R1V_WRAPPER_V3_20261107_225821_6D0D7C0F\\static_active_tests.stdout.log",
+    "test_stderr_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\r1v_five_family_qualification_process\\R1V_WRAPPER_V3_20261107_225821_6D0D7C0F\\static_active_tests.stderr.log",
+    "capture_stdout_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\r1v_five_family_qualification_process\\R1V_WRAPPER_V3_20261107_225821_6D0D7C0F\\r1v_capture.stdout.log",
+    "capture_stderr_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\r1v_five_family_qualification_process\\R1V_WRAPPER_V3_20261107_225821_6D0D7C0F\\r1v_capture.stderr.log",
+    "status":  "FAIL_R1V_CAPTURE",
+    "error":  "R1V capture helper failed with exit code 1"
+}
