@@ -1,0 +1,72 @@
+{
+    "schema":  "C11E-E4B-R1P-ADD-ONLY-INSTALL-RECEIPT-V1",
+    "status":  "PASS_ADD_ONLY_INSTALL",
+    "install_id":  "R1P_INSTALL_20261107_032709_817C1A3A",
+    "installed_at_local":  "2026-11-07T03:27:09+01:00",
+    "powershell_version":  "5.1.26100.9818",
+    "project_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+    "package_manifest_sha256":  "8bbf54d645aa6e5e1ade723cfd7948110e6d2eb2dba3e51ec751c3d0a81910de",
+    "frozen_c11c_manifest_sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "static_audit_dependency_sha256":  "600c22dafe2e377cb02b4a69f8823a44745d705b71cdb0d6bcec38da52df3e92",
+    "installed_file_count":  11,
+    "installed_files":  [
+                            {
+                                "path":  "docs/current/e/C11D_E_BLOCKER_REMEDIATION_REGISTER_20261107_V5.md",
+                                "bytes":  4217,
+                                "sha256":  "394eb882ae31861bb4906cb182676c521969a076f06f7677624da7e57bef216f"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_CURRENT_AUTHORITY_20261107_V84.md",
+                                "bytes":  5760,
+                                "sha256":  "ed93220141f3cd2711e57f466706ec19b9a14fbedde53422becb0dd2c61ffabc"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_CURRENT_DOC_INDEX_20261107_V44.md",
+                                "bytes":  1619,
+                                "sha256":  "41e77f7f1cb0af24ce9f4e99a09a1aab5574fac3091e35485e32e5bf0c1392bb"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_E3_EXECUTION_BACKLOG_20261107_V59.md",
+                                "bytes":  2486,
+                                "sha256":  "a8d068fcc9fcec4920b62516eb499629783efd9ba8d687ce9dd299338a2cc661"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_E4B_R1P_LOOP_PARAMETER_PAYLOADS_20261107_V2.md",
+                                "bytes":  5017,
+                                "sha256":  "6fb35b5826a1773c0b4a51576e3f5571453e624b031a0911ba5194b37fdef173"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261107_V82.md",
+                                "bytes":  2739,
+                                "sha256":  "d1635cf4e1eeffadc65928bed1053609055df2850d533c456ccff338a2e52c0c"
+                            },
+                            {
+                                "path":  "docs/history/e/C11E_E4B_R1P_OPERATOR_CHECKOUT_AUDIT_20261107_V2.md",
+                                "bytes":  3248,
+                                "sha256":  "8e30ec692c31b250973c02e7981d9e50258b8351b530d4e152689966fa504fa8"
+                            },
+                            {
+                                "path":  "docs/prompts/C11E_NEXT_WINDOW_START_PROMPT_20261107_V82.md",
+                                "bytes":  2272,
+                                "sha256":  "7b997523a685c6537fb29bd81f47ab3b2ab785cfb34aabe411af2a89018d0116"
+                            },
+                            {
+                                "path":  "tools/c11d/d9/RUN_C11E_E4B_R1P_LOOP_PARAMETER_PAYLOADS_V1.ps1",
+                                "bytes":  15556,
+                                "sha256":  "6fcdb3d6011ea985203c9262896614f27dbbae6a1ea398bad495d6512614a71b"
+                            },
+                            {
+                                "path":  "tools/c11d/d9/materialize_c11e_e4b_r1p_loop_parameter_payloads_v1.gd",
+                                "bytes":  13037,
+                                "sha256":  "330e25e9f7c14c1b60ec4816c476159e1a9c8de8af62b25214366b0290b15099"
+                            },
+                            {
+                                "path":  "tools/c11d/d9/prepare_c11e_e4b_r1p_loop_parameter_payloads_v1.py",
+                                "bytes":  42406,
+                                "sha256":  "50ca7fef2072c414e58fa87f1f88c6ae693414fad53f08871e6ac91c68107b34"
+                            }
+                        ],
+    "source_files_overwritten":  false,
+    "existing_files_deleted":  false,
+    "protected_source_patched":  false
+}

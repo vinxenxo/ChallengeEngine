@@ -1,0 +1,247 @@
+{
+  "case_id": "E4B_R1P_20261107_032743_5F75045C_17",
+  "case_source_pins": {
+    "launcher": {
+      "path": "tools/prototypes/c11c_living_particles_v1/run_prototype.ps1",
+      "sha256": "3674fdf778927022d2ebc1d1a96865b441479c5e4e71802e90837d654278a638"
+    },
+    "prototype": {
+      "path": "tools/prototypes/c11c_living_particles_v1/LivingParticlesPrototype.gd",
+      "prototype_sha256": "835ba0df2c160a259be39bd1977bfac0e6a66f903ce1aa6b4247af7c508ad94a"
+    }
+  },
+  "family_music_profile_id": "ORGANIC_BLOOM",
+  "governance": {
+    "D10": "BLOCKED_FOR_PROMOTION",
+    "D4.8": "BLOCKED",
+    "D9.10": "PREPARE_ONLY",
+    "D9.17": "BLOCKED_NO_GO",
+    "release_authority": "NONE",
+    "renderer": "OFF"
+  },
+  "materialization": {
+    "audio_or_d3_invoked": false,
+    "deterministic_repeat_pass": true,
+    "ffmpeg_invoked": false,
+    "frame_buffers_materialized": false,
+    "frame_inventory_materialized": false,
+    "launcher_invoked": false,
+    "media_created": false,
+    "parameter_payload_materialized_in_memory": true,
+    "pixel_payload_materialized": false,
+    "prototype_node_instantiated": false,
+    "renderer_instantiated": false,
+    "renderer_native_input_emitted": false
+  },
+  "payload_sha256": "99a01152ea3718de126bcad32bf59f296fe8fbfa063478dc77ff099f886878b9",
+  "receipt_index": 17,
+  "receipt_sha256": "711339e5c7eec3fba5140b0eee83bbe5ee1ada3b7e838eb3fd4013a09e040165",
+  "repeat_payload_sha256": "99a01152ea3718de126bcad32bf59f296fe8fbfa063478dc77ff099f886878b9",
+  "request_identity": {
+    "adapter_envelope_hash": "a300965829f5aadf9f7737ad558c2c7c834435e7e7e7642d285861dceb0e6b1f",
+    "bridge_record_hash": "0f6965e2cc0c1e7d762ab0c1e589e9f180f4ba2435dda3018cdcbdb9871749a5",
+    "editorial_hash": "f864abc2780b6965340c4a6581ef13763dfefaf49b0e9feef0daa36686e17871",
+    "family_stage_contract_sha256": "11b5d1c0978eecec0a06204a7c472a64348c860f3b7dce3e1a23839e5820ba14",
+    "plan_hash": "c74fdf31aa4c4ad0d7c9fff0086090a8a50de41d062610060e5fb220b2f2a616",
+    "request_hash": "3361316da3f5fa867959c89cb50f59926222c0eceac21e944071788da694c63f",
+    "request_id": "E4B_R1P_20261107_032743_5F75045C_17"
+  },
+  "run_id": "E4B_R1P_20261107_032743_5F75045C",
+  "schema": "C11E-E4B-R1P-LOOP-FAMILY-PARAMETER-RECEIPT-V1",
+  "seed_domains": {
+    "automatic_seed_generation": false,
+    "gameplay_seed": 100017,
+    "music_seed": 500017,
+    "music_seed_consumed_by_visual_parameters": false,
+    "runtime_seed_derivation": false,
+    "visual_parameters_use": "request.seed"
+  },
+  "selection": {
+    "content_type": "visual_loops",
+    "family_id": "c11c_living_particles_v1",
+    "grammar_id": "vortex",
+    "grammar_index": 1
+  },
+  "source_pins": {
+    "c11c-suite/c11c-producer/producer_schema.json": {
+      "bytes": 32714,
+      "sha256": "564f11fb4fee9221910dc373550650172eda4f106d6dc25532cc43cb8e6314a0"
+    },
+    "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json": {
+      "bytes": 12932,
+      "sha256": "dabb458fc2215156ddb5ebea7e8ebec811098886ce2858733ba9fb13f6075ccb"
+    },
+    "definitions/c11d/production/C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json": {
+      "bytes": 4990,
+      "sha256": "5726310b48e9a85540d48b1e78784571ba04c3f900a5c09add35b49ce5575504"
+    },
+    "definitions/c11d/production/C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_V1.json": {
+      "bytes": 5528,
+      "sha256": "9e206704665ea85226ecc10854be9f679c32fe9ed7efb690a829f6e8456d43da"
+    },
+    "definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json": {
+      "bytes": 8376,
+      "sha256": "609a4d183aac07c2cbe1abaf41444160fdd137217faffbead3aef618320d57dc"
+    },
+    "definitions/c11d/production/D_RENDERER_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_PROPOSAL_V1.json": {
+      "bytes": 7457,
+      "sha256": "3dd4874e1b6506de6d9ddbe6ad1b567a284b94cc00ef1bac0d35d1731af05e23"
+    },
+    "definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_V1.json": {
+      "bytes": 9507,
+      "sha256": "41a62b0766db47cd99772f28642ef67766314f20f0f7891789d6b7497bbfee85"
+    },
+    "definitions/c11d/production/D_RENDERER_UNIFIED_PRESENTATION_REGION_POLICY_PROPOSAL_V1.json": {
+      "bytes": 9440,
+      "sha256": "101092bb32127bb8854a501a9215c0b6cf69581594383903716907d49719c01a"
+    },
+    "profiles/presentation/c11c_visual_music_profiles.json": {
+      "bytes": 7038,
+      "sha256": "b78706c5a9adbf1581d925f522b76cc3419983177de213734cc79996af5cbf58"
+    },
+    "release/C11C_FREEZE_PACKAGE_MANIFEST.json": {
+      "bytes": 796318,
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    "tools/c11d/d9/c11e_e4b_loop_family_stage_contract.py": {
+      "bytes": 19331,
+      "sha256": "bfbfa0cc108f00b78003e5480c86af1ee5ca63772d24a7792f8cdb6953b6af5d"
+    },
+    "tools/c11d/d9/d_render_adapter.py": {
+      "bytes": 15051,
+      "sha256": "222742677cd498368429a3ec0dcdd922c44197bb5ada3638081138fb77c31bf1"
+    },
+    "tools/c11d/d9/editorial_render_bridge.py": {
+      "bytes": 10868,
+      "sha256": "fe9d40052b0f4ff6f1c862c010ae7b3b13070b6ce935be6d62f9dcaec63a644a"
+    },
+    "tools/c11d/d9/test_c11e_e4b_r1p_family_grammar_static_audit.py": {
+      "bytes": 12315,
+      "sha256": "600c22dafe2e377cb02b4a69f8823a44745d705b71cdb0d6bcec38da52df3e92"
+    },
+    "tools/c11d/d9/universal_producer.py": {
+      "bytes": 19692,
+      "sha256": "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1"
+    },
+    "tools/prototypes/c11c_common/C11CEditorialColors.gd": {
+      "bytes": 1827,
+      "sha256": "46326fbd732d514b5bfa2d964b99bdd14f2933dd01ec65689749bf40fda32632"
+    },
+    "tools/prototypes/c11c_common/C11CPaletteBank.gd": {
+      "bytes": 16138,
+      "sha256": "6b64d99afb148b0dc5b0f8e27b50558e9b77df4d2fdff98d52495d81d53fdd14"
+    },
+    "tools/prototypes/c11c_common/C11CVariationProfile.gd": {
+      "bytes": 13703,
+      "sha256": "f7df994d8842183275bc331decd75762a153f3100248c7cc8b590e34c1347e2d"
+    },
+    "tools/prototypes/c11c_common/C11CVisualLoopDuration.gd": {
+      "bytes": 1048,
+      "sha256": "4ea0b0decbd3a22ade42023e819a74872f312b63facc1163dc73a7c656fdbaf8"
+    },
+    "tools/prototypes/c11c_common/TechnobabbleGenerator.gd": {
+      "bytes": 7054,
+      "sha256": "f2fbef4ee4b8b07d1b4ebe7781bc5d987e37c43a5f5eb317397a377288890c9f"
+    },
+    "tools/prototypes/c11c_fractal_bloom_v1/FractalBloomPrototype.gd": {
+      "bytes": 11196,
+      "sha256": "b596ecba5eeae80ba615d7cb8a741dffcab9db4c44296e660f4f9d6919cc5c55"
+    },
+    "tools/prototypes/c11c_fractal_bloom_v1/run_prototype.ps1": {
+      "bytes": 12922,
+      "sha256": "02e3721c92046f1f69119e5bbc6c69709dd0b97fad7191c08213ecc233930801"
+    },
+    "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesPrototype.gd": {
+      "bytes": 11359,
+      "sha256": "ab2560cbe7fa42c5cad3b143aa59d1f2a0dc047682f7667983c7c0a0f6dbb61c"
+    },
+    "tools/prototypes/c11c_geometric_waves_v1/run_prototype.ps1": {
+      "bytes": 12946,
+      "sha256": "661bd61df61bc633e4b87cd4b9413c4317c8d4b6068194245aea7d40fcb5c7cd"
+    },
+    "tools/prototypes/c11c_invisible_forces_v1/InvisibleForcesPrototype.gd": {
+      "bytes": 11442,
+      "sha256": "a68661a5fdf792aa7fe701afa6fbf1631a2b8215c214032f58ecfe0c69d8374a"
+    },
+    "tools/prototypes/c11c_invisible_forces_v1/run_prototype.ps1": {
+      "bytes": 12972,
+      "sha256": "88924dd86ebdc9b51a51f354ec22f40beb75cf6daafbe869283fa187568b6f60"
+    },
+    "tools/prototypes/c11c_living_particles_v1/LivingParticlesPrototype.gd": {
+      "bytes": 11423,
+      "sha256": "835ba0df2c160a259be39bd1977bfac0e6a66f903ce1aa6b4247af7c508ad94a"
+    },
+    "tools/prototypes/c11c_living_particles_v1/run_prototype.ps1": {
+      "bytes": 12973,
+      "sha256": "3674fdf778927022d2ebc1d1a96865b441479c5e4e71802e90837d654278a638"
+    },
+    "tools/prototypes/c11c_sacred_symmetry_v1/SacredSymmetryPrototype.gd": {
+      "bytes": 11376,
+      "sha256": "12fdbc13e05df28b26cf95fe1907d150bd41f29196287700153521e9baee336b"
+    },
+    "tools/prototypes/c11c_sacred_symmetry_v1/run_prototype.ps1": {
+      "bytes": 12961,
+      "sha256": "8eea21f7b72f679d8951410597f0ecf968ac0a6f1ee629a48de965ea62b60b6e"
+    }
+  },
+  "status": "PASS_PARAMETER_PAYLOAD_MATERIALIZED_IN_MEMORY_NOT_RENDERER_INPUT",
+  "timing": {
+    "duration_seconds": 23.0,
+    "fps": 30,
+    "frame_count": 690,
+    "loop_cycles": 3,
+    "source": "C11CVisualLoopDuration.resolve(loop_cycles, DEFAULT_LOOP_DURATION=0.0)"
+  },
+  "visual_parameters": {
+    "editorial_text_colors": {
+      "footer_data": "FFFFFF",
+      "footer_geek": "A8FFD9",
+      "footer_palette": "56D8F0",
+      "footer_signature": "56D8F0",
+      "header_hook": "56D8F0",
+      "header_math": "A8FFD9",
+      "rule": "A8FFD9"
+    },
+    "family_id": "c11c_living_particles_v1",
+    "internal_family_id": "living_particles",
+    "palette": {
+      "bright": "A8FFD9",
+      "deep": "073A4B",
+      "highlight": "FFFFFF",
+      "mid": "56D8F0",
+      "name": "ICE_CYAN_MINT"
+    },
+    "technobabble": {
+      "display_text": "DEMONIO: PROTOCOLO NEON // DINAMICA DE FLUIDOS // PARTICLES 160 | COLLISION 1.00",
+      "generated_text": "DEMONIO: protocolo neon // dinamica de fluidos // PARTICLES 160 | COLLISION 1.00",
+      "revision": "2.0.1"
+    },
+    "variation_recipe": {
+      "attractor_a_x": -0.0661002061002061,
+      "attractor_a_y": 0.0353676953676954,
+      "attractor_b_x": 0.151939411939412,
+      "attractor_b_y": 0.00506165506165507,
+      "attractor_strength": 0.993790353790354,
+      "collision_strength": 1.00290136290136,
+      "color_diversity": 0.882080922080922,
+      "color_phase": 0.171615956038856,
+      "core_scale": 1.14844836844837,
+      "density_bias": 0.892335232335232,
+      "family": "living_particles",
+      "glow": 0.598721638721639,
+      "grammar_mode": 1,
+      "grammar_name": "vortex",
+      "loop_cycles": 3.0,
+      "palette_mode": 10,
+      "palette_name": "ice_cyan_mint",
+      "particle_count": 160.049236049236,
+      "particle_size_scale": 0.826106246106246,
+      "particle_spread": 0.886543706543707,
+      "phase_rate": 1.0,
+      "swirl_bias": 1.34756158756159,
+      "turbulence": 0.0168044428044428
+    }
+  },
+  "visual_parameters_canonical_json": "{\"editorial_text_colors\":{\"footer_data\":\"FFFFFF\",\"footer_geek\":\"A8FFD9\",\"footer_palette\":\"56D8F0\",\"footer_signature\":\"56D8F0\",\"header_hook\":\"56D8F0\",\"header_math\":\"A8FFD9\",\"rule\":\"A8FFD9\"},\"family_id\":\"c11c_living_particles_v1\",\"internal_family_id\":\"living_particles\",\"palette\":{\"bright\":\"A8FFD9\",\"deep\":\"073A4B\",\"highlight\":\"FFFFFF\",\"mid\":\"56D8F0\",\"name\":\"ICE_CYAN_MINT\"},\"technobabble\":{\"display_text\":\"DEMONIO: PROTOCOLO NEON // DINAMICA DE FLUIDOS // PARTICLES 160 | COLLISION 1.00\",\"generated_text\":\"DEMONIO: protocolo neon // dinamica de fluidos // PARTICLES 160 | COLLISION 1.00\",\"revision\":\"2.0.1\"},\"variation_recipe\":{\"attractor_a_x\":-0.0661002061002061,\"attractor_a_y\":0.0353676953676954,\"attractor_b_x\":0.151939411939412,\"attractor_b_y\":0.00506165506165507,\"attractor_strength\":0.993790353790354,\"collision_strength\":1.00290136290136,\"color_diversity\":0.882080922080922,\"color_phase\":0.171615956038856,\"core_scale\":1.14844836844837,\"density_bias\":0.892335232335232,\"family\":\"living_particles\",\"glow\":0.598721638721639,\"grammar_mode\":1,\"grammar_name\":\"vortex\",\"loop_cycles\":3.0,\"palette_mode\":10,\"palette_name\":\"ice_cyan_mint\",\"particle_count\":160.049236049236,\"particle_size_scale\":0.826106246106246,\"particle_spread\":0.886543706543707,\"phase_rate\":1.0,\"swirl_bias\":1.34756158756159,\"turbulence\":0.0168044428044428}}",
+  "visual_parameters_sha256": "9ae5488938ef3691e152ffbbc981bb3c2003a1a47e61dd620323e791b0acfe4c"
+}

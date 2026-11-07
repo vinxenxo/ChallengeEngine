@@ -1,0 +1,247 @@
+{
+  "case_id": "E4B_R1P_20261107_032743_5F75045C_19",
+  "case_source_pins": {
+    "launcher": {
+      "path": "tools/prototypes/c11c_living_particles_v1/run_prototype.ps1",
+      "sha256": "3674fdf778927022d2ebc1d1a96865b441479c5e4e71802e90837d654278a638"
+    },
+    "prototype": {
+      "path": "tools/prototypes/c11c_living_particles_v1/LivingParticlesPrototype.gd",
+      "prototype_sha256": "835ba0df2c160a259be39bd1977bfac0e6a66f903ce1aa6b4247af7c508ad94a"
+    }
+  },
+  "family_music_profile_id": "ORGANIC_BLOOM",
+  "governance": {
+    "D10": "BLOCKED_FOR_PROMOTION",
+    "D4.8": "BLOCKED",
+    "D9.10": "PREPARE_ONLY",
+    "D9.17": "BLOCKED_NO_GO",
+    "release_authority": "NONE",
+    "renderer": "OFF"
+  },
+  "materialization": {
+    "audio_or_d3_invoked": false,
+    "deterministic_repeat_pass": true,
+    "ffmpeg_invoked": false,
+    "frame_buffers_materialized": false,
+    "frame_inventory_materialized": false,
+    "launcher_invoked": false,
+    "media_created": false,
+    "parameter_payload_materialized_in_memory": true,
+    "pixel_payload_materialized": false,
+    "prototype_node_instantiated": false,
+    "renderer_instantiated": false,
+    "renderer_native_input_emitted": false
+  },
+  "payload_sha256": "ce04be4e8064497e005c75b6c67b924a9829f4e9cb24ab5cd3c8bcda1b8518f2",
+  "receipt_index": 19,
+  "receipt_sha256": "d456a1f87962ec21e58587f17fed2f9fe871843476f879f0b7bc70e79a0165e1",
+  "repeat_payload_sha256": "ce04be4e8064497e005c75b6c67b924a9829f4e9cb24ab5cd3c8bcda1b8518f2",
+  "request_identity": {
+    "adapter_envelope_hash": "d296d849304a00c42ce871742478a51b2c66845f4f9e59ec6643a77ea85b1e15",
+    "bridge_record_hash": "a7272268f52a7a94b6ac6210636b4f027362daaf0880cba9dd89d09bafd691cb",
+    "editorial_hash": "ec08df6ce76083665373aff02be6356e41f4de9897a8c3f5107c8210abf5045e",
+    "family_stage_contract_sha256": "4a05b2f3c60fd2324dab3b070f2984c0293cfa2e61a003f23a3a1b0156493116",
+    "plan_hash": "20b34b1c4175b6492d88b8d963e8eba3f88d3fe52f2729f57be9d3a7e302c340",
+    "request_hash": "ced909c6d362703107516d85dae1fd6a57162cc8152d26a43dd5bc118949f729",
+    "request_id": "E4B_R1P_20261107_032743_5F75045C_19"
+  },
+  "run_id": "E4B_R1P_20261107_032743_5F75045C",
+  "schema": "C11E-E4B-R1P-LOOP-FAMILY-PARAMETER-RECEIPT-V1",
+  "seed_domains": {
+    "automatic_seed_generation": false,
+    "gameplay_seed": 100019,
+    "music_seed": 500019,
+    "music_seed_consumed_by_visual_parameters": false,
+    "runtime_seed_derivation": false,
+    "visual_parameters_use": "request.seed"
+  },
+  "selection": {
+    "content_type": "visual_loops",
+    "family_id": "c11c_living_particles_v1",
+    "grammar_id": "organic_pulse",
+    "grammar_index": 3
+  },
+  "source_pins": {
+    "c11c-suite/c11c-producer/producer_schema.json": {
+      "bytes": 32714,
+      "sha256": "564f11fb4fee9221910dc373550650172eda4f106d6dc25532cc43cb8e6314a0"
+    },
+    "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json": {
+      "bytes": 12932,
+      "sha256": "dabb458fc2215156ddb5ebea7e8ebec811098886ce2858733ba9fb13f6075ccb"
+    },
+    "definitions/c11d/production/C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json": {
+      "bytes": 4990,
+      "sha256": "5726310b48e9a85540d48b1e78784571ba04c3f900a5c09add35b49ce5575504"
+    },
+    "definitions/c11d/production/C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_V1.json": {
+      "bytes": 5528,
+      "sha256": "9e206704665ea85226ecc10854be9f679c32fe9ed7efb690a829f6e8456d43da"
+    },
+    "definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json": {
+      "bytes": 8376,
+      "sha256": "609a4d183aac07c2cbe1abaf41444160fdd137217faffbead3aef618320d57dc"
+    },
+    "definitions/c11d/production/D_RENDERER_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_PROPOSAL_V1.json": {
+      "bytes": 7457,
+      "sha256": "3dd4874e1b6506de6d9ddbe6ad1b567a284b94cc00ef1bac0d35d1731af05e23"
+    },
+    "definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_V1.json": {
+      "bytes": 9507,
+      "sha256": "41a62b0766db47cd99772f28642ef67766314f20f0f7891789d6b7497bbfee85"
+    },
+    "definitions/c11d/production/D_RENDERER_UNIFIED_PRESENTATION_REGION_POLICY_PROPOSAL_V1.json": {
+      "bytes": 9440,
+      "sha256": "101092bb32127bb8854a501a9215c0b6cf69581594383903716907d49719c01a"
+    },
+    "profiles/presentation/c11c_visual_music_profiles.json": {
+      "bytes": 7038,
+      "sha256": "b78706c5a9adbf1581d925f522b76cc3419983177de213734cc79996af5cbf58"
+    },
+    "release/C11C_FREEZE_PACKAGE_MANIFEST.json": {
+      "bytes": 796318,
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    "tools/c11d/d9/c11e_e4b_loop_family_stage_contract.py": {
+      "bytes": 19331,
+      "sha256": "bfbfa0cc108f00b78003e5480c86af1ee5ca63772d24a7792f8cdb6953b6af5d"
+    },
+    "tools/c11d/d9/d_render_adapter.py": {
+      "bytes": 15051,
+      "sha256": "222742677cd498368429a3ec0dcdd922c44197bb5ada3638081138fb77c31bf1"
+    },
+    "tools/c11d/d9/editorial_render_bridge.py": {
+      "bytes": 10868,
+      "sha256": "fe9d40052b0f4ff6f1c862c010ae7b3b13070b6ce935be6d62f9dcaec63a644a"
+    },
+    "tools/c11d/d9/test_c11e_e4b_r1p_family_grammar_static_audit.py": {
+      "bytes": 12315,
+      "sha256": "600c22dafe2e377cb02b4a69f8823a44745d705b71cdb0d6bcec38da52df3e92"
+    },
+    "tools/c11d/d9/universal_producer.py": {
+      "bytes": 19692,
+      "sha256": "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1"
+    },
+    "tools/prototypes/c11c_common/C11CEditorialColors.gd": {
+      "bytes": 1827,
+      "sha256": "46326fbd732d514b5bfa2d964b99bdd14f2933dd01ec65689749bf40fda32632"
+    },
+    "tools/prototypes/c11c_common/C11CPaletteBank.gd": {
+      "bytes": 16138,
+      "sha256": "6b64d99afb148b0dc5b0f8e27b50558e9b77df4d2fdff98d52495d81d53fdd14"
+    },
+    "tools/prototypes/c11c_common/C11CVariationProfile.gd": {
+      "bytes": 13703,
+      "sha256": "f7df994d8842183275bc331decd75762a153f3100248c7cc8b590e34c1347e2d"
+    },
+    "tools/prototypes/c11c_common/C11CVisualLoopDuration.gd": {
+      "bytes": 1048,
+      "sha256": "4ea0b0decbd3a22ade42023e819a74872f312b63facc1163dc73a7c656fdbaf8"
+    },
+    "tools/prototypes/c11c_common/TechnobabbleGenerator.gd": {
+      "bytes": 7054,
+      "sha256": "f2fbef4ee4b8b07d1b4ebe7781bc5d987e37c43a5f5eb317397a377288890c9f"
+    },
+    "tools/prototypes/c11c_fractal_bloom_v1/FractalBloomPrototype.gd": {
+      "bytes": 11196,
+      "sha256": "b596ecba5eeae80ba615d7cb8a741dffcab9db4c44296e660f4f9d6919cc5c55"
+    },
+    "tools/prototypes/c11c_fractal_bloom_v1/run_prototype.ps1": {
+      "bytes": 12922,
+      "sha256": "02e3721c92046f1f69119e5bbc6c69709dd0b97fad7191c08213ecc233930801"
+    },
+    "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesPrototype.gd": {
+      "bytes": 11359,
+      "sha256": "ab2560cbe7fa42c5cad3b143aa59d1f2a0dc047682f7667983c7c0a0f6dbb61c"
+    },
+    "tools/prototypes/c11c_geometric_waves_v1/run_prototype.ps1": {
+      "bytes": 12946,
+      "sha256": "661bd61df61bc633e4b87cd4b9413c4317c8d4b6068194245aea7d40fcb5c7cd"
+    },
+    "tools/prototypes/c11c_invisible_forces_v1/InvisibleForcesPrototype.gd": {
+      "bytes": 11442,
+      "sha256": "a68661a5fdf792aa7fe701afa6fbf1631a2b8215c214032f58ecfe0c69d8374a"
+    },
+    "tools/prototypes/c11c_invisible_forces_v1/run_prototype.ps1": {
+      "bytes": 12972,
+      "sha256": "88924dd86ebdc9b51a51f354ec22f40beb75cf6daafbe869283fa187568b6f60"
+    },
+    "tools/prototypes/c11c_living_particles_v1/LivingParticlesPrototype.gd": {
+      "bytes": 11423,
+      "sha256": "835ba0df2c160a259be39bd1977bfac0e6a66f903ce1aa6b4247af7c508ad94a"
+    },
+    "tools/prototypes/c11c_living_particles_v1/run_prototype.ps1": {
+      "bytes": 12973,
+      "sha256": "3674fdf778927022d2ebc1d1a96865b441479c5e4e71802e90837d654278a638"
+    },
+    "tools/prototypes/c11c_sacred_symmetry_v1/SacredSymmetryPrototype.gd": {
+      "bytes": 11376,
+      "sha256": "12fdbc13e05df28b26cf95fe1907d150bd41f29196287700153521e9baee336b"
+    },
+    "tools/prototypes/c11c_sacred_symmetry_v1/run_prototype.ps1": {
+      "bytes": 12961,
+      "sha256": "8eea21f7b72f679d8951410597f0ecf968ac0a6f1ee629a48de965ea62b60b6e"
+    }
+  },
+  "status": "PASS_PARAMETER_PAYLOAD_MATERIALIZED_IN_MEMORY_NOT_RENDERER_INPUT",
+  "timing": {
+    "duration_seconds": 22.0,
+    "fps": 30,
+    "frame_count": 660,
+    "loop_cycles": 2,
+    "source": "C11CVisualLoopDuration.resolve(loop_cycles, DEFAULT_LOOP_DURATION=0.0)"
+  },
+  "visual_parameters": {
+    "editorial_text_colors": {
+      "footer_data": "F2FFF9",
+      "footer_geek": "B8FFD5",
+      "footer_palette": "72E7FF",
+      "footer_signature": "72E7FF",
+      "header_hook": "72E7FF",
+      "header_math": "B8FFD5",
+      "rule": "B8FFD5"
+    },
+    "family_id": "c11c_living_particles_v1",
+    "internal_family_id": "living_particles",
+    "palette": {
+      "bright": "B8FFD5",
+      "deep": "062B36",
+      "highlight": "F2FFF9",
+      "mid": "72E7FF",
+      "name": "ICE_JADE"
+    },
+    "technobabble": {
+      "display_text": "DESFASANDO MATERIA BIOLUMINISCENTE... [OPTIMO] // PARTICLES 127 | COLLISION 0.77",
+      "generated_text": "Desfasando materia bioluminiscente... [OPTIMO] // PARTICLES 127 | COLLISION 0.77",
+      "revision": "2.0.1"
+    },
+    "variation_recipe": {
+      "attractor_a_x": -0.0899156699156699,
+      "attractor_a_y": -0.113692703692704,
+      "attractor_b_x": 0.157677097677098,
+      "attractor_b_y": 0.00418033418033419,
+      "attractor_strength": 1.22583290583291,
+      "collision_strength": 0.765204405204405,
+      "color_diversity": 0.901619341619342,
+      "color_phase": -1.7915610021827,
+      "core_scale": 0.79021641021641,
+      "density_bias": 0.891770631770632,
+      "family": "living_particles",
+      "glow": 0.812653372653373,
+      "grammar_mode": 3,
+      "grammar_name": "organic_pulse",
+      "loop_cycles": 2.0,
+      "palette_mode": 15,
+      "palette_name": "ice_jade",
+      "particle_count": 127.238755238755,
+      "particle_size_scale": 0.764919464919465,
+      "particle_spread": 0.938288958288958,
+      "phase_rate": 3.0,
+      "swirl_bias": 1.05130591130591,
+      "turbulence": 0.0142943902943903
+    }
+  },
+  "visual_parameters_canonical_json": "{\"editorial_text_colors\":{\"footer_data\":\"F2FFF9\",\"footer_geek\":\"B8FFD5\",\"footer_palette\":\"72E7FF\",\"footer_signature\":\"72E7FF\",\"header_hook\":\"72E7FF\",\"header_math\":\"B8FFD5\",\"rule\":\"B8FFD5\"},\"family_id\":\"c11c_living_particles_v1\",\"internal_family_id\":\"living_particles\",\"palette\":{\"bright\":\"B8FFD5\",\"deep\":\"062B36\",\"highlight\":\"F2FFF9\",\"mid\":\"72E7FF\",\"name\":\"ICE_JADE\"},\"technobabble\":{\"display_text\":\"DESFASANDO MATERIA BIOLUMINISCENTE... [OPTIMO] // PARTICLES 127 | COLLISION 0.77\",\"generated_text\":\"Desfasando materia bioluminiscente... [OPTIMO] // PARTICLES 127 | COLLISION 0.77\",\"revision\":\"2.0.1\"},\"variation_recipe\":{\"attractor_a_x\":-0.0899156699156699,\"attractor_a_y\":-0.113692703692704,\"attractor_b_x\":0.157677097677098,\"attractor_b_y\":0.00418033418033419,\"attractor_strength\":1.22583290583291,\"collision_strength\":0.765204405204405,\"color_diversity\":0.901619341619342,\"color_phase\":-1.7915610021827,\"core_scale\":0.79021641021641,\"density_bias\":0.891770631770632,\"family\":\"living_particles\",\"glow\":0.812653372653373,\"grammar_mode\":3,\"grammar_name\":\"organic_pulse\",\"loop_cycles\":2.0,\"palette_mode\":15,\"palette_name\":\"ice_jade\",\"particle_count\":127.238755238755,\"particle_size_scale\":0.764919464919465,\"particle_spread\":0.938288958288958,\"phase_rate\":3.0,\"swirl_bias\":1.05130591130591,\"turbulence\":0.0142943902943903}}",
+  "visual_parameters_sha256": "2591bdd5e1176b05dfb81811a72347d67ce466316a117f03d7ef866e8fbf5f98"
+}

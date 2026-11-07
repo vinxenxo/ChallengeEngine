@@ -1,0 +1,88 @@
+{
+    "schema":  "C11E-E4B-R1P-RUNNER-PROCESS-RECEIPT-V1",
+    "run_id":  "E4B_R1P_20261107_032743_5F75045C",
+    "powershell_version":  "5.1.26100.9818",
+    "python_launcher":  "C:\\Users\\vinxe\\AppData\\Local\\Programs\\Python\\Launcher\\py.exe",
+    "python_launcher_sha256":  "c51dac136d24b196e887e777a0034e971f32ffd7219099ea002f2aaa9243f501",
+    "python_version":  "Python 3.13.14",
+    "python_version_process":  {
+                                   "exit_code":  0,
+                                   "stdout_path":  "C:\\Users\\vinxe\\AppData\\Local\\Temp\\C11E_R1P_5F75045C\\python_version.stdout.log",
+                                   "stderr_path":  "C:\\Users\\vinxe\\AppData\\Local\\Temp\\C11E_R1P_5F75045C\\python_version.stderr.log",
+                                   "stdout_sha256":  "f133aa4c375d22e9226cb4ee8a71740d78c77f15c82b7842a0b93e594eed1884",
+                                   "stderr_sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                               },
+    "python_prepare":  {
+                           "exit_code":  0,
+                           "stdout_path":  "C:\\Users\\vinxe\\AppData\\Local\\Temp\\C11E_R1P_5F75045C\\python_prepare.stdout.log",
+                           "stderr_path":  "C:\\Users\\vinxe\\AppData\\Local\\Temp\\C11E_R1P_5F75045C\\python_prepare.stderr.log",
+                           "stdout_sha256":  "bffc05c42f83d2c20e0ce639eacfced02d2152d47d479826dd7d01bdae459580",
+                           "stderr_sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                       },
+    "godot_executable":  "C:\\Users\\vinxe\\AppData\\Local\\Microsoft\\WinGet\\Packages\\GodotEngine.GodotEngine.Mono_Microsoft.Winget.Source_8wekyb3d8bbwe\\Godot_v4.7.1-stable_mono_win64\\godot.exe",
+    "godot_executable_sha256":  "8ec33ba6a6a953226170cda2a56a58810f6617261a71d6bd6d6ba7cce5e7b79d",
+    "godot_version":  "4.7.1.stable.mono.official.a13da4feb",
+    "godot_version_process":  {
+                                  "exit_code":  0,
+                                  "stdout_path":  "C:\\Users\\vinxe\\AppData\\Local\\Temp\\C11E_R1P_5F75045C\\godot_version.stdout.log",
+                                  "stderr_path":  "C:\\Users\\vinxe\\AppData\\Local\\Temp\\C11E_R1P_5F75045C\\godot_version.stderr.log",
+                                  "stdout_sha256":  "d1046084c2493a272b0b439dc2f6dc74b801cd74659c5010a67c1b2f3acc5866",
+                                  "stderr_sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                              },
+    "godot_materializer":  {
+                               "exit_code":  0,
+                               "stdout_path":  "C:\\Users\\vinxe\\AppData\\Local\\Temp\\C11E_R1P_5F75045C\\godot.stdout.log",
+                               "stderr_path":  "C:\\Users\\vinxe\\AppData\\Local\\Temp\\C11E_R1P_5F75045C\\godot.stderr.log",
+                               "stdout_sha256":  "f62da0002dc1b45d76885c0ea106cba1fd34ab041626c1fed63cd027edeab477",
+                               "stderr_sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                           },
+    "godot_temporary_source_copies":  [
+                                          {
+                                              "source_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\tools\\prototypes\\c11c_common\\C11CVariationProfile.gd",
+                                              "source_sha256":  "f7df994d8842183275bc331decd75762a153f3100248c7cc8b590e34c1347e2d",
+                                              "temporary_copy_path":  "C:\\Users\\vinxe\\AppData\\Local\\Temp\\C11E_R1P_5F75045C\\godot_probe_project\\C11CVariationProfile.gd",
+                                              "temporary_copy_sha256":  "f7df994d8842183275bc331decd75762a153f3100248c7cc8b590e34c1347e2d"
+                                          },
+                                          {
+                                              "source_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\tools\\prototypes\\c11c_common\\C11CPaletteBank.gd",
+                                              "source_sha256":  "6b64d99afb148b0dc5b0f8e27b50558e9b77df4d2fdff98d52495d81d53fdd14",
+                                              "temporary_copy_path":  "C:\\Users\\vinxe\\AppData\\Local\\Temp\\C11E_R1P_5F75045C\\godot_probe_project\\C11CPaletteBank.gd",
+                                              "temporary_copy_sha256":  "6b64d99afb148b0dc5b0f8e27b50558e9b77df4d2fdff98d52495d81d53fdd14"
+                                          },
+                                          {
+                                              "source_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\tools\\prototypes\\c11c_common\\C11CEditorialColors.gd",
+                                              "source_sha256":  "46326fbd732d514b5bfa2d964b99bdd14f2933dd01ec65689749bf40fda32632",
+                                              "temporary_copy_path":  "C:\\Users\\vinxe\\AppData\\Local\\Temp\\C11E_R1P_5F75045C\\godot_probe_project\\C11CEditorialColors.gd",
+                                              "temporary_copy_sha256":  "46326fbd732d514b5bfa2d964b99bdd14f2933dd01ec65689749bf40fda32632"
+                                          },
+                                          {
+                                              "source_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\tools\\prototypes\\c11c_common\\C11CVisualLoopDuration.gd",
+                                              "source_sha256":  "4ea0b0decbd3a22ade42023e819a74872f312b63facc1163dc73a7c656fdbaf8",
+                                              "temporary_copy_path":  "C:\\Users\\vinxe\\AppData\\Local\\Temp\\C11E_R1P_5F75045C\\godot_probe_project\\C11CVisualLoopDuration.gd",
+                                              "temporary_copy_sha256":  "4ea0b0decbd3a22ade42023e819a74872f312b63facc1163dc73a7c656fdbaf8"
+                                          },
+                                          {
+                                              "source_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\tools\\prototypes\\c11c_common\\TechnobabbleGenerator.gd",
+                                              "source_sha256":  "f2fbef4ee4b8b07d1b4ebe7781bc5d987e37c43a5f5eb317397a377288890c9f",
+                                              "temporary_copy_path":  "C:\\Users\\vinxe\\AppData\\Local\\Temp\\C11E_R1P_5F75045C\\godot_probe_project\\TechnobabbleGenerator.gd",
+                                              "temporary_copy_sha256":  "f2fbef4ee4b8b07d1b4ebe7781bc5d987e37c43a5f5eb317397a377288890c9f"
+                                          },
+                                          {
+                                              "source_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\tools\\c11d\\d9\\materialize_c11e_e4b_r1p_loop_parameter_payloads_v1.gd",
+                                              "source_sha256":  "330e25e9f7c14c1b60ec4816c476159e1a9c8de8af62b25214366b0290b15099",
+                                              "temporary_copy_path":  "C:\\Users\\vinxe\\AppData\\Local\\Temp\\C11E_R1P_5F75045C\\godot_probe_project\\materialize_c11e_e4b_r1p_loop_parameter_payloads_v1.gd",
+                                              "temporary_copy_sha256":  "330e25e9f7c14c1b60ec4816c476159e1a9c8de8af62b25214366b0290b15099"
+                                          }
+                                      ],
+    "python_finalize":  {
+                            "exit_code":  0,
+                            "stdout_path":  "C:\\Users\\vinxe\\AppData\\Local\\Temp\\C11E_R1P_5F75045C\\python_finalize.stdout.log",
+                            "stderr_path":  "C:\\Users\\vinxe\\AppData\\Local\\Temp\\C11E_R1P_5F75045C\\python_finalize.stderr.log",
+                            "stdout_sha256":  "339ac76397783f01697fc2bf50f2b26c4834db0e519eb2da271d36faf4baa0b3",
+                            "stderr_sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                        },
+    "process_success":  true,
+    "checkout_source_files_written":  false,
+    "repository_evidence_artifacts_written":  true,
+    "renderer_or_media_invoked":  false
+}
