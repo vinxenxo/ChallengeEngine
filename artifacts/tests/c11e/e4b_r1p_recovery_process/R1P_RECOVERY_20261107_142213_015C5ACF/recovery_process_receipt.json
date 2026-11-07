@@ -1,0 +1,21 @@
+{
+    "schema":  "C11E-E4B-R1P-ARCHIVE-RECOVERY-PROCESS-RECEIPT-V1",
+    "capture_id":  "R1P_RECOVERY_20261107_142213_015C5ACF",
+    "run_id":  "E4B_R1P_20261107_032743_5F75045C",
+    "powershell_version":  "5.1.26100.9818",
+    "python_launcher":  "C:\\Users\\vinxe\\AppData\\Local\\Programs\\Python\\Launcher\\py.exe",
+    "python_arguments":  "-3.13 -B \"C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\tools\\c11d\\d9\\verify_c11e_e4b_r1p_existing_run_v1.py\" --project-root \"C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\" --run-id \"E4B_R1P_20261107_032743_5F75045C\"",
+    "verifier_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\tools\\c11d\\d9\\verify_c11e_e4b_r1p_existing_run_v1.py",
+    "verifier_sha256":  "6f22082b9ee457fe5bf93ef1c2e5822316888141078574d310d8049a0739c027",
+    "exit_code":  0,
+    "stdout_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_r1p_recovery_process\\R1P_RECOVERY_20261107_142213_015C5ACF\\python.stdout.log",
+    "stderr_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_r1p_recovery_process\\R1P_RECOVERY_20261107_142213_015C5ACF\\python.stderr.log",
+    "stdout_sha256":  "b004a48b98e34b9eb4cf1ca14e3d9ea8b9f223c998b4c0eabd6ab7faac7f77ce",
+    "stderr_sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "recovery_status":  "PASS_R1P_ARCHIVE_RECOVERED_AND_PAYLOADS_REVALIDATED_27_OF_27",
+    "recovered_zip_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_r1p\\E4B_R1P_20261107_032743_5F75045C_RECOVERED.zip",
+    "recovered_zip_sha256":  "d49f54ffdee6026426c2bb87fcb72b5c8a68f09cb64fb91f71e25dc10fd26b52",
+    "checkout_source_files_modified":  false,
+    "renderer_or_media_invoked":  false,
+    "godot_reinvoked":  false
+}

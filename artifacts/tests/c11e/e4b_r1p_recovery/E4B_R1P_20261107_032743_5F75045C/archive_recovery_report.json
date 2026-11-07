@@ -1,0 +1,538 @@
+{
+  "d9_9_d9_10_parent_bindings": 27,
+  "deterministic_repeat_hashes": 27,
+  "family_count": 5,
+  "family_counts": {
+    "c11c_fractal_bloom_v1": 5,
+    "c11c_geometric_waves_v1": 5,
+    "c11c_invisible_forces_v1": 7,
+    "c11c_living_particles_v1": 5,
+    "c11c_sacred_symmetry_v1": 5
+  },
+  "governance": {
+    "D10": "BLOCKED_FOR_PROMOTION",
+    "D4.8": "BLOCKED",
+    "D9.10": "PREPARE_ONLY",
+    "D9.14": "BLOCKED",
+    "D9.16": "BLOCKED",
+    "D9.17": "BLOCKED_NO_GO",
+    "release_authority": "NONE",
+    "renderer": "OFF"
+  },
+  "original_archive": {
+    "byte_for_byte_member_match": true,
+    "entries_with_backslash_separator": 0,
+    "entry_count": 72,
+    "normalized_receipt_sidecar_count": 27,
+    "normalized_selector_receipt_count": 27,
+    "path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_r1p\\E4B_R1P_20261107_032743_5F75045C.zip",
+    "path_separator_false_negative_reproduced": false,
+    "sha256": "a3bb4ddd6f4933026b0221c7e0eb1b62ffe40d477d72ce0190bbe9587b67b800"
+  },
+  "output_root": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_r1p\\E4B_R1P_20261107_032743_5F75045C",
+  "parent_bindings_sha256": "460165c92f3afaebc023a49ab5e0fdb86f7fe4c8133032bb54f6bef67ef0911a",
+  "processes": {
+    "godot_materializer": {
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "f62da0002dc1b45d76885c0ea106cba1fd34ab041626c1fed63cd027edeab477"
+    },
+    "godot_version_process": {
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "d1046084c2493a272b0b439dc2f6dc74b801cd74659c5010a67c1b2f3acc5866"
+    },
+    "python_finalize": {
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "339ac76397783f01697fc2bf50f2b26c4834db0e519eb2da271d36faf4baa0b3"
+    },
+    "python_prepare": {
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "bffc05c42f83d2c20e0ce639eacfced02d2152d47d479826dd7d01bdae459580"
+    },
+    "python_version_process": {
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "f133aa4c375d22e9226cb4ee8a71740d78c77f15c82b7842a0b93e594eed1884"
+    }
+  },
+  "project_root": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+  "python_version": "3.13.14",
+  "r1p_report_sha256": "9e09940c7a915d1533a2ba0a97765626f5c5d8533c870cda27012d4d90c97b41",
+  "receipt_json_count": 27,
+  "receipt_sidecar_count": 27,
+  "receipt_summaries": [
+    {
+      "case_id": "E4B_R1P_20261107_032743_5F75045C_01",
+      "family_id": "c11c_geometric_waves_v1",
+      "gameplay_seed": 100001,
+      "grammar_id": "harmonic_membrane",
+      "grammar_index": 0,
+      "music_seed": 500001,
+      "payload_sha256": "3fa1442b2f4da7043b1466dba2f3ec174ec468aac9afaad080b054635b2cad16",
+      "receipt_sha256": "1d67312f2ac9db48efc98f70e235cf3fe5facf34a7238e9799c4191a2b0f77c6"
+    },
+    {
+      "case_id": "E4B_R1P_20261107_032743_5F75045C_02",
+      "family_id": "c11c_geometric_waves_v1",
+      "gameplay_seed": 100002,
+      "grammar_id": "interference_plane",
+      "grammar_index": 1,
+      "music_seed": 500002,
+      "payload_sha256": "eae79175711ade74272f356335b306df8b039634116c620a86a34752a9d3af07",
+      "receipt_sha256": "b8f75c3baf86142ce0754bb739932e60cef2ec6a403ac6b9ac42fd730e39d8d6"
+    },
+    {
+      "case_id": "E4B_R1P_20261107_032743_5F75045C_03",
+      "family_id": "c11c_geometric_waves_v1",
+      "gameplay_seed": 100003,
+      "grammar_id": "parametric_ribbon",
+      "grammar_index": 2,
+      "music_seed": 500003,
+      "payload_sha256": "2f14859ffa0badaeadeef0030631e67a45088f3aa1d78e4869efb1557e04c6eb",
+      "receipt_sha256": "9325368ecff696d61e431ffdeea09ed1894f1d1070e4a59e3d509a8c680dd7e8"
+    },
+    {
+      "case_id": "E4B_R1P_20261107_032743_5F75045C_04",
+      "family_id": "c11c_geometric_waves_v1",
+      "gameplay_seed": 100004,
+      "grammar_id": "lattice_wave",
+      "grammar_index": 3,
+      "music_seed": 500004,
+      "payload_sha256": "65bda9c402c2529bb4288dd6f9394b6e9a19cf752829b9827a2b29467de02740",
+      "receipt_sha256": "be0f80c1be2a95ff2ad99a1af90350fb7cf67fa43592dfb68995d8d55a8a1b77"
+    },
+    {
+      "case_id": "E4B_R1P_20261107_032743_5F75045C_05",
+      "family_id": "c11c_geometric_waves_v1",
+      "gameplay_seed": 100005,
+      "grammar_id": "orbital_wave",
+      "grammar_index": 4,
+      "music_seed": 500005,
+      "payload_sha256": "82450b8816864cd07d0a490945874eb61e4e1abbed44cb8bcc6545575ad11295",
+      "receipt_sha256": "1953ef299e70fd2b6b7eead41a0c6eb0481c13be2fbfd00dd8a16f88b2b5d5a5"
+    },
+    {
+      "case_id": "E4B_R1P_20261107_032743_5F75045C_06",
+      "family_id": "c11c_fractal_bloom_v1",
+      "gameplay_seed": 100006,
+      "grammar_id": "radial_bloom",
+      "grammar_index": 0,
+      "music_seed": 500006,
+      "payload_sha256": "93152c898a3e2b851a5575c1db90eff5a061d864c80418885f8efd5c415b29d5",
+      "receipt_sha256": "8442079179c0f52d54d9f9dc7f4a927f50255aca9d0646de4fe32b91fe249fc6"
+    },
+    {
+      "case_id": "E4B_R1P_20261107_032743_5F75045C_07",
+      "family_id": "c11c_fractal_bloom_v1",
+      "gameplay_seed": 100007,
+      "grammar_id": "dendritic_tunnel",
+      "grammar_index": 1,
+      "music_seed": 500007,
+      "payload_sha256": "2dd7aa6a27b0dfce1d75a67b25e83db42f71e636cc99c09d42e9ba49b3f7be4b",
+      "receipt_sha256": "7073e15be3ecf1eb6c343d4be0ac03339304f6bbd24c49376c6252b23421ea7e"
+    },
+    {
+      "case_id": "E4B_R1P_20261107_032743_5F75045C_08",
+      "family_id": "c11c_fractal_bloom_v1",
+      "gameplay_seed": 100008,
+      "grammar_id": "spiral_fractal",
+      "grammar_index": 2,
+      "music_seed": 500008,
+      "payload_sha256": "6776ed0267e5ac65bffecba5b150e3656e0922840f71156b21e951679ca5ee2c",
+      "receipt_sha256": "ca04cb6f974b22bdd3618911424842502605c6bc7944dcbf235d81c95a92e2f9"
+    },
+    {
+      "case_id": "E4B_R1P_20261107_032743_5F75045C_09",
+      "family_id": "c11c_fractal_bloom_v1",
+      "gameplay_seed": 100009,
+      "grammar_id": "fractal_filigree",
+      "grammar_index": 3,
+      "music_seed": 500009,
+      "payload_sha256": "45e3e47c1d77b6f09d7c292770598f563536159c387e21d5c0b5b8a71bad190f",
+      "receipt_sha256": "2f113a3f58bf741325e79957dbda2a109d8e1993b6fda1d15fdba53f09950b2e"
+    },
+    {
+      "case_id": "E4B_R1P_20261107_032743_5F75045C_10",
+      "family_id": "c11c_fractal_bloom_v1",
+      "gameplay_seed": 100010,
+      "grammar_id": "nested_worlds",
+      "grammar_index": 4,
+      "music_seed": 500010,
+      "payload_sha256": "e17fdf9e9d6ac28e43b9c2b12eebe266e0c82a1101afa7b6c14681517265850f",
+      "receipt_sha256": "43858603775ba4e9afa72c39b8600d9192b843c9ed692eb30bff678d23c0fd9c"
+    },
+    {
+      "case_id": "E4B_R1P_20261107_032743_5F75045C_11",
+      "family_id": "c11c_sacred_symmetry_v1",
+      "gameplay_seed": 100011,
+      "grammar_id": "astrolabe",
+      "grammar_index": 0,
+      "music_seed": 500011,
+      "payload_sha256": "424dd91ddec67e6f5a7a90dea4fa59c6b49064320b2815856c50c7c75cc8120d",
+      "receipt_sha256": "c757749e48008fcad06d8bc8f2124d4643864a8c7ecf14824c7877338099cd87"
+    },
+    {
+      "case_id": "E4B_R1P_20261107_032743_5F75045C_12",
+      "family_id": "c11c_sacred_symmetry_v1",
+      "gameplay_seed": 100012,
+      "grammar_id": "gear_train",
+      "grammar_index": 1,
+      "music_seed": 500012,
+      "payload_sha256": "5c6302911c962f6dc9a288dc529ded5aa7350584347607493feb41c788a5237a",
+      "receipt_sha256": "c4ccb26ea18587fbb77c78dca078ca49b11afddffc50e9019e1f4fe8d020fd40"
+    },
+    {
+      "case_id": "E4B_R1P_20261107_032743_5F75045C_13",
+      "family_id": "c11c_sacred_symmetry_v1",
+      "gameplay_seed": 100013,
+      "grammar_id": "polygon_orrery",
+      "grammar_index": 2,
+      "music_seed": 500013,
+      "payload_sha256": "445c87e56ac48ac0cc27a8ea975ce0db34b71e45688379b78b5771df54fef56a",
+      "receipt_sha256": "b2c10d445fde66c94f644c315299522450aee0ffc1b9d7e835d529d6c5e6a37e"
+    },
+    {
+      "case_id": "E4B_R1P_20261107_032743_5F75045C_14",
+      "family_id": "c11c_sacred_symmetry_v1",
+      "gameplay_seed": 100014,
+      "grammar_id": "origami_mandala",
+      "grammar_index": 3,
+      "music_seed": 500014,
+      "payload_sha256": "81dcc55ceed8beb8d6069bb4d2d96f6ef83d8013221c8710a55eb7b09aa2311f",
+      "receipt_sha256": "f7cdef4797a7d29a2e0d66fcee375a8a3467ff7f5e0a80fa86f9467c67b77be7"
+    },
+    {
+      "case_id": "E4B_R1P_20261107_032743_5F75045C_15",
+      "family_id": "c11c_sacred_symmetry_v1",
+      "gameplay_seed": 100015,
+      "grammar_id": "celestial_chart",
+      "grammar_index": 4,
+      "music_seed": 500015,
+      "payload_sha256": "c75b0e5998fa722e237630a322845be7b08722752a563ee0164a359b9f339184",
+      "receipt_sha256": "bd4c9baaf38c470c4b3888d04487354575e852d8509f97df75d057d6f44a7d53"
+    },
+    {
+      "case_id": "E4B_R1P_20261107_032743_5F75045C_16",
+      "family_id": "c11c_living_particles_v1",
+      "gameplay_seed": 100016,
+      "grammar_id": "swarm",
+      "grammar_index": 0,
+      "music_seed": 500016,
+      "payload_sha256": "60b0a89dc6d93f1369ea989610f1e791b4ff31147fc619f62bc11d9ef4c4de73",
+      "receipt_sha256": "11edb6f1091630121d56b55ba90eca08fad41d9452ddbe16862ce2fe299e6801"
+    },
+    {
+      "case_id": "E4B_R1P_20261107_032743_5F75045C_17",
+      "family_id": "c11c_living_particles_v1",
+      "gameplay_seed": 100017,
+      "grammar_id": "vortex",
+      "grammar_index": 1,
+      "music_seed": 500017,
+      "payload_sha256": "99a01152ea3718de126bcad32bf59f296fe8fbfa063478dc77ff099f886878b9",
+      "receipt_sha256": "711339e5c7eec3fba5140b0eee83bbe5ee1ada3b7e838eb3fd4013a09e040165"
+    },
+    {
+      "case_id": "E4B_R1P_20261107_032743_5F75045C_18",
+      "family_id": "c11c_living_particles_v1",
+      "gameplay_seed": 100018,
+      "grammar_id": "collision_cloud",
+      "grammar_index": 2,
+      "music_seed": 500018,
+      "payload_sha256": "22a7fe323117e447f14fe217694bb30221ca090c2b01297f17c57c69d7db791a",
+      "receipt_sha256": "b6cb8a806a9c80cfa5eeed12beaa76d2ffcf26d77f1f1abb8147e39edd7dc257"
+    },
+    {
+      "case_id": "E4B_R1P_20261107_032743_5F75045C_19",
+      "family_id": "c11c_living_particles_v1",
+      "gameplay_seed": 100019,
+      "grammar_id": "organic_pulse",
+      "grammar_index": 3,
+      "music_seed": 500019,
+      "payload_sha256": "ce04be4e8064497e005c75b6c67b924a9829f4e9cb24ab5cd3c8bcda1b8518f2",
+      "receipt_sha256": "d456a1f87962ec21e58587f17fed2f9fe871843476f879f0b7bc70e79a0165e1"
+    },
+    {
+      "case_id": "E4B_R1P_20261107_032743_5F75045C_20",
+      "family_id": "c11c_living_particles_v1",
+      "gameplay_seed": 100020,
+      "grammar_id": "magnetic_filament_cloud",
+      "grammar_index": 4,
+      "music_seed": 500020,
+      "payload_sha256": "2f2ab758ad1a462fcd59fc8450382d9426905df6f3b1ddeddd0a15d4ba6210d8",
+      "receipt_sha256": "9a8b44b4baa00cd6494749829e3641691fc2640cb174ed9ea7e9304691b8f7d4"
+    },
+    {
+      "case_id": "E4B_R1P_20261107_032743_5F75045C_21",
+      "family_id": "c11c_invisible_forces_v1",
+      "gameplay_seed": 100021,
+      "grammar_id": "dipole_field",
+      "grammar_index": 0,
+      "music_seed": 500021,
+      "payload_sha256": "734f6c44ea984cb35c4f23361e3cac75c235d0fb3568bfdb8cf1073a6f459172",
+      "receipt_sha256": "ce4cc72804b49e8adebb9bc85565ebe61304f9b0dff45482084245fecf00844b"
+    },
+    {
+      "case_id": "E4B_R1P_20261107_032743_5F75045C_22",
+      "family_id": "c11c_invisible_forces_v1",
+      "gameplay_seed": 100022,
+      "grammar_id": "vortex_field",
+      "grammar_index": 1,
+      "music_seed": 500022,
+      "payload_sha256": "77b8dbc86dce4c8773041af5069973f303de332f732e8df9d8cca1db6d79b2dc",
+      "receipt_sha256": "1ef9457b9105ea5b61f07a070446b1735e28b07aa18227079a0820799b619c90"
+    },
+    {
+      "case_id": "E4B_R1P_20261107_032743_5F75045C_23",
+      "family_id": "c11c_invisible_forces_v1",
+      "gameplay_seed": 100023,
+      "grammar_id": "saddle_field",
+      "grammar_index": 2,
+      "music_seed": 500023,
+      "payload_sha256": "cf910848a42d346f6139f4bb103335d1378e630b5f6e59f681c4aa680e244287",
+      "receipt_sha256": "67eb32ec6411e628a916a506df06aea3edb025211f5d69d41473df2433a82cc2"
+    },
+    {
+      "case_id": "E4B_R1P_20261107_032743_5F75045C_24",
+      "family_id": "c11c_invisible_forces_v1",
+      "gameplay_seed": 100024,
+      "grammar_id": "quadrupole_field",
+      "grammar_index": 3,
+      "music_seed": 500024,
+      "payload_sha256": "0fc5bc3e7ce4d5c28a994116ef9b08ce12f8028dd1779939c16f184021b34770",
+      "receipt_sha256": "617982f150bd9194e76bd17467561e4f0672b4b3a966942cc26caee6a0b281c8"
+    },
+    {
+      "case_id": "E4B_R1P_20261107_032743_5F75045C_25",
+      "family_id": "c11c_invisible_forces_v1",
+      "gameplay_seed": 100025,
+      "grammar_id": "gravitational_lens",
+      "grammar_index": 4,
+      "music_seed": 500025,
+      "payload_sha256": "b4c2ecb7b90400a4b1cbf19c2439c2c11aee111ea270f5629321e39ca17551c6",
+      "receipt_sha256": "3f7d5dff6743d57aedad6eb5cb16675c53a5a0de3ec9832a8d2f4397bd2f923f"
+    },
+    {
+      "case_id": "E4B_R1P_20261107_032743_5F75045C_26",
+      "family_id": "c11c_invisible_forces_v1",
+      "gameplay_seed": 100026,
+      "grammar_id": "topographic_basin",
+      "grammar_index": 5,
+      "music_seed": 500026,
+      "payload_sha256": "a47e9817ed3d932c943452986b2ad611953501c6908c5ea427be437109152874",
+      "receipt_sha256": "beb37a7e7de6129a3799658ca6bcb840f48d8b5d11b694f38c03c2e51a062e1c"
+    },
+    {
+      "case_id": "E4B_R1P_20261107_032743_5F75045C_27",
+      "family_id": "c11c_invisible_forces_v1",
+      "gameplay_seed": 100027,
+      "grammar_id": "scalar_potential",
+      "grammar_index": 6,
+      "music_seed": 500027,
+      "payload_sha256": "a2875b083dfb991152de170d85fabd1d48b16c638d2ee967f35f05e8a47d488d",
+      "receipt_sha256": "eac48856801acc6e43c44b9f9701d2a291e18b7cd708a15011bf3afeeb359246"
+    }
+  ],
+  "recovered_archive": {
+    "byte_for_byte_member_match": true,
+    "bytes": 210961,
+    "entry_count": 72,
+    "path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_r1p\\E4B_R1P_20261107_032743_5F75045C_RECOVERED.zip",
+    "receipt_sidecar_count": 27,
+    "selector_receipt_count": 27,
+    "sha256": "d49f54ffdee6026426c2bb87fcb72b5c8a68f09cb64fb91f71e25dc10fd26b52",
+    "slash_normalized": true
+  },
+  "root_cause": {
+    "classification": "WINDOWS_ZIP_ENTRY_BACKSLASH_SEPARATOR_FALSE_NEGATIVE",
+    "faulty_predicate": "^receipts/[^/]+\\.json$",
+    "godot_rerun": false,
+    "normalized_entry_example": "receipts/01_<run_id>_01.json",
+    "observed_entry_example": "receipts\\\\01_<run_id>_01.json",
+    "receipt_payloads_regenerated": false,
+    "recipes_missing": false
+  },
+  "run_id": "E4B_R1P_20261107_032743_5F75045C",
+  "runner_process_receipt_sha256": "d19d65dc57b07605d6a7fd41098a65983721197764206271e048ed518f54e0a3",
+  "runtime_executable_pins": {
+    "godot_executable": {
+      "path": "C:\\Users\\vinxe\\AppData\\Local\\Microsoft\\WinGet\\Packages\\GodotEngine.GodotEngine.Mono_Microsoft.Winget.Source_8wekyb3d8bbwe\\Godot_v4.7.1-stable_mono_win64\\godot.exe",
+      "sha256": "8ec33ba6a6a953226170cda2a56a58810f6617261a71d6bd6d6ba7cce5e7b79d",
+      "status": "PASS_LIVE_EXECUTABLE_PIN"
+    },
+    "python_launcher": {
+      "path": "C:\\Users\\vinxe\\AppData\\Local\\Programs\\Python\\Launcher\\py.exe",
+      "sha256": "c51dac136d24b196e887e777a0034e971f32ffd7219099ea002f2aaa9243f501",
+      "status": "PASS_LIVE_EXECUTABLE_PIN"
+    }
+  },
+  "schema": "C11E-E4B-R1P-ARCHIVE-RECOVERY-REPORT-V1",
+  "scope": {
+    "audio_or_d3_invoked": false,
+    "checkout_source_files_modified": false,
+    "ffmpeg_invoked": false,
+    "frame_inventory_materialized": false,
+    "media_created": false,
+    "parameter_payload_verification_only": true,
+    "pixels_created": false,
+    "renderer_dispatch_invoked": false
+  },
+  "selector_count": 27,
+  "source_manifest_sha256": "bb5b101492d18ee6c27a649874ffac75aa5dcb2de44cbdc5718902b4cfc6e441",
+  "source_pins": [
+    {
+      "bytes": 32714,
+      "path": "c11c-suite/c11c-producer/producer_schema.json",
+      "sha256": "564f11fb4fee9221910dc373550650172eda4f106d6dc25532cc43cb8e6314a0"
+    },
+    {
+      "bytes": 12932,
+      "path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+      "sha256": "dabb458fc2215156ddb5ebea7e8ebec811098886ce2858733ba9fb13f6075ccb"
+    },
+    {
+      "bytes": 4990,
+      "path": "definitions/c11d/production/C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json",
+      "sha256": "5726310b48e9a85540d48b1e78784571ba04c3f900a5c09add35b49ce5575504"
+    },
+    {
+      "bytes": 5528,
+      "path": "definitions/c11d/production/C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_V1.json",
+      "sha256": "9e206704665ea85226ecc10854be9f679c32fe9ed7efb690a829f6e8456d43da"
+    },
+    {
+      "bytes": 8376,
+      "path": "definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
+      "sha256": "609a4d183aac07c2cbe1abaf41444160fdd137217faffbead3aef618320d57dc"
+    },
+    {
+      "bytes": 7457,
+      "path": "definitions/c11d/production/D_RENDERER_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_PROPOSAL_V1.json",
+      "sha256": "3dd4874e1b6506de6d9ddbe6ad1b567a284b94cc00ef1bac0d35d1731af05e23"
+    },
+    {
+      "bytes": 9507,
+      "path": "definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_V1.json",
+      "sha256": "41a62b0766db47cd99772f28642ef67766314f20f0f7891789d6b7497bbfee85"
+    },
+    {
+      "bytes": 9440,
+      "path": "definitions/c11d/production/D_RENDERER_UNIFIED_PRESENTATION_REGION_POLICY_PROPOSAL_V1.json",
+      "sha256": "101092bb32127bb8854a501a9215c0b6cf69581594383903716907d49719c01a"
+    },
+    {
+      "bytes": 7038,
+      "path": "profiles/presentation/c11c_visual_music_profiles.json",
+      "sha256": "b78706c5a9adbf1581d925f522b76cc3419983177de213734cc79996af5cbf58"
+    },
+    {
+      "bytes": 796318,
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    {
+      "bytes": 19331,
+      "path": "tools/c11d/d9/c11e_e4b_loop_family_stage_contract.py",
+      "sha256": "bfbfa0cc108f00b78003e5480c86af1ee5ca63772d24a7792f8cdb6953b6af5d"
+    },
+    {
+      "bytes": 15051,
+      "path": "tools/c11d/d9/d_render_adapter.py",
+      "sha256": "222742677cd498368429a3ec0dcdd922c44197bb5ada3638081138fb77c31bf1"
+    },
+    {
+      "bytes": 10868,
+      "path": "tools/c11d/d9/editorial_render_bridge.py",
+      "sha256": "fe9d40052b0f4ff6f1c862c010ae7b3b13070b6ce935be6d62f9dcaec63a644a"
+    },
+    {
+      "bytes": 12315,
+      "path": "tools/c11d/d9/test_c11e_e4b_r1p_family_grammar_static_audit.py",
+      "sha256": "600c22dafe2e377cb02b4a69f8823a44745d705b71cdb0d6bcec38da52df3e92"
+    },
+    {
+      "bytes": 19692,
+      "path": "tools/c11d/d9/universal_producer.py",
+      "sha256": "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1"
+    },
+    {
+      "bytes": 1827,
+      "path": "tools/prototypes/c11c_common/C11CEditorialColors.gd",
+      "sha256": "46326fbd732d514b5bfa2d964b99bdd14f2933dd01ec65689749bf40fda32632"
+    },
+    {
+      "bytes": 16138,
+      "path": "tools/prototypes/c11c_common/C11CPaletteBank.gd",
+      "sha256": "6b64d99afb148b0dc5b0f8e27b50558e9b77df4d2fdff98d52495d81d53fdd14"
+    },
+    {
+      "bytes": 13703,
+      "path": "tools/prototypes/c11c_common/C11CVariationProfile.gd",
+      "sha256": "f7df994d8842183275bc331decd75762a153f3100248c7cc8b590e34c1347e2d"
+    },
+    {
+      "bytes": 1048,
+      "path": "tools/prototypes/c11c_common/C11CVisualLoopDuration.gd",
+      "sha256": "4ea0b0decbd3a22ade42023e819a74872f312b63facc1163dc73a7c656fdbaf8"
+    },
+    {
+      "bytes": 7054,
+      "path": "tools/prototypes/c11c_common/TechnobabbleGenerator.gd",
+      "sha256": "f2fbef4ee4b8b07d1b4ebe7781bc5d987e37c43a5f5eb317397a377288890c9f"
+    },
+    {
+      "bytes": 11196,
+      "path": "tools/prototypes/c11c_fractal_bloom_v1/FractalBloomPrototype.gd",
+      "sha256": "b596ecba5eeae80ba615d7cb8a741dffcab9db4c44296e660f4f9d6919cc5c55"
+    },
+    {
+      "bytes": 12922,
+      "path": "tools/prototypes/c11c_fractal_bloom_v1/run_prototype.ps1",
+      "sha256": "02e3721c92046f1f69119e5bbc6c69709dd0b97fad7191c08213ecc233930801"
+    },
+    {
+      "bytes": 11359,
+      "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesPrototype.gd",
+      "sha256": "ab2560cbe7fa42c5cad3b143aa59d1f2a0dc047682f7667983c7c0a0f6dbb61c"
+    },
+    {
+      "bytes": 12946,
+      "path": "tools/prototypes/c11c_geometric_waves_v1/run_prototype.ps1",
+      "sha256": "661bd61df61bc633e4b87cd4b9413c4317c8d4b6068194245aea7d40fcb5c7cd"
+    },
+    {
+      "bytes": 11442,
+      "path": "tools/prototypes/c11c_invisible_forces_v1/InvisibleForcesPrototype.gd",
+      "sha256": "a68661a5fdf792aa7fe701afa6fbf1631a2b8215c214032f58ecfe0c69d8374a"
+    },
+    {
+      "bytes": 12972,
+      "path": "tools/prototypes/c11c_invisible_forces_v1/run_prototype.ps1",
+      "sha256": "88924dd86ebdc9b51a51f354ec22f40beb75cf6daafbe869283fa187568b6f60"
+    },
+    {
+      "bytes": 11423,
+      "path": "tools/prototypes/c11c_living_particles_v1/LivingParticlesPrototype.gd",
+      "sha256": "835ba0df2c160a259be39bd1977bfac0e6a66f903ce1aa6b4247af7c508ad94a"
+    },
+    {
+      "bytes": 12973,
+      "path": "tools/prototypes/c11c_living_particles_v1/run_prototype.ps1",
+      "sha256": "3674fdf778927022d2ebc1d1a96865b441479c5e4e71802e90837d654278a638"
+    },
+    {
+      "bytes": 11376,
+      "path": "tools/prototypes/c11c_sacred_symmetry_v1/SacredSymmetryPrototype.gd",
+      "sha256": "12fdbc13e05df28b26cf95fe1907d150bd41f29196287700153521e9baee336b"
+    },
+    {
+      "bytes": 12961,
+      "path": "tools/prototypes/c11c_sacred_symmetry_v1/run_prototype.ps1",
+      "sha256": "8eea21f7b72f679d8951410597f0ecf968ac0a6f1ee629a48de965ea62b60b6e"
+    }
+  ],
+  "source_pins_verified_against_active_checkout": 30,
+  "status": "PASS_R1P_ARCHIVE_RECOVERED_AND_PAYLOADS_REVALIDATED_27_OF_27"
+}

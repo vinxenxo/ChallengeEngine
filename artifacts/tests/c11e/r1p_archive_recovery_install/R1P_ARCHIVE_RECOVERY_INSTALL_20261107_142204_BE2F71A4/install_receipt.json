@@ -1,0 +1,76 @@
+{
+    "schema":  "C11E-E4B-R1P-ARCHIVE-RECOVERY-INSTALL-RECEIPT-V1",
+    "status":  "PASS_ADD_ONLY_INSTALL",
+    "install_id":  "R1P_ARCHIVE_RECOVERY_INSTALL_20261107_142204_BE2F71A4",
+    "powershell_version":  "5.1.26100.9818",
+    "project_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+    "package_manifest_sha256":  "9caf06569abaeb63538dd48fe9314b6036098fc3bb7d71d44dac3dd707f0950f",
+    "frozen_c11c_manifest_sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "static_audit_sha256":  "600c22dafe2e377cb02b4a69f8823a44745d705b71cdb0d6bcec38da52df3e92",
+    "installed_file_count":  12,
+    "installed_files":  [
+                            {
+                                "path":  "docs/current/e/C11D_E_BLOCKER_REMEDIATION_REGISTER_20261107_V6.md",
+                                "bytes":  4443,
+                                "sha256":  "51ded6055677b8bff3c8be88b34f8699b6e0b4f4d95492b546d976053c668c98"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_CURRENT_AUTHORITY_20261107_V85.md",
+                                "bytes":  7410,
+                                "sha256":  "035f119a9ee6a98b417c5107bee86c0e10867162ea999b3a6aa9b702ddc4acf0"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_CURRENT_DOC_INDEX_20261107_V45.md",
+                                "bytes":  2685,
+                                "sha256":  "e816f103221a9d7a5347d7344af829386fde39c07ae14174940a02113b21094b"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_E3_EXECUTION_BACKLOG_20261107_V60.md",
+                                "bytes":  3557,
+                                "sha256":  "1ef68d75b39030cec65802edaca3eb57e840b71d02fd05a111409d073f209003"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_E4B_R1P_LOOP_PARAMETER_PAYLOADS_20261107_V3.md",
+                                "bytes":  4877,
+                                "sha256":  "bed52f6e6c6be3512240090ba83c482c87bdeb8709a7a59e27c4e9535692cf2a"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_E4B_R1V_ACTUAL_FRAME_INVENTORY_DESIGN_20261107_V1.md",
+                                "bytes":  7870,
+                                "sha256":  "a7d5459beddb293227e27edd91edc92418e0434b8e7222ca834e334150a475c6"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261107_V83.md",
+                                "bytes":  3631,
+                                "sha256":  "8c0a3e2d07fe23e28bf3fc15bb9e672b9d2c9c2c5842d8d5dbcb91d4ca341c98"
+                            },
+                            {
+                                "path":  "docs/history/e/C11E_E4B_R1P_ARCHIVE_SEPARATOR_FALSE_NEGATIVE_RECOVERY_20261107_V1.md",
+                                "bytes":  4153,
+                                "sha256":  "e1dc245071a745adf040a82c85e6541dafaec7d91387d07b483d42b7be11203f"
+                            },
+                            {
+                                "path":  "docs/prompts/C11E_NEXT_WINDOW_START_PROMPT_20261107_V83.md",
+                                "bytes":  5265,
+                                "sha256":  "f03d55d5c337fcc961fe50c964ae999504075bd511023e401df9bee892b4e8fb"
+                            },
+                            {
+                                "path":  "tools/c11d/d9/RECOVER_C11E_E4B_R1P_EXISTING_RUN_V1.ps1",
+                                "bytes":  5763,
+                                "sha256":  "7aba01127b991a468c19e239e559d5719fc68cb4f29067d00f5344317d8a4218"
+                            },
+                            {
+                                "path":  "tools/c11d/d9/RUN_C11E_E4B_R1P_LOOP_PARAMETER_PAYLOADS_V2.ps1",
+                                "bytes":  15971,
+                                "sha256":  "8e592af25e84ce296b89dcd5232c589369e33016a4b89bc4c2a6b6107c7a175d"
+                            },
+                            {
+                                "path":  "tools/c11d/d9/verify_c11e_e4b_r1p_existing_run_v1.py",
+                                "bytes":  31097,
+                                "sha256":  "6f22082b9ee457fe5bf93ef1c2e5822316888141078574d310d8049a0739c027"
+                            }
+                        ],
+    "existing_files_overwritten":  false,
+    "existing_files_deleted":  false,
+    "source_files_patched":  false
+}
