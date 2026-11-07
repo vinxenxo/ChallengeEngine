@@ -1,0 +1,130 @@
+{
+  "schema": "C11E-D4.8-R1V-QUALIFICATION-ONLY-POLICY-V1",
+  "schema_version": "1.0",
+  "policy_id": "C11E_R1V_FIVE_FAMILY_SOURCE_QUALIFICATION_ONLY_V1",
+  "status": "PROPOSED_NOT_APPROVED",
+  "execution_authorized": false,
+  "policy_basis": {
+    "existing_production_activation_policy_v1_mutated": false,
+    "existing_renderer_policy_state": "DISABLED",
+    "architecture_decision_id": "C11E_OPTION_C_D_POSTCOMPOSITION_20261107",
+    "r1p_run_id": "E4B_R1P_20261107_032743_5F75045C",
+    "r1p_recovered_zip_sha256": "d49f54ffdee6026426c2bb87fcb72b5c8a68f09cb64fb91f71e25dc10fd26b52",
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+  },
+  "scope": {
+    "purpose": "FIVE_FAMILY_SILENT_C11C_SOURCE_VIDEO_AND_R1V_FRAME_IDENTITY_QUALIFICATION_ONLY",
+    "allowed_selector_count": 5,
+    "repeat_count_per_selector": 2,
+    "total_launcher_invocations": 10,
+    "allowed_launchers": "ONLY_THE_FIVE_PINNED_C11C_FAMILY_RUN_PROTOTYPE_PS1_FILES_IN_THE_SELECTOR_ALLOWLIST",
+    "required_switch": "-NoSound",
+    "required_seed_source": "R1P_RECEIPT.seed_domains.gameplay_seed",
+    "music_seed_passed_to_visual_launcher": false,
+    "output_roots": "TEN_UNIQUE_NONEXISTENT_EMPTY_PATHS; NEVER_CLEAN_OR_OVERWRITE",
+    "read_only_inspection": [
+      "FFPROBE_CONTAINER_AND_STREAM_METADATA",
+      "FFMPEG_DECODE_ONLY_FRAME_STREAM_TO_IN_MEMORY_PIXEL_HASHER",
+      "ORDERED_FRAME_PTS_TIMEBASE_DIMENSIONS_FORMAT_AND_PIXEL_SHA256"
+    ]
+  },
+  "selectors": [
+    {
+      "receipt_index": 6,
+      "family_id": "c11c_fractal_bloom_v1",
+      "grammar_id": "radial_bloom",
+      "grammar_index": 0,
+      "gameplay_seed": 100006,
+      "duration_seconds": 22.0,
+      "fps": 30,
+      "expected_frame_count_consistency_only": 660,
+      "launcher_path": "tools/prototypes/c11c_fractal_bloom_v1/run_prototype.ps1",
+      "launcher_sha256": "02e3721c92046f1f69119e5bbc6c69709dd0b97fad7191c08213ecc233930801",
+      "prototype_path": "tools/prototypes/c11c_fractal_bloom_v1/FractalBloomPrototype.gd",
+      "prototype_sha256": "b596ecba5eeae80ba615d7cb8a741dffcab9db4c44296e660f4f9d6919cc5c55"
+    },
+    {
+      "receipt_index": 1,
+      "family_id": "c11c_geometric_waves_v1",
+      "grammar_id": "harmonic_membrane",
+      "grammar_index": 0,
+      "gameplay_seed": 100001,
+      "duration_seconds": 23.0,
+      "fps": 30,
+      "expected_frame_count_consistency_only": 690,
+      "launcher_path": "tools/prototypes/c11c_geometric_waves_v1/run_prototype.ps1",
+      "launcher_sha256": "661bd61df61bc633e4b87cd4b9413c4317c8d4b6068194245aea7d40fcb5c7cd",
+      "prototype_path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesPrototype.gd",
+      "prototype_sha256": "ab2560cbe7fa42c5cad3b143aa59d1f2a0dc047682f7667983c7c0a0f6dbb61c"
+    },
+    {
+      "receipt_index": 21,
+      "family_id": "c11c_invisible_forces_v1",
+      "grammar_id": "dipole_field",
+      "grammar_index": 0,
+      "gameplay_seed": 100021,
+      "duration_seconds": 22.0,
+      "fps": 30,
+      "expected_frame_count_consistency_only": 660,
+      "launcher_path": "tools/prototypes/c11c_invisible_forces_v1/run_prototype.ps1",
+      "launcher_sha256": "88924dd86ebdc9b51a51f354ec22f40beb75cf6daafbe869283fa187568b6f60",
+      "prototype_path": "tools/prototypes/c11c_invisible_forces_v1/InvisibleForcesPrototype.gd",
+      "prototype_sha256": "a68661a5fdf792aa7fe701afa6fbf1631a2b8215c214032f58ecfe0c69d8374a"
+    },
+    {
+      "receipt_index": 16,
+      "family_id": "c11c_living_particles_v1",
+      "grammar_id": "swarm",
+      "grammar_index": 0,
+      "gameplay_seed": 100016,
+      "duration_seconds": 20.0,
+      "fps": 30,
+      "expected_frame_count_consistency_only": 600,
+      "launcher_path": "tools/prototypes/c11c_living_particles_v1/run_prototype.ps1",
+      "launcher_sha256": "3674fdf778927022d2ebc1d1a96865b441479c5e4e71802e90837d654278a638",
+      "prototype_path": "tools/prototypes/c11c_living_particles_v1/LivingParticlesPrototype.gd",
+      "prototype_sha256": "835ba0df2c160a259be39bd1977bfac0e6a66f903ce1aa6b4247af7c508ad94a"
+    },
+    {
+      "receipt_index": 11,
+      "family_id": "c11c_sacred_symmetry_v1",
+      "grammar_id": "astrolabe",
+      "grammar_index": 0,
+      "gameplay_seed": 100011,
+      "duration_seconds": 23.0,
+      "fps": 30,
+      "expected_frame_count_consistency_only": 690,
+      "launcher_path": "tools/prototypes/c11c_sacred_symmetry_v1/run_prototype.ps1",
+      "launcher_sha256": "8eea21f7b72f679d8951410597f0ecf968ac0a6f1ee629a48de965ea62b60b6e",
+      "prototype_path": "tools/prototypes/c11c_sacred_symmetry_v1/SacredSymmetryPrototype.gd",
+      "prototype_sha256": "12fdbc13e05df28b26cf95fe1907d150bd41f29196287700153521e9baee336b"
+    }
+  ],
+  "forbidden": {
+    "d_compositor_dispatch": true,
+    "d9_10_renderer_consumer_dispatch": true,
+    "d3_music_engine": true,
+    "pcm_audio_generation": true,
+    "ffmpeg_encode_filter_or_mux": true,
+    "ffprobe_write_or_modify": true,
+    "longform": true,
+    "smoke18_or_matrix99": true,
+    "production_delivery": true,
+    "freeze_or_promotion": true,
+    "release_authority": true,
+    "c11c_source_mechanics_rng_or_protected_path_modification": true
+  },
+  "approval": {
+    "policy_author": "PENDING_EXPLICIT_ASSIGNMENT",
+    "independent_reviewer": "PENDING_EXPLICIT_ASSIGNMENT",
+    "operator_approver": "PENDING_EXPLICIT_APPROVAL",
+    "approval_timestamp": null,
+    "approval_record_sha256": null
+  },
+  "governance": {
+    "renderer": "OFF",
+    "d4_8": "BLOCKED",
+    "d9_10": "PREPARE_ONLY",
+    "release_authority": "NONE"
+  }
+}

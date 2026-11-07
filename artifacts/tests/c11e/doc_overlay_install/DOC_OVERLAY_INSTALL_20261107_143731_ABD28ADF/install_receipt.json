@@ -1,0 +1,74 @@
+{
+    "status":  "PASS_ADD_ONLY_INSTALL",
+    "package_id":  "C11E_E4B_R1P_CLOSEOUT_R1V_ENTRY_V1_20261107",
+    "package_manifest_sha256":  "26e5ec97748d6b3fcab49586d1ab586a9905fbd05db34f74b9df4842a7538c07",
+    "frozen_c11c_manifest_sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "installed_file_count":  13,
+    "files":  [
+                  {
+                      "path":  "artifacts/tests/c11e/e4b_r1p_recovery/R1P_LIBRARY_PAIR_CROSSCHECK_20261107.json",
+                      "sha256":  "4c06fed293f43dce8fd69a81b08731311028a78ae7cbccfc98d54976bfdc01fa",
+                      "size_bytes":  3231
+                  },
+                  {
+                      "path":  "docs/current/e/C11D_E_BLOCKER_REMEDIATION_REGISTER_20261107_V7.md",
+                      "sha256":  "90ef3e03c4da397d4c6d935e5698251d6bbc530127454b72a99878c8d5053698",
+                      "size_bytes":  3645
+                  },
+                  {
+                      "path":  "docs/current/e/C11E_CURRENT_AUTHORITY_20261107_V86.md",
+                      "sha256":  "a292ec24fba853de431e3eff62affc1cd439428153026e1ab0f645dede864be2",
+                      "size_bytes":  7456
+                  },
+                  {
+                      "path":  "docs/current/e/C11E_CURRENT_DOC_INDEX_20261107_V46.md",
+                      "sha256":  "787137bf45e5421f7ac0f023372dad797cfd163cf31f9a3f31a96c48ef4eaa35",
+                      "size_bytes":  2514
+                  },
+                  {
+                      "path":  "docs/current/e/C11E_D4_8_QUALIFICATION_AUTHORIZATION_REQUIREMENTS_20261107_V1.md",
+                      "sha256":  "597b477a21c1db7214585319abfd4e9700d8cef9bbe84e22ae03b95bb986adb9",
+                      "size_bytes":  2827
+                  },
+                  {
+                      "path":  "docs/current/e/C11E_D_BASELINE_ISOLATION_DECISION_DOCKET_20261107_V1.md",
+                      "sha256":  "502d70f7a7ff9afec3d482b77fe6048961df66614afe3f808d82a5e600c5d2bf",
+                      "size_bytes":  7168
+                  },
+                  {
+                      "path":  "docs/current/e/C11E_E3_EXECUTION_BACKLOG_20261107_V61.md",
+                      "sha256":  "0cc841cab273d5027ff2051c2a8e3189127f4c419781c483de1ad87e9018b47e",
+                      "size_bytes":  4231
+                  },
+                  {
+                      "path":  "docs/current/e/C11E_E4B_R1P_LOOP_PARAMETER_PAYLOADS_20261107_V4.md",
+                      "sha256":  "e9c8d84f27439e8442b62ab37d337f08fd249dd2414501fa7e0a680a4a8784ec",
+                      "size_bytes":  3631
+                  },
+                  {
+                      "path":  "docs/current/e/C11E_E4B_R1V_ACTUAL_FRAME_INVENTORY_DESIGN_20261107_V2.md",
+                      "sha256":  "8adce3a6ccdc0fa5fc6adcee2960cc1546d880b46f46ebe1b48ea46c75c68a5e",
+                      "size_bytes":  7643
+                  },
+                  {
+                      "path":  "docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261107_V84.md",
+                      "sha256":  "9c64d4044c065af15af419cff72b5c7e65d8e4c109ec51ab5dc7261e7e35936c",
+                      "size_bytes":  3048
+                  },
+                  {
+                      "path":  "docs/history/c11e/C11E_E4B_R1P_WINDOWS_RECOVERY_CLOSEOUT_20261107_V1.md",
+                      "sha256":  "3e6a6c2d95b5bf4963db3aca830c76b4873e1cfe95d630e6c72a637e41b8c1e1",
+                      "size_bytes":  2467
+                  },
+                  {
+                      "path":  "docs/prompts/C11E_CONTINUATION_MASTER_PROMPT_20261107_V86.md",
+                      "sha256":  "a2d1a33a8bba7eb5eb4f37c001c983d2b1b4bd32f6fca7d7844c208d6d9ca036",
+                      "size_bytes":  7287
+                  },
+                  {
+                      "path":  "docs/prompts/C11E_NEXT_WINDOW_START_PROMPT_20261107_V86.md",
+                      "sha256":  "b53887f7daf3f057338f75e1c33e1a58ffc7f67b801769cad31ccd0373adf500",
+                      "size_bytes":  3119
+                  }
+              ]
+}

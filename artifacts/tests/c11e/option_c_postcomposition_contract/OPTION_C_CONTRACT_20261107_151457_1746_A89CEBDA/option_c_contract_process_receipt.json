@@ -1,0 +1,58 @@
+{
+    "schema":  "C11E-E-OPTION-C-POSTCOMPOSITION-PROCESS-RECEIPT-V1",
+    "run_id":  "OPTION_C_CONTRACT_20261107_151457_1746_A89CEBDA",
+    "started_utc":  "2026-11-07T14:14:57.2060776Z",
+    "completed_utc":  "2026-11-07T14:14:59.4610271Z",
+    "project_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+    "recovered_r1p_zip":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_r1p\\E4B_R1P_20261107_032743_5F75045C_RECOVERED.zip",
+    "recovered_r1p_zip_sha256":  "d49f54ffdee6026426c2bb87fcb72b5c8a68f09cb64fb91f71e25dc10fd26b52",
+    "frozen_c11c_manifest_sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "accepted_static_audit_sha256":  "600c22dafe2e377cb02b4a69f8823a44745d705b71cdb0d6bcec38da52df3e92",
+    "python_launcher":  "C:\\Users\\vinxe\\AppData\\Local\\Programs\\Python\\Launcher\\py.exe",
+    "python_version_requested":  "3.13",
+    "process_count":  2,
+    "processes":  [
+                      {
+                          "name":  "OPTION_C_UNIT_TESTS",
+                          "executable":  "C:\\Users\\vinxe\\AppData\\Local\\Programs\\Python\\Launcher\\py.exe",
+                          "arguments":  "-3.13 \"C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\tools\\c11d\\d9\\test_c11e_option_c_postcomposition_contract.py\" --project-root \"C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\" --r1p-zip \"C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_r1p\\E4B_R1P_20261107_032743_5F75045C_RECOVERED.zip\"",
+                          "exit_code":  0,
+                          "stdout_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\option_c_postcomposition_contract\\OPTION_C_CONTRACT_20261107_151457_1746_A89CEBDA\\unit_tests.stdout.log",
+                          "stdout_sha256":  "ca65c7ad13194a0735e35dcb1d2c8742d84515707c9680c696c33fbf0ad57b64",
+                          "stderr_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\option_c_postcomposition_contract\\OPTION_C_CONTRACT_20261107_151457_1746_A89CEBDA\\unit_tests.stderr.log",
+                          "stderr_sha256":  "cd17f8f54ab9660de12d1ae1bee51ec72ca1db8f13845456ab7a88a68026fd21"
+                      },
+                      {
+                          "name":  "OPTION_C_CONTRACT_VALIDATION",
+                          "executable":  "C:\\Users\\vinxe\\AppData\\Local\\Programs\\Python\\Launcher\\py.exe",
+                          "arguments":  "-3.13 \"C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\tools\\c11d\\d9\\c11e_option_c_postcomposition_contract.py\" --project-root \"C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\" --r1p-zip \"C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_r1p\\E4B_R1P_20261107_032743_5F75045C_RECOVERED.zip\" --report-out \"C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\option_c_postcomposition_contract\\OPTION_C_CONTRACT_20261107_151457_1746_A89CEBDA\\option_c_contract_report.json\"",
+                          "exit_code":  0,
+                          "stdout_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\option_c_postcomposition_contract\\OPTION_C_CONTRACT_20261107_151457_1746_A89CEBDA\\contract.stdout.log",
+                          "stdout_sha256":  "ed1a8e707718af69f5b051f0cbcc38756d813986a8fe8faf85b5229d58cb19af",
+                          "stderr_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\option_c_postcomposition_contract\\OPTION_C_CONTRACT_20261107_151457_1746_A89CEBDA\\contract.stderr.log",
+                          "stderr_sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                      }
+                  ],
+    "report_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\option_c_postcomposition_contract\\OPTION_C_CONTRACT_20261107_151457_1746_A89CEBDA\\option_c_contract_report.json",
+    "report_sha256":  "ba76c626d92736c2f139380ec2b93d865015e8ef7e53f2881fdb16b6c4a54246",
+    "governance":  {
+                       "renderer":  "OFF",
+                       "d4_8":  "BLOCKED",
+                       "d9_10":  "PREPARE_ONLY",
+                       "d9_14":  "BLOCKED",
+                       "d9_16":  "BLOCKED",
+                       "d9_17":  "BLOCKED_NO_GO",
+                       "d10":  "BLOCKED_FOR_PROMOTION",
+                       "release_authority":  "NONE",
+                       "launcher_invoked":  false,
+                       "godot_invoked":  false,
+                       "ffprobe_invoked":  false,
+                       "ffmpeg_invoked":  false,
+                       "compositor_invoked":  false,
+                       "d3_audio_invoked":  false,
+                       "mux_invoked":  false,
+                       "media_created":  false,
+                       "c11c_source_mutation":  false
+                   },
+    "overall_status":  "PASS_OPTION_C_HANDOFF_CONTRACT_27_OF_27_PREPARE_ONLY"
+}

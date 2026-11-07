@@ -1,0 +1,73 @@
+{
+  "schema": "c11e_r1p_library_pair_crosscheck_v1",
+  "created_at": "2026-11-07",
+  "status": "PASS_READ_ONLY_PAIR_CROSSCHECK_72_OF_72",
+  "scope": "Independent read-only comparison of the operator-supplied original and recovered R1P archives; no checkout mutation, no execution, no frame extraction, no media generation.",
+  "run_id": "E4B_R1P_20261107_032743_5F75045C",
+  "archives": {
+    "original": {
+      "library_name": "E4B_R1P_20261107_032743_5F75045C.zip",
+      "sha256": "a3bb4ddd6f4933026b0221c7e0eb1b62ffe40d477d72ce0190bbe9587b67b800",
+      "member_count": 72,
+      "member_separator": "backslash"
+    },
+    "recovered": {
+      "library_name": "E4B_R1P_20261107_032743_5F75045C_RECOVERED.zip",
+      "sha256": "d49f54ffdee6026426c2bb87fcb72b5c8a68f09cb64fb91f71e25dc10fd26b52",
+      "member_count": 72,
+      "member_separator": "forward_slash"
+    }
+  },
+  "comparison": {
+    "normalization": "replace_backslash_with_forward_slash_for_archive_member_names_only",
+    "normalized_member_names_equal": true,
+    "member_byte_streams_equal": "72/72",
+    "recovered_zip_crc_check": "PASS",
+    "recovered_zip_backslash_member_paths": 0,
+    "only_difference": "Archive member path separator normalization; member payload bytes are unchanged."
+  },
+  "receipt_validation": {
+    "receipt_json_count": 27,
+    "receipt_sidecar_count": 27,
+    "canonical_receipt_digests": "27/27_PASS",
+    "sidecar_digest_matches": "27/27_PASS",
+    "deterministic_repeat_hashes": "27/27_PASS",
+    "family_counts": {
+      "c11c_fractal_bloom_v1": 5,
+      "c11c_geometric_waves_v1": 5,
+      "c11c_invisible_forces_v1": 7,
+      "c11c_living_particles_v1": 5,
+      "c11c_sacred_symmetry_v1": 5
+    },
+    "unique_selectors": 27,
+    "gameplay_seed_domain": "request.seed",
+    "music_seed_domain": "request.music_seed",
+    "seed_domains_independent": true,
+    "timing_descriptors": {
+      "20_seconds_at_30fps": {"selectors": 8, "expected_frames_descriptor_only": 600},
+      "22_seconds_at_30fps": {"selectors": 7, "expected_frames_descriptor_only": 660},
+      "23_seconds_at_30fps": {"selectors": 12, "expected_frames_descriptor_only": 690}
+    }
+  },
+  "operator_windows_console": {
+    "recovery_status": "PASS_R1P_ARCHIVE_RECOVERED_AND_PAYLOADS_REVALIDATED_27_OF_27",
+    "process_exit_code": 0,
+    "recovery_verifier_sha256": "6f22082b9ee457fe5bf93ef1c2e5822316888141078574d310d8049a0739c027",
+    "stdout_sha256": "b004a48b98e34b9eb4cf1ca14e3d9ea8b9f223c998b4c0eabd6ab7faac7f77ce",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "process_receipt_sha256": "b4299cca349b646cc05fffaf83765f5108ad55b70d177d27ce0745031a4c07a0",
+    "recovery_report_sha256": "6bd16983a01919c7c41f785b281988139ae2a569a23daa81db6a20694f21c640",
+    "active_source_pins": "30/30_PASS",
+    "live_python_launcher_pin": "PASS",
+    "live_godot_executable_pin": "PASS"
+  },
+  "phase_boundary": {
+    "r1p": "CLOSED_PASS_27_OF_27",
+    "actual_frame_inventory_exists": false,
+    "pixel_payloads_exist": false,
+    "family_launcher_renders_performed_by_r1p": false,
+    "audio_or_mux_performed_by_r1p": false,
+    "renderer_authorized": false,
+    "production_or_release_authorized": false
+  }
+}

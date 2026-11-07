@@ -1,0 +1,14 @@
+test_all_27_receipts_resolve_to_unique_handoffs (__main__.OptionCStaticContractTests.test_all_27_receipts_resolve_to_unique_handoffs) ... ok
+test_contract_module_has_no_process_or_media_dispatch_surface (__main__.OptionCStaticContractTests.test_contract_module_has_no_process_or_media_dispatch_surface) ... ok
+test_d_output_must_be_distinct_from_c_source (__main__.OptionCStaticContractTests.test_d_output_must_be_distinct_from_c_source) ... ok
+test_each_handoff_keeps_seed_domains_separate (__main__.OptionCStaticContractTests.test_each_handoff_keeps_seed_domains_separate) ... ok
+test_handoffs_do_not_claim_actual_source_or_output_media (__main__.OptionCStaticContractTests.test_handoffs_do_not_claim_actual_source_or_output_media) ... ok
+test_live_pin_validations_are_exactly_30_plus_3 (__main__.OptionCStaticContractTests.test_live_pin_validations_are_exactly_30_plus_3) ... ok
+test_operator_approved_option_c_but_execution_not_authorized (__main__.OptionCStaticContractTests.test_operator_approved_option_c_but_execution_not_authorized) ... ok
+test_r1v_scope_is_five_pilots_and_ten_proposed_calls (__main__.OptionCStaticContractTests.test_r1v_scope_is_five_pilots_and_ten_proposed_calls) ... ok
+test_tampered_handoff_cannot_enable_dispatch (__main__.OptionCStaticContractTests.test_tampered_handoff_cannot_enable_dispatch) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.054s
+
+OK

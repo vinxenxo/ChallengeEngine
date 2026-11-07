@@ -1,0 +1,2475 @@
+{
+  "architecture_decision": {
+    "boundary_sha256": "795be1da157dd07fd4992d3ec6d7cf091a015eed72d16d86df13085db296098b",
+    "decision_sha256": "22cec26baecfb6018a814750cc781143f5fa13f897d3dce708f6e9e074f669ac",
+    "decision_state": "OPERATOR_APPROVED_OPTION_C",
+    "selected_option": "C"
+  },
+  "governance": {
+    "audio_or_d3_invoked": false,
+    "c11c_source_mutation": false,
+    "compositor_invoked": false,
+    "d10": "BLOCKED_FOR_PROMOTION",
+    "d4_8": "BLOCKED",
+    "d9_10": "PREPARE_ONLY",
+    "d9_14": "BLOCKED",
+    "d9_16": "BLOCKED",
+    "d9_17": "BLOCKED_NO_GO",
+    "ffmpeg_invoked": false,
+    "ffprobe_invoked": false,
+    "godot_invoked": false,
+    "launcher_invoked": false,
+    "media_created": false,
+    "mux_invoked": false,
+    "release_authority": "NONE",
+    "renderer": "OFF",
+    "renderer_dispatch_invoked": false
+  },
+  "handoffs": [
+    {
+      "architecture": "OPTION_C_D_ONLY_POSTCOMPOSITION_OVER_IMMUTABLE_C_SOURCE",
+      "boundary_contract_sha256": "795be1da157dd07fd4992d3ec6d7cf091a015eed72d16d86df13085db296098b",
+      "c_source_video": {
+        "byte_length": null,
+        "decoded_pixel_manifest_sha256": null,
+        "ffprobe_metadata_sha256": null,
+        "frame_inventory_sha256": null,
+        "immutable_input_required": true,
+        "sha256": null,
+        "source_path": null,
+        "state": "NOT_YET_MATERIALIZED_R1V_REQUIRED"
+      },
+      "composition_policy": {
+        "dispatchable": false,
+        "layout_measurement": "UNKNOWN",
+        "proposal_path": "definitions/c11d/production/C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_V1.json",
+        "proposal_sha256": "9e206704665ea85226ecc10854be9f679c32fe9ed7efb690a829f6e8456d43da",
+        "proposal_status": "PROPOSED_NOT_APPROVED_NOT_RENDERER_INPUT"
+      },
+      "content_identity": {
+        "content_type": "visual_loops",
+        "family_id": "c11c_geometric_waves_v1",
+        "grammar_id": "harmonic_membrane",
+        "grammar_index": 0
+      },
+      "d_output": {
+        "may_overwrite_c_source": false,
+        "output_artifact_path": null,
+        "separate_artifact_required": true,
+        "state": "NOT_MATERIALIZED"
+      },
+      "decision_sha256": "22cec26baecfb6018a814750cc781143f5fa13f897d3dce708f6e9e074f669ac",
+      "editorial": {
+        "source": "D9_9_CANONICAL_EDITORIAL_ALLOWLIST",
+        "values": {
+          "call_to_action": "Continue",
+          "language": "en",
+          "subtitle": "UNKNOWN",
+          "title": "Loop title 01"
+        },
+        "visual_parameters_sha256": "d22e0b404a6b09205764e493de64a44b7c24eb2167e4e97d175a4c2163c791be"
+      },
+      "execution_boundary": {
+        "c11c_source_mutation": false,
+        "compositor_invoked": false,
+        "d3_audio_invoked": false,
+        "d4_8": "BLOCKED",
+        "d9_10": "PREPARE_ONLY",
+        "ffmpeg_invoked": false,
+        "ffprobe_invoked": false,
+        "godot_invoked": false,
+        "media_created": false,
+        "mux_invoked": false,
+        "release_authority": "NONE",
+        "renderer_dispatch_invoked": false,
+        "source_launcher_invoked": false
+      },
+      "lineage": {
+        "c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+        "d9_10_adapter_envelope_hash": "9ef0cbb58750d0adbf50336686936caffde7dfbc321771b20fe9d9e21a9fe14a",
+        "d9_10_bridge_record_hash": "3154d57106ed46df443b7dd8d5437ffd7ac86cf2ef22bc620d79fc6361867ff6",
+        "d9_9_editorial_hash": "d1b673876403d7fb4684ed0ef1ac6cd178f2025eaa915c22ddf9c4a7bf25e7ab",
+        "d9_9_plan_hash": "ad5b3df35aa03336a5f5bca9e1b683086953b4238c0d51e9fab88a2592a32ed3",
+        "d9_9_request_hash": "573b4b3c3e9d724c9aa525d8f12c6a9cacba5de454c3f502dbe12334b90f4108",
+        "family_stage_contract_sha256": "5b3f82667b2da31865321d24623d2a92400241c94db0d465d8f7b66cd10aa16b",
+        "r1p_payload_sha256": "3fa1442b2f4da7043b1466dba2f3ec174ec468aac9afaad080b054635b2cad16",
+        "r1p_receipt_sha256": "1d67312f2ac9db48efc98f70e235cf3fe5facf34a7238e9799c4191a2b0f77c6",
+        "r1p_repeat_payload_sha256": "3fa1442b2f4da7043b1466dba2f3ec174ec468aac9afaad080b054635b2cad16",
+        "r1p_request_id": "E4B_R1P_20261107_032743_5F75045C_01",
+        "r1p_run_id": "E4B_R1P_20261107_032743_5F75045C"
+      },
+      "r1p_timing_descriptor_not_measured_frame_inventory": {
+        "actual_frame_count": null,
+        "duration_seconds": 23.0,
+        "expected_frame_count_consistency_only": 690,
+        "fps": 30
+      },
+      "schema": "C11E-E-OPTION-C-POSTCOMPOSITION-HANDOFF-V1",
+      "status": "PREPARED_WAITING_FOR_R1V_ACTUAL_SOURCE_EVIDENCE",
+      "visual_seed_domain": {
+        "gameplay_seed": 100001,
+        "music_seed_consumed_by_visual_composition": false,
+        "music_seed_lineage_only_for_future_d3": 500001,
+        "source": "request.seed"
+      }
+    },
+    {
+      "architecture": "OPTION_C_D_ONLY_POSTCOMPOSITION_OVER_IMMUTABLE_C_SOURCE",
+      "boundary_contract_sha256": "795be1da157dd07fd4992d3ec6d7cf091a015eed72d16d86df13085db296098b",
+      "c_source_video": {
+        "byte_length": null,
+        "decoded_pixel_manifest_sha256": null,
+        "ffprobe_metadata_sha256": null,
+        "frame_inventory_sha256": null,
+        "immutable_input_required": true,
+        "sha256": null,
+        "source_path": null,
+        "state": "NOT_YET_MATERIALIZED_R1V_REQUIRED"
+      },
+      "composition_policy": {
+        "dispatchable": false,
+        "layout_measurement": "UNKNOWN",
+        "proposal_path": "definitions/c11d/production/C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_V1.json",
+        "proposal_sha256": "9e206704665ea85226ecc10854be9f679c32fe9ed7efb690a829f6e8456d43da",
+        "proposal_status": "PROPOSED_NOT_APPROVED_NOT_RENDERER_INPUT"
+      },
+      "content_identity": {
+        "content_type": "visual_loops",
+        "family_id": "c11c_geometric_waves_v1",
+        "grammar_id": "interference_plane",
+        "grammar_index": 1
+      },
+      "d_output": {
+        "may_overwrite_c_source": false,
+        "output_artifact_path": null,
+        "separate_artifact_required": true,
+        "state": "NOT_MATERIALIZED"
+      },
+      "decision_sha256": "22cec26baecfb6018a814750cc781143f5fa13f897d3dce708f6e9e074f669ac",
+      "editorial": {
+        "source": "D9_9_CANONICAL_EDITORIAL_ALLOWLIST",
+        "values": {
+          "call_to_action": "Continue",
+          "language": "en",
+          "subtitle": "UNKNOWN",
+          "title": "Loop title 02"
+        },
+        "visual_parameters_sha256": "a0d6cc3ea5557094ac9564bef21ce724c8820d4c7a71c3f5b57f52cc0a2654bd"
+      },
+      "execution_boundary": {
+        "c11c_source_mutation": false,
+        "compositor_invoked": false,
+        "d3_audio_invoked": false,
+        "d4_8": "BLOCKED",
+        "d9_10": "PREPARE_ONLY",
+        "ffmpeg_invoked": false,
+        "ffprobe_invoked": false,
+        "godot_invoked": false,
+        "media_created": false,
+        "mux_invoked": false,
+        "release_authority": "NONE",
+        "renderer_dispatch_invoked": false,
+        "source_launcher_invoked": false
+      },
+      "lineage": {
+        "c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+        "d9_10_adapter_envelope_hash": "c1866d8a9544f2d7d40046a65ecb45831461ff30e144480a4d5d8ab1fba5e734",
+        "d9_10_bridge_record_hash": "82153ab5c49bdb85320f9e94fa681566d763e8297769b00b27135547533bae70",
+        "d9_9_editorial_hash": "6bf34b01c46d0f1c09dba2b69775d7b93d57189ddd479a3622dbe9ccad074019",
+        "d9_9_plan_hash": "9c59f12a3d39ead5478e50cbfe4dafa4dd5e3d8c7853400864731735a56c1f9b",
+        "d9_9_request_hash": "7ccf9321a57213be540650fe39908e3840f972f2674cb1301eabae5b7dbb3878",
+        "family_stage_contract_sha256": "795e0efdbc508cd76d5ec6646d848252c63d812e54c49dd24c1a09da1cbf1eb7",
+        "r1p_payload_sha256": "eae79175711ade74272f356335b306df8b039634116c620a86a34752a9d3af07",
+        "r1p_receipt_sha256": "b8f75c3baf86142ce0754bb739932e60cef2ec6a403ac6b9ac42fd730e39d8d6",
+        "r1p_repeat_payload_sha256": "eae79175711ade74272f356335b306df8b039634116c620a86a34752a9d3af07",
+        "r1p_request_id": "E4B_R1P_20261107_032743_5F75045C_02",
+        "r1p_run_id": "E4B_R1P_20261107_032743_5F75045C"
+      },
+      "r1p_timing_descriptor_not_measured_frame_inventory": {
+        "actual_frame_count": null,
+        "duration_seconds": 23.0,
+        "expected_frame_count_consistency_only": 690,
+        "fps": 30
+      },
+      "schema": "C11E-E-OPTION-C-POSTCOMPOSITION-HANDOFF-V1",
+      "status": "PREPARED_WAITING_FOR_R1V_ACTUAL_SOURCE_EVIDENCE",
+      "visual_seed_domain": {
+        "gameplay_seed": 100002,
+        "music_seed_consumed_by_visual_composition": false,
+        "music_seed_lineage_only_for_future_d3": 500002,
+        "source": "request.seed"
+      }
+    },
+    {
+      "architecture": "OPTION_C_D_ONLY_POSTCOMPOSITION_OVER_IMMUTABLE_C_SOURCE",
+      "boundary_contract_sha256": "795be1da157dd07fd4992d3ec6d7cf091a015eed72d16d86df13085db296098b",
+      "c_source_video": {
+        "byte_length": null,
+        "decoded_pixel_manifest_sha256": null,
+        "ffprobe_metadata_sha256": null,
+        "frame_inventory_sha256": null,
+        "immutable_input_required": true,
+        "sha256": null,
+        "source_path": null,
+        "state": "NOT_YET_MATERIALIZED_R1V_REQUIRED"
+      },
+      "composition_policy": {
+        "dispatchable": false,
+        "layout_measurement": "UNKNOWN",
+        "proposal_path": "definitions/c11d/production/C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_V1.json",
+        "proposal_sha256": "9e206704665ea85226ecc10854be9f679c32fe9ed7efb690a829f6e8456d43da",
+        "proposal_status": "PROPOSED_NOT_APPROVED_NOT_RENDERER_INPUT"
+      },
+      "content_identity": {
+        "content_type": "visual_loops",
+        "family_id": "c11c_geometric_waves_v1",
+        "grammar_id": "parametric_ribbon",
+        "grammar_index": 2
+      },
+      "d_output": {
+        "may_overwrite_c_source": false,
+        "output_artifact_path": null,
+        "separate_artifact_required": true,
+        "state": "NOT_MATERIALIZED"
+      },
+      "decision_sha256": "22cec26baecfb6018a814750cc781143f5fa13f897d3dce708f6e9e074f669ac",
+      "editorial": {
+        "source": "D9_9_CANONICAL_EDITORIAL_ALLOWLIST",
+        "values": {
+          "call_to_action": "Continue",
+          "language": "en",
+          "subtitle": "UNKNOWN",
+          "title": "Loop title 03"
+        },
+        "visual_parameters_sha256": "514895fa2b4e88133e6335cee55a0b879dc70df710f4513080cd571fe0337510"
+      },
+      "execution_boundary": {
+        "c11c_source_mutation": false,
+        "compositor_invoked": false,
+        "d3_audio_invoked": false,
+        "d4_8": "BLOCKED",
+        "d9_10": "PREPARE_ONLY",
+        "ffmpeg_invoked": false,
+        "ffprobe_invoked": false,
+        "godot_invoked": false,
+        "media_created": false,
+        "mux_invoked": false,
+        "release_authority": "NONE",
+        "renderer_dispatch_invoked": false,
+        "source_launcher_invoked": false
+      },
+      "lineage": {
+        "c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+        "d9_10_adapter_envelope_hash": "ca09991e0c2c99543199c26cac5b049eee0d59394f27cb2991e86e76c3560d6e",
+        "d9_10_bridge_record_hash": "be26e1b9289a4ef99460e9d69f724c0790a25c58703deb2e3a5f8bd54b16d8a3",
+        "d9_9_editorial_hash": "70ca135fcf0a03ff4140feeb8664d6549e06e7656a3b8c28687e7f3ac3843733",
+        "d9_9_plan_hash": "423d399eb4e796be45c747d12f2ffbb0c303166adef0ee67e7083553098abc1a",
+        "d9_9_request_hash": "2c55131a66fb2b0bbacf67ebf1b0c758db1530b32360f1f0b2f7c8afa7bdceb2",
+        "family_stage_contract_sha256": "8689b51e2cb49d08f55b37e8e4ebc6bd6e46d443a7e7ffdfad038c08765975fe",
+        "r1p_payload_sha256": "2f14859ffa0badaeadeef0030631e67a45088f3aa1d78e4869efb1557e04c6eb",
+        "r1p_receipt_sha256": "9325368ecff696d61e431ffdeea09ed1894f1d1070e4a59e3d509a8c680dd7e8",
+        "r1p_repeat_payload_sha256": "2f14859ffa0badaeadeef0030631e67a45088f3aa1d78e4869efb1557e04c6eb",
+        "r1p_request_id": "E4B_R1P_20261107_032743_5F75045C_03",
+        "r1p_run_id": "E4B_R1P_20261107_032743_5F75045C"
+      },
+      "r1p_timing_descriptor_not_measured_frame_inventory": {
+        "actual_frame_count": null,
+        "duration_seconds": 23.0,
+        "expected_frame_count_consistency_only": 690,
+        "fps": 30
+      },
+      "schema": "C11E-E-OPTION-C-POSTCOMPOSITION-HANDOFF-V1",
+      "status": "PREPARED_WAITING_FOR_R1V_ACTUAL_SOURCE_EVIDENCE",
+      "visual_seed_domain": {
+        "gameplay_seed": 100003,
+        "music_seed_consumed_by_visual_composition": false,
+        "music_seed_lineage_only_for_future_d3": 500003,
+        "source": "request.seed"
+      }
+    },
+    {
+      "architecture": "OPTION_C_D_ONLY_POSTCOMPOSITION_OVER_IMMUTABLE_C_SOURCE",
+      "boundary_contract_sha256": "795be1da157dd07fd4992d3ec6d7cf091a015eed72d16d86df13085db296098b",
+      "c_source_video": {
+        "byte_length": null,
+        "decoded_pixel_manifest_sha256": null,
+        "ffprobe_metadata_sha256": null,
+        "frame_inventory_sha256": null,
+        "immutable_input_required": true,
+        "sha256": null,
+        "source_path": null,
+        "state": "NOT_YET_MATERIALIZED_R1V_REQUIRED"
+      },
+      "composition_policy": {
+        "dispatchable": false,
+        "layout_measurement": "UNKNOWN",
+        "proposal_path": "definitions/c11d/production/C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_V1.json",
+        "proposal_sha256": "9e206704665ea85226ecc10854be9f679c32fe9ed7efb690a829f6e8456d43da",
+        "proposal_status": "PROPOSED_NOT_APPROVED_NOT_RENDERER_INPUT"
+      },
+      "content_identity": {
+        "content_type": "visual_loops",
+        "family_id": "c11c_geometric_waves_v1",
+        "grammar_id": "lattice_wave",
+        "grammar_index": 3
+      },
+      "d_output": {
+        "may_overwrite_c_source": false,
+        "output_artifact_path": null,
+        "separate_artifact_required": true,
+        "state": "NOT_MATERIALIZED"
+      },
+      "decision_sha256": "22cec26baecfb6018a814750cc781143f5fa13f897d3dce708f6e9e074f669ac",
+      "editorial": {
+        "source": "D9_9_CANONICAL_EDITORIAL_ALLOWLIST",
+        "values": {
+          "call_to_action": "Continue",
+          "language": "en",
+          "subtitle": "UNKNOWN",
+          "title": "Loop title 04"
+        },
+        "visual_parameters_sha256": "a6988610730b1f36a67253c652e5476a578cd6b01218073128fb210a9c00315d"
+      },
+      "execution_boundary": {
+        "c11c_source_mutation": false,
+        "compositor_invoked": false,
+        "d3_audio_invoked": false,
+        "d4_8": "BLOCKED",
+        "d9_10": "PREPARE_ONLY",
+        "ffmpeg_invoked": false,
+        "ffprobe_invoked": false,
+        "godot_invoked": false,
+        "media_created": false,
+        "mux_invoked": false,
+        "release_authority": "NONE",
+        "renderer_dispatch_invoked": false,
+        "source_launcher_invoked": false
+      },
+      "lineage": {
+        "c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+        "d9_10_adapter_envelope_hash": "6825358a8209f14e0fcd3948aa4b46e9ce6bf4f3ba7cf68fa3bc21ff19f05a5d",
+        "d9_10_bridge_record_hash": "bf09930656ee8b8f40b61b5530ac0903267efddb472d5b589d1944ec2796ba31",
+        "d9_9_editorial_hash": "8b675dd78a35ccaa86bd4d15b948bf0a2d61baf89ff1f4c597edfdb1d13b75cc",
+        "d9_9_plan_hash": "fd038dc079be80ddf888c9f9111f12b64bd7fff2950aa0a469a905439ab1fa12",
+        "d9_9_request_hash": "8f24447f828a2fed0d3e3165d1939adaca725853fd03193a7dd91ea20165e5cc",
+        "family_stage_contract_sha256": "cf1ec2bd69b15403ac7ce2bb980ca55ee98790ec2c3a03d3c89f1ff096bdf7a9",
+        "r1p_payload_sha256": "65bda9c402c2529bb4288dd6f9394b6e9a19cf752829b9827a2b29467de02740",
+        "r1p_receipt_sha256": "be0f80c1be2a95ff2ad99a1af90350fb7cf67fa43592dfb68995d8d55a8a1b77",
+        "r1p_repeat_payload_sha256": "65bda9c402c2529bb4288dd6f9394b6e9a19cf752829b9827a2b29467de02740",
+        "r1p_request_id": "E4B_R1P_20261107_032743_5F75045C_04",
+        "r1p_run_id": "E4B_R1P_20261107_032743_5F75045C"
+      },
+      "r1p_timing_descriptor_not_measured_frame_inventory": {
+        "actual_frame_count": null,
+        "duration_seconds": 20.0,
+        "expected_frame_count_consistency_only": 600,
+        "fps": 30
+      },
+      "schema": "C11E-E-OPTION-C-POSTCOMPOSITION-HANDOFF-V1",
+      "status": "PREPARED_WAITING_FOR_R1V_ACTUAL_SOURCE_EVIDENCE",
+      "visual_seed_domain": {
+        "gameplay_seed": 100004,
+        "music_seed_consumed_by_visual_composition": false,
+        "music_seed_lineage_only_for_future_d3": 500004,
+        "source": "request.seed"
+      }
+    },
+    {
+      "architecture": "OPTION_C_D_ONLY_POSTCOMPOSITION_OVER_IMMUTABLE_C_SOURCE",
+      "boundary_contract_sha256": "795be1da157dd07fd4992d3ec6d7cf091a015eed72d16d86df13085db296098b",
+      "c_source_video": {
+        "byte_length": null,
+        "decoded_pixel_manifest_sha256": null,
+        "ffprobe_metadata_sha256": null,
+        "frame_inventory_sha256": null,
+        "immutable_input_required": true,
+        "sha256": null,
+        "source_path": null,
+        "state": "NOT_YET_MATERIALIZED_R1V_REQUIRED"
+      },
+      "composition_policy": {
+        "dispatchable": false,
+        "layout_measurement": "UNKNOWN",
+        "proposal_path": "definitions/c11d/production/C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_V1.json",
+        "proposal_sha256": "9e206704665ea85226ecc10854be9f679c32fe9ed7efb690a829f6e8456d43da",
+        "proposal_status": "PROPOSED_NOT_APPROVED_NOT_RENDERER_INPUT"
+      },
+      "content_identity": {
+        "content_type": "visual_loops",
+        "family_id": "c11c_geometric_waves_v1",
+        "grammar_id": "orbital_wave",
+        "grammar_index": 4
+      },
+      "d_output": {
+        "may_overwrite_c_source": false,
+        "output_artifact_path": null,
+        "separate_artifact_required": true,
+        "state": "NOT_MATERIALIZED"
+      },
+      "decision_sha256": "22cec26baecfb6018a814750cc781143f5fa13f897d3dce708f6e9e074f669ac",
+      "editorial": {
+        "source": "D9_9_CANONICAL_EDITORIAL_ALLOWLIST",
+        "values": {
+          "call_to_action": "Continue",
+          "language": "en",
+          "subtitle": "UNKNOWN",
+          "title": "Loop title 05"
+        },
+        "visual_parameters_sha256": "612d6a0edb9d3e04e504029f4ba41c91b5419e760e45e2aa668d8bef85974cd9"
+      },
+      "execution_boundary": {
+        "c11c_source_mutation": false,
+        "compositor_invoked": false,
+        "d3_audio_invoked": false,
+        "d4_8": "BLOCKED",
+        "d9_10": "PREPARE_ONLY",
+        "ffmpeg_invoked": false,
+        "ffprobe_invoked": false,
+        "godot_invoked": false,
+        "media_created": false,
+        "mux_invoked": false,
+        "release_authority": "NONE",
+        "renderer_dispatch_invoked": false,
+        "source_launcher_invoked": false
+      },
+      "lineage": {
+        "c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+        "d9_10_adapter_envelope_hash": "1387d501f4399ba84b2d55b942d76b6739a236e825ac0fc3751f5f3f2035d4d9",
+        "d9_10_bridge_record_hash": "ea2b088147b0ad7e5ea9982a43f132831c0f2e9900fc9c9e2dd3c0915651ddee",
+        "d9_9_editorial_hash": "dc771f486a27c708011b2833e67058dd635ce3f35cb9bb6842f7bb9e25296f93",
+        "d9_9_plan_hash": "2682f8ff2b2196bd4a90d96e27ac58203c29fd7c277415ad5d3e494fde75e0c0",
+        "d9_9_request_hash": "6abc24032ff2269156e54c8b84b37a4ca56d3aa752ff3e5c54e109cc1f6c6d3e",
+        "family_stage_contract_sha256": "cfe319e02130bc8aa88a302815c40f809ac36b9747b6e18d56721be1a35970f8",
+        "r1p_payload_sha256": "82450b8816864cd07d0a490945874eb61e4e1abbed44cb8bcc6545575ad11295",
+        "r1p_receipt_sha256": "1953ef299e70fd2b6b7eead41a0c6eb0481c13be2fbfd00dd8a16f88b2b5d5a5",
+        "r1p_repeat_payload_sha256": "82450b8816864cd07d0a490945874eb61e4e1abbed44cb8bcc6545575ad11295",
+        "r1p_request_id": "E4B_R1P_20261107_032743_5F75045C_05",
+        "r1p_run_id": "E4B_R1P_20261107_032743_5F75045C"
+      },
+      "r1p_timing_descriptor_not_measured_frame_inventory": {
+        "actual_frame_count": null,
+        "duration_seconds": 23.0,
+        "expected_frame_count_consistency_only": 690,
+        "fps": 30
+      },
+      "schema": "C11E-E-OPTION-C-POSTCOMPOSITION-HANDOFF-V1",
+      "status": "PREPARED_WAITING_FOR_R1V_ACTUAL_SOURCE_EVIDENCE",
+      "visual_seed_domain": {
+        "gameplay_seed": 100005,
+        "music_seed_consumed_by_visual_composition": false,
+        "music_seed_lineage_only_for_future_d3": 500005,
+        "source": "request.seed"
+      }
+    },
+    {
+      "architecture": "OPTION_C_D_ONLY_POSTCOMPOSITION_OVER_IMMUTABLE_C_SOURCE",
+      "boundary_contract_sha256": "795be1da157dd07fd4992d3ec6d7cf091a015eed72d16d86df13085db296098b",
+      "c_source_video": {
+        "byte_length": null,
+        "decoded_pixel_manifest_sha256": null,
+        "ffprobe_metadata_sha256": null,
+        "frame_inventory_sha256": null,
+        "immutable_input_required": true,
+        "sha256": null,
+        "source_path": null,
+        "state": "NOT_YET_MATERIALIZED_R1V_REQUIRED"
+      },
+      "composition_policy": {
+        "dispatchable": false,
+        "layout_measurement": "UNKNOWN",
+        "proposal_path": "definitions/c11d/production/C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_V1.json",
+        "proposal_sha256": "9e206704665ea85226ecc10854be9f679c32fe9ed7efb690a829f6e8456d43da",
+        "proposal_status": "PROPOSED_NOT_APPROVED_NOT_RENDERER_INPUT"
+      },
+      "content_identity": {
+        "content_type": "visual_loops",
+        "family_id": "c11c_fractal_bloom_v1",
+        "grammar_id": "radial_bloom",
+        "grammar_index": 0
+      },
+      "d_output": {
+        "may_overwrite_c_source": false,
+        "output_artifact_path": null,
+        "separate_artifact_required": true,
+        "state": "NOT_MATERIALIZED"
+      },
+      "decision_sha256": "22cec26baecfb6018a814750cc781143f5fa13f897d3dce708f6e9e074f669ac",
+      "editorial": {
+        "source": "D9_9_CANONICAL_EDITORIAL_ALLOWLIST",
+        "values": {
+          "call_to_action": "Continue",
+          "language": "en",
+          "subtitle": "UNKNOWN",
+          "title": "Loop title 06"
+        },
+        "visual_parameters_sha256": "d7c0fa84c1e00a555a1fa7ebf5dc866ab17628edd50424138b68f80c2d100219"
+      },
+      "execution_boundary": {
+        "c11c_source_mutation": false,
+        "compositor_invoked": false,
+        "d3_audio_invoked": false,
+        "d4_8": "BLOCKED",
+        "d9_10": "PREPARE_ONLY",
+        "ffmpeg_invoked": false,
+        "ffprobe_invoked": false,
+        "godot_invoked": false,
+        "media_created": false,
+        "mux_invoked": false,
+        "release_authority": "NONE",
+        "renderer_dispatch_invoked": false,
+        "source_launcher_invoked": false
+      },
+      "lineage": {
+        "c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+        "d9_10_adapter_envelope_hash": "140885221d6565a709707849283a887c78d46ae394cc8b9033845111ba8246f9",
+        "d9_10_bridge_record_hash": "3fbb953889254342b199f8675a38a237120c4d0264c35a4abd502c74db34d47b",
+        "d9_9_editorial_hash": "5432521ad7b209f50db6c28631deeab309eb9a579e1f1b7164671bc6d77ec301",
+        "d9_9_plan_hash": "1c0a846d3381bfa55d3d99177635a2ab0cbad6343211286f4c6e6c1d1977fecf",
+        "d9_9_request_hash": "ff55181a1bfd5c12f28be444d4e276221c80e6495a2de9dbca845ce67aaf2560",
+        "family_stage_contract_sha256": "5c34fdd14169aae4eb679b2156bc8ea37100ecc3b184c6d377f9d5d14b951780",
+        "r1p_payload_sha256": "93152c898a3e2b851a5575c1db90eff5a061d864c80418885f8efd5c415b29d5",
+        "r1p_receipt_sha256": "8442079179c0f52d54d9f9dc7f4a927f50255aca9d0646de4fe32b91fe249fc6",
+        "r1p_repeat_payload_sha256": "93152c898a3e2b851a5575c1db90eff5a061d864c80418885f8efd5c415b29d5",
+        "r1p_request_id": "E4B_R1P_20261107_032743_5F75045C_06",
+        "r1p_run_id": "E4B_R1P_20261107_032743_5F75045C"
+      },
+      "r1p_timing_descriptor_not_measured_frame_inventory": {
+        "actual_frame_count": null,
+        "duration_seconds": 22.0,
+        "expected_frame_count_consistency_only": 660,
+        "fps": 30
+      },
+      "schema": "C11E-E-OPTION-C-POSTCOMPOSITION-HANDOFF-V1",
+      "status": "PREPARED_WAITING_FOR_R1V_ACTUAL_SOURCE_EVIDENCE",
+      "visual_seed_domain": {
+        "gameplay_seed": 100006,
+        "music_seed_consumed_by_visual_composition": false,
+        "music_seed_lineage_only_for_future_d3": 500006,
+        "source": "request.seed"
+      }
+    },
+    {
+      "architecture": "OPTION_C_D_ONLY_POSTCOMPOSITION_OVER_IMMUTABLE_C_SOURCE",
+      "boundary_contract_sha256": "795be1da157dd07fd4992d3ec6d7cf091a015eed72d16d86df13085db296098b",
+      "c_source_video": {
+        "byte_length": null,
+        "decoded_pixel_manifest_sha256": null,
+        "ffprobe_metadata_sha256": null,
+        "frame_inventory_sha256": null,
+        "immutable_input_required": true,
+        "sha256": null,
+        "source_path": null,
+        "state": "NOT_YET_MATERIALIZED_R1V_REQUIRED"
+      },
+      "composition_policy": {
+        "dispatchable": false,
+        "layout_measurement": "UNKNOWN",
+        "proposal_path": "definitions/c11d/production/C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_V1.json",
+        "proposal_sha256": "9e206704665ea85226ecc10854be9f679c32fe9ed7efb690a829f6e8456d43da",
+        "proposal_status": "PROPOSED_NOT_APPROVED_NOT_RENDERER_INPUT"
+      },
+      "content_identity": {
+        "content_type": "visual_loops",
+        "family_id": "c11c_fractal_bloom_v1",
+        "grammar_id": "dendritic_tunnel",
+        "grammar_index": 1
+      },
+      "d_output": {
+        "may_overwrite_c_source": false,
+        "output_artifact_path": null,
+        "separate_artifact_required": true,
+        "state": "NOT_MATERIALIZED"
+      },
+      "decision_sha256": "22cec26baecfb6018a814750cc781143f5fa13f897d3dce708f6e9e074f669ac",
+      "editorial": {
+        "source": "D9_9_CANONICAL_EDITORIAL_ALLOWLIST",
+        "values": {
+          "call_to_action": "Continue",
+          "language": "en",
+          "subtitle": "UNKNOWN",
+          "title": "Loop title 07"
+        },
+        "visual_parameters_sha256": "4fb0b201c8f647f7b78388bf59ae047a74bc1cdb93b3d4c72fbb65baefdde72a"
+      },
+      "execution_boundary": {
+        "c11c_source_mutation": false,
+        "compositor_invoked": false,
+        "d3_audio_invoked": false,
+        "d4_8": "BLOCKED",
+        "d9_10": "PREPARE_ONLY",
+        "ffmpeg_invoked": false,
+        "ffprobe_invoked": false,
+        "godot_invoked": false,
+        "media_created": false,
+        "mux_invoked": false,
+        "release_authority": "NONE",
+        "renderer_dispatch_invoked": false,
+        "source_launcher_invoked": false
+      },
+      "lineage": {
+        "c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+        "d9_10_adapter_envelope_hash": "04d4a13884e49fc5db29abd628af0d72919da32e12d7336f103204b2a6f24d97",
+        "d9_10_bridge_record_hash": "5eb040fd031213846ae2dfd2eddb0474597e791bdd7b36ac4ae6af899879c33d",
+        "d9_9_editorial_hash": "cd84aecd330633551433a4c148f065a63c521244a61fadb115b5a84ef01589d9",
+        "d9_9_plan_hash": "cdbb6113a4bb4b2b07bc20929d487444518b146e0286562908a240399fb5e8ce",
+        "d9_9_request_hash": "b21aa89d7c211522e51c4e36bbe6ad4f81b6e6c2bfbd3eba90d84b615a3182f5",
+        "family_stage_contract_sha256": "719d43f2be6b7ba7001d0c8dd18d19b9e624275df9e5172789729ed4f2f090f7",
+        "r1p_payload_sha256": "2dd7aa6a27b0dfce1d75a67b25e83db42f71e636cc99c09d42e9ba49b3f7be4b",
+        "r1p_receipt_sha256": "7073e15be3ecf1eb6c343d4be0ac03339304f6bbd24c49376c6252b23421ea7e",
+        "r1p_repeat_payload_sha256": "2dd7aa6a27b0dfce1d75a67b25e83db42f71e636cc99c09d42e9ba49b3f7be4b",
+        "r1p_request_id": "E4B_R1P_20261107_032743_5F75045C_07",
+        "r1p_run_id": "E4B_R1P_20261107_032743_5F75045C"
+      },
+      "r1p_timing_descriptor_not_measured_frame_inventory": {
+        "actual_frame_count": null,
+        "duration_seconds": 20.0,
+        "expected_frame_count_consistency_only": 600,
+        "fps": 30
+      },
+      "schema": "C11E-E-OPTION-C-POSTCOMPOSITION-HANDOFF-V1",
+      "status": "PREPARED_WAITING_FOR_R1V_ACTUAL_SOURCE_EVIDENCE",
+      "visual_seed_domain": {
+        "gameplay_seed": 100007,
+        "music_seed_consumed_by_visual_composition": false,
+        "music_seed_lineage_only_for_future_d3": 500007,
+        "source": "request.seed"
+      }
+    },
+    {
+      "architecture": "OPTION_C_D_ONLY_POSTCOMPOSITION_OVER_IMMUTABLE_C_SOURCE",
+      "boundary_contract_sha256": "795be1da157dd07fd4992d3ec6d7cf091a015eed72d16d86df13085db296098b",
+      "c_source_video": {
+        "byte_length": null,
+        "decoded_pixel_manifest_sha256": null,
+        "ffprobe_metadata_sha256": null,
+        "frame_inventory_sha256": null,
+        "immutable_input_required": true,
+        "sha256": null,
+        "source_path": null,
+        "state": "NOT_YET_MATERIALIZED_R1V_REQUIRED"
+      },
+      "composition_policy": {
+        "dispatchable": false,
+        "layout_measurement": "UNKNOWN",
+        "proposal_path": "definitions/c11d/production/C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_V1.json",
+        "proposal_sha256": "9e206704665ea85226ecc10854be9f679c32fe9ed7efb690a829f6e8456d43da",
+        "proposal_status": "PROPOSED_NOT_APPROVED_NOT_RENDERER_INPUT"
+      },
+      "content_identity": {
+        "content_type": "visual_loops",
+        "family_id": "c11c_fractal_bloom_v1",
+        "grammar_id": "spiral_fractal",
+        "grammar_index": 2
+      },
+      "d_output": {
+        "may_overwrite_c_source": false,
+        "output_artifact_path": null,
+        "separate_artifact_required": true,
+        "state": "NOT_MATERIALIZED"
+      },
+      "decision_sha256": "22cec26baecfb6018a814750cc781143f5fa13f897d3dce708f6e9e074f669ac",
+      "editorial": {
+        "source": "D9_9_CANONICAL_EDITORIAL_ALLOWLIST",
+        "values": {
+          "call_to_action": "Continue",
+          "language": "en",
+          "subtitle": "UNKNOWN",
+          "title": "Loop title 08"
+        },
+        "visual_parameters_sha256": "06362deaafff0f7e12aac419d9570a7bba2e9f98a1525b754e5fa5913951bb24"
+      },
+      "execution_boundary": {
+        "c11c_source_mutation": false,
+        "compositor_invoked": false,
+        "d3_audio_invoked": false,
+        "d4_8": "BLOCKED",
+        "d9_10": "PREPARE_ONLY",
+        "ffmpeg_invoked": false,
+        "ffprobe_invoked": false,
+        "godot_invoked": false,
+        "media_created": false,
+        "mux_invoked": false,
+        "release_authority": "NONE",
+        "renderer_dispatch_invoked": false,
+        "source_launcher_invoked": false
+      },
+      "lineage": {
+        "c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+        "d9_10_adapter_envelope_hash": "53588eec64f96d6b99cb2ac4026767411be48874d54af2fda2ce88a6ebc4ebef",
+        "d9_10_bridge_record_hash": "54413723ff6e058540a269d601b9a2db431cb02eb33c65deeca8c4ba1117a730",
+        "d9_9_editorial_hash": "17cbe11b7dc14137152dc8abb65c40e09543c4e5da72e2a4ee731edff01cc5bf",
+        "d9_9_plan_hash": "850cb47cfcc2ba07f8256dc967ae3e18ed1d3483b1acaa6da760c48b8c1711ff",
+        "d9_9_request_hash": "3ad0f1c247a517415d7670cd573e11cb83b6831a575dd32775af52d3a9ea652f",
+        "family_stage_contract_sha256": "0b5b1d79bd1b1d16e297907cf7b988b2ef6f7a9c4c39f54afe1ee155cd7edf3c",
+        "r1p_payload_sha256": "6776ed0267e5ac65bffecba5b150e3656e0922840f71156b21e951679ca5ee2c",
+        "r1p_receipt_sha256": "ca04cb6f974b22bdd3618911424842502605c6bc7944dcbf235d81c95a92e2f9",
+        "r1p_repeat_payload_sha256": "6776ed0267e5ac65bffecba5b150e3656e0922840f71156b21e951679ca5ee2c",
+        "r1p_request_id": "E4B_R1P_20261107_032743_5F75045C_08",
+        "r1p_run_id": "E4B_R1P_20261107_032743_5F75045C"
+      },
+      "r1p_timing_descriptor_not_measured_frame_inventory": {
+        "actual_frame_count": null,
+        "duration_seconds": 20.0,
+        "expected_frame_count_consistency_only": 600,
+        "fps": 30
+      },
+      "schema": "C11E-E-OPTION-C-POSTCOMPOSITION-HANDOFF-V1",
+      "status": "PREPARED_WAITING_FOR_R1V_ACTUAL_SOURCE_EVIDENCE",
+      "visual_seed_domain": {
+        "gameplay_seed": 100008,
+        "music_seed_consumed_by_visual_composition": false,
+        "music_seed_lineage_only_for_future_d3": 500008,
+        "source": "request.seed"
+      }
+    },
+    {
+      "architecture": "OPTION_C_D_ONLY_POSTCOMPOSITION_OVER_IMMUTABLE_C_SOURCE",
+      "boundary_contract_sha256": "795be1da157dd07fd4992d3ec6d7cf091a015eed72d16d86df13085db296098b",
+      "c_source_video": {
+        "byte_length": null,
+        "decoded_pixel_manifest_sha256": null,
+        "ffprobe_metadata_sha256": null,
+        "frame_inventory_sha256": null,
+        "immutable_input_required": true,
+        "sha256": null,
+        "source_path": null,
+        "state": "NOT_YET_MATERIALIZED_R1V_REQUIRED"
+      },
+      "composition_policy": {
+        "dispatchable": false,
+        "layout_measurement": "UNKNOWN",
+        "proposal_path": "definitions/c11d/production/C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_V1.json",
+        "proposal_sha256": "9e206704665ea85226ecc10854be9f679c32fe9ed7efb690a829f6e8456d43da",
+        "proposal_status": "PROPOSED_NOT_APPROVED_NOT_RENDERER_INPUT"
+      },
+      "content_identity": {
+        "content_type": "visual_loops",
+        "family_id": "c11c_fractal_bloom_v1",
+        "grammar_id": "fractal_filigree",
+        "grammar_index": 3
+      },
+      "d_output": {
+        "may_overwrite_c_source": false,
+        "output_artifact_path": null,
+        "separate_artifact_required": true,
+        "state": "NOT_MATERIALIZED"
+      },
+      "decision_sha256": "22cec26baecfb6018a814750cc781143f5fa13f897d3dce708f6e9e074f669ac",
+      "editorial": {
+        "source": "D9_9_CANONICAL_EDITORIAL_ALLOWLIST",
+        "values": {
+          "call_to_action": "Continue",
+          "language": "en",
+          "subtitle": "UNKNOWN",
+          "title": "Loop title 09"
+        },
+        "visual_parameters_sha256": "38c2a74cb5463cf202c559ac02c7dbee0d0ae017180f0a7900dea5015f4c9845"
+      },
+      "execution_boundary": {
+        "c11c_source_mutation": false,
+        "compositor_invoked": false,
+        "d3_audio_invoked": false,
+        "d4_8": "BLOCKED",
+        "d9_10": "PREPARE_ONLY",
+        "ffmpeg_invoked": false,
+        "ffprobe_invoked": false,
+        "godot_invoked": false,
+        "media_created": false,
+        "mux_invoked": false,
+        "release_authority": "NONE",
+        "renderer_dispatch_invoked": false,
+        "source_launcher_invoked": false
+      },
+      "lineage": {
+        "c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+        "d9_10_adapter_envelope_hash": "af1ff7bf8c88de237ad28e220288731997c5f51c9b65886295e8509420513951",
+        "d9_10_bridge_record_hash": "8bb89c4472285c6070ff8182695772eb6cecd6e3e5d15f9f335db16800e2d13a",
+        "d9_9_editorial_hash": "eb2c24e51efa50f36336a0f119e73e40012c339fb8c0a5c96552e81ef4981510",
+        "d9_9_plan_hash": "0c38bd4818a535623a70476896e31f63bd23369cc3b9a545e325990cce94176d",
+        "d9_9_request_hash": "3afea9f4d84ab96f0fdab8dd5fec61837896a2f79767557bec62fd1300f9ca50",
+        "family_stage_contract_sha256": "bb64c8dc550deb5f0adfd0286feda9552291cc3db9b75a53d09c6a48acfad310",
+        "r1p_payload_sha256": "45e3e47c1d77b6f09d7c292770598f563536159c387e21d5c0b5b8a71bad190f",
+        "r1p_receipt_sha256": "2f113a3f58bf741325e79957dbda2a109d8e1993b6fda1d15fdba53f09950b2e",
+        "r1p_repeat_payload_sha256": "45e3e47c1d77b6f09d7c292770598f563536159c387e21d5c0b5b8a71bad190f",
+        "r1p_request_id": "E4B_R1P_20261107_032743_5F75045C_09",
+        "r1p_run_id": "E4B_R1P_20261107_032743_5F75045C"
+      },
+      "r1p_timing_descriptor_not_measured_frame_inventory": {
+        "actual_frame_count": null,
+        "duration_seconds": 20.0,
+        "expected_frame_count_consistency_only": 600,
+        "fps": 30
+      },
+      "schema": "C11E-E-OPTION-C-POSTCOMPOSITION-HANDOFF-V1",
+      "status": "PREPARED_WAITING_FOR_R1V_ACTUAL_SOURCE_EVIDENCE",
+      "visual_seed_domain": {
+        "gameplay_seed": 100009,
+        "music_seed_consumed_by_visual_composition": false,
+        "music_seed_lineage_only_for_future_d3": 500009,
+        "source": "request.seed"
+      }
+    },
+    {
+      "architecture": "OPTION_C_D_ONLY_POSTCOMPOSITION_OVER_IMMUTABLE_C_SOURCE",
+      "boundary_contract_sha256": "795be1da157dd07fd4992d3ec6d7cf091a015eed72d16d86df13085db296098b",
+      "c_source_video": {
+        "byte_length": null,
+        "decoded_pixel_manifest_sha256": null,
+        "ffprobe_metadata_sha256": null,
+        "frame_inventory_sha256": null,
+        "immutable_input_required": true,
+        "sha256": null,
+        "source_path": null,
+        "state": "NOT_YET_MATERIALIZED_R1V_REQUIRED"
+      },
+      "composition_policy": {
+        "dispatchable": false,
+        "layout_measurement": "UNKNOWN",
+        "proposal_path": "definitions/c11d/production/C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_V1.json",
+        "proposal_sha256": "9e206704665ea85226ecc10854be9f679c32fe9ed7efb690a829f6e8456d43da",
+        "proposal_status": "PROPOSED_NOT_APPROVED_NOT_RENDERER_INPUT"
+      },
+      "content_identity": {
+        "content_type": "visual_loops",
+        "family_id": "c11c_fractal_bloom_v1",
+        "grammar_id": "nested_worlds",
+        "grammar_index": 4
+      },
+      "d_output": {
+        "may_overwrite_c_source": false,
+        "output_artifact_path": null,
+        "separate_artifact_required": true,
+        "state": "NOT_MATERIALIZED"
+      },
+      "decision_sha256": "22cec26baecfb6018a814750cc781143f5fa13f897d3dce708f6e9e074f669ac",
+      "editorial": {
+        "source": "D9_9_CANONICAL_EDITORIAL_ALLOWLIST",
+        "values": {
+          "call_to_action": "Continue",
+          "language": "en",
+          "subtitle": "UNKNOWN",
+          "title": "Loop title 10"
+        },
+        "visual_parameters_sha256": "a5ac078d5ba3aa70b9f93b9eed37b7aced9c3086a9e39785d11938e97a564388"
+      },
+      "execution_boundary": {
+        "c11c_source_mutation": false,
+        "compositor_invoked": false,
+        "d3_audio_invoked": false,
+        "d4_8": "BLOCKED",
+        "d9_10": "PREPARE_ONLY",
+        "ffmpeg_invoked": false,
+        "ffprobe_invoked": false,
+        "godot_invoked": false,
+        "media_created": false,
+        "mux_invoked": false,
+        "release_authority": "NONE",
+        "renderer_dispatch_invoked": false,
+        "source_launcher_invoked": false
+      },
+      "lineage": {
+        "c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+        "d9_10_adapter_envelope_hash": "d16d6f0407dd44a4d61c98298753f9a4dfaba09a0328d2e230503aedc9ef8a84",
+        "d9_10_bridge_record_hash": "7625d0454db571d5cc21bbfe46c089114d55878e3d67500b1c87746d3e988a70",
+        "d9_9_editorial_hash": "e29caafe2bb3ca9223f619666730b734acfbc2a91ce293dec9ec120dafcd29f9",
+        "d9_9_plan_hash": "e06492453bf88e8d06de3ad9530664a5a271277e5b7a496b293caf736c4ad61a",
+        "d9_9_request_hash": "d27177d44c80c957cf99dacc3105b927da5c253b81ebc371c13b942ec0abae1a",
+        "family_stage_contract_sha256": "d7130b17cb0659d8389262a4eac72258ef560aaa9ff2ad715be12643c33b4d65",
+        "r1p_payload_sha256": "e17fdf9e9d6ac28e43b9c2b12eebe266e0c82a1101afa7b6c14681517265850f",
+        "r1p_receipt_sha256": "43858603775ba4e9afa72c39b8600d9192b843c9ed692eb30bff678d23c0fd9c",
+        "r1p_repeat_payload_sha256": "e17fdf9e9d6ac28e43b9c2b12eebe266e0c82a1101afa7b6c14681517265850f",
+        "r1p_request_id": "E4B_R1P_20261107_032743_5F75045C_10",
+        "r1p_run_id": "E4B_R1P_20261107_032743_5F75045C"
+      },
+      "r1p_timing_descriptor_not_measured_frame_inventory": {
+        "actual_frame_count": null,
+        "duration_seconds": 22.0,
+        "expected_frame_count_consistency_only": 660,
+        "fps": 30
+      },
+      "schema": "C11E-E-OPTION-C-POSTCOMPOSITION-HANDOFF-V1",
+      "status": "PREPARED_WAITING_FOR_R1V_ACTUAL_SOURCE_EVIDENCE",
+      "visual_seed_domain": {
+        "gameplay_seed": 100010,
+        "music_seed_consumed_by_visual_composition": false,
+        "music_seed_lineage_only_for_future_d3": 500010,
+        "source": "request.seed"
+      }
+    },
+    {
+      "architecture": "OPTION_C_D_ONLY_POSTCOMPOSITION_OVER_IMMUTABLE_C_SOURCE",
+      "boundary_contract_sha256": "795be1da157dd07fd4992d3ec6d7cf091a015eed72d16d86df13085db296098b",
+      "c_source_video": {
+        "byte_length": null,
+        "decoded_pixel_manifest_sha256": null,
+        "ffprobe_metadata_sha256": null,
+        "frame_inventory_sha256": null,
+        "immutable_input_required": true,
+        "sha256": null,
+        "source_path": null,
+        "state": "NOT_YET_MATERIALIZED_R1V_REQUIRED"
+      },
+      "composition_policy": {
+        "dispatchable": false,
+        "layout_measurement": "UNKNOWN",
+        "proposal_path": "definitions/c11d/production/C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_V1.json",
+        "proposal_sha256": "9e206704665ea85226ecc10854be9f679c32fe9ed7efb690a829f6e8456d43da",
+        "proposal_status": "PROPOSED_NOT_APPROVED_NOT_RENDERER_INPUT"
+      },
+      "content_identity": {
+        "content_type": "visual_loops",
+        "family_id": "c11c_sacred_symmetry_v1",
+        "grammar_id": "astrolabe",
+        "grammar_index": 0
+      },
+      "d_output": {
+        "may_overwrite_c_source": false,
+        "output_artifact_path": null,
+        "separate_artifact_required": true,
+        "state": "NOT_MATERIALIZED"
+      },
+      "decision_sha256": "22cec26baecfb6018a814750cc781143f5fa13f897d3dce708f6e9e074f669ac",
+      "editorial": {
+        "source": "D9_9_CANONICAL_EDITORIAL_ALLOWLIST",
+        "values": {
+          "call_to_action": "Continue",
+          "language": "en",
+          "subtitle": "UNKNOWN",
+          "title": "Loop title 11"
+        },
+        "visual_parameters_sha256": "bfbc6362a2cc04e745a6d8cd4ae7cb4339f59e355e8463284bebebb3053f5f84"
+      },
+      "execution_boundary": {
+        "c11c_source_mutation": false,
+        "compositor_invoked": false,
+        "d3_audio_invoked": false,
+        "d4_8": "BLOCKED",
+        "d9_10": "PREPARE_ONLY",
+        "ffmpeg_invoked": false,
+        "ffprobe_invoked": false,
+        "godot_invoked": false,
+        "media_created": false,
+        "mux_invoked": false,
+        "release_authority": "NONE",
+        "renderer_dispatch_invoked": false,
+        "source_launcher_invoked": false
+      },
+      "lineage": {
+        "c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+        "d9_10_adapter_envelope_hash": "223e1f02f7c101579be9b6542937a50fcf71abd086227d81ac2cf9f48c7039a6",
+        "d9_10_bridge_record_hash": "3c8439b5d43310dbed0348d130d436924c95c1dbc392bf206a9a816979b51b54",
+        "d9_9_editorial_hash": "27a92358e5a5b7a00fa40cf7007a21ad40eab18366afea10da9b7033bdbc0ff6",
+        "d9_9_plan_hash": "a853a2c99867914eab5ce2bc74f67f0e8cb55d57afdd64fcbe48d33c3e59a770",
+        "d9_9_request_hash": "fccb39d653cf9767f68c2799cba08e78b2a725d9af2738d51d47ca4c9b3c9483",
+        "family_stage_contract_sha256": "40a9b77c333f4060610e58b8f6b22436468154b0c1fd80b40ede761abe16f6a6",
+        "r1p_payload_sha256": "424dd91ddec67e6f5a7a90dea4fa59c6b49064320b2815856c50c7c75cc8120d",
+        "r1p_receipt_sha256": "c757749e48008fcad06d8bc8f2124d4643864a8c7ecf14824c7877338099cd87",
+        "r1p_repeat_payload_sha256": "424dd91ddec67e6f5a7a90dea4fa59c6b49064320b2815856c50c7c75cc8120d",
+        "r1p_request_id": "E4B_R1P_20261107_032743_5F75045C_11",
+        "r1p_run_id": "E4B_R1P_20261107_032743_5F75045C"
+      },
+      "r1p_timing_descriptor_not_measured_frame_inventory": {
+        "actual_frame_count": null,
+        "duration_seconds": 23.0,
+        "expected_frame_count_consistency_only": 690,
+        "fps": 30
+      },
+      "schema": "C11E-E-OPTION-C-POSTCOMPOSITION-HANDOFF-V1",
+      "status": "PREPARED_WAITING_FOR_R1V_ACTUAL_SOURCE_EVIDENCE",
+      "visual_seed_domain": {
+        "gameplay_seed": 100011,
+        "music_seed_consumed_by_visual_composition": false,
+        "music_seed_lineage_only_for_future_d3": 500011,
+        "source": "request.seed"
+      }
+    },
+    {
+      "architecture": "OPTION_C_D_ONLY_POSTCOMPOSITION_OVER_IMMUTABLE_C_SOURCE",
+      "boundary_contract_sha256": "795be1da157dd07fd4992d3ec6d7cf091a015eed72d16d86df13085db296098b",
+      "c_source_video": {
+        "byte_length": null,
+        "decoded_pixel_manifest_sha256": null,
+        "ffprobe_metadata_sha256": null,
+        "frame_inventory_sha256": null,
+        "immutable_input_required": true,
+        "sha256": null,
+        "source_path": null,
+        "state": "NOT_YET_MATERIALIZED_R1V_REQUIRED"
+      },
+      "composition_policy": {
+        "dispatchable": false,
+        "layout_measurement": "UNKNOWN",
+        "proposal_path": "definitions/c11d/production/C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_V1.json",
+        "proposal_sha256": "9e206704665ea85226ecc10854be9f679c32fe9ed7efb690a829f6e8456d43da",
+        "proposal_status": "PROPOSED_NOT_APPROVED_NOT_RENDERER_INPUT"
+      },
+      "content_identity": {
+        "content_type": "visual_loops",
+        "family_id": "c11c_sacred_symmetry_v1",
+        "grammar_id": "gear_train",
+        "grammar_index": 1
+      },
+      "d_output": {
+        "may_overwrite_c_source": false,
+        "output_artifact_path": null,
+        "separate_artifact_required": true,
+        "state": "NOT_MATERIALIZED"
+      },
+      "decision_sha256": "22cec26baecfb6018a814750cc781143f5fa13f897d3dce708f6e9e074f669ac",
+      "editorial": {
+        "source": "D9_9_CANONICAL_EDITORIAL_ALLOWLIST",
+        "values": {
+          "call_to_action": "Continue",
+          "language": "en",
+          "subtitle": "UNKNOWN",
+          "title": "Loop title 12"
+        },
+        "visual_parameters_sha256": "0487af008224c11891504ca2d0f7683421dec876ca09a2da5a57b1da50ac33e4"
+      },
+      "execution_boundary": {
+        "c11c_source_mutation": false,
+        "compositor_invoked": false,
+        "d3_audio_invoked": false,
+        "d4_8": "BLOCKED",
+        "d9_10": "PREPARE_ONLY",
+        "ffmpeg_invoked": false,
+        "ffprobe_invoked": false,
+        "godot_invoked": false,
+        "media_created": false,
+        "mux_invoked": false,
+        "release_authority": "NONE",
+        "renderer_dispatch_invoked": false,
+        "source_launcher_invoked": false
+      },
+      "lineage": {
+        "c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+        "d9_10_adapter_envelope_hash": "76cf46711f89f5f048265bac4ae8dd89e4bedc9ef48c5ac02d0b7ecf36a93578",
+        "d9_10_bridge_record_hash": "f5818a9534b85a96f0d9f01640fb2e344c9f234b99fff94950f790d77f4cf17a",
+        "d9_9_editorial_hash": "8f4c2a552f2a9c262b5ffb3149921c967d809e2a0567c4b6672fabd08157c3f8",
+        "d9_9_plan_hash": "0354a205e1bff9955555913085335fc869a8a128f35a8337046c6cb8f5aff47e",
+        "d9_9_request_hash": "c93868395034ffc5b4fcc02273b7fb357f45a612efb336c1b7d2bc7ce9c7eb4b",
+        "family_stage_contract_sha256": "9665c1dba734338b56e022b12c8c7bbc6ac47724309b6904a00030513f70bbd1",
+        "r1p_payload_sha256": "5c6302911c962f6dc9a288dc529ded5aa7350584347607493feb41c788a5237a",
+        "r1p_receipt_sha256": "c4ccb26ea18587fbb77c78dca078ca49b11afddffc50e9019e1f4fe8d020fd40",
+        "r1p_repeat_payload_sha256": "5c6302911c962f6dc9a288dc529ded5aa7350584347607493feb41c788a5237a",
+        "r1p_request_id": "E4B_R1P_20261107_032743_5F75045C_12",
+        "r1p_run_id": "E4B_R1P_20261107_032743_5F75045C"
+      },
+      "r1p_timing_descriptor_not_measured_frame_inventory": {
+        "actual_frame_count": null,
+        "duration_seconds": 22.0,
+        "expected_frame_count_consistency_only": 660,
+        "fps": 30
+      },
+      "schema": "C11E-E-OPTION-C-POSTCOMPOSITION-HANDOFF-V1",
+      "status": "PREPARED_WAITING_FOR_R1V_ACTUAL_SOURCE_EVIDENCE",
+      "visual_seed_domain": {
+        "gameplay_seed": 100012,
+        "music_seed_consumed_by_visual_composition": false,
+        "music_seed_lineage_only_for_future_d3": 500012,
+        "source": "request.seed"
+      }
+    },
+    {
+      "architecture": "OPTION_C_D_ONLY_POSTCOMPOSITION_OVER_IMMUTABLE_C_SOURCE",
+      "boundary_contract_sha256": "795be1da157dd07fd4992d3ec6d7cf091a015eed72d16d86df13085db296098b",
+      "c_source_video": {
+        "byte_length": null,
+        "decoded_pixel_manifest_sha256": null,
+        "ffprobe_metadata_sha256": null,
+        "frame_inventory_sha256": null,
+        "immutable_input_required": true,
+        "sha256": null,
+        "source_path": null,
+        "state": "NOT_YET_MATERIALIZED_R1V_REQUIRED"
+      },
+      "composition_policy": {
+        "dispatchable": false,
+        "layout_measurement": "UNKNOWN",
+        "proposal_path": "definitions/c11d/production/C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_V1.json",
+        "proposal_sha256": "9e206704665ea85226ecc10854be9f679c32fe9ed7efb690a829f6e8456d43da",
+        "proposal_status": "PROPOSED_NOT_APPROVED_NOT_RENDERER_INPUT"
+      },
+      "content_identity": {
+        "content_type": "visual_loops",
+        "family_id": "c11c_sacred_symmetry_v1",
+        "grammar_id": "polygon_orrery",
+        "grammar_index": 2
+      },
+      "d_output": {
+        "may_overwrite_c_source": false,
+        "output_artifact_path": null,
+        "separate_artifact_required": true,
+        "state": "NOT_MATERIALIZED"
+      },
+      "decision_sha256": "22cec26baecfb6018a814750cc781143f5fa13f897d3dce708f6e9e074f669ac",
+      "editorial": {
+        "source": "D9_9_CANONICAL_EDITORIAL_ALLOWLIST",
+        "values": {
+          "call_to_action": "Continue",
+          "language": "en",
+          "subtitle": "UNKNOWN",
+          "title": "Loop title 13"
+        },
+        "visual_parameters_sha256": "7ec5675ba7a6afdb7c39b10095bf1f2393c4797b63f07e7fd7f1cfbf6efe8d41"
+      },
+      "execution_boundary": {
+        "c11c_source_mutation": false,
+        "compositor_invoked": false,
+        "d3_audio_invoked": false,
+        "d4_8": "BLOCKED",
+        "d9_10": "PREPARE_ONLY",
+        "ffmpeg_invoked": false,
+        "ffprobe_invoked": false,
+        "godot_invoked": false,
+        "media_created": false,
+        "mux_invoked": false,
+        "release_authority": "NONE",
+        "renderer_dispatch_invoked": false,
+        "source_launcher_invoked": false
+      },
+      "lineage": {
+        "c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+        "d9_10_adapter_envelope_hash": "22d73fdde2e48296fca9e09d91a673adab4f36baa133dbfec2cf64ab210137d4",
+        "d9_10_bridge_record_hash": "9b5dedce23f3afd673cb0cd5ad6277f6013502dab91435d24c2bc44b4db6f599",
+        "d9_9_editorial_hash": "579df7aeec4adc20fe37191f3d8edf2bf62b74e1355a2538fbe028686a611b58",
+        "d9_9_plan_hash": "68f3a78b39fad60057d23edee094b5248ba5fdfab8c861e765478b5940935889",
+        "d9_9_request_hash": "88dedde591b2a20c49e000fa6daa593fa8073b5e5677c48ea3ff69110e0f64bb",
+        "family_stage_contract_sha256": "68addbaff582c23363b3403c445dca2f5b6996eb8b1bf6f32a39b6a3acca76e9",
+        "r1p_payload_sha256": "445c87e56ac48ac0cc27a8ea975ce0db34b71e45688379b78b5771df54fef56a",
+        "r1p_receipt_sha256": "b2c10d445fde66c94f644c315299522450aee0ffc1b9d7e835d529d6c5e6a37e",
+        "r1p_repeat_payload_sha256": "445c87e56ac48ac0cc27a8ea975ce0db34b71e45688379b78b5771df54fef56a",
+        "r1p_request_id": "E4B_R1P_20261107_032743_5F75045C_13",
+        "r1p_run_id": "E4B_R1P_20261107_032743_5F75045C"
+      },
+      "r1p_timing_descriptor_not_measured_frame_inventory": {
+        "actual_frame_count": null,
+        "duration_seconds": 22.0,
+        "expected_frame_count_consistency_only": 660,
+        "fps": 30
+      },
+      "schema": "C11E-E-OPTION-C-POSTCOMPOSITION-HANDOFF-V1",
+      "status": "PREPARED_WAITING_FOR_R1V_ACTUAL_SOURCE_EVIDENCE",
+      "visual_seed_domain": {
+        "gameplay_seed": 100013,
+        "music_seed_consumed_by_visual_composition": false,
+        "music_seed_lineage_only_for_future_d3": 500013,
+        "source": "request.seed"
+      }
+    },
+    {
+      "architecture": "OPTION_C_D_ONLY_POSTCOMPOSITION_OVER_IMMUTABLE_C_SOURCE",
+      "boundary_contract_sha256": "795be1da157dd07fd4992d3ec6d7cf091a015eed72d16d86df13085db296098b",
+      "c_source_video": {
+        "byte_length": null,
+        "decoded_pixel_manifest_sha256": null,
+        "ffprobe_metadata_sha256": null,
+        "frame_inventory_sha256": null,
+        "immutable_input_required": true,
+        "sha256": null,
+        "source_path": null,
+        "state": "NOT_YET_MATERIALIZED_R1V_REQUIRED"
+      },
+      "composition_policy": {
+        "dispatchable": false,
+        "layout_measurement": "UNKNOWN",
+        "proposal_path": "definitions/c11d/production/C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_V1.json",
+        "proposal_sha256": "9e206704665ea85226ecc10854be9f679c32fe9ed7efb690a829f6e8456d43da",
+        "proposal_status": "PROPOSED_NOT_APPROVED_NOT_RENDERER_INPUT"
+      },
+      "content_identity": {
+        "content_type": "visual_loops",
+        "family_id": "c11c_sacred_symmetry_v1",
+        "grammar_id": "origami_mandala",
+        "grammar_index": 3
+      },
+      "d_output": {
+        "may_overwrite_c_source": false,
+        "output_artifact_path": null,
+        "separate_artifact_required": true,
+        "state": "NOT_MATERIALIZED"
+      },
+      "decision_sha256": "22cec26baecfb6018a814750cc781143f5fa13f897d3dce708f6e9e074f669ac",
+      "editorial": {
+        "source": "D9_9_CANONICAL_EDITORIAL_ALLOWLIST",
+        "values": {
+          "call_to_action": "Continue",
+          "language": "en",
+          "subtitle": "UNKNOWN",
+          "title": "Loop title 14"
+        },
+        "visual_parameters_sha256": "5552edaf75862b28276441575dab6713695906ab4a7837bd58fd4f52257ebcdb"
+      },
+      "execution_boundary": {
+        "c11c_source_mutation": false,
+        "compositor_invoked": false,
+        "d3_audio_invoked": false,
+        "d4_8": "BLOCKED",
+        "d9_10": "PREPARE_ONLY",
+        "ffmpeg_invoked": false,
+        "ffprobe_invoked": false,
+        "godot_invoked": false,
+        "media_created": false,
+        "mux_invoked": false,
+        "release_authority": "NONE",
+        "renderer_dispatch_invoked": false,
+        "source_launcher_invoked": false
+      },
+      "lineage": {
+        "c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+        "d9_10_adapter_envelope_hash": "4496451b8bad998767efc557c99b218cb2d88cebe980ab928c71460ff06d136e",
+        "d9_10_bridge_record_hash": "0d1f4521b0ac5767894a0b749a5dc5c8e0b460399efa804bbbfb4f4e3f95fbc7",
+        "d9_9_editorial_hash": "f2f4987185c7cafdaaca28f5890e3fadfeb16e4fb7ff74dbf2d25ece30a356e6",
+        "d9_9_plan_hash": "83f5c52f1787ef6056619f9995b2fe7fde56bacbe2536d58a5ce261c28756b06",
+        "d9_9_request_hash": "47734d6b58b845c102a137940ac48189909fb72b557fa62b5fd0f0466b1ae5e9",
+        "family_stage_contract_sha256": "066d7953336ea30e6590719b6efacec43b8ab8664b66bfe9d200400e1be494c9",
+        "r1p_payload_sha256": "81dcc55ceed8beb8d6069bb4d2d96f6ef83d8013221c8710a55eb7b09aa2311f",
+        "r1p_receipt_sha256": "f7cdef4797a7d29a2e0d66fcee375a8a3467ff7f5e0a80fa86f9467c67b77be7",
+        "r1p_repeat_payload_sha256": "81dcc55ceed8beb8d6069bb4d2d96f6ef83d8013221c8710a55eb7b09aa2311f",
+        "r1p_request_id": "E4B_R1P_20261107_032743_5F75045C_14",
+        "r1p_run_id": "E4B_R1P_20261107_032743_5F75045C"
+      },
+      "r1p_timing_descriptor_not_measured_frame_inventory": {
+        "actual_frame_count": null,
+        "duration_seconds": 23.0,
+        "expected_frame_count_consistency_only": 690,
+        "fps": 30
+      },
+      "schema": "C11E-E-OPTION-C-POSTCOMPOSITION-HANDOFF-V1",
+      "status": "PREPARED_WAITING_FOR_R1V_ACTUAL_SOURCE_EVIDENCE",
+      "visual_seed_domain": {
+        "gameplay_seed": 100014,
+        "music_seed_consumed_by_visual_composition": false,
+        "music_seed_lineage_only_for_future_d3": 500014,
+        "source": "request.seed"
+      }
+    },
+    {
+      "architecture": "OPTION_C_D_ONLY_POSTCOMPOSITION_OVER_IMMUTABLE_C_SOURCE",
+      "boundary_contract_sha256": "795be1da157dd07fd4992d3ec6d7cf091a015eed72d16d86df13085db296098b",
+      "c_source_video": {
+        "byte_length": null,
+        "decoded_pixel_manifest_sha256": null,
+        "ffprobe_metadata_sha256": null,
+        "frame_inventory_sha256": null,
+        "immutable_input_required": true,
+        "sha256": null,
+        "source_path": null,
+        "state": "NOT_YET_MATERIALIZED_R1V_REQUIRED"
+      },
+      "composition_policy": {
+        "dispatchable": false,
+        "layout_measurement": "UNKNOWN",
+        "proposal_path": "definitions/c11d/production/C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_V1.json",
+        "proposal_sha256": "9e206704665ea85226ecc10854be9f679c32fe9ed7efb690a829f6e8456d43da",
+        "proposal_status": "PROPOSED_NOT_APPROVED_NOT_RENDERER_INPUT"
+      },
+      "content_identity": {
+        "content_type": "visual_loops",
+        "family_id": "c11c_sacred_symmetry_v1",
+        "grammar_id": "celestial_chart",
+        "grammar_index": 4
+      },
+      "d_output": {
+        "may_overwrite_c_source": false,
+        "output_artifact_path": null,
+        "separate_artifact_required": true,
+        "state": "NOT_MATERIALIZED"
+      },
+      "decision_sha256": "22cec26baecfb6018a814750cc781143f5fa13f897d3dce708f6e9e074f669ac",
+      "editorial": {
+        "source": "D9_9_CANONICAL_EDITORIAL_ALLOWLIST",
+        "values": {
+          "call_to_action": "Continue",
+          "language": "en",
+          "subtitle": "UNKNOWN",
+          "title": "Loop title 15"
+        },
+        "visual_parameters_sha256": "dfea2897e83eeffe01b8524441e2cc4a11def1add12d5641fdb10b924177dd5d"
+      },
+      "execution_boundary": {
+        "c11c_source_mutation": false,
+        "compositor_invoked": false,
+        "d3_audio_invoked": false,
+        "d4_8": "BLOCKED",
+        "d9_10": "PREPARE_ONLY",
+        "ffmpeg_invoked": false,
+        "ffprobe_invoked": false,
+        "godot_invoked": false,
+        "media_created": false,
+        "mux_invoked": false,
+        "release_authority": "NONE",
+        "renderer_dispatch_invoked": false,
+        "source_launcher_invoked": false
+      },
+      "lineage": {
+        "c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+        "d9_10_adapter_envelope_hash": "c7508c716d55daca0eb3c63531bead146a5b895a07ca9e0eaddd7110e0c31cc2",
+        "d9_10_bridge_record_hash": "2adc2292ef975127dd76b7a575234174ce37f5aaf04b687575d88d74a1635f28",
+        "d9_9_editorial_hash": "4a31572a13950bf6e4446a18f3e6982af94d748480c2c8a06a78168203dedebf",
+        "d9_9_plan_hash": "a31a3e405e762cce831ece846906f1ec109fca0cf9be53a2190b0510b97d101c",
+        "d9_9_request_hash": "0df20b48abf54da101a6f50a12d370532d0a0c38ae236e63d77936990d23b243",
+        "family_stage_contract_sha256": "f9b9efe3a54594774d40034150eeaae0248c62321220c220bc5d21b24866356f",
+        "r1p_payload_sha256": "c75b0e5998fa722e237630a322845be7b08722752a563ee0164a359b9f339184",
+        "r1p_receipt_sha256": "bd4c9baaf38c470c4b3888d04487354575e852d8509f97df75d057d6f44a7d53",
+        "r1p_repeat_payload_sha256": "c75b0e5998fa722e237630a322845be7b08722752a563ee0164a359b9f339184",
+        "r1p_request_id": "E4B_R1P_20261107_032743_5F75045C_15",
+        "r1p_run_id": "E4B_R1P_20261107_032743_5F75045C"
+      },
+      "r1p_timing_descriptor_not_measured_frame_inventory": {
+        "actual_frame_count": null,
+        "duration_seconds": 23.0,
+        "expected_frame_count_consistency_only": 690,
+        "fps": 30
+      },
+      "schema": "C11E-E-OPTION-C-POSTCOMPOSITION-HANDOFF-V1",
+      "status": "PREPARED_WAITING_FOR_R1V_ACTUAL_SOURCE_EVIDENCE",
+      "visual_seed_domain": {
+        "gameplay_seed": 100015,
+        "music_seed_consumed_by_visual_composition": false,
+        "music_seed_lineage_only_for_future_d3": 500015,
+        "source": "request.seed"
+      }
+    },
+    {
+      "architecture": "OPTION_C_D_ONLY_POSTCOMPOSITION_OVER_IMMUTABLE_C_SOURCE",
+      "boundary_contract_sha256": "795be1da157dd07fd4992d3ec6d7cf091a015eed72d16d86df13085db296098b",
+      "c_source_video": {
+        "byte_length": null,
+        "decoded_pixel_manifest_sha256": null,
+        "ffprobe_metadata_sha256": null,
+        "frame_inventory_sha256": null,
+        "immutable_input_required": true,
+        "sha256": null,
+        "source_path": null,
+        "state": "NOT_YET_MATERIALIZED_R1V_REQUIRED"
+      },
+      "composition_policy": {
+        "dispatchable": false,
+        "layout_measurement": "UNKNOWN",
+        "proposal_path": "definitions/c11d/production/C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_V1.json",
+        "proposal_sha256": "9e206704665ea85226ecc10854be9f679c32fe9ed7efb690a829f6e8456d43da",
+        "proposal_status": "PROPOSED_NOT_APPROVED_NOT_RENDERER_INPUT"
+      },
+      "content_identity": {
+        "content_type": "visual_loops",
+        "family_id": "c11c_living_particles_v1",
+        "grammar_id": "swarm",
+        "grammar_index": 0
+      },
+      "d_output": {
+        "may_overwrite_c_source": false,
+        "output_artifact_path": null,
+        "separate_artifact_required": true,
+        "state": "NOT_MATERIALIZED"
+      },
+      "decision_sha256": "22cec26baecfb6018a814750cc781143f5fa13f897d3dce708f6e9e074f669ac",
+      "editorial": {
+        "source": "D9_9_CANONICAL_EDITORIAL_ALLOWLIST",
+        "values": {
+          "call_to_action": "Continue",
+          "language": "en",
+          "subtitle": "UNKNOWN",
+          "title": "Loop title 16"
+        },
+        "visual_parameters_sha256": "1be60544e411f507b6c1e6319280446d9ffaf9722643c1cea3384dc5f77ecf6f"
+      },
+      "execution_boundary": {
+        "c11c_source_mutation": false,
+        "compositor_invoked": false,
+        "d3_audio_invoked": false,
+        "d4_8": "BLOCKED",
+        "d9_10": "PREPARE_ONLY",
+        "ffmpeg_invoked": false,
+        "ffprobe_invoked": false,
+        "godot_invoked": false,
+        "media_created": false,
+        "mux_invoked": false,
+        "release_authority": "NONE",
+        "renderer_dispatch_invoked": false,
+        "source_launcher_invoked": false
+      },
+      "lineage": {
+        "c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+        "d9_10_adapter_envelope_hash": "a59254ef4d9952abf65ac7df7c49e0aadef2137f49cb517071feae01f00dbc4b",
+        "d9_10_bridge_record_hash": "5065f0757259de1cf23ad5596894c6f4d9baddd7a0022f8c0f26153e792510b5",
+        "d9_9_editorial_hash": "8983f42fb433ffe7d70f417efd18b35ae5721e716a7cb14f9253822dff205049",
+        "d9_9_plan_hash": "a83021028301bdc64b46ca1d82b79e2bffaecae7ebb2e06a503b07baa6021d23",
+        "d9_9_request_hash": "e0ed4a0fe1082a4c217d6be066fb2cd5d4b30e13f2b55e2984c63650483d5b53",
+        "family_stage_contract_sha256": "094f39e660d85380d841b33186ab6fd22eedb6de3e41b37c9da331175b81a57a",
+        "r1p_payload_sha256": "60b0a89dc6d93f1369ea989610f1e791b4ff31147fc619f62bc11d9ef4c4de73",
+        "r1p_receipt_sha256": "11edb6f1091630121d56b55ba90eca08fad41d9452ddbe16862ce2fe299e6801",
+        "r1p_repeat_payload_sha256": "60b0a89dc6d93f1369ea989610f1e791b4ff31147fc619f62bc11d9ef4c4de73",
+        "r1p_request_id": "E4B_R1P_20261107_032743_5F75045C_16",
+        "r1p_run_id": "E4B_R1P_20261107_032743_5F75045C"
+      },
+      "r1p_timing_descriptor_not_measured_frame_inventory": {
+        "actual_frame_count": null,
+        "duration_seconds": 20.0,
+        "expected_frame_count_consistency_only": 600,
+        "fps": 30
+      },
+      "schema": "C11E-E-OPTION-C-POSTCOMPOSITION-HANDOFF-V1",
+      "status": "PREPARED_WAITING_FOR_R1V_ACTUAL_SOURCE_EVIDENCE",
+      "visual_seed_domain": {
+        "gameplay_seed": 100016,
+        "music_seed_consumed_by_visual_composition": false,
+        "music_seed_lineage_only_for_future_d3": 500016,
+        "source": "request.seed"
+      }
+    },
+    {
+      "architecture": "OPTION_C_D_ONLY_POSTCOMPOSITION_OVER_IMMUTABLE_C_SOURCE",
+      "boundary_contract_sha256": "795be1da157dd07fd4992d3ec6d7cf091a015eed72d16d86df13085db296098b",
+      "c_source_video": {
+        "byte_length": null,
+        "decoded_pixel_manifest_sha256": null,
+        "ffprobe_metadata_sha256": null,
+        "frame_inventory_sha256": null,
+        "immutable_input_required": true,
+        "sha256": null,
+        "source_path": null,
+        "state": "NOT_YET_MATERIALIZED_R1V_REQUIRED"
+      },
+      "composition_policy": {
+        "dispatchable": false,
+        "layout_measurement": "UNKNOWN",
+        "proposal_path": "definitions/c11d/production/C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_V1.json",
+        "proposal_sha256": "9e206704665ea85226ecc10854be9f679c32fe9ed7efb690a829f6e8456d43da",
+        "proposal_status": "PROPOSED_NOT_APPROVED_NOT_RENDERER_INPUT"
+      },
+      "content_identity": {
+        "content_type": "visual_loops",
+        "family_id": "c11c_living_particles_v1",
+        "grammar_id": "vortex",
+        "grammar_index": 1
+      },
+      "d_output": {
+        "may_overwrite_c_source": false,
+        "output_artifact_path": null,
+        "separate_artifact_required": true,
+        "state": "NOT_MATERIALIZED"
+      },
+      "decision_sha256": "22cec26baecfb6018a814750cc781143f5fa13f897d3dce708f6e9e074f669ac",
+      "editorial": {
+        "source": "D9_9_CANONICAL_EDITORIAL_ALLOWLIST",
+        "values": {
+          "call_to_action": "Continue",
+          "language": "en",
+          "subtitle": "UNKNOWN",
+          "title": "Loop title 17"
+        },
+        "visual_parameters_sha256": "9ae5488938ef3691e152ffbbc981bb3c2003a1a47e61dd620323e791b0acfe4c"
+      },
+      "execution_boundary": {
+        "c11c_source_mutation": false,
+        "compositor_invoked": false,
+        "d3_audio_invoked": false,
+        "d4_8": "BLOCKED",
+        "d9_10": "PREPARE_ONLY",
+        "ffmpeg_invoked": false,
+        "ffprobe_invoked": false,
+        "godot_invoked": false,
+        "media_created": false,
+        "mux_invoked": false,
+        "release_authority": "NONE",
+        "renderer_dispatch_invoked": false,
+        "source_launcher_invoked": false
+      },
+      "lineage": {
+        "c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+        "d9_10_adapter_envelope_hash": "a300965829f5aadf9f7737ad558c2c7c834435e7e7e7642d285861dceb0e6b1f",
+        "d9_10_bridge_record_hash": "0f6965e2cc0c1e7d762ab0c1e589e9f180f4ba2435dda3018cdcbdb9871749a5",
+        "d9_9_editorial_hash": "f864abc2780b6965340c4a6581ef13763dfefaf49b0e9feef0daa36686e17871",
+        "d9_9_plan_hash": "c74fdf31aa4c4ad0d7c9fff0086090a8a50de41d062610060e5fb220b2f2a616",
+        "d9_9_request_hash": "3361316da3f5fa867959c89cb50f59926222c0eceac21e944071788da694c63f",
+        "family_stage_contract_sha256": "11b5d1c0978eecec0a06204a7c472a64348c860f3b7dce3e1a23839e5820ba14",
+        "r1p_payload_sha256": "99a01152ea3718de126bcad32bf59f296fe8fbfa063478dc77ff099f886878b9",
+        "r1p_receipt_sha256": "711339e5c7eec3fba5140b0eee83bbe5ee1ada3b7e838eb3fd4013a09e040165",
+        "r1p_repeat_payload_sha256": "99a01152ea3718de126bcad32bf59f296fe8fbfa063478dc77ff099f886878b9",
+        "r1p_request_id": "E4B_R1P_20261107_032743_5F75045C_17",
+        "r1p_run_id": "E4B_R1P_20261107_032743_5F75045C"
+      },
+      "r1p_timing_descriptor_not_measured_frame_inventory": {
+        "actual_frame_count": null,
+        "duration_seconds": 23.0,
+        "expected_frame_count_consistency_only": 690,
+        "fps": 30
+      },
+      "schema": "C11E-E-OPTION-C-POSTCOMPOSITION-HANDOFF-V1",
+      "status": "PREPARED_WAITING_FOR_R1V_ACTUAL_SOURCE_EVIDENCE",
+      "visual_seed_domain": {
+        "gameplay_seed": 100017,
+        "music_seed_consumed_by_visual_composition": false,
+        "music_seed_lineage_only_for_future_d3": 500017,
+        "source": "request.seed"
+      }
+    },
+    {
+      "architecture": "OPTION_C_D_ONLY_POSTCOMPOSITION_OVER_IMMUTABLE_C_SOURCE",
+      "boundary_contract_sha256": "795be1da157dd07fd4992d3ec6d7cf091a015eed72d16d86df13085db296098b",
+      "c_source_video": {
+        "byte_length": null,
+        "decoded_pixel_manifest_sha256": null,
+        "ffprobe_metadata_sha256": null,
+        "frame_inventory_sha256": null,
+        "immutable_input_required": true,
+        "sha256": null,
+        "source_path": null,
+        "state": "NOT_YET_MATERIALIZED_R1V_REQUIRED"
+      },
+      "composition_policy": {
+        "dispatchable": false,
+        "layout_measurement": "UNKNOWN",
+        "proposal_path": "definitions/c11d/production/C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_V1.json",
+        "proposal_sha256": "9e206704665ea85226ecc10854be9f679c32fe9ed7efb690a829f6e8456d43da",
+        "proposal_status": "PROPOSED_NOT_APPROVED_NOT_RENDERER_INPUT"
+      },
+      "content_identity": {
+        "content_type": "visual_loops",
+        "family_id": "c11c_living_particles_v1",
+        "grammar_id": "collision_cloud",
+        "grammar_index": 2
+      },
+      "d_output": {
+        "may_overwrite_c_source": false,
+        "output_artifact_path": null,
+        "separate_artifact_required": true,
+        "state": "NOT_MATERIALIZED"
+      },
+      "decision_sha256": "22cec26baecfb6018a814750cc781143f5fa13f897d3dce708f6e9e074f669ac",
+      "editorial": {
+        "source": "D9_9_CANONICAL_EDITORIAL_ALLOWLIST",
+        "values": {
+          "call_to_action": "Continue",
+          "language": "en",
+          "subtitle": "UNKNOWN",
+          "title": "Loop title 18"
+        },
+        "visual_parameters_sha256": "dc9e7bd3e65a337fb5c513be9aac482d9a2dbc0bb81d04ef3e8db9cf539315f6"
+      },
+      "execution_boundary": {
+        "c11c_source_mutation": false,
+        "compositor_invoked": false,
+        "d3_audio_invoked": false,
+        "d4_8": "BLOCKED",
+        "d9_10": "PREPARE_ONLY",
+        "ffmpeg_invoked": false,
+        "ffprobe_invoked": false,
+        "godot_invoked": false,
+        "media_created": false,
+        "mux_invoked": false,
+        "release_authority": "NONE",
+        "renderer_dispatch_invoked": false,
+        "source_launcher_invoked": false
+      },
+      "lineage": {
+        "c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+        "d9_10_adapter_envelope_hash": "930227c43d1479441e208294612e6ce21bc53f77de26564b81459c7fded42560",
+        "d9_10_bridge_record_hash": "367db25654e755a21a96198b9b46a1e50c5abfb2177dcb78765166bd6883cd04",
+        "d9_9_editorial_hash": "00d7d3463846ae77721109a7a1d7b2545b20564ed3769b28b09ef0e4eda1fae8",
+        "d9_9_plan_hash": "5b04e29e2d1e61c58bd84380906b6ac4ffd5e55c612f619d3570e08bbc464101",
+        "d9_9_request_hash": "b8af97fa8f8e934ad3d58d8b96ee049c7e71ed93f664bc01bcfcff1d13bc5b39",
+        "family_stage_contract_sha256": "76e9dc4dc11d648b50cdeb9e03bd31130c5d46976bc0aa9c58152012c8a7abd1",
+        "r1p_payload_sha256": "22a7fe323117e447f14fe217694bb30221ca090c2b01297f17c57c69d7db791a",
+        "r1p_receipt_sha256": "b6cb8a806a9c80cfa5eeed12beaa76d2ffcf26d77f1f1abb8147e39edd7dc257",
+        "r1p_repeat_payload_sha256": "22a7fe323117e447f14fe217694bb30221ca090c2b01297f17c57c69d7db791a",
+        "r1p_request_id": "E4B_R1P_20261107_032743_5F75045C_18",
+        "r1p_run_id": "E4B_R1P_20261107_032743_5F75045C"
+      },
+      "r1p_timing_descriptor_not_measured_frame_inventory": {
+        "actual_frame_count": null,
+        "duration_seconds": 23.0,
+        "expected_frame_count_consistency_only": 690,
+        "fps": 30
+      },
+      "schema": "C11E-E-OPTION-C-POSTCOMPOSITION-HANDOFF-V1",
+      "status": "PREPARED_WAITING_FOR_R1V_ACTUAL_SOURCE_EVIDENCE",
+      "visual_seed_domain": {
+        "gameplay_seed": 100018,
+        "music_seed_consumed_by_visual_composition": false,
+        "music_seed_lineage_only_for_future_d3": 500018,
+        "source": "request.seed"
+      }
+    },
+    {
+      "architecture": "OPTION_C_D_ONLY_POSTCOMPOSITION_OVER_IMMUTABLE_C_SOURCE",
+      "boundary_contract_sha256": "795be1da157dd07fd4992d3ec6d7cf091a015eed72d16d86df13085db296098b",
+      "c_source_video": {
+        "byte_length": null,
+        "decoded_pixel_manifest_sha256": null,
+        "ffprobe_metadata_sha256": null,
+        "frame_inventory_sha256": null,
+        "immutable_input_required": true,
+        "sha256": null,
+        "source_path": null,
+        "state": "NOT_YET_MATERIALIZED_R1V_REQUIRED"
+      },
+      "composition_policy": {
+        "dispatchable": false,
+        "layout_measurement": "UNKNOWN",
+        "proposal_path": "definitions/c11d/production/C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_V1.json",
+        "proposal_sha256": "9e206704665ea85226ecc10854be9f679c32fe9ed7efb690a829f6e8456d43da",
+        "proposal_status": "PROPOSED_NOT_APPROVED_NOT_RENDERER_INPUT"
+      },
+      "content_identity": {
+        "content_type": "visual_loops",
+        "family_id": "c11c_living_particles_v1",
+        "grammar_id": "organic_pulse",
+        "grammar_index": 3
+      },
+      "d_output": {
+        "may_overwrite_c_source": false,
+        "output_artifact_path": null,
+        "separate_artifact_required": true,
+        "state": "NOT_MATERIALIZED"
+      },
+      "decision_sha256": "22cec26baecfb6018a814750cc781143f5fa13f897d3dce708f6e9e074f669ac",
+      "editorial": {
+        "source": "D9_9_CANONICAL_EDITORIAL_ALLOWLIST",
+        "values": {
+          "call_to_action": "Continue",
+          "language": "en",
+          "subtitle": "UNKNOWN",
+          "title": "Loop title 19"
+        },
+        "visual_parameters_sha256": "2591bdd5e1176b05dfb81811a72347d67ce466316a117f03d7ef866e8fbf5f98"
+      },
+      "execution_boundary": {
+        "c11c_source_mutation": false,
+        "compositor_invoked": false,
+        "d3_audio_invoked": false,
+        "d4_8": "BLOCKED",
+        "d9_10": "PREPARE_ONLY",
+        "ffmpeg_invoked": false,
+        "ffprobe_invoked": false,
+        "godot_invoked": false,
+        "media_created": false,
+        "mux_invoked": false,
+        "release_authority": "NONE",
+        "renderer_dispatch_invoked": false,
+        "source_launcher_invoked": false
+      },
+      "lineage": {
+        "c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+        "d9_10_adapter_envelope_hash": "d296d849304a00c42ce871742478a51b2c66845f4f9e59ec6643a77ea85b1e15",
+        "d9_10_bridge_record_hash": "a7272268f52a7a94b6ac6210636b4f027362daaf0880cba9dd89d09bafd691cb",
+        "d9_9_editorial_hash": "ec08df6ce76083665373aff02be6356e41f4de9897a8c3f5107c8210abf5045e",
+        "d9_9_plan_hash": "20b34b1c4175b6492d88b8d963e8eba3f88d3fe52f2729f57be9d3a7e302c340",
+        "d9_9_request_hash": "ced909c6d362703107516d85dae1fd6a57162cc8152d26a43dd5bc118949f729",
+        "family_stage_contract_sha256": "4a05b2f3c60fd2324dab3b070f2984c0293cfa2e61a003f23a3a1b0156493116",
+        "r1p_payload_sha256": "ce04be4e8064497e005c75b6c67b924a9829f4e9cb24ab5cd3c8bcda1b8518f2",
+        "r1p_receipt_sha256": "d456a1f87962ec21e58587f17fed2f9fe871843476f879f0b7bc70e79a0165e1",
+        "r1p_repeat_payload_sha256": "ce04be4e8064497e005c75b6c67b924a9829f4e9cb24ab5cd3c8bcda1b8518f2",
+        "r1p_request_id": "E4B_R1P_20261107_032743_5F75045C_19",
+        "r1p_run_id": "E4B_R1P_20261107_032743_5F75045C"
+      },
+      "r1p_timing_descriptor_not_measured_frame_inventory": {
+        "actual_frame_count": null,
+        "duration_seconds": 22.0,
+        "expected_frame_count_consistency_only": 660,
+        "fps": 30
+      },
+      "schema": "C11E-E-OPTION-C-POSTCOMPOSITION-HANDOFF-V1",
+      "status": "PREPARED_WAITING_FOR_R1V_ACTUAL_SOURCE_EVIDENCE",
+      "visual_seed_domain": {
+        "gameplay_seed": 100019,
+        "music_seed_consumed_by_visual_composition": false,
+        "music_seed_lineage_only_for_future_d3": 500019,
+        "source": "request.seed"
+      }
+    },
+    {
+      "architecture": "OPTION_C_D_ONLY_POSTCOMPOSITION_OVER_IMMUTABLE_C_SOURCE",
+      "boundary_contract_sha256": "795be1da157dd07fd4992d3ec6d7cf091a015eed72d16d86df13085db296098b",
+      "c_source_video": {
+        "byte_length": null,
+        "decoded_pixel_manifest_sha256": null,
+        "ffprobe_metadata_sha256": null,
+        "frame_inventory_sha256": null,
+        "immutable_input_required": true,
+        "sha256": null,
+        "source_path": null,
+        "state": "NOT_YET_MATERIALIZED_R1V_REQUIRED"
+      },
+      "composition_policy": {
+        "dispatchable": false,
+        "layout_measurement": "UNKNOWN",
+        "proposal_path": "definitions/c11d/production/C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_V1.json",
+        "proposal_sha256": "9e206704665ea85226ecc10854be9f679c32fe9ed7efb690a829f6e8456d43da",
+        "proposal_status": "PROPOSED_NOT_APPROVED_NOT_RENDERER_INPUT"
+      },
+      "content_identity": {
+        "content_type": "visual_loops",
+        "family_id": "c11c_living_particles_v1",
+        "grammar_id": "magnetic_filament_cloud",
+        "grammar_index": 4
+      },
+      "d_output": {
+        "may_overwrite_c_source": false,
+        "output_artifact_path": null,
+        "separate_artifact_required": true,
+        "state": "NOT_MATERIALIZED"
+      },
+      "decision_sha256": "22cec26baecfb6018a814750cc781143f5fa13f897d3dce708f6e9e074f669ac",
+      "editorial": {
+        "source": "D9_9_CANONICAL_EDITORIAL_ALLOWLIST",
+        "values": {
+          "call_to_action": "Continue",
+          "language": "en",
+          "subtitle": "UNKNOWN",
+          "title": "Loop title 20"
+        },
+        "visual_parameters_sha256": "b0f49edda3dd46afdcc40ac94685324a579729966d45666641167aadb3b4bae4"
+      },
+      "execution_boundary": {
+        "c11c_source_mutation": false,
+        "compositor_invoked": false,
+        "d3_audio_invoked": false,
+        "d4_8": "BLOCKED",
+        "d9_10": "PREPARE_ONLY",
+        "ffmpeg_invoked": false,
+        "ffprobe_invoked": false,
+        "godot_invoked": false,
+        "media_created": false,
+        "mux_invoked": false,
+        "release_authority": "NONE",
+        "renderer_dispatch_invoked": false,
+        "source_launcher_invoked": false
+      },
+      "lineage": {
+        "c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+        "d9_10_adapter_envelope_hash": "c8bd40cc762d1bb515a83a265a7a8a214d86a937142c4f68fc2c0760c6a04b87",
+        "d9_10_bridge_record_hash": "0e9b21f8c223565a7ac2c42f19b16eb6f819c105690acdeb9371090e7ea0fe38",
+        "d9_9_editorial_hash": "c83c7063dbe0d543d018aac846583dcc0eb0e6da49f982520cbb05908a6b7747",
+        "d9_9_plan_hash": "95405328f9fac93f02528623256f8929f500edeadfc6c6ea515bb630625f03f3",
+        "d9_9_request_hash": "c4425efc26640d16925e5de45e1593f7e25e8474eb3fe7478999612fc560577d",
+        "family_stage_contract_sha256": "35d85f7448f32c87e358798df817fe510345605f78b08b08203baf4face1c533",
+        "r1p_payload_sha256": "2f2ab758ad1a462fcd59fc8450382d9426905df6f3b1ddeddd0a15d4ba6210d8",
+        "r1p_receipt_sha256": "9a8b44b4baa00cd6494749829e3641691fc2640cb174ed9ea7e9304691b8f7d4",
+        "r1p_repeat_payload_sha256": "2f2ab758ad1a462fcd59fc8450382d9426905df6f3b1ddeddd0a15d4ba6210d8",
+        "r1p_request_id": "E4B_R1P_20261107_032743_5F75045C_20",
+        "r1p_run_id": "E4B_R1P_20261107_032743_5F75045C"
+      },
+      "r1p_timing_descriptor_not_measured_frame_inventory": {
+        "actual_frame_count": null,
+        "duration_seconds": 20.0,
+        "expected_frame_count_consistency_only": 600,
+        "fps": 30
+      },
+      "schema": "C11E-E-OPTION-C-POSTCOMPOSITION-HANDOFF-V1",
+      "status": "PREPARED_WAITING_FOR_R1V_ACTUAL_SOURCE_EVIDENCE",
+      "visual_seed_domain": {
+        "gameplay_seed": 100020,
+        "music_seed_consumed_by_visual_composition": false,
+        "music_seed_lineage_only_for_future_d3": 500020,
+        "source": "request.seed"
+      }
+    },
+    {
+      "architecture": "OPTION_C_D_ONLY_POSTCOMPOSITION_OVER_IMMUTABLE_C_SOURCE",
+      "boundary_contract_sha256": "795be1da157dd07fd4992d3ec6d7cf091a015eed72d16d86df13085db296098b",
+      "c_source_video": {
+        "byte_length": null,
+        "decoded_pixel_manifest_sha256": null,
+        "ffprobe_metadata_sha256": null,
+        "frame_inventory_sha256": null,
+        "immutable_input_required": true,
+        "sha256": null,
+        "source_path": null,
+        "state": "NOT_YET_MATERIALIZED_R1V_REQUIRED"
+      },
+      "composition_policy": {
+        "dispatchable": false,
+        "layout_measurement": "UNKNOWN",
+        "proposal_path": "definitions/c11d/production/C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_V1.json",
+        "proposal_sha256": "9e206704665ea85226ecc10854be9f679c32fe9ed7efb690a829f6e8456d43da",
+        "proposal_status": "PROPOSED_NOT_APPROVED_NOT_RENDERER_INPUT"
+      },
+      "content_identity": {
+        "content_type": "visual_loops",
+        "family_id": "c11c_invisible_forces_v1",
+        "grammar_id": "dipole_field",
+        "grammar_index": 0
+      },
+      "d_output": {
+        "may_overwrite_c_source": false,
+        "output_artifact_path": null,
+        "separate_artifact_required": true,
+        "state": "NOT_MATERIALIZED"
+      },
+      "decision_sha256": "22cec26baecfb6018a814750cc781143f5fa13f897d3dce708f6e9e074f669ac",
+      "editorial": {
+        "source": "D9_9_CANONICAL_EDITORIAL_ALLOWLIST",
+        "values": {
+          "call_to_action": "Continue",
+          "language": "en",
+          "subtitle": "UNKNOWN",
+          "title": "Loop title 21"
+        },
+        "visual_parameters_sha256": "35fcf02c125266bcd32beae3df6f75c53124ad5e1e2725ef65ed3b800a3ce1e7"
+      },
+      "execution_boundary": {
+        "c11c_source_mutation": false,
+        "compositor_invoked": false,
+        "d3_audio_invoked": false,
+        "d4_8": "BLOCKED",
+        "d9_10": "PREPARE_ONLY",
+        "ffmpeg_invoked": false,
+        "ffprobe_invoked": false,
+        "godot_invoked": false,
+        "media_created": false,
+        "mux_invoked": false,
+        "release_authority": "NONE",
+        "renderer_dispatch_invoked": false,
+        "source_launcher_invoked": false
+      },
+      "lineage": {
+        "c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+        "d9_10_adapter_envelope_hash": "d66134f88ba9bd011d66068158d283b6047edfbaf8fc657f6f9e8ed78e566c01",
+        "d9_10_bridge_record_hash": "1555fb0d50a1d865381d6c71472475cbddf14e0cc91ddf80abe0f5f4ba9d7572",
+        "d9_9_editorial_hash": "27c296a512bee970dd87c6587386bbe2b415a850c23edaf551b864631ed96af0",
+        "d9_9_plan_hash": "1ee758a4ad2307136f327da88a71d023dd88bf89800eca2700372d4a38579495",
+        "d9_9_request_hash": "412d6ca81509282c55d30c5ac0614bf1e222c8c884843a7f498c017a72ff4a5b",
+        "family_stage_contract_sha256": "0be95383afb3d4decacdc313cd9356021c02edce424db12099f92744f17f4892",
+        "r1p_payload_sha256": "734f6c44ea984cb35c4f23361e3cac75c235d0fb3568bfdb8cf1073a6f459172",
+        "r1p_receipt_sha256": "ce4cc72804b49e8adebb9bc85565ebe61304f9b0dff45482084245fecf00844b",
+        "r1p_repeat_payload_sha256": "734f6c44ea984cb35c4f23361e3cac75c235d0fb3568bfdb8cf1073a6f459172",
+        "r1p_request_id": "E4B_R1P_20261107_032743_5F75045C_21",
+        "r1p_run_id": "E4B_R1P_20261107_032743_5F75045C"
+      },
+      "r1p_timing_descriptor_not_measured_frame_inventory": {
+        "actual_frame_count": null,
+        "duration_seconds": 22.0,
+        "expected_frame_count_consistency_only": 660,
+        "fps": 30
+      },
+      "schema": "C11E-E-OPTION-C-POSTCOMPOSITION-HANDOFF-V1",
+      "status": "PREPARED_WAITING_FOR_R1V_ACTUAL_SOURCE_EVIDENCE",
+      "visual_seed_domain": {
+        "gameplay_seed": 100021,
+        "music_seed_consumed_by_visual_composition": false,
+        "music_seed_lineage_only_for_future_d3": 500021,
+        "source": "request.seed"
+      }
+    },
+    {
+      "architecture": "OPTION_C_D_ONLY_POSTCOMPOSITION_OVER_IMMUTABLE_C_SOURCE",
+      "boundary_contract_sha256": "795be1da157dd07fd4992d3ec6d7cf091a015eed72d16d86df13085db296098b",
+      "c_source_video": {
+        "byte_length": null,
+        "decoded_pixel_manifest_sha256": null,
+        "ffprobe_metadata_sha256": null,
+        "frame_inventory_sha256": null,
+        "immutable_input_required": true,
+        "sha256": null,
+        "source_path": null,
+        "state": "NOT_YET_MATERIALIZED_R1V_REQUIRED"
+      },
+      "composition_policy": {
+        "dispatchable": false,
+        "layout_measurement": "UNKNOWN",
+        "proposal_path": "definitions/c11d/production/C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_V1.json",
+        "proposal_sha256": "9e206704665ea85226ecc10854be9f679c32fe9ed7efb690a829f6e8456d43da",
+        "proposal_status": "PROPOSED_NOT_APPROVED_NOT_RENDERER_INPUT"
+      },
+      "content_identity": {
+        "content_type": "visual_loops",
+        "family_id": "c11c_invisible_forces_v1",
+        "grammar_id": "vortex_field",
+        "grammar_index": 1
+      },
+      "d_output": {
+        "may_overwrite_c_source": false,
+        "output_artifact_path": null,
+        "separate_artifact_required": true,
+        "state": "NOT_MATERIALIZED"
+      },
+      "decision_sha256": "22cec26baecfb6018a814750cc781143f5fa13f897d3dce708f6e9e074f669ac",
+      "editorial": {
+        "source": "D9_9_CANONICAL_EDITORIAL_ALLOWLIST",
+        "values": {
+          "call_to_action": "Continue",
+          "language": "en",
+          "subtitle": "UNKNOWN",
+          "title": "Loop title 22"
+        },
+        "visual_parameters_sha256": "4b596e32671f67491d4ca2e0f6dbdb9e20c0e5f7ef9a153f293177b1e0b237ee"
+      },
+      "execution_boundary": {
+        "c11c_source_mutation": false,
+        "compositor_invoked": false,
+        "d3_audio_invoked": false,
+        "d4_8": "BLOCKED",
+        "d9_10": "PREPARE_ONLY",
+        "ffmpeg_invoked": false,
+        "ffprobe_invoked": false,
+        "godot_invoked": false,
+        "media_created": false,
+        "mux_invoked": false,
+        "release_authority": "NONE",
+        "renderer_dispatch_invoked": false,
+        "source_launcher_invoked": false
+      },
+      "lineage": {
+        "c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+        "d9_10_adapter_envelope_hash": "e3eb43135bdd90a3b7d1b05059c3be3b883340ac269fcf769d1038df935111c3",
+        "d9_10_bridge_record_hash": "39b96d697dfcf0a83e61fae840acf6d837dc078d4108c6d5adb6ae2d268ccebb",
+        "d9_9_editorial_hash": "5a64bca5ea3a3d2ac52491f5f09d1e3cafda6cdd5e314444938d4f57eb36b662",
+        "d9_9_plan_hash": "7be9037d68354ba60cd2015994b7e3f826d6b6b7f4478d76e95cad00f4b0e184",
+        "d9_9_request_hash": "92e300ed01436f54e06cd8299ed3907514ecf1dd9e3d8323172e77211e9bf719",
+        "family_stage_contract_sha256": "2460d963418c21a057627dae4f393a1c433f63ef62e3a3dc69d92225815cc32b",
+        "r1p_payload_sha256": "77b8dbc86dce4c8773041af5069973f303de332f732e8df9d8cca1db6d79b2dc",
+        "r1p_receipt_sha256": "1ef9457b9105ea5b61f07a070446b1735e28b07aa18227079a0820799b619c90",
+        "r1p_repeat_payload_sha256": "77b8dbc86dce4c8773041af5069973f303de332f732e8df9d8cca1db6d79b2dc",
+        "r1p_request_id": "E4B_R1P_20261107_032743_5F75045C_22",
+        "r1p_run_id": "E4B_R1P_20261107_032743_5F75045C"
+      },
+      "r1p_timing_descriptor_not_measured_frame_inventory": {
+        "actual_frame_count": null,
+        "duration_seconds": 23.0,
+        "expected_frame_count_consistency_only": 690,
+        "fps": 30
+      },
+      "schema": "C11E-E-OPTION-C-POSTCOMPOSITION-HANDOFF-V1",
+      "status": "PREPARED_WAITING_FOR_R1V_ACTUAL_SOURCE_EVIDENCE",
+      "visual_seed_domain": {
+        "gameplay_seed": 100022,
+        "music_seed_consumed_by_visual_composition": false,
+        "music_seed_lineage_only_for_future_d3": 500022,
+        "source": "request.seed"
+      }
+    },
+    {
+      "architecture": "OPTION_C_D_ONLY_POSTCOMPOSITION_OVER_IMMUTABLE_C_SOURCE",
+      "boundary_contract_sha256": "795be1da157dd07fd4992d3ec6d7cf091a015eed72d16d86df13085db296098b",
+      "c_source_video": {
+        "byte_length": null,
+        "decoded_pixel_manifest_sha256": null,
+        "ffprobe_metadata_sha256": null,
+        "frame_inventory_sha256": null,
+        "immutable_input_required": true,
+        "sha256": null,
+        "source_path": null,
+        "state": "NOT_YET_MATERIALIZED_R1V_REQUIRED"
+      },
+      "composition_policy": {
+        "dispatchable": false,
+        "layout_measurement": "UNKNOWN",
+        "proposal_path": "definitions/c11d/production/C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_V1.json",
+        "proposal_sha256": "9e206704665ea85226ecc10854be9f679c32fe9ed7efb690a829f6e8456d43da",
+        "proposal_status": "PROPOSED_NOT_APPROVED_NOT_RENDERER_INPUT"
+      },
+      "content_identity": {
+        "content_type": "visual_loops",
+        "family_id": "c11c_invisible_forces_v1",
+        "grammar_id": "saddle_field",
+        "grammar_index": 2
+      },
+      "d_output": {
+        "may_overwrite_c_source": false,
+        "output_artifact_path": null,
+        "separate_artifact_required": true,
+        "state": "NOT_MATERIALIZED"
+      },
+      "decision_sha256": "22cec26baecfb6018a814750cc781143f5fa13f897d3dce708f6e9e074f669ac",
+      "editorial": {
+        "source": "D9_9_CANONICAL_EDITORIAL_ALLOWLIST",
+        "values": {
+          "call_to_action": "Continue",
+          "language": "en",
+          "subtitle": "UNKNOWN",
+          "title": "Loop title 23"
+        },
+        "visual_parameters_sha256": "b69dc7a47c1051e7d08fda9de5851e9e8f1e47b669856d42f9e1855f9b75775c"
+      },
+      "execution_boundary": {
+        "c11c_source_mutation": false,
+        "compositor_invoked": false,
+        "d3_audio_invoked": false,
+        "d4_8": "BLOCKED",
+        "d9_10": "PREPARE_ONLY",
+        "ffmpeg_invoked": false,
+        "ffprobe_invoked": false,
+        "godot_invoked": false,
+        "media_created": false,
+        "mux_invoked": false,
+        "release_authority": "NONE",
+        "renderer_dispatch_invoked": false,
+        "source_launcher_invoked": false
+      },
+      "lineage": {
+        "c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+        "d9_10_adapter_envelope_hash": "8be54807fa5a5d59500d28560d8c57c00308c011fd8871bb6a0a557eac5dab2f",
+        "d9_10_bridge_record_hash": "2361ae8eafd714b7224522ea9240d12d66795247b2ca255f311769257b85148f",
+        "d9_9_editorial_hash": "ff3001fc1e0dc6b8cf516f41ae6f321408e5a610b4429323c7d73e2c279dca18",
+        "d9_9_plan_hash": "af177c108ca8084e1ec8a06a8b3a531805f3f902712dfd69bf61214602daa27d",
+        "d9_9_request_hash": "5ec25c8b6ffccb9a168349124f9da2561973addf562a7bb9457e03beb3e05a05",
+        "family_stage_contract_sha256": "6849f70bceea7b930a5132195df656a5de2ec5c21204596c5978e487d079cc08",
+        "r1p_payload_sha256": "cf910848a42d346f6139f4bb103335d1378e630b5f6e59f681c4aa680e244287",
+        "r1p_receipt_sha256": "67eb32ec6411e628a916a506df06aea3edb025211f5d69d41473df2433a82cc2",
+        "r1p_repeat_payload_sha256": "cf910848a42d346f6139f4bb103335d1378e630b5f6e59f681c4aa680e244287",
+        "r1p_request_id": "E4B_R1P_20261107_032743_5F75045C_23",
+        "r1p_run_id": "E4B_R1P_20261107_032743_5F75045C"
+      },
+      "r1p_timing_descriptor_not_measured_frame_inventory": {
+        "actual_frame_count": null,
+        "duration_seconds": 23.0,
+        "expected_frame_count_consistency_only": 690,
+        "fps": 30
+      },
+      "schema": "C11E-E-OPTION-C-POSTCOMPOSITION-HANDOFF-V1",
+      "status": "PREPARED_WAITING_FOR_R1V_ACTUAL_SOURCE_EVIDENCE",
+      "visual_seed_domain": {
+        "gameplay_seed": 100023,
+        "music_seed_consumed_by_visual_composition": false,
+        "music_seed_lineage_only_for_future_d3": 500023,
+        "source": "request.seed"
+      }
+    },
+    {
+      "architecture": "OPTION_C_D_ONLY_POSTCOMPOSITION_OVER_IMMUTABLE_C_SOURCE",
+      "boundary_contract_sha256": "795be1da157dd07fd4992d3ec6d7cf091a015eed72d16d86df13085db296098b",
+      "c_source_video": {
+        "byte_length": null,
+        "decoded_pixel_manifest_sha256": null,
+        "ffprobe_metadata_sha256": null,
+        "frame_inventory_sha256": null,
+        "immutable_input_required": true,
+        "sha256": null,
+        "source_path": null,
+        "state": "NOT_YET_MATERIALIZED_R1V_REQUIRED"
+      },
+      "composition_policy": {
+        "dispatchable": false,
+        "layout_measurement": "UNKNOWN",
+        "proposal_path": "definitions/c11d/production/C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_V1.json",
+        "proposal_sha256": "9e206704665ea85226ecc10854be9f679c32fe9ed7efb690a829f6e8456d43da",
+        "proposal_status": "PROPOSED_NOT_APPROVED_NOT_RENDERER_INPUT"
+      },
+      "content_identity": {
+        "content_type": "visual_loops",
+        "family_id": "c11c_invisible_forces_v1",
+        "grammar_id": "quadrupole_field",
+        "grammar_index": 3
+      },
+      "d_output": {
+        "may_overwrite_c_source": false,
+        "output_artifact_path": null,
+        "separate_artifact_required": true,
+        "state": "NOT_MATERIALIZED"
+      },
+      "decision_sha256": "22cec26baecfb6018a814750cc781143f5fa13f897d3dce708f6e9e074f669ac",
+      "editorial": {
+        "source": "D9_9_CANONICAL_EDITORIAL_ALLOWLIST",
+        "values": {
+          "call_to_action": "Continue",
+          "language": "en",
+          "subtitle": "UNKNOWN",
+          "title": "Loop title 24"
+        },
+        "visual_parameters_sha256": "b86dbc6cc1c90839a48eaccd59da899758e06f5140d621d816fd2f2f52abe047"
+      },
+      "execution_boundary": {
+        "c11c_source_mutation": false,
+        "compositor_invoked": false,
+        "d3_audio_invoked": false,
+        "d4_8": "BLOCKED",
+        "d9_10": "PREPARE_ONLY",
+        "ffmpeg_invoked": false,
+        "ffprobe_invoked": false,
+        "godot_invoked": false,
+        "media_created": false,
+        "mux_invoked": false,
+        "release_authority": "NONE",
+        "renderer_dispatch_invoked": false,
+        "source_launcher_invoked": false
+      },
+      "lineage": {
+        "c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+        "d9_10_adapter_envelope_hash": "3a080b2d8ec6a88c95b57ad8986285bc8daaa2c975cdf959a0ba1762b1db4784",
+        "d9_10_bridge_record_hash": "8cc24648b770355d45a1250df11028bf5ed2ee26686c1165f9fad9ad00118133",
+        "d9_9_editorial_hash": "5ffd1fe18201065629b6b3bc1aaa84fbcba194771c4cc35a5da87c3b37222de1",
+        "d9_9_plan_hash": "640bb0a68ee69a246578930b569c8ca39163f5285bf4931206d915c96c7df3e8",
+        "d9_9_request_hash": "45604d1b7d1b21cd179761003f4cbcec2bd18bda494af9425a2f94fbed295458",
+        "family_stage_contract_sha256": "fb69273c2910307bb8552bdc4870dd7b9ab3109a0711a065d56672006a052d50",
+        "r1p_payload_sha256": "0fc5bc3e7ce4d5c28a994116ef9b08ce12f8028dd1779939c16f184021b34770",
+        "r1p_receipt_sha256": "617982f150bd9194e76bd17467561e4f0672b4b3a966942cc26caee6a0b281c8",
+        "r1p_repeat_payload_sha256": "0fc5bc3e7ce4d5c28a994116ef9b08ce12f8028dd1779939c16f184021b34770",
+        "r1p_request_id": "E4B_R1P_20261107_032743_5F75045C_24",
+        "r1p_run_id": "E4B_R1P_20261107_032743_5F75045C"
+      },
+      "r1p_timing_descriptor_not_measured_frame_inventory": {
+        "actual_frame_count": null,
+        "duration_seconds": 20.0,
+        "expected_frame_count_consistency_only": 600,
+        "fps": 30
+      },
+      "schema": "C11E-E-OPTION-C-POSTCOMPOSITION-HANDOFF-V1",
+      "status": "PREPARED_WAITING_FOR_R1V_ACTUAL_SOURCE_EVIDENCE",
+      "visual_seed_domain": {
+        "gameplay_seed": 100024,
+        "music_seed_consumed_by_visual_composition": false,
+        "music_seed_lineage_only_for_future_d3": 500024,
+        "source": "request.seed"
+      }
+    },
+    {
+      "architecture": "OPTION_C_D_ONLY_POSTCOMPOSITION_OVER_IMMUTABLE_C_SOURCE",
+      "boundary_contract_sha256": "795be1da157dd07fd4992d3ec6d7cf091a015eed72d16d86df13085db296098b",
+      "c_source_video": {
+        "byte_length": null,
+        "decoded_pixel_manifest_sha256": null,
+        "ffprobe_metadata_sha256": null,
+        "frame_inventory_sha256": null,
+        "immutable_input_required": true,
+        "sha256": null,
+        "source_path": null,
+        "state": "NOT_YET_MATERIALIZED_R1V_REQUIRED"
+      },
+      "composition_policy": {
+        "dispatchable": false,
+        "layout_measurement": "UNKNOWN",
+        "proposal_path": "definitions/c11d/production/C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_V1.json",
+        "proposal_sha256": "9e206704665ea85226ecc10854be9f679c32fe9ed7efb690a829f6e8456d43da",
+        "proposal_status": "PROPOSED_NOT_APPROVED_NOT_RENDERER_INPUT"
+      },
+      "content_identity": {
+        "content_type": "visual_loops",
+        "family_id": "c11c_invisible_forces_v1",
+        "grammar_id": "gravitational_lens",
+        "grammar_index": 4
+      },
+      "d_output": {
+        "may_overwrite_c_source": false,
+        "output_artifact_path": null,
+        "separate_artifact_required": true,
+        "state": "NOT_MATERIALIZED"
+      },
+      "decision_sha256": "22cec26baecfb6018a814750cc781143f5fa13f897d3dce708f6e9e074f669ac",
+      "editorial": {
+        "source": "D9_9_CANONICAL_EDITORIAL_ALLOWLIST",
+        "values": {
+          "call_to_action": "Continue",
+          "language": "en",
+          "subtitle": "UNKNOWN",
+          "title": "Loop title 25"
+        },
+        "visual_parameters_sha256": "da17cc2e897730df24babde45c8ee5a07789268de417d96817a7c5f41b4ffd9d"
+      },
+      "execution_boundary": {
+        "c11c_source_mutation": false,
+        "compositor_invoked": false,
+        "d3_audio_invoked": false,
+        "d4_8": "BLOCKED",
+        "d9_10": "PREPARE_ONLY",
+        "ffmpeg_invoked": false,
+        "ffprobe_invoked": false,
+        "godot_invoked": false,
+        "media_created": false,
+        "mux_invoked": false,
+        "release_authority": "NONE",
+        "renderer_dispatch_invoked": false,
+        "source_launcher_invoked": false
+      },
+      "lineage": {
+        "c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+        "d9_10_adapter_envelope_hash": "326a1272420084d753f8f16cc4bf7aa98ddf5dd2162d48ff05314ef3bbb0aa9a",
+        "d9_10_bridge_record_hash": "99934299466362241fbcc703574b5f939b1b32c651941ab79ffff950e2abb362",
+        "d9_9_editorial_hash": "4f260da3b8a98bcc5f1e2b337a169d8a5166e4249d02ca9792741f09bead4174",
+        "d9_9_plan_hash": "42c2f9bd75f1377ef220e80aad0ab49ef0388640c94ea0bacf1efb89927c4b2e",
+        "d9_9_request_hash": "9b34546df075799abe527e80c7e9ffe729934aab39bd9cae0682048ee765fb52",
+        "family_stage_contract_sha256": "62a6894a47d18652fa3264672c3e3d62f1dd3fdd6997fa164fadbb03c4198321",
+        "r1p_payload_sha256": "b4c2ecb7b90400a4b1cbf19c2439c2c11aee111ea270f5629321e39ca17551c6",
+        "r1p_receipt_sha256": "3f7d5dff6743d57aedad6eb5cb16675c53a5a0de3ec9832a8d2f4397bd2f923f",
+        "r1p_repeat_payload_sha256": "b4c2ecb7b90400a4b1cbf19c2439c2c11aee111ea270f5629321e39ca17551c6",
+        "r1p_request_id": "E4B_R1P_20261107_032743_5F75045C_25",
+        "r1p_run_id": "E4B_R1P_20261107_032743_5F75045C"
+      },
+      "r1p_timing_descriptor_not_measured_frame_inventory": {
+        "actual_frame_count": null,
+        "duration_seconds": 20.0,
+        "expected_frame_count_consistency_only": 600,
+        "fps": 30
+      },
+      "schema": "C11E-E-OPTION-C-POSTCOMPOSITION-HANDOFF-V1",
+      "status": "PREPARED_WAITING_FOR_R1V_ACTUAL_SOURCE_EVIDENCE",
+      "visual_seed_domain": {
+        "gameplay_seed": 100025,
+        "music_seed_consumed_by_visual_composition": false,
+        "music_seed_lineage_only_for_future_d3": 500025,
+        "source": "request.seed"
+      }
+    },
+    {
+      "architecture": "OPTION_C_D_ONLY_POSTCOMPOSITION_OVER_IMMUTABLE_C_SOURCE",
+      "boundary_contract_sha256": "795be1da157dd07fd4992d3ec6d7cf091a015eed72d16d86df13085db296098b",
+      "c_source_video": {
+        "byte_length": null,
+        "decoded_pixel_manifest_sha256": null,
+        "ffprobe_metadata_sha256": null,
+        "frame_inventory_sha256": null,
+        "immutable_input_required": true,
+        "sha256": null,
+        "source_path": null,
+        "state": "NOT_YET_MATERIALIZED_R1V_REQUIRED"
+      },
+      "composition_policy": {
+        "dispatchable": false,
+        "layout_measurement": "UNKNOWN",
+        "proposal_path": "definitions/c11d/production/C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_V1.json",
+        "proposal_sha256": "9e206704665ea85226ecc10854be9f679c32fe9ed7efb690a829f6e8456d43da",
+        "proposal_status": "PROPOSED_NOT_APPROVED_NOT_RENDERER_INPUT"
+      },
+      "content_identity": {
+        "content_type": "visual_loops",
+        "family_id": "c11c_invisible_forces_v1",
+        "grammar_id": "topographic_basin",
+        "grammar_index": 5
+      },
+      "d_output": {
+        "may_overwrite_c_source": false,
+        "output_artifact_path": null,
+        "separate_artifact_required": true,
+        "state": "NOT_MATERIALIZED"
+      },
+      "decision_sha256": "22cec26baecfb6018a814750cc781143f5fa13f897d3dce708f6e9e074f669ac",
+      "editorial": {
+        "source": "D9_9_CANONICAL_EDITORIAL_ALLOWLIST",
+        "values": {
+          "call_to_action": "Continue",
+          "language": "en",
+          "subtitle": "UNKNOWN",
+          "title": "Loop title 26"
+        },
+        "visual_parameters_sha256": "8c4c427e3ad301ea509a90638f7e6a4b2b81f3abe7dd14ef091541ac5c1169c2"
+      },
+      "execution_boundary": {
+        "c11c_source_mutation": false,
+        "compositor_invoked": false,
+        "d3_audio_invoked": false,
+        "d4_8": "BLOCKED",
+        "d9_10": "PREPARE_ONLY",
+        "ffmpeg_invoked": false,
+        "ffprobe_invoked": false,
+        "godot_invoked": false,
+        "media_created": false,
+        "mux_invoked": false,
+        "release_authority": "NONE",
+        "renderer_dispatch_invoked": false,
+        "source_launcher_invoked": false
+      },
+      "lineage": {
+        "c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+        "d9_10_adapter_envelope_hash": "1b8982e9f7331c8b543eac3fa7861383e7af6656e7b2a3eb997ec8a4c46a20ae",
+        "d9_10_bridge_record_hash": "e8b73581ecfdd3fe49941895db4d107bdb60a6ca1e05cdcdefa852a9047ea6b6",
+        "d9_9_editorial_hash": "b8955c8d76c5fc816ae6a5d59d37e6413959fd5d0d29f7d00dbd26afb16f6215",
+        "d9_9_plan_hash": "0f40fc8f88fd8b70f5437895f7fd57c4d229467f5b7c5daa236426e3946048c7",
+        "d9_9_request_hash": "4cb6e5e133e73fca2987122e605755af5726639e040282b4599adff182d410ad",
+        "family_stage_contract_sha256": "ff4d3b3944fc2878ade702a49e339aa0af6731816d74b9ad3f5b39f498428edf",
+        "r1p_payload_sha256": "a47e9817ed3d932c943452986b2ad611953501c6908c5ea427be437109152874",
+        "r1p_receipt_sha256": "beb37a7e7de6129a3799658ca6bcb840f48d8b5d11b694f38c03c2e51a062e1c",
+        "r1p_repeat_payload_sha256": "a47e9817ed3d932c943452986b2ad611953501c6908c5ea427be437109152874",
+        "r1p_request_id": "E4B_R1P_20261107_032743_5F75045C_26",
+        "r1p_run_id": "E4B_R1P_20261107_032743_5F75045C"
+      },
+      "r1p_timing_descriptor_not_measured_frame_inventory": {
+        "actual_frame_count": null,
+        "duration_seconds": 22.0,
+        "expected_frame_count_consistency_only": 660,
+        "fps": 30
+      },
+      "schema": "C11E-E-OPTION-C-POSTCOMPOSITION-HANDOFF-V1",
+      "status": "PREPARED_WAITING_FOR_R1V_ACTUAL_SOURCE_EVIDENCE",
+      "visual_seed_domain": {
+        "gameplay_seed": 100026,
+        "music_seed_consumed_by_visual_composition": false,
+        "music_seed_lineage_only_for_future_d3": 500026,
+        "source": "request.seed"
+      }
+    },
+    {
+      "architecture": "OPTION_C_D_ONLY_POSTCOMPOSITION_OVER_IMMUTABLE_C_SOURCE",
+      "boundary_contract_sha256": "795be1da157dd07fd4992d3ec6d7cf091a015eed72d16d86df13085db296098b",
+      "c_source_video": {
+        "byte_length": null,
+        "decoded_pixel_manifest_sha256": null,
+        "ffprobe_metadata_sha256": null,
+        "frame_inventory_sha256": null,
+        "immutable_input_required": true,
+        "sha256": null,
+        "source_path": null,
+        "state": "NOT_YET_MATERIALIZED_R1V_REQUIRED"
+      },
+      "composition_policy": {
+        "dispatchable": false,
+        "layout_measurement": "UNKNOWN",
+        "proposal_path": "definitions/c11d/production/C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_V1.json",
+        "proposal_sha256": "9e206704665ea85226ecc10854be9f679c32fe9ed7efb690a829f6e8456d43da",
+        "proposal_status": "PROPOSED_NOT_APPROVED_NOT_RENDERER_INPUT"
+      },
+      "content_identity": {
+        "content_type": "visual_loops",
+        "family_id": "c11c_invisible_forces_v1",
+        "grammar_id": "scalar_potential",
+        "grammar_index": 6
+      },
+      "d_output": {
+        "may_overwrite_c_source": false,
+        "output_artifact_path": null,
+        "separate_artifact_required": true,
+        "state": "NOT_MATERIALIZED"
+      },
+      "decision_sha256": "22cec26baecfb6018a814750cc781143f5fa13f897d3dce708f6e9e074f669ac",
+      "editorial": {
+        "source": "D9_9_CANONICAL_EDITORIAL_ALLOWLIST",
+        "values": {
+          "call_to_action": "Continue",
+          "language": "en",
+          "subtitle": "UNKNOWN",
+          "title": "Loop title 27"
+        },
+        "visual_parameters_sha256": "0e61832b482b9ac43c29a7d7f85d1103be64ce072877cd1334a0c45028cf1353"
+      },
+      "execution_boundary": {
+        "c11c_source_mutation": false,
+        "compositor_invoked": false,
+        "d3_audio_invoked": false,
+        "d4_8": "BLOCKED",
+        "d9_10": "PREPARE_ONLY",
+        "ffmpeg_invoked": false,
+        "ffprobe_invoked": false,
+        "godot_invoked": false,
+        "media_created": false,
+        "mux_invoked": false,
+        "release_authority": "NONE",
+        "renderer_dispatch_invoked": false,
+        "source_launcher_invoked": false
+      },
+      "lineage": {
+        "c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+        "d9_10_adapter_envelope_hash": "aab2f2add98dcf7525b5cd833811f891181b24883c49dddde6a99fb5e0a7cd1d",
+        "d9_10_bridge_record_hash": "089d03b82169ea87583be02ec31c6b6f5c63900c59c0a12de2a3bffda0bc8588",
+        "d9_9_editorial_hash": "6ec703c8ac3cfc62a0ff06793485425cf4c7ce632b7017e322648cde00578e3d",
+        "d9_9_plan_hash": "5d643ca8d7a02d56f55b7893c7e2c71a80b310f35bd39c3acb2b91fe19005dc7",
+        "d9_9_request_hash": "dbe5f0eff19248b7076cb0e5be27fc5c18a5a1f82dcb36c96daa68b92a5d6bad",
+        "family_stage_contract_sha256": "2d02e96d20da174c92d28d9b0f7efc40a461eb4a2a5642f89a21188b5fbfb9e8",
+        "r1p_payload_sha256": "a2875b083dfb991152de170d85fabd1d48b16c638d2ee967f35f05e8a47d488d",
+        "r1p_receipt_sha256": "eac48856801acc6e43c44b9f9701d2a291e18b7cd708a15011bf3afeeb359246",
+        "r1p_repeat_payload_sha256": "a2875b083dfb991152de170d85fabd1d48b16c638d2ee967f35f05e8a47d488d",
+        "r1p_request_id": "E4B_R1P_20261107_032743_5F75045C_27",
+        "r1p_run_id": "E4B_R1P_20261107_032743_5F75045C"
+      },
+      "r1p_timing_descriptor_not_measured_frame_inventory": {
+        "actual_frame_count": null,
+        "duration_seconds": 23.0,
+        "expected_frame_count_consistency_only": 690,
+        "fps": 30
+      },
+      "schema": "C11E-E-OPTION-C-POSTCOMPOSITION-HANDOFF-V1",
+      "status": "PREPARED_WAITING_FOR_R1V_ACTUAL_SOURCE_EVIDENCE",
+      "visual_seed_domain": {
+        "gameplay_seed": 100027,
+        "music_seed_consumed_by_visual_composition": false,
+        "music_seed_lineage_only_for_future_d3": 500027,
+        "source": "request.seed"
+      }
+    }
+  ],
+  "option_c_handoff": {
+    "all_cases_waiting_for_r1v_actual_source": true,
+    "d_output_artifacts": 0,
+    "handoff_count": 27,
+    "layout_policy_sha256": "9e206704665ea85226ecc10854be9f679c32fe9ed7efb690a829f6e8456d43da",
+    "layout_policy_state": "PROPOSED_NOT_APPROVED_NOT_RENDERER_INPUT",
+    "measured_frame_inventories": 0,
+    "source_media_sha256_claims": 0
+  },
+  "r1p": {
+    "family_counts": {
+      "c11c_fractal_bloom_v1": 5,
+      "c11c_geometric_waves_v1": 5,
+      "c11c_invisible_forces_v1": 7,
+      "c11c_living_particles_v1": 5,
+      "c11c_sacred_symmetry_v1": 5
+    },
+    "option_c_policy_pin_validation_count": 3,
+    "parent_bindings_sha256": "460165c92f3afaebc023a49ab5e0fdb86f7fe4c8133032bb54f6bef67ef0911a",
+    "r1p_process_log_validation_count": 4,
+    "r1p_source_pin_count": 30,
+    "receipt_count": 27,
+    "receipt_hash_set_sha256": "523add74c2607d6b5c85fb5f9b270fa5fbca800d3dd05d05131482b044e1a42d",
+    "recovered_zip_sha256": "d49f54ffdee6026426c2bb87fcb72b5c8a68f09cb64fb91f71e25dc10fd26b52",
+    "report_sha256": "9e09940c7a915d1533a2ba0a97765626f5c5d8533c870cda27012d4d90c97b41",
+    "run_id": "E4B_R1P_20261107_032743_5F75045C",
+    "total_live_pin_validations": 33
+  },
+  "r1v_qualification_request": {
+    "execution_authorized": false,
+    "pilot_count": 5,
+    "pilots": [
+      {
+        "duration_seconds_descriptor_only": 22.0,
+        "expected_frame_count_consistency_only": 660,
+        "family_id": "c11c_fractal_bloom_v1",
+        "fps_descriptor_only": 30,
+        "gameplay_seed": 100006,
+        "grammar_id": "radial_bloom",
+        "receipt_index": 6,
+        "repeat_count_proposed": 2,
+        "source_launcher_authorized_now": false
+      },
+      {
+        "duration_seconds_descriptor_only": 23.0,
+        "expected_frame_count_consistency_only": 690,
+        "family_id": "c11c_geometric_waves_v1",
+        "fps_descriptor_only": 30,
+        "gameplay_seed": 100001,
+        "grammar_id": "harmonic_membrane",
+        "receipt_index": 1,
+        "repeat_count_proposed": 2,
+        "source_launcher_authorized_now": false
+      },
+      {
+        "duration_seconds_descriptor_only": 22.0,
+        "expected_frame_count_consistency_only": 660,
+        "family_id": "c11c_invisible_forces_v1",
+        "fps_descriptor_only": 30,
+        "gameplay_seed": 100021,
+        "grammar_id": "dipole_field",
+        "receipt_index": 21,
+        "repeat_count_proposed": 2,
+        "source_launcher_authorized_now": false
+      },
+      {
+        "duration_seconds_descriptor_only": 20.0,
+        "expected_frame_count_consistency_only": 600,
+        "family_id": "c11c_living_particles_v1",
+        "fps_descriptor_only": 30,
+        "gameplay_seed": 100016,
+        "grammar_id": "swarm",
+        "receipt_index": 16,
+        "repeat_count_proposed": 2,
+        "source_launcher_authorized_now": false
+      },
+      {
+        "duration_seconds_descriptor_only": 23.0,
+        "expected_frame_count_consistency_only": 690,
+        "family_id": "c11c_sacred_symmetry_v1",
+        "fps_descriptor_only": 30,
+        "gameplay_seed": 100011,
+        "grammar_id": "astrolabe",
+        "receipt_index": 11,
+        "repeat_count_proposed": 2,
+        "source_launcher_authorized_now": false
+      }
+    ],
+    "policy_id": "C11E_R1V_FIVE_FAMILY_SOURCE_QUALIFICATION_ONLY_V1",
+    "policy_sha256": "e0f9693584e5b7d42c6d67cf2c806ff691dec4644738458bd405cdcbd5d9c4db",
+    "proposed_launcher_invocations": 10,
+    "status": "PROPOSED_NOT_APPROVED"
+  },
+  "run_scope": "STATIC_AND_NEGATIVE_CONTRACT_VALIDATION_ONLY_NO_RENDER_NO_MEDIA",
+  "schema": "C11E-E-OPTION-C-POSTCOMPOSITION-CONTRACT-REPORT-V1",
+  "status": "PASS_OPTION_C_HANDOFF_CONTRACT_27_OF_27_PREPARE_ONLY"
+}

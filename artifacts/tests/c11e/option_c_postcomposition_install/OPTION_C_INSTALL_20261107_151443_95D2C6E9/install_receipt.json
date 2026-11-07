@@ -1,0 +1,95 @@
+{
+    "status":  "PASS_ADD_ONLY_INSTALL",
+    "package_id":  "C11E_OPTION_C_POSTCOMPOSITION_HANDOFF_V1_20261107",
+    "package_manifest_sha256":  "b34bd464f0e23c8bba592d8620a56801b54c35f75d9140567949c0622447e695",
+    "frozen_c11c_manifest_sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "accepted_static_audit_sha256":  "600c22dafe2e377cb02b4a69f8823a44745d705b71cdb0d6bcec38da52df3e92",
+    "installed_file_count":  17,
+    "files":  [
+                  {
+                      "path":  "tools/c11d/d9/c11e_option_c_postcomposition_contract.py",
+                      "sha256":  "fcf662bec8e2c7f689d428e7e6beb7d6c932ea441a3015111ef87fd58fbf107a",
+                      "size_bytes":  50143
+                  },
+                  {
+                      "path":  "tools/c11d/d9/test_c11e_option_c_postcomposition_contract.py",
+                      "sha256":  "548280e1964358e8bee150617cff8a86d605b91cc4e5db12f92d343e30ebf9c7",
+                      "size_bytes":  6643
+                  },
+                  {
+                      "path":  "tools/c11d/d9/RUN_C11E_OPTION_C_POSTCOMPOSITION_CONTRACT_V1.ps1",
+                      "sha256":  "6af98c2e5c7bdbb781e7625110e4584454141c3a0b566faeae51482531e6bf63",
+                      "size_bytes":  11593
+                  },
+                  {
+                      "path":  "definitions/c11d/production/C11E_OPTION_C_D_POSTCOMPOSITION_DECISION_V1.json",
+                      "sha256":  "22cec26baecfb6018a814750cc781143f5fa13f897d3dce708f6e9e074f669ac",
+                      "size_bytes":  2342
+                  },
+                  {
+                      "path":  "definitions/c11d/production/C11E_OPTION_C_D_POSTCOMPOSITION_BOUNDARY_V1.json",
+                      "sha256":  "795be1da157dd07fd4992d3ec6d7cf091a015eed72d16d86df13085db296098b",
+                      "size_bytes":  3576
+                  },
+                  {
+                      "path":  "definitions/c11d/production/C11E_D4_8_R1V_QUALIFICATION_ONLY_POLICY_V1.json",
+                      "sha256":  "e0f9693584e5b7d42c6d67cf2c806ff691dec4644738458bd405cdcbd5d9c4db",
+                      "size_bytes":  5581
+                  },
+                  {
+                      "path":  "docs/current/e/C11E_OPTION_C_POSTCOMPOSITION_CONSUMER_CONTRACT_20261107_V1.md",
+                      "sha256":  "e5956cd4e120fd006e7ac30507a09599a9d42cb269b87d88ea48cca2f631880b",
+                      "size_bytes":  5813
+                  },
+                  {
+                      "path":  "docs/current/e/C11E_D4_8_QUALIFICATION_AUTHORIZATION_REQUIREMENTS_20261107_V2.md",
+                      "sha256":  "a92ae37b55dd7ebdccef5ee617e13039223887d69ba7c16c93efb2805c7a2ec4",
+                      "size_bytes":  4345
+                  },
+                  {
+                      "path":  "docs/current/e/C11E_D_BASELINE_ISOLATION_DECISION_DOCKET_20261107_V2.md",
+                      "sha256":  "b8877a3a27e31af03f1c33134af2356be351d9b99126e99655ea1cb93b4b7eec",
+                      "size_bytes":  4222
+                  },
+                  {
+                      "path":  "docs/current/e/C11E_CURRENT_AUTHORITY_20261107_V87.md",
+                      "sha256":  "8753573d9213e8daf02605da9e9c62fa55a82906345f5659ae9baa1536ba42a0",
+                      "size_bytes":  8610
+                  },
+                  {
+                      "path":  "docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261107_V85.md",
+                      "sha256":  "2a6fe2d008dca2644ef557769e6f80e8e39b09261584efa44997f1925a58a7e6",
+                      "size_bytes":  3200
+                  },
+                  {
+                      "path":  "docs/current/e/C11D_E_BLOCKER_REMEDIATION_REGISTER_20261107_V8.md",
+                      "sha256":  "070385d9b4e9e2badfc9a4d959df7072adceda74928c533859496e7389b687f7",
+                      "size_bytes":  4469
+                  },
+                  {
+                      "path":  "docs/current/e/C11E_E3_EXECUTION_BACKLOG_20261107_V62.md",
+                      "sha256":  "1bf16a15cb87173e1404a174866a162ba4bcca47b99f8b39ceb313116a5594d9",
+                      "size_bytes":  4189
+                  },
+                  {
+                      "path":  "docs/current/e/C11E_CURRENT_DOC_INDEX_20261107_V47.md",
+                      "sha256":  "e4edb559594047bc969cc1e08908c99206eba3637831d23aa7af3b58003840a5",
+                      "size_bytes":  2755
+                  },
+                  {
+                      "path":  "docs/history/c11e/C11E_OPTION_C_OPERATOR_DECISION_AND_STATIC_HANDOFF_20261107_V1.md",
+                      "sha256":  "8c47f27c889f185e79929a26532455aca752d1d1caeaacacc7373b1805798879",
+                      "size_bytes":  1927
+                  },
+                  {
+                      "path":  "docs/prompts/C11E_CONTINUATION_MASTER_PROMPT_20261107_V87.md",
+                      "sha256":  "d55fdbe59043ad1687aed4353154f0e90d523e83fde5e22f90ea1e18efac4241",
+                      "size_bytes":  6626
+                  },
+                  {
+                      "path":  "docs/prompts/C11E_NEXT_WINDOW_START_PROMPT_20261107_V87.md",
+                      "sha256":  "73e86cbf5dd8fd48e5c752cafd65a6473c5d271de009973b03f16da9a7fc2a9f",
+                      "size_bytes":  2553
+                  }
+              ]
+}
