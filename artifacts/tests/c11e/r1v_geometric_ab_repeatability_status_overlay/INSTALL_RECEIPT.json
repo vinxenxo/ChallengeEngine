@@ -1,0 +1,70 @@
+{
+    "schema":  "C11E-DOCS-OVERLAY-INSTALL-RECEIPT-V1",
+    "overlay_id":  "C11E_R1V_GEOMETRIC_AB_REPEATABILITY_STATUS_OVERLAY_V1_20261108",
+    "status":  "PASS_ADD_ONLY_DOCUMENTATION_OVERLAY",
+    "created_utc":  "2026-11-08T17:48:01.2902476Z",
+    "project_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+    "manifest_sha256":  "1f2d3dd6f3f06523f4993fb4eed7523e77960e4cb4fd12940e72a2860431d248",
+    "frozen_c11c_manifest_sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "payload_files_verified":  11,
+    "payload_files":  [
+                          {
+                              "path":  "docs/history/e/C11E_R1V_GEOMETRIC_WAVES_AB_REPEATABILITY_INVESTIGATION_20261108_V1.md",
+                              "sha256":  "d3a625d0e92d4ecebfd80c9d5f44fce5cb1dbe4441d9cb32fece275c26bdfafe",
+                              "bytes":  8966
+                          },
+                          {
+                              "path":  "docs/current/e/C11E_CURRENT_AUTHORITY_20261108_V100.md",
+                              "sha256":  "3124e72a0e33d79de35fa3845a97a682d8bec42a149e2465cd0625392e16c9a3",
+                              "bytes":  5276
+                          },
+                          {
+                              "path":  "docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261108_V98.md",
+                              "sha256":  "9ac193193f37269c303435383d159ca2db4c8cbe5753661662d45a2d4cfc9ed4",
+                              "bytes":  3900
+                          },
+                          {
+                              "path":  "docs/current/e/C11E_E3_EXECUTION_BACKLOG_20261108_V75.md",
+                              "sha256":  "5a6675a02344098ba1c5030a4dc4babd641d22be7b71e3baaa5883b7e13a2e66",
+                              "bytes":  3066
+                          },
+                          {
+                              "path":  "docs/current/e/C11D_E_BLOCKER_REMEDIATION_REGISTER_20261108_V21.md",
+                              "sha256":  "bc43a15f185e9b3e9c0b0ff6c8846d4e6509f2c081e41d3c6b50db3e799df508",
+                              "bytes":  2691
+                          },
+                          {
+                              "path":  "docs/current/e/C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261108_V47.md",
+                              "sha256":  "a4cccfb400355a5e4b9c20dc92f893e9d012b54895b7542dcbdbca16e5669f5f",
+                              "bytes":  3051
+                          },
+                          {
+                              "path":  "docs/current/e/C11E_R1V_FIVE_FAMILY_QUALIFICATION_RUNBOOK_20261108_V13.md",
+                              "sha256":  "3d1c5f4fd1a9d2a4f39d32d6e66bbb533da8ecfaee4537afb5dac7aee34bc84e",
+                              "bytes":  3287
+                          },
+                          {
+                              "path":  "docs/current/e/C11E_CURRENT_DOC_INDEX_20261108_V61.md",
+                              "sha256":  "1c4447418165d0db506e107c7fcd0db89de1846ee8ae06ead1192db780cf319c",
+                              "bytes":  2253
+                          },
+                          {
+                              "path":  "docs/prompts/C11E_CONTINUATION_MASTER_PROMPT_20261108_V101.md",
+                              "sha256":  "d458957d4171da518fff760fbc1687f32f47067bd8617a21cc36e1d146634cd4",
+                              "bytes":  7886
+                          },
+                          {
+                              "path":  "docs/prompts/C11E_NEXT_WINDOW_START_PROMPT_20261108_V101.md",
+                              "sha256":  "f4a7045b4e638a53c068a4e1a70e20ec745a8b4b594c3e2fbbc723951a315f89",
+                              "bytes":  3475
+                          },
+                          {
+                              "path":  "docs/prompts/C11E_FIRST_PROMPT_20261108_V25.md",
+                              "sha256":  "c8b491dad0bb248478810e0a137e298d16fa63dbfa3458f9cab50a06e0bf3b2e",
+                              "bytes":  3477
+                          }
+                      ],
+    "git_checks":  "SKIPPED",
+    "tests_run":  false,
+    "media_processes_run":  false
+}

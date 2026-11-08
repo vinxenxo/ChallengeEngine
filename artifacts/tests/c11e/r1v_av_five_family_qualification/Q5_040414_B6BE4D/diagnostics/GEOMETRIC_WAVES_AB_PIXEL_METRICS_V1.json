@@ -1,0 +1,188 @@
+{
+  "schema": "C11E-R1V-GEOMETRIC-AB-PIXEL-METRICS-V1",
+  "created_utc": "2026-11-08T09:21:27.770677+00:00",
+  "status": "PASS_READ_ONLY_PIXEL_METRICS_ONLY_NOT_ACCEPTANCE",
+  "run_id": "Q5_040414_B6BE4D",
+  "project_root": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+  "ffmpeg_path": "C:\\Users\\vinxe\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-9.0-full_build\\bin\\ffmpeg.exe",
+  "ffmpeg_version_first_line": "",
+  "source_videos": {
+    "A": {
+      "path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\r1v_av_five_family_qualification\\Q5_040414_B6BE4D\\source\\geometric_waves\\A\\GeometricWaves_v1_seed_100001_Q5_040414_B6BE4D_GEOMETRIC_WAVES_A.mp4",
+      "bytes": 13728044,
+      "sha256": "b7b841ed48b9ac28bdfa28bed63ab398ebaa611bc5cfabe9dddd0e33dc249eca",
+      "frame_count": 690,
+      "width": 720,
+      "height": 1280,
+      "source_pixel_format": "yuvj420p",
+      "decode_pixel_format": "yuv420p",
+      "global_decoded_stream_sha256": "3b930cb76d123d555f3ae7c07c668a3824173760fef74e60658ec51b5ca65e48"
+    },
+    "B": {
+      "path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\r1v_av_five_family_qualification\\Q5_040414_B6BE4D\\source\\geometric_waves\\B\\GeometricWaves_v1_seed_100001_Q5_040414_B6BE4D_GEOMETRIC_WAVES_B.mp4",
+      "bytes": 13504690,
+      "sha256": "a0225d0292f4bea8e13007cc05d5c694bde58687c20fa1ceb281c646e8faac7f",
+      "frame_count": 690,
+      "width": 720,
+      "height": 1280,
+      "source_pixel_format": "yuvj420p",
+      "decode_pixel_format": "yuv420p",
+      "global_decoded_stream_sha256": "89f009474a350ed123c91fcb01d3ee1b8313abe1ba847f02ee739a4932e50f0f"
+    }
+  },
+  "authored_input_differences": {},
+  "same_index_exact_frame_hash_matches": 0,
+  "same_index_frame_hash_comparisons": 690,
+  "ssim_by_integer_frame_alignment": [
+    {
+      "exit_code": 0,
+      "start_frame_A": 3,
+      "start_frame_B": 0,
+      "metrics": {
+        "Y": 0.826002,
+        "U": 0.968061,
+        "V": 0.971203,
+        "All": 0.873879,
+        "All_dB": 8.992116
+      },
+      "compared_frames": 687,
+      "relative_offset_frames": -3
+    },
+    {
+      "exit_code": 0,
+      "start_frame_A": 2,
+      "start_frame_B": 0,
+      "metrics": {
+        "Y": 0.85992,
+        "U": 0.976315,
+        "V": 0.974713,
+        "All": 0.898451,
+        "All_dB": 9.933252
+      },
+      "compared_frames": 688,
+      "relative_offset_frames": -2
+    },
+    {
+      "exit_code": 0,
+      "start_frame_A": 1,
+      "start_frame_B": 0,
+      "metrics": {
+        "Y": 0.921739,
+        "U": 0.984527,
+        "V": 0.980551,
+        "All": 0.942006,
+        "All_dB": 12.366146
+      },
+      "compared_frames": 689,
+      "relative_offset_frames": -1
+    },
+    {
+      "exit_code": 0,
+      "start_frame_A": 0,
+      "start_frame_B": 0,
+      "metrics": {
+        "Y": 0.981865,
+        "U": 0.991512,
+        "V": 0.990359,
+        "All": 0.984889,
+        "All_dB": 18.206987
+      },
+      "compared_frames": 690,
+      "relative_offset_frames": 0
+    },
+    {
+      "exit_code": 0,
+      "start_frame_A": 0,
+      "start_frame_B": 1,
+      "metrics": {
+        "Y": 0.921188,
+        "U": 0.98443,
+        "V": 0.980513,
+        "All": 0.941616,
+        "All_dB": 12.337066
+      },
+      "compared_frames": 689,
+      "relative_offset_frames": 1
+    },
+    {
+      "exit_code": 0,
+      "start_frame_A": 0,
+      "start_frame_B": 2,
+      "metrics": {
+        "Y": 0.859674,
+        "U": 0.976196,
+        "V": 0.974682,
+        "All": 0.898262,
+        "All_dB": 9.925178
+      },
+      "compared_frames": 688,
+      "relative_offset_frames": 2
+    },
+    {
+      "exit_code": 0,
+      "start_frame_A": 0,
+      "start_frame_B": 3,
+      "metrics": {
+        "Y": 0.825991,
+        "U": 0.967951,
+        "V": 0.971193,
+        "All": 0.873851,
+        "All_dB": 8.991167
+      },
+      "compared_frames": 687,
+      "relative_offset_frames": 3
+    }
+  ],
+  "best_alignment": {
+    "exit_code": 0,
+    "start_frame_A": 0,
+    "start_frame_B": 0,
+    "metrics": {
+      "Y": 0.981865,
+      "U": 0.991512,
+      "V": 0.990359,
+      "All": 0.984889,
+      "All_dB": 18.206987
+    },
+    "compared_frames": 690,
+    "relative_offset_frames": 0
+  },
+  "psnr_same_index": {
+    "exit_code": 0,
+    "start_frame_A": 0,
+    "start_frame_B": 0,
+    "metrics": {
+      "Y": 34.025303,
+      "U": 49.624752,
+      "V": 42.702112,
+      "average": 35.61258
+    },
+    "compared_frames": 690
+  },
+  "psnr_best_alignment": {
+    "exit_code": 0,
+    "start_frame_A": 0,
+    "start_frame_B": 0,
+    "metrics": {
+      "Y": 34.025303,
+      "U": 49.624752,
+      "V": 42.702112,
+      "average": 35.61258
+    },
+    "compared_frames": 690
+  },
+  "interpretation_guide": {
+    "best_alignment_offset_zero": "No integer-frame start offset improved the comparison.",
+    "nonzero_best_alignment": "A frame-start offset improves similarity; inspect as a possible capture start/index alignment issue.",
+    "high_ssim_low_psnr": "Could indicate localized or fine-grained pixel differences; inspect metrics and operator visuals.",
+    "low_ssim_at_all_offsets": "The decoded visual sequences differ materially; pixel-hash failure is not explained by a small integer-frame shift."
+  },
+  "non_mutation": {
+    "godot_invoked": false,
+    "renderer_invoked": false,
+    "audio_generator_invoked": false,
+    "video_reencoded": false,
+    "source_mp4_modified": false,
+    "source_wav_modified": false
+  }
+}

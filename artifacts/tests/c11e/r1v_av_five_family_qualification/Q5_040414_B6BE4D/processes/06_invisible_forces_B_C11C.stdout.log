@@ -1,0 +1,16 @@
+[C11C-RESOLUTION] Movie Maker override active: 720x1280
+Godot Engine v4.7.1.stable.mono.official.a13da4feb - https://godotengine.org
+OpenGL API 3.3.0 - Build 32.0.101.8132 - Compatibility - Using Device: Intel - Intel(R) Arc(TM) Graphics
+
+Movie Maker mode enabled, recording movie in 720×1280 @ 30 FPS...
+--------------------------------------------------------------------------------
+Done recording movie at path: C:\Users\vinxe\AppData\Local\Temp\InvisibleForces_v1_seed_100021_Q5_040414_B6BE4D_INVISIBLE_FORCES_B_3d2247e9e2114857958b5330b97dd375.avi
+660 frames at 30 FPS (movie length: 00:00:22:00), recorded in 00:00:58 (37% of real-time speed).
+CPU render time: 0.46 seconds (average: 0.70 ms/frame)
+GPU render time: 2.65 seconds (average: 4.02 ms/frame)
+Encoding time: 11.79 seconds (average: 17.86 ms/frame)
+--------------------------------------------------------------------------------
+[C11-C-2.16.3] PASS - 720x1280 / 30 FPS / 660 frames / 22 s / AUDIO=False / LOOP / EDITORIAL
+[C11-C-2.16.3] MP4: C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\tests\c11e\r1v_av_five_family_qualification\Q5_040414_B6BE4D\source\invisible_forces\B\InvisibleForces_v1_seed_100021_Q5_040414_B6BE4D_INVISIBLE_FORCES_B.mp4
+[C11-C-2.16.3] AUDIO: C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\tests\c11e\r1v_av_five_family_qualification\Q5_040414_B6BE4D\source\invisible_forces\B\InvisibleForces_v1_seed_100021_Q5_040414_B6BE4D_INVISIBLE_FORCES_B_music.wav
+[C11-C-2.16.3] SOCIAL: C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\tests\c11e\r1v_av_five_family_qualification\Q5_040414_B6BE4D\source\invisible_forces\B\InvisibleForces_v1_seed_100021_Q5_040414_B6BE4D_INVISIBLE_FORCES_B_social.txt

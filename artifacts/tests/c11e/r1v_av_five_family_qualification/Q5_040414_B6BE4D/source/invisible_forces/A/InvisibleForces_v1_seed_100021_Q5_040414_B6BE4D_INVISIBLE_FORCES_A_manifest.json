@@ -1,0 +1,62 @@
+{
+    "prototype_id":  "C11-C.5_INVISIBLE_FORCES_V1",
+    "revision":  "2.16.3",
+    "status":  "EDITORIAL_AUDIO_LOOP_REVIEW",
+    "seed":  100021,
+    "family_id":  "invisible_forces",
+    "technical_id":  "vector_field",
+    "artistic_name":  "Invisible Forces",
+    "production_id":  "c11c_invisible_forces_v1",
+    "runtime_id":  "invisible_forces",
+    "display_name":  "INVISIBLE FORCES",
+    "grammar_id":  "dipole_field",
+    "grammar":  "DIPOLE FIELD",
+    "palette":  "burgundy_amber",
+    "visual":  {
+                   "canvas":  "720x1280",
+                   "body":  "y=192..1088",
+                   "duration_seconds":  22,
+                   "fps":  30,
+                   "frame_count":  660,
+                   "loop_cycles":  2,
+                   "loop_closed":  true,
+                   "background":  "05070B",
+                   "footer_enabled":  true
+               },
+    "editorial":  {
+                      "header_line_1":  "DIPOLE_FIELD | 79 TRACES | PULSE 0.88",
+                      "header_line_2":  "SUBRUTINA // INTERFAZ NEUROPTICA -\u003e CAMPO DIPOLAR // NOMINAL // TRACES 79 | PULSE 0.88",
+                      "header_secondary":  "VISUAL LOOP / INVISIBLE FORCES",
+                      "matrix_transition":  true,
+                      "footer":  "generation telemetry / prototype QA"
+                  },
+    "audio":  {
+                  "mode":  "FAMILY_MUSIC_V4",
+                  "profile_id":  "FLOWING_VECTOR",
+                  "style":  "low-mid field drone / gentle beating harmonics / air trace texture / midpoint force swell",
+                  "semantic_key":  "DIPOLE FIELD",
+                  "sample_rate":  44100,
+                  "channels":  2,
+                  "duration_seconds":  22,
+                  "muxed_into_mp4":  false,
+                  "enabled":  false,
+                  "C7_modified":  false,
+                  "family_grammar_bound":  true
+              },
+    "typography":  {
+                       "header":  "Inter Bold",
+                       "footer":  "Noto Sans Mono Regular",
+                       "license":  "SIL Open Font License 1.1"
+                   },
+    "social_metadata":  "InvisibleForces_v1_seed_100021_Q5_040414_B6BE4D_INVISIBLE_FORCES_A_social.txt",
+    "artifact_policy":  {
+                            "export_gif":  false,
+                            "keep_avi":  false,
+                            "avi_intermediate":  true,
+                            "output_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\r1v_av_five_family_qualification\\Q5_040414_B6BE4D\\source\\invisible_forces\\A",
+                            "output_tag":  "Q5_040414_B6BE4D_INVISIBLE_FORCES_A"
+                        },
+    "reproduction_command":  ".\\tools\\prototypes\\c11c_invisible_forces_v1\\run_prototype.ps1 -Seed 100021 -Grammar \"dipole_field\" -Duration 22 -NoSound -OutputRoot \"C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\r1v_av_five_family_qualification\\Q5_040414_B6BE4D\\source\\invisible_forces\\A\" -OutputTag \"Q5_040414_B6BE4D_INVISIBLE_FORCES_A\"",
+    "technobabble":  "SUBRUTINA // interfaz neuroptica -\u003e campo dipolar // NOMINAL // TRACES 79 | PULSE 0.88",
+    "frozen_boundaries_modified":  false
+}
