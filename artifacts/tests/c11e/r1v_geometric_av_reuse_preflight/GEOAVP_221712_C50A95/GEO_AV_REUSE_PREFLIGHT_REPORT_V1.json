@@ -1,0 +1,240 @@
+{
+  "authority": {
+    "capture_invoked": false,
+    "ffmpeg_read_only_stream_hashing": true,
+    "git_invoked": false,
+    "media_created": false,
+    "music_generator_invoked": false,
+    "mux_invoked": false,
+    "override_cfg_modified": false,
+    "release_authority": "NONE",
+    "renderer": "OFF",
+    "source_files_modified": false,
+    "tests_invoked": false
+  },
+  "created_local": "2026-11-08T22:17:13.161353+01:00",
+  "created_utc": "2026-11-08T21:17:13.161961+00:00",
+  "diagnostic_run_id": "GWDIAG_192813_C56B9C",
+  "family_id": "c11c_geometric_waves_v1",
+  "findings": {
+    "checks": {
+      "active_source_pins_after": {
+        "all_pass": true,
+        "count": 23
+      },
+      "active_source_pins_before": {
+        "all_pass": true,
+        "count": 23
+      },
+      "historic_audio_reuse": {
+        "aac_A_B_identical": true,
+        "both_final_muxes_have_h264_aac": true,
+        "pcm_A_B_identical": true,
+        "wav_A_B_identical": true
+      },
+      "new_visual_source_pair": {
+        "avi_A_B_exact": true,
+        "h264_stream_A_B_exact": true,
+        "mp4_A_B_exact": true,
+        "new_mp4_A_B_match_historic_A_source": true
+      }
+    },
+    "diagnostic": {
+      "A": {
+        "authoring_path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\r1v_geometric_avi_intermediate_diagnostic\\GWDIAG_192813_C56B9C\\A\\GeometricWaves_v1_seed_100001_R1V_GEOMETRIC_DIAG_A_authoring.json",
+        "authoring_sha256": "62d5d6fb2a04d42c190d641af3f142e24bab07157dd6335a0d2eb447a8acb07d",
+        "avi_path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\r1v_geometric_avi_intermediate_diagnostic\\GWDIAG_192813_C56B9C\\A\\GeometricWaves_v1_seed_100001_R1V_GEOMETRIC_DIAG_A.avi",
+        "avi_sha256": "78be4ab46e7b04f3d7544e628c58e2d2f1d018e1ee7992e8db57bbd819ab6a1a",
+        "ffprobe": {
+          "format": {
+            "duration": "23.000000",
+            "size": "13728044"
+          },
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "avg_frame_rate": "30/1",
+              "bit_rate": "4771731",
+              "codec_name": "h264",
+              "codec_type": "video",
+              "color_range": "pc",
+              "duration": "23.000000",
+              "height": 1280,
+              "index": 0,
+              "nb_frames": "690",
+              "pix_fmt": "yuvj420p",
+              "profile": "High",
+              "r_frame_rate": "30/1",
+              "width": 720
+            }
+          ]
+        },
+        "h264_stream_sha256": "cb66b21fb92f74760406253c01b89a63c442ea217b73c868e9391f5258de9ac2",
+        "mp4_path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\r1v_geometric_avi_intermediate_diagnostic\\GWDIAG_192813_C56B9C\\A\\GeometricWaves_v1_seed_100001_R1V_GEOMETRIC_DIAG_A.mp4",
+        "mp4_sha256": "b7b841ed48b9ac28bdfa28bed63ab398ebaa611bc5cfabe9dddd0e33dc249eca"
+      },
+      "B": {
+        "authoring_path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\r1v_geometric_avi_intermediate_diagnostic\\GWDIAG_192813_C56B9C\\B\\GeometricWaves_v1_seed_100001_R1V_GEOMETRIC_DIAG_B_authoring.json",
+        "authoring_sha256": "62d5d6fb2a04d42c190d641af3f142e24bab07157dd6335a0d2eb447a8acb07d",
+        "avi_path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\r1v_geometric_avi_intermediate_diagnostic\\GWDIAG_192813_C56B9C\\B\\GeometricWaves_v1_seed_100001_R1V_GEOMETRIC_DIAG_B.avi",
+        "avi_sha256": "78be4ab46e7b04f3d7544e628c58e2d2f1d018e1ee7992e8db57bbd819ab6a1a",
+        "ffprobe": {
+          "format": {
+            "duration": "23.000000",
+            "size": "13728044"
+          },
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "avg_frame_rate": "30/1",
+              "bit_rate": "4771731",
+              "codec_name": "h264",
+              "codec_type": "video",
+              "color_range": "pc",
+              "duration": "23.000000",
+              "height": 1280,
+              "index": 0,
+              "nb_frames": "690",
+              "pix_fmt": "yuvj420p",
+              "profile": "High",
+              "r_frame_rate": "30/1",
+              "width": 720
+            }
+          ]
+        },
+        "h264_stream_sha256": "cb66b21fb92f74760406253c01b89a63c442ea217b73c868e9391f5258de9ac2",
+        "mp4_path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\r1v_geometric_avi_intermediate_diagnostic\\GWDIAG_192813_C56B9C\\B\\GeometricWaves_v1_seed_100001_R1V_GEOMETRIC_DIAG_B.mp4",
+        "mp4_sha256": "b7b841ed48b9ac28bdfa28bed63ab398ebaa611bc5cfabe9dddd0e33dc249eca"
+      }
+    },
+    "errors": [],
+    "historic": {
+      "A": {
+        "aac_stream_sha256": "ba3ad357b90de7af6d1a3df39470376e473611fed799003677dcc7de912aa51b",
+        "final_av_path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\r1v_av_five_family_qualification\\Q5_040414_B6BE4D\\delivery\\geometric_waves\\A\\Q5_040414_B6BE4D_GEOMETRIC_WAVES_A_C11C_FAMILY_MUSIC_AV.mp4",
+        "final_av_probe": {
+          "format": {
+            "duration": "23.000000",
+            "size": "14298259"
+          },
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "avg_frame_rate": "30/1",
+              "bit_rate": "4771731",
+              "codec_name": "h264",
+              "codec_type": "video",
+              "color_range": "pc",
+              "duration": "23.000000",
+              "height": 1280,
+              "index": 0,
+              "nb_frames": "690",
+              "pix_fmt": "yuvj420p",
+              "profile": "High",
+              "r_frame_rate": "30/1",
+              "width": 720
+            },
+            {
+              "avg_frame_rate": "0/0",
+              "bit_rate": "192204",
+              "channel_layout": "stereo",
+              "channels": 2,
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "duration": "23.000000",
+              "index": 1,
+              "nb_frames": "992",
+              "profile": "LC",
+              "r_frame_rate": "0/0",
+              "sample_rate": "44100"
+            }
+          ]
+        },
+        "final_h264_stream_sha256": "cb66b21fb92f74760406253c01b89a63c442ea217b73c868e9391f5258de9ac2",
+        "pcm_sha256": "1f03e69f9546e52e3856b4228d4b6d4072f8af85abd2a67055d64c0058ec2a10",
+        "source_mp4_bytes": 13728044,
+        "source_mp4_sha256": "b7b841ed48b9ac28bdfa28bed63ab398ebaa611bc5cfabe9dddd0e33dc249eca",
+        "source_video_path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\r1v_av_five_family_qualification\\Q5_040414_B6BE4D\\source\\geometric_waves\\A\\GeometricWaves_v1_seed_100001_Q5_040414_B6BE4D_GEOMETRIC_WAVES_A.mp4",
+        "wav_format": {
+          "channels": 2,
+          "sample_frames": 1014300,
+          "sample_rate": 44100,
+          "sample_width_bytes": 2
+        },
+        "wav_path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\r1v_av_five_family_qualification\\Q5_040414_B6BE4D\\audio\\geometric_waves\\A\\Q5_040414_B6BE4D_GEOMETRIC_WAVES_A_family_music.wav",
+        "wav_sha256": "dfe29efc0a3d945d55fbb7e278252d211abfb6f56deaaec3a292258e8b17d5ee"
+      },
+      "B": {
+        "aac_stream_sha256": "ba3ad357b90de7af6d1a3df39470376e473611fed799003677dcc7de912aa51b",
+        "final_av_path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\r1v_av_five_family_qualification\\Q5_040414_B6BE4D\\delivery\\geometric_waves\\B\\Q5_040414_B6BE4D_GEOMETRIC_WAVES_B_C11C_FAMILY_MUSIC_AV.mp4",
+        "final_av_probe": {
+          "format": {
+            "duration": "23.000000",
+            "size": "14074909"
+          },
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "avg_frame_rate": "30/1",
+              "bit_rate": "4694041",
+              "codec_name": "h264",
+              "codec_type": "video",
+              "color_range": "pc",
+              "duration": "23.000000",
+              "height": 1280,
+              "index": 0,
+              "nb_frames": "690",
+              "pix_fmt": "yuvj420p",
+              "profile": "High",
+              "r_frame_rate": "30/1",
+              "width": 720
+            },
+            {
+              "avg_frame_rate": "0/0",
+              "bit_rate": "192204",
+              "channel_layout": "stereo",
+              "channels": 2,
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "duration": "23.000000",
+              "index": 1,
+              "nb_frames": "992",
+              "profile": "LC",
+              "r_frame_rate": "0/0",
+              "sample_rate": "44100"
+            }
+          ]
+        },
+        "final_h264_stream_sha256": "9fca733f6554fa616cbbb3cb23dcc93cb86b823b396149eb478b44aa0ce76fe7",
+        "pcm_sha256": "1f03e69f9546e52e3856b4228d4b6d4072f8af85abd2a67055d64c0058ec2a10",
+        "source_mp4_bytes": 13504690,
+        "source_mp4_sha256": "a0225d0292f4bea8e13007cc05d5c694bde58687c20fa1ceb281c646e8faac7f",
+        "source_video_path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\r1v_av_five_family_qualification\\Q5_040414_B6BE4D\\source\\geometric_waves\\B\\GeometricWaves_v1_seed_100001_Q5_040414_B6BE4D_GEOMETRIC_WAVES_B.mp4",
+        "wav_format": {
+          "channels": 2,
+          "sample_frames": 1014300,
+          "sample_rate": 44100,
+          "sample_width_bytes": 2
+        },
+        "wav_path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\r1v_av_five_family_qualification\\Q5_040414_B6BE4D\\audio\\geometric_waves\\B\\Q5_040414_B6BE4D_GEOMETRIC_WAVES_B_family_music.wav",
+        "wav_sha256": "dfe29efc0a3d945d55fbb7e278252d211abfb6f56deaaec3a292258e8b17d5ee"
+      }
+    },
+    "next_step": {
+      "mux_not_performed": true,
+      "operator_human_review_still_required": true,
+      "r1v_acceptance_not_granted": true,
+      "ready_for_scoped_geometric_waves_av_rebuild": true,
+      "recommended_scope": "two final A/V mux outputs only; use each new exact diagnostic MP4 as video and reuse the corresponding already-qualified AAC stream from its historical A/V file; no C11-C capture, no music generation, no other family, no 52-test wrapper"
+    }
+  },
+  "grammar_id": "harmonic_membrane",
+  "historical_run_id": "Q5_040414_B6BE4D",
+  "project_root": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+  "schema": "C11E-R1V-GEOMETRIC-WAVES-AV-REUSE-PREFLIGHT-V1",
+  "status": "PASS_READY_FOR_SCOPED_GEO_AV_REBUILD_NOT_EXECUTED"
+}
