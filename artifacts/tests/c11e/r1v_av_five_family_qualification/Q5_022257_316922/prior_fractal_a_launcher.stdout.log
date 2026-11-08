@@ -1,0 +1,16 @@
+[C11C-RESOLUTION] Movie Maker override active: 720x1280
+Godot Engine v4.7.1.stable.mono.official.a13da4feb - https://godotengine.org
+OpenGL API 3.3.0 - Build 32.0.101.8132 - Compatibility - Using Device: Intel - Intel(R) Arc(TM) Graphics
+
+Movie Maker mode enabled, recording movie in 720×1280 @ 30 FPS...
+--------------------------------------------------------------------------------
+Done recording movie at path: C:\Users\vinxe\AppData\Local\Temp\FractalBloom_v1_seed_100006_R1V_Q5_20261107_235828_6DE382A1_FRACTAL_BLOOM_A_08083788216344ba8ecd0f20c2724de1.avi
+660 frames at 30 FPS (movie length: 00:00:22:00), recorded in 00:00:46 (47% of real-time speed).
+CPU render time: 0.40 seconds (average: 0.61 ms/frame)
+GPU render time: 1.45 seconds (average: 2.20 ms/frame)
+Encoding time: 9.71 seconds (average: 14.71 ms/frame)
+--------------------------------------------------------------------------------
+[C11-C-2.16.3] PASS - 720x1280 / 30 FPS / 660 frames / 22 s / AUDIO=False / LOOP / EDITORIAL
+[C11-C-2.16.3] MP4: C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\tests\c11e\r1v_five_family_qualification\R1V_Q5_20261107_235828_6DE382A1\source\fractal_bloom\A\FractalBloom_v1_seed_100006_R1V_Q5_20261107_235828_6DE382A1_FRACTAL_BLOOM_A.mp4
+[C11-C-2.16.3] AUDIO: C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\tests\c11e\r1v_five_family_qualification\R1V_Q5_20261107_235828_6DE382A1\source\fractal_bloom\A\FractalBloom_v1_seed_100006_R1V_Q5_20261107_235828_6DE382A1_FRACTAL_BLOOM_A_music.wav
+[C11-C-2.16.3] SOCIAL: C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\tests\c11e\r1v_five_family_qualification\R1V_Q5_20261107_235828_6DE382A1\source\fractal_bloom\A\FractalBloom_v1_seed_100006_R1V_Q5_20261107_235828_6DE382A1_FRACTAL_BLOOM_A_social.txt

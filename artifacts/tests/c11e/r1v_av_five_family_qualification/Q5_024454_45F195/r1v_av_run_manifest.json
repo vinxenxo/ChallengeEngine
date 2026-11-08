@@ -1,0 +1,301 @@
+{
+  "authority": {
+    "audio_approval_sha256": "6a0081a5a769a1b2efdc2cc6c2f807e57fd8af541bbba211c310cf6781e3c132",
+    "audio_policy_sha256": "c0a6a1e2391b0528347fc3a0a8e5b10b0c691e90131d0a0afbaaacfd15ec9905",
+    "option_c_report_sha256": "ba76c626d92736c2f139380ec2b93d865015e8ef7e53f2881fdb16b6c4a54246",
+    "r1p_recovered_zip_sha256": "d49f54ffdee6026426c2bb87fcb72b5c8a68f09cb64fb91f71e25dc10fd26b52",
+    "r1p_run_id": "E4B_R1P_20261107_032743_5F75045C",
+    "silent_policy_sha256": "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07"
+  },
+  "governance": {
+    "c11c_test_scope": "AUTHORIZED_BOUNDED_R1V_AV_QUALIFICATION_ONLY",
+    "d10": "BLOCKED_FOR_PROMOTION",
+    "d4_8_general_production": "BLOCKED",
+    "d9_10": "PREPARE_ONLY",
+    "d9_14": "BLOCKED",
+    "d9_16": "BLOCKED",
+    "d9_17": "BLOCKED_NO_GO",
+    "d_renderer_dispatch": "OFF",
+    "release_authority": "NONE",
+    "renderer_activation_policy": "DISABLED",
+    "runtime_authority": "NONE"
+  },
+  "jobs": [
+    {
+      "duration_seconds": 22.0,
+      "family_id": "c11c_fractal_bloom_v1",
+      "gameplay_seed": 100006,
+      "grammar_id": "radial_bloom",
+      "loop_cycles": 2,
+      "music_profile_id": "ORGANIC_BLOOM",
+      "music_seed": 500006,
+      "new_output_tag": "Q5_024454_45F195_FRACTAL_BLOOM_A",
+      "repeat": "A",
+      "reuse_prior_source": true,
+      "source_output_tag": "R1V_Q5_20261107_235828_6DE382A1_FRACTAL_BLOOM_A"
+    },
+    {
+      "duration_seconds": 22.0,
+      "family_id": "c11c_fractal_bloom_v1",
+      "gameplay_seed": 100006,
+      "grammar_id": "radial_bloom",
+      "loop_cycles": 2,
+      "music_profile_id": "ORGANIC_BLOOM",
+      "music_seed": 500006,
+      "new_output_tag": "Q5_024454_45F195_FRACTAL_BLOOM_B",
+      "repeat": "B",
+      "reuse_prior_source": false,
+      "source_output_tag": "Q5_024454_45F195_FRACTAL_BLOOM_B"
+    },
+    {
+      "duration_seconds": 23.0,
+      "family_id": "c11c_geometric_waves_v1",
+      "gameplay_seed": 100001,
+      "grammar_id": "harmonic_membrane",
+      "loop_cycles": 3,
+      "music_profile_id": "CIRCUIT_PULSE",
+      "music_seed": 500001,
+      "new_output_tag": "Q5_024454_45F195_GEOMETRIC_WAVES_A",
+      "repeat": "A",
+      "reuse_prior_source": false,
+      "source_output_tag": "Q5_024454_45F195_GEOMETRIC_WAVES_A"
+    },
+    {
+      "duration_seconds": 23.0,
+      "family_id": "c11c_geometric_waves_v1",
+      "gameplay_seed": 100001,
+      "grammar_id": "harmonic_membrane",
+      "loop_cycles": 3,
+      "music_profile_id": "CIRCUIT_PULSE",
+      "music_seed": 500001,
+      "new_output_tag": "Q5_024454_45F195_GEOMETRIC_WAVES_B",
+      "repeat": "B",
+      "reuse_prior_source": false,
+      "source_output_tag": "Q5_024454_45F195_GEOMETRIC_WAVES_B"
+    },
+    {
+      "duration_seconds": 22.0,
+      "family_id": "c11c_invisible_forces_v1",
+      "gameplay_seed": 100021,
+      "grammar_id": "dipole_field",
+      "loop_cycles": 2,
+      "music_profile_id": "FLOWING_VECTOR",
+      "music_seed": 500021,
+      "new_output_tag": "Q5_024454_45F195_INVISIBLE_FORCES_A",
+      "repeat": "A",
+      "reuse_prior_source": false,
+      "source_output_tag": "Q5_024454_45F195_INVISIBLE_FORCES_A"
+    },
+    {
+      "duration_seconds": 22.0,
+      "family_id": "c11c_invisible_forces_v1",
+      "gameplay_seed": 100021,
+      "grammar_id": "dipole_field",
+      "loop_cycles": 2,
+      "music_profile_id": "FLOWING_VECTOR",
+      "music_seed": 500021,
+      "new_output_tag": "Q5_024454_45F195_INVISIBLE_FORCES_B",
+      "repeat": "B",
+      "reuse_prior_source": false,
+      "source_output_tag": "Q5_024454_45F195_INVISIBLE_FORCES_B"
+    },
+    {
+      "duration_seconds": 20.0,
+      "family_id": "c11c_living_particles_v1",
+      "gameplay_seed": 100016,
+      "grammar_id": "swarm",
+      "loop_cycles": 1,
+      "music_profile_id": "ORGANIC_BLOOM",
+      "music_seed": 500016,
+      "new_output_tag": "Q5_024454_45F195_LIVING_PARTICLES_A",
+      "repeat": "A",
+      "reuse_prior_source": false,
+      "source_output_tag": "Q5_024454_45F195_LIVING_PARTICLES_A"
+    },
+    {
+      "duration_seconds": 20.0,
+      "family_id": "c11c_living_particles_v1",
+      "gameplay_seed": 100016,
+      "grammar_id": "swarm",
+      "loop_cycles": 1,
+      "music_profile_id": "ORGANIC_BLOOM",
+      "music_seed": 500016,
+      "new_output_tag": "Q5_024454_45F195_LIVING_PARTICLES_B",
+      "repeat": "B",
+      "reuse_prior_source": false,
+      "source_output_tag": "Q5_024454_45F195_LIVING_PARTICLES_B"
+    },
+    {
+      "duration_seconds": 23.0,
+      "family_id": "c11c_sacred_symmetry_v1",
+      "gameplay_seed": 100011,
+      "grammar_id": "astrolabe",
+      "loop_cycles": 3,
+      "music_profile_id": "ORBITAL_RITUAL",
+      "music_seed": 500011,
+      "new_output_tag": "Q5_024454_45F195_SACRED_SYMMETRY_A",
+      "repeat": "A",
+      "reuse_prior_source": false,
+      "source_output_tag": "Q5_024454_45F195_SACRED_SYMMETRY_A"
+    },
+    {
+      "duration_seconds": 23.0,
+      "family_id": "c11c_sacred_symmetry_v1",
+      "gameplay_seed": 100011,
+      "grammar_id": "astrolabe",
+      "loop_cycles": 3,
+      "music_profile_id": "ORBITAL_RITUAL",
+      "music_seed": 500011,
+      "new_output_tag": "Q5_024454_45F195_SACRED_SYMMETRY_B",
+      "repeat": "B",
+      "reuse_prior_source": false,
+      "source_output_tag": "Q5_024454_45F195_SACRED_SYMMETRY_B"
+    }
+  ],
+  "prior_reused_capture": {
+    "launcher_exit_code": 0,
+    "process_receipt_path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\r1v_five_family_qualification\\R1V_Q5_20261107_235828_6DE382A1\\r1v_process_receipt.json",
+    "process_receipt_sha256": "c22404dca13f34216769d87b311ae81670adc6102fda72851d3156ed83907134",
+    "report_path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\r1v_five_family_qualification\\R1V_Q5_20261107_235828_6DE382A1\\r1v_report.json",
+    "report_sha256": "19b96a87be957a3c97f57828991651aaa72baec08a33a099f145263d89f71ebb",
+    "reused_without_relaunch": true,
+    "source_output_root": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\r1v_five_family_qualification\\R1V_Q5_20261107_235828_6DE382A1\\source\\fractal_bloom\\A",
+    "source_output_tag": "R1V_Q5_20261107_235828_6DE382A1_FRACTAL_BLOOM_A",
+    "source_video_path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\r1v_five_family_qualification\\R1V_Q5_20261107_235828_6DE382A1\\source\\fractal_bloom\\A\\FractalBloom_v1_seed_100006_R1V_Q5_20261107_235828_6DE382A1_FRACTAL_BLOOM_A.mp4",
+    "source_video_sha256": "7971ced1d9cdbb7dd76a0d8d76e766faa9a051fc27419c9e737c41264796f659",
+    "stderr_path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\r1v_five_family_qualification\\R1V_Q5_20261107_235828_6DE382A1\\processes\\01_fractal_bloom_A.stderr.log",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\r1v_five_family_qualification\\R1V_Q5_20261107_235828_6DE382A1\\processes\\01_fractal_bloom_A.stdout.log",
+    "stdout_sha256": "76fd7a7a1f2be677046e7e1954129ad2ac16544fb68d908ee70700dc377b35ae"
+  },
+  "project_root": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+  "run_id": "Q5_024454_45F195",
+  "runtime_executables": {
+    "ffmpeg": {
+      "bytes": 222248960,
+      "command": "ffmpeg",
+      "path": "C:\\Users\\vinxe\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-9.0-full_build\\bin\\ffmpeg.exe",
+      "sha256": "05f4251bce9293c2ab492cb17ca7724a0ffd0d06c881ba2ee83b82a89c2fc740",
+      "version_exit_code": 0,
+      "version_output": "ffmpeg version 9.0-full_build-www.gyan.dev Copyright (c) 2000-2026 the FFmpeg developers",
+      "version_output_sha256": "a78a87b103cd6d845ff3a525a88eb2e0163e17641602f95e1ecca860feff1a38"
+    },
+    "ffmpeg_encoders_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ffmpeg_encoders_stdout_sha256": "4513fecb3d1e8e9b99793f5c80bac9620f4293d4fe7f4084ae4efa28b1134e3c",
+    "ffmpeg_libx264_encoder_available": true,
+    "ffprobe": {
+      "bytes": 222044160,
+      "command": "ffprobe",
+      "path": "C:\\Users\\vinxe\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-9.0-full_build\\bin\\ffprobe.exe",
+      "sha256": "51e0780cd881f83749b029ed716cbb841c2eac6289f418050f2f2961b158896b",
+      "version_exit_code": 0,
+      "version_output": "ffprobe version 9.0-full_build-www.gyan.dev Copyright (c) 2007-2026 the FFmpeg developers",
+      "version_output_sha256": "8ba50584144e7a1f0c499d57490a142aab2f5fa112b0a18c1c40a3329d294e59"
+    },
+    "godot": {
+      "bytes": 179589128,
+      "command": "godot",
+      "path": "C:\\Users\\vinxe\\AppData\\Local\\Microsoft\\WinGet\\Packages\\GodotEngine.GodotEngine.Mono_Microsoft.Winget.Source_8wekyb3d8bbwe\\Godot_v4.7.1-stable_mono_win64\\godot.exe",
+      "sha256": "8ec33ba6a6a953226170cda2a56a58810f6617261a71d6bd6d6ba7cce5e7b79d",
+      "version_exit_code": 0,
+      "version_output": "4.7.1.stable.mono.official.a13da4feb",
+      "version_output_sha256": "d1046084c2493a272b0b439dc2f6dc74b801cd74659c5010a67c1b2f3acc5866"
+    },
+    "powershell": {
+      "bytes": 495616,
+      "command": "powershell.exe",
+      "path": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "sha256": "d8f182560210d43baaf767d482ad1dc1207372522e91413b9d5e515a875e552d",
+      "version_exit_code": 0,
+      "version_output": "5.1.26100.9818",
+      "version_output_sha256": "5b174f323af89ddcd1cb83cab8b32724f9059d8e3ce9e97bd1e7f20128d14fdf"
+    },
+    "python": {
+      "bytes": 105696,
+      "command": "python",
+      "path": "C:\\Users\\vinxe\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+      "sha256": "ef8f51028ac5329641985112f8efb1c2d4c47c86b8011ddf7e6fae21e2b4e5a1",
+      "version_exit_code": 0,
+      "version_output": "Python 3.13.14",
+      "version_output_sha256": "f133aa4c375d22e9226cb4ee8a71740d78c77f15c82b7842a0b93e594eed1884"
+    }
+  },
+  "schema": "C11E-R1V-AV-FIVE-FAMILY-RUN-MANIFEST-V1",
+  "scope": {
+    "audio_seed_passed_to_visual_launcher": false,
+    "av_outputs": 10,
+    "d3_v5": false,
+    "d9_10_dispatch": false,
+    "d_compositor": false,
+    "filters": false,
+    "integrated_per_slot_pipeline": [
+      "C11-C silent visual capture/reuse",
+      "actual frame inventory",
+      "C11-C FAMILY_MUSIC_V4 with R1P music_seed",
+      "AAC 192k mux with video stream copy",
+      "FFprobe A/V QA"
+    ],
+    "new_launcher_invocations": 9,
+    "repeat_count": 2,
+    "reused_prior_capture_slots": 1,
+    "selector_count": 5,
+    "video_reencode_after_source_capture": false
+  },
+  "source_pins": {
+    "audio_pins": {
+      "pin_count": 3,
+      "pins": [
+        {
+          "bytes": 1739,
+          "path": "tools/prototypes/c11c_common/C11CSafeAmbient.py",
+          "sha256": "c376fd44a3115f0d800213d95e28143363748e16c7b5800369fcadbf237fb02c"
+        },
+        {
+          "bytes": 16382,
+          "path": "tools/prototypes/c11c_common/generate_c11c_family_music.py",
+          "sha256": "41bb8f9842ac941ea86c838f272b11bd0642973b26e92defa006721a3d8cb84d"
+        },
+        {
+          "bytes": 7038,
+          "path": "profiles/presentation/c11c_visual_music_profiles.json",
+          "sha256": "b78706c5a9adbf1581d925f522b76cc3419983177de213734cc79996af5cbf58"
+        }
+      ]
+    },
+    "audio_scope": {
+      "approval_raw_sha256": "6a0081a5a769a1b2efdc2cc6c2f807e57fd8af541bbba211c310cf6781e3c132",
+      "approval_record_canonical_sha256": "b0f1e4f2df88360f3c250d0679da4e7eef1c5821c0a6c4663f2fb94db048b1f5",
+      "approval_timestamp": "2026-11-08T00:05:00+01:00",
+      "audio_route": "C11C_FAMILY_MUSIC_V4",
+      "av_outputs": 10,
+      "d3_v5": false,
+      "new_launcher_invocations": 9,
+      "policy_sha256": "c0a6a1e2391b0528347fc3a0a8e5b10b0c691e90131d0a0afbaaacfd15ec9905",
+      "repeat_count": 2,
+      "reused_prior_capture_count": 1,
+      "selector_count": 5
+    },
+    "base_pin_digest": {
+      "additional_c11c_dependency_pin_count": 28,
+      "d4_8_production_policy_state": "DISABLED_UNCHANGED",
+      "option_c_report_sha256": "ba76c626d92736c2f139380ec2b93d865015e8ef7e53f2881fdb16b6c4a54246",
+      "option_c_source_pin_count": 3,
+      "r1p_recovered_zip_sha256": "d49f54ffdee6026426c2bb87fcb72b5c8a68f09cb64fb91f71e25dc10fd26b52",
+      "r1p_source_pin_count": 30,
+      "r1v_policy_sha256": "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+      "total_source_pin_validations": 61
+    },
+    "base_r1v_pins": 61,
+    "family_audio_pins": 3,
+    "total_source_pins": 64
+  },
+  "started_utc": "2026-11-08T01:44:54.895356+00:00",
+  "windows_path_budget": {
+    "candidate_path_count": 140,
+    "longest_path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\r1v_av_five_family_qualification\\Q5_024454_45F195\\source\\fractal_bloom\\A\\FractalBloom_v1_seed_100006_R1V_Q5_20261107_235828_6DE382A1_FRACTAL_BLOOM_A_r1v_source_ffprobe.json.stderr.log",
+    "max_allowed_chars": 259,
+    "max_path_chars": 257,
+    "run_id_chars": 16,
+    "windows_max_path_guard": "PASS"
+  }
+}

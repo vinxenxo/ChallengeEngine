@@ -1,0 +1,77 @@
+﻿{
+    "schema":  "C11E-R1V-AV-LINEAGE-FIX-V2-INSTALL-RECEIPT-V1",
+    "run_id":  "R1V_AV_LINEAGE_FIX_V2_INSTALL_20261108_003534_CDF8157B",
+    "package_id":  "C11E_R1V_AV_PRIOR_CAPTURE_LINEAGE_FIX_V2",
+    "status":  "PASS_PINNED_CODE_REPLACEMENT_AND_ADD_ONLY_DOCS",
+    "project_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+    "package_manifest_sha256":  "89ac655b430c19615601c5b40f9686d51c68f4c9319877b7c285c6969bf7a86c",
+    "parent_v1_1_install_receipt_sha256":  "256b774a5e45763e56d22c6583c637e53515813678b5e7dbab53b124b71e6b00",
+    "frozen_c11c_manifest_sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "replaced_or_added_files":  12,
+    "files":  [
+                  {
+                      "path":  "tools/c11d/d9/c11e_r1v_av_family_qualification_v1.py",
+                      "sha256":  "423adeb5c0904501076055f1feead57ab3f991d7971852030c5dbfbf8a3e8783",
+                      "state":  "PINNED_REPLACED"
+                  },
+                  {
+                      "path":  "docs/current/e/C11D_E_BLOCKER_REMEDIATION_REGISTER_20261108_V17.md",
+                      "sha256":  "0934c456ce9a1eacd92de0a76be77095275bbbca786532a716daf9d1024a3c72",
+                      "state":  "ADDED"
+                  },
+                  {
+                      "path":  "docs/current/e/C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261108_V43.md",
+                      "sha256":  "d8b62f0b777e8321dd1fa68ed74707a63f5667d83309ec1c672beed2e61feef6",
+                      "state":  "ADDED"
+                  },
+                  {
+                      "path":  "docs/current/e/C11E_CURRENT_AUTHORITY_20261108_V96.md",
+                      "sha256":  "beae9f22cef99e3606deaa7db4b83f0ccd665eddbf47502580f29e67540104f8",
+                      "state":  "ADDED"
+                  },
+                  {
+                      "path":  "docs/current/e/C11E_CURRENT_DOC_INDEX_20261108_V57.md",
+                      "sha256":  "34586bdc6dcae6aaa3d852bf7b19b7ef1daaf438b808407a611d1e93e19f7095",
+                      "state":  "ADDED"
+                  },
+                  {
+                      "path":  "docs/current/e/C11E_E3_EXECUTION_BACKLOG_20261108_V71.md",
+                      "sha256":  "f99b3660704e4333d229e8a15f0a4b151c854ac4b8c0c4da4d4c78d8aebaa9b9",
+                      "state":  "ADDED"
+                  },
+                  {
+                      "path":  "docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261108_V94.md",
+                      "sha256":  "d8dd36ee747f8f250c50e43b859ccca58d63503ce614531a7517cb50e1f64df5",
+                      "state":  "ADDED"
+                  },
+                  {
+                      "path":  "docs/current/e/C11E_R1V_FIVE_FAMILY_QUALIFICATION_RUNBOOK_20261108_V9.md",
+                      "sha256":  "c5ed101e976eae54d69339e9b9d1dd765a7a5dcd3e7d055259d341c14388cadd",
+                      "state":  "ADDED"
+                  },
+                  {
+                      "path":  "docs/history/c11e/C11E_R1V_AV_PRIOR_CAPTURE_LINEAGE_SCHEMA_FIX_20261108_V1.md",
+                      "sha256":  "bde74b02c4c91e5b1ba646df646154ccc3ba41dcffbc1f09a216d25fc12715e2",
+                      "state":  "ADDED"
+                  },
+                  {
+                      "path":  "docs/prompts/C11E_CONTINUATION_MASTER_PROMPT_20261108_V97.md",
+                      "sha256":  "d1d04c586a788f3845c106dc96a623c8527ae8e19f5f87811816367648662cd5",
+                      "state":  "ADDED"
+                  },
+                  {
+                      "path":  "docs/prompts/C11E_FIRST_PROMPT_20261108_V21.md",
+                      "sha256":  "fdd7ef925355559f27d707324063aaf28f47bf4e263cbaf176486658b23c0e40",
+                      "state":  "ADDED"
+                  },
+                  {
+                      "path":  "docs/prompts/C11E_NEXT_WINDOW_START_PROMPT_20261108_V97.md",
+                      "sha256":  "5bf3b66bacb203d407bbf9a9584ca759aa0bf77ff87684c58cf8f19ca9949577",
+                      "state":  "ADDED"
+                  }
+              ],
+    "python_invoked":  false,
+    "tests_invoked":  false,
+    "external_process_started":  false,
+    "git_checks":  "SKIPPED_OPERATOR_MANAGED"
+}

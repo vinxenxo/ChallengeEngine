@@ -1,0 +1,32 @@
+﻿{
+    "schema":  "C11E-R1V-WINDOWS-PATH-BUDGET-FIX-INSTALL-RECEIPT-V2",
+    "run_id":  "R1V_PATH_BUDGET_FIX_V2_INSTALL_20261108_022238_752F0B49",
+    "install_status":  "PASS_PINNED_REPLACEMENTS_AND_ADD_ONLY_DOCS",
+    "project_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+    "package_id":  "C11E_R1V_WINDOWS_PATH_BUDGET_FIX_V2",
+    "package_manifest_sha256":  "1cdaf53819ef1854d060a89f354aa9f3d9aa62f0504658312516e24d9e5d6663",
+    "frozen_c11c_manifest_sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "parent_v2_install_receipt_sha256":  "b635b3dbcc9ddc6f1bae0c3362ddbe2aea5723ff79ddcc3f06ff2d0367479bd5",
+    "superseded_v1_package_manifest_sha256":  "5523470c8893c0e33419ced3ba52d697adf50fd4b89fb137d741a3439acb4cb3",
+    "files_applied":  13,
+    "payload_files_verified":  13,
+    "files":  [
+                  "docs/current/e/C11D_E_BLOCKER_REMEDIATION_REGISTER_20261108_V19.md",
+                  "docs/current/e/C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261108_V45.md",
+                  "docs/current/e/C11E_CURRENT_AUTHORITY_20261108_V98.md",
+                  "docs/current/e/C11E_CURRENT_DOC_INDEX_20261108_V59.md",
+                  "docs/current/e/C11E_E3_EXECUTION_BACKLOG_20261108_V73.md",
+                  "docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261108_V96.md",
+                  "docs/current/e/C11E_R1V_FIVE_FAMILY_QUALIFICATION_RUNBOOK_20261108_V11.md",
+                  "docs/history/c11e/C11E_R1V_WINDOWS_PATH_BUDGET_CORRECTION_20261108_V2.md",
+                  "docs/prompts/C11E_CONTINUATION_MASTER_PROMPT_20261108_V99.md",
+                  "docs/prompts/C11E_FIRST_PROMPT_20261108_V23.md",
+                  "docs/prompts/C11E_NEXT_WINDOW_START_PROMPT_20261108_V99.md",
+                  "tools/c11d/d9/c11e_r1v_av_family_qualification_v1.py",
+                  "tools/c11d/d9/test_c11e_r1v_av_family_qualification_v1.py"
+              ],
+    "python_invoked":  false,
+    "tests_invoked":  false,
+    "external_process_started":  false,
+    "git_checks":  "SKIPPED; operator-managed commits"
+}

@@ -1,0 +1,65 @@
+COPY_PASTE_READY:
+SUBRUTINA // INTERFAZ NEUROPTICA -> CAMPO DIPOLAR // NOMINAL // TRACES 79 | PULSE 0.88
+
+SUBRUTINA // INTERFAZ NEUROPTICA -> CAMPO DIPOLAR // NOMINAL // TRACES 79 | PULSE 0.88
+
+INVISIBLE FORCES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: DIPOLE FIELD
+- Paleta: burgundy_amber
+- Seed: 100021
+- Detalles: Duración 22.00s, 2 ciclo(s) completo(s), sin sonido.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #InvisibleForces #VectorField #PhysicsArt #TopographicArt #ProceduralArt #DigitalArt #DIPOLEFIELD
+
+SUBRUTINA // INTERFAZ NEUROPTICA -> CAMPO DIPOLAR // NOMINAL // TRACES 79 | PULSE 0.88
+
+INVISIBLE FORCES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: DIPOLE FIELD
+- Paleta: burgundy_amber
+- Seed: 100021
+- Detalles: Duración 22.00s, 2 ciclo(s) completo(s), sin sonido.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+TITLE:
+INVISIBLE FORCES - DIPOLE FIELD
+
+DESCRIPTION:
+SUBRUTINA // INTERFAZ NEUROPTICA -> CAMPO DIPOLAR // NOMINAL // TRACES 79 | PULSE 0.88
+
+INVISIBLE FORCES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: DIPOLE FIELD
+- Paleta: burgundy_amber
+- Seed: 100021
+- Detalles: Duración 22.00s, 2 ciclo(s) completo(s), sin sonido.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+FAMILY: invisible_forces
+GRAMMAR: DIPOLE FIELD
+PALETTE: burgundy_amber
+SEED: 100021
+DURATION: 22.00 s
+FPS: 30
+FRAMES: 660
+LOOP CYCLES: 2
+LOOP CLOSED: True
+AUDIO: OFF / SILENT
+AUDIO PROFILE: FLOWING_VECTOR
+
+HEADER HOOK:
+SUBRUTINA // INTERFAZ NEUROPTICA -> CAMPO DIPOLAR // NOMINAL // TRACES 79 | PULSE 0.88
+
+HASHTAGS:
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #InvisibleForces #VectorField #PhysicsArt #TopographicArt #ProceduralArt #DigitalArt #DIPOLEFIELD
+
+REPRODUCTION COMMAND:
+.\tools\prototypes\c11c_invisible_forces_v1\run_prototype.ps1 -Seed 100021 -Grammar dipole_field -Duration 22 -NoSound -OutputRoot C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\tests\c11e\r1v_av_five_family_qualification\Q5_024454_45F195\source\invisible_forces\A -OutputTag Q5_024454_45F195_INVISIBLE_FORCES_A
+
+CANONICAL MANIFEST:
+InvisibleForces_v1_seed_100021_Q5_024454_45F195_INVISIBLE_FORCES_A_manifest.json

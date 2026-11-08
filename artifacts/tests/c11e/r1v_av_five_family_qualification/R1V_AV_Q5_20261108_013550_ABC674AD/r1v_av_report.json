@@ -1,0 +1,212 @@
+{
+  "aac_mux_count": 0,
+  "audio_generation_count": 0,
+  "audiovisual_outputs": [],
+  "completed_av_outputs": 0,
+  "completed_slot_records": 1,
+  "completed_source_inventories": 0,
+  "failure": "[Errno 2] No such file or directory: 'C:\\\\Users\\\\vinxe\\\\Projects\\\\ChallengeEngineV01_STATELESS\\\\artifacts\\\\tests\\\\c11e\\\\r1v_av_five_family_qualification\\\\R1V_AV_Q5_20261108_013550_ABC674AD\\\\source\\\\fractal_bloom\\\\A\\\\FractalBloom_v1_seed_100006_R1V_Q5_20261107_235828_6DE382A1_FRACTAL_BLOOM_A_r1v_source_ffprobe.json'",
+  "family_audio_scope_amendment": {
+    "approval_raw_sha256": "6a0081a5a769a1b2efdc2cc6c2f807e57fd8af541bbba211c310cf6781e3c132",
+    "approval_record_canonical_sha256": "b0f1e4f2df88360f3c250d0679da4e7eef1c5821c0a6c4663f2fb94db048b1f5",
+    "approval_timestamp": "2026-11-08T00:05:00+01:00",
+    "audio_route": "C11C_FAMILY_MUSIC_V4",
+    "av_outputs": 10,
+    "d3_v5": false,
+    "new_launcher_invocations": 9,
+    "policy_sha256": "c0a6a1e2391b0528347fc3a0a8e5b10b0c691e90131d0a0afbaaacfd15ec9905",
+    "repeat_count": 2,
+    "reused_prior_capture_count": 1,
+    "selector_count": 5
+  },
+  "governance": {
+    "d10": "BLOCKED_FOR_PROMOTION",
+    "d4_8_general_production": "BLOCKED",
+    "d9_10": "PREPARE_ONLY",
+    "d9_14": "BLOCKED",
+    "d9_16": "BLOCKED",
+    "d9_17": "BLOCKED_NO_GO",
+    "d_renderer_dispatch": "OFF",
+    "release_authority": "NONE",
+    "renderer_activation_policy": "DISABLED",
+    "runtime_authority": "NONE"
+  },
+  "human_review": {
+    "audio_listening_all_slots": "PENDING_OPERATOR_REVIEW",
+    "fractal_bloom_A_visual": "OPERATOR_CONFIRMED_PASS",
+    "other_visual_slots": "PENDING_OPERATOR_REVIEW"
+  },
+  "new_c11c_launcher_invocations": 0,
+  "option_c": {
+    "architecture_decision": "OPERATOR_APPROVED_OPTION_C",
+    "captured_process_logs_verified": 4,
+    "handoffs": 27,
+    "install_receipt_sha256": "30c6531129a08d3ce347432ddb4d5a26155f92dc89863828398cbfc2a8dfe6a7",
+    "process_receipt_sha256": "db1cc4b8393f84d944391efdd6daa325e0ed9a5aac69ce7b0d7efc9ed9ea9355",
+    "report_sha256": "ba76c626d92736c2f139380ec2b93d865015e8ef7e53f2881fdb16b6c4a54246",
+    "source_pin_validations": 33
+  },
+  "override_cfg_integrity": {
+    "existed_before": false,
+    "final_guard_result": "PASS_ORIGINALLY_ABSENT",
+    "path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\override.cfg",
+    "restored_after_each_launcher": true,
+    "sha256_before": null,
+    "temp_backup_files_after": {},
+    "temp_backup_preimage": {}
+  },
+  "processes": [
+    {
+      "family_id": "c11c_fractal_bloom_v1",
+      "launcher_invoked": false,
+      "prior_run_id": "R1V_Q5_20261107_235828_6DE382A1",
+      "prior_stdout_sha256": "76fd7a7a1f2be677046e7e1954129ad2ac16544fb68d908ee70700dc377b35ae",
+      "repeat": "A",
+      "reused_prior_capture": true,
+      "slot": 1,
+      "source_video_sha256": "7971ced1d9cdbb7dd76a0d8d76e766faa9a051fc27419c9e737c41264796f659"
+    }
+  ],
+  "r1p": {
+    "receipt_count": 27,
+    "recovered_zip_sha256": "d49f54ffdee6026426c2bb87fcb72b5c8a68f09cb64fb91f71e25dc10fd26b52",
+    "run_id": "E4B_R1P_20261107_032743_5F75045C",
+    "selected_selectors": [
+      {
+        "duration_seconds": 22.0,
+        "family_id": "c11c_fractal_bloom_v1",
+        "gameplay_seed": 100006,
+        "grammar_id": "radial_bloom",
+        "loop_cycles": 2,
+        "music_profile_id": "ORGANIC_BLOOM",
+        "music_seed": 500006,
+        "r1p_receipt_sha256": "8442079179c0f52d54d9f9dc7f4a927f50255aca9d0646de4fe32b91fe249fc6"
+      },
+      {
+        "duration_seconds": 23.0,
+        "family_id": "c11c_geometric_waves_v1",
+        "gameplay_seed": 100001,
+        "grammar_id": "harmonic_membrane",
+        "loop_cycles": 3,
+        "music_profile_id": "CIRCUIT_PULSE",
+        "music_seed": 500001,
+        "r1p_receipt_sha256": "1d67312f2ac9db48efc98f70e235cf3fe5facf34a7238e9799c4191a2b0f77c6"
+      },
+      {
+        "duration_seconds": 22.0,
+        "family_id": "c11c_invisible_forces_v1",
+        "gameplay_seed": 100021,
+        "grammar_id": "dipole_field",
+        "loop_cycles": 2,
+        "music_profile_id": "FLOWING_VECTOR",
+        "music_seed": 500021,
+        "r1p_receipt_sha256": "ce4cc72804b49e8adebb9bc85565ebe61304f9b0dff45482084245fecf00844b"
+      },
+      {
+        "duration_seconds": 20.0,
+        "family_id": "c11c_living_particles_v1",
+        "gameplay_seed": 100016,
+        "grammar_id": "swarm",
+        "loop_cycles": 1,
+        "music_profile_id": "ORGANIC_BLOOM",
+        "music_seed": 500016,
+        "r1p_receipt_sha256": "11edb6f1091630121d56b55ba90eca08fad41d9452ddbe16862ce2fe299e6801"
+      },
+      {
+        "duration_seconds": 23.0,
+        "family_id": "c11c_sacred_symmetry_v1",
+        "gameplay_seed": 100011,
+        "grammar_id": "astrolabe",
+        "loop_cycles": 3,
+        "music_profile_id": "ORBITAL_RITUAL",
+        "music_seed": 500011,
+        "r1p_receipt_sha256": "c757749e48008fcad06d8bc8f2124d4643864a8c7ecf14824c7877338099cd87"
+      }
+    ]
+  },
+  "r1v_run_manifest_sha256": "4390b93aa75292bb31285307a1d63631b9f471f66f18595e8c90d4febfe4cbe9",
+  "repeat_determinism": null,
+  "reused_prior_source_capture_slots": 1,
+  "run_id": "R1V_AV_Q5_20261108_013550_ABC674AD",
+  "schema": "C11E-R1V-AV-FIVE-FAMILY-REPORT-V1",
+  "scope": {
+    "C11C_family_music_v4": true,
+    "C11C_visual_source_capture": true,
+    "D3_V5": false,
+    "D9_10_dispatch": false,
+    "D_compositor": false,
+    "R1P_music_seed_consumed_by_audio_only": true,
+    "R1V_pixel_decode_pipe_to_memory": true,
+    "filters": false,
+    "frame_pngs_written": false,
+    "gameplay_music_seed_domains_separate": true,
+    "native_aac_mux": true,
+    "video_bitstream_reencode": false,
+    "video_stream_copy_only": true
+  },
+  "silent_scope_approval": {
+    "approval_path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\definitions\\c11d\\production\\C11E_D4_8_R1V_OPERATOR_APPROVAL_RECORD_20261107_V1.json",
+    "approval_record_sha256": "816fbb77ae31952af7bae4a204b324d7ead25cd80e9d8caf4aae7e0781ea23d2",
+    "d4_8_production_policy_state": "DISABLED_UNCHANGED",
+    "d_renderer_dispatch": "OFF",
+    "independent_reviewer": "Operator (user)",
+    "launcher_invocations_authorized": 10,
+    "operator_approval_timestamp": "2026-11-07T22:45:00+01:00",
+    "operator_approver": "Operator (user)",
+    "policy_author": "ChatGPT — technical author",
+    "policy_path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\definitions\\c11d\\production\\C11E_D4_8_R1V_QUALIFICATION_ONLY_POLICY_V2.json",
+    "policy_sha256": "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+    "repeat_count": 2,
+    "selector_count": 5
+  },
+  "source_inventories": [],
+  "source_pins_after_run": {
+    "audio_pins": {
+      "pin_count": 3,
+      "pins": [
+        {
+          "bytes": 1739,
+          "path": "tools/prototypes/c11c_common/C11CSafeAmbient.py",
+          "sha256": "c376fd44a3115f0d800213d95e28143363748e16c7b5800369fcadbf237fb02c"
+        },
+        {
+          "bytes": 16382,
+          "path": "tools/prototypes/c11c_common/generate_c11c_family_music.py",
+          "sha256": "41bb8f9842ac941ea86c838f272b11bd0642973b26e92defa006721a3d8cb84d"
+        },
+        {
+          "bytes": 7038,
+          "path": "profiles/presentation/c11c_visual_music_profiles.json",
+          "sha256": "b78706c5a9adbf1581d925f522b76cc3419983177de213734cc79996af5cbf58"
+        }
+      ]
+    },
+    "audio_scope": {
+      "approval_raw_sha256": "6a0081a5a769a1b2efdc2cc6c2f807e57fd8af541bbba211c310cf6781e3c132",
+      "approval_record_canonical_sha256": "b0f1e4f2df88360f3c250d0679da4e7eef1c5821c0a6c4663f2fb94db048b1f5",
+      "approval_timestamp": "2026-11-08T00:05:00+01:00",
+      "audio_route": "C11C_FAMILY_MUSIC_V4",
+      "av_outputs": 10,
+      "d3_v5": false,
+      "new_launcher_invocations": 9,
+      "policy_sha256": "c0a6a1e2391b0528347fc3a0a8e5b10b0c691e90131d0a0afbaaacfd15ec9905",
+      "repeat_count": 2,
+      "reused_prior_capture_count": 1,
+      "selector_count": 5
+    },
+    "base_pin_digest": {
+      "additional_c11c_dependency_pin_count": 28,
+      "d4_8_production_policy_state": "DISABLED_UNCHANGED",
+      "option_c_report_sha256": "ba76c626d92736c2f139380ec2b93d865015e8ef7e53f2881fdb16b6c4a54246",
+      "option_c_source_pin_count": 3,
+      "r1p_recovered_zip_sha256": "d49f54ffdee6026426c2bb87fcb72b5c8a68f09cb64fb91f71e25dc10fd26b52",
+      "r1p_source_pin_count": 30,
+      "r1v_policy_sha256": "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+      "total_source_pin_validations": 61
+    },
+    "base_r1v_pins": 61,
+    "family_audio_pins": 3,
+    "total_source_pins": 64
+  },
+  "status": "FAIL_R1V_AV_FIVE_FAMILY_QUALIFICATION_STOPPED_FAIL_CLOSED"
+}

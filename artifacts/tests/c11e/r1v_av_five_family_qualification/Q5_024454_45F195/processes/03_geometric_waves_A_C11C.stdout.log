@@ -1,0 +1,16 @@
+[C11C-RESOLUTION] Movie Maker override active: 720x1280
+Godot Engine v4.7.1.stable.mono.official.a13da4feb - https://godotengine.org
+OpenGL API 3.3.0 - Build 32.0.101.8132 - Compatibility - Using Device: Intel - Intel(R) Arc(TM) Graphics
+
+Movie Maker mode enabled, recording movie in 720×1280 @ 30 FPS...
+--------------------------------------------------------------------------------
+Done recording movie at path: C:\Users\vinxe\AppData\Local\Temp\GeometricWaves_v1_seed_100001_Q5_024454_45F195_GEOMETRIC_WAVES_A_0917e0724f084a349f4f9e2b637780d3.avi
+690 frames at 30 FPS (movie length: 00:00:23:00), recorded in 00:00:44 (52% of real-time speed).
+CPU render time: 0.40 seconds (average: 0.58 ms/frame)
+GPU render time: 0.46 seconds (average: 0.67 ms/frame)
+Encoding time: 9.55 seconds (average: 13.85 ms/frame)
+--------------------------------------------------------------------------------
+[C11-C-2.16.3] PASS - 720x1280 / 30 FPS / 690 frames / 23 s / AUDIO=False / LOOP / EDITORIAL
+[C11-C-2.16.3] MP4: C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\tests\c11e\r1v_av_five_family_qualification\Q5_024454_45F195\source\geometric_waves\A\GeometricWaves_v1_seed_100001_Q5_024454_45F195_GEOMETRIC_WAVES_A.mp4
+[C11-C-2.16.3] AUDIO: C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\tests\c11e\r1v_av_five_family_qualification\Q5_024454_45F195\source\geometric_waves\A\GeometricWaves_v1_seed_100001_Q5_024454_45F195_GEOMETRIC_WAVES_A_music.wav
+[C11-C-2.16.3] SOCIAL: C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\tests\c11e\r1v_av_five_family_qualification\Q5_024454_45F195\source\geometric_waves\A\GeometricWaves_v1_seed_100001_Q5_024454_45F195_GEOMETRIC_WAVES_A_social.txt

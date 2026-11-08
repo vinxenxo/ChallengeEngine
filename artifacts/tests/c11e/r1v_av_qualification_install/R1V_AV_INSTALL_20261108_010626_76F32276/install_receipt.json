@@ -1,0 +1,149 @@
+﻿{
+    "schema":  "C11E-R1V-AV-ADD-ONLY-INSTALL-RECEIPT-V1",
+    "run_id":  "R1V_AV_INSTALL_20261108_010626_76F32276",
+    "install_status":  "PASS_ADD_ONLY_INSTALL",
+    "project_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+    "package_id":  "C11E_R1V_FAMILY_NATIVE_AUDIO_AV_QUALIFICATION_V1",
+    "package_manifest_sha256":  "fb54ad18c71daf1a8680cc0493afc2dc28f63498dd7d4e3fa61e31013e3214ae",
+    "frozen_c11c_manifest_sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "static_audit_sha256":  "600c22dafe2e377cb02b4a69f8823a44745d705b71cdb0d6bcec38da52df3e92",
+    "r1p_recovered_zip_sha256":  "d49f54ffdee6026426c2bb87fcb72b5c8a68f09cb64fb91f71e25dc10fd26b52",
+    "option_c_report_sha256":  "ba76c626d92736c2f139380ec2b93d865015e8ef7e53f2881fdb16b6c4a54246",
+    "prior_fractal_a_mp4_sha256":  "7971ced1d9cdbb7dd76a0d8d76e766faa9a051fc27419c9e737c41264796f659",
+    "r1v_audio_scope_policy_sha256":  "c0a6a1e2391b0528347fc3a0a8e5b10b0c691e90131d0a0afbaaacfd15ec9905",
+    "r1v_audio_approval_raw_sha256":  "6a0081a5a769a1b2efdc2cc6c2f807e57fd8af541bbba211c310cf6781e3c132",
+    "verified_payload_files":  21,
+    "new_files_installed":  21,
+    "preexisting_identical_verified":  0,
+    "python_invoked":  false,
+    "test_suite_invoked":  false,
+    "external_process_started":  false,
+    "files":  [
+                  {
+                      "path":  "definitions/c11d/production/C11E_D4_8_R1V_FAMILY_AUDIO_APPROVAL_AMENDMENT_20261108_V1.json",
+                      "bytes":  2135,
+                      "sha256":  "6a0081a5a769a1b2efdc2cc6c2f807e57fd8af541bbba211c310cf6781e3c132",
+                      "state":  "INSTALLED"
+                  },
+                  {
+                      "path":  "definitions/c11d/production/C11E_D4_8_R1V_FAMILY_AUDIO_SCOPE_AMENDMENT_V1.json",
+                      "bytes":  3311,
+                      "sha256":  "c0a6a1e2391b0528347fc3a0a8e5b10b0c691e90131d0a0afbaaacfd15ec9905",
+                      "state":  "INSTALLED"
+                  },
+                  {
+                      "path":  "docs/current/e/C11D_E_BLOCKER_REMEDIATION_REGISTER_20261108_V16.md",
+                      "bytes":  3471,
+                      "sha256":  "4b1ab75a5610d4996100340c44c57573c8594ee0cff8d25bb126acb2c0ca2380",
+                      "state":  "INSTALLED"
+                  },
+                  {
+                      "path":  "docs/current/e/C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261108_V42.md",
+                      "bytes":  2995,
+                      "sha256":  "ac64a91de01cecb6148320aa170c66b49e08bcd9c7c10994d4e2e4b45957ec0a",
+                      "state":  "INSTALLED"
+                  },
+                  {
+                      "path":  "docs/current/e/C11E_CURRENT_AUTHORITY_20261108_V95.md",
+                      "bytes":  6902,
+                      "sha256":  "9496031850bda6b4928c2e0d51d32449fa1a57b1017b0c6035c4be186ebf7a4e",
+                      "state":  "INSTALLED"
+                  },
+                  {
+                      "path":  "docs/current/e/C11E_CURRENT_DOC_INDEX_20261108_V56.md",
+                      "bytes":  3152,
+                      "sha256":  "d171b283192292cbb46abe22cbe47c482e183265d304e379608454e3419bb46e",
+                      "state":  "INSTALLED"
+                  },
+                  {
+                      "path":  "docs/current/e/C11E_D4_8_R1V_QUALIFICATION_AUTHORIZATION_REQUIREMENTS_20261108_V10.md",
+                      "bytes":  2965,
+                      "sha256":  "e4f014cebcf1b43c80fe974fc995cf08d97dad2a271d67118e4e2e4c6dcf865d",
+                      "state":  "INSTALLED"
+                  },
+                  {
+                      "path":  "docs/current/e/C11E_E3_EXECUTION_BACKLOG_20261108_V70.md",
+                      "bytes":  2796,
+                      "sha256":  "65efe1436083b52cb14ef40ca1709e9d9a9e8ba06e5808a4c4fedf084fee62de",
+                      "state":  "INSTALLED"
+                  },
+                  {
+                      "path":  "docs/current/e/C11E_E4B_R1V_ACTUAL_FRAME_INVENTORY_20261108_V9.md",
+                      "bytes":  2249,
+                      "sha256":  "d8a6c70ed4a0904d389037cde3987803af5b9bb3eb38b76833cabf1cd5d25d58",
+                      "state":  "INSTALLED"
+                  },
+                  {
+                      "path":  "docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261108_V93.md",
+                      "bytes":  2233,
+                      "sha256":  "2d2d0b2ef9faa99267bd2a2016c20620d765a6225228f495e746e3a08721872d",
+                      "state":  "INSTALLED"
+                  },
+                  {
+                      "path":  "docs/current/e/C11E_R1V_FAMILY_NATIVE_AUDIO_AV_INTEGRATION_CONTRACT_20261108_V2.md",
+                      "bytes":  3972,
+                      "sha256":  "bf9f0ef9c0a40c8e5b10fc8b5ee9a5d1459fde9ffb4463fcbb7b460bd554e251",
+                      "state":  "INSTALLED"
+                  },
+                  {
+                      "path":  "docs/current/e/C11E_R1V_FIVE_FAMILY_QUALIFICATION_RUNBOOK_20261108_V8.md",
+                      "bytes":  4484,
+                      "sha256":  "f330883afe71644b7c2314ec458c687c60b5f94d95dd5fca35828eecc053cd30",
+                      "state":  "INSTALLED"
+                  },
+                  {
+                      "path":  "docs/history/c11e/C11E_R1V_AV_FINAL_PACKAGE_SECOND_REVIEW_20261108_V1.md",
+                      "bytes":  2310,
+                      "sha256":  "0456b98c9f69becd845b479b090632f5ba506583afad7a6e3fa9ea443ccfdf7c",
+                      "state":  "INSTALLED"
+                  },
+                  {
+                      "path":  "docs/history/c11e/C11E_R1V_CAPTURE_LOG_FALSE_NEGATIVE_AND_AV_AMENDMENT_20261108_V1.md",
+                      "bytes":  2302,
+                      "sha256":  "c881e96379e5f0b1afc5d2ed8761a80b8acdf7f5e81997b85831201fe3306024",
+                      "state":  "INSTALLED"
+                  },
+                  {
+                      "path":  "docs/history/c11e/C11E_R1V_FAMILY_MUSIC_HISTORICAL_ROUTE_RECONCILIATION_20261108_V1.md",
+                      "bytes":  1089,
+                      "sha256":  "1836dddb5d5ea2032f6c621297da1690973d5901636247284c72781bb878c86a",
+                      "state":  "INSTALLED"
+                  },
+                  {
+                      "path":  "docs/prompts/C11E_CONTINUATION_MASTER_PROMPT_20261108_V96.md",
+                      "bytes":  5353,
+                      "sha256":  "28a67e1a5ae44fb0f44b0a4def239eb0e212db03604a4b12acdf44e794e30a8e",
+                      "state":  "INSTALLED"
+                  },
+                  {
+                      "path":  "docs/prompts/C11E_FIRST_PROMPT_20261108_V20.md",
+                      "bytes":  5109,
+                      "sha256":  "17513699e896bbe0722757add27187f8459f9c2992d13c96f8bc215c5654f1bb",
+                      "state":  "INSTALLED"
+                  },
+                  {
+                      "path":  "docs/prompts/C11E_NEXT_WINDOW_START_PROMPT_20261108_V96.md",
+                      "bytes":  3489,
+                      "sha256":  "dc6406d2868d9be3379222396c3db203fc32e615e32239ae512b5f0f994c8bbe",
+                      "state":  "INSTALLED"
+                  },
+                  {
+                      "path":  "tools/c11d/d9/RUN_C11E_R1V_FIVE_FAMILY_AV_QUALIFICATION_V1.ps1",
+                      "bytes":  11654,
+                      "sha256":  "9750a36308646bf20bc76c2f6b07744a064200c65e2dbb10d496c774cd537131",
+                      "state":  "INSTALLED"
+                  },
+                  {
+                      "path":  "tools/c11d/d9/c11e_r1v_av_family_qualification_v1.py",
+                      "bytes":  70277,
+                      "sha256":  "a60cf99d7d5d77f00cbb06a209f57b5b98fa788a88167f8175165937a8406435",
+                      "state":  "INSTALLED"
+                  },
+                  {
+                      "path":  "tools/c11d/d9/test_c11e_r1v_av_family_qualification_v1.py",
+                      "bytes":  13236,
+                      "sha256":  "97a191daa17ecd2416266719e84c13144a329065db7ba09342cc711548c0f123",
+                      "state":  "INSTALLED"
+                  }
+              ]
+}

@@ -1,0 +1,32 @@
+﻿{
+    "schema":  "C11E-R1V-FFMPEG9-PIXEL-DECODE-FIX-INSTALL-RECEIPT-V1",
+    "run_id":  "R1V_FFMPEG9_DECODE_FIX_V1_INSTALL_20261108_024433_56394E6F",
+    "install_status":  "PASS_PINNED_CODE_REPLACEMENTS_AND_ADD_ONLY_DOCS",
+    "project_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+    "package_id":  "C11E_R1V_FFMPEG9_PIXEL_DECODE_FIX_V1",
+    "package_manifest_sha256":  "69f1c5edf84e6e78a8e06a7b9661adab159f2735f7aa4f475c5bf3079207af63",
+    "frozen_c11c_manifest_sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "parent_v2_path_budget_install_receipt_sha256":  "f57999151f94f378d08290b15bd30586a2180f855e280ef96b2ff4056b1decc5",
+    "parent_v2_path_budget_manifest_sha256":  "1cdaf53819ef1854d060a89f354aa9f3d9aa62f0504658312516e24d9e5d6663",
+    "files_applied":  13,
+    "payload_files_verified":  13,
+    "files":  [
+                  "tools/c11d/d9/c11e_r1v_av_family_qualification_v1.py",
+                  "tools/c11d/d9/test_c11e_r1v_av_family_qualification_v1.py",
+                  "docs/current/e/C11D_E_BLOCKER_REMEDIATION_REGISTER_20261108_V20.md",
+                  "docs/current/e/C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261108_V46.md",
+                  "docs/current/e/C11E_CURRENT_AUTHORITY_20261108_V99.md",
+                  "docs/current/e/C11E_CURRENT_DOC_INDEX_20261108_V60.md",
+                  "docs/current/e/C11E_E3_EXECUTION_BACKLOG_20261108_V74.md",
+                  "docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261108_V97.md",
+                  "docs/current/e/C11E_R1V_FIVE_FAMILY_QUALIFICATION_RUNBOOK_20261108_V12.md",
+                  "docs/history/c11e/C11E_R1V_FFMPEG9_PIXEL_DECODE_COMPATIBILITY_CORRECTION_20261108_V1.md",
+                  "docs/prompts/C11E_CONTINUATION_MASTER_PROMPT_20261108_V100.md",
+                  "docs/prompts/C11E_FIRST_PROMPT_20261108_V24.md",
+                  "docs/prompts/C11E_NEXT_WINDOW_START_PROMPT_20261108_V100.md"
+              ],
+    "python_invoked":  false,
+    "tests_invoked":  false,
+    "external_process_started":  false,
+    "git_checks":  "SKIPPED; operator-managed commits"
+}
