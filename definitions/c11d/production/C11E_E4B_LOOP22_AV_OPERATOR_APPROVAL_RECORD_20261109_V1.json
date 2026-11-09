@@ -1,0 +1,142 @@
+{
+  "approval_basis": "Explicit user approval in this conversation to generate the executable package and initiate the 44 Loop22 qualifications after installation and successful preflight.",
+  "approval_date": "2026-11-09",
+  "approval_record_canonical_sha256": "4d3d4a1d5044469e819721fd7a818881246ab6f219b1e8cc7924f2ceb895e970",
+  "approved_upstream_policy_hashes": {
+    "definitions/c11d/production/C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_V1.json": {
+      "bytes": 5528,
+      "sha256": "9e206704665ea85226ecc10854be9f679c32fe9ed7efb690a829f6e8456d43da"
+    },
+    "definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json": {
+      "bytes": 8376,
+      "sha256": "609a4d183aac07c2cbe1abaf41444160fdd137217faffbead3aef618320d57dc"
+    },
+    "definitions/c11d/production/D_RENDERER_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_PROPOSAL_V1.json": {
+      "bytes": 7457,
+      "sha256": "3dd4874e1b6506de6d9ddbe6ad1b567a284b94cc00ef1bac0d35d1731af05e23"
+    },
+    "definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_V1.json": {
+      "bytes": 9507,
+      "sha256": "41a62b0766db47cd99772f28642ef67766314f20f0f7891789d6b7497bbfee85"
+    },
+    "definitions/c11d/production/D_RENDERER_UNIFIED_PRESENTATION_REGION_POLICY_PROPOSAL_V1.json": {
+      "bytes": 9440,
+      "sha256": "101092bb32127bb8854a501a9215c0b6cf69581594383903716907d49719c01a"
+    }
+  },
+  "decision": "APPROVE_BOUNDED_LOOP22_22_SELECTOR_44_OUTPUT_AV_QUALIFICATION_TEST_ONLY",
+  "explicit_non_authorizations": [
+    "D_RENDERER_ACTIVATION",
+    "D9_10_DISPATCH",
+    "D3_V5",
+    "GENERAL_D4_8_PRODUCTION",
+    "D10_PROMOTION",
+    "RELEASE_AUTHORITY",
+    "PRODUCTION_MEDIA_DELIVERY"
+  ],
+  "governance": {
+    "D10": "BLOCKED_FOR_PROMOTION",
+    "D4.8": "BLOCKED",
+    "D9.10": "PREPARE_ONLY",
+    "D9.14": "BLOCKED",
+    "D9.16": "BLOCKED",
+    "D9.17": "BLOCKED_NO_GO",
+    "release_authority": "NONE",
+    "renderer": "OFF",
+    "request_compatibility": "PLAN_ONLY_NOT_D4_EXECUTABLE_COMPATIBILITY"
+  },
+  "operator_approver": "Operator (user)",
+  "schema": "C11E-E4B-LOOP22-AV-OPERATOR-APPROVAL-RECORD-V1",
+  "schema_version": "1.0",
+  "scope": {
+    "aac_mux_count": 44,
+    "audio_generation_count": 44,
+    "audio_mix_duck_fade_loop_crossfade_gain_normalization": false,
+    "av_outputs": 44,
+    "d3_v5": false,
+    "d9_10_dispatch": false,
+    "d_compositor": false,
+    "delivery_aac": {
+      "bitrate_bps": 192000,
+      "channels": 2,
+      "codec": "aac",
+      "profile": "aac_low",
+      "sample_rate_hz": 48000
+    },
+    "delivery_pcm": {
+      "channels": 2,
+      "codec": "pcm_s16le",
+      "gain_or_mix_processing": false,
+      "sample_count_formula": "duration_seconds * 48000 EXACT_INTEGER",
+      "sample_rate_hz": 48000
+    },
+    "delivery_pcm_generation_count": 44,
+    "excluded_r1v_pilot_receipt_indices": [
+      1,
+      6,
+      11,
+      16,
+      21
+    ],
+    "ffmpeg_pixel_decode": "-fps_mode passthrough; raw yuv420p frames pipe to memory; no frame PNGs",
+    "gameplay_seed_source": "R1P.seed_domains.gameplay_seed",
+    "general_d4_8_production": false,
+    "music_generator": "C11C_FAMILY_MUSIC_V4",
+    "music_helper": "tools/prototypes/c11c_common/C11CSafeAmbient.py",
+    "music_seed_consumed_by_visual_parameters": false,
+    "music_seed_is_distinct_from_gameplay_seed": true,
+    "music_seed_source": "R1P.seed_domains.music_seed",
+    "native_wav": {
+      "channels": 2,
+      "codec": "pcm_s16le",
+      "preserve_original_native_asset": true,
+      "sample_rate_hz": 44100
+    },
+    "new_c11c_silent_capture_invocations": 44,
+    "production_delivery": false,
+    "r1p_receipt_indices": [
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10,
+      12,
+      13,
+      14,
+      15,
+      17,
+      18,
+      19,
+      20,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27
+    ],
+    "release_or_promotion": false,
+    "renderer_native_input": false,
+    "repeat_count_per_selector": 2,
+    "request_compatibility": "PLAN_ONLY_NOT_D4_EXECUTABLE_COMPATIBILITY",
+    "reused_prior_capture_slots": 0,
+    "selector_count": 22,
+    "video_delivery": {
+      "codec": "h264",
+      "filters": false,
+      "fps": 30,
+      "frame_order": "PRESERVE",
+      "height": 1280,
+      "mode": "STREAM_COPY",
+      "resampling": "NONE",
+      "video_reencode_after_source_capture": false,
+      "width": 720
+    }
+  },
+  "scope_policy_schema": "C11E-E4B-LOOP22-AV-SCOPE-AMENDMENT-V1",
+  "selector_matrix_path": "definitions/c11d/production/C11E_E4B_LOOP22_SELECTOR_MATRIX_V1.json",
+  "selector_matrix_sha256": "eb0ce2fab5ee97c298e232685ec3452779fc1e1f4a8dcd1c9c994bff1a45a1a1"
+}
