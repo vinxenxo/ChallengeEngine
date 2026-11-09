@@ -1,0 +1,65 @@
+COPY_PASTE_READY:
+REGULADOR ISOCRONICO // VIENTO SOLAR // PHASE-LOCK // TRACES 67 | PULSE 1.07
+
+REGULADOR ISOCRONICO // VIENTO SOLAR // PHASE-LOCK // TRACES 67 | PULSE 1.07
+
+INVISIBLE FORCES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: SCALAR POTENTIAL
+- Paleta: crimson_cadmium_gold
+- Seed: 100027
+- Detalles: Duración 23.00s, 3 ciclo(s) completo(s), sin sonido.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #InvisibleForces #VectorField #PhysicsArt #TopographicArt #ProceduralArt #DigitalArt #SCALARPOTENTIAL
+
+REGULADOR ISOCRONICO // VIENTO SOLAR // PHASE-LOCK // TRACES 67 | PULSE 1.07
+
+INVISIBLE FORCES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: SCALAR POTENTIAL
+- Paleta: crimson_cadmium_gold
+- Seed: 100027
+- Detalles: Duración 23.00s, 3 ciclo(s) completo(s), sin sonido.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+TITLE:
+INVISIBLE FORCES - SCALAR POTENTIAL
+
+DESCRIPTION:
+REGULADOR ISOCRONICO // VIENTO SOLAR // PHASE-LOCK // TRACES 67 | PULSE 1.07
+
+INVISIBLE FORCES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: SCALAR POTENTIAL
+- Paleta: crimson_cadmium_gold
+- Seed: 100027
+- Detalles: Duración 23.00s, 3 ciclo(s) completo(s), sin sonido.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+FAMILY: invisible_forces
+GRAMMAR: SCALAR POTENTIAL
+PALETTE: crimson_cadmium_gold
+SEED: 100027
+DURATION: 23.00 s
+FPS: 30
+FRAMES: 690
+LOOP CYCLES: 3
+LOOP CLOSED: True
+AUDIO: OFF / SILENT
+AUDIO PROFILE: FLOWING_VECTOR
+
+HEADER HOOK:
+REGULADOR ISOCRONICO // VIENTO SOLAR // PHASE-LOCK // TRACES 67 | PULSE 1.07
+
+HASHTAGS:
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #InvisibleForces #VectorField #PhysicsArt #TopographicArt #ProceduralArt #DigitalArt #SCALARPOTENTIAL
+
+REPRODUCTION COMMAND:
+.\tools\prototypes\c11c_invisible_forces_v1\run_prototype.ps1 -Seed 100027 -Grammar scalar_potential -Duration 23 -NoSound -OutputRoot C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\tests\c11e\e4b_loop22_av\L22_191801_27ABF3\source\invisible_forces\B -OutputTag L22_191801_27ABF3_R27_B
+
+CANONICAL MANIFEST:
+InvisibleForces_v1_seed_100027_L22_191801_27ABF3_R27_B_manifest.json

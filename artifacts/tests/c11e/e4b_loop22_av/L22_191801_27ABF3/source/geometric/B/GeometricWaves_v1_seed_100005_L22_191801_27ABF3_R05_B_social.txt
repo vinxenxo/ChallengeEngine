@@ -1,0 +1,65 @@
+COPY_PASTE_READY:
+PARAMETRO DE CAMPO DE NODOS: {VALUE:.1F} HZ // OVERCLOCK // WAVE 12.16 | MORPH 0.48
+
+PARAMETRO DE CAMPO DE NODOS: {VALUE:.1F} HZ // OVERCLOCK // WAVE 12.16 | MORPH 0.48
+
+GEOMETRIC WAVES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: ORBITAL WAVE
+- Paleta: spectral_blue
+- Seed: 100005
+- Detalles: Duración 23.00s, 3 ciclo(s) completo(s), sin sonido.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #GeometricWaves #WaveArt #MathematicalArt #ProceduralArt #DigitalArt #TechArt #ORBITALWAVE
+
+PARAMETRO DE CAMPO DE NODOS: {VALUE:.1F} HZ // OVERCLOCK // WAVE 12.16 | MORPH 0.48
+
+GEOMETRIC WAVES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: ORBITAL WAVE
+- Paleta: spectral_blue
+- Seed: 100005
+- Detalles: Duración 23.00s, 3 ciclo(s) completo(s), sin sonido.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+TITLE:
+GEOMETRIC WAVES - ORBITAL WAVE
+
+DESCRIPTION:
+PARAMETRO DE CAMPO DE NODOS: {VALUE:.1F} HZ // OVERCLOCK // WAVE 12.16 | MORPH 0.48
+
+GEOMETRIC WAVES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: ORBITAL WAVE
+- Paleta: spectral_blue
+- Seed: 100005
+- Detalles: Duración 23.00s, 3 ciclo(s) completo(s), sin sonido.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+FAMILY: geometric
+GRAMMAR: ORBITAL WAVE
+PALETTE: spectral_blue
+SEED: 100005
+DURATION: 23.00 s
+FPS: 30
+FRAMES: 690
+LOOP CYCLES: 3
+LOOP CLOSED: True
+AUDIO: OFF / SILENT
+AUDIO PROFILE: CIRCUIT_PULSE
+
+HEADER HOOK:
+PARAMETRO DE CAMPO DE NODOS: {VALUE:.1F} HZ // OVERCLOCK // WAVE 12.16 | MORPH 0.48
+
+HASHTAGS:
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #GeometricWaves #WaveArt #MathematicalArt #ProceduralArt #DigitalArt #TechArt #ORBITALWAVE
+
+REPRODUCTION COMMAND:
+.\tools\prototypes\c11c_geometric_waves_v1\run_prototype.ps1 -Seed 100005 -Grammar orbital_wave -Duration 23 -NoSound -OutputRoot C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\tests\c11e\e4b_loop22_av\L22_191801_27ABF3\source\geometric\B -OutputTag L22_191801_27ABF3_R05_B
+
+CANONICAL MANIFEST:
+GeometricWaves_v1_seed_100005_L22_191801_27ABF3_R05_B_manifest.json

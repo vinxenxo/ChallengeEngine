@@ -1,0 +1,26 @@
+{
+    "schema":  "C11E-E4B-LOOP22-PS-BRIDGE-INSTALL-RECEIPT-V2",
+    "status":  "PASS_ADD_ONLY_INSTALL",
+    "installed_utc":  "2026-11-09T10:45:11.2035044Z",
+    "package_manifest_sha256":  "61411a12748fda16f3c2efd33e03dfa6e8ced0b2fcc474f33d99c49082d5ce79",
+    "v1_package_manifest_sha256":  "36d3b37459817cac650e30d4da1c0a560e38e7db9d2f303d0bac3427358753d7",
+    "frozen_c11c_manifest_sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "source_pins_verified":  37,
+    "payload_files":  11,
+    "added_file_count":  11,
+    "added_files":  [
+                        "docs\\current\\e\\C11D_E_BLOCKER_REMEDIATION_REGISTER_20261109_V30.md",
+                        "docs\\current\\e\\C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261109_V56.md",
+                        "docs\\current\\e\\C11E_CURRENT_AUTHORITY_20261109_V109.md",
+                        "docs\\current\\e\\C11E_CURRENT_DOC_INDEX_20261109_V70.md",
+                        "docs\\current\\e\\C11E_E3_EXECUTION_BACKLOG_20261109_V84.md",
+                        "docs\\current\\e\\C11E_E4B_LOOP22_AV_PS_NATIVE_STDERR_ROOT_CAUSE_V1.md",
+                        "docs\\current\\e\\C11E_GATES_ACCEPTANCE_MATRIX_20261109_V107.md",
+                        "docs\\prompts\\C11E_CONTINUATION_MASTER_PROMPT_20261109_V110.md",
+                        "docs\\prompts\\C11E_FIRST_PROMPT_20261109_V34.md",
+                        "docs\\prompts\\C11E_NEXT_WINDOW_START_PROMPT_20261109_V110.md",
+                        "tools\\c11d\\d9\\RUN_C11E_E4B_LOOP22_AV_QUALIFICATION_V2.ps1"
+                    ],
+    "git_checks":  "SKIPPED",
+    "commits":  "OPERATOR_MANAGED"
+}

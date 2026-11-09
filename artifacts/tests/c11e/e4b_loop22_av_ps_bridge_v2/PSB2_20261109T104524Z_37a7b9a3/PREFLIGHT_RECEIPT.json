@@ -1,0 +1,14 @@
+{
+    "schema":  "C11E-E4B-LOOP22-PS-PREFLIGHT-RECEIPT-V2",
+    "status":  "PASS_PRELAUNCH",
+    "run_id":  "PSB2_20261109T104524Z_37a7b9a3",
+    "bridge_self_test":  "PASS_STDOUT_STDERR_SEPARATED_EXIT_CODES_0_AND_23",
+    "powershell_ast":  "PASS",
+    "python_ast":  "PASS",
+    "focused_tests":  24,
+    "focused_test_exit_code":  0,
+    "focused_stdout_sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "focused_stderr_sha256":  "ba84dba7dab2a101bfcc5d90cb1a3ae4e8d61eebc8a8b6f7f1e8ac83a54f0bbb",
+    "python_ast_stdout_sha256":  "599cd78df1b5d776158d128d18e057c5d3bd979c90923ac050ded4002fc65ba2",
+    "python_ast_stderr_sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

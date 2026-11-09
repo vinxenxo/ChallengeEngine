@@ -1,0 +1,51 @@
+{
+    "programs": [
+
+    ],
+    "stream_groups": [
+
+    ],
+    "streams": [
+        {
+            "index": 0,
+            "codec_name": "h264",
+            "profile": "High",
+            "codec_type": "video",
+            "width": 720,
+            "height": 1280,
+            "pix_fmt": "yuvj420p",
+            "color_range": "pc",
+            "r_frame_rate": "30/1",
+            "avg_frame_rate": "30/1",
+            "time_base": "1/15360",
+            "start_time": "0.000000",
+            "duration": "22.000000",
+            "bit_rate": "21599838",
+            "nb_frames": "660"
+        },
+        {
+            "index": 1,
+            "codec_name": "aac",
+            "profile": "LC",
+            "codec_type": "audio",
+            "sample_rate": "48000",
+            "channels": 2,
+            "channel_layout": "stereo",
+            "r_frame_rate": "0/0",
+            "avg_frame_rate": "0/0",
+            "time_base": "1/48000",
+            "start_time": "0.000000",
+            "duration": "22.000000",
+            "bit_rate": "192039",
+            "nb_frames": "1033"
+        }
+    ],
+    "format": {
+        "filename": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_loop22_av\\L22_191801_27ABF3\\delivery_av\\fractal\\A\\L22_191801_27ABF3_R10_A_AV_720.mp4",
+        "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+        "start_time": "0.000000",
+        "duration": "22.000000",
+        "size": "59953848",
+        "bit_rate": "21801399"
+    }
+}

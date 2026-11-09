@@ -1,0 +1,65 @@
+COPY_PASTE_READY:
+CAMARA DE PRESION // TOPOGRAFIA GRAVITACIONAL // SINCRO // TRACES 81 | PULSE 0.95
+
+CAMARA DE PRESION // TOPOGRAFIA GRAVITACIONAL // SINCRO // TRACES 81 | PULSE 0.95
+
+INVISIBLE FORCES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: QUADRUPOLE FIELD
+- Paleta: burgundy_amber
+- Seed: 100024
+- Detalles: Duración 20.00s, 1 ciclo(s) completo(s), sin sonido.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #InvisibleForces #VectorField #PhysicsArt #TopographicArt #ProceduralArt #DigitalArt #QUADRUPOLEFIELD
+
+CAMARA DE PRESION // TOPOGRAFIA GRAVITACIONAL // SINCRO // TRACES 81 | PULSE 0.95
+
+INVISIBLE FORCES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: QUADRUPOLE FIELD
+- Paleta: burgundy_amber
+- Seed: 100024
+- Detalles: Duración 20.00s, 1 ciclo(s) completo(s), sin sonido.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+TITLE:
+INVISIBLE FORCES - QUADRUPOLE FIELD
+
+DESCRIPTION:
+CAMARA DE PRESION // TOPOGRAFIA GRAVITACIONAL // SINCRO // TRACES 81 | PULSE 0.95
+
+INVISIBLE FORCES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: QUADRUPOLE FIELD
+- Paleta: burgundy_amber
+- Seed: 100024
+- Detalles: Duración 20.00s, 1 ciclo(s) completo(s), sin sonido.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+FAMILY: invisible_forces
+GRAMMAR: QUADRUPOLE FIELD
+PALETTE: burgundy_amber
+SEED: 100024
+DURATION: 20.00 s
+FPS: 30
+FRAMES: 600
+LOOP CYCLES: 1
+LOOP CLOSED: True
+AUDIO: OFF / SILENT
+AUDIO PROFILE: FLOWING_VECTOR
+
+HEADER HOOK:
+CAMARA DE PRESION // TOPOGRAFIA GRAVITACIONAL // SINCRO // TRACES 81 | PULSE 0.95
+
+HASHTAGS:
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #InvisibleForces #VectorField #PhysicsArt #TopographicArt #ProceduralArt #DigitalArt #QUADRUPOLEFIELD
+
+REPRODUCTION COMMAND:
+.\tools\prototypes\c11c_invisible_forces_v1\run_prototype.ps1 -Seed 100024 -Grammar quadrupole_field -Duration 20 -NoSound -OutputRoot C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\tests\c11e\e4b_loop22_av\L22_191801_27ABF3\source\invisible_forces\B -OutputTag L22_191801_27ABF3_R24_B
+
+CANONICAL MANIFEST:
+InvisibleForces_v1_seed_100024_L22_191801_27ABF3_R24_B_manifest.json

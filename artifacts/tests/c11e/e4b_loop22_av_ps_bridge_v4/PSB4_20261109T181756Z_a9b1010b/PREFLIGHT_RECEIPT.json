@@ -1,0 +1,17 @@
+{
+    "schema":  "C11E-E4B-LOOP22-PS-PREFLIGHT-RECEIPT-V4",
+    "status":  "PASS_PRELAUNCH",
+    "run_id":  "PSB4_20261109T181756Z_a9b1010b",
+    "bridge_self_test":  "PASS_STDOUT_STDERR_SEPARATED_EXIT_CODES_0_AND_23",
+    "powershell_ast":  "PASS",
+    "python_ast":  "PASS",
+    "focused_tests":  25,
+    "focused_test_exit_code":  0,
+    "directory_fix_manifest_sha256":  "fe6b9d8dc642ba177909cc2778abccd544ed6a275461b96660cb6af84553568c",
+    "directory_fix_install_receipt_sha256":  "1fc8ecfee3ea34ba9c0853aea627808153372c7ad678e385f2e3f603d9835fd7",
+    "receipt_pin_fix_install_receipt_sha256":  "3eadf38de0132c2e807f2f5e9cf69ad2db5fe81de9ecf3142c366152fd28fc27",
+    "focused_stdout_sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "focused_stderr_sha256":  "ecae44b32bb1fb46f832db7ee61eb422be16216578ab67b6d2c37bc0f490b4e5",
+    "python_ast_stdout_sha256":  "599cd78df1b5d776158d128d18e057c5d3bd979c90923ac050ded4002fc65ba2",
+    "python_ast_stderr_sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

@@ -1,0 +1,62 @@
+{
+    "prototype_id":  "C11-C.4_LIVING_PARTICLES_V1",
+    "revision":  "2.16.3",
+    "status":  "EDITORIAL_AUDIO_LOOP_REVIEW",
+    "seed":  100020,
+    "family_id":  "living_particles",
+    "technical_id":  "particle_flow",
+    "artistic_name":  "Living Particles",
+    "production_id":  "c11c_living_particles_v1",
+    "runtime_id":  "living_particles",
+    "display_name":  "LIVING PARTICLES",
+    "grammar_id":  "magnetic_filament_cloud",
+    "grammar":  "MAGNETIC FILAMENT CLOUD",
+    "palette":  "ember_seafoam",
+    "visual":  {
+                   "canvas":  "720x1280",
+                   "body":  "y=192..1088",
+                   "duration_seconds":  20,
+                   "fps":  30,
+                   "frame_count":  600,
+                   "loop_cycles":  1,
+                   "loop_closed":  true,
+                   "background":  "05070B",
+                   "footer_enabled":  true
+               },
+    "editorial":  {
+                      "header_line_1":  "MAGNETIC_FILAMENT_CLOUD | DENSITY 0.93 | FLOW 1.30",
+                      "header_line_2":  "[SYS] RESOLVIENDO SWARM SINTETICO A {VALUE:.1F} ITER/S // CON FASE ESTABLE // PARTICLES 121 | COLLISION 1.18",
+                      "header_secondary":  "VISUAL LOOP / LIVING PARTICLES",
+                      "matrix_transition":  true,
+                      "footer":  "generation telemetry / prototype QA"
+                  },
+    "audio":  {
+                  "mode":  "FAMILY_MUSIC_V4",
+                  "profile_id":  "ORGANIC_BLOOM",
+                  "style":  "soft pulsed matter bed / rounded particle tones / fluid harmonic drift / midpoint swirl swell",
+                  "semantic_key":  "MAGNETIC FILAMENT CLOUD",
+                  "sample_rate":  44100,
+                  "channels":  2,
+                  "duration_seconds":  20,
+                  "muxed_into_mp4":  false,
+                  "enabled":  false,
+                  "C7_modified":  false,
+                  "family_grammar_bound":  true
+              },
+    "typography":  {
+                       "header":  "Inter Bold",
+                       "footer":  "Noto Sans Mono Regular",
+                       "license":  "SIL Open Font License 1.1"
+                   },
+    "social_metadata":  "LivingParticles_v1_seed_100020_L22_191801_27ABF3_R20_A_social.txt",
+    "artifact_policy":  {
+                            "export_gif":  false,
+                            "keep_avi":  false,
+                            "avi_intermediate":  true,
+                            "output_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_loop22_av\\L22_191801_27ABF3\\source\\living_particles\\A",
+                            "output_tag":  "L22_191801_27ABF3_R20_A"
+                        },
+    "reproduction_command":  ".\\tools\\prototypes\\c11c_living_particles_v1\\run_prototype.ps1 -Seed 100020 -Grammar \"magnetic_filament_cloud\" -Duration 20 -NoSound -OutputRoot \"C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_loop22_av\\L22_191801_27ABF3\\source\\living_particles\\A\" -OutputTag \"L22_191801_27ABF3_R20_A\"",
+    "technobabble":  "[SYS] Resolviendo swarm sintetico a {value:.1f} iter/s // con fase estable // PARTICLES 121 | COLLISION 1.18",
+    "frozen_boundaries_modified":  false
+}

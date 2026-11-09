@@ -1,0 +1,32 @@
+{
+    "schema":  "C11E-E4B-LOOP22-RECEIPT-PIN-FIX-INSTALL-RECEIPT-V2",
+    "status":  "PASS_ADD_ONLY_INSTALL",
+    "installed_utc":  "2026-11-09T17:43:10.7170781Z",
+    "package_manifest_sha256":  "aa7cdb169dcddf469c16b02d6e70b2e09e8c2ea4059bebca20c51d7d25ef02ba",
+    "frozen_c11c_manifest_sha256":  "e405d08e4d166b1ad9595358f4a088e73eea9527e6e89244beb4096eac4b953",
+    "source_pins_verified":  37,
+    "prior_overlay_postimages_verified":  13,
+    "payload_files":  11,
+    "added_file_count":  11,
+    "skipped_identical_count":  0,
+    "added_files":  [
+                        "docs\\current\\e\\C11D_E_BLOCKER_REMEDIATION_REGISTER_20261109_V32.md",
+                        "docs\\current\\e\\C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261109_V58.md",
+                        "docs\\current\\e\\C11E_CURRENT_AUTHORITY_20261109_V111.md",
+                        "docs\\current\\e\\C11E_CURRENT_DOC_INDEX_20261109_V72.md",
+                        "docs\\current\\e\\C11E_E3_EXECUTION_BACKLOG_20261109_V86.md",
+                        "docs\\current\\e\\C11E_E4B_LOOP22_AV_INSTALL_RECEIPT_PIN_MISMATCH_20261109_V2.md",
+                        "docs\\current\\e\\C11E_GATES_ACCEPTANCE_MATRIX_20261109_V109.md",
+                        "docs\\prompts\\C11E_CONTINUATION_MASTER_PROMPT_20261109_V112.md",
+                        "docs\\prompts\\C11E_FIRST_PROMPT_20261109_V36.md",
+                        "docs\\prompts\\C11E_NEXT_WINDOW_START_PROMPT_20261109_V112.md",
+                        "tools\\c11d\\d9\\RUN_C11E_E4B_LOOP22_AV_QUALIFICATION_V4.ps1"
+                    ],
+    "skipped_identical_files":  [
+
+                                ],
+    "shared_dir_fix_v1_manifest_sha256":  "fe6b9d8dc642ba177909cc2778abccd544ed6a275461b96660cb6af84553568c",
+    "shared_dir_fix_v1_receipt_sha256":  "1fc8ecfee3ea34ba9c0853aea627808153372c7ad678e385f2e3f603d9835fd7",
+    "git_checks":  "SKIPPED",
+    "commits":  "OPERATOR_MANAGED"
+}

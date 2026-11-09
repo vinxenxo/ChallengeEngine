@@ -1,0 +1,14 @@
+{
+    "schema":  "C11E-E4B-LOOP22-PS-STDIO-BRIDGE-TEST-RECEIPT-V1",
+    "status":  "PASS",
+    "exit_codes":  [
+                       0,
+                       23
+                   ],
+    "stdout_stderr_separated":  true,
+    "exit_codes_preserved":  true,
+    "exit_0_stdout_sha256":  "4954466b8c4e84880ea139ed81595450ae0efe8a2fcc5748ba2319fcb0d07dd0",
+    "exit_0_stderr_sha256":  "37df9c5fdf14cc18d540108c7e55c84f32f5cbee7b87bebfa687bd6742932277",
+    "exit_23_stdout_sha256":  "4954466b8c4e84880ea139ed81595450ae0efe8a2fcc5748ba2319fcb0d07dd0",
+    "exit_23_stderr_sha256":  "37df9c5fdf14cc18d540108c7e55c84f32f5cbee7b87bebfa687bd6742932277"
+}

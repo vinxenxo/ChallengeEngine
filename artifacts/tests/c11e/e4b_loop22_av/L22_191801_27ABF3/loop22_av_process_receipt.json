@@ -1,0 +1,64 @@
+{
+  "completed_av_outputs": 44,
+  "completed_launcher_invocations": 44,
+  "exit_code": 0,
+  "failure": null,
+  "planned_selectors": 22,
+  "planned_slots": 44,
+  "python_executable": "C:\\Users\\vinxe\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+  "python_version": "3.13.14",
+  "report_sha256": "d8f7050f952b7248b24763abde20ce52bf812c3934738f14670a0a3dc0c72068",
+  "run_id": "L22_191801_27ABF3",
+  "runtime_executables": {
+    "ffmpeg": {
+      "bytes": 222248960,
+      "command": "ffmpeg",
+      "path": "C:\\Users\\vinxe\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-9.0-full_build\\bin\\ffmpeg.exe",
+      "sha256": "05f4251bce9293c2ab492cb17ca7724a0ffd0d06c881ba2ee83b82a89c2fc740",
+      "version_exit_code": 0,
+      "version_output": "ffmpeg version 9.0-full_build-www.gyan.dev Copyright (c) 2000-2026 the FFmpeg developers",
+      "version_output_sha256": "a78a87b103cd6d845ff3a525a88eb2e0163e17641602f95e1ecca860feff1a38"
+    },
+    "ffmpeg_encoders_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ffmpeg_encoders_stdout_sha256": "4513fecb3d1e8e9b99793f5c80bac9620f4293d4fe7f4084ae4efa28b1134e3c",
+    "ffmpeg_libx264_encoder_available": true,
+    "ffprobe": {
+      "bytes": 222044160,
+      "command": "ffprobe",
+      "path": "C:\\Users\\vinxe\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-9.0-full_build\\bin\\ffprobe.exe",
+      "sha256": "51e0780cd881f83749b029ed716cbb841c2eac6289f418050f2f2961b158896b",
+      "version_exit_code": 0,
+      "version_output": "ffprobe version 9.0-full_build-www.gyan.dev Copyright (c) 2007-2026 the FFmpeg developers",
+      "version_output_sha256": "8ba50584144e7a1f0c499d57490a142aab2f5fa112b0a18c1c40a3329d294e59"
+    },
+    "godot": {
+      "bytes": 179589128,
+      "command": "godot",
+      "path": "C:\\Users\\vinxe\\AppData\\Local\\Microsoft\\WinGet\\Packages\\GodotEngine.GodotEngine.Mono_Microsoft.Winget.Source_8wekyb3d8bbwe\\Godot_v4.7.1-stable_mono_win64\\godot.exe",
+      "sha256": "8ec33ba6a6a953226170cda2a56a58810f6617261a71d6bd6d6ba7cce5e7b79d",
+      "version_exit_code": 0,
+      "version_output": "4.7.1.stable.mono.official.a13da4feb",
+      "version_output_sha256": "d1046084c2493a272b0b439dc2f6dc74b801cd74659c5010a67c1b2f3acc5866"
+    },
+    "powershell": {
+      "bytes": 495616,
+      "command": "powershell.exe",
+      "path": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "sha256": "d8f182560210d43baaf767d482ad1dc1207372522e91413b9d5e515a875e552d",
+      "version_exit_code": 0,
+      "version_output": "5.1.26100.9818",
+      "version_output_sha256": "5b174f323af89ddcd1cb83cab8b32724f9059d8e3ce9e97bd1e7f20128d14fdf"
+    },
+    "python": {
+      "bytes": 105696,
+      "command": "python",
+      "path": "C:\\Users\\vinxe\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+      "sha256": "ef8f51028ac5329641985112f8efb1c2d4c47c86b8011ddf7e6fae21e2b4e5a1",
+      "version_exit_code": 0,
+      "version_output": "Python 3.13.14",
+      "version_output_sha256": "f133aa4c375d22e9226cb4ee8a71740d78c77f15c82b7842a0b93e594eed1884"
+    }
+  },
+  "schema": "C11E-E4B-LOOP22-AV-PROCESS-RECEIPT-V1",
+  "status": "PASS_E4B_LOOP22_AV_QUALIFICATION_44_OF_44_PENDING_OPERATOR_VISUAL_AUDIO_REVIEW"
+}

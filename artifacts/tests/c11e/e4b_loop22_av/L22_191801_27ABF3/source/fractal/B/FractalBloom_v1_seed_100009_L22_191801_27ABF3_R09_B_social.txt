@@ -1,0 +1,65 @@
+COPY_PASTE_READY:
+DEMONIO: DAEMON ESPECTRAL // TUNEL DENDRITICO // DETAIL 1.23 | BRANCH 0.94
+
+DEMONIO: DAEMON ESPECTRAL // TUNEL DENDRITICO // DETAIL 1.23 | BRANCH 0.94
+
+FRACTAL BLOOM - Visual loop de arte generativa matemática y procedural.
+
+- Variante: FRACTAL FILIGREE
+- Paleta: monochrome_indigo
+- Seed: 100009
+- Detalles: Duración 20.00s, 1 ciclo(s) completo(s), sin sonido.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #FractalBloom #FractalArt #MathematicalArt #ProceduralArt #JuliaSet #DigitalArt #FRACTALFILIGREE
+
+DEMONIO: DAEMON ESPECTRAL // TUNEL DENDRITICO // DETAIL 1.23 | BRANCH 0.94
+
+FRACTAL BLOOM - Visual loop de arte generativa matemática y procedural.
+
+- Variante: FRACTAL FILIGREE
+- Paleta: monochrome_indigo
+- Seed: 100009
+- Detalles: Duración 20.00s, 1 ciclo(s) completo(s), sin sonido.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+TITLE:
+FRACTAL BLOOM - FRACTAL FILIGREE
+
+DESCRIPTION:
+DEMONIO: DAEMON ESPECTRAL // TUNEL DENDRITICO // DETAIL 1.23 | BRANCH 0.94
+
+FRACTAL BLOOM - Visual loop de arte generativa matemática y procedural.
+
+- Variante: FRACTAL FILIGREE
+- Paleta: monochrome_indigo
+- Seed: 100009
+- Detalles: Duración 20.00s, 1 ciclo(s) completo(s), sin sonido.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+FAMILY: fractal
+GRAMMAR: FRACTAL FILIGREE
+PALETTE: monochrome_indigo
+SEED: 100009
+DURATION: 20.00 s
+FPS: 30
+FRAMES: 600
+LOOP CYCLES: 1
+LOOP CLOSED: True
+AUDIO: OFF / SILENT
+AUDIO PROFILE: ORGANIC_BLOOM
+
+HEADER HOOK:
+DEMONIO: DAEMON ESPECTRAL // TUNEL DENDRITICO // DETAIL 1.23 | BRANCH 0.94
+
+HASHTAGS:
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #FractalBloom #FractalArt #MathematicalArt #ProceduralArt #JuliaSet #DigitalArt #FRACTALFILIGREE
+
+REPRODUCTION COMMAND:
+.\tools\prototypes\c11c_fractal_bloom_v1\run_prototype.ps1 -Seed 100009 -Grammar fractal_filigree -Duration 20 -NoSound -OutputRoot C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\tests\c11e\e4b_loop22_av\L22_191801_27ABF3\source\fractal\B -OutputTag L22_191801_27ABF3_R09_B
+
+CANONICAL MANIFEST:
+FractalBloom_v1_seed_100009_L22_191801_27ABF3_R09_B_manifest.json

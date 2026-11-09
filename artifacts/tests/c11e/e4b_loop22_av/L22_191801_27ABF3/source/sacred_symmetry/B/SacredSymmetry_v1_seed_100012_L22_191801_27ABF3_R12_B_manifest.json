@@ -1,0 +1,62 @@
+{
+    "prototype_id":  "C11-C.3_SACRED_SYMMETRY_V1",
+    "revision":  "2.16.3",
+    "status":  "EDITORIAL_AUDIO_LOOP_REVIEW",
+    "seed":  100012,
+    "family_id":  "sacred_symmetry",
+    "technical_id":  "kaleidoscope",
+    "artistic_name":  "Sacred Symmetry",
+    "production_id":  "c11c_sacred_symmetry_v1",
+    "runtime_id":  "sacred_symmetry",
+    "display_name":  "SACRED SYMMETRY",
+    "grammar_id":  "gear_train",
+    "grammar":  "GEAR TRAIN",
+    "palette":  "midnight_brass",
+    "visual":  {
+                   "canvas":  "720x1280",
+                   "body":  "y=192..1088",
+                   "duration_seconds":  22,
+                   "fps":  30,
+                   "frame_count":  660,
+                   "loop_cycles":  2,
+                   "loop_closed":  true,
+                   "background":  "05070B",
+                   "footer_enabled":  true
+               },
+    "editorial":  {
+                      "header_line_1":  "GEAR_TRAIN | N=6 | GEAR 3:3",
+                      "header_line_2":  "PARAMETRO DE ORRERY POLIGONAL: {VALUE:.1F} RAD/S // EN FASE // N=6 | GEAR 3:3",
+                      "header_secondary":  "VISUAL LOOP / SACRED SYMMETRY",
+                      "matrix_transition":  true,
+                      "footer":  "generation telemetry / prototype QA"
+                  },
+    "audio":  {
+                  "mode":  "FAMILY_MUSIC_V4",
+                  "profile_id":  "ORBITAL_RITUAL",
+                  "style":  "soft celestial chime bed / aligned harmonics / restrained bell overtones / midpoint orbit swell",
+                  "semantic_key":  "GEAR TRAIN",
+                  "sample_rate":  44100,
+                  "channels":  2,
+                  "duration_seconds":  22,
+                  "muxed_into_mp4":  false,
+                  "enabled":  false,
+                  "C7_modified":  false,
+                  "family_grammar_bound":  true
+              },
+    "typography":  {
+                       "header":  "Inter Bold",
+                       "footer":  "Noto Sans Mono Regular",
+                       "license":  "SIL Open Font License 1.1"
+                   },
+    "social_metadata":  "SacredSymmetry_v1_seed_100012_L22_191801_27ABF3_R12_B_social.txt",
+    "artifact_policy":  {
+                            "export_gif":  false,
+                            "keep_avi":  false,
+                            "avi_intermediate":  true,
+                            "output_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_loop22_av\\L22_191801_27ABF3\\source\\sacred_symmetry\\B",
+                            "output_tag":  "L22_191801_27ABF3_R12_B"
+                        },
+    "reproduction_command":  ".\\tools\\prototypes\\c11c_sacred_symmetry_v1\\run_prototype.ps1 -Seed 100012 -Grammar \"gear_train\" -Duration 22 -NoSound -OutputRoot \"C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_loop22_av\\L22_191801_27ABF3\\source\\sacred_symmetry\\B\" -OutputTag \"L22_191801_27ABF3_R12_B\"",
+    "technobabble":  "Parametro de orrery poligonal: {value:.1f} rad/s // EN FASE // N=6 | GEAR 3:3",
+    "frozen_boundaries_modified":  false
+}

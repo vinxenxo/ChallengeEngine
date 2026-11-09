@@ -1,0 +1,553 @@
+{
+  "governance": {
+    "D10": "BLOCKED_FOR_PROMOTION",
+    "D4.8": "BLOCKED",
+    "D9.10": "PREPARE_ONLY",
+    "D9.14": "BLOCKED",
+    "D9.16": "BLOCKED",
+    "D9.17": "BLOCKED_NO_GO",
+    "release_authority": "NONE",
+    "renderer": "OFF",
+    "request_compatibility": "PLAN_ONLY_NOT_D4_EXECUTABLE_COMPATIBILITY"
+  },
+  "jobs": [
+    {
+      "family_id": "c11c_geometric_waves_v1",
+      "gameplay_seed": 100002,
+      "grammar_id": "interference_plane",
+      "music_seed": 500002,
+      "receipt_index": 2,
+      "repeat": "A",
+      "tag": "L22_191801_27ABF3_R02_A"
+    },
+    {
+      "family_id": "c11c_geometric_waves_v1",
+      "gameplay_seed": 100002,
+      "grammar_id": "interference_plane",
+      "music_seed": 500002,
+      "receipt_index": 2,
+      "repeat": "B",
+      "tag": "L22_191801_27ABF3_R02_B"
+    },
+    {
+      "family_id": "c11c_geometric_waves_v1",
+      "gameplay_seed": 100003,
+      "grammar_id": "parametric_ribbon",
+      "music_seed": 500003,
+      "receipt_index": 3,
+      "repeat": "A",
+      "tag": "L22_191801_27ABF3_R03_A"
+    },
+    {
+      "family_id": "c11c_geometric_waves_v1",
+      "gameplay_seed": 100003,
+      "grammar_id": "parametric_ribbon",
+      "music_seed": 500003,
+      "receipt_index": 3,
+      "repeat": "B",
+      "tag": "L22_191801_27ABF3_R03_B"
+    },
+    {
+      "family_id": "c11c_geometric_waves_v1",
+      "gameplay_seed": 100004,
+      "grammar_id": "lattice_wave",
+      "music_seed": 500004,
+      "receipt_index": 4,
+      "repeat": "A",
+      "tag": "L22_191801_27ABF3_R04_A"
+    },
+    {
+      "family_id": "c11c_geometric_waves_v1",
+      "gameplay_seed": 100004,
+      "grammar_id": "lattice_wave",
+      "music_seed": 500004,
+      "receipt_index": 4,
+      "repeat": "B",
+      "tag": "L22_191801_27ABF3_R04_B"
+    },
+    {
+      "family_id": "c11c_geometric_waves_v1",
+      "gameplay_seed": 100005,
+      "grammar_id": "orbital_wave",
+      "music_seed": 500005,
+      "receipt_index": 5,
+      "repeat": "A",
+      "tag": "L22_191801_27ABF3_R05_A"
+    },
+    {
+      "family_id": "c11c_geometric_waves_v1",
+      "gameplay_seed": 100005,
+      "grammar_id": "orbital_wave",
+      "music_seed": 500005,
+      "receipt_index": 5,
+      "repeat": "B",
+      "tag": "L22_191801_27ABF3_R05_B"
+    },
+    {
+      "family_id": "c11c_fractal_bloom_v1",
+      "gameplay_seed": 100007,
+      "grammar_id": "dendritic_tunnel",
+      "music_seed": 500007,
+      "receipt_index": 7,
+      "repeat": "A",
+      "tag": "L22_191801_27ABF3_R07_A"
+    },
+    {
+      "family_id": "c11c_fractal_bloom_v1",
+      "gameplay_seed": 100007,
+      "grammar_id": "dendritic_tunnel",
+      "music_seed": 500007,
+      "receipt_index": 7,
+      "repeat": "B",
+      "tag": "L22_191801_27ABF3_R07_B"
+    },
+    {
+      "family_id": "c11c_fractal_bloom_v1",
+      "gameplay_seed": 100008,
+      "grammar_id": "spiral_fractal",
+      "music_seed": 500008,
+      "receipt_index": 8,
+      "repeat": "A",
+      "tag": "L22_191801_27ABF3_R08_A"
+    },
+    {
+      "family_id": "c11c_fractal_bloom_v1",
+      "gameplay_seed": 100008,
+      "grammar_id": "spiral_fractal",
+      "music_seed": 500008,
+      "receipt_index": 8,
+      "repeat": "B",
+      "tag": "L22_191801_27ABF3_R08_B"
+    },
+    {
+      "family_id": "c11c_fractal_bloom_v1",
+      "gameplay_seed": 100009,
+      "grammar_id": "fractal_filigree",
+      "music_seed": 500009,
+      "receipt_index": 9,
+      "repeat": "A",
+      "tag": "L22_191801_27ABF3_R09_A"
+    },
+    {
+      "family_id": "c11c_fractal_bloom_v1",
+      "gameplay_seed": 100009,
+      "grammar_id": "fractal_filigree",
+      "music_seed": 500009,
+      "receipt_index": 9,
+      "repeat": "B",
+      "tag": "L22_191801_27ABF3_R09_B"
+    },
+    {
+      "family_id": "c11c_fractal_bloom_v1",
+      "gameplay_seed": 100010,
+      "grammar_id": "nested_worlds",
+      "music_seed": 500010,
+      "receipt_index": 10,
+      "repeat": "A",
+      "tag": "L22_191801_27ABF3_R10_A"
+    },
+    {
+      "family_id": "c11c_fractal_bloom_v1",
+      "gameplay_seed": 100010,
+      "grammar_id": "nested_worlds",
+      "music_seed": 500010,
+      "receipt_index": 10,
+      "repeat": "B",
+      "tag": "L22_191801_27ABF3_R10_B"
+    },
+    {
+      "family_id": "c11c_sacred_symmetry_v1",
+      "gameplay_seed": 100012,
+      "grammar_id": "gear_train",
+      "music_seed": 500012,
+      "receipt_index": 12,
+      "repeat": "A",
+      "tag": "L22_191801_27ABF3_R12_A"
+    },
+    {
+      "family_id": "c11c_sacred_symmetry_v1",
+      "gameplay_seed": 100012,
+      "grammar_id": "gear_train",
+      "music_seed": 500012,
+      "receipt_index": 12,
+      "repeat": "B",
+      "tag": "L22_191801_27ABF3_R12_B"
+    },
+    {
+      "family_id": "c11c_sacred_symmetry_v1",
+      "gameplay_seed": 100013,
+      "grammar_id": "polygon_orrery",
+      "music_seed": 500013,
+      "receipt_index": 13,
+      "repeat": "A",
+      "tag": "L22_191801_27ABF3_R13_A"
+    },
+    {
+      "family_id": "c11c_sacred_symmetry_v1",
+      "gameplay_seed": 100013,
+      "grammar_id": "polygon_orrery",
+      "music_seed": 500013,
+      "receipt_index": 13,
+      "repeat": "B",
+      "tag": "L22_191801_27ABF3_R13_B"
+    },
+    {
+      "family_id": "c11c_sacred_symmetry_v1",
+      "gameplay_seed": 100014,
+      "grammar_id": "origami_mandala",
+      "music_seed": 500014,
+      "receipt_index": 14,
+      "repeat": "A",
+      "tag": "L22_191801_27ABF3_R14_A"
+    },
+    {
+      "family_id": "c11c_sacred_symmetry_v1",
+      "gameplay_seed": 100014,
+      "grammar_id": "origami_mandala",
+      "music_seed": 500014,
+      "receipt_index": 14,
+      "repeat": "B",
+      "tag": "L22_191801_27ABF3_R14_B"
+    },
+    {
+      "family_id": "c11c_sacred_symmetry_v1",
+      "gameplay_seed": 100015,
+      "grammar_id": "celestial_chart",
+      "music_seed": 500015,
+      "receipt_index": 15,
+      "repeat": "A",
+      "tag": "L22_191801_27ABF3_R15_A"
+    },
+    {
+      "family_id": "c11c_sacred_symmetry_v1",
+      "gameplay_seed": 100015,
+      "grammar_id": "celestial_chart",
+      "music_seed": 500015,
+      "receipt_index": 15,
+      "repeat": "B",
+      "tag": "L22_191801_27ABF3_R15_B"
+    },
+    {
+      "family_id": "c11c_living_particles_v1",
+      "gameplay_seed": 100017,
+      "grammar_id": "vortex",
+      "music_seed": 500017,
+      "receipt_index": 17,
+      "repeat": "A",
+      "tag": "L22_191801_27ABF3_R17_A"
+    },
+    {
+      "family_id": "c11c_living_particles_v1",
+      "gameplay_seed": 100017,
+      "grammar_id": "vortex",
+      "music_seed": 500017,
+      "receipt_index": 17,
+      "repeat": "B",
+      "tag": "L22_191801_27ABF3_R17_B"
+    },
+    {
+      "family_id": "c11c_living_particles_v1",
+      "gameplay_seed": 100018,
+      "grammar_id": "collision_cloud",
+      "music_seed": 500018,
+      "receipt_index": 18,
+      "repeat": "A",
+      "tag": "L22_191801_27ABF3_R18_A"
+    },
+    {
+      "family_id": "c11c_living_particles_v1",
+      "gameplay_seed": 100018,
+      "grammar_id": "collision_cloud",
+      "music_seed": 500018,
+      "receipt_index": 18,
+      "repeat": "B",
+      "tag": "L22_191801_27ABF3_R18_B"
+    },
+    {
+      "family_id": "c11c_living_particles_v1",
+      "gameplay_seed": 100019,
+      "grammar_id": "organic_pulse",
+      "music_seed": 500019,
+      "receipt_index": 19,
+      "repeat": "A",
+      "tag": "L22_191801_27ABF3_R19_A"
+    },
+    {
+      "family_id": "c11c_living_particles_v1",
+      "gameplay_seed": 100019,
+      "grammar_id": "organic_pulse",
+      "music_seed": 500019,
+      "receipt_index": 19,
+      "repeat": "B",
+      "tag": "L22_191801_27ABF3_R19_B"
+    },
+    {
+      "family_id": "c11c_living_particles_v1",
+      "gameplay_seed": 100020,
+      "grammar_id": "magnetic_filament_cloud",
+      "music_seed": 500020,
+      "receipt_index": 20,
+      "repeat": "A",
+      "tag": "L22_191801_27ABF3_R20_A"
+    },
+    {
+      "family_id": "c11c_living_particles_v1",
+      "gameplay_seed": 100020,
+      "grammar_id": "magnetic_filament_cloud",
+      "music_seed": 500020,
+      "receipt_index": 20,
+      "repeat": "B",
+      "tag": "L22_191801_27ABF3_R20_B"
+    },
+    {
+      "family_id": "c11c_invisible_forces_v1",
+      "gameplay_seed": 100022,
+      "grammar_id": "vortex_field",
+      "music_seed": 500022,
+      "receipt_index": 22,
+      "repeat": "A",
+      "tag": "L22_191801_27ABF3_R22_A"
+    },
+    {
+      "family_id": "c11c_invisible_forces_v1",
+      "gameplay_seed": 100022,
+      "grammar_id": "vortex_field",
+      "music_seed": 500022,
+      "receipt_index": 22,
+      "repeat": "B",
+      "tag": "L22_191801_27ABF3_R22_B"
+    },
+    {
+      "family_id": "c11c_invisible_forces_v1",
+      "gameplay_seed": 100023,
+      "grammar_id": "saddle_field",
+      "music_seed": 500023,
+      "receipt_index": 23,
+      "repeat": "A",
+      "tag": "L22_191801_27ABF3_R23_A"
+    },
+    {
+      "family_id": "c11c_invisible_forces_v1",
+      "gameplay_seed": 100023,
+      "grammar_id": "saddle_field",
+      "music_seed": 500023,
+      "receipt_index": 23,
+      "repeat": "B",
+      "tag": "L22_191801_27ABF3_R23_B"
+    },
+    {
+      "family_id": "c11c_invisible_forces_v1",
+      "gameplay_seed": 100024,
+      "grammar_id": "quadrupole_field",
+      "music_seed": 500024,
+      "receipt_index": 24,
+      "repeat": "A",
+      "tag": "L22_191801_27ABF3_R24_A"
+    },
+    {
+      "family_id": "c11c_invisible_forces_v1",
+      "gameplay_seed": 100024,
+      "grammar_id": "quadrupole_field",
+      "music_seed": 500024,
+      "receipt_index": 24,
+      "repeat": "B",
+      "tag": "L22_191801_27ABF3_R24_B"
+    },
+    {
+      "family_id": "c11c_invisible_forces_v1",
+      "gameplay_seed": 100025,
+      "grammar_id": "gravitational_lens",
+      "music_seed": 500025,
+      "receipt_index": 25,
+      "repeat": "A",
+      "tag": "L22_191801_27ABF3_R25_A"
+    },
+    {
+      "family_id": "c11c_invisible_forces_v1",
+      "gameplay_seed": 100025,
+      "grammar_id": "gravitational_lens",
+      "music_seed": 500025,
+      "receipt_index": 25,
+      "repeat": "B",
+      "tag": "L22_191801_27ABF3_R25_B"
+    },
+    {
+      "family_id": "c11c_invisible_forces_v1",
+      "gameplay_seed": 100026,
+      "grammar_id": "topographic_basin",
+      "music_seed": 500026,
+      "receipt_index": 26,
+      "repeat": "A",
+      "tag": "L22_191801_27ABF3_R26_A"
+    },
+    {
+      "family_id": "c11c_invisible_forces_v1",
+      "gameplay_seed": 100026,
+      "grammar_id": "topographic_basin",
+      "music_seed": 500026,
+      "receipt_index": 26,
+      "repeat": "B",
+      "tag": "L22_191801_27ABF3_R26_B"
+    },
+    {
+      "family_id": "c11c_invisible_forces_v1",
+      "gameplay_seed": 100027,
+      "grammar_id": "scalar_potential",
+      "music_seed": 500027,
+      "receipt_index": 27,
+      "repeat": "A",
+      "tag": "L22_191801_27ABF3_R27_A"
+    },
+    {
+      "family_id": "c11c_invisible_forces_v1",
+      "gameplay_seed": 100027,
+      "grammar_id": "scalar_potential",
+      "music_seed": 500027,
+      "receipt_index": 27,
+      "repeat": "B",
+      "tag": "L22_191801_27ABF3_R27_B"
+    }
+  ],
+  "operator_approval_raw_sha256": "00584ca6f4fc3ca7a0269f56a270d7d022b9d360bd91bc983d75c7b0934b5c98",
+  "output_directory_plan": {
+    "expected_unique_directories": 40,
+    "logical_references": 176,
+    "sharing_key": "role+internal_family_id+repeat",
+    "unique_directories": 40
+  },
+  "path_budget": {
+    "candidate_path_count": 1012,
+    "longest_path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_loop22_av\\L22_191801_27ABF3\\source\\living_particles\\A\\LivingParticles_v1_seed_100017_L22_191801_27ABF3_R17_A_loop22_source_ffprobe.json.stderr.log",
+    "max_allowed_chars": 259,
+    "max_path_chars": 224,
+    "windows_max_path_guard": "PASS"
+  },
+  "preflight_source_pins": {
+    "approved_policy_pins": 5,
+    "audio_pins": [
+      {
+        "bytes": 1739,
+        "path": "tools/prototypes/c11c_common/C11CSafeAmbient.py",
+        "sha256": "c376fd44a3115f0d800213d95e28143363748e16c7b5800369fcadbf237fb02c"
+      },
+      {
+        "bytes": 16382,
+        "path": "tools/prototypes/c11c_common/generate_c11c_family_music.py",
+        "sha256": "41bb8f9842ac941ea86c838f272b11bd0642973b26e92defa006721a3d8cb84d"
+      },
+      {
+        "bytes": 7038,
+        "path": "profiles/presentation/c11c_visual_music_profiles.json",
+        "sha256": "b78706c5a9adbf1581d925f522b76cc3419983177de213734cc79996af5cbf58"
+      }
+    ],
+    "base_source_pins": 61,
+    "family_audio_source_pins": 3,
+    "option_c": {
+      "architecture_decision": "OPERATOR_APPROVED_OPTION_C",
+      "captured_process_logs_verified": 4,
+      "handoffs": 27,
+      "install_receipt_sha256": "30c6531129a08d3ce347432ddb4d5a26155f92dc89863828398cbfc2a8dfe6a7",
+      "process_receipt_sha256": "db1cc4b8393f84d944391efdd6daa325e0ed9a5aac69ce7b0d7efc9ed9ea9355",
+      "report_sha256": "ba76c626d92736c2f139380ec2b93d865015e8ef7e53f2881fdb16b6c4a54246",
+      "source_pin_validations": 33
+    },
+    "policy_pins": {
+      "definitions/c11d/production/C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_V1.json": {
+        "bytes": 5528,
+        "sha256": "9e206704665ea85226ecc10854be9f679c32fe9ed7efb690a829f6e8456d43da"
+      },
+      "definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json": {
+        "bytes": 8376,
+        "sha256": "609a4d183aac07c2cbe1abaf41444160fdd137217faffbead3aef618320d57dc"
+      },
+      "definitions/c11d/production/D_RENDERER_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_PROPOSAL_V1.json": {
+        "bytes": 7457,
+        "sha256": "3dd4874e1b6506de6d9ddbe6ad1b567a284b94cc00ef1bac0d35d1731af05e23"
+      },
+      "definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_V1.json": {
+        "bytes": 9507,
+        "sha256": "41a62b0766db47cd99772f28642ef67766314f20f0f7891789d6b7497bbfee85"
+      },
+      "definitions/c11d/production/D_RENDERER_UNIFIED_PRESENTATION_REGION_POLICY_PROPOSAL_V1.json": {
+        "bytes": 9440,
+        "sha256": "101092bb32127bb8854a501a9215c0b6cf69581594383903716907d49719c01a"
+      }
+    },
+    "r1p_receipts": 27,
+    "r1p_zip_sha256": "d49f54ffdee6026426c2bb87fcb72b5c8a68f09cb64fb91f71e25dc10fd26b52",
+    "total_source_pin_checks": 69
+  },
+  "project_root": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+  "r1p_zip_sha256": "d49f54ffdee6026426c2bb87fcb72b5c8a68f09cb64fb91f71e25dc10fd26b52",
+  "run_id": "L22_191801_27ABF3",
+  "runtime_tools": {
+    "ffmpeg": {
+      "bytes": 222248960,
+      "command": "ffmpeg",
+      "path": "C:\\Users\\vinxe\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-9.0-full_build\\bin\\ffmpeg.exe",
+      "sha256": "05f4251bce9293c2ab492cb17ca7724a0ffd0d06c881ba2ee83b82a89c2fc740",
+      "version_exit_code": 0,
+      "version_output": "ffmpeg version 9.0-full_build-www.gyan.dev Copyright (c) 2000-2026 the FFmpeg developers",
+      "version_output_sha256": "a78a87b103cd6d845ff3a525a88eb2e0163e17641602f95e1ecca860feff1a38"
+    },
+    "ffmpeg_encoders_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ffmpeg_encoders_stdout_sha256": "4513fecb3d1e8e9b99793f5c80bac9620f4293d4fe7f4084ae4efa28b1134e3c",
+    "ffmpeg_libx264_encoder_available": true,
+    "ffprobe": {
+      "bytes": 222044160,
+      "command": "ffprobe",
+      "path": "C:\\Users\\vinxe\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-9.0-full_build\\bin\\ffprobe.exe",
+      "sha256": "51e0780cd881f83749b029ed716cbb841c2eac6289f418050f2f2961b158896b",
+      "version_exit_code": 0,
+      "version_output": "ffprobe version 9.0-full_build-www.gyan.dev Copyright (c) 2007-2026 the FFmpeg developers",
+      "version_output_sha256": "8ba50584144e7a1f0c499d57490a142aab2f5fa112b0a18c1c40a3329d294e59"
+    },
+    "godot": {
+      "bytes": 179589128,
+      "command": "godot",
+      "path": "C:\\Users\\vinxe\\AppData\\Local\\Microsoft\\WinGet\\Packages\\GodotEngine.GodotEngine.Mono_Microsoft.Winget.Source_8wekyb3d8bbwe\\Godot_v4.7.1-stable_mono_win64\\godot.exe",
+      "sha256": "8ec33ba6a6a953226170cda2a56a58810f6617261a71d6bd6d6ba7cce5e7b79d",
+      "version_exit_code": 0,
+      "version_output": "4.7.1.stable.mono.official.a13da4feb",
+      "version_output_sha256": "d1046084c2493a272b0b439dc2f6dc74b801cd74659c5010a67c1b2f3acc5866"
+    },
+    "powershell": {
+      "bytes": 495616,
+      "command": "powershell.exe",
+      "path": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "sha256": "d8f182560210d43baaf767d482ad1dc1207372522e91413b9d5e515a875e552d",
+      "version_exit_code": 0,
+      "version_output": "5.1.26100.9818",
+      "version_output_sha256": "5b174f323af89ddcd1cb83cab8b32724f9059d8e3ce9e97bd1e7f20128d14fdf"
+    },
+    "python": {
+      "bytes": 105696,
+      "command": "python",
+      "path": "C:\\Users\\vinxe\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+      "sha256": "ef8f51028ac5329641985112f8efb1c2d4c47c86b8011ddf7e6fae21e2b4e5a1",
+      "version_exit_code": 0,
+      "version_output": "Python 3.13.14",
+      "version_output_sha256": "f133aa4c375d22e9226cb4ee8a71740d78c77f15c82b7842a0b93e594eed1884"
+    }
+  },
+  "schema": "C11E-E4B-LOOP22-AV-RUN-MANIFEST-V2",
+  "scope": {
+    "aac_mux": 44,
+    "av_outputs": 44,
+    "d3_v5": false,
+    "d9_10_dispatch": false,
+    "d_compositor": false,
+    "delivery_pcm_48k_wav": 44,
+    "native_family_music_wav": 44,
+    "new_c11c_silent_launcher_invocations": 44,
+    "renderer": false,
+    "repeats": 2,
+    "reused_prior_capture_slots": 0,
+    "selectors": 22,
+    "video_stream_copy": true
+  },
+  "scope_policy_sha256": "c0869c23001ed4e04a4fd81e3b1c9a974493c7b1a48cae5351eb55384c988628",
+  "selector_matrix_sha256": "eb0ce2fab5ee97c298e232685ec3452779fc1e1f4a8dcd1c9c994bff1a45a1a1",
+  "started_utc": "2026-11-09T18:18:01.766593+00:00"
+}

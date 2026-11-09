@@ -1,0 +1,62 @@
+{
+    "prototype_id":  "C11-C.5_INVISIBLE_FORCES_V1",
+    "revision":  "2.16.3",
+    "status":  "EDITORIAL_AUDIO_LOOP_REVIEW",
+    "seed":  100026,
+    "family_id":  "invisible_forces",
+    "technical_id":  "vector_field",
+    "artistic_name":  "Invisible Forces",
+    "production_id":  "c11c_invisible_forces_v1",
+    "runtime_id":  "invisible_forces",
+    "display_name":  "INVISIBLE FORCES",
+    "grammar_id":  "topographic_basin",
+    "grammar":  "TOPOGRAPHIC BASIN",
+    "palette":  "purple_fire_gold",
+    "visual":  {
+                   "canvas":  "720x1280",
+                   "body":  "y=192..1088",
+                   "duration_seconds":  22,
+                   "fps":  30,
+                   "frame_count":  660,
+                   "loop_cycles":  2,
+                   "loop_closed":  true,
+                   "background":  "05070B",
+                   "footer_enabled":  true
+               },
+    "editorial":  {
+                      "header_line_1":  "TOPOGRAPHIC_BASIN | 82 TRACES | PULSE 1.26",
+                      "header_line_2":  "PROCESO RESOLVIENDO // LENTE GRAVITACIONAL // TRACES 82 | PULSE 1.26 // PARALEX",
+                      "header_secondary":  "VISUAL LOOP / INVISIBLE FORCES",
+                      "matrix_transition":  true,
+                      "footer":  "generation telemetry / prototype QA"
+                  },
+    "audio":  {
+                  "mode":  "FAMILY_MUSIC_V4",
+                  "profile_id":  "FLOWING_VECTOR",
+                  "style":  "low-mid field drone / gentle beating harmonics / air trace texture / midpoint force swell",
+                  "semantic_key":  "TOPOGRAPHIC BASIN",
+                  "sample_rate":  44100,
+                  "channels":  2,
+                  "duration_seconds":  22,
+                  "muxed_into_mp4":  false,
+                  "enabled":  false,
+                  "C7_modified":  false,
+                  "family_grammar_bound":  true
+              },
+    "typography":  {
+                       "header":  "Inter Bold",
+                       "footer":  "Noto Sans Mono Regular",
+                       "license":  "SIL Open Font License 1.1"
+                   },
+    "social_metadata":  "InvisibleForces_v1_seed_100026_L22_191801_27ABF3_R26_B_social.txt",
+    "artifact_policy":  {
+                            "export_gif":  false,
+                            "keep_avi":  false,
+                            "avi_intermediate":  true,
+                            "output_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_loop22_av\\L22_191801_27ABF3\\source\\invisible_forces\\B",
+                            "output_tag":  "L22_191801_27ABF3_R26_B"
+                        },
+    "reproduction_command":  ".\\tools\\prototypes\\c11c_invisible_forces_v1\\run_prototype.ps1 -Seed 100026 -Grammar \"topographic_basin\" -Duration 22 -NoSound -OutputRoot \"C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_loop22_av\\L22_191801_27ABF3\\source\\invisible_forces\\B\" -OutputTag \"L22_191801_27ABF3_R26_B\"",
+    "technobabble":  "PROCESO Resolviendo // lente gravitacional // TRACES 82 | PULSE 1.26 // PARALEX",
+    "frozen_boundaries_modified":  false
+}

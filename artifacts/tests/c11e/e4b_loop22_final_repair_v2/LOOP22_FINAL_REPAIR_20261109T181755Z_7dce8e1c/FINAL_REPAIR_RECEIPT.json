@@ -1,0 +1,23 @@
+{
+    "schema":  "C11E-E4B-LOOP22-FINAL-REPAIR-RECEIPT-V1",
+    "status":  "PASS_EXACT_RECEIPT_FIELD_AND_V4_VARIABLE_REPAIR",
+    "run_id":  "LOOP22_FINAL_REPAIR_20261109T181755Z_7dce8e1c",
+    "frozen_c11c_manifest_sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "receipt_pin_v2_receipt_sha256_before":  "7de2dd2ccbc1eaf6c48e2997d21d3d2474cbd8c268bc8b51ca2a4ce03263f28e",
+    "receipt_pin_v2_receipt_sha256_after":  "3eadf38de0132c2e807f2f5e9cf69ad2db5fe81de9ecf3142c366152fd28fc27",
+    "receipt_field_before":  "e405d08e4d166b1ad9595358f4a088e73eea9527e6e89244beb4096eac4b953",
+    "receipt_field_after":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "receipt_field_length_before":  63,
+    "receipt_field_length_after":  64,
+    "v4_wrapper_sha256_before":  "c6adf58e2ecb22dc0400c139626034755ca13716a9bbebae276805e01f732dab",
+    "v4_wrapper_sha256_after":  "92e9ee5e922ee55b2eee25b17e0d7aa0462c2d78fa24dc7e2c1af7cce57ebb63",
+    "v4_unbound_reference_count_before":  1,
+    "v4_unbound_reference_count_after":  0,
+    "receipt_preimage_backup_sha256":  "7de2dd2ccbc1eaf6c48e2997d21d3d2474cbd8c268bc8b51ca2a4ce03263f28e",
+    "v4_preimage_backup_sha256":  "c6adf58e2ecb22dc0400c139626034755ca13716a9bbebae276805e01f732dab",
+    "powershell_ast":  "PASS",
+    "media_started_by_repair":  "FALSE",
+    "git_checks":  "SKIPPED",
+    "commits":  "OPERATOR_MANAGED",
+    "release_authority":  "NONE"
+}

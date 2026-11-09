@@ -1,0 +1,16 @@
+[C11C-RESOLUTION] Movie Maker override active: 720x1280
+Godot Engine v4.7.1.stable.mono.official.a13da4feb - https://godotengine.org
+OpenGL API 3.3.0 - Build 32.0.101.8132 - Compatibility - Using Device: Intel - Intel(R) Arc(TM) Graphics
+
+Movie Maker mode enabled, recording movie in 720×1280 @ 30 FPS...
+--------------------------------------------------------------------------------
+Done recording movie at path: C:\Users\vinxe\AppData\Local\Temp\LivingParticles_v1_seed_100017_L22_191801_27ABF3_R17_A_4898abb952ec471ebb2fe8f4dd721bd5.avi
+690 frames at 30 FPS (movie length: 00:00:23:00), recorded in 00:01:11 (32% of real-time speed).
+CPU render time: 0.52 seconds (average: 0.76 ms/frame)
+GPU render time: 11.39 seconds (average: 16.50 ms/frame)
+Encoding time: 9.69 seconds (average: 14.04 ms/frame)
+--------------------------------------------------------------------------------
+[C11-C-2.16.3] PASS - 720x1280 / 30 FPS / 690 frames / 23 s / AUDIO=False / LOOP / EDITORIAL
+[C11-C-2.16.3] MP4: C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\tests\c11e\e4b_loop22_av\L22_191801_27ABF3\source\living_particles\A\LivingParticles_v1_seed_100017_L22_191801_27ABF3_R17_A.mp4
+[C11-C-2.16.3] AUDIO: C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\tests\c11e\e4b_loop22_av\L22_191801_27ABF3\source\living_particles\A\LivingParticles_v1_seed_100017_L22_191801_27ABF3_R17_A_music.wav
+[C11-C-2.16.3] SOCIAL: C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\tests\c11e\e4b_loop22_av\L22_191801_27ABF3\source\living_particles\A\LivingParticles_v1_seed_100017_L22_191801_27ABF3_R17_A_social.txt

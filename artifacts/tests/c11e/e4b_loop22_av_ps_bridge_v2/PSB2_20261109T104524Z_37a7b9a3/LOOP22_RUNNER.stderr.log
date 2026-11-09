@@ -1,0 +1,1 @@
+{"status": "FAIL_LOOP22_PREFLIGHT_OR_EXECUTION", "error": "FileExistsError: [WinError 183] No se puede crear un archivo que ya existe: 'C:\\\\Users\\\\vinxe\\\\Projects\\\\ChallengeEngineV01_STATELESS\\\\artifacts\\\\tests\\\\c11e\\\\e4b_loop22_av\\\\L22_114530_E51BDA\\\\source\\\\geometric\\\\A'"}

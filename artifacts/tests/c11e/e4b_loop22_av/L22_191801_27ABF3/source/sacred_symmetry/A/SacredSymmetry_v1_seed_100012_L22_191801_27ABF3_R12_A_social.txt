@@ -1,0 +1,65 @@
+COPY_PASTE_READY:
+PARAMETRO DE ORRERY POLIGONAL: {VALUE:.1F} RAD/S // EN FASE // N=6 | GEAR 3:3
+
+PARAMETRO DE ORRERY POLIGONAL: {VALUE:.1F} RAD/S // EN FASE // N=6 | GEAR 3:3
+
+SACRED SYMMETRY - Visual loop de arte generativa matemática y procedural.
+
+- Variante: GEAR TRAIN
+- Paleta: midnight_brass
+- Seed: 100012
+- Detalles: Duración 22.00s, 2 ciclo(s) completo(s), sin sonido.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #SacredSymmetry #GeometricArt #Astrolabe #CelestialArt #ProceduralArt #DigitalArt #GEARTRAIN
+
+PARAMETRO DE ORRERY POLIGONAL: {VALUE:.1F} RAD/S // EN FASE // N=6 | GEAR 3:3
+
+SACRED SYMMETRY - Visual loop de arte generativa matemática y procedural.
+
+- Variante: GEAR TRAIN
+- Paleta: midnight_brass
+- Seed: 100012
+- Detalles: Duración 22.00s, 2 ciclo(s) completo(s), sin sonido.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+TITLE:
+SACRED SYMMETRY - GEAR TRAIN
+
+DESCRIPTION:
+PARAMETRO DE ORRERY POLIGONAL: {VALUE:.1F} RAD/S // EN FASE // N=6 | GEAR 3:3
+
+SACRED SYMMETRY - Visual loop de arte generativa matemática y procedural.
+
+- Variante: GEAR TRAIN
+- Paleta: midnight_brass
+- Seed: 100012
+- Detalles: Duración 22.00s, 2 ciclo(s) completo(s), sin sonido.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+FAMILY: sacred_symmetry
+GRAMMAR: GEAR TRAIN
+PALETTE: midnight_brass
+SEED: 100012
+DURATION: 22.00 s
+FPS: 30
+FRAMES: 660
+LOOP CYCLES: 2
+LOOP CLOSED: True
+AUDIO: OFF / SILENT
+AUDIO PROFILE: ORBITAL_RITUAL
+
+HEADER HOOK:
+PARAMETRO DE ORRERY POLIGONAL: {VALUE:.1F} RAD/S // EN FASE // N=6 | GEAR 3:3
+
+HASHTAGS:
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #SacredSymmetry #GeometricArt #Astrolabe #CelestialArt #ProceduralArt #DigitalArt #GEARTRAIN
+
+REPRODUCTION COMMAND:
+.\tools\prototypes\c11c_sacred_symmetry_v1\run_prototype.ps1 -Seed 100012 -Grammar gear_train -Duration 22 -NoSound -OutputRoot C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\tests\c11e\e4b_loop22_av\L22_191801_27ABF3\source\sacred_symmetry\A -OutputTag L22_191801_27ABF3_R12_A
+
+CANONICAL MANIFEST:
+SacredSymmetry_v1_seed_100012_L22_191801_27ABF3_R12_A_manifest.json

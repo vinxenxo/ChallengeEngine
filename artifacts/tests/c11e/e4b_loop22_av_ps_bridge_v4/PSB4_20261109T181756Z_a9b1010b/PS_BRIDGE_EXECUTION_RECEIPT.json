@@ -1,0 +1,34 @@
+{
+    "schema":  "C11E-E4B-LOOP22-PS-NATIVE-PROCESS-BRIDGE-RECEIPT-V4",
+    "run_id":  "PSB4_20261109T181756Z_a9b1010b",
+    "directory_fix_manifest_sha256":  "fe6b9d8dc642ba177909cc2778abccd544ed6a275461b96660cb6af84553568c",
+    "directory_fix_install_receipt_sha256":  "1fc8ecfee3ea34ba9c0853aea627808153372c7ad678e385f2e3f603d9835fd7",
+    "receipt_pin_fix_install_receipt_sha256":  "3eadf38de0132c2e807f2f5e9cf69ad2db5fe81de9ecf3142c366152fd28fc27",
+    "status":  "PASS_E4B_LOOP22_AV_QUALIFICATION_44_OF_44_PENDING_OPERATOR_VISUAL_AUDIO_REVIEW",
+    "wrapper_sha256":  "92e9ee5e922ee55b2eee25b17e0d7aa0462c2d78fa24dc7e2c1af7cce57ebb63",
+    "frozen_c11c_manifest_sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "v1_package_manifest_sha256":  "36d3b37459817cac650e30d4da1c0a560e38e7db9d2f303d0bac3427358753d7",
+    "v2_package_manifest_sha256":  "61411a12748fda16f3c2efd33e03dfa6e8ced0b2fcc474f33d99c49082d5ce79",
+    "directory_fix":  "UNIQUE_40_OUTPUT_DIRECTORIES_CREATED_ONCE",
+    "python_version":  "3.13.14",
+    "focused_tests":  {
+                          "exit_code":  0,
+                          "tests_run":  25,
+                          "stdout_sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                          "stderr_sha256":  "ecae44b32bb1fb46f832db7ee61eb422be16216578ab67b6d2c37bc0f490b4e5"
+                      },
+    "runner":  {
+                   "exit_code":  0,
+                   "silent_captures":  44,
+                   "launcher_invocations":  44,
+                   "av_outputs":  44,
+                   "ab_pairs_passed":  22,
+                   "report_sha256":  "d8f7050f952b7248b24763abde20ce52bf812c3934738f14670a0a3dc0c72068",
+                   "evidence_zip_sha256":  "5ab13d933b4c4535b9cf90d417ff51d7342c7673329203d72fceaeea8b127f4f",
+                   "stdout_sha256":  "d6ad665376d10372891e446180483000ebed709d5f30f103136c481cd1e611db",
+                   "stderr_sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+               },
+    "git_checks":  "SKIPPED",
+    "commits":  "OPERATOR_MANAGED",
+    "release_authority":  "NONE"
+}

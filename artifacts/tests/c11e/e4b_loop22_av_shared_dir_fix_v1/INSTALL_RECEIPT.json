@@ -1,0 +1,30 @@
+{
+    "schema":  "C11E-E4B-LOOP22-SHARED-DIR-FIX-INSTALL-RECEIPT-V1",
+    "status":  "PASS_ADD_ONLY_INSTALL",
+    "installed_utc":  "2026-11-09T17:26:42.3557462Z",
+    "package_manifest_sha256":  "fe6b9d8dc642ba177909cc2778abccd544ed6a275461b96660cb6af84553568c",
+    "v1_package_manifest_sha256":  "36d3b37459817cac650e30d4da1c0a560e38e7db9d2f303d0bac3427358753d7",
+    "v2_package_manifest_sha256":  "61411a12748fda16f3c2efd33e03dfa6e8ced0b2fcc474f33d99c49082d5ce79",
+    "v2_install_receipt_sha256":  "ebf648ee99fdd7b9183cb582c0cf15c0609986b20298dd366919c91d635fd8bd",
+    "frozen_c11c_manifest_sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "source_pins_verified":  37,
+    "payload_files":  13,
+    "added_file_count":  13,
+    "added_files":  [
+                        "docs\\current\\e\\C11D_E_BLOCKER_REMEDIATION_REGISTER_20261109_V31.md",
+                        "docs\\current\\e\\C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261109_V57.md",
+                        "docs\\current\\e\\C11E_CURRENT_AUTHORITY_20261109_V110.md",
+                        "docs\\current\\e\\C11E_CURRENT_DOC_INDEX_20261109_V71.md",
+                        "docs\\current\\e\\C11E_E3_EXECUTION_BACKLOG_20261109_V85.md",
+                        "docs\\current\\e\\C11E_E4B_LOOP22_AV_SHARED_DIRECTORY_COLLISION_ROOT_CAUSE_V1.md",
+                        "docs\\current\\e\\C11E_GATES_ACCEPTANCE_MATRIX_20261109_V108.md",
+                        "docs\\prompts\\C11E_CONTINUATION_MASTER_PROMPT_20261109_V111.md",
+                        "docs\\prompts\\C11E_FIRST_PROMPT_20261109_V35.md",
+                        "docs\\prompts\\C11E_NEXT_WINDOW_START_PROMPT_20261109_V111.md",
+                        "tools\\c11d\\d9\\RUN_C11E_E4B_LOOP22_AV_QUALIFICATION_V3.ps1",
+                        "tools\\c11d\\d9\\c11e_e4b_loop22_av_qualification_v2.py",
+                        "tools\\c11d\\d9\\test_c11e_e4b_loop22_av_qualification_v2.py"
+                    ],
+    "git_checks":  "SKIPPED",
+    "commits":  "OPERATOR_MANAGED"
+}

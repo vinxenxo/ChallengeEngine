@@ -1,0 +1,16 @@
+[C11C-RESOLUTION] Movie Maker override active: 720x1280
+Godot Engine v4.7.1.stable.mono.official.a13da4feb - https://godotengine.org
+OpenGL API 3.3.0 - Build 32.0.101.8132 - Compatibility - Using Device: Intel - Intel(R) Arc(TM) Graphics
+
+Movie Maker mode enabled, recording movie in 720×1280 @ 30 FPS...
+--------------------------------------------------------------------------------
+Done recording movie at path: C:\Users\vinxe\AppData\Local\Temp\GeometricWaves_v1_seed_100004_L22_191801_27ABF3_R04_B_ac8d31a3ae3346c19def3274fb83c583.avi
+600 frames at 30 FPS (movie length: 00:00:20:00), recorded in 00:00:36 (55% of real-time speed).
+CPU render time: 0.32 seconds (average: 0.53 ms/frame)
+GPU render time: 0.41 seconds (average: 0.69 ms/frame)
+Encoding time: 7.50 seconds (average: 12.49 ms/frame)
+--------------------------------------------------------------------------------
+[C11-C-2.16.3] PASS - 720x1280 / 30 FPS / 600 frames / 20 s / AUDIO=False / LOOP / EDITORIAL
+[C11-C-2.16.3] MP4: C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\tests\c11e\e4b_loop22_av\L22_191801_27ABF3\source\geometric\B\GeometricWaves_v1_seed_100004_L22_191801_27ABF3_R04_B.mp4
+[C11-C-2.16.3] AUDIO: C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\tests\c11e\e4b_loop22_av\L22_191801_27ABF3\source\geometric\B\GeometricWaves_v1_seed_100004_L22_191801_27ABF3_R04_B_music.wav
+[C11-C-2.16.3] SOCIAL: C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\tests\c11e\e4b_loop22_av\L22_191801_27ABF3\source\geometric\B\GeometricWaves_v1_seed_100004_L22_191801_27ABF3_R04_B_social.txt

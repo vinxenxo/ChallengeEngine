@@ -1,0 +1,30 @@
+test_01_fixed_scope_exactly_22_selectors_44_slots (__main__.Loop22ScopeTests.test_01_fixed_scope_exactly_22_selectors_44_slots) ... ok
+test_02_r1v_pilot_indices_are_excluded (__main__.Loop22ScopeTests.test_02_r1v_pilot_indices_are_excluded) ... ok
+test_03_family_counts_are_4_4_4_4_6 (__main__.Loop22ScopeTests.test_03_family_counts_are_4_4_4_4_6) ... ok
+test_04_gameplay_and_music_seed_routes_are_distinct (__main__.Loop22ScopeTests.test_04_gameplay_and_music_seed_routes_are_distinct) ... ok
+test_05_music_profile_family_bindings (__main__.Loop22ScopeTests.test_05_music_profile_family_bindings) ... ok
+test_06_run_id_is_compact (__main__.Loop22ScopeTests.test_06_run_id_is_compact) ... ok
+test_07_max_path_budget_for_full_loop22_matrix (__main__.Loop22ScopeTests.test_07_max_path_budget_for_full_loop22_matrix) ... ok
+test_08_resample_command_is_audio_only_and_48k (__main__.Loop22ScopeTests.test_08_resample_command_is_audio_only_and_48k) ... ok
+test_09_mux_copies_video_and_aac_lc_192k_48k (__main__.Loop22ScopeTests.test_09_mux_copies_video_and_aac_lc_192k_48k) ... ok
+test_10_delivery_pcm_exact_samples (__main__.Loop22ScopeTests.test_10_delivery_pcm_exact_samples) ... ok
+test_11_delivery_pcm_rejects_wrong_sample_count (__main__.Loop22ScopeTests.test_11_delivery_pcm_rejects_wrong_sample_count) ... ok
+test_12_aac_probe_rejects_44100 (__main__.Loop22ScopeTests.test_12_aac_probe_rejects_44100) ... ok
+test_13_aac_probe_accepts_48k_lc (__main__.Loop22ScopeTests.test_13_aac_probe_accepts_48k_lc) ... ok
+test_14_final_probe_rejects_video_reencode_metadata_drift (__main__.Loop22ScopeTests.test_14_final_probe_rejects_video_reencode_metadata_drift) ... ok
+test_15_ffmpeg9_decode_option_uses_fps_mode (__main__.Loop22ScopeTests.test_15_ffmpeg9_decode_option_uses_fps_mode) ... ok
+test_16_governance_is_not_renderer_authority (__main__.Loop22ScopeTests.test_16_governance_is_not_renderer_authority) ... ok
+test_17_source_pixel_format_exact_allowlist (__main__.Loop22ScopeTests.test_17_source_pixel_format_exact_allowlist) ... ok
+test_18_c11c_family_audio_command_uses_music_seed (__main__.Loop22ScopeTests.test_18_c11c_family_audio_command_uses_music_seed) ... ok
+test_19_runner_fails_closed_outside_windows_before_launch (__main__.Loop22ScopeTests.test_19_runner_fails_closed_outside_windows_before_launch) ... ok
+test_20_matrix_indices_exact_count (__main__.Loop22ScopeTests.test_20_matrix_indices_exact_count) ... ok
+test_21_48k_conversion_does_not_modify_native_wav (__main__.Loop22ScopeTests.test_21_48k_conversion_does_not_modify_native_wav) ... ok
+test_22_ffprobe_duration_tolerance_remains_unset (__main__.Loop22ScopeTests.test_22_ffprobe_duration_tolerance_remains_unset) ... ok
+test_23_preflight_path_namespace_is_separate_from_r1v (__main__.Loop22ScopeTests.test_23_preflight_path_namespace_is_separate_from_r1v) ... ok
+test_24_r1p_seed_domains_not_merged (__main__.Loop22ScopeTests.test_24_r1p_seed_domains_not_merged) ... ok
+test_25_shared_output_directories_are_deduplicated_and_created_once (__main__.Loop22ScopeTests.test_25_shared_output_directories_are_deduplicated_and_created_once) ... ok
+
+----------------------------------------------------------------------
+Ran 25 tests in 0.158s
+
+OK

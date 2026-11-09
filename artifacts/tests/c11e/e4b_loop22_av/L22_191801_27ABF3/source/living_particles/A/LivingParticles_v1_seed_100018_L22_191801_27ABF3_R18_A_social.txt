@@ -1,0 +1,65 @@
+COPY_PASTE_READY:
+[DECK] REGULADOR DE VAPOR :: ATRACTORES DE CLIFFORD :: PARTICLES 107 | COLLISION 0.73
+
+[DECK] REGULADOR DE VAPOR :: ATRACTORES DE CLIFFORD :: PARTICLES 107 | COLLISION 0.73
+
+LIVING PARTICLES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: COLLISION CLOUD
+- Paleta: emerald_sea_green
+- Seed: 100018
+- Detalles: Duración 23.00s, 3 ciclo(s) completo(s), sin sonido.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #LivingParticles #ParticleArt #FluidArt #OrganicArt #ProceduralArt #DigitalArt #COLLISIONCLOUD
+
+[DECK] REGULADOR DE VAPOR :: ATRACTORES DE CLIFFORD :: PARTICLES 107 | COLLISION 0.73
+
+LIVING PARTICLES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: COLLISION CLOUD
+- Paleta: emerald_sea_green
+- Seed: 100018
+- Detalles: Duración 23.00s, 3 ciclo(s) completo(s), sin sonido.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+TITLE:
+LIVING PARTICLES - COLLISION CLOUD
+
+DESCRIPTION:
+[DECK] REGULADOR DE VAPOR :: ATRACTORES DE CLIFFORD :: PARTICLES 107 | COLLISION 0.73
+
+LIVING PARTICLES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: COLLISION CLOUD
+- Paleta: emerald_sea_green
+- Seed: 100018
+- Detalles: Duración 23.00s, 3 ciclo(s) completo(s), sin sonido.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+FAMILY: living_particles
+GRAMMAR: COLLISION CLOUD
+PALETTE: emerald_sea_green
+SEED: 100018
+DURATION: 23.00 s
+FPS: 30
+FRAMES: 690
+LOOP CYCLES: 3
+LOOP CLOSED: True
+AUDIO: OFF / SILENT
+AUDIO PROFILE: ORGANIC_BLOOM
+
+HEADER HOOK:
+[DECK] REGULADOR DE VAPOR :: ATRACTORES DE CLIFFORD :: PARTICLES 107 | COLLISION 0.73
+
+HASHTAGS:
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #LivingParticles #ParticleArt #FluidArt #OrganicArt #ProceduralArt #DigitalArt #COLLISIONCLOUD
+
+REPRODUCTION COMMAND:
+.\tools\prototypes\c11c_living_particles_v1\run_prototype.ps1 -Seed 100018 -Grammar collision_cloud -Duration 23 -NoSound -OutputRoot C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\tests\c11e\e4b_loop22_av\L22_191801_27ABF3\source\living_particles\A -OutputTag L22_191801_27ABF3_R18_A
+
+CANONICAL MANIFEST:
+LivingParticles_v1_seed_100018_L22_191801_27ABF3_R18_A_manifest.json

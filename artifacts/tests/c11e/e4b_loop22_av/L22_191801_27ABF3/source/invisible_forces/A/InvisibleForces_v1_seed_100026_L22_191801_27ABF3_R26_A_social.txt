@@ -1,0 +1,65 @@
+COPY_PASTE_READY:
+PROCESO RESOLVIENDO // LENTE GRAVITACIONAL // TRACES 82 | PULSE 1.26 // PARALEX
+
+PROCESO RESOLVIENDO // LENTE GRAVITACIONAL // TRACES 82 | PULSE 1.26 // PARALEX
+
+INVISIBLE FORCES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: TOPOGRAPHIC BASIN
+- Paleta: purple_fire_gold
+- Seed: 100026
+- Detalles: Duración 22.00s, 2 ciclo(s) completo(s), sin sonido.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #InvisibleForces #VectorField #PhysicsArt #TopographicArt #ProceduralArt #DigitalArt #TOPOGRAPHICBASIN
+
+PROCESO RESOLVIENDO // LENTE GRAVITACIONAL // TRACES 82 | PULSE 1.26 // PARALEX
+
+INVISIBLE FORCES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: TOPOGRAPHIC BASIN
+- Paleta: purple_fire_gold
+- Seed: 100026
+- Detalles: Duración 22.00s, 2 ciclo(s) completo(s), sin sonido.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+TITLE:
+INVISIBLE FORCES - TOPOGRAPHIC BASIN
+
+DESCRIPTION:
+PROCESO RESOLVIENDO // LENTE GRAVITACIONAL // TRACES 82 | PULSE 1.26 // PARALEX
+
+INVISIBLE FORCES - Visual loop de arte generativa matemática y procedural.
+
+- Variante: TOPOGRAPHIC BASIN
+- Paleta: purple_fire_gold
+- Seed: 100026
+- Detalles: Duración 22.00s, 2 ciclo(s) completo(s), sin sonido.
+
+Diseñado en código con #GodotEngine para reproducción continua en bucle.
+
+FAMILY: invisible_forces
+GRAMMAR: TOPOGRAPHIC BASIN
+PALETTE: purple_fire_gold
+SEED: 100026
+DURATION: 22.00 s
+FPS: 30
+FRAMES: 660
+LOOP CYCLES: 2
+LOOP CLOSED: True
+AUDIO: OFF / SILENT
+AUDIO PROFILE: FLOWING_VECTOR
+
+HEADER HOOK:
+PROCESO RESOLVIENDO // LENTE GRAVITACIONAL // TRACES 82 | PULSE 1.26 // PARALEX
+
+HASHTAGS:
+#GenerativeArt #GodotEngine #LoopArt #OddlySatisfying #InvisibleForces #VectorField #PhysicsArt #TopographicArt #ProceduralArt #DigitalArt #TOPOGRAPHICBASIN
+
+REPRODUCTION COMMAND:
+.\tools\prototypes\c11c_invisible_forces_v1\run_prototype.ps1 -Seed 100026 -Grammar topographic_basin -Duration 22 -NoSound -OutputRoot C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\tests\c11e\e4b_loop22_av\L22_191801_27ABF3\source\invisible_forces\A -OutputTag L22_191801_27ABF3_R26_A
+
+CANONICAL MANIFEST:
+InvisibleForces_v1_seed_100026_L22_191801_27ABF3_R26_A_manifest.json
