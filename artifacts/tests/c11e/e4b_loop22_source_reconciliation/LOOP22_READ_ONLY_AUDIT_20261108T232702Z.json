@@ -1,0 +1,549 @@
+{
+  "schema": "C11E-E4B-LOOP22-ACTIVE-SOURCE-READ-ONLY-AUDIT-V1",
+  "status": "PASS_STATIC_SOURCE_MAPPING_R1P_ARCHIVE_HASH_AND_CRC_PRESENT",
+  "run_mode": "READ_ONLY_SOURCE_RECONCILIATION",
+  "active_checkout": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+  "frozen_c11c_manifest": {
+    "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+    "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "bytes": 796318,
+    "pass": true
+  },
+  "selector_counts": {
+    "producer_schema_total": 27,
+    "pilot_selectors": 5,
+    "remaining_selectors": 22,
+    "remaining_family_distribution": {
+      "Geometric Waves": 4,
+      "Fractal Bloom": 4,
+      "Sacred Symmetry": 4,
+      "Living Particles": 4,
+      "Invisible Forces": 6
+    },
+    "planned_ab_output_slots": 44
+  },
+  "family_mapping": [
+    {
+      "family_id": "c11c_geometric_waves_v1",
+      "family": "Geometric Waves",
+      "schema_grammar_count": 5,
+      "prototype_grammar_count": 5,
+      "variation_grammar_count": 5,
+      "pilot_selectors": [
+        "harmonic_membrane"
+      ],
+      "remaining_selectors": [
+        "interference_plane",
+        "lattice_wave",
+        "orbital_wave",
+        "parametric_ribbon"
+      ],
+      "prototype_path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesPrototype.gd",
+      "launcher_path": "tools/prototypes/c11c_geometric_waves_v1/run_prototype.ps1",
+      "native_music_profile": "CIRCUIT_PULSE"
+    },
+    {
+      "family_id": "c11c_fractal_bloom_v1",
+      "family": "Fractal Bloom",
+      "schema_grammar_count": 5,
+      "prototype_grammar_count": 5,
+      "variation_grammar_count": 5,
+      "pilot_selectors": [
+        "radial_bloom"
+      ],
+      "remaining_selectors": [
+        "dendritic_tunnel",
+        "fractal_filigree",
+        "nested_worlds",
+        "spiral_fractal"
+      ],
+      "prototype_path": "tools/prototypes/c11c_fractal_bloom_v1/FractalBloomPrototype.gd",
+      "launcher_path": "tools/prototypes/c11c_fractal_bloom_v1/run_prototype.ps1",
+      "native_music_profile": "ORGANIC_BLOOM"
+    },
+    {
+      "family_id": "c11c_sacred_symmetry_v1",
+      "family": "Sacred Symmetry",
+      "schema_grammar_count": 5,
+      "prototype_grammar_count": 5,
+      "variation_grammar_count": 5,
+      "pilot_selectors": [
+        "astrolabe"
+      ],
+      "remaining_selectors": [
+        "celestial_chart",
+        "gear_train",
+        "origami_mandala",
+        "polygon_orrery"
+      ],
+      "prototype_path": "tools/prototypes/c11c_sacred_symmetry_v1/SacredSymmetryPrototype.gd",
+      "launcher_path": "tools/prototypes/c11c_sacred_symmetry_v1/run_prototype.ps1",
+      "native_music_profile": "ORBITAL_RITUAL"
+    },
+    {
+      "family_id": "c11c_living_particles_v1",
+      "family": "Living Particles",
+      "schema_grammar_count": 5,
+      "prototype_grammar_count": 5,
+      "variation_grammar_count": 5,
+      "pilot_selectors": [
+        "swarm"
+      ],
+      "remaining_selectors": [
+        "collision_cloud",
+        "magnetic_filament_cloud",
+        "organic_pulse",
+        "vortex"
+      ],
+      "prototype_path": "tools/prototypes/c11c_living_particles_v1/LivingParticlesPrototype.gd",
+      "launcher_path": "tools/prototypes/c11c_living_particles_v1/run_prototype.ps1",
+      "native_music_profile": "ORGANIC_BLOOM"
+    },
+    {
+      "family_id": "c11c_invisible_forces_v1",
+      "family": "Invisible Forces",
+      "schema_grammar_count": 7,
+      "prototype_grammar_count": 7,
+      "variation_grammar_count": 7,
+      "pilot_selectors": [
+        "dipole_field"
+      ],
+      "remaining_selectors": [
+        "gravitational_lens",
+        "quadrupole_field",
+        "saddle_field",
+        "scalar_potential",
+        "topographic_basin",
+        "vortex_field"
+      ],
+      "prototype_path": "tools/prototypes/c11c_invisible_forces_v1/InvisibleForcesPrototype.gd",
+      "launcher_path": "tools/prototypes/c11c_invisible_forces_v1/run_prototype.ps1",
+      "native_music_profile": "FLOWING_VECTOR"
+    }
+  ],
+  "remaining_selector_rows": [
+    {
+      "family_id": "c11c_geometric_waves_v1",
+      "grammar_id": "interference_plane",
+      "music_profile": "CIRCUIT_PULSE",
+      "gameplay_seed": 100002,
+      "music_seed": 500002,
+      "loop_cycles": 3,
+      "duration_seconds": 23,
+      "fps": 30,
+      "frame_count": 690
+    },
+    {
+      "family_id": "c11c_geometric_waves_v1",
+      "grammar_id": "parametric_ribbon",
+      "music_profile": "CIRCUIT_PULSE",
+      "gameplay_seed": 100003,
+      "music_seed": 500003,
+      "loop_cycles": 3,
+      "duration_seconds": 23,
+      "fps": 30,
+      "frame_count": 690
+    },
+    {
+      "family_id": "c11c_geometric_waves_v1",
+      "grammar_id": "lattice_wave",
+      "music_profile": "CIRCUIT_PULSE",
+      "gameplay_seed": 100004,
+      "music_seed": 500004,
+      "loop_cycles": 1,
+      "duration_seconds": 20,
+      "fps": 30,
+      "frame_count": 600
+    },
+    {
+      "family_id": "c11c_geometric_waves_v1",
+      "grammar_id": "orbital_wave",
+      "music_profile": "CIRCUIT_PULSE",
+      "gameplay_seed": 100005,
+      "music_seed": 500005,
+      "loop_cycles": 3,
+      "duration_seconds": 23,
+      "fps": 30,
+      "frame_count": 690
+    },
+    {
+      "family_id": "c11c_fractal_bloom_v1",
+      "grammar_id": "dendritic_tunnel",
+      "music_profile": "ORGANIC_BLOOM",
+      "gameplay_seed": 100007,
+      "music_seed": 500007,
+      "loop_cycles": 1,
+      "duration_seconds": 20,
+      "fps": 30,
+      "frame_count": 600
+    },
+    {
+      "family_id": "c11c_fractal_bloom_v1",
+      "grammar_id": "spiral_fractal",
+      "music_profile": "ORGANIC_BLOOM",
+      "gameplay_seed": 100008,
+      "music_seed": 500008,
+      "loop_cycles": 1,
+      "duration_seconds": 20,
+      "fps": 30,
+      "frame_count": 600
+    },
+    {
+      "family_id": "c11c_fractal_bloom_v1",
+      "grammar_id": "fractal_filigree",
+      "music_profile": "ORGANIC_BLOOM",
+      "gameplay_seed": 100009,
+      "music_seed": 500009,
+      "loop_cycles": 1,
+      "duration_seconds": 20,
+      "fps": 30,
+      "frame_count": 600
+    },
+    {
+      "family_id": "c11c_fractal_bloom_v1",
+      "grammar_id": "nested_worlds",
+      "music_profile": "ORGANIC_BLOOM",
+      "gameplay_seed": 100010,
+      "music_seed": 500010,
+      "loop_cycles": 2,
+      "duration_seconds": 22,
+      "fps": 30,
+      "frame_count": 660
+    },
+    {
+      "family_id": "c11c_sacred_symmetry_v1",
+      "grammar_id": "gear_train",
+      "music_profile": "ORBITAL_RITUAL",
+      "gameplay_seed": 100012,
+      "music_seed": 500012,
+      "loop_cycles": 2,
+      "duration_seconds": 22,
+      "fps": 30,
+      "frame_count": 660
+    },
+    {
+      "family_id": "c11c_sacred_symmetry_v1",
+      "grammar_id": "polygon_orrery",
+      "music_profile": "ORBITAL_RITUAL",
+      "gameplay_seed": 100013,
+      "music_seed": 500013,
+      "loop_cycles": 2,
+      "duration_seconds": 22,
+      "fps": 30,
+      "frame_count": 660
+    },
+    {
+      "family_id": "c11c_sacred_symmetry_v1",
+      "grammar_id": "origami_mandala",
+      "music_profile": "ORBITAL_RITUAL",
+      "gameplay_seed": 100014,
+      "music_seed": 500014,
+      "loop_cycles": 3,
+      "duration_seconds": 23,
+      "fps": 30,
+      "frame_count": 690
+    },
+    {
+      "family_id": "c11c_sacred_symmetry_v1",
+      "grammar_id": "celestial_chart",
+      "music_profile": "ORBITAL_RITUAL",
+      "gameplay_seed": 100015,
+      "music_seed": 500015,
+      "loop_cycles": 3,
+      "duration_seconds": 23,
+      "fps": 30,
+      "frame_count": 690
+    },
+    {
+      "family_id": "c11c_living_particles_v1",
+      "grammar_id": "vortex",
+      "music_profile": "ORGANIC_BLOOM",
+      "gameplay_seed": 100017,
+      "music_seed": 500017,
+      "loop_cycles": 3,
+      "duration_seconds": 23,
+      "fps": 30,
+      "frame_count": 690
+    },
+    {
+      "family_id": "c11c_living_particles_v1",
+      "grammar_id": "collision_cloud",
+      "music_profile": "ORGANIC_BLOOM",
+      "gameplay_seed": 100018,
+      "music_seed": 500018,
+      "loop_cycles": 3,
+      "duration_seconds": 23,
+      "fps": 30,
+      "frame_count": 690
+    },
+    {
+      "family_id": "c11c_living_particles_v1",
+      "grammar_id": "organic_pulse",
+      "music_profile": "ORGANIC_BLOOM",
+      "gameplay_seed": 100019,
+      "music_seed": 500019,
+      "loop_cycles": 2,
+      "duration_seconds": 22,
+      "fps": 30,
+      "frame_count": 660
+    },
+    {
+      "family_id": "c11c_living_particles_v1",
+      "grammar_id": "magnetic_filament_cloud",
+      "music_profile": "ORGANIC_BLOOM",
+      "gameplay_seed": 100020,
+      "music_seed": 500020,
+      "loop_cycles": 1,
+      "duration_seconds": 20,
+      "fps": 30,
+      "frame_count": 600
+    },
+    {
+      "family_id": "c11c_invisible_forces_v1",
+      "grammar_id": "vortex_field",
+      "music_profile": "FLOWING_VECTOR",
+      "gameplay_seed": 100022,
+      "music_seed": 500022,
+      "loop_cycles": 3,
+      "duration_seconds": 23,
+      "fps": 30,
+      "frame_count": 690
+    },
+    {
+      "family_id": "c11c_invisible_forces_v1",
+      "grammar_id": "saddle_field",
+      "music_profile": "FLOWING_VECTOR",
+      "gameplay_seed": 100023,
+      "music_seed": 500023,
+      "loop_cycles": 3,
+      "duration_seconds": 23,
+      "fps": 30,
+      "frame_count": 690
+    },
+    {
+      "family_id": "c11c_invisible_forces_v1",
+      "grammar_id": "quadrupole_field",
+      "music_profile": "FLOWING_VECTOR",
+      "gameplay_seed": 100024,
+      "music_seed": 500024,
+      "loop_cycles": 1,
+      "duration_seconds": 20,
+      "fps": 30,
+      "frame_count": 600
+    },
+    {
+      "family_id": "c11c_invisible_forces_v1",
+      "grammar_id": "gravitational_lens",
+      "music_profile": "FLOWING_VECTOR",
+      "gameplay_seed": 100025,
+      "music_seed": 500025,
+      "loop_cycles": 1,
+      "duration_seconds": 20,
+      "fps": 30,
+      "frame_count": 600
+    },
+    {
+      "family_id": "c11c_invisible_forces_v1",
+      "grammar_id": "topographic_basin",
+      "music_profile": "FLOWING_VECTOR",
+      "gameplay_seed": 100026,
+      "music_seed": 500026,
+      "loop_cycles": 2,
+      "duration_seconds": 22,
+      "fps": 30,
+      "frame_count": 660
+    },
+    {
+      "family_id": "c11c_invisible_forces_v1",
+      "grammar_id": "scalar_potential",
+      "music_profile": "FLOWING_VECTOR",
+      "gameplay_seed": 100027,
+      "music_seed": 500027,
+      "loop_cycles": 3,
+      "duration_seconds": 23,
+      "fps": 30,
+      "frame_count": 690
+    }
+  ],
+  "music_contract": {
+    "mode": "FAMILY_MUSIC_V4",
+    "sample_rate": 44100,
+    "channels": 2,
+    "profile_bindings": "PASS_5_FAMILY_BINDINGS",
+    "gameplay_music_seed_domains_separate": true
+  },
+  "duration_contract": {
+    "cycles_to_seconds": {
+      "1": 20,
+      "2": 22,
+      "3": 23
+    },
+    "fps": 30,
+    "frames": {
+      "20s": 600,
+      "22s": 660,
+      "23s": 690
+    }
+  },
+  "r1p_archive_discovery": {
+    "expected_sha256": "d49f54ffdee6026426c2bb87fcb72b5c8a68f09cb64fb91f71e25dc10fd26b52",
+    "zip_files_searched": 22,
+    "matches": [
+      {
+        "path": "artifacts\\tests\\c11e\\e4b_r1p\\E4B_R1P_20261107_032743_5F75045C_RECOVERED.zip",
+        "sha256": "d49f54ffdee6026426c2bb87fcb72b5c8a68f09cb64fb91f71e25dc10fd26b52",
+        "zip_crc": "PASS",
+        "json_entries": 33,
+        "receipt_like_entries": [
+          "receipts/01_E4B_R1P_20261107_032743_5F75045C_01.json",
+          "receipts/02_E4B_R1P_20261107_032743_5F75045C_02.json",
+          "receipts/03_E4B_R1P_20261107_032743_5F75045C_03.json",
+          "receipts/04_E4B_R1P_20261107_032743_5F75045C_04.json",
+          "receipts/05_E4B_R1P_20261107_032743_5F75045C_05.json",
+          "receipts/06_E4B_R1P_20261107_032743_5F75045C_06.json",
+          "receipts/07_E4B_R1P_20261107_032743_5F75045C_07.json",
+          "receipts/08_E4B_R1P_20261107_032743_5F75045C_08.json",
+          "receipts/09_E4B_R1P_20261107_032743_5F75045C_09.json",
+          "receipts/10_E4B_R1P_20261107_032743_5F75045C_10.json",
+          "receipts/11_E4B_R1P_20261107_032743_5F75045C_11.json",
+          "receipts/12_E4B_R1P_20261107_032743_5F75045C_12.json",
+          "receipts/13_E4B_R1P_20261107_032743_5F75045C_13.json",
+          "receipts/14_E4B_R1P_20261107_032743_5F75045C_14.json",
+          "receipts/15_E4B_R1P_20261107_032743_5F75045C_15.json",
+          "receipts/16_E4B_R1P_20261107_032743_5F75045C_16.json",
+          "receipts/17_E4B_R1P_20261107_032743_5F75045C_17.json",
+          "receipts/18_E4B_R1P_20261107_032743_5F75045C_18.json",
+          "receipts/19_E4B_R1P_20261107_032743_5F75045C_19.json",
+          "receipts/20_E4B_R1P_20261107_032743_5F75045C_20.json",
+          "receipts/21_E4B_R1P_20261107_032743_5F75045C_21.json",
+          "receipts/22_E4B_R1P_20261107_032743_5F75045C_22.json",
+          "receipts/23_E4B_R1P_20261107_032743_5F75045C_23.json",
+          "receipts/24_E4B_R1P_20261107_032743_5F75045C_24.json",
+          "receipts/25_E4B_R1P_20261107_032743_5F75045C_25.json",
+          "receipts/26_E4B_R1P_20261107_032743_5F75045C_26.json",
+          "receipts/27_E4B_R1P_20261107_032743_5F75045C_27.json",
+          "runner_process_receipt.json"
+        ]
+      }
+    ],
+    "status": "FOUND_EXACT_HASH_AND_CRC_PASS"
+  },
+  "policy_refresh": {
+    "A1": "NOT_AUDITED_BY_THIS_SCRIPT",
+    "A3": "NOT_AUDITED_BY_THIS_SCRIPT",
+    "B1": "NOT_AUDITED_BY_THIS_SCRIPT",
+    "D1": "NOT_AUDITED_BY_THIS_SCRIPT",
+    "E4B_LOOP": "NOT_AUDITED_BY_THIS_SCRIPT",
+    "separate_decisions_required": true
+  },
+  "source_pins_before_after": {
+    "count": 17,
+    "stable": true,
+    "rows": [
+      {
+        "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+        "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+        "stable": true
+      },
+      {
+        "path": "c11c-suite/c11c-producer/producer_schema.json",
+        "sha256": "564f11fb4fee9221910dc373550650172eda4f106d6dc25532cc43cb8e6314a0",
+        "stable": true
+      },
+      {
+        "path": "tools/prototypes/c11c_common/C11CVariationProfile.gd",
+        "sha256": "f7df994d8842183275bc331decd75762a153f3100248c7cc8b590e34c1347e2d",
+        "stable": true
+      },
+      {
+        "path": "tools/prototypes/c11c_common/C11CVisualLoopDuration.gd",
+        "sha256": "4ea0b0decbd3a22ade42023e819a74872f312b63facc1163dc73a7c656fdbaf8",
+        "stable": true
+      },
+      {
+        "path": "tools/prototypes/c11c_common/generate_c11c_family_music.py",
+        "sha256": "41bb8f9842ac941ea86c838f272b11bd0642973b26e92defa006721a3d8cb84d",
+        "stable": true
+      },
+      {
+        "path": "profiles/presentation/c11c_visual_music_profiles.json",
+        "sha256": "b78706c5a9adbf1581d925f522b76cc3419983177de213734cc79996af5cbf58",
+        "stable": true
+      },
+      {
+        "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesPrototype.gd",
+        "sha256": "ab2560cbe7fa42c5cad3b143aa59d1f2a0dc047682f7667983c7c0a0f6dbb61c",
+        "stable": true
+      },
+      {
+        "path": "tools/prototypes/c11c_geometric_waves_v1/run_prototype.ps1",
+        "sha256": "661bd61df61bc633e4b87cd4b9413c4317c8d4b6068194245aea7d40fcb5c7cd",
+        "stable": true
+      },
+      {
+        "path": "tools/prototypes/c11c_fractal_bloom_v1/FractalBloomPrototype.gd",
+        "sha256": "b596ecba5eeae80ba615d7cb8a741dffcab9db4c44296e660f4f9d6919cc5c55",
+        "stable": true
+      },
+      {
+        "path": "tools/prototypes/c11c_fractal_bloom_v1/run_prototype.ps1",
+        "sha256": "02e3721c92046f1f69119e5bbc6c69709dd0b97fad7191c08213ecc233930801",
+        "stable": true
+      },
+      {
+        "path": "tools/prototypes/c11c_sacred_symmetry_v1/SacredSymmetryPrototype.gd",
+        "sha256": "12fdbc13e05df28b26cf95fe1907d150bd41f29196287700153521e9baee336b",
+        "stable": true
+      },
+      {
+        "path": "tools/prototypes/c11c_sacred_symmetry_v1/run_prototype.ps1",
+        "sha256": "8eea21f7b72f679d8951410597f0ecf968ac0a6f1ee629a48de965ea62b60b6e",
+        "stable": true
+      },
+      {
+        "path": "tools/prototypes/c11c_living_particles_v1/LivingParticlesPrototype.gd",
+        "sha256": "835ba0df2c160a259be39bd1977bfac0e6a66f903ce1aa6b4247af7c508ad94a",
+        "stable": true
+      },
+      {
+        "path": "tools/prototypes/c11c_living_particles_v1/run_prototype.ps1",
+        "sha256": "3674fdf778927022d2ebc1d1a96865b441479c5e4e71802e90837d654278a638",
+        "stable": true
+      },
+      {
+        "path": "tools/prototypes/c11c_invisible_forces_v1/InvisibleForcesPrototype.gd",
+        "sha256": "a68661a5fdf792aa7fe701afa6fbf1631a2b8215c214032f58ecfe0c69d8374a",
+        "stable": true
+      },
+      {
+        "path": "tools/prototypes/c11c_invisible_forces_v1/run_prototype.ps1",
+        "sha256": "88924dd86ebdc9b51a51f354ec22f40beb75cf6daafbe869283fa187568b6f60",
+        "stable": true
+      },
+      {
+        "path": "docs/current/e/C11E_E4B_REMAINING_22_LOOP_GRAMMAR_QUALIFICATION_PLAN_20261109_V2.md",
+        "sha256": "1516df3b51e306a9e0560cf6b81bc51510381d0e6a5c6ca41712f9f9306390ae",
+        "stable": true
+      }
+    ]
+  },
+  "processes_invoked": {
+    "git": false,
+    "tests": false,
+    "godot": false,
+    "c11c_launchers": false,
+    "music_generation": false,
+    "ffmpeg": false,
+    "ffprobe": false,
+    "renderer": false,
+    "dispatch": false,
+    "media_created": false,
+    "media_modified": false
+  },
+  "execution_authority": {
+    "loop22_media_authorization": "NOT_GRANTED",
+    "renderer": "OFF",
+    "release_authority": "NONE"
+  },
+  "next_gate": "Resolve the R1P archive projection and refresh current policy fingerprints/decision docket. Only then prepare the separate 22-selector / 44-output execution amendment."
+}
