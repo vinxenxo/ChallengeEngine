@@ -1,0 +1,77 @@
+{
+    "schema":  "C11E-E4C-A3-DRILL-DESIGN-CONTRACT-INSTALL-RECEIPT-V5",
+    "status":  "PASS_PINNED_REPLACEMENT_PLUS_ADD_ONLY",
+    "run_id":  "E4C_A3_DRILL_CONTRACT_V5_20261110T181034_fde3ca43",
+    "frozen_c11c_manifest_sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "frozen_c11c_manifest_bytes":  796318,
+    "support_source_pins":  13,
+    "source_replacements":  3,
+    "additive_files":  26,
+    "package_payload_files":  29,
+    "replacement_postimages":  [
+                                   {
+                                       "sha256":  "5702092bc1c88e4b333dd30cc150f0d383cd2006121037b0198905c75a3af795",
+                                       "path":  "definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1.json"
+                                   },
+                                   {
+                                       "sha256":  "8d4cd93c2a8d08eea764f2523f2c3576e00b5e1006e925393acad75afdd38356",
+                                       "path":  "tools/c11d/d9/d_renderer_loop_drill_editorial_field_windows.py"
+                                   },
+                                   {
+                                       "sha256":  "4c3b214f658ada8f6a4c06f483a0f288ecbd9f9ac1455141e90956e96063cc02",
+                                       "path":  "tools/c11d/d9/test_d_renderer_loop_drill_editorial_field_windows.py"
+                                   }
+                               ],
+    "powershell_ast":  "PASS",
+    "package_inventory":  "PASS",
+    "staged_support_and_replacement_pins":  "PASS_13_PLUS_3",
+    "py_compile":  "PASS_8_MODULES",
+    "staged_changed_source_tests":  "PASS_33_PLUS_5_PLUS_7_PLUS_10",
+    "staged_test_results":  [
+                                {
+                                    "test":  "tools/c11d/d9/test_d_renderer_loop_drill_editorial_field_windows.py",
+                                    "expected":  33,
+                                    "exit_code":  0,
+                                    "stdout_sha256":  "186377ccf716ac4b474d40655330b75c6c852e5fb4bd53d5bcb5e1942ebc93fb",
+                                    "stderr_sha256":  "729516705f623504bb79d092338f427a563660351faed66affc704dce08769cc"
+                                },
+                                {
+                                    "test":  "tools/c11d/d9/test_c11e_e4c_drill_source_phase_ownership_audit.py",
+                                    "expected":  5,
+                                    "exit_code":  0,
+                                    "stdout_sha256":  "dd485051e0de7dd7e9dc2311734627301e3b83af3bdd148aa0765bb8e70b6b37",
+                                    "stderr_sha256":  "2b6a70aa81fd29eb02a55a38987d205ec7bffde50df8c77368ba9bbb353f80bf"
+                                },
+                                {
+                                    "test":  "tools/c11d/d9/test_c11e_e4c_drill_composition_proposal.py",
+                                    "expected":  7,
+                                    "exit_code":  0,
+                                    "stdout_sha256":  "186763ce634de90155b56c1d3496cb36e6dc49b1ed5141dc82d5f5e2347bd0ac",
+                                    "stderr_sha256":  "40e5f38245239b9f89312c0895970bf0f93eaffe255fbfc940df22f63bf9dc86"
+                                },
+                                {
+                                    "test":  "tools/c11d/d9/test_c11e_e4c_drill_timebase_proposal.py",
+                                    "expected":  10,
+                                    "exit_code":  0,
+                                    "stdout_sha256":  "d321527f0a8a64e388b8bcc80f6c95728354778d1747aebd3b7702a922eb6bf0",
+                                    "stderr_sha256":  "fea8fe4dc3c11c3e8ba01bbb56ee01199989d8aff788b21d04818ed291c74e09"
+                                }
+                            ],
+    "a3_lineage_bridge_sha256":  "aec0e387f167f4b821b7d94f06a67f78f498be939fe3cda857d20ce550819cac",
+    "drill_composition_proposal_sha256":  "b22f9eb6fce39f877e432ff5f0051ecf5ab8575ecb9f580fe5f158994222fc09",
+    "drill_timebase_proposal_sha256":  "44ab3b0fa09a6f7d42cd8cf2f1122cada6cbffe16a7a6b53c2af5e88d5daddc8",
+    "drill_composition_status":  "APPROVED_AS_PROPOSED_D_OWNED_DESIGN_CONTRACT_ONLY",
+    "drill_timebase_status":  "APPROVED_AS_PROPOSED_D_OWNED_DESIGN_CONTRACT_ONLY",
+    "operator_decision_record_sha256":  "eb95da188065b8ebcb2371e2a6bcff6762ce000a5ca74f8ea384ecec4ee58303",
+    "renderer":  "OFF",
+    "renderer_native_input_emitted":  false,
+    "production_dispatch":  false,
+    "media_created":  false,
+    "audio_generation":  false,
+    "release_authority":  "NONE",
+    "git_checks":  "SKIPPED",
+    "commits":  "OPERATOR_MANAGED",
+    "staging_strategy":  "TEMP_SHORT_PATH_MAX_240",
+    "staging_root":  "C:\\Users\\vinxe\\AppData\\Local\\Temp\\C11EA3_STAGE_63f05de7",
+    "evidence_directory":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_a3_drill_contract_overlay\\E4C_A3_DRILL_CONTRACT_V5_20261110T181034_fde3ca43"
+}

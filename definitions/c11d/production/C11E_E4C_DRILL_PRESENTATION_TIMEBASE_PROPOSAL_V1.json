@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema": "C11E-E4C-DRILL-PRESENTATION-TIMEBASE-PROPOSAL-V1",
+  "schema_version": "1.0",
+  "proposal_id": "C11E_E4C_DRILL_PRESENTATION_TIMEBASE_V1",
+  "status": "PROPOSED_NOT_APPROVED_NOT_RENDERER_INPUT",
+  "purpose": "Derive an exact request-payload GAME frame to final C11-C presentation stream mapping from pinned C11-C phase/player source; this is design evidence only and does not authorize renderer input or change C11-C.",
+  "authority": {
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "a3_proposal_sha256": "609a4d183aac07c2cbe1abaf41444160fdd137217faffbead3aef618320d57dc",
+    "a3_operator_decision_record_sha256": "49efd5494f351f09d7597c4699e9c12e361b36884b6bfadacd822e6ff1480e04",
+    "a3_lineage_bridge_sha256": "aec0e387f167f4b821b7d94f06a67f78f498be939fe3cda857d20ce550819cac",
+    "b1_proposal_sha256": "41a62b0766db47cd99772f28642ef67766314f20f0f7891789d6b7497bbfee85",
+    "b1_decision": "APPROVE_AS_PROPOSED_TECHNICAL_DELIVERY_TIMEBASE_ONLY",
+    "source_pins": {
+      "core/presentation/CountdownPresentationLogic.gd": "b163ea114cc48af2dfd957ee92d00d524ea5b96b5966850f5ca8d6e5ec933379",
+      "core/presentation/VisualDrillPresentationPhaseLogic.gd": "6555d08ac3c0098b20a57e924b0c4ff2df006a23fa00a81b254fa5ebd5bb2494",
+      "core/presentation/rendering/VisualContentPlayer.gd": "58d86d56ebd7507c9e800c83010103b9be12f1b5dca9356da61ca623e4cf0145",
+      "core/presentation/VisualDrillPresentationBinder.gd": "cb6acc408252b8b794177d8f5923a3b151646eebdfd1efe9a30fdd6221de82c0",
+      "core/presentation/C11CVisualEditorialLayer.gd": "f8f718c067a4d7a088cc16f244cc40209e7183bec93e44d8cb66eb6dd404cf7d",
+      "core/presentation/PresentationUI.gd": "a55fea5a4525ea247144a4da88242f4ac602c3a014f7d02b50d032ce99224730",
+      "definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json": "609a4d183aac07c2cbe1abaf41444160fdd137217faffbead3aef618320d57dc",
+      "definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1.json": "5702092bc1c88e4b333dd30cc150f0d383cd2006121037b0198905c75a3af795",
+      "definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_V1.json": "41a62b0766db47cd99772f28642ef67766314f20f0f7891789d6b7497bbfee85",
+      "docs/current/e/C11E_E4B_OPERATOR_POLICY_DECISION_RECORD_20261106_V1.json": "49efd5494f351f09d7597c4699e9c12e361b36884b6bfadacd822e6ff1480e04",
+      "docs/current/e/C11E_E4C_A3_REVIEW_MANIFEST_LINEAGE_RECONCILIATION_20261110_V2.json": "aec0e387f167f4b821b7d94f06a67f78f498be939fe3cda857d20ce550819cac"
+    }
+  },
+  "source_semantics": {
+    "fps_authority": "ACTUAL_RENDERED_FRAME_STREAM_FPS",
+    "pre_roll_frames": "round(COUNTDOWN_SECONDS * fps)",
+    "game_payload_frames": "actual_runtime_get_frame_count",
+    "end_cta_frames": "round(END_CTA_SECONDS * fps)",
+    "total_final_frames": "pre_roll_frames + game_payload_frames + end_cta_frames",
+    "player_frame_index_contract": {
+      "PRE_ROLL": "global presentation frame index, from 0 to pre_roll_frames-1",
+      "GAME": "local current gameplay frame index, from 0 to game_payload_frames-1; player passes _current_frame_index to binder",
+      "END_CTA": "global presentation frame index, from pre_roll_frames+game_payload_frames to total_final_frames-1"
+    }
+  },
+  "candidate_mapping": {
+    "formula": "final_presentation_frame_index = pre_roll_frames + game_payload_frame_index",
+    "pre_roll_frames": "round(3.0 * actual_stream_fps)",
+    "end_cta_frames": "round(3.0 * actual_stream_fps)",
+    "game_payload_interval": "[0, actual_game_payload_frame_count)",
+    "final_game_interval": "[pre_roll_frames, pre_roll_frames + actual_game_payload_frame_count)",
+    "phase_visibility": {
+      "PRE_ROLL": "SUPPRESS_ALL_D_EDITORIAL_FIELDS",
+      "GAME": "APPLY_A3_NONEMPTY_FIELDS_WITH_EXACT_GAME_PAYLOAD_TO_FINAL_FRAME_MAPPING",
+      "END_CTA": "SUPPRESS_ALL_D_EDITORIAL_FIELDS; preserve native C11-C END_CTA header CTA",
+      "DONE": "NO_FRAME"
+    },
+    "source_frame_mapping": {
+      "PRE_ROLL": "reuse source frame index 0, matching existing C11-C player",
+      "GAME": "source frame index equals game_payload_frame_index",
+      "END_CTA": "reuse source frame index game_payload_frame_count - 1, matching existing C11-C player"
+    },
+    "frame_rate": "UNCHANGED_ACTUAL_STREAM_FPS",
+    "frame_order": "IDENTITY_WITH_PHASE_INSERTION_ALREADY_PERFORMED_BY_C11C_PLAYER",
+    "frame_count": "PRESERVE_C11C_TOTAL_PRESENTATION_FRAMES; NO_RESAMPLING_OR_DUPLICATE_OFFSET",
+    "a3_field_window_convention": "ZERO_BASED_HALF_OPEN_GAME_PAYLOAD_INTERVAL"
+  },
+  "worked_example": {
+    "fps": 30,
+    "game_payload_frames": 630,
+    "pre_roll_frames": 90,
+    "end_cta_frames": 90,
+    "total_final_frames": 810,
+    "game_payload_frame_0_maps_to_final_frame": 90,
+    "game_payload_frame_629_maps_to_final_frame": 719,
+    "final_game_interval": "[90,720)",
+    "pre_roll_interval": "[0,90)",
+    "end_cta_interval": "[720,810)"
+  },
+  "semantic_guards": {
+    "native_end_cta_owner": "C11C_PRESENTATION_UI_CTA_COMPONENT_IN_HEADER",
+    "d_editorial_does_not_compete_with_native_end_cta": true,
+    "a3_field_values_and_hashes_unchanged": true,
+    "request_seed": "VISUAL_ONLY",
+    "request_music_seed": "AUDIO_ONLY",
+    "b1_preserves_delivery_cadence": "30FPS_FRAME_ORDER_DURATION_PRESERVED_NO_RESAMPLING",
+    "d1_audio_asset_selection_or_generation_authorized": false,
+    "renderer_native_input_authorized": false,
+    "production_dispatch_authorized": false,
+    "media_creation_authorized": false
+  },
+  "approval": {
+    "timebase_mapping_approved": false,
+    "operator_decision_required_for_exact_proposal_sha256": true,
+    "approval_scope_if_granted": "D_OWNED_DESIGN_AND_CONTRACT_IMPLEMENTATION_ONLY"
+  },
+  "execution_boundary": {
+    "mode": "PROPOSAL_ONLY_SOURCE_AUDIT",
+    "renderer": "OFF",
+    "renderer_native_input_emitted": false,
+    "renderer_activation": false,
+    "production_dispatch": false,
+    "media_created": false,
+    "c11c_source_mutation": false,
+    "release_authority": "NONE"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "schema": "C11E-E4C-DRILL-COMPOSITION-OPERATOR-DECISION-RECORD-V1",
+  "schema_version": "1.0",
+  "record_id": "C11E_E4C_DRILL_COMPOSITION_OPERATOR_DECISION_20261110_V1",
+  "recorded_date": "2026-11-10",
+  "decision_source": "EXPLICIT_OPERATOR_MESSAGE_IN_CONVERSATION",
+  "decision_text": "APPROVED AS PROPOSAL",
+  "decision_semantics": "APPROVE_AS_PROPOSED_FOR_D_OWNED_DESIGN_AND_CONTRACT_IMPLEMENTATION_ONLY",
+  "decisions": [
+    {
+      "decision_id": "E4C_DRILL_OUTER_BAND_GEOMETRY",
+      "proposal_path": "definitions/c11d/production/C11E_E4C_DRILL_EDITORIAL_COMPOSITION_PROPOSAL_V1.json",
+      "proposal_sha256": "b22f9eb6fce39f877e432ff5f0051ecf5ab8575ecb9f580fe5f158994222fc09",
+      "schema_path": "definitions/c11d/production/C11E_E4C_DRILL_EDITORIAL_COMPOSITION_PROPOSAL_SCHEMA_V1.json",
+      "schema_sha256": "3684316e98ab2054bd913df17c6e398d8040d047027de36332690cfd2be517bc",
+      "decision": "APPROVE_AS_PROPOSED",
+      "rationale": "Approve the 720x1280 REVIEW_720 outer composition, 192px top/bottom bands, 504x896 uniformly contained C11-C source viewport at x=108,y=192, no crop/stretch/resampling, D editorial visible only during GAME, and native C11-C PRE_ROLL/END_CTA ownership preserved.",
+      "proposal_file_mutated": false
+    },
+    {
+      "decision_id": "E4C_DRILL_GAME_TO_FINAL_PRESENTATION_TIMEBASE",
+      "proposal_path": "definitions/c11d/production/C11E_E4C_DRILL_PRESENTATION_TIMEBASE_PROPOSAL_V1.json",
+      "proposal_sha256": "44ab3b0fa09a6f7d42cd8cf2f1122cada6cbffe16a7a6b53c2af5e88d5daddc8",
+      "schema_path": "definitions/c11d/production/C11E_E4C_DRILL_PRESENTATION_TIMEBASE_PROPOSAL_SCHEMA_V1.json",
+      "schema_sha256": "c5cedcd749a6702dc47b1de0bd67c57721bb9a06cee5cb3709cdc1b17d8a6806",
+      "decision": "APPROVE_AS_PROPOSED",
+      "rationale": "Approve final_presentation_frame_index = pre_roll_frames + game_payload_frame_index, derived from the actual native phase stream; preserve frame count/order/duration with no resampling and retain native END_CTA.",
+      "proposal_file_mutated": false
+    }
+  ],
+  "scope_boundary": {
+    "d_only_design_and_contract_implementation_authorized": true,
+    "focused_isolated_visual_and_pixel_tests_authorized": true,
+    "renderer_native_input_emission_authorized": false,
+    "renderer_activation_authorized": false,
+    "production_dispatch_authorized": false,
+    "media_creation_authorized": false,
+    "audio_asset_selection_authorized": false,
+    "audio_generation_authorized": false,
+    "audio_payload_materialization_authorized": false,
+    "release_promotion_authorized": false,
+    "c11c_source_or_mechanics_mutation_authorized": false,
+    "d4_8": "BLOCKED",
+    "d9_10": "PREPARE_ONLY",
+    "d9_14": "BLOCKED",
+    "d9_16": "BLOCKED",
+    "d9_17": "BLOCKED_NO_GO",
+    "d10": "BLOCKED_FOR_PROMOTION",
+    "release_authority": "NONE"
+  },
+  "proposal_files_mutated": false,
+  "c11c_frozen_baseline_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+}

@@ -5,6 +5,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
+import d_renderer_loop_drill_editorial_field_windows as mod
 from d_renderer_loop_drill_editorial_field_windows import FieldWindowProposalError, propose_field_windows, validate_contract
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -115,12 +116,107 @@ class LoopDrillEditorialFieldWindowProposalTests(unittest.TestCase):
         data = json.loads(p.read_text(encoding="utf-8")); data["execution_boundary"]["renderer_activation"] = True; p.write_text(json.dumps(data), encoding="utf-8")
         with self.assertRaises(FieldWindowProposalError): validate_contract(root)
 
+
+    def test_a3_exact_operator_decision_and_single_pointer_reconciliation(self):
+        result = validate_contract(ROOT)
+        bridge = result["lineage_reconciliation"]
+        self.assertEqual(bridge["approved_a3_proposal_sha256"], "609a4d183aac07c2cbe1abaf41444160fdd137217faffbead3aef618320d57dc")
+        self.assertEqual(bridge["allowed_json_pointer_difference"], ["/source_lineage/6/sha256"])
+        self.assertFalse(bridge["renderer_native_input_emitted"])
+
+    def test_negative_operator_decision_record_cannot_be_changed(self):
+        root = self._copy_root()
+        p = root / "docs/current/e/C11E_E4B_OPERATOR_POLICY_DECISION_RECORD_20261106_V1.json"
+        data = json.loads(p.read_text(encoding="utf-8"))
+        data["decisions"][1]["decision"] = "PENDING"
+        p.write_text(json.dumps(data), encoding="utf-8")
+        with self.assertRaisesRegex(FieldWindowProposalError, "decision record SHA-256 mismatch"):
+            validate_contract(root)
+
+    def test_negative_lineage_bridge_cannot_broaden_renderer_scope(self):
+        root = self._copy_root()
+        p = root / "docs/current/e/C11E_E4C_A3_REVIEW_MANIFEST_LINEAGE_RECONCILIATION_20261110_V2.json"
+        data = json.loads(p.read_text(encoding="utf-8"))
+        data["preservation"]["renderer_activation"] = True
+        p.write_text(json.dumps(data), encoding="utf-8")
+        with self.assertRaisesRegex(FieldWindowProposalError, "reconciliation record SHA-256 mismatch"):
+            validate_contract(root)
+
+    def test_lineage_bridge_discloses_exact_manifest_replacement(self):
+        result = validate_contract(ROOT)
+        bridge = mod.load_json(ROOT / mod.LINEAGE_RECONCILIATION_REL)
+        transition = bridge["review_manifest_lineage"]["installed_transition"]
+        self.assertEqual(transition["operation"], "PINNED_REPLACE")
+        self.assertEqual(transition["preimage_sha256"], mod.HISTORICAL_REVIEW_MANIFEST_SHA256)
+        self.assertEqual(transition["postimage_sha256"], mod.CURRENT_REVIEW_MANIFEST_SHA256)
+        self.assertTrue(bridge["preservation"]["review_manifest_current_file_mutated_by_this_reconciliation"])
+        self.assertFalse(bridge["preservation"]["review_manifest_approval_booleans_changed"])
+
+    def test_negative_manifest_transition_cannot_be_hidden(self):
+        root = self._copy_root()
+        p = root / "docs/current/e/C11E_E4C_A3_REVIEW_MANIFEST_LINEAGE_RECONCILIATION_20261110_V2.json"
+        data = json.loads(p.read_text(encoding="utf-8"))
+        data["preservation"]["review_manifest_current_file_mutated_by_this_reconciliation"] = False
+        p.write_text(json.dumps(data), encoding="utf-8")
+        with self.assertRaisesRegex(FieldWindowProposalError, "lineage reconciliation record SHA-256 mismatch"):
+            validate_contract(root)
+
+    def test_negative_historical_review_manifest_archive_pin(self):
+        root = self._copy_root()
+        p = root / "docs/history/c11e/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1_PRE_D98_LINEAGE_REFRESH_20261106.json"
+        p.write_text(p.read_text(encoding="utf-8") + " ", encoding="utf-8")
+        with self.assertRaisesRegex(FieldWindowProposalError, "historical editorial review manifest archive SHA-256 mismatch"):
+            validate_contract(root)
+
+    def test_negative_current_review_manifest_hash_drift(self):
+        root = self._copy_root()
+        p = root / "definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1.json"
+        data = json.loads(p.read_text(encoding="utf-8"))
+        data["purpose"] = "mutated"
+        p.write_text(json.dumps(data), encoding="utf-8")
+        with self.assertRaisesRegex(FieldWindowProposalError, "current editorial review manifest SHA-256 mismatch"):
+            validate_contract(root)
+
+    def test_negative_review_manifest_extra_semantic_difference(self):
+        root = self._copy_root()
+        p = root / "definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1.json"
+        data = json.loads(p.read_text(encoding="utf-8"))
+        data["status"] = "APPROVED"
+        p.write_text(json.dumps(data), encoding="utf-8")
+        with self.assertRaisesRegex(FieldWindowProposalError, "current editorial review manifest SHA-256 mismatch"):
+            validate_contract(root)
+
+    def test_negative_current_d98_model_pin_drift(self):
+        root = self._copy_root()
+        p = root / "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json"
+        p.write_text(p.read_text(encoding="utf-8") + " ", encoding="utf-8")
+        with self.assertRaisesRegex(FieldWindowProposalError, "current D9.8 editorial model SHA-256 mismatch"):
+            validate_contract(root)
+
+    def test_negative_bridge_rejects_wrong_approved_a3_hash(self):
+        root = self._copy_root()
+        p = root / "definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json"
+        data = json.loads(p.read_text(encoding="utf-8"))
+        data["purpose"] = "different proposal"
+        p.write_text(json.dumps(data), encoding="utf-8")
+        with self.assertRaises(FieldWindowProposalError):
+            validate_contract(root)
+
+    def test_lineage_bridge_keeps_d98_plan_only_and_d4_closed(self):
+        result = validate_contract(ROOT)
+        bridge = result["lineage_reconciliation"]
+        self.assertEqual(bridge["decision_scope"], "D_OWNED_DESIGN_AND_CONTRACT_IMPLEMENTATION_ONLY")
+        self.assertFalse(bridge["renderer_activation"])
+        self.assertFalse(bridge["media_created"])
+
     def _copy_root(self):
         temp = tempfile.TemporaryDirectory()
         self.addCleanup(temp.cleanup)
         root = Path(temp.name)
         for directory in ("definitions", "profiles", "release"):
             shutil.copytree(ROOT / directory, root / directory)
+        shutil.copytree(ROOT / "docs/current/e", root / "docs/current/e")
+        shutil.copytree(ROOT / "docs/history/c11e", root / "docs/history/c11e")
         return root
 
 if __name__ == "__main__":

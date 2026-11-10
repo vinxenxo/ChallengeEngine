@@ -1,0 +1,16 @@
+{
+    "schema":  "C11E-E4C-A3-DRILL-DESIGN-CONTRACT-INSTALL-FAILURE-V4",
+    "status":  "FAILED_CLOSED",
+    "run_id":  "E4C_A3_DRILL_CONTRACT_V4_20261110T180339_3746cf8d",
+    "stage":  "STAGED_VALIDATION",
+    "error":  "py_compile failed; inspect C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_a3_drill_contract_overlay\\E4C_A3_DRILL_CONTRACT_V4_20261110T180339_3746cf8d\\PY_COMPILE.stderr.log",
+    "journal":  [
+
+                ],
+    "rollback_status":  "NOT_NEEDED",
+    "renderer":  "OFF",
+    "media_created":  false,
+    "release_authority":  "NONE",
+    "staging_root":  "C:\\Users\\vinxe\\AppData\\Local\\Temp\\C11EA3_STAGE_373e1136",
+    "evidence_directory":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_a3_drill_contract_overlay\\E4C_A3_DRILL_CONTRACT_V4_20261110T180339_3746cf8d"
+}

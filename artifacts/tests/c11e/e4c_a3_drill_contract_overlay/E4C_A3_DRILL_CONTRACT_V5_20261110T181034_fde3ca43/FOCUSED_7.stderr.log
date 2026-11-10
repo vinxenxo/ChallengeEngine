@@ -1,0 +1,12 @@
+test_native_cta_ownership_preserved (__main__.DrillCompositionProposalTests.test_native_cta_ownership_preserved) ... ok
+test_negative_renderer_activation_rejected (__main__.DrillCompositionProposalTests.test_negative_renderer_activation_rejected) ... ok
+test_negative_timebase_inference_rejected (__main__.DrillCompositionProposalTests.test_negative_timebase_inference_rejected) ... ok
+test_partition_geometry (__main__.DrillCompositionProposalTests.test_partition_geometry) ... ok
+test_phase_offset_remains_unresolved (__main__.DrillCompositionProposalTests.test_phase_offset_remains_unresolved) ... ok
+test_schema_and_source_pins (__main__.DrillCompositionProposalTests.test_schema_and_source_pins) ... ok
+test_unapproved_status_and_no_renderer (__main__.DrillCompositionProposalTests.test_unapproved_status_and_no_renderer) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 1.712s
+
+OK

@@ -1,0 +1,222 @@
+{
+  "schema": "C11E-E4C-DRILL-EDITORIAL-COMPOSITION-PROPOSAL-V1",
+  "schema_version": "1.0",
+  "status": "PROPOSED_NOT_APPROVED_NOT_RENDERER_INPUT",
+  "purpose": "D-owned outer-band composition proposal for Visual Drill editorial fields while preserving the entire existing C11-C Drill source frame and native presentation phases.",
+  "authority": {
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "a1_proposal_sha256": "101092bb32127bb8854a501a9215c0b6cf69581594383903716907d49719c01a",
+    "a3_proposal_sha256": "609a4d183aac07c2cbe1abaf41444160fdd137217faffbead3aef618320d57dc",
+    "a3_operator_decision_record_sha256": "49efd5494f351f09d7597c4699e9c12e361b36884b6bfadacd822e6ff1480e04",
+    "a3_lineage_reconciliation_sha256": "aec0e387f167f4b821b7d94f06a67f78f498be939fe3cda857d20ce550819cac",
+    "source_phase_logic_sha256": "6555d08ac3c0098b20a57e924b0c4ff2df006a23fa00a81b254fa5ebd5bb2494",
+    "source_binder_sha256": "cb6acc408252b8b794177d8f5923a3b151646eebdfd1efe9a30fdd6221de82c0",
+    "source_player_sha256": "58d86d56ebd7507c9e800c83010103b9be12f1b5dca9356da61ca623e4cf0145",
+    "source_editorial_layer_sha256": "f8f718c067a4d7a088cc16f244cc40209e7183bec93e44d8cb66eb6dd404cf7d",
+    "source_presentation_ui_sha256": "a55fea5a4525ea247144a4da88242f4ac602c3a014f7d02b50d032ce99224730",
+    "source_social_ui_binder_sha256": "b15a062bf327d0c2bbc4ead0e877914f912528cc56e388df20dd84eb89863a3c",
+    "source_unified_frame_sha256": "d80c07103f56a2abfe34be60547285e61b0d03b50a5ed93c3c72d4241f6585ba"
+  },
+  "scope": {
+    "content_type": "visual_drills",
+    "drill_types": [
+      "tracking",
+      "pursuit",
+      "saccade",
+      "peripheral_scan"
+    ],
+    "tiers": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "selector_count": 20,
+    "editorial_fields": [
+      "title",
+      "subtitle",
+      "call_to_action",
+      "language"
+    ],
+    "visible_fields": [
+      "title",
+      "subtitle",
+      "call_to_action"
+    ],
+    "metadata_only_fields": [
+      "language"
+    ],
+    "field_text_max_codepoints": 160,
+    "unknown_sentinel": "UNKNOWN",
+    "blank_and_unknown_values": "SUPPRESS_VISUALLY_PRESERVE_CANONICAL_KEYS"
+  },
+  "candidate_activation": {
+    "when_any_visible_field_is_nonempty_and_not_unknown": "D_OUTER_BAND_COMPOSITION",
+    "when_all_visible_fields_are_empty_or_unknown": "UNCHANGED_FULL_FRAME_PASSTHROUGH",
+    "layout_static_for_entire_delivery_sequence": true,
+    "source_frame_order": "IDENTITY",
+    "delivery_frame_rate": "UNCHANGED",
+    "frame_count": "UNCHANGED",
+    "editorial_visibility_is_phase_gated": true
+  },
+  "geometry": {
+    "delivery_profile_id": "REVIEW_720",
+    "canvas": {
+      "width": 720,
+      "height": 1280,
+      "aspect_ratio": "9:16"
+    },
+    "background_rgb_hex": "05070B",
+    "top_editorial_band": {
+      "x": 0,
+      "y": 0,
+      "width": 720,
+      "height": 192
+    },
+    "source_frame_viewport": {
+      "x": 108,
+      "y": 192,
+      "width": 504,
+      "height": 896
+    },
+    "bottom_editorial_band": {
+      "x": 0,
+      "y": 1088,
+      "width": 720,
+      "height": 192
+    },
+    "source_frame_transform": {
+      "mode": "UNIFORM_CONTAIN",
+      "scale_x": 0.7,
+      "scale_y": 0.7,
+      "aspect_ratio_preserved": true,
+      "cropping": false,
+      "nonuniform_stretch": false,
+      "temporal_resampling": false,
+      "source_frame_count_mutation": false,
+      "source_frame_order_mutation": false,
+      "source_frame_index_mapping": "IDENTITY",
+      "yuv420p_chroma_alignment": "EVEN_X_Y_WIDTH_HEIGHT"
+    },
+    "editorial_text_blocks": {
+      "title": {
+        "region": "TOP_BAND",
+        "x": 36,
+        "y": 0,
+        "width": 648,
+        "height": 92,
+        "font": "Inter-Bold",
+        "font_size_px": 15,
+        "line_height_px": 19,
+        "max_lines": 4,
+        "max_chars_per_line_conservative": 41
+      },
+      "subtitle": {
+        "region": "TOP_BAND",
+        "x": 36,
+        "y": 100,
+        "width": 648,
+        "height": 92,
+        "font": "Inter-Bold",
+        "font_size_px": 15,
+        "line_height_px": 19,
+        "max_lines": 4,
+        "max_chars_per_line_conservative": 41
+      },
+      "call_to_action": {
+        "region": "BOTTOM_BAND",
+        "x": 36,
+        "y": 1151,
+        "width": 648,
+        "height": 66,
+        "font": "NotoSansMono-Regular",
+        "font_size_px": 15,
+        "line_height_px": 22,
+        "max_lines": 3,
+        "max_chars_per_line_conservative": 71
+      }
+    },
+    "overflow_policy": "NO_TRUNCATION_NO_ELLIPSIS_FAIL_CLOSED_IF_FONT_COVERAGE_OR_LAYOUT_CAPACITY_IS_NOT_PROVEN",
+    "line_break_policy": "D_OWNED_LAYOUT_BREAKS_ONLY_SOURCE_EDITORIAL_VALUE_AND_HASH_UNCHANGED"
+  },
+  "native_source_ownership": {
+    "c11c_native_header_strings": "PRESERVED_INSIDE_CONTAINED_SOURCE_FRAME",
+    "c11c_native_footer_telemetry": "PRESERVED_INSIDE_CONTAINED_SOURCE_FRAME",
+    "native_visual_drill_end_cta": "PRESERVED_INSIDE_SOURCE_FRAME_HEADER_DURING_END_CTA",
+    "c11c_visual_drill_binder": "UNMODIFIED",
+    "c11c_phase_logic": "UNMODIFIED",
+    "c11c_visual_content_player": "UNMODIFIED",
+    "c11c_editorial_layer": "UNMODIFIED",
+    "c11c_presentation_ui": "UNMODIFIED",
+    "c11c_family_renderers": "UNMODIFIED",
+    "c11c_music_generator_and_profiles": "UNMODIFIED"
+  },
+  "phase_ownership": {
+    "source_phase_order": [
+      "PRE_ROLL",
+      "GAME",
+      "END_CTA",
+      "DONE"
+    ],
+    "pre_roll_seconds": 3.0,
+    "end_cta_seconds": 3.0,
+    "end_cta_native_owner": "C11C_PRESENTATION_UI_CTA_COMPONENT_IN_HEADER",
+    "c11c_header_content_owner": "C11CVisualEditorialLayer",
+    "c11c_footer_content_owner": "C11CVisualEditorialLayer",
+    "a3_approved_payload_window": "ZERO_BASED_HALF_OPEN_[0,ACTUAL_MATERIALIZED_GAME_PAYLOAD_FRAME_COUNT)",
+    "payload_to_final_presentation_offset": "UNRESOLVED_REQUIRES_EXPLICIT_D_OWNED_TIMEBASE_DECISION",
+    "final_delivery_frame_count_authority": "ACTUAL_C11C_SOURCE_VIDEO_FRAME_INVENTORY_NOT_D9_REQUEST",
+    "no_phase_inference_or_implicit_frame_offset": true
+  },
+  "audio_boundary": {
+    "family_music_engine": "EXISTING_C11C_FAMILY_MUSIC_V4",
+    "profiles": {
+      "tracking": "FLOWING_VECTOR",
+      "pursuit": "ORGANIC_BLOOM",
+      "saccade": "CIRCUIT_PULSE",
+      "peripheral_scan": "ORBITAL_RITUAL"
+    },
+    "gameplay_seed": "request.seed_VISUAL_ONLY",
+    "music_seed": "request.music_seed_AUDIO_ONLY",
+    "protected_visual_capture": "C11C_LAUNCHER_NOSOUND",
+    "audio_generation_and_mux": "NOT_AUTHORIZED_BY_THIS_PROPOSAL",
+    "d3_v5": "NOT_USED_FOR_DRILL"
+  },
+  "approval_gates": {
+    "drill_composition_approved": false,
+    "drill_timebase_mapping_approved": false,
+    "font_shaping_and_pixel_review_approved": false,
+    "renderer_native_input_emitted": false,
+    "renderer_activation": false,
+    "production_dispatch": false,
+    "media_created": false,
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE"
+  },
+  "open_decisions": [
+    "Approve or revise exact outer-band geometry and text capacity for all 20 Drill selectors and 160-codepoint D9.8 field maxima.",
+    "Separately approve or revise the exact A.3 GAME payload to final-presentation frame mapping proposal; no offset is active before that decision.",
+    "Confirm D editorial fields are visible only during GAME; suppress D title/subtitle/CTA during PRE_ROLL and END_CTA so the native C11-C END_CTA header is not duplicated.",
+    "Require actual font coverage, shaping, overflow, clipping, contrast and pixel evidence before considering renderer input."
+  ],
+  "execution_boundary": {
+    "mode": "PROPOSAL_ONLY_SOURCE_AUDIT",
+    "renderer": "OFF",
+    "renderer_native_input_emitted": false,
+    "renderer_dispatch_invoked": false,
+    "renderer_activation": false,
+    "production_execution": false,
+    "payload_files_written": false,
+    "media_created": false,
+    "c11c_source_mutation": false,
+    "release_authority": "NONE"
+  },
+  "editorial_visibility": {
+    "PRE_ROLL": "SUPPRESS_ALL_D_EDITORIAL_FIELDS; preserve_native_C11C_source_frame",
+    "GAME": "APPLY_A3_FIELDS_OVER_THE_HALF_OPEN_GAME_PAYLOAD_WINDOW_AFTER_EXPLICIT_TIMEBASE_MAPPING_ONLY",
+    "END_CTA": "SUPPRESS_ALL_D_EDITORIAL_FIELDS; preserve_native_C11C_END_CTA_HEADER_AND_FOOTER",
+    "DONE": "NO_FRAME",
+    "note": "This is an unapproved visibility proposal; the separate Drill timebase proposal defines the candidate GAME-to-final mapping."
+  }
+}

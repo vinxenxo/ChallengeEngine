@@ -1,0 +1,87 @@
+{
+  "schema": "C11E-E4C-A3-REVIEW-MANIFEST-LINEAGE-RECONCILIATION-V2",
+  "schema_version": "1.0",
+  "record_id": "C11E_E4C_A3_REVIEW_MANIFEST_LINEAGE_RECONCILIATION_20261110_V2",
+  "status": "ATTESTED_SINGLE_SOURCE_LINEAGE_POINTER_REFRESH_NO_POLICY_CHANGE",
+  "recorded_date": "2026-11-10",
+  "purpose": "Bridge the immutable A.3 proposal and exact prior operator decision to the D9.8-refreshed D review manifest by one pinned D-owned manifest replacement; the single permitted JSON pointer changes and no policy approval or rendering authority changes.",
+  "frozen_c11c": {
+    "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+    "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "bytes": 796318
+  },
+  "approved_policy": {
+    "a1": {
+      "path": "definitions/c11d/production/D_RENDERER_UNIFIED_PRESENTATION_REGION_POLICY_PROPOSAL_V1.json",
+      "sha256": "101092bb32127bb8854a501a9215c0b6cf69581594383903716907d49719c01a",
+      "decision": "APPROVE_AS_PROPOSED"
+    },
+    "a3": {
+      "path": "definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
+      "sha256": "609a4d183aac07c2cbe1abaf41444160fdd137217faffbead3aef618320d57dc",
+      "decision": "APPROVE_AS_PROPOSED"
+    },
+    "a3_decision_record": {
+      "path": "docs/current/e/C11E_E4B_OPERATOR_POLICY_DECISION_RECORD_20261106_V1.json",
+      "sha256": "49efd5494f351f09d7597c4699e9c12e361b36884b6bfadacd822e6ff1480e04",
+      "decision_source": "EXPLICIT_OPERATOR_MESSAGE_IN_CONVERSATION",
+      "semantics": "APPROVE_AS_PROPOSED_FOR_D_OWNED_DESIGN_AND_CONTRACT_IMPLEMENTATION_ONLY"
+    }
+  },
+  "review_manifest_lineage": {
+    "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1.json",
+    "historical_archive_path": "docs/history/c11e/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1_PRE_D98_LINEAGE_REFRESH_20261106.json",
+    "historical_sha256": "2075da9c33c689861a68d3bd8fb19b7ed593c6e76010ab200880746aa6d1a470",
+    "current_sha256": "5702092bc1c88e4b333dd30cc150f0d383cd2006121037b0198905c75a3af795",
+    "historical_bytes": 8591,
+    "current_bytes": 8591,
+    "allowed_json_pointer_difference": [
+      "/source_lineage/6/sha256"
+    ],
+    "old_pointer_value": "50655c82521a353f1db6920f4d099cad92452ae369251f9fbde45cbaee4e8c53",
+    "new_pointer_value": "dabb458fc2215156ddb5ebea7e8ebec811098886ce2858733ba9fb13f6075ccb",
+    "pointer_target_path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+    "structural_equivalence_claim": "ALL_REVIEW_MANIFEST_FIELDS_AND_VALUES_EQUAL_EXCEPT_THE_SINGLE_D98_SOURCE_LINEAGE_SHA256_POINTER",
+    "no_claim_of_old_vs_new_d98_model_byte_or_semantic_equivalence": true,
+    "installed_transition": {
+      "operation": "PINNED_REPLACE",
+      "preimage_sha256": "2075da9c33c689861a68d3bd8fb19b7ed593c6e76010ab200880746aa6d1a470",
+      "postimage_sha256": "5702092bc1c88e4b333dd30cc150f0d383cd2006121037b0198905c75a3af795",
+      "preimage_bytes": 8591,
+      "postimage_bytes": 8591,
+      "only_changed_json_pointer": "/source_lineage/6/sha256",
+      "historical_bytes_preserved_as_add_only_archive": true
+    }
+  },
+  "d98_context": {
+    "current_model_path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+    "current_model_sha256": "dabb458fc2215156ddb5ebea7e8ebec811098886ce2858733ba9fb13f6075ccb",
+    "semantic_reconciliation_path": "docs/current/e/C11E_E4B_D98_D99_SEMANTIC_RECONCILIATION_20261107_V4.md",
+    "semantic_reconciliation_sha256": "8ec940c0eafddfdea2ded77d2f6319d1c64ca512f1d690d217329a3b4944c751",
+    "plan_compatibility": "D9_9_PLAN_ONLY_COMPATIBILITY_TRUE",
+    "d4_executable_compatibility": false,
+    "renderer_admission": false
+  },
+  "preservation": {
+    "a3_proposal_mutated": false,
+    "a1_proposal_mutated": false,
+    "operator_decision_record_mutated": false,
+    "review_manifest_current_file_mutated_by_this_reconciliation": true,
+    "review_manifest_approval_booleans_changed": false,
+    "a3_mapping_semantics_changed": false,
+    "renderer_native_input_emitted": false,
+    "renderer_activation": false,
+    "production_dispatch": false,
+    "media_created": false,
+    "audio_generation": false,
+    "release_authority": "NONE",
+    "d4_8": "BLOCKED",
+    "d9_10": "PREPARE_ONLY",
+    "d9_14": "BLOCKED",
+    "d9_16": "BLOCKED",
+    "d9_17": "BLOCKED_NO_GO",
+    "d10": "BLOCKED_FOR_PROMOTION",
+    "review_manifest_changed_only_by_pinned_single_pointer_replacement": true
+  },
+  "scope_note": "This attestation validates provenance continuity for D-owned design and contract implementation only. It is not renderer admission, does not approve a new Drill composition geometry or source-presentation timebase mapping, and does not permit D4.8 execution."
+}

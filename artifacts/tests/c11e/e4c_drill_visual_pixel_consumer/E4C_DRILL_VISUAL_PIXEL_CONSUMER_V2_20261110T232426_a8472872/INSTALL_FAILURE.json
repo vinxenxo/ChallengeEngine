@@ -1,0 +1,16 @@
+{
+    "schema":  "C11E-E4C-DRILL-VISUAL-PIXEL-CONSUMER-INSTALL-FAILURE-V2",
+    "status":  "FAILED_CLOSED",
+    "run_id":  "E4C_DRILL_VISUAL_PIXEL_CONSUMER_V2_20261110T232426_a8472872",
+    "stage":  "STAGED_VALIDATION",
+    "error":  "Staged PowerShell runner style guide V12 lacks required rule: hash-guarded rollback",
+    "journal":  [
+
+                ],
+    "rollback_status":  "NOT_NEEDED",
+    "renderer":  "OFF",
+    "media_created":  false,
+    "release_authority":  "NONE",
+    "staging_root":  "C:\\Users\\vinxe\\AppData\\Local\\Temp\\C11EDRILLPIX_621d3d09",
+    "evidence_directory":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_drill_visual_pixel_consumer\\E4C_DRILL_VISUAL_PIXEL_CONSUMER_V2_20261110T232426_a8472872"
+}

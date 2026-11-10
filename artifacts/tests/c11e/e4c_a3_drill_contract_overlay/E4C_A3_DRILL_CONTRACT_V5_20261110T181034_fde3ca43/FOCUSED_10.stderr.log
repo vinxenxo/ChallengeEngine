@@ -1,0 +1,15 @@
+test_end_cta_indices_are_global_native_last_frame_and_d_suppressed (__main__.DrillTimebaseProposalTests.test_end_cta_indices_are_global_native_last_frame_and_d_suppressed) ... ok
+test_exact_30fps_phase_counts (__main__.DrillTimebaseProposalTests.test_exact_30fps_phase_counts) ... ok
+test_game_payload_first_and_last_frame_mapping (__main__.DrillTimebaseProposalTests.test_game_payload_first_and_last_frame_mapping) ... ok
+test_half_open_game_window_maps_to_final_interval (__main__.DrillTimebaseProposalTests.test_half_open_game_window_maps_to_final_interval) ... ok
+test_invalid_indices_and_phase_are_rejected (__main__.DrillTimebaseProposalTests.test_invalid_indices_and_phase_are_rejected) ... ok
+test_negative_proposal_cannot_be_approved_or_change_mapping (__main__.DrillTimebaseProposalTests.test_negative_proposal_cannot_be_approved_or_change_mapping) ... ok
+test_negative_protected_source_drift (__main__.DrillTimebaseProposalTests.test_negative_protected_source_drift) ... ok
+test_pre_roll_indices_are_global_and_d_editorial_suppressed (__main__.DrillTimebaseProposalTests.test_pre_roll_indices_are_global_and_d_editorial_suppressed) ... ok
+test_schema_source_pins_and_proposed_state (__main__.DrillTimebaseProposalTests.test_schema_source_pins_and_proposed_state) ... ok
+test_total_frame_count_preserves_three_second_phases (__main__.DrillTimebaseProposalTests.test_total_frame_count_preserves_three_second_phases) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 3.845s
+
+OK

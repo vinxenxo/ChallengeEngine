@@ -30,6 +30,24 @@ EXPECTED_FIXTURES = {
 }
 VISIBLE_FIELD_REGIONS = {"title": "HEADER", "subtitle": "HEADER", "call_to_action": "FOOTER"}
 METADATA_ONLY_FIELDS = {"language"}
+REVIEW_MANIFEST_REL = Path("definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1.json")
+REVIEW_MANIFEST_ARCHIVE_REL = Path("docs/history/c11e/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1_PRE_D98_LINEAGE_REFRESH_20261106.json")
+LINEAGE_RECONCILIATION_REL = Path("docs/current/e/C11E_E4C_A3_REVIEW_MANIFEST_LINEAGE_RECONCILIATION_20261110_V2.json")
+OPERATOR_DECISION_REL = Path("docs/current/e/C11E_E4B_OPERATOR_POLICY_DECISION_RECORD_20261106_V1.json")
+D98_RECONCILIATION_REL = Path("docs/current/e/C11E_E4B_D98_D99_SEMANTIC_RECONCILIATION_20261107_V4.md")
+CURRENT_REVIEW_MANIFEST_SHA256 = "5702092bc1c88e4b333dd30cc150f0d383cd2006121037b0198905c75a3af795"
+HISTORICAL_REVIEW_MANIFEST_SHA256 = "2075da9c33c689861a68d3bd8fb19b7ed593c6e76010ab200880746aa6d1a470"
+CURRENT_D98_MODEL_SHA256 = "dabb458fc2215156ddb5ebea7e8ebec811098886ce2858733ba9fb13f6075ccb"
+OPERATOR_DECISION_SHA256 = "49efd5494f351f09d7597c4699e9c12e361b36884b6bfadacd822e6ff1480e04"
+A3_PROPOSAL_SHA256 = "609a4d183aac07c2cbe1abaf41444160fdd137217faffbead3aef618320d57dc"
+A1_PROPOSAL_SHA256 = "101092bb32127bb8854a501a9215c0b6cf69581594383903716907d49719c01a"
+LINEAGE_RECONCILIATION_SHA256 = "aec0e387f167f4b821b7d94f06a67f78f498be939fe3cda857d20ce550819cac"
+D98_RECONCILIATION_SHA256 = "8ec940c0eafddfdea2ded77d2f6319d1c64ca512f1d690d217329a3b4944c751"
+ALLOWED_REVIEW_MANIFEST_DIFF = "/source_lineage/6/sha256"
+D98_MODEL_REL = "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json"
+A3_PROPOSAL_REL = "definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json"
+A1_PROPOSAL_REL = "definitions/c11d/production/D_RENDERER_UNIFIED_PRESENTATION_REGION_POLICY_PROPOSAL_V1.json"
+
 
 
 class FieldWindowProposalError(ValueError):
@@ -54,6 +72,150 @@ def load_json(path: Path) -> dict[str, Any]:
     return data
 
 
+def _json_pointer_escape(value: str) -> str:
+    return value.replace("~", "~0").replace("/", "~1")
+
+
+def _json_diff_paths(left: Any, right: Any, path: str = "") -> list[str]:
+    """Return exact JSON Pointer paths whose values differ."""
+    if type(left) is not type(right):
+        return [path or "/"]
+    if isinstance(left, dict):
+        paths: list[str] = []
+        for key in sorted(set(left) | set(right)):
+            child = path + "/" + _json_pointer_escape(str(key))
+            if key not in left or key not in right:
+                paths.append(child)
+            else:
+                paths.extend(_json_diff_paths(left[key], right[key], child))
+        return paths
+    if isinstance(left, list):
+        if len(left) != len(right):
+            return [path + "/length"]
+        paths: list[str] = []
+        for index, (a, b) in enumerate(zip(left, right)):
+            paths.extend(_json_diff_paths(a, b, path + "/" + str(index)))
+        return paths
+    return [] if left == right else [path or "/"]
+
+
+def validate_review_manifest_lineage(root: Path, contract: dict[str, Any]) -> dict[str, Any]:
+    """Validate an immutable historical A.3 pin against the single reviewed D9.8 lineage refresh."""
+    root = root.resolve()
+    bridge_path = root / LINEAGE_RECONCILIATION_REL
+    archive_path = root / REVIEW_MANIFEST_ARCHIVE_REL
+    current_path = root / REVIEW_MANIFEST_REL
+    decision_path = root / OPERATOR_DECISION_REL
+    model_path = root / D98_MODEL_REL
+    a3_path = root / A3_PROPOSAL_REL
+    a1_path = root / A1_PROPOSAL_REL
+    d98_doc_path = root / D98_RECONCILIATION_REL
+
+    for path, label in ((bridge_path, "lineage reconciliation"), (archive_path, "historical review manifest"),
+                        (current_path, "current review manifest"), (decision_path, "operator policy decision record"),
+                        (model_path, "current D9.8 model"), (a3_path, "A.3 proposal"),
+                        (a1_path, "A.1 proposal"), (d98_doc_path, "D9.8/D9.9 reconciliation")):
+        if not path.is_file():
+            raise FieldWindowProposalError(f"required A.3 lineage bridge source is missing: {label}: {path}")
+
+    if sha256_file(bridge_path) != LINEAGE_RECONCILIATION_SHA256:
+        raise FieldWindowProposalError("A.3 lineage reconciliation record SHA-256 mismatch")
+    if sha256_file(archive_path) != HISTORICAL_REVIEW_MANIFEST_SHA256:
+        raise FieldWindowProposalError("historical editorial review manifest archive SHA-256 mismatch")
+    if sha256_file(current_path) != CURRENT_REVIEW_MANIFEST_SHA256:
+        raise FieldWindowProposalError("current editorial review manifest SHA-256 mismatch")
+    if sha256_file(decision_path) != OPERATOR_DECISION_SHA256:
+        raise FieldWindowProposalError("operator policy decision record SHA-256 mismatch")
+    if sha256_file(model_path) != CURRENT_D98_MODEL_SHA256:
+        raise FieldWindowProposalError("current D9.8 editorial model SHA-256 mismatch")
+    if sha256_file(a3_path) != A3_PROPOSAL_SHA256 or sha256_file(a1_path) != A1_PROPOSAL_SHA256:
+        raise FieldWindowProposalError("A.1/A.3 approved proposal SHA-256 mismatch")
+    if sha256_file(d98_doc_path) != D98_RECONCILIATION_SHA256:
+        raise FieldWindowProposalError("D9.8/D9.9 semantic reconciliation V4 SHA-256 mismatch")
+
+    bridge = load_json(bridge_path)
+    if bridge.get("schema") != "C11E-E4C-A3-REVIEW-MANIFEST-LINEAGE-RECONCILIATION-V2" or bridge.get("status") != "ATTESTED_SINGLE_SOURCE_LINEAGE_POINTER_REFRESH_NO_POLICY_CHANGE":
+        raise FieldWindowProposalError("unexpected A.3 lineage reconciliation identity or status")
+    if bridge.get("frozen_c11c", {}).get("sha256") != EXPECTED_SOURCES["release/C11C_FREEZE_PACKAGE_MANIFEST.json"]:
+        raise FieldWindowProposalError("lineage bridge frozen C11-C pin mismatch")
+
+    proposal = load_json(a3_path)
+    if proposal.get("status") != "PROPOSAL_ONLY_NOT_RENDERER_INPUT":
+        raise FieldWindowProposalError("A.3 proposal was promoted or mutated")
+    if proposal.get("authority", {}).get("editorial_review_manifest_sha256") != HISTORICAL_REVIEW_MANIFEST_SHA256:
+        raise FieldWindowProposalError("A.3 historical review-manifest authority pin changed")
+    if sha256_file(a3_path) != bridge.get("approved_policy", {}).get("a3", {}).get("sha256"):
+        raise FieldWindowProposalError("A.3 bridge does not point to the exact approved proposal")
+
+    decision = load_json(decision_path)
+    if decision.get("schema") != "C11E-E4B-OPERATOR-POLICY-DECISION-RECORD-V1" or decision.get("decision_source") != "EXPLICIT_OPERATOR_MESSAGE_IN_CONVERSATION":
+        raise FieldWindowProposalError("operator policy decision record identity/source mismatch")
+    if decision.get("decision_semantics") != "APPROVE_AS_PROPOSED_FOR_D_OWNED_DESIGN_AND_CONTRACT_IMPLEMENTATION_ONLY":
+        raise FieldWindowProposalError("operator policy decision scope semantics changed")
+    decisions = {item.get("decision_id"): item for item in decision.get("decisions", [])}
+    for decision_id, expected_sha in (("A.3_LOOP_DRILL_EDITORIAL_WINDOWS", A3_PROPOSAL_SHA256), ("A.1_SHARED_PRESENTATION_REGIONS", A1_PROPOSAL_SHA256)):
+        item = decisions.get(decision_id)
+        if not isinstance(item, dict) or item.get("decision") != "APPROVE_AS_PROPOSED" or item.get("proposal_sha256") != expected_sha:
+            raise FieldWindowProposalError(f"explicit operator approval missing or stale: {decision_id}")
+    scope = decision.get("scope_boundary", {})
+    required_false = ("renderer_native_input_emission_authorized", "renderer_activation_authorized", "production_dispatch_authorized", "media_creation_authorized", "audio_asset_selection_authorized", "audio_generation_authorized", "audio_payload_materialization_authorized", "release_promotion_authorized")
+    if any(scope.get(key) is not False for key in required_false):
+        raise FieldWindowProposalError("operator decision record has broadened beyond D-owned design/contract scope")
+
+    old_manifest = load_json(archive_path)
+    current_manifest = load_json(current_path)
+    diff_paths = _json_diff_paths(old_manifest, current_manifest)
+    if diff_paths != [ALLOWED_REVIEW_MANIFEST_DIFF]:
+        raise FieldWindowProposalError(f"editorial review manifest changed outside the single approved lineage pointer: {diff_paths}")
+    old_rows = old_manifest.get("source_lineage", [])
+    new_rows = current_manifest.get("source_lineage", [])
+    if len(old_rows) <= 6 or len(new_rows) <= 6:
+        raise FieldWindowProposalError("editorial review manifest source lineage is incomplete")
+    old_row = old_rows[6]
+    new_row = new_rows[6]
+    if old_row != {"path": D98_MODEL_REL, "sha256": "50655c82521a353f1db6920f4d099cad92452ae369251f9fbde45cbaee4e8c53"}:
+        raise FieldWindowProposalError("historical D9.8 source-lineage row differs from the pinned predecessor")
+    if new_row != {"path": D98_MODEL_REL, "sha256": CURRENT_D98_MODEL_SHA256}:
+        raise FieldWindowProposalError("current D9.8 source-lineage row differs from the pinned successor")
+    if current_manifest.get("status") != "PREPARATION_ONLY_EDITORIAL_REVIEW_MANIFEST_NOT_RENDERER_INPUT":
+        raise FieldWindowProposalError("current editorial review manifest is not preparation-only")
+    approvals = current_manifest.get("approval_state", {})
+    if not approvals or any(value is not False and value not in ("BLOCKED_AS_REQUIRED", "BLOCKED_NO_GO", "BLOCKED", "NONE") for value in approvals.values()):
+        raise FieldWindowProposalError("current editorial review manifest approval state was broadened")
+    if current_manifest.get("approval_state") != old_manifest.get("approval_state"):
+        raise FieldWindowProposalError("editorial review manifest approval state changed during lineage refresh")
+    if bridge.get("review_manifest_lineage", {}).get("allowed_json_pointer_difference") != [ALLOWED_REVIEW_MANIFEST_DIFF]:
+        raise FieldWindowProposalError("lineage bridge allowed-difference declaration mismatch")
+    if bridge.get("review_manifest_lineage", {}).get("old_pointer_value") != old_row.get("sha256") or bridge.get("review_manifest_lineage", {}).get("new_pointer_value") != new_row.get("sha256"):
+        raise FieldWindowProposalError("lineage bridge pointer values mismatch")
+    if bridge.get("d98_context", {}).get("plan_compatibility") != "D9_9_PLAN_ONLY_COMPATIBILITY_TRUE" or bridge.get("d98_context", {}).get("d4_executable_compatibility") is not False or bridge.get("d98_context", {}).get("renderer_admission") is not False:
+        raise FieldWindowProposalError("D9.8 plan-only versus D4 executable boundary was weakened")
+    preservation = bridge.get("preservation", {})
+    for key in ("a3_proposal_mutated", "a1_proposal_mutated", "operator_decision_record_mutated", "review_manifest_approval_booleans_changed", "a3_mapping_semantics_changed", "renderer_native_input_emitted", "renderer_activation", "production_dispatch", "media_created", "audio_generation"):
+        if preservation.get(key) is not False:
+            raise FieldWindowProposalError(f"lineage bridge preservation boundary must remain false: {key}")
+    if preservation.get("review_manifest_current_file_mutated_by_this_reconciliation") is not True or preservation.get("review_manifest_changed_only_by_pinned_single_pointer_replacement") is not True:
+        raise FieldWindowProposalError("bridge must disclose the exact current-manifest replacement performed by this overlay")
+    transition = bridge.get("review_manifest_lineage", {}).get("installed_transition", {})
+    if transition.get("operation") != "PINNED_REPLACE" or transition.get("preimage_sha256") != HISTORICAL_REVIEW_MANIFEST_SHA256 or transition.get("postimage_sha256") != CURRENT_REVIEW_MANIFEST_SHA256 or transition.get("only_changed_json_pointer") != ALLOWED_REVIEW_MANIFEST_DIFF or transition.get("historical_bytes_preserved_as_add_only_archive") is not True:
+        raise FieldWindowProposalError("review-manifest installed transition is not the exact approved preimage/postimage pair")
+    if preservation.get("release_authority") != "NONE" or preservation.get("d4_8") != "BLOCKED":
+        raise FieldWindowProposalError("lineage bridge governance lock mismatch")
+
+    return {
+        "historical_review_manifest_sha256": HISTORICAL_REVIEW_MANIFEST_SHA256,
+        "current_review_manifest_sha256": CURRENT_REVIEW_MANIFEST_SHA256,
+        "allowed_json_pointer_difference": diff_paths,
+        "current_d98_model_sha256": CURRENT_D98_MODEL_SHA256,
+        "approved_a3_proposal_sha256": A3_PROPOSAL_SHA256,
+        "operator_decision_record_sha256": OPERATOR_DECISION_SHA256,
+        "decision_scope": "D_OWNED_DESIGN_AND_CONTRACT_IMPLEMENTATION_ONLY",
+        "renderer_native_input_emitted": False,
+        "renderer_activation": False,
+        "media_created": False,
+    }
+
+
 def validate_contract(root: Path) -> dict[str, Any]:
     root = root.resolve()
     contract = load_json(root / CONTRACT_REL)
@@ -76,11 +238,15 @@ def validate_contract(root: Path) -> dict[str, Any]:
         raise FieldWindowProposalError("source_lineage does not match the exact pinned source set")
     authority = contract["authority"]
     for path, digest in EXPECTED_SOURCES.items():
+        if path == REVIEW_MANIFEST_REL.as_posix():
+            continue  # The proposal keeps its historical reviewed pin; validate the exact bridge below.
         source = root / path
         if not source.is_file():
             raise FieldWindowProposalError(f"required lineage source is missing: {path}")
         if sha256_file(source) != digest:
             raise FieldWindowProposalError(f"source SHA-256 mismatch: {path}")
+
+    lineage_reconciliation = validate_review_manifest_lineage(root, contract)
 
     named_authority_pins = {
         "frozen_c11c_manifest_sha256": EXPECTED_SOURCES["release/C11C_FREEZE_PACKAGE_MANIFEST.json"],
@@ -133,7 +299,7 @@ def validate_contract(root: Path) -> dict[str, Any]:
     for key in ("renderer_native_input_emitted", "renderer_dispatch_invoked", "renderer_activation", "production_execution", "payload_files_written", "media_created", "c11c_source_mutation", "video_render_ready"):
         if boundary.get(key) is not False:
             raise FieldWindowProposalError(f"execution lock must remain false: {key}")
-    return {"contract": contract, "schema": schema, "fixtures": fixtures}
+    return {"contract": contract, "schema": schema, "fixtures": fixtures, "lineage_reconciliation": lineage_reconciliation}
 
 
 def propose_field_windows(content_type: str, frame_count: int, editorial_fields: Mapping[str, str]) -> dict[str, Any]:

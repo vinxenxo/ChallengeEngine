@@ -1,0 +1,16 @@
+{
+    "schema":  "C11E-E4C-A3-DRILL-DESIGN-CONTRACT-INSTALL-FAILURE-V3",
+    "status":  "FAILED_CLOSED",
+    "run_id":  "E4C_A3_DRILL_CONTRACT_V3_20261110T175632_a46c4e9a",
+    "stage":  "STAGED_VALIDATION",
+    "error":  "No se encuentra la propiedad \u0027mode\u0027 en este objeto. Compruebe que existe.",
+    "journal":  [
+
+                ],
+    "rollback_status":  "NOT_NEEDED",
+    "renderer":  "OFF",
+    "media_created":  false,
+    "release_authority":  "NONE",
+    "staging_root":  "C:\\Users\\vinxe\\AppData\\Local\\Temp\\C11EA3_STAGE_3e048330",
+    "evidence_directory":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_a3_drill_contract_overlay\\E4C_A3_DRILL_CONTRACT_V3_20261110T175632_a46c4e9a"
+}

@@ -1,0 +1,29 @@
+{
+  "schema": "C11E-E4C-DRILL-SOURCE-PHASE-OWNERSHIP-AUDIT-V2",
+  "status": "PASS_READ_ONLY_SOURCE_AUDIT",
+  "source_pins": 8,
+  "checks_passed": 12,
+  "checks_expected": 12,
+  "phase_order": [
+    "PRE_ROLL",
+    "GAME",
+    "END_CTA",
+    "DONE"
+  ],
+  "pre_roll_seconds": 3.0,
+  "end_cta_seconds": 3.0,
+  "phase_index_semantics": {
+    "PRE_ROLL": "GLOBAL_PRESENTATION_INDEX",
+    "GAME": "LOCAL_GAME_PAYLOAD_INDEX_CURRENT_FRAME_INDEX",
+    "END_CTA": "GLOBAL_PRESENTATION_INDEX",
+    "DONE": "NO_FRAME"
+  },
+  "native_end_cta_owner": "C11C_PRESENTATION_UI_CTA_COMPONENT_IN_HEADER",
+  "c11c_header_footer_owner": "C11CVisualEditorialLayer",
+  "payload_to_final_presentation_frame_mapping": "PROPOSED_SEPARATE_TIMEBASE_DECISION_NOT_APPROVED",
+  "renderer_native_input_emitted": false,
+  "renderer_activation": false,
+  "media_created": false,
+  "frozen_c11c_mutation": false,
+  "release_authority": "NONE"
+}

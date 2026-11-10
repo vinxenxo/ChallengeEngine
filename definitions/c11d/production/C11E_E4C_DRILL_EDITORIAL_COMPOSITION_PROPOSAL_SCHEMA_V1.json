@@ -1,0 +1,881 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://c11e.local/schemas/C11E_E4C_DRILL_EDITORIAL_COMPOSITION_PROPOSAL_V1.schema.json",
+  "title": "C11-E E4C Drill Editorial Composition Proposal V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "purpose",
+    "authority",
+    "scope",
+    "candidate_activation",
+    "geometry",
+    "native_source_ownership",
+    "phase_ownership",
+    "audio_boundary",
+    "approval_gates",
+    "open_decisions",
+    "execution_boundary",
+    "editorial_visibility"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11E-E4C-DRILL-EDITORIAL-COMPOSITION-PROPOSAL-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "PROPOSED_NOT_APPROVED_NOT_RENDERER_INPUT"
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authority": {
+      "type": "object",
+      "required": [
+        "frozen_c11c_manifest_sha256",
+        "a1_proposal_sha256",
+        "a3_proposal_sha256",
+        "a3_operator_decision_record_sha256",
+        "a3_lineage_reconciliation_sha256",
+        "source_phase_logic_sha256",
+        "source_binder_sha256",
+        "source_player_sha256",
+        "source_editorial_layer_sha256",
+        "source_presentation_ui_sha256",
+        "source_social_ui_binder_sha256",
+        "source_unified_frame_sha256"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "frozen_c11c_manifest_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "a1_proposal_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "a3_proposal_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "a3_operator_decision_record_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "a3_lineage_reconciliation_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "source_phase_logic_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "source_binder_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "source_player_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "source_editorial_layer_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "source_presentation_ui_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "source_social_ui_binder_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "source_unified_frame_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "required": [
+        "content_type",
+        "drill_types",
+        "tiers",
+        "selector_count",
+        "editorial_fields",
+        "visible_fields",
+        "metadata_only_fields",
+        "field_text_max_codepoints",
+        "unknown_sentinel",
+        "blank_and_unknown_values"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "content_type": {
+          "const": "visual_drills"
+        },
+        "drill_types": {
+          "const": [
+            "tracking",
+            "pursuit",
+            "saccade",
+            "peripheral_scan"
+          ]
+        },
+        "tiers": {
+          "const": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "selector_count": {
+          "const": 20
+        },
+        "editorial_fields": {
+          "const": [
+            "title",
+            "subtitle",
+            "call_to_action",
+            "language"
+          ]
+        },
+        "visible_fields": {
+          "const": [
+            "title",
+            "subtitle",
+            "call_to_action"
+          ]
+        },
+        "metadata_only_fields": {
+          "const": [
+            "language"
+          ]
+        },
+        "field_text_max_codepoints": {
+          "const": 160
+        },
+        "unknown_sentinel": {
+          "const": "UNKNOWN"
+        },
+        "blank_and_unknown_values": {
+          "const": "SUPPRESS_VISUALLY_PRESERVE_CANONICAL_KEYS"
+        }
+      }
+    },
+    "candidate_activation": {
+      "type": "object",
+      "required": [
+        "when_any_visible_field_is_nonempty_and_not_unknown",
+        "when_all_visible_fields_are_empty_or_unknown",
+        "layout_static_for_entire_delivery_sequence",
+        "source_frame_order",
+        "delivery_frame_rate",
+        "frame_count",
+        "editorial_visibility_is_phase_gated"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "when_any_visible_field_is_nonempty_and_not_unknown": {
+          "const": "D_OUTER_BAND_COMPOSITION"
+        },
+        "when_all_visible_fields_are_empty_or_unknown": {
+          "const": "UNCHANGED_FULL_FRAME_PASSTHROUGH"
+        },
+        "layout_static_for_entire_delivery_sequence": {
+          "const": true
+        },
+        "source_frame_order": {
+          "const": "IDENTITY"
+        },
+        "delivery_frame_rate": {
+          "const": "UNCHANGED"
+        },
+        "frame_count": {
+          "const": "UNCHANGED"
+        },
+        "editorial_visibility_is_phase_gated": {
+          "const": true
+        }
+      }
+    },
+    "geometry": {
+      "type": "object",
+      "required": [
+        "delivery_profile_id",
+        "canvas",
+        "background_rgb_hex",
+        "top_editorial_band",
+        "source_frame_viewport",
+        "bottom_editorial_band",
+        "source_frame_transform",
+        "editorial_text_blocks",
+        "overflow_policy",
+        "line_break_policy"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "delivery_profile_id": {
+          "const": "REVIEW_720"
+        },
+        "canvas": {
+          "type": "object",
+          "required": [
+            "width",
+            "height",
+            "aspect_ratio"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "width": {
+              "const": 720
+            },
+            "height": {
+              "const": 1280
+            },
+            "aspect_ratio": {
+              "const": "9:16"
+            }
+          }
+        },
+        "background_rgb_hex": {
+          "type": "string",
+          "pattern": "^[0-9A-Fa-f]{6}$"
+        },
+        "top_editorial_band": {
+          "type": "object",
+          "required": [
+            "x",
+            "y",
+            "width",
+            "height"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "x": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "y": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "width": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "height": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "source_frame_viewport": {
+          "type": "object",
+          "required": [
+            "x",
+            "y",
+            "width",
+            "height"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "x": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "y": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "width": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "height": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "bottom_editorial_band": {
+          "type": "object",
+          "required": [
+            "x",
+            "y",
+            "width",
+            "height"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "x": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "y": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "width": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "height": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "source_frame_transform": {
+          "type": "object",
+          "required": [
+            "mode",
+            "scale_x",
+            "scale_y",
+            "aspect_ratio_preserved",
+            "cropping",
+            "nonuniform_stretch",
+            "temporal_resampling",
+            "source_frame_count_mutation",
+            "source_frame_order_mutation",
+            "source_frame_index_mapping",
+            "yuv420p_chroma_alignment"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "mode": {
+              "const": "UNIFORM_CONTAIN"
+            },
+            "scale_x": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "maximum": 1
+            },
+            "scale_y": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "maximum": 1
+            },
+            "aspect_ratio_preserved": {
+              "const": true
+            },
+            "cropping": {
+              "const": false
+            },
+            "nonuniform_stretch": {
+              "const": false
+            },
+            "temporal_resampling": {
+              "const": false
+            },
+            "source_frame_count_mutation": {
+              "const": false
+            },
+            "source_frame_order_mutation": {
+              "const": false
+            },
+            "source_frame_index_mapping": {
+              "const": "IDENTITY"
+            },
+            "yuv420p_chroma_alignment": {
+              "const": "EVEN_X_Y_WIDTH_HEIGHT"
+            }
+          }
+        },
+        "editorial_text_blocks": {
+          "type": "object",
+          "required": [
+            "title",
+            "subtitle",
+            "call_to_action"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "title": {
+              "type": "object",
+              "required": [
+                "region",
+                "x",
+                "y",
+                "width",
+                "height",
+                "font",
+                "font_size_px",
+                "line_height_px",
+                "max_lines",
+                "max_chars_per_line_conservative"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "region": {
+                  "const": "TOP_BAND"
+                },
+                "x": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "y": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "width": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "height": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "font": {
+                  "enum": [
+                    "Inter-Bold",
+                    "NotoSansMono-Regular"
+                  ]
+                },
+                "font_size_px": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "line_height_px": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "max_lines": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "max_chars_per_line_conservative": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            },
+            "subtitle": {
+              "type": "object",
+              "required": [
+                "region",
+                "x",
+                "y",
+                "width",
+                "height",
+                "font",
+                "font_size_px",
+                "line_height_px",
+                "max_lines",
+                "max_chars_per_line_conservative"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "region": {
+                  "const": "TOP_BAND"
+                },
+                "x": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "y": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "width": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "height": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "font": {
+                  "enum": [
+                    "Inter-Bold",
+                    "NotoSansMono-Regular"
+                  ]
+                },
+                "font_size_px": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "line_height_px": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "max_lines": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "max_chars_per_line_conservative": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            },
+            "call_to_action": {
+              "type": "object",
+              "required": [
+                "region",
+                "x",
+                "y",
+                "width",
+                "height",
+                "font",
+                "font_size_px",
+                "line_height_px",
+                "max_lines",
+                "max_chars_per_line_conservative"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "region": {
+                  "const": "BOTTOM_BAND"
+                },
+                "x": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "y": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "width": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "height": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "font": {
+                  "enum": [
+                    "Inter-Bold",
+                    "NotoSansMono-Regular"
+                  ]
+                },
+                "font_size_px": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "line_height_px": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "max_lines": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "max_chars_per_line_conservative": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            }
+          }
+        },
+        "overflow_policy": {
+          "const": "NO_TRUNCATION_NO_ELLIPSIS_FAIL_CLOSED_IF_FONT_COVERAGE_OR_LAYOUT_CAPACITY_IS_NOT_PROVEN"
+        },
+        "line_break_policy": {
+          "const": "D_OWNED_LAYOUT_BREAKS_ONLY_SOURCE_EDITORIAL_VALUE_AND_HASH_UNCHANGED"
+        }
+      }
+    },
+    "native_source_ownership": {
+      "type": "object",
+      "required": [
+        "c11c_native_header_strings",
+        "c11c_native_footer_telemetry",
+        "native_visual_drill_end_cta",
+        "c11c_visual_drill_binder",
+        "c11c_phase_logic",
+        "c11c_visual_content_player",
+        "c11c_editorial_layer",
+        "c11c_presentation_ui",
+        "c11c_family_renderers",
+        "c11c_music_generator_and_profiles"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "c11c_native_header_strings": {
+          "const": "PRESERVED_INSIDE_CONTAINED_SOURCE_FRAME"
+        },
+        "c11c_native_footer_telemetry": {
+          "const": "PRESERVED_INSIDE_CONTAINED_SOURCE_FRAME"
+        },
+        "native_visual_drill_end_cta": {
+          "const": "PRESERVED_INSIDE_SOURCE_FRAME_HEADER_DURING_END_CTA"
+        },
+        "c11c_visual_drill_binder": {
+          "const": "UNMODIFIED"
+        },
+        "c11c_phase_logic": {
+          "const": "UNMODIFIED"
+        },
+        "c11c_visual_content_player": {
+          "const": "UNMODIFIED"
+        },
+        "c11c_editorial_layer": {
+          "const": "UNMODIFIED"
+        },
+        "c11c_presentation_ui": {
+          "const": "UNMODIFIED"
+        },
+        "c11c_family_renderers": {
+          "const": "UNMODIFIED"
+        },
+        "c11c_music_generator_and_profiles": {
+          "const": "UNMODIFIED"
+        }
+      }
+    },
+    "phase_ownership": {
+      "type": "object",
+      "required": [
+        "source_phase_order",
+        "pre_roll_seconds",
+        "end_cta_seconds",
+        "end_cta_native_owner",
+        "c11c_header_content_owner",
+        "c11c_footer_content_owner",
+        "a3_approved_payload_window",
+        "payload_to_final_presentation_offset",
+        "final_delivery_frame_count_authority",
+        "no_phase_inference_or_implicit_frame_offset"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "source_phase_order": {
+          "const": [
+            "PRE_ROLL",
+            "GAME",
+            "END_CTA",
+            "DONE"
+          ]
+        },
+        "pre_roll_seconds": {
+          "const": 3.0
+        },
+        "end_cta_seconds": {
+          "const": 3.0
+        },
+        "end_cta_native_owner": {
+          "const": "C11C_PRESENTATION_UI_CTA_COMPONENT_IN_HEADER"
+        },
+        "c11c_header_content_owner": {
+          "const": "C11CVisualEditorialLayer"
+        },
+        "c11c_footer_content_owner": {
+          "const": "C11CVisualEditorialLayer"
+        },
+        "a3_approved_payload_window": {
+          "const": "ZERO_BASED_HALF_OPEN_[0,ACTUAL_MATERIALIZED_GAME_PAYLOAD_FRAME_COUNT)"
+        },
+        "payload_to_final_presentation_offset": {
+          "const": "UNRESOLVED_REQUIRES_EXPLICIT_D_OWNED_TIMEBASE_DECISION"
+        },
+        "final_delivery_frame_count_authority": {
+          "const": "ACTUAL_C11C_SOURCE_VIDEO_FRAME_INVENTORY_NOT_D9_REQUEST"
+        },
+        "no_phase_inference_or_implicit_frame_offset": {
+          "const": true
+        }
+      }
+    },
+    "audio_boundary": {
+      "type": "object",
+      "required": [
+        "family_music_engine",
+        "profiles",
+        "gameplay_seed",
+        "music_seed",
+        "protected_visual_capture",
+        "audio_generation_and_mux",
+        "d3_v5"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "family_music_engine": {
+          "const": "EXISTING_C11C_FAMILY_MUSIC_V4"
+        },
+        "profiles": {
+          "type": "object",
+          "required": [
+            "tracking",
+            "pursuit",
+            "saccade",
+            "peripheral_scan"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "tracking": {
+              "const": "FLOWING_VECTOR"
+            },
+            "pursuit": {
+              "const": "ORGANIC_BLOOM"
+            },
+            "saccade": {
+              "const": "CIRCUIT_PULSE"
+            },
+            "peripheral_scan": {
+              "const": "ORBITAL_RITUAL"
+            }
+          }
+        },
+        "gameplay_seed": {
+          "const": "request.seed_VISUAL_ONLY"
+        },
+        "music_seed": {
+          "const": "request.music_seed_AUDIO_ONLY"
+        },
+        "protected_visual_capture": {
+          "const": "C11C_LAUNCHER_NOSOUND"
+        },
+        "audio_generation_and_mux": {
+          "const": "NOT_AUTHORIZED_BY_THIS_PROPOSAL"
+        },
+        "d3_v5": {
+          "const": "NOT_USED_FOR_DRILL"
+        }
+      }
+    },
+    "approval_gates": {
+      "type": "object",
+      "required": [
+        "drill_composition_approved",
+        "drill_timebase_mapping_approved",
+        "font_shaping_and_pixel_review_approved",
+        "renderer_native_input_emitted",
+        "renderer_activation",
+        "production_dispatch",
+        "media_created",
+        "d4_8",
+        "release_authority"
+      ],
+      "properties": {
+        "drill_composition_approved": {
+          "const": false
+        },
+        "drill_timebase_mapping_approved": {
+          "const": false
+        },
+        "font_shaping_and_pixel_review_approved": {
+          "const": false
+        },
+        "renderer_native_input_emitted": {
+          "const": false
+        },
+        "renderer_activation": {
+          "const": false
+        },
+        "production_dispatch": {
+          "const": false
+        },
+        "media_created": {
+          "const": false
+        },
+        "d4_8": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        }
+      },
+      "additionalProperties": true
+    },
+    "open_decisions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "execution_boundary": {
+      "type": "object",
+      "required": [
+        "mode",
+        "renderer",
+        "renderer_native_input_emitted",
+        "renderer_dispatch_invoked",
+        "renderer_activation",
+        "production_execution",
+        "payload_files_written",
+        "media_created",
+        "c11c_source_mutation",
+        "release_authority"
+      ],
+      "properties": {
+        "mode": {
+          "const": "PROPOSAL_ONLY_SOURCE_AUDIT"
+        },
+        "renderer": {
+          "const": "OFF"
+        },
+        "renderer_native_input_emitted": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "renderer_activation": {
+          "const": false
+        },
+        "production_execution": {
+          "const": false
+        },
+        "payload_files_written": {
+          "const": false
+        },
+        "media_created": {
+          "const": false
+        },
+        "c11c_source_mutation": {
+          "const": false
+        },
+        "release_authority": {
+          "const": "NONE"
+        }
+      },
+      "additionalProperties": false
+    },
+    "editorial_visibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "PRE_ROLL",
+        "GAME",
+        "END_CTA",
+        "DONE",
+        "note"
+      ],
+      "properties": {
+        "PRE_ROLL": {
+          "type": "string",
+          "minLength": 1
+        },
+        "GAME": {
+          "type": "string",
+          "minLength": 1
+        },
+        "END_CTA": {
+          "type": "string",
+          "minLength": 1
+        },
+        "DONE": {
+          "const": "NO_FRAME"
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}
