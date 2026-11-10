@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "C11D-OPERATOR-CONFIG-PROFILE-V1",
+  "title": "C11-D Operator Configuration Profile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_id",
+    "schema_version",
+    "profile_id",
+    "label",
+    "challenge_id",
+    "mode",
+    "seed",
+    "music_seed",
+    "delivery_profile_id",
+    "presentation_profile_id",
+    "music_profile_id",
+    "audio_enabled",
+    "personalization_profile_id",
+    "personalization_values",
+    "runtime_authority",
+    "renderer_execution",
+    "production_execution",
+    "release_authority"
+  ],
+  "properties": {
+    "schema_id": {
+      "const": "C11D-OPERATOR-CONFIG-PROFILE-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "profile_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$"
+    },
+    "label": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80
+    },
+    "challenge_id": {
+      "type": "string",
+      "enum": [
+        "CHALLENGE_001",
+        "CHALLENGE_002",
+        "CHALLENGE_003",
+        "CHALLENGE_004",
+        "CHALLENGE_005",
+        "CHALLENGE_006",
+        "CHALLENGE_007",
+        "CHALLENGE_008",
+        "CHALLENGE_009"
+      ]
+    },
+    "mode": {
+      "enum": [
+        "REVIEW",
+        "PRODUCTION"
+      ]
+    },
+    "seed": {
+      "type": "integer"
+    },
+    "music_seed": {
+      "type": "integer"
+    },
+    "delivery_profile_id": {
+      "enum": [
+        "LONGFORM_1080",
+        "MASTER_1080",
+        "META_REELS_FINAL_V1",
+        "MIN_540",
+        "REVIEW_720"
+      ]
+    },
+    "presentation_profile_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "music_profile_id": {
+      "const": "challenge_8bit_v1"
+    },
+    "audio_enabled": {
+      "type": "boolean"
+    },
+    "personalization_profile_id": {
+      "enum": [
+        "none_v1",
+        "editorial_text_v1"
+      ]
+    },
+    "personalization_values": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "maxLength": 160
+      }
+    },
+    "runtime_authority": {
+      "const": "NONE"
+    },
+    "renderer_execution": {
+      "const": false
+    },
+    "production_execution": {
+      "const": false
+    },
+    "release_authority": {
+      "const": "NONE"
+    }
+  }
+}

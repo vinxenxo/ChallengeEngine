@@ -1,0 +1,73 @@
+{
+  "approval": {
+    "approval_record_path": "definitions/c11d/production/C11E_D4_8_R1V_FAMILY_AUDIO_APPROVAL_AMENDMENT_20261108_V1.json",
+    "approval_record_raw_sha256": "6a0081a5a769a1b2efdc2cc6c2f807e57fd8af541bbba211c310cf6781e3c132",
+    "approval_record_sha256": "b0f1e4f2df88360f3c250d0679da4e7eef1c5821c0a6c4663f2fb94db048b1f5",
+    "approval_timestamp": "2026-11-08T00:05:00+01:00",
+    "independent_reviewer": "Operator (user)",
+    "operator_approver": "Operator (user)"
+  },
+  "execution_authorized": true,
+  "governance": {
+    "d10": "BLOCKED_FOR_PROMOTION",
+    "d4_8_general_production": "BLOCKED",
+    "d9_10": "PREPARE_ONLY",
+    "d9_14": "BLOCKED",
+    "d9_16": "BLOCKED",
+    "d9_17": "BLOCKED_NO_GO",
+    "release_authority": "NONE",
+    "renderer_activation_policy_state": "DISABLED",
+    "runtime_authority": "NONE"
+  },
+  "implementation_contract": {
+    "determinism": "A/B same gameplay_seed and music_seed per selector; compare decoded frame hashes, PCM WAV SHA and AAC elementary stream SHA.",
+    "family_audio": "Pinned C11CSafeAmbient.py using R1P music_seed, loop_cycles, duration, internal family and grammar.",
+    "first_capture": "Reuse the already-created Fractal Bloom A capture only after validating its original report, receipt, stdout/stderr and MP4 SHA.",
+    "mux": "Pinned FFmpeg; map C source video and family WAV; -c:v copy; AAC 192k, 44100 Hz, stereo; -shortest; faststart.",
+    "qa": "FFprobe source and final MP4; verify two streams, exact geometry/rate/frame count/duration, audio layout and H.264 elementary stream identity.",
+    "source_capture": "Pinned C11-C Visual Loop launcher with -NoSound; original silent MP4 remains immutable."
+  },
+  "issued_date": "2026-11-08",
+  "policy_version": "1.0.0",
+  "prohibitions": {
+    "audio_outside_bounded_slots": "PROHIBITED",
+    "d3_v5": "PROHIBITED_FOR_VISUAL_LOOP; Challenge-only route remains separately governed.",
+    "d9_10_dispatch": "PROHIBITED",
+    "d_compositor": "PROHIBITED",
+    "filters": "PROHIBITED",
+    "general_renderer_activation": "PROHIBITED",
+    "production_delivery": "PROHIBITED",
+    "video_reencode_after_c_source": "PROHIBITED"
+  },
+  "schema": "C11E-D4.8-R1V-FAMILY-AUDIO-SCOPE-AMENDMENT-V1",
+  "scope": {
+    "aac_bitrate": 192000,
+    "aac_channels": 2,
+    "aac_codec": "aac",
+    "aac_sample_rate": 44100,
+    "audio_generator": "C11C_FAMILY_MUSIC_V4",
+    "audio_helper": "tools/prototypes/c11c_common/C11CSafeAmbient.py",
+    "av_outputs": 10,
+    "d3_v5": false,
+    "d9_10_dispatch": false,
+    "d_compositor": false,
+    "gameplay_seed_source": "R1P.seed_domains.gameplay_seed",
+    "general_d4_8_production": false,
+    "grammar_bound": true,
+    "music_kind": "loop",
+    "music_seed_is_distinct_from_gameplay_seed": true,
+    "music_seed_source": "R1P.seed_domains.music_seed",
+    "new_c11c_launcher_invocations": 9,
+    "release_or_promotion": false,
+    "repeat_count_per_selector": 2,
+    "reused_prior_fractal_bloom_a_capture": 1,
+    "selector_count": 5,
+    "video_filters": false,
+    "video_mux_mode": "-c:v copy",
+    "wav_channels": 2,
+    "wav_sample_rate": 44100,
+    "wav_sample_width_bits": 16
+  },
+  "status": "APPROVED_BOUNDED_R1V_FAMILY_NATIVE_AUDIO_AV_TESTS",
+  "supersedes_only": "R1V_V2_AUDIO_AND_MUX_PROHIBITION_FOR_THIS_BOUNDED_TEST_SCOPE"
+}

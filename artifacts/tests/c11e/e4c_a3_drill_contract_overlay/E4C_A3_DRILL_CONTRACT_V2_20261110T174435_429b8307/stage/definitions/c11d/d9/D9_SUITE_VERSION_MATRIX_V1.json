@@ -1,0 +1,207 @@
+{
+  "schema": "C11-D-D9-SUITE-VERSION-MATRIX-V1",
+  "status": "D9_ACTIVE",
+  "d9_4": "PASS_CHECKPOINT_NOT_FINAL_D9_CLOSURE",
+  "d10": "BLOCKED_UNTIL_D9_17_PASS_CLOSED",
+  "active_suite_topology": [
+    "c11c-test",
+    "c11c-producer",
+    "c11c-catalog",
+    "c11c-config",
+    "c11c-maintenance"
+  ],
+  "retired": {
+    "c11c-studio": "RETIRED_DO_NOT_REVIVE"
+  },
+  "suites": [
+    {
+      "id": "c11c-test",
+      "current_version": "0.2.0 D9.12 routes + D9.13 lifecycle + D9.14 gate + D9.15/D9.16 preflights",
+      "target_version": "0.2.0",
+      "gate": "D9.12–D9.14",
+      "status": "D9.10_ADAPTER_ASSERTIONS_IN_AGGREGATE_D9_14_BOUNDED_QUALIFICATION_PASS_FULL_GATE_BLOCKED",
+      "required_tests": [
+        "registered GUI command path and all target file checks",
+        "preserve inherited C11-C test routes and five-surface topology; no sixth suite",
+        "26 registered D routes and 57 total GUI routes",
+        "11-case GUI E2E certification plan preflight; no media created",
+        "D9 negative acceptance and GUI/CLI parity bundles",
+        "D9.13 five-stage cross-suite lifecycle test for Challenge, Loop and Drill",
+        "operator confirms Test GUI opens and D9.13 lifecycle route runs without errors",
+        "D9.14 real-media GUI certification gate fail-closed and no-media until future baseline/D4.8 authority"
+      ]
+    },
+    {
+      "id": "c11c-producer",
+      "current_version": "0.11.1 D9.9 universal editorial + D9.10 D-only adapter prepare-only + D9.13 lifecycle + D9.14 gate; no renderer dispatch",
+      "target_version": "0.11.1 D9.10 prepare-only envelope; definitive GUI deferred until after D baseline freeze",
+      "gate": "D9.9-D9.13",
+      "status": "D9_10_ADAPTER_PREPARE_ONLY_CONTRACT_PASS_WINDOWS_RUNTIME_TAB_CONFIRMATION_NOT_ASSERTED",
+      "notes": "Existing Producer remains the test/operator GUI. D9.10 binds canonical request, allowlisted editorial, plan and bridge hashes into an inspection-only D-only envelope. Adapter parity 3/3 and adapter negatives 9/9 pass. No renderer-native input, dispatch, media or release authority. Definitive GUI is deferred until the D baseline is fully closed and frozen.",
+      "required_tests": [
+        "9 Challenge identities reusing canonical D4 subordinate plan",
+        "5 Loop families / 27 concrete grammars plus auto selector per family",
+        "4 Drill types / 20 tier identities",
+        "GUI/CLI canonical request, plan and hash parity per supported content type",
+        "20 negative universal request/data-class controls",
+        "gameplay/music seed isolation and invariance under editorial changes",
+        "existing C11-C production regression",
+        "renderer remains OFF; release_authority NONE",
+        "D9.10 bridge record validation for Challenge, Visual Loop and Visual Drill",
+        "3 separate-process GUI/CLI bridge record parity cases",
+        "15 negative bridge/governance/integrity controls",
+        "D-only adapter envelope emitted for inspection; renderer-native input and dispatch not emitted, no media output or artifact path",
+        "static GUI contract covers D9.10 adapter tab; automated report does not claim interactive Qt observation",
+        "build SHA-256-sealed five-surface lifecycle receipt from persisted canonical request/plan/bridge evidence",
+        "GUI/CLI parity for Challenge, Visual Loop and Visual Drill",
+        "reject altered receipt hash, stage order, identity, seeds, profiles, paths and media/release claims",
+        "operator confirms lifecycle receipt view in the Windows GUI; plan-only",
+        "D9.14 gate visibly BLOCKED until future D renderer baseline + D4.8 authority; no production/media callback",
+        "D-only adapter envelope parity for Challenge, Visual Loop and Visual Drill",
+        "adapter-specific forged-envelope/seed-domain/governance negatives 9/9",
+        "automated D9.10 acceptance emits hash-bound JSON and logs without screenshots/media"
+      ]
+    },
+    {
+      "id": "c11c-catalog",
+      "current_version": "0.2.0",
+      "target_version": "0.2.0",
+      "gate": "D9.6+D9.13",
+      "status": "D9.6_WINDOWS_VALIDATED_D9.13_READ_ONLY_PROJECTION_BACKEND_PASS_WINDOWS_VIEW_PENDING",
+      "required_tests": [
+        "90 intents",
+        "pilot media hash/path",
+        "producer plan/provenance",
+        "replay command",
+        "five negatives",
+        "D9.13 validated lifecycle receipt projection as non-authoritative intent",
+        "reject malformed SHA-256, unsafe path, unsupported type and invalid seed domain",
+        "operator confirms CROSS-SUITE LIFECYCLE filter and record in Windows GUI"
+      ]
+    },
+    {
+      "id": "c11c-maintenance",
+      "current_version": "0.2.0 D9.11 PASS/CLOSED; D9.13 read-only lifecycle audit integrated; fixture-only legacy tree simulation",
+      "target_version": "0.2.0",
+      "gate": "D9.11+D9.13",
+      "status": "D9.11_WINDOWS_VALIDATED_D9.13_READ_ONLY_AUDIT_BACKEND_PASS_WINDOWS_VIEW_PENDING",
+      "required_tests": [
+        "dry-run first and read-only plan",
+        "exact cleanup allowlist with reversible archive/restore",
+        "c11d-control quarantine/restore with tree and manifest hash reconciliation",
+        "protected-root mutation negatives",
+        "documentation audit and conflict handling without overwrites",
+        "freeze preflight without archive creation or release authority",
+        "atomic ledger write, rollback and recovery-required reporting",
+        "Windows GUI bring-up and operator review of preview outputs",
+        "D9.13 read-only audit verifies lifecycle receipt/current policy/historic freeze manifest",
+        "zero filesystem mutation during lifecycle audit",
+        "operator confirms D9.13 LIFECYCLE AUDIT · READ ONLY in Windows GUI"
+      ]
+    },
+    {
+      "id": "c11c-config",
+      "current_version": "0.2.0",
+      "target_version": "0.2.0",
+      "gate": "D9.7–D9.16",
+      "status": "D9_10_ADAPTER_BOUNDARY_READ_ONLY_30_OF_30_CONFIG_PASS_D9_14_FULL_GATE_BLOCKED",
+      "required_tests": [
+        "30 canonical registries",
+        "D9.10 bridge schema/governance/output invariants",
+        "D9.8 model schema/seed/data-class invariants",
+        "seven configuration negatives",
+        "explicit seed isolation",
+        "profile schema/path checks",
+        "save/backup/restore",
+        "generic editor protected-root policy",
+        "Windows GUI/filesystem smoke"
+      ],
+      "notes": "Config 0.2.0 registers D9.8, D9.10 bridge, D9.10 D-only adapter boundary, D9.11, D9.13, D9.14 gate, D9.15 and D9.16 read-only. All 30/30 registries validate. Adapter is preparation-only; rendering and dispatch remain disabled."
+    },
+    {
+      "id": "c11c-suite",
+      "current_version": "0.1.4; D9.12 Test route registry + D9.13 lifecycle + D9.14 fail-closed gate",
+      "target_version": "0.1.5 only if needed",
+      "gate": "D9.12-D9.13",
+      "status": "FIVE_CANONICAL_SURFACES_ONLY_D9.12_CLI_PASS_D9.13_BACKEND_PASS_D9.14_GATE_BLOCKED_NO_MEDIA",
+      "required_tests": [
+        "launch each of five canonical apps in Windows",
+        "GUI/CLI canonical identity parity and D9.13 receipt continuity",
+        "environment/preflight reporting",
+        "child process/exit/log/cancel lifecycle",
+        "no sixth operational suite registered",
+        "D9.13 Catalog read-only projection and Maintenance read-only audit; no media/release"
+      ]
+    }
+  ],
+  "shared_gates": [
+    {
+      "gate": "D9.8",
+      "name": "Universal editorial model V1: canonical registry, resolver, inventory and negative tests",
+      "status": "PASS_STATIC_MODEL_RESOLVER_AND_NEGATIVE_TESTS"
+    },
+    {
+      "gate": "D9.9",
+      "name": "Producer universal editorial GUI/CLI coverage across supported content families and variants",
+      "status": "PASS_UNIVERSAL_SELECTOR_MATRIX_AND_STATIC_CLI_PARITY_WINDOWS_GUI_ACCEPTANCE_PENDING"
+    },
+    {
+      "gate": "D9.10",
+      "name": "Editorial-to-render bridge plus D-only render-adapter envelope preparation (no dispatch)",
+      "status": "ADAPTER_PREPARE_ONLY_IMPLEMENTED_3_CONTENT_TYPES_CLI_PARITY_3_OF_3_ADAPTER_PARITY_3_OF_3_NEGATIVE_15_PLUS_9_RENDERER_INPUT_NOT_EMITTED"
+    },
+    {
+      "gate": "D9.11",
+      "name": "Maintenance 0.2.0: allowlists, quarantine, archive and freeze lifecycle",
+      "status": "IMPLEMENTED_STATIC_PASS_WINDOWS_GUI_OPERATOR_ACCEPTANCE_PENDING"
+    },
+    {
+      "gate": "D9.12",
+      "name": "Test 0.2.0: D2-D9 registrations, parity, GUI E2E and negative acceptance",
+      "status": "PASS_CLI_STATIC_AND_AGGREGATE_WINDOWS_TEST_GUI_CONFIRMATION_PENDING"
+    },
+    {
+      "gate": "D9.13",
+      "name": "Cross-suite lifecycle: Config → Producer → Test/QA → Catalog → Maintenance",
+      "status": "PASS_BACKEND_STATIC_3_CONTENT_TYPES_5_STAGES_NEGATIVE_12_OF_12_WINDOWS_GUI_CONFIRMATION_PENDING"
+    },
+    {
+      "gate": "D9.14",
+      "name": "Bounded real A/V production qualification PASS; full GUI/end-to-end certification remains gated by D baseline + D4.8",
+      "status": "BOUNDED_QUALIFICATION_PASS_4_FINAL_AV_MP4_FULL_GUI_E2E_GATE_BLOCKED_D4_8_BLOCKED"
+    },
+    {
+      "gate": "D9.15",
+      "name": "GUI operational acceptance",
+      "status": "CANDIDATE_ONLY_CAPTURE_WAIVER_NOT_OPERATIONAL_CLOSURE"
+    },
+    {
+      "gate": "D9.16",
+      "name": "Full D9 acceptance",
+      "status": "PREFLIGHT_PASS_FULL_ACCEPTANCE_BLOCKED_AS_REQUIRED"
+    },
+    {
+      "gate": "D9.17",
+      "name": "D9 final closure after all D9 gates pass",
+      "status": "BLOCKED_D9_OPEN_NO_GO_UNTIL_ALL_ACCEPTANCE_GATES_PASS"
+    }
+  ],
+  "governance": {
+    "d4_8": "BLOCKED",
+    "master_seed": "NOT_ADOPTED",
+    "automatic_seed_generation": false,
+    "runtime_seed_derivation": false,
+    "cross_domain_seed_sharing": "FORBIDDEN",
+    "runtime_authority": "NONE",
+    "renderer_execution": false,
+    "production_execution": false,
+    "release_authority": "NONE",
+    "frozen_c11c_mutation": "FORBIDDEN",
+    "renderer_dispatch": false,
+    "d_only_adapter_prepare": true,
+    "definitive_gui": "DEFERRED_UNTIL_D_BASELINE_CLOSED_AND_FROZEN"
+  },
+  "non_canonical_operational_paths": {
+    "c11d-control": "UNREGISTERED; explicit D9.11 quarantine/restore only via canonical Maintenance and append-only manifest reconciliation; historical C11-C manifest bytes remain unchanged"
+  }
+}

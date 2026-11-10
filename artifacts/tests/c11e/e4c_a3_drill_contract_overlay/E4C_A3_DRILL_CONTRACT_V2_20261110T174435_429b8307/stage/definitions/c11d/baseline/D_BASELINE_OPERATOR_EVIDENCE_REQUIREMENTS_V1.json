@@ -1,0 +1,108 @@
+{
+  "schema": "C11-D-BASELINE-OPERATOR-EVIDENCE-REQUIREMENTS-V1",
+  "schema_version": "1.0",
+  "checkpoint": "D9.15",
+  "authority": "READ_ONLY_REQUIREMENTS",
+  "source_contract": "definitions/c11d/d9/D9_15_GUI_OPERATIONAL_ACCEPTANCE_V1.json",
+  "immutable_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+  "evidence_root": "artifacts/evidence/d9_15_operator",
+  "ledger_path": "artifacts/evidence/d9_15_operator/D9_15_OPERATOR_EVIDENCE_LEDGER.json",
+  "acceptance_checkpoint_path": "docs/current/d/D9_15_OPERATOR_ACCEPTANCE_CHECKPOINT.json",
+  "required_evidence_pairings": [
+    {
+      "capability_id": "configuration",
+      "capability_label": "Configuration and governed profiles",
+      "surface_id": "c11c-config",
+      "operator_action": "Open Config; inspect D9.15 read-only contract and operator profiles; verify validation/hash, diff, backup and restore controls are visible. Do not edit canonical contracts."
+    },
+    {
+      "capability_id": "production_planning",
+      "capability_label": "Universal production planning and fail-closed gate",
+      "surface_id": "c11c-producer",
+      "operator_action": "Create a Challenge, Visual Loop and Visual Drill plan; inspect bridge and lifecycle identities; confirm D9.14 stays BLOCKED and renderer/media stay off."
+    },
+    {
+      "capability_id": "validation",
+      "capability_label": "Test and acceptance routes",
+      "surface_id": "c11c-test",
+      "operator_action": "Run D9.15 preflight and the D9.13 lifecycle/D9.14 blocked-gate checks from the Test GUI; verify the printed status and logs."
+    },
+    {
+      "capability_id": "catalog_identity",
+      "capability_label": "Catalog identity and product inspection",
+      "surface_id": "c11c-catalog",
+      "operator_action": "Inspect canonical intent, Producer plan and lifecycle intent projections; distinguish intent from actual pilot media and release products."
+    },
+    {
+      "capability_id": "provenance",
+      "capability_label": "Provenance, hashes and lineage",
+      "surface_id": "c11c-producer",
+      "operator_action": "Inspect request, editorial, plan and lifecycle identity hashes; confirm Catalog projection is read-only and non-authoritative."
+    },
+    {
+      "capability_id": "provenance",
+      "capability_label": "Provenance, hashes and lineage",
+      "surface_id": "c11c-catalog",
+      "operator_action": "Inspect request, editorial, plan and lifecycle identity hashes; confirm Catalog projection is read-only and non-authoritative."
+    },
+    {
+      "capability_id": "logs",
+      "capability_label": "Operator-visible process logs",
+      "surface_id": "c11c-producer",
+      "operator_action": "Run one no-media diagnostic from Producer, Test and Maintenance; verify stdout/stderr or result text is visible and final PASS/BLOCKED state is unambiguous."
+    },
+    {
+      "capability_id": "logs",
+      "capability_label": "Operator-visible process logs",
+      "surface_id": "c11c-test",
+      "operator_action": "Run one no-media diagnostic from Producer, Test and Maintenance; verify stdout/stderr or result text is visible and final PASS/BLOCKED state is unambiguous."
+    },
+    {
+      "capability_id": "logs",
+      "capability_label": "Operator-visible process logs",
+      "surface_id": "c11c-maintenance",
+      "operator_action": "Run one no-media diagnostic from Producer, Test and Maintenance; verify stdout/stderr or result text is visible and final PASS/BLOCKED state is unambiguous."
+    },
+    {
+      "capability_id": "maintenance",
+      "capability_label": "Maintenance, audit and reversible safety controls",
+      "surface_id": "c11c-maintenance",
+      "operator_action": "Run plan, docs audit, freeze preflight and lifecycle audit read-only/dry-run only; do not run APPLY or create a release archive for this acceptance."
+    },
+    {
+      "capability_id": "reproducibility",
+      "capability_label": "Reproduction and identity continuity",
+      "surface_id": "c11c-producer",
+      "operator_action": "Repeat canonical plan resolution, compare lifecycle/request/plan hashes and inspect the Catalog reproduction command; do not claim media-level determinism without media."
+    },
+    {
+      "capability_id": "reproducibility",
+      "capability_label": "Reproduction and identity continuity",
+      "surface_id": "c11c-catalog",
+      "operator_action": "Repeat canonical plan resolution, compare lifecycle/request/plan hashes and inspect the Catalog reproduction command; do not claim media-level determinism without media."
+    },
+    {
+      "capability_id": "reproducibility",
+      "capability_label": "Reproduction and identity continuity",
+      "surface_id": "c11c-maintenance",
+      "operator_action": "Repeat canonical plan resolution, compare lifecycle/request/plan hashes and inspect the Catalog reproduction command; do not claim media-level determinism without media."
+    }
+  ],
+  "record_requirements": [
+    "A real Windows GUI action was performed by the operator and the visible result was inspected.",
+    "Each evidence reference must point to a non-empty screenshot or copied GUI log/output beneath the approved evidence root.",
+    "Evidence bytes and SHA-256 are captured by the canonical recorder and re-verified before acceptance.",
+    "Ledger events are hash-chained; later corrections append an event and never silently replace an earlier event.",
+    "Each PASS event requires explicit operator attestation and timestamp plus the exact surface, capability and action.",
+    "Renderer activation, media creation and release authority remain false/NONE for this no-media acceptance stage.",
+    "A D9.15 checkpoint can close operational GUI acceptance only; it cannot authorize D4.8, renderer, D9.14 media, D9.16 full acceptance, D9.17 closure or baseline freeze."
+  ],
+  "governance": {
+    "renderer_activation": false,
+    "production_execution": false,
+    "media_created": false,
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE"
+  },
+  "requirements_sha256": "ac648de4e6852c45763b05d1c4d0f508f59645153f9aee561cf7a1c9dec52424"
+}

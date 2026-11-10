@@ -1,0 +1,892 @@
+{
+  "schema": "C11-D-RENDERER-CANDIDATE-IDENTITY-INVENTORY-CONTRACT-V1",
+  "schema_version": "1.0",
+  "status": "READ_ONLY_CANDIDATE_IDENTITY_ONLY_NOT_APPROVAL_OR_FREEZE",
+  "candidate_id": "D-RENDERER-CANDIDATE-IDENTITY-REVIEW-0.1",
+  "description": "Read-only identity inventory for the declared D-owned renderer preparation surface. This is not a renderer implementation, source tree freeze, baseline approval, production authorization, or release authority.",
+  "fingerprint_scope": "DECLARED_RENDERER_CANDIDATE_REVIEW_SURFACE_ONLY_NOT_FULL_REPOSITORY_TREE",
+  "protected_reference": {
+    "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+    "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+  },
+  "source_inventory": [
+    {
+      "path": "definitions/c11d/baseline/D_BASELINE_CANDIDATE_POLICY_V1.json",
+      "role": "BASELINE_GOVERNANCE_AND_AUDITOR",
+      "sha256": "7d1d0429321a86cd41508b4955c331658fb1150070302e1925e059e53a49322e"
+    },
+    {
+      "path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "50655c82521a353f1db6920f4d099cad92452ae369251f9fbde45cbaee4e8c53"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json",
+      "role": "CANONICAL_D_REQUEST_AND_PREPARE_ONLY_BRIDGE",
+      "sha256": "5726310b48e9a85540d48b1e78784571ba04c3f900a5c09add35b49ce5575504"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_PRODUCTION_ACTIVATION_POLICY_V1.json",
+      "role": "CANONICAL_D_REQUEST_AND_PREPARE_ONLY_BRIDGE",
+      "sha256": "cf970424b1b079d80cda41085a700129e094e90c87e48b04122c5acdabebae16"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_RENDER_ADAPTER_BOUNDARY_D9_10_V1.json",
+      "role": "CANONICAL_D_REQUEST_AND_PREPARE_ONLY_BRIDGE",
+      "sha256": "bcc9e96cb1acf3ce6c06b5f9ca894a9721aef2d5caeca4f5e4392baf5f4fb63d"
+    },
+    {
+      "path": "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json",
+      "role": "CANONICAL_D_REQUEST_AND_PREPARE_ONLY_BRIDGE",
+      "sha256": "342a61338c80a2f1616e8e9f38986bd90f410257c0e321f99840380fb0fd804b"
+    },
+    {
+      "path": "definitions/c11d/production/D9_14_PRODUCTION_QUALIFICATION_AUTHORIZATION_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "bdfcdc52dc30561da8a481b86ada2576747e2fdf389bf86b0176b6cc75cf2642"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_BINDING_PREVIEW_SCHEMA_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "61d0a86ff16a49610ccc74e5f0e82fe54c01a6f948bbabae9735ea6951a4b056"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_BINDING_PREVIEW_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "61e74eb501483b7a6445f536eac8d2290426359a1ce144a266d4946cdb7f5cc8"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_INPUT_SCHEMA_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "2ccfe916f35445f4543a61028c454a7ab886891aa4ab30b62445d12e73af8afd"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_IO_CONTRACT_SCHEMA_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "5d1c9b55514b9665abe9e148f88c49e3c796e26af6d76a20cf710322cd87c420"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_IO_CONTRACT_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "9c0ab153898cc320e636ef1f57fdac19bccba713073d1e3449323c6db51780f5"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_IO_GAP_AUDIT_SCHEMA_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "4c815b9dfe8ea47384944375d5226581fa98e652aff81a44181ccdf4f3220aaf"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_IO_GAP_AUDIT_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "429963458d6cbad3fc6a6ae8108ddd6e5578ad4fa4ee21a92d919f355184ac07"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_LOGICAL_COMPOSITION_SCHEMA_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "101bdf4234fbbafa7f591439800f8985839ad60ed554dd03481a769590648657"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_LOGICAL_COMPOSITION_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "f8a6d83014c329067584decc322c5d6b24be93d5372b2526c67749f3f993cf7e"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_OUTPUT_MANIFEST_SCHEMA_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "a65c2a24dba54cdf39e560f1dfc6836c165417a9c7b7bf9bc1e32fb28dca969c"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_SEED_DOMAIN_AUDIT_SCHEMA_V1.json",
+      "role": "CROSS_TYPE_SEED_DOMAIN_AUDIT_SCHEMA",
+      "sha256": "ba22ca15028c82bfafdaca4f4d10f08d4e554405f9869247bb2d32e28922575c"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_SEED_DOMAIN_AUDIT_V1.json",
+      "role": "CROSS_TYPE_SEED_DOMAIN_AUDIT_CONTRACT",
+      "sha256": "e51be5340d26896f28fc94ae33416a1c93fbbcd5dd27916b661edbebd7616d69"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_COORDINATE_PROJECTION_SCHEMA_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "3bf50650c3aee59b3dcf48ec43abd34ce186b278a75602456170f0a8cb25ffc3"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_COORDINATE_PROJECTION_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "c1caf8e640595bc89957f17ef8bbd7abe80a92cac18cf77974633a1ddde0e264"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_COORDINATE_SAMPLE_COMPOSITION_PROPOSAL_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "a201d713bbfc5b07fa083d298bd135eaef58e7234746bbc42c6bd7faf13012dd"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_COORDINATE_SAMPLE_COMPOSITION_SCHEMA_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "c37423f2b5673e050f4f68e298ad36a532604c94b094821b2fdf04c83456d3c3"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_DELIVERY_TIMELINE_REVIEW_SCHEMA_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "27451849a01bb2589feea961d7c944948bfbffa26fc728f2f7f4730291247149"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_DELIVERY_TIMELINE_REVIEW_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "5d61271f49296935cef2f8b29210e538738cac01b7a93c4c2adfed3c1f8927df"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_RUNTIME_OUTPUT_PREVIEW_SCHEMA_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "de22fe7037e8e5c6ef669e180357728689d4a415bd85d28099bb5a282aa17684"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_RUNTIME_OUTPUT_PREVIEW_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "4dbf297cd9bb8a2b36d8a99f632a1da33bd484be553a72adfdf4428eccbf87cf"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_SIMULATION_SAMPLE_SELECTION_PREVIEW_SCHEMA_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "07497c0da63b162a9e8aaa3881bfbcb9a2edf43f4a33a992a5c377741970285d"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_SIMULATION_SAMPLE_SELECTION_PROPOSAL_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "dbd12b8e71f55223b29a479c93c7b4565b2fee3dfe0da54816900cf6da10d33b"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_TEMPORAL_ALIGNMENT_POLICY_PROPOSAL_SCHEMA_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "c6d7f0f6e3e6371ab911a6220cffcd44120f8b109f73aba9123c410a9181bdf2"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_TEMPORAL_ALIGNMENT_POLICY_PROPOSAL_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "39f6f979a5d8b189cbb3a375b0c33ed7fdb3f2b9bc59fcb587f31a6c65ede5a6"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_PREVIEW_SCHEMA_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "b8331fa0b1580b8be1b41aaef7626bad05a8c6c6c848df2db2e2e8ae428fc6d2"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_PREVIEW_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "67daa1f83ac151906059695bb4d87974819c2d16d3715b78b00657bfdac54f7a"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_DELIVERY_TIMEBASE_PROJECTION_SCHEMA_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "878500113033eda7dec07f87894b4541cf8f44435407ce0c962caecb7d05296d"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_DELIVERY_TIMEBASE_PROJECTION_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "4a76bc9613fbc4690f7a2bb3cc047ec5f6334444c4eccefd34fedccb1a830241"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_SCHEMA_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "3c880a18d037bc6b7376c3007495b50e66daa3fd6d0eab6100b7298b3e9b03e0"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "ff9714d3493cae3012b6efa11b07195b5c7bab3e57e88645fd8cb0bbd5ad3a4b"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V2.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "570ba20b4a334a3fc3d8c5c991ef416971dd4d1ce466eb0ca95fc305e2a35e85"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_CONSUMPTION_AUDIT_SCHEMA_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "8608c91c8a66b65b87867282c1a345ab79cbc7837b176ee058e6cb303eeb5d6b"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_CONSUMPTION_AUDIT_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "ab21e8290a31a238ba9ca4ae8ec3f88ed1e0a7f06cd96a3a26ef65d361e1d1cc"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_ROUTING_VISIBILITY_RECONCILIATION_SCHEMA_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "98503bb96f2ff0b89ab65d31914e8369076490974e468ee706ec19cda24edd40"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_ROUTING_VISIBILITY_RECONCILIATION_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "30b5b22e932663db5e658aef04b03e10d5be68b7c4e4c0bb2994eef673a15e9f"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_WINDOW_PROPOSAL_SCHEMA_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "81da414a3bc3e607bce3c624c16bf7d3ff9a126bbd2da4382c24184561ab5c0a"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "4bb817b3d782b4f7c61d93a48df9c11766c78018b6c9e7ea43155cb96bda5229"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_SCHEMA_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "359728eeb0d675ed5957ca7a9d53d1955eb31523fb29b81749faf20e051a74c2"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "2075da9c33c689861a68d3bd8fb19b7ed593c6e76010ab200880746aa6d1a470"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_SCHEMA_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "e27b679968da67c368882b915f2d7993472331031c24a783fb039021d7c5d13e"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "609a4d183aac07c2cbe1abaf41444160fdd137217faffbead3aef618320d57dc"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_NEUTRAL_FRAME_PROGRAM_SCHEMA_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "c09d570865c8fcb8b0de3c1bef200a118e6801a476ab040a819b1fb698d30584"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_NEUTRAL_FRAME_PROGRAM_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "3a4ada319d3e6e487c3497446e13b9a9f106396c4d528ab04a633ea2d0c13315"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_PROFILE_IDENTITY_SEPARATION_SCHEMA_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "25087051d4b0353af96083595b79d17c385b558639b999298e2262837c7f58ff"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_PROFILE_IDENTITY_SEPARATION_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "7fa2acc1d38d2ee4e027ded101286d6ee774a9fbb35a633ea451101959ec03e1"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_REGION_HIERARCHY_RECONCILIATION_SCHEMA_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "25c4c5ddf5ad684ac35e996a70618d99002ea3c5e4ed1fb5d94bbd815aab9b04"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_REGION_HIERARCHY_RECONCILIATION_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "d6bb63d23b30e34ee011c26b90fe005750b4d5a459aeb71223aeb866d3c5fd93"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_SCHEMA_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "df58d21292baab962acd0ae2d7f082ff2323ae15cc0b7b31a4b89f95188b2438"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "47608ceadff410f29955ecd200bafb5b42e448e11a5cb0f917de90a9f6d90f38"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_SCHEMA_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "45b1df4af2861bd23641cdaca6e4a2b7e2872bcedd1e36b590b132fd09195ff0"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "a70c12fa6ba61e6502938190ddbdb06eb03bd0df3e4cd2f6311cd34446a8188c"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_SEED_DOMAIN_COLLISION_AUDIT_SCHEMA_V1.json",
+      "role": "SEED_DOMAIN_COLLISION_REJECTION_AUDIT_SCHEMA",
+      "sha256": "83fa12afb4809d5a1b8c7f1a97c637bd9f81a0f05643bc5daf5c805e1f4ddae4"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_SEED_DOMAIN_COLLISION_AUDIT_V1.json",
+      "role": "SEED_DOMAIN_COLLISION_REJECTION_AUDIT_CONTRACT",
+      "sha256": "d68c9e342c6c6937f05737d5299dda0310b6b72157d009eb6706c527232e49c8"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_SEMANTIC_REGION_PROPOSAL_SCHEMA_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "85269f7c2624637382e7573709076ccf6aecb74ebdfe187f564d22176b033c8b"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_SEMANTIC_REGION_PROPOSAL_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "99f08cdf80443bb9aa37afbbf8dc2570973df1b71ed8c0b76ffa761fdad9e6e7"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_TEMPORAL_BOUND_PREVIEW_SCHEMA_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "7f53069af2be484d70b3a1b4c6172baeed9ca87a2f6bc36b8b7ff5961daa35c8"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_TEMPORAL_BOUND_PREVIEW_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "ff203026f6a4dee4ae2ccb47992b3dde7c7d9644320427eabd17eddc0a4ac646"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_TEMPORAL_SCHEDULE_PROPOSAL_SCHEMA_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "1744e2f748c1ce196e8655c85299bef16f475c4a71b45d5db5b6838418fa4b37"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_TEMPORAL_SCHEDULE_PROPOSAL_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "96ee3cffe8223e24673e7eb90c93308d45bb3a350961b2afc5eacbe66b54fbf8"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_PROPOSAL_SCHEMA_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "531aff5760fb8dc36af65be83d361b6bdd0a3f01e8d0370e2595618d28aa5752"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_PROPOSAL_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "3dd4874e1b6506de6d9ddbe6ad1b567a284b94cc00ef1bac0d35d1731af05e23"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_UNIFIED_CONTENT_REVIEW_SCHEMA_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "7b3946afb162d8ba2147ee27e7174da76dd2579448d2caefc9aff1d018aa13d4"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_UNIFIED_CONTENT_REVIEW_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "23e3c9494247d0d68b35ccbbd45ca9e9b455dbabd58f3a49445d890645f02d06"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_SCHEMA_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "df2f2af3e186ac489937e526e30c9a03eb1ad52a3b41397581672c7e26cffcbb"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "41a62b0766db47cd99772f28642ef67766314f20f0f7891789d6b7497bbfee85"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_UNIFIED_PRESENTATION_REGION_POLICY_PROPOSAL_SCHEMA_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "8a0e0d457022d483b6a08047c7a3e19e5c52d6c78d6d5a6d29626bf39ea00c64"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_UNIFIED_PRESENTATION_REGION_POLICY_PROPOSAL_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "101092bb32127bb8854a501a9215c0b6cf69581594383903716907d49719c01a"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_DRILL_SEED_DOMAIN_AUDIT_SCHEMA_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "e27e72a058e361087328fe8d117688b3ee8b711ba546607e5cfc9b42e9b5c485"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_DRILL_SEED_DOMAIN_AUDIT_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "5967a38c227152849a8b2f30ed3dfcea70aac57eca178314fc4a7ee969f17e8c"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_PAYLOAD_MATERIALIZATION_PREVIEW_SCHEMA_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "39671a1fcaba9adb90e53e8701d239ff93bff004be72d4ed33876618f1286774"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_PAYLOAD_MATERIALIZATION_PREVIEW_V1.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "53b6da626131c56f770172129e0cc1cd40947098228bfaa499a1e8e8e76ad411"
+    },
+    {
+      "path": "profiles/delivery/c11c_video_delivery_profiles.json",
+      "role": "D_RENDERER_POLICY_CONTRACT_OR_SCHEMA",
+      "sha256": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3"
+    },
+    {
+      "path": "project.godot",
+      "role": "GODOT_PROJECT_ENGINE_DECLARATION",
+      "sha256": "d20b0f275c58a34881420705bb1990564d719427c550478c434345ced72805d3"
+    },
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "role": "IMMUTABLE_C11C_REFERENCE",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    {
+      "path": "tools/c11d/baseline_candidate/d_baseline_candidate.py",
+      "role": "BASELINE_GOVERNANCE_AND_AUDITOR",
+      "sha256": "297d34dd71657a1e3036c1f3ee889435a70919575dce39370651354cbb821e37"
+    },
+    {
+      "path": "tools/c11d/baseline_candidate/test_d_baseline_candidate.py",
+      "role": "BASELINE_GOVERNANCE_AND_AUDITOR",
+      "sha256": "5518b2575b2978973fc2779c4df0d96161f69657a5430f8d3d7717f8f1aa7ad1"
+    },
+    {
+      "path": "tools/c11d/d9/d_render_adapter.py",
+      "role": "CANONICAL_D_REQUEST_AND_PREPARE_ONLY_BRIDGE",
+      "sha256": "222742677cd498368429a3ec0dcdd922c44197bb5ada3638081138fb77c31bf1"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_candidate.py",
+      "role": "D_OWNED_REVIEW_IMPLEMENTATION",
+      "sha256": "b5f2239760bf00ae1ea4112ee3fc817f0e3f57ac8743692ac45af0e9aca3f59d"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_candidate_io_gap_audit.py",
+      "role": "READ_ONLY_SOURCE_PINNED_IO_GAP_AUDIT",
+      "sha256": "e056d45c02c00a9667b83335f40406064a6a994500ef8a51881db77e815d5ba1"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_candidate_seed_domain_audit.py",
+      "role": "READ_ONLY_CROSS_TYPE_SEED_DOMAIN_AUDIT_RUNNER",
+      "sha256": "3c246134fd1a1a38bc0a6141c40449c3ca9a797abf3a64a37b0ecc80e06d3dec"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_challenge_coordinate_projection.py",
+      "role": "D_OWNED_REVIEW_IMPLEMENTATION",
+      "sha256": "19e59fec446189a95820115e72f4239595c5890df1da4aebc55a3d75f5e1cd35"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_challenge_coordinate_sample_composition.py",
+      "role": "D_OWNED_REVIEW_IMPLEMENTATION",
+      "sha256": "b20ce0aee350af4cca1c517109800c0a6aef4a0ebaccd79593c253195aaf3525"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_challenge_delivery_timeline_review.py",
+      "role": "D_OWNED_REVIEW_IMPLEMENTATION",
+      "sha256": "ef3f8353972a18b604322b6d98a2483973a6ecb2f474263dcefda8d5c0c8dcf9"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_challenge_runtime_output_preview.py",
+      "role": "D_OWNED_REVIEW_IMPLEMENTATION",
+      "sha256": "e0f31c486b864b61a1c9d0b235174e9397470fbc7327bda498d304b69795ef60"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_challenge_simulation_sample_selection.py",
+      "role": "D_OWNED_REVIEW_IMPLEMENTATION",
+      "sha256": "f257d0f3e8b9d9e0feddc17d88dbfdafdcbbe9c87f734d0d98c3df71223798ec"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_challenge_temporal_alignment_policy.py",
+      "role": "D_OWNED_REVIEW_IMPLEMENTATION",
+      "sha256": "42d3f94516019e9912d8ed29a3d1b47bef9d316080d828e0de1560395b371be2"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_challenge_visual_payload_preview.py",
+      "role": "D_OWNED_REVIEW_IMPLEMENTATION",
+      "sha256": "93f9ffbbc7ea92efa6098b59c221c1fb191aa7aae47a2e2c84a7fbe1fc1e786f"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_delivery_timebase_projection.py",
+      "role": "D_OWNED_REVIEW_IMPLEMENTATION",
+      "sha256": "c111d171ba64b65c5629a0c33fe4a77e72703e576be4839f4842f271af43c24e"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_dynamic_request_payload_binding.py",
+      "role": "DYNAMIC_REQUEST_TO_PAYLOAD_BINDER_WITH_HASH_CLOSED_MANIFEST",
+      "sha256": "bad418fcee9b219c4ccd3f3720b8d623737b9790968608ba3f605430c8bb149b"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_editorial_field_consumption_audit.py",
+      "role": "D_OWNED_REVIEW_IMPLEMENTATION",
+      "sha256": "7001098cec9239027784abfc20ed17024f5bb45993b20f308e1debfb7fd5b85a"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_editorial_field_routing_visibility_reconciliation.py",
+      "role": "D_OWNED_REVIEW_IMPLEMENTATION",
+      "sha256": "ac490fd9ab5a6794ff673c8af71eac39ccefa1884baaa84cd3c96a888f1b5e7d"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_editorial_field_window_proposal.py",
+      "role": "D_OWNED_REVIEW_IMPLEMENTATION",
+      "sha256": "4b8971867a884014342c0557d77728965e3c704f481bbad213b6e6deb41c2495"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_editorial_review_manifest.py",
+      "role": "D_OWNED_REVIEW_IMPLEMENTATION",
+      "sha256": "007999019a1d1e7df854ab6f70421a544625168cb77ae15d34db1862ba74d529"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_frame_program.py",
+      "role": "D_OWNED_REVIEW_IMPLEMENTATION",
+      "sha256": "1cd36c6196d92123a0c949eabb6b4fb79431fefe5ec662158d91054e0fe948ec"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_logical_composition.py",
+      "role": "D_OWNED_REVIEW_IMPLEMENTATION",
+      "sha256": "f3851b9566d82136f3750571e97ef79f1e4006f903b9f96265c432e06cb630ad"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_loop_drill_editorial_field_windows.py",
+      "role": "D_OWNED_REVIEW_IMPLEMENTATION",
+      "sha256": "e12d73fa229df37bf9de02dbd2e077eea4ec8eb7c959c8d08d6f37cfe6daac06"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_profile_identity_separation.py",
+      "role": "D_OWNED_REVIEW_IMPLEMENTATION",
+      "sha256": "d417e292dab135709a70dcd691593799de09335ad76a16fb9754e98cbb711883"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_region_hierarchy.py",
+      "role": "D_OWNED_REVIEW_IMPLEMENTATION",
+      "sha256": "e806fa4b94d89c1e7f257d6dfab435ca6a8bf7a24d3608aaca3488770e4b0279"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_request_scoped_payload_binding.py",
+      "role": "D_OWNED_REVIEW_IMPLEMENTATION",
+      "sha256": "3b3ced5f51309fff791a166109baebd37511b354b1704ae2e59a0b9aa4e6df8b"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_request_scoped_payload_materialization_binding.py",
+      "role": "D_OWNED_REVIEW_IMPLEMENTATION",
+      "sha256": "244426e8f742e221f1fbb6885103135bd01d202cb6c8b641f877bd089e81ab9d"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_seed_domain_collision_audit.py",
+      "role": "READ_ONLY_SEED_DOMAIN_COLLISION_REJECTION_AUDIT_RUNNER",
+      "sha256": "9a6c98bb3d9b68accde29496de1b96ea4305312b66489a70fb05abcb4b68f2c2"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_semantic_regions.py",
+      "role": "D_OWNED_REVIEW_IMPLEMENTATION",
+      "sha256": "7f10aea38bf0ee9a9111db0cc0673466f54ef168511be80a75ce439fe9ee9943"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_temporal_bound_preview.py",
+      "role": "D_OWNED_REVIEW_IMPLEMENTATION",
+      "sha256": "5e7e210b257f231a1c3f3723f9340b6c9a12b1bf1087f86e986ce72cabbcdcb3"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_temporal_schedule.py",
+      "role": "D_OWNED_REVIEW_IMPLEMENTATION",
+      "sha256": "04b85a077f06d6ef9ffc7569d3fda0a92471b9ee5e1d6e57d3b50dbf6a6247cd"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_unified_audio_music_delivery_policy.py",
+      "role": "D_OWNED_REVIEW_IMPLEMENTATION",
+      "sha256": "ac605f5b04a68ca1533ce33460f4449bb361d3c674d9424e881e330dd4e22730"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_unified_content_review.py",
+      "role": "D_OWNED_REVIEW_IMPLEMENTATION",
+      "sha256": "f29490cfb3819dbabde3cd6927a990de9f223aca22bdae93de5c91816377ff4f"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_unified_delivery_timebase_policy.py",
+      "role": "D_OWNED_REVIEW_IMPLEMENTATION",
+      "sha256": "c39733c2454a89c64a4480b06fb617e74555ae51f2fd90a5890bf1e65b1f355c"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_unified_presentation_region_policy.py",
+      "role": "D_OWNED_REVIEW_IMPLEMENTATION",
+      "sha256": "d31267226c72f003dc2b24a0737bb7adb424720e9e414819656154b9a26f06ae"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_visual_drill_seed_domain_audit.py",
+      "role": "READ_ONLY_CANDIDATE_SEED_DOMAIN_AUDIT",
+      "sha256": "3c5b088f226b358051b2691224cf10a25201d90752bb35a9122dde4f6fdd51a2"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_visual_payload_materialization_preview.py",
+      "role": "D_OWNED_REVIEW_IMPLEMENTATION",
+      "sha256": "cebe9b79c519675e61aa0d136ec08814e38eef91d3f55d19e9355929d677bfee"
+    },
+    {
+      "path": "tools/c11d/d9/editorial_render_bridge.py",
+      "role": "CANONICAL_D_REQUEST_AND_PREPARE_ONLY_BRIDGE",
+      "sha256": "fe9d40052b0f4ff6f1c862c010ae7b3b13070b6ce935be6d62f9dcaec63a644a"
+    },
+    {
+      "path": "tools/c11d/d9/materialize_challenge_runtime_output_in_memory.gd",
+      "role": "GODOT_IN_MEMORY_REVIEW_HARNESS",
+      "sha256": "43031f59d9cd0d83521eea6fa726e8adc3094c9fd4d19af17cc21697a251c053"
+    },
+    {
+      "path": "tools/c11d/d9/materialize_challenge_visual_payload_in_memory.gd",
+      "role": "GODOT_IN_MEMORY_REVIEW_HARNESS",
+      "sha256": "8f8e4c9be6170d48319b62512a1e1cdb40c4f126563deb3546dfd302b080179e"
+    },
+    {
+      "path": "tools/c11d/d9/materialize_dynamic_request_payload_in_memory.gd",
+      "role": "DYNAMIC_REQUEST_PAYLOAD_GODOT_HARNESS",
+      "sha256": "9c6e367a6f92ad818286fbd96be81a8b24a120656f805ac8c1f2650833149440"
+    },
+    {
+      "path": "tools/c11d/d9/materialize_visual_drill_dynamic_request_payload_in_memory_v2.gd",
+      "role": "GODOT_IN_MEMORY_REVIEW_HARNESS",
+      "sha256": "10c34da13748de3fd106144f66b410f144deb4422dd2871de38f64f8cd714ad0"
+    },
+    {
+      "path": "tools/c11d/d9/materialize_visual_payloads_in_memory.gd",
+      "role": "GODOT_IN_MEMORY_REVIEW_HARNESS",
+      "sha256": "33c63c2f692ddf64a37d3e64a7be219c96df048059dcfded848ae9f3dada29a8"
+    },
+    {
+      "path": "tools/c11d/d9/rebind_challenge_presentation_profile_in_memory.gd",
+      "role": "GODOT_IN_MEMORY_REVIEW_HARNESS",
+      "sha256": "b647b9108e7d543058eea5e7643079bb65ab7e16fda11f0b26eb9bb97bab9c5b"
+    },
+    {
+      "path": "tools/c11d/d9/review_challenge_coordinate_projection_in_memory.gd",
+      "role": "GODOT_IN_MEMORY_REVIEW_HARNESS",
+      "sha256": "0fbb7b45058c928c7da27484d66655d8918af278392114c24dd290ab0175ce5a"
+    },
+    {
+      "path": "tools/c11d/d9/review_challenge_delivery_timeline_in_memory.gd",
+      "role": "GODOT_IN_MEMORY_REVIEW_HARNESS",
+      "sha256": "c80257463afe6fb223356965d8211cc54a72271403380c57af09622d71dfa352"
+    },
+    {
+      "path": "tools/c11d/d9/review_editorial_field_windows_in_memory.gd",
+      "role": "GODOT_IN_MEMORY_REVIEW_HARNESS",
+      "sha256": "34b03c0464dd7a1cc92d3d6565d4d9973cecbfc82ddee74a35e8688d8c440186"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_candidate.py",
+      "role": "FOCUSED_REGRESSION_TEST",
+      "sha256": "36e7eafadf2974cc4c0c2fa7338c82aa90057133a9dc29eb0488de3ef6917338"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_candidate_io_contract.py",
+      "role": "FOCUSED_REGRESSION_TEST",
+      "sha256": "d39f61148c7a4e0238f4b51ee27060c16ac944fe7c7a4c492632eebbccf4d3eb"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_candidate_io_gap_audit.py",
+      "role": "SOURCE_PINNED_IO_GAP_AUDIT_TESTS",
+      "sha256": "9f318f7143c725b0d2885a588f4429402b61936d2655e2f81d68a2a11c193987"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_candidate_seed_domain_audit.py",
+      "role": "FOCUSED_REGRESSION_TEST",
+      "sha256": "d540bbf4a8e7ecfd7ce194e015149acbd0354563c4cea750fdbfb0167b69447c"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_challenge_coordinate_projection.py",
+      "role": "FOCUSED_REGRESSION_TEST",
+      "sha256": "f8667e9c0d0247f40bf0bea6959f6edf8a4d270f0c3f876c950b2eb0104ec83f"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_challenge_coordinate_sample_composition.py",
+      "role": "FOCUSED_REGRESSION_TEST",
+      "sha256": "35e182270f39f25d9100b12acce5a332605e002915315e559b4834c7eee1a631"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_challenge_delivery_timeline_review.py",
+      "role": "FOCUSED_REGRESSION_TEST",
+      "sha256": "95792f094f68372425848d488441543057085d4de326d88e513ca61b962c7b4c"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_challenge_runtime_output_preview.py",
+      "role": "FOCUSED_REGRESSION_TEST",
+      "sha256": "623550d16831e91f7f16508bf2e7c3ebafa41f228a8ccc925d8947188f54827a"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_challenge_simulation_sample_selection.py",
+      "role": "FOCUSED_REGRESSION_TEST",
+      "sha256": "df94cd522130bf1d032e9c57b78cb977d74e10962256384ea92ee616b9360151"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_challenge_temporal_alignment_policy.py",
+      "role": "FOCUSED_REGRESSION_TEST",
+      "sha256": "d6da23fe92d66c12ccdcb5a219685c7ffe987af9047852615dca805a51cdc7df"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_challenge_visual_payload_preview.py",
+      "role": "FOCUSED_REGRESSION_TEST",
+      "sha256": "aec1b48a1082a9535017c2ac97f5d9732fcac4b69ff069814586001672baca5e"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_delivery_timebase_projection.py",
+      "role": "FOCUSED_REGRESSION_TEST",
+      "sha256": "9cfe9d5e36a5c6dbb556074bc8a1389319756ef0895371fb92d3592d08d819c6"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_dynamic_request_payload_binding.py",
+      "role": "DYNAMIC_REQUEST_PAYLOAD_MANIFEST_TESTS",
+      "sha256": "9a7805ef88152b0d126b59de98872895941e714e017c87aec8a8d9a18ad891b3"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_dynamic_request_payload_binding_visual_drill_v2.py",
+      "role": "FOCUSED_REGRESSION_TEST",
+      "sha256": "599fd845d5797d3c4f720a62da84f4e906483e906b98c5dc881c0aa9dc584574"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_editorial_field_consumption_audit.py",
+      "role": "FOCUSED_REGRESSION_TEST",
+      "sha256": "8b61b05905e2e63bde32e24631a3f8330c1f490fc221b3a9d74bd4c807aca6c4"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_editorial_field_routing_visibility_reconciliation.py",
+      "role": "FOCUSED_REGRESSION_TEST",
+      "sha256": "1f29f4aa47361df410a7a3d7eafb31d438e6dcf0a31cd4a3ad67c7cfd7334b75"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_editorial_field_window_proposal.py",
+      "role": "FOCUSED_REGRESSION_TEST",
+      "sha256": "9f4a6a9bab432482dc2fd94f432f38a61ce1c5eab5f900856cbd5081421a93e8"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_editorial_review_manifest.py",
+      "role": "FOCUSED_REGRESSION_TEST",
+      "sha256": "0456a2119eb3aee3f7c033169a4a1ff48b414721c0fc81fcee9cee79324c7e5f"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_frame_program.py",
+      "role": "FOCUSED_REGRESSION_TEST",
+      "sha256": "d26ea0810727be4b09735d190a94c63abdefbd7dd108cd905ed171cf18d3b205"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_logical_composition.py",
+      "role": "FOCUSED_REGRESSION_TEST",
+      "sha256": "8fb73a8559e437e3c37b6ae0ff2c8421cdf4a98a877f762979789894ef15586d"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_loop_drill_editorial_field_windows.py",
+      "role": "FOCUSED_REGRESSION_TEST",
+      "sha256": "157b57d51dab8e9586a0b7a8000ad9db95fe25c60ae534892a817299c0eb1e33"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_profile_identity_separation.py",
+      "role": "FOCUSED_REGRESSION_TEST",
+      "sha256": "3f688fa3c2195cce3994f33987951ebc3eb48ef5b42ef4bb51d474b1873f7c2c"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_region_hierarchy.py",
+      "role": "FOCUSED_REGRESSION_TEST",
+      "sha256": "391619555ea664b6bfe379e83da9fb013442943f9339d8e2da9d055756051294"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_request_scoped_payload_binding.py",
+      "role": "FOCUSED_REGRESSION_TEST",
+      "sha256": "19bb15027495fa103c7dd77c4c72e4a2758a22c3fe4a2df81c4fd2b32157812f"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_request_scoped_payload_materialization_binding.py",
+      "role": "FOCUSED_REGRESSION_TEST",
+      "sha256": "6407fc1cf7b6560b83362445452c79204233e9bb39e261b7042d12acdb6219f6"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_seed_domain_collision_audit.py",
+      "role": "SEED_DOMAIN_COLLISION_REJECTION_AUDIT_TEST",
+      "sha256": "1d2d7f25a7bba80d77474783c1ea31403163bcd2740b36980f97d757c9de779d"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_semantic_regions.py",
+      "role": "FOCUSED_REGRESSION_TEST",
+      "sha256": "8526de866c7a3377731e5130e079f1a21713f6a55dea810799ebf40d5db2a87a"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_temporal_bound_preview.py",
+      "role": "FOCUSED_REGRESSION_TEST",
+      "sha256": "9ef4d4fd813315a4c1c45265f5debd8efcc75a4dcc9434e533e221e6900d322c"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_temporal_schedule.py",
+      "role": "FOCUSED_REGRESSION_TEST",
+      "sha256": "77f317e14ec5ea1c8e09dc494741e9f1aad4fa25c7a25beffae4fe511a13e20b"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_unified_audio_music_delivery_policy.py",
+      "role": "FOCUSED_REGRESSION_TEST",
+      "sha256": "094baf3242c77eff32b0f9b45e9955336b3938f4c6bf795b92d9743975914746"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_unified_content_review.py",
+      "role": "FOCUSED_REGRESSION_TEST",
+      "sha256": "0250b65cfd9297864636d6d7cd3dd77de8c0c93bf07c5db2f178724e1394a53a"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_unified_delivery_timebase_policy.py",
+      "role": "FOCUSED_REGRESSION_TEST",
+      "sha256": "f2f273532e71bf5a1901a35f4914fa1aee1ea326e501828946e2b479152fb0e7"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_unified_presentation_region_policy.py",
+      "role": "FOCUSED_REGRESSION_TEST",
+      "sha256": "b6f1d2c07c528fdb8594182fceb748f8ea0ba0baab06553d882a96f0b45f25dc"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_visual_drill_seed_domain_audit.py",
+      "role": "FOCUSED_REGRESSION_TEST",
+      "sha256": "9c7366db6fe5dfe14a494f0c12c01408302764ef2d086c4f44a1ab77ddf17054"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_visual_payload_materialization_preview.py",
+      "role": "FOCUSED_REGRESSION_TEST",
+      "sha256": "34da34366d84c6be93d445b58e258c5cfff099ae8feb6189733b221f42a953a1"
+    },
+    {
+      "path": "tools/c11d/d9/universal_editorial_model.py",
+      "role": "CANONICAL_D_REQUEST_AND_PREPARE_ONLY_BRIDGE",
+      "sha256": "5c575be1942ba0613d66579d14db5cf9d7786e7062dfb001bd7be8a2e9c18ae5"
+    },
+    {
+      "path": "tools/c11d/d9/universal_producer.py",
+      "role": "CANONICAL_D_REQUEST_AND_PREPARE_ONLY_BRIDGE",
+      "sha256": "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1"
+    }
+  ],
+  "report_context_paths": [
+    "docs/current/d/D_RENDERER_BASELINE_PREPARATION_PLAN_V1.md",
+    "docs/current/d/D_RENDERER_UNIFIED_CONTENT_REVIEW_CHECKPOINT_V1.md",
+    "docs/current/d/D_RENDERER_EDITORIAL_FIELD_CONSUMPTION_AUDIT_CHECKPOINT_V1.md",
+    "docs/current/d/D_RENDERER_EDITORIAL_FIELD_ROUTING_VISIBILITY_RECONCILIATION_CHECKPOINT_V1.md",
+    "docs/current/d/D_RENDERER_EDITORIAL_VISUAL_CONSUMPTION_PHASE_CHECKPOINT_V1.md",
+    "docs/current/d/D_RENDERER_CANDIDATE_IO_GAP_AUDIT_CHECKPOINT_V1.md",
+    "docs/current/d/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_CHECKPOINT_V1.md",
+    "docs/current/d/D_RENDERER_POLICY_APPROVAL_DECISION_PACKET_V1.md",
+    "docs/current/d/D_RENDERER_REQUEST_PAYLOAD_MANIFEST_CHECKPOINT_V1.md",
+    "docs/current/d/C11D_CONTEXT_CHECKPOINT_D10_20261011.md",
+    "docs/current/d/MASTER_HANDOVER_C11D_CURRENT.md",
+    "docs/current/d/START_PROMPT_C11D_CURRENT.md",
+    "docs/current/d/C11-D_ROADMAP_V1.0_STATELESS.md",
+    "docs/current/d/D_RENDERER_VISUAL_DRILL_SEED_DOMAIN_AUDIT_CHECKPOINT_V1.md",
+    "docs/current/d/D_RENDERER_CANDIDATE_SEED_DOMAIN_AUDIT_CHECKPOINT_V1.md",
+    "docs/current/d/D_RENDERER_SEED_DOMAIN_COLLISION_AUDIT_CHECKPOINT_V1.md"
+  ],
+  "review_packet_components": [
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_IDENTITY_INVENTORY_V1.json",
+      "role": "IDENTITY_INVENTORY_CONTRACT"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_CANDIDATE_IDENTITY_INVENTORY_SCHEMA_V1.json",
+      "role": "IDENTITY_REPORT_SCHEMA"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_candidate_identity_inventory.py",
+      "role": "READ_ONLY_INVENTORY_RUNNER"
+    },
+    {
+      "path": "tools/c11d/d9/test_d_renderer_candidate_identity_inventory.py",
+      "role": "INVENTORY_TESTS"
+    }
+  ],
+  "governance_locks": {
+    "renderer_implementation": "NOT_IMPLEMENTED",
+    "renderer_build_artifact": "NONE",
+    "renderer_input_emitted": false,
+    "renderer_dispatch_invoked": false,
+    "renderer_activation": "OFF",
+    "media_created": false,
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE",
+    "renderer_baseline_approved": false,
+    "renderer_baseline_frozen": false,
+    "baseline_approval": "MISSING",
+    "freeze_eligible": false
+  },
+  "required_candidate_blockers": [
+    "D9_14_REAL_MEDIA_CERTIFICATION_BLOCKED",
+    "D9_16_FULL_ACCEPTANCE_NOT_CLOSED",
+    "D9_17_CLOSURE_NO_GO",
+    "D_RENDERER_BASELINE_APPROVAL_NOT_RECORDED",
+    "D_BASELINE_APPROVAL_NOT_RECORDED"
+  ],
+  "source_inventory_minimum": 100
+}

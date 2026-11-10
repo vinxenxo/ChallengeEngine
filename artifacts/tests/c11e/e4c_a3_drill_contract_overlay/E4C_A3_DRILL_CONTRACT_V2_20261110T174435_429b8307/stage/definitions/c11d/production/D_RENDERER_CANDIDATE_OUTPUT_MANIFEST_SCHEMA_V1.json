@@ -1,0 +1,508 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:renderer-output-manifest:v1",
+  "title": "C11-D Future Renderer Output Manifest V1 (post-authorization only)",
+  "description": "Prospective successful-output manifest schema. It does not create or authorize media. A manifest may exist only after a conforming input has been authorized and the render and required QA actually completed.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema": {
+      "const": "C11-D-D9-RENDERER-OUTPUT-MANIFEST-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "RENDERED_AND_QA_PASS"
+    },
+    "input_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "source_lineage": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "request_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "editorial_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "plan_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "adapter_envelope_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "frame_program_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "payload_manifest_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "renderer_input_schema_sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "required": [
+        "request_sha256",
+        "editorial_sha256",
+        "plan_sha256",
+        "adapter_envelope_sha256",
+        "frame_program_sha256",
+        "payload_manifest_sha256",
+        "renderer_input_schema_sha256"
+      ]
+    },
+    "renderer_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "renderer_contract_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "renderer_implementation_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "renderer_build_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "renderer_baseline_checkpoint_sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "required": [
+        "renderer_contract_sha256",
+        "renderer_implementation_sha256",
+        "renderer_build_sha256",
+        "renderer_baseline_checkpoint_sha256"
+      ]
+    },
+    "delivery": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "profile_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "profile_registry_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "resolved_profile_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "width": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "fps": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "frame_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "video_codec": {
+          "type": "string",
+          "minLength": 1
+        },
+        "pixel_format": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "profile_id",
+        "profile_registry_sha256",
+        "resolved_profile_sha256",
+        "width",
+        "height",
+        "fps",
+        "frame_count",
+        "video_codec",
+        "pixel_format"
+      ]
+    },
+    "artifacts": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "video": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "relative_path": {
+              "type": "string",
+              "pattern": "^(?!/)(?![A-Za-z]:)(?!.*\\.\\.)(?:[A-Za-z0-9_.-]+/)*[A-Za-z0-9_.-]+$"
+            },
+            "sha256": {
+              "$ref": "#/$defs/sha256"
+            },
+            "size_bytes": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "required": [
+            "relative_path",
+            "sha256",
+            "size_bytes"
+          ]
+        },
+        "audio": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "mode": {
+                  "const": "ENCODED_STREAM"
+                },
+                "relative_path": {
+                  "type": "string",
+                  "pattern": "^(?!/)(?![A-Za-z]:)(?!.*\\.\\.)(?:[A-Za-z0-9_.-]+/)*[A-Za-z0-9_.-]+$"
+                },
+                "sha256": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "size_bytes": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              },
+              "required": [
+                "mode",
+                "relative_path",
+                "sha256",
+                "size_bytes"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "mode": {
+                  "const": "DISABLED_BY_APPROVED_POLICY"
+                },
+                "relative_path": {
+                  "type": "null"
+                },
+                "sha256": {
+                  "type": "null"
+                },
+                "size_bytes": {
+                  "const": 0
+                },
+                "approved_disable_policy_sha256": {
+                  "$ref": "#/$defs/sha256"
+                }
+              },
+              "required": [
+                "mode",
+                "relative_path",
+                "sha256",
+                "size_bytes",
+                "approved_disable_policy_sha256"
+              ]
+            }
+          ]
+        },
+        "final_mux": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "relative_path": {
+              "type": "string",
+              "pattern": "^(?!/)(?![A-Za-z]:)(?!.*\\.\\.)(?:[A-Za-z0-9_.-]+/)*[A-Za-z0-9_.-]+$"
+            },
+            "sha256": {
+              "$ref": "#/$defs/sha256"
+            },
+            "size_bytes": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "required": [
+            "relative_path",
+            "sha256",
+            "size_bytes"
+          ]
+        }
+      },
+      "required": [
+        "video",
+        "audio",
+        "final_mux"
+      ]
+    },
+    "qa": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "video_decode": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "const": "PASS"
+            },
+            "relative_path": {
+              "type": "string",
+              "pattern": "^(?!/)(?![A-Za-z]:)(?!.*\\.\\.)(?:[A-Za-z0-9_.-]+/)*[A-Za-z0-9_.-]+$"
+            },
+            "sha256": {
+              "$ref": "#/$defs/sha256"
+            }
+          },
+          "required": [
+            "status",
+            "relative_path",
+            "sha256"
+          ]
+        },
+        "visual_review": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "const": "PASS"
+            },
+            "relative_path": {
+              "type": "string",
+              "pattern": "^(?!/)(?![A-Za-z]:)(?!.*\\.\\.)(?:[A-Za-z0-9_.-]+/)*[A-Za-z0-9_.-]+$"
+            },
+            "sha256": {
+              "$ref": "#/$defs/sha256"
+            }
+          },
+          "required": [
+            "status",
+            "relative_path",
+            "sha256"
+          ]
+        },
+        "deterministic_replay": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "const": "PASS"
+            },
+            "relative_path": {
+              "type": "string",
+              "pattern": "^(?!/)(?![A-Za-z]:)(?!.*\\.\\.)(?:[A-Za-z0-9_.-]+/)*[A-Za-z0-9_.-]+$"
+            },
+            "sha256": {
+              "$ref": "#/$defs/sha256"
+            }
+          },
+          "required": [
+            "status",
+            "relative_path",
+            "sha256"
+          ]
+        },
+        "provenance_and_catalog": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "const": "PASS"
+            },
+            "relative_path": {
+              "type": "string",
+              "pattern": "^(?!/)(?![A-Za-z]:)(?!.*\\.\\.)(?:[A-Za-z0-9_.-]+/)*[A-Za-z0-9_.-]+$"
+            },
+            "sha256": {
+              "$ref": "#/$defs/sha256"
+            }
+          },
+          "required": [
+            "status",
+            "relative_path",
+            "sha256"
+          ]
+        },
+        "audio_policy_conformance": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "const": "PASS"
+            },
+            "relative_path": {
+              "type": "string",
+              "pattern": "^(?!/)(?![A-Za-z]:)(?!.*\\.\\.)(?:[A-Za-z0-9_.-]+/)*[A-Za-z0-9_.-]+$"
+            },
+            "sha256": {
+              "$ref": "#/$defs/sha256"
+            }
+          },
+          "required": [
+            "status",
+            "relative_path",
+            "sha256"
+          ],
+          "description": "PASS must prove decodable/non-silent audio and loudness/peak/mobile QA when an encoded stream is required, or conformance to an explicitly approved audio-disabled policy."
+        }
+      },
+      "required": [
+        "video_decode",
+        "audio_policy_conformance",
+        "visual_review",
+        "deterministic_replay",
+        "provenance_and_catalog"
+      ]
+    },
+    "determinism": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "configuration_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "decoded_video_frames_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "decoded_audio_pcm_sha256": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "replay_report_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "result": {
+          "const": "PASS"
+        }
+      },
+      "required": [
+        "configuration_sha256",
+        "decoded_video_frames_sha256",
+        "decoded_audio_pcm_sha256",
+        "replay_report_sha256",
+        "result"
+      ],
+      "description": "If the approved policy enables audio, decoded_audio_pcm_sha256 is required as a SHA-256 value. If approved policy explicitly disables audio, the value is null and the replay report validates that decision."
+    },
+    "catalog": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "content_identity": {
+          "type": "string",
+          "minLength": 1
+        },
+        "provenance_record_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "registration_status": {
+          "const": "REGISTERED"
+        }
+      },
+      "required": [
+        "content_identity",
+        "provenance_record_sha256",
+        "registration_status"
+      ]
+    },
+    "governance": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "d4_8_decision_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "renderer_baseline_checkpoint_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "release_authority": {
+          "const": "NONE"
+        },
+        "release_performed": {
+          "const": false
+        }
+      },
+      "required": [
+        "d4_8_decision_sha256",
+        "renderer_baseline_checkpoint_sha256",
+        "release_authority",
+        "release_performed"
+      ]
+    },
+    "policy_lineage": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "presentation_region_policy_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "delivery_timebase_policy_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "temporal_alignment_policy_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "sample_selection_policy_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "coordinate_sample_composition_policy_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "coordinate_projection_policy_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "challenge_editorial_field_window_policy_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "loop_drill_editorial_field_window_policy_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "audio_music_delivery_policy_sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "required": [
+        "presentation_region_policy_sha256",
+        "delivery_timebase_policy_sha256",
+        "temporal_alignment_policy_sha256",
+        "sample_selection_policy_sha256",
+        "coordinate_sample_composition_policy_sha256",
+        "coordinate_projection_policy_sha256",
+        "challenge_editorial_field_window_policy_sha256",
+        "loop_drill_editorial_field_window_policy_sha256",
+        "audio_music_delivery_policy_sha256"
+      ]
+    }
+  },
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "input_sha256",
+    "source_lineage",
+    "renderer_identity",
+    "delivery",
+    "policy_lineage",
+    "artifacts",
+    "qa",
+    "determinism",
+    "catalog",
+    "governance"
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}

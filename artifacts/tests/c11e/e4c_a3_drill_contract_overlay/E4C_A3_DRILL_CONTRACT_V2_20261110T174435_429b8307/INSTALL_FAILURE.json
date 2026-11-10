@@ -1,0 +1,15 @@
+{
+    "schema":  "C11E-E4C-A3-DRILL-DESIGN-CONTRACT-INSTALL-FAILURE-V2",
+    "status":  "FAILED_CLOSED",
+    "run_id":  "E4C_A3_DRILL_CONTRACT_V2_20261110T174435_429b8307",
+    "stage":  "STAGED_VALIDATION",
+    "error":  "No se puede encontrar una parte de la ruta de acceso \u0027C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_a3_drill_contract_overlay\\E4C_A3_DRILL_CONTRACT_V2_20261110T174435_429b8307\\stage\\definitions\\c11d\\production\\D_RENDERER_CANDIDATE_REQUEST_PAYLOAD_INSTANCE_INTEGRATION_PROPOSAL_SCHEMA_V1.json\u0027.",
+    "journal":  [
+
+                ],
+    "rollback_status":  "NOT_NEEDED",
+    "renderer":  "OFF",
+    "media_created":  false,
+    "release_authority":  "NONE",
+    "evidence_directory":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_a3_drill_contract_overlay\\E4C_A3_DRILL_CONTRACT_V2_20261110T174435_429b8307"
+}

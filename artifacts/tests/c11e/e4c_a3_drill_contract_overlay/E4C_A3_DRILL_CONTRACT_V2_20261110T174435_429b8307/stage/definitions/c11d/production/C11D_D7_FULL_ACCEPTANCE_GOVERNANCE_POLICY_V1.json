@@ -1,0 +1,26 @@
+{
+  "policy_id": "c11d_d7_full_acceptance_governance",
+  "schema_version": "1.0",
+  "authority": "D7.5",
+  "status": "CANONICAL",
+  "source_of_truth": "D7.0-D7.4 evidence plus C11-C frozen build_factory.py hash gate",
+  "acceptance_rules": [
+    "All five D7 predecessors must be PASS/CLOSED.",
+    "D7.1 matrix authority must remain CANONICAL_D7_1.",
+    "D7.3 catalog authority must remain CANONICAL_D7_3.",
+    "D7.4 identity/provenance authority must remain CANONICAL_D7_4.",
+    "Coverage must remain 9 challenges x 5 delivery profiles x 2 modes = 90 core cases.",
+    "D7.3 and D7.4 must remain 90 catalog items with 1:1 matrix linkage.",
+    "Seed governance remains explicit-domain only; no master seed, runtime derivation, auto-generation, or cross-domain sharing.",
+    "D4.8 remains BLOCKED; runtime authority is NONE; production and renderer execution remain false.",
+    "D7.5 writes evidence only under artifacts/tests/c11d_d7/d7_5/.",
+    "release/ must not be created or modified by D7.5.",
+    "Repeated validation must be byte-for-byte deterministic."
+  ],
+  "evidence_scope": [
+    "artifacts/tests/c11d_d7/d7_5/d7_5_full_acceptance.json",
+    "artifacts/tests/c11d_d7/d7_5/d7_5_governance_validation.json",
+    "artifacts/tests/c11d_d7/d7_5/d7_5_negative_tests.json",
+    "artifacts/tests/c11d_d7/d7_5/d7_5_acceptance_receipt.json"
+  ]
+}

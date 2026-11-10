@@ -1,0 +1,131 @@
+{
+  "schema": "C11-D-D9.10-EDITORIAL-RENDER-BRIDGE-CONTRACT-V1",
+  "schema_version": "1.0",
+  "checkpoint": "D9.10",
+  "status": "PLANNING_ONLY_FUTURE_D_FROZEN_BASELINE_REQUIRED",
+  "purpose": "Define the canonical mapping, invariants and gating requirements between D9.9 universal editorial plans and a future D renderer, without emitting renderer input or creating media.",
+  "inputs": {
+    "request_schema": "C11-D-D9.9-UNIVERSAL-PRODUCER-REQUEST-V1",
+    "plan_schema": "C11-D-D9.9-UNIVERSAL-PRODUCER-PLAN-V1",
+    "editorial_model_schema": "C11-D-D9-UNIVERSAL-EDITORIAL-MODEL-V1",
+    "canonical_plan_source": "tools/c11d/d9/universal_producer.py"
+  },
+  "output": {
+    "schema": "C11-D-D9.10-EDITORIAL-RENDER-BRIDGE-PLAN-V1",
+    "meaning": "Deterministic bridge planning record for inspection and provenance only.",
+    "renderer_input_emitted": false,
+    "renderer_adapter_invoked": false,
+    "media_output_created": false,
+    "output_artifact_path": null
+  },
+  "supported_content_types": ["challenges", "visual_loops", "visual_drills"],
+  "unsupported_content_types": {
+    "longform": "DISABLED_UNTIL_CANONICAL_D_REQUEST_SUPPORTS_LONGFORM"
+  },
+  "routes": {
+    "challenges": {
+      "route_id": "REUSE_CANONICAL_D4_CHALLENGE_SUBPLAN",
+      "required_plan_kind": "UNIVERSAL_PLAN_WITH_CANONICAL_D4_CHALLENGE_SUBPLAN",
+      "required_d4_subplan_status": "PASS",
+      "render_adapter_state": "DEFERRED_TO_FUTURE_D_FROZEN_BASELINE"
+    },
+    "visual_loops": {
+      "route_id": "FUTURE_D_NATIVE_VISUAL_LOOP_ADAPTER_REQUIRED",
+      "required_plan_kind": "UNIVERSAL_EDITORIAL_INTENT_PLAN_ONLY",
+      "required_d4_subplan_status": "NOT_APPLICABLE_NO_D4_LOOP_DRILL_CONTRACT",
+      "render_adapter_state": "NOT_DEFINED"
+    },
+    "visual_drills": {
+      "route_id": "FUTURE_D_NATIVE_VISUAL_DRILL_ADAPTER_REQUIRED",
+      "required_plan_kind": "UNIVERSAL_EDITORIAL_INTENT_PLAN_ONLY",
+      "required_d4_subplan_status": "NOT_APPLICABLE_NO_D4_LOOP_DRILL_CONTRACT",
+      "render_adapter_state": "NOT_DEFINED"
+    }
+  },
+  "mapping_contract": {
+    "content_identity": {
+      "source": "plan.selection",
+      "destination": "future_d_renderer_contract.content_identity",
+      "classification": "IDENTITY_ONLY",
+      "editable": false
+    },
+    "editorial": {
+      "source": "plan.editorial",
+      "destination": "future_d_renderer_contract.editorial_bindings",
+      "classification": "EDITORIAL_ALLOWLIST_ONLY",
+      "allowlist_source": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+      "must_not_override_simulation_or_telemetry": true
+    },
+    "gameplay_seed": {
+      "source": "plan.seed",
+      "domain": "GAMEPLAY",
+      "owner": "request.seed",
+      "derivation": false,
+      "cross_domain_sharing": "FORBIDDEN"
+    },
+    "music_seed": {
+      "source": "plan.music_seed",
+      "domain": "MUSIC",
+      "owner": "request.music_seed",
+      "derivation": false,
+      "cross_domain_sharing": "FORBIDDEN"
+    },
+    "delivery_profile": {
+      "source": "plan.resolved_delivery_profile_id",
+      "destination": "future_d_renderer_contract.delivery_profile_id",
+      "classification": "REGISTERED_PROFILE_REFERENCE_ONLY"
+    },
+    "presentation_profile": {
+      "source": "plan.presentation_profile_id",
+      "destination": "future_d_renderer_contract.presentation_profile_id",
+      "classification": "REGISTERED_PROFILE_REFERENCE_ONLY"
+    },
+    "variation": {
+      "source": "plan.variation_index",
+      "classification": "TECHNICAL_REQUEST_VALUE_NOT_EDITORIAL",
+      "runtime_derivation": false
+    },
+    "audio": {
+      "source": "plan.audio_enabled",
+      "classification": "EXPLICIT_REQUEST_FLAG_ONLY",
+      "music_seed_domain": "MUSIC"
+    },
+    "provenance": {
+      "sources": ["result.request_hash", "result.editorial_hash", "result.plan_hash"],
+      "classification": "IMMUTABLE_LINEAGE",
+      "sha256_required_for_future_media": true
+    }
+  },
+  "forbidden_mutations": [
+    "SimulationResult",
+    "winning_frame",
+    "close_calls",
+    "gameplay_rng_consumption",
+    "structural_rng_consumption",
+    "gameplay_seed",
+    "music_seed",
+    "derived_telemetry",
+    "provenance_identity"
+  ],
+  "future_d_frozen_baseline_gates": [
+    "FUTURE_D_RENDERER_BASELINE_FROZEN_AND_IDENTIFIED",
+    "RENDER_ADAPTER_CONTRACT_VERSIONED_AND_HASHED",
+    "CONTENT_BINDER_COMPATIBILITY_MATRIX_PASS",
+    "D4_8_EXPLICIT_GOVERNANCE_AUTHORIZATION",
+    "GAMEPLAY_AND_MUSIC_SEED_ISOLATION_TESTS_PASS",
+    "EDITORIAL_ONLY_MUTATION_DETERMINISM_TESTS_PASS",
+    "RENDERER_AND_MEDIA_PROVENANCE_CHAIN_PASS",
+    "VISUAL_AND_AUDIO_QA_GATES_PASS",
+    "CATALOG_REPRODUCTION_AND_NEGATIVE_ACCEPTANCE_PASS"
+  ],
+  "governance": {
+    "master_seed": "NOT_ADOPTED",
+    "automatic_seed_generation": false,
+    "runtime_seed_derivation": false,
+    "cross_domain_seed_sharing": "FORBIDDEN",
+    "renderer_activation": false,
+    "production_execution": false,
+    "d4_8": "BLOCKED",
+    "release_authority": "NONE"
+  }
+}

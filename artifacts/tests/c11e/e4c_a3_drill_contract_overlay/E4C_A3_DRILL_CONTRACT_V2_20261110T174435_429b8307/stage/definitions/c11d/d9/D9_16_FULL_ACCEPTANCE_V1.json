@@ -1,0 +1,94 @@
+{
+  "schema": "C11-D-D9.16-FULL-ACCEPTANCE-V1",
+  "schema_version": "1.0",
+  "checkpoint": "D9.16",
+  "status": "PREFLIGHT_ONLY_FULL_ACCEPTANCE_BLOCKED_AS_REQUIRED",
+  "purpose": "Aggregate D9.8-D9.15 acceptance evidence without pretending that blocked real-media production or incomplete operator GUI evidence has passed.",
+  "acceptance_scope": [
+    {
+      "checkpoint": "D9.8",
+      "evidence": "tools/c11d/d9/test_universal_editorial_model.py",
+      "expected": "STATIC_PASS_WITH_25_NEGATIVES"
+    },
+    {
+      "checkpoint": "D9.9",
+      "evidence": "tools/c11d/d9/test_universal_producer.py",
+      "expected": "UNIVERSAL_PLAN_AND_CLI_GUI_PARITY_PASS"
+    },
+    {
+      "checkpoint": "D9.10",
+      "evidence": "tools/c11d/d9/test_editorial_render_bridge.py",
+      "expected": "PLAN_ONLY_BRIDGE_PASS_NO_RENDERER_INPUT"
+    },
+    {
+      "checkpoint": "D9.11",
+      "evidence": "tools/c11d/d9/test_maintenance.py",
+      "expected": "REVERSIBLE_MAINTENANCE_AND_FREEZE_MANIFEST_PRESERVED"
+    },
+    {
+      "checkpoint": "D9.12",
+      "evidence": "c11c-suite/c11c-test/test_d9_test_integration.py",
+      "expected": "TEST_SURFACE_ROUTE_CONTRACT_PASS"
+    },
+    {
+      "checkpoint": "D9.13",
+      "evidence": "tools/c11d/d9/test_cross_suite_lifecycle.py",
+      "expected": "FIVE_SURFACE_IDENTITY_CHAIN_PASS"
+    },
+    {
+      "checkpoint": "D9.14",
+      "evidence": "tools/c11d/d9/test_gui_real_media_certification.py",
+      "expected": "GATE_BLOCKED_AS_REQUIRED_NO_MEDIA"
+    },
+    {
+      "checkpoint": "D9.15",
+      "evidence": "tools/c11d/d9/test_gui_operational_acceptance.py",
+      "expected": "PREFLIGHT_PASS_OPERATOR_EVIDENCE_REQUIRED"
+    },
+    {
+      "checkpoint": "D9.16",
+      "evidence": "tools/c11d/d9/test_full_acceptance.py",
+      "expected": "PREFLIGHT_PASS_FULL_ACCEPTANCE_BLOCKED_AS_REQUIRED"
+    }
+  ],
+  "required_surfaces": [
+    "c11c-config",
+    "c11c-producer",
+    "c11c-test",
+    "c11c-catalog",
+    "c11c-maintenance"
+  ],
+  "full_acceptance_blockers": [
+    "D9_14_REAL_MEDIA_EVIDENCE_NOT_EXECUTED_FUTURE_D_RENDERER_BASELINE_AND_D4_8_AUTHORIZATION_REQUIRED",
+    "D9_15_OPERATOR_GUI_EVIDENCE_NOT_RECORDED_FOR_ALL_FIVE_SURFACES"
+  ],
+  "governance": {
+    "master_seed": "NOT_ADOPTED",
+    "gameplay_seed_source": "request.seed",
+    "music_seed_source": "request.music_seed",
+    "cross_domain_seed_sharing": "FORBIDDEN",
+    "automatic_seed_generation": false,
+    "runtime_seed_derivation": false,
+    "renderer_activation": false,
+    "renderer_input_emitted": false,
+    "production_execution": false,
+    "media_created": false,
+    "d4_8": "BLOCKED",
+    "runtime_authority": "NONE",
+    "release_authority": "NONE",
+    "longform": "DISABLED_UNTIL_CANONICAL_D_REQUEST_SUPPORTS_LONGFORM",
+    "c11c_frozen_reference_mutation": "FORBIDDEN"
+  },
+  "immutable_reference": {
+    "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+    "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "access": "READ_ONLY"
+  },
+  "notes": [
+    "A passing preflight checks the aggregate acceptance wiring only; it does not close D9.16.",
+    "Real-media acceptance is mandatory in the roadmap but cannot be claimed while D4.8 is BLOCKED and no authorized D renderer baseline exists.",
+    "D9.15 operator evidence across all five surfaces must be recorded and independently reviewed before operational acceptance can close.",
+    "No sixth Suite surface is allowed; this contract is registered read-only in the existing Config and Test surfaces.",
+    "The preflight does not execute test suites recursively, invoke a renderer, create media, write evidence, or grant release authority."
+  ]
+}

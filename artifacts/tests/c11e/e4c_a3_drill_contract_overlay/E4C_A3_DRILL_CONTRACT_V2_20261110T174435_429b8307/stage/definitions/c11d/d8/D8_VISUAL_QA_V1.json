@@ -1,0 +1,19 @@
+{
+  "contract": "C11-D-D8.2-VISUAL-QA-V1",
+  "scope_source": "definitions/c11d/d8/D8_MEDIA_SCOPE_V1.json",
+  "scope_mode": "EXPLICIT_REGISTRY_ONLY",
+  "target_media": [],
+  "current_state": "EMPTY_SCOPE",
+  "historical_roots": [
+    "artifacts/maintenance/**",
+    "artifacts/production/**",
+    "artifacts/prototypes/**",
+    "artifacts/qa/**",
+    "artifacts/tests/**",
+    "artifacts/regression/**",
+    "artifacts/releases/**"
+  ],
+  "release_authority": "NONE",
+  "production_execution": false,
+  "renderer_execution": false
+}

@@ -1,0 +1,108 @@
+{
+  "schema": "C11E-E4A-CHALLENGE-EDITORIAL-PRESENTATION-POLICY-APPROVAL-V1",
+  "schema_version": "1.0",
+  "status": "APPROVED_BY_OPERATOR_FOR_CHALLENGE_SEMANTIC_MAPPING",
+  "approved_date": "2026-11-03",
+  "approver": "operator_explicit_chat_decision",
+  "approval_text": "APROBAR POLICY V1",
+  "approved_source_policy": {
+    "path": "docs/history/c11d/C11E_E4A_CHALLENGE_EDITORIAL_PRESENTATION_POLICY_PROPOSAL_20261103_V1.md",
+    "sha256": "a1151999003b890abedb5d3b73382d1861d8ef3a56b0768a10fe480cfa841405"
+  },
+  "scope": {
+    "content_type": "CHALLENGE",
+    "families": "canonical D9.8 Challenge selectors",
+    "fixture": "CHALLENGE_004",
+    "policy_version": "V1"
+  },
+  "fields": [
+    {
+      "field": "title",
+      "kind": "visual_text",
+      "region": "HEADER",
+      "source_phase_windows": [
+        "HOOK"
+      ]
+    },
+    {
+      "field": "subtitle",
+      "kind": "visual_text",
+      "region": "HEADER",
+      "source_phase_windows": [
+        "HOOK"
+      ]
+    },
+    {
+      "field": "player_name",
+      "kind": "visual_text",
+      "region": "CHALLENGE_OVERLAY",
+      "source_phase_windows": [
+        "HOOK",
+        "GAME"
+      ]
+    },
+    {
+      "field": "challenge_label",
+      "kind": "visual_text",
+      "region": "CHALLENGE_OVERLAY",
+      "source_phase_windows": [
+        "HOOK",
+        "GAME"
+      ]
+    },
+    {
+      "field": "call_to_action",
+      "kind": "visual_text",
+      "region": "FOOTER",
+      "source_phase_windows": [
+        "CTA"
+      ]
+    },
+    {
+      "field": "language",
+      "kind": "metadata_only",
+      "region": null,
+      "source_phase_windows": []
+    }
+  ],
+  "rules": {
+    "inheritance": "global -> content_type -> family -> subtype -> variant -> production_override; canonical D9.8 resolver only",
+    "empty_effective_value": "OMIT_FROM_VISUAL_COMPOSITION",
+    "unknown_or_missing_phase": "FAIL_CLOSED_FOR_AFFECTED_FIELD",
+    "unknown_or_unresolved_region_geometry": "FAIL_CLOSED_FOR_AFFECTED_FIELD",
+    "phase_namespace": "D9.9 editorial fields are distinct from Challenge phase-field keys hook/reveal/cta; the CTA relationship is a policy link, not an alias",
+    "timeline": "Resolve named intervals and source-timebase boundaries from the selected canonical Challenge; never hard-code CHALLENGE_004 numeric frame boundaries for other selectors",
+    "delivery": "Delivery conversion remains downstream and must not redefine source-timebase visibility",
+    "data_boundary": "No editorial fields in SimulationResult, FrameSnapshot.custom_data, telemetry, seed material or frozen C11-C source"
+  },
+  "geometry_authority": {
+    "hierarchy": "D1.5 logical HEADER/BODY/FOOTER plus existing presentation profile/family composition hierarchy",
+    "challenge_overlay": "semantic role only; exact geometry/typography/z-order/clipping must be resolved from existing D-owned profile/family contracts; no guessed coordinates",
+    "bounded_ch001_r4": "not general Challenge geometry"
+  },
+  "render_test_authorization": {
+    "isolated_e4a_test_rendering": "AUTHORIZED_BY_OPERATOR_CURRENT_INSTRUCTION",
+    "production_renderer": "NOT_AUTHORIZED",
+    "production_dispatch": "NOT_AUTHORIZED",
+    "production_media": "NOT_AUTHORIZED",
+    "d4_8": "BLOCKED",
+    "d9_10": "PREPARE_ONLY",
+    "d9_14": "BLOCKED",
+    "d9_16": "BLOCKED",
+    "d9_17": "BLOCKED_NO_GO",
+    "d10": "BLOCKED_FOR_PROMOTION",
+    "release_authority": "NONE",
+    "baseline_promotion": false,
+    "freeze_eligible": false
+  },
+  "source_decisions": {
+    "d1_1": "PASS_MAPPING_EVIDENCE_NON_RENDERING",
+    "d1_7": "PASS_9_OF_9_DECLARATIVE_CHALLENGE_MAPPING; canonical inherited layout; no Challenge layout override",
+    "d1_5": "canonical 540x960 logical frame; HEADER 0-144, BODY 144-816, FOOTER 816-960"
+  },
+  "historical_reuse": {
+    "v2b_runtime_consumer": "277-case isolated review-only descriptor consumer; no actual pixel draw; reuse as boundary/reference, do not rerun absent pin drift",
+    "v2b_source_composition": "402-check validation with four Challenge candidates and 1680/1680 source/marker frames; in-memory only, no pixels/media; do not rerun absent pin drift",
+    "c11c": "frozen reference only; no modification"
+  }
+}

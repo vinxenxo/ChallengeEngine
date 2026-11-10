@@ -1,0 +1,16 @@
+{
+  "schema": "C11-D-D9-MEDIA-PILOT-REQUEST-V1",
+  "phase": "D9.0",
+  "status": "PREFLIGHT_ONLY",
+  "authorized": false,
+  "execution": false,
+  "renderer_execution": false,
+  "release_authority": "NONE",
+  "selection_mode": "EXPLICIT_SINGLE_CASE",
+  "case_id": null,
+  "challenge_id": null,
+  "delivery_profile": null,
+  "mode": null,
+  "seed": null,
+  "music_seed": null
+}

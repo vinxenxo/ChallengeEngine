@@ -1,0 +1,159 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:renderer-candidate-binding-preview:v1",
+  "title": "C11-D Renderer Candidate Binding Preview V1",
+  "description": "In-memory, non-executable mapping preview. This schema is explicitly not renderer-native input and never grants dispatch/production authority.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "contract_identity",
+    "source_contract_identities",
+    "implementation_identity",
+    "source_identity",
+    "content_identity",
+    "editorial_binding_preview",
+    "delivery_profile",
+    "presentation_profile_id",
+    "variation_index",
+    "audio_enabled",
+    "seed_contract",
+    "truth_and_telemetry",
+    "execution_boundary",
+    "preview_sha256"
+  ],
+  "properties": {
+    "schema": {"const": "C11-D-D9-RENDERER-CANDIDATE-BINDING-PREVIEW-V1"},
+    "schema_version": {"const": "1.0"},
+    "status": {"const": "PREPARATION_ONLY_NOT_RENDERER_INPUT"},
+    "contract_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema", "schema_version", "sha256", "output_schema_sha256"],
+      "properties": {
+        "schema": {"const": "C11-D-RENDERER-CANDIDATE-BINDING-PREVIEW-CONTRACT-V1"},
+        "schema_version": {"const": "1.0"},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "output_schema_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "source_contract_identities": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "adapter_contract_canonical_sha256",
+        "adapter_contract_file_sha256",
+        "editorial_model_canonical_sha256",
+        "editorial_model_file_sha256",
+        "delivery_registry_file_sha256"
+      ],
+      "properties": {
+        "adapter_contract_canonical_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "adapter_contract_file_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "editorial_model_canonical_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "editorial_model_file_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "delivery_registry_file_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "implementation_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["module", "version", "sha256"],
+      "properties": {
+        "module": {"const": "tools/c11d/d9/d_renderer_candidate.py"},
+        "version": {"const": "0.1.0-preparation"},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "source_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["request_hash", "editorial_hash", "plan_hash", "bridge_record_hash", "adapter_envelope_hash"],
+      "properties": {
+        "request_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "editorial_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "plan_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "bridge_record_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "adapter_envelope_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "content_identity": {"type": "object", "minProperties": 1},
+    "editorial_binding_preview": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["source_field", "proposed_slot_id", "mapping_state", "value", "value_sha256"],
+        "properties": {
+          "source_field": {"type": "string", "minLength": 1},
+          "proposed_slot_id": {"type": "string", "minLength": 1},
+          "mapping_state": {"const": "PROPOSED_NOT_APPROVED"},
+          "value": {"type": "string"},
+          "value_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        }
+      }
+    },
+    "delivery_profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["requested_profile_id", "resolved_profile_id", "registry_schema", "registry_revision", "registry_sha256", "resolved_profile_sha256", "profile"],
+      "properties": {
+        "requested_profile_id": {"type": "string", "minLength": 1},
+        "resolved_profile_id": {"type": "string", "minLength": 1},
+        "registry_schema": {"type": "string", "minLength": 1},
+        "registry_revision": {"type": "string", "minLength": 1},
+        "registry_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "resolved_profile_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "profile": {"type": "object", "minProperties": 1}
+      }
+    },
+    "presentation_profile_id": {"type": "string", "minLength": 1},
+    "variation_index": {"type": "integer", "minimum": 0},
+    "audio_enabled": {"type": "boolean"},
+    "seed_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["gameplay_seed", "gameplay_seed_source", "gameplay_seed_domain", "music_seed", "music_seed_source", "music_seed_domain", "cross_domain_seed_sharing", "automatic_seed_generation", "runtime_seed_derivation"],
+      "properties": {
+        "gameplay_seed": {"type": "integer", "minimum": 1, "maximum": 2147483646},
+        "gameplay_seed_source": {"const": "canonical_request.seed"},
+        "gameplay_seed_domain": {"const": "GAMEPLAY"},
+        "music_seed": {"type": "integer", "minimum": 1, "maximum": 2147483646},
+        "music_seed_source": {"const": "canonical_request.music_seed"},
+        "music_seed_domain": {"const": "MUSIC"},
+        "cross_domain_seed_sharing": {"const": "FORBIDDEN"},
+        "automatic_seed_generation": {"const": false},
+        "runtime_seed_derivation": {"const": false}
+      }
+    },
+    "truth_and_telemetry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["simulation_truth", "derived_telemetry"],
+      "properties": {
+        "simulation_truth": {"const": "NOT_BOUND"},
+        "derived_telemetry": {"const": "NOT_BOUND"}
+      }
+    },
+    "execution_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["candidate_mode", "renderer_input_emitted", "renderer_dispatch_invoked", "renderer_activation", "production_execution", "media_output_created", "output_artifact_path", "d4_8", "release_authority", "c11c_source_mutation"],
+      "properties": {
+        "candidate_mode": {"const": "NON_EXECUTABLE_BINDING_REVIEW"},
+        "renderer_input_emitted": {"const": false},
+        "renderer_dispatch_invoked": {"const": false},
+        "renderer_activation": {"const": false},
+        "production_execution": {"const": false},
+        "media_output_created": {"const": false},
+        "output_artifact_path": {"type": "null"},
+        "d4_8": {"const": "BLOCKED"},
+        "release_authority": {"const": "NONE"},
+        "c11c_source_mutation": {"const": false}
+      }
+    },
+    "preview_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

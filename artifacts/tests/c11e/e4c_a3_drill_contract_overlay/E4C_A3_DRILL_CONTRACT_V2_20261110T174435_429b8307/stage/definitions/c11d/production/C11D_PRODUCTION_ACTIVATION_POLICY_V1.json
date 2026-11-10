@@ -1,0 +1,73 @@
+{
+  "policy_id": "c11d_production_activation",
+  "version": "1.0",
+  "status": "ACTIVE_POLICY",
+  "runtime_authority": "NONE",
+  "renderer_activation_policy": {
+    "state": "DISABLED"
+  },
+  "states": {
+    "defined": [
+      "DRAFT",
+      "NORMALIZED",
+      "PLANNED",
+      "VALIDATED",
+      "AUTHORIZED",
+      "EXECUTING",
+      "COMPLETED",
+      "FAILED",
+      "BLOCKED"
+    ],
+    "reachable_in_d4_8": [
+      "DRAFT",
+      "NORMALIZED",
+      "PLANNED",
+      "VALIDATED",
+      "AUTHORIZED",
+      "BLOCKED"
+    ],
+    "reserved_for_later_phases": [
+      "EXECUTING",
+      "COMPLETED",
+      "FAILED"
+    ]
+  },
+  "required_predecessors": [
+    "D4.2",
+    "D4.3",
+    "D4.4",
+    "D4.5",
+    "D4.6",
+    "D4.7"
+  ],
+  "review": {
+    "authorization": false,
+    "blocked_reason": "REVIEW_MODE",
+    "unknown_delivery_profile_allowed": true
+  },
+  "production": {
+    "authorization_requires_renderer_approval": true,
+    "authorization_requires_all_predecessors_closed": true,
+    "authorization_requires_plan_integrity": true,
+    "authorization_requires_request_integrity": true,
+    "authorization_requires_seed_isolation": true,
+    "authorization_requires_personalization_registry": true,
+    "authorization_requires_delivery_profile": true,
+    "unknown_delivery_profile_allowed": false
+  },
+  "provenance": {
+    "require_source_revision": true,
+    "require_request_sha256": true,
+    "require_plan_sha256": true,
+    "require_schema_version": true,
+    "require_personalization_profile_version": true,
+    "engine_version_source": "Production Plan music_request step authority"
+  },
+  "execution": {
+    "renderer_called": false,
+    "production_execution": false,
+    "ffmpeg_production_called": false,
+    "godot_production_called": false,
+    "runtime_authority": "NONE"
+  }
+}

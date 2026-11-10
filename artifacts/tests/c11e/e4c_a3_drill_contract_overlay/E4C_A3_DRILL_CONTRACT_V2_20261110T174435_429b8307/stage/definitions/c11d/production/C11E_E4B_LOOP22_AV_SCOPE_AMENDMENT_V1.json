@@ -1,0 +1,151 @@
+{
+  "approved_upstream_policy_hashes": {
+    "definitions/c11d/production/C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_V1.json": {
+      "bytes": 5528,
+      "sha256": "9e206704665ea85226ecc10854be9f679c32fe9ed7efb690a829f6e8456d43da"
+    },
+    "definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json": {
+      "bytes": 8376,
+      "sha256": "609a4d183aac07c2cbe1abaf41444160fdd137217faffbead3aef618320d57dc"
+    },
+    "definitions/c11d/production/D_RENDERER_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_PROPOSAL_V1.json": {
+      "bytes": 7457,
+      "sha256": "3dd4874e1b6506de6d9ddbe6ad1b567a284b94cc00ef1bac0d35d1731af05e23"
+    },
+    "definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_V1.json": {
+      "bytes": 9507,
+      "sha256": "41a62b0766db47cd99772f28642ef67766314f20f0f7891789d6b7497bbfee85"
+    },
+    "definitions/c11d/production/D_RENDERER_UNIFIED_PRESENTATION_REGION_POLICY_PROPOSAL_V1.json": {
+      "bytes": 9440,
+      "sha256": "101092bb32127bb8854a501a9215c0b6cf69581594383903716907d49719c01a"
+    }
+  },
+  "authority": {
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "operator_approval_canonical_sha256": "4d3d4a1d5044469e819721fd7a818881246ab6f219b1e8cc7924f2ceb895e970",
+    "r1p_recovered_zip_sha256": "d49f54ffdee6026426c2bb87fcb72b5c8a68f09cb64fb91f71e25dc10fd26b52",
+    "selector_matrix_sha256": "eb0ce2fab5ee97c298e232685ec3452779fc1e1f4a8dcd1c9c994bff1a45a1a1"
+  },
+  "does_not_supersede": [
+    "R1V_5_SELECTOR_10_SLOT_HUMAN_ACCEPTANCE",
+    "D4_8_GENERAL_PRODUCTION_BLOCK",
+    "D9_10_PREPARE_ONLY",
+    "D_RENDERER_OFF",
+    "D10_BLOCKED_FOR_PROMOTION",
+    "RELEASE_AUTHORITY_NONE"
+  ],
+  "execution": {
+    "abort_on_first_error": true,
+    "all_44_launchers_are_new": true,
+    "all_output_and_temp_paths_must_be_absent": true,
+    "operator_visual_and_audio_review_required_after_run": true,
+    "preflight_before_first_launcher": true,
+    "retain_partial_evidence_fail_closed": true,
+    "source_pins_checked_before_and_after_each_launcher": true
+  },
+  "governance": {
+    "D10": "BLOCKED_FOR_PROMOTION",
+    "D4.8": "BLOCKED",
+    "D9.10": "PREPARE_ONLY",
+    "D9.14": "BLOCKED",
+    "D9.16": "BLOCKED",
+    "D9.17": "BLOCKED_NO_GO",
+    "release_authority": "NONE",
+    "renderer": "OFF"
+  },
+  "policy_id": "C11E_E4B_LOOP22_BOUNDED_AV_QUALIFICATION_TEST_ONLY_V1",
+  "purpose": "Authorize a separate, exact 22-selector A/B qualification series from accepted R1P parameter receipts. It does not activate the D renderer or production delivery.",
+  "schema": "C11E-E4B-LOOP22-AV-SCOPE-AMENDMENT-V1",
+  "schema_version": "1.0",
+  "scope": {
+    "aac_mux_count": 44,
+    "audio_generation_count": 44,
+    "audio_mix_duck_fade_loop_crossfade_gain_normalization": false,
+    "av_outputs": 44,
+    "d3_v5": false,
+    "d9_10_dispatch": false,
+    "d_compositor": false,
+    "delivery_aac": {
+      "bitrate_bps": 192000,
+      "channels": 2,
+      "codec": "aac",
+      "profile": "aac_low",
+      "sample_rate_hz": 48000
+    },
+    "delivery_pcm": {
+      "channels": 2,
+      "codec": "pcm_s16le",
+      "gain_or_mix_processing": false,
+      "sample_count_formula": "duration_seconds * 48000 EXACT_INTEGER",
+      "sample_rate_hz": 48000
+    },
+    "delivery_pcm_generation_count": 44,
+    "excluded_r1v_pilot_receipt_indices": [
+      1,
+      6,
+      11,
+      16,
+      21
+    ],
+    "ffmpeg_pixel_decode": "-fps_mode passthrough; raw yuv420p frames pipe to memory; no frame PNGs",
+    "gameplay_seed_source": "R1P.seed_domains.gameplay_seed",
+    "general_d4_8_production": false,
+    "music_generator": "C11C_FAMILY_MUSIC_V4",
+    "music_helper": "tools/prototypes/c11c_common/C11CSafeAmbient.py",
+    "music_seed_consumed_by_visual_parameters": false,
+    "music_seed_is_distinct_from_gameplay_seed": true,
+    "music_seed_source": "R1P.seed_domains.music_seed",
+    "native_wav": {
+      "channels": 2,
+      "codec": "pcm_s16le",
+      "preserve_original_native_asset": true,
+      "sample_rate_hz": 44100
+    },
+    "new_c11c_silent_capture_invocations": 44,
+    "production_delivery": false,
+    "r1p_receipt_indices": [
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10,
+      12,
+      13,
+      14,
+      15,
+      17,
+      18,
+      19,
+      20,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27
+    ],
+    "release_or_promotion": false,
+    "renderer_native_input": false,
+    "repeat_count_per_selector": 2,
+    "request_compatibility": "PLAN_ONLY_NOT_D4_EXECUTABLE_COMPATIBILITY",
+    "reused_prior_capture_slots": 0,
+    "selector_count": 22,
+    "video_delivery": {
+      "codec": "h264",
+      "filters": false,
+      "fps": 30,
+      "frame_order": "PRESERVE",
+      "height": 1280,
+      "mode": "STREAM_COPY",
+      "resampling": "NONE",
+      "video_reencode_after_source_capture": false,
+      "width": 720
+    }
+  },
+  "status": "APPROVED_BOUNDED_TEST_SCOPE_ONLY_NOT_RENDERER_INPUT",
+  "supersedes_only": "SILENT_C11C_CAPTURE_AND_AV_AUDIO_MUX_PROHIBITION_FOR_THIS_BOUNDED_LOOP22_TEST_SCOPE"
+}

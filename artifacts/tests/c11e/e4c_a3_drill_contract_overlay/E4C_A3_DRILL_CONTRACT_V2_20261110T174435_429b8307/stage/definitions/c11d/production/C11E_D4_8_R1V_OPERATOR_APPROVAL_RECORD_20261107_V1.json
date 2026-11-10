@@ -1,0 +1,35 @@
+{
+  "approval_evidence": {
+    "approval_source": "Explicit operator approval in the current conversation on 2026-11-07.",
+    "request_scope": "Five first-family selectors × two independent executions; allow only the native C11-C silent MP4 encode branch; prohibit filters, D compositor/consumer, audio/D3 and mux.",
+    "user_statement": "Por supuesto, tienes mi aprobación."
+  },
+  "approval_limits": {
+    "authorizes_any_audio_or_music_generation": false,
+    "authorizes_any_d_composition": false,
+    "authorizes_bounded_r1v_source_capture_only": true,
+    "authorizes_d9_10_renderer_dispatch": false,
+    "authorizes_general_d4_8_production_renderer": false,
+    "authorizes_production_delivery_or_release": false
+  },
+  "approval_record_sha256": "816fbb77ae31952af7bae4a204b324d7ead25cd80e9d8caf4aae7e0781ea23d2",
+  "approval_timestamp": "2026-11-07T22:45:00+01:00",
+  "decision": "APPROVE_EXACT_BOUNDED_R1V_SCOPE",
+  "independent_reviewer": "Operator (user)",
+  "operator_approver": "Operator (user)",
+  "operator_role": "Independent reviewer and operator approver",
+  "policy_author": "ChatGPT — technical author",
+  "schema": "C11E-D4.8-R1V-OPERATOR-APPROVAL-RECORD-V1",
+  "scope": {
+    "ffmpeg_decode_only_pipe_to_memory": true,
+    "ffprobe_read_only": true,
+    "launcher_invocations": 10,
+    "no_avi_retention": true,
+    "no_filters_audio_d3_mux_or_d_consumer": true,
+    "no_gif_export": true,
+    "no_output_root_reuse_or_cleanup": true,
+    "repeat_count_per_selector": 2,
+    "selector_count": 5,
+    "silent_c11c_mp4_encode_only": true
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "schema": "C11E-E-OPTION-C-D-POSTCOMPOSITION-BOUNDARY-V1",
+  "schema_version": "1.0",
+  "boundary_id": "C11E_OPTION_C_POSTCOMPOSITION_V1",
+  "status": "PREPARE_ONLY_NOT_DISPATCHABLE",
+  "architecture_decision": "C11E_OPTION_C_D_POSTCOMPOSITION_DECISION_V1.json",
+  "scope": {
+    "content_type": "visual_loops",
+    "family_count": 5,
+    "grammar_count": 27,
+    "family_selection_source": "R1P_RECEIPT_AND_D9_9_CANONICAL_SELECTION",
+    "editorial_source": "D9_9_CANONICAL_PLAN_EDITORIAL_ALLOWLIST",
+    "parent_binding_source": "D9_10_BRIDGE_RECORD_AND_R1P_FAMILY_STAGE_CONTRACT"
+  },
+  "source_video_input": {
+    "owner": "C11C_EXISTING_FAMILY_LAUNCHER",
+    "source_class": "C11C_SILENT_SOURCE_VIDEO",
+    "required_evidence": [
+      "ACTUAL_R1V_SOURCE_VIDEO_SHA256",
+      "ACTUAL_R1V_MEDIA_METADATA",
+      "ACTUAL_R1V_ORDERED_FRAME_INVENTORY",
+      "ACTUAL_R1V_DECODED_PIXEL_HASH_MANIFEST"
+    ],
+    "immutability": "BYTE_IDENTICAL_SOURCE_PRESERVED_SEPARATELY",
+    "source_sha256_required": true,
+    "source_may_be_overwritten": false,
+    "frame_order_mapping": "IDENTITY",
+    "temporal_resampling": false,
+    "frame_drop_duplicate_interpolation_or_padding": false
+  },
+  "d_composition": {
+    "ownership": "C11D_ONLY",
+    "consumes": [
+      "IMMUTABLE_C11C_SOURCE_VIDEO",
+      "R1V_ACTUAL_FRAME_INVENTORY_AND_PIXEL_IDENTITIES",
+      "CANONICAL_D9_9_PLAN_IDENTITY",
+      "CANONICAL_D9_10_BRIDGE_IDENTITY",
+      "R1P_FAMILY_PARAMETER_RECEIPT_IDENTITY"
+    ],
+    "emits": "SEPARATE_D_OWNED_VIDEO_ARTIFACT_ONLY_AFTER_ALL_GATES_APPROVE",
+    "output_may_equal_source_path": false,
+    "output_may_overwrite_source": false,
+    "editorial_allowlist_only": true,
+    "gameplay_seed_domain": "request.seed",
+    "gameplay_seed_used_for_visual_composition_randomness": false,
+    "music_seed_domain": "request.music_seed",
+    "music_seed_consumed_by_visual_composition": false,
+    "frame_timebase_and_order_invariants": "PRESERVE_SOURCE_IDENTITY_UNLESS_A_SEPARATE_APPROVED_DELIVERY_POLICY_SAYS_OTHERWISE"
+  },
+  "layout_policy": {
+    "proposal_path": "definitions/c11d/production/C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_V1.json",
+    "proposal_sha256": "9e206704665ea85226ecc10854be9f679c32fe9ed7efb690a829f6e8456d43da",
+    "proposal_status": "PROPOSED_NOT_APPROVED_NOT_RENDERER_INPUT",
+    "layout_measurement": "NOT_PROVEN_UNTIL_ISOLATED_VISUAL_REVIEW",
+    "executable_geometry_approved": false,
+    "font_fit_approved": false,
+    "field_windows_approved": false
+  },
+  "dispatch_gates": {
+    "r1p_closed_27_of_27": true,
+    "option_c_architecture_selected": true,
+    "r1v_five_family_qualification": "REQUIRED_BEFORE_D_COMPOSITION",
+    "r1v_remaining_22_qualification": "REQUIRED_BEFORE_ALL_27_COMPLETION",
+    "loop_composition_policy_approval": "REQUIRED",
+    "d4_8_explicit_qualification_authorization": "REQUIRED_FOR_R1V_SOURCE_LAUNCHERS",
+    "separate_d_compositor_authorization": "REQUIRED_BEFORE_D_COMPOSITION",
+    "d9_14_d9_16_d9_17_release_gates": "REQUIRED_FOR_PRODUCTION_PROMOTION"
+  },
+  "hard_locks": {
+    "renderer_dispatch_invoked": false,
+    "compositor_invoked": false,
+    "ffmpeg_invoked": false,
+    "ffprobe_invoked": false,
+    "launcher_invoked": false,
+    "godot_invoked": false,
+    "audio_or_d3_invoked": false,
+    "mux_invoked": false,
+    "media_created": false,
+    "c11c_source_mutation": false,
+    "d4_8": "BLOCKED",
+    "d9_10": "PREPARE_ONLY",
+    "d9_14": "BLOCKED",
+    "d9_16": "BLOCKED",
+    "d9_17": "BLOCKED_NO_GO",
+    "d10": "BLOCKED_FOR_PROMOTION",
+    "release_authority": "NONE"
+  }
+}

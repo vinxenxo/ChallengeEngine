@@ -1,0 +1,67 @@
+{
+    "engine_id":  "c11d_music_engine_v5",
+    "engine_version":  "5.0",
+    "schema_version":  "1.0",
+    "status":  "SPECIFIED",
+    "runtime_authority":  "NONE",
+    "architecture":  "SHARED_ENGINE_PLUS_STYLE_PROFILE",
+    "purpose":  "Deterministic procedural music engine for normalized video production.",
+    "input_contract":  {
+                           "music_seed":  "Dedicated deterministic seed for music only.",
+                           "style_profile_id":  "Declarative style profile identifier.",
+                           "style_profile_version":  "Declarative style profile version.",
+                           "tempo_bpm":  "Requested or profile tempo.",
+                           "duration_seconds":  "Audio presentation duration.",
+                           "variation_index":  "Deterministic variation selector."
+                       },
+    "musical_layers":  [
+                           "timbre",
+                           "harmony",
+                           "rhythm",
+                           "motif",
+                           "texture",
+                           "spatial_treatment"
+                       ],
+    "determinism":  {
+                        "same_input_same_output":  true,
+                        "music_seed_independent_from_gameplay_rng":  true,
+                        "music_seed_independent_from_structural_rng":  true,
+                        "no_gameplay_rng_consumption":  true,
+                        "no_structural_rng_consumption":  true,
+                        "worker_count_independent":  true,
+                        "render_order_independent":  true
+                    },
+    "synchronization":  {
+                            "authority":  "presentation_timeline",
+                            "simulation_truth_mutation":  false,
+                            "winning_frame_mutation":  false,
+                            "close_calls_mutation":  false,
+                            "gameplay_rng_mutation":  false
+                        },
+    "provenance":  {
+                       "source_revision":  true,
+                       "engine_id":  true,
+                       "engine_version":  true,
+                       "style_profile_id":  true,
+                       "style_profile_version":  true,
+                       "deterministic_seed":  true,
+                       "parameter_hash":  true,
+                       "output_hash":  true
+                   },
+    "style_model":  {
+                        "engine_shared_across_families":  true,
+                        "style_profile_is_separate":  true,
+                        "challenge_style_profile":  "challenge_8bit_v1",
+                        "visual_loop_profile_rewrite":  false,
+                        "visual_drill_profile_rewrite":  false
+                    },
+    "non_interference":  {
+                             "simulation":  false,
+                             "mechanics":  false,
+                             "gameplay_rng":  false,
+                             "renderer":  false,
+                             "visual_loop_runtime":  false,
+                             "visual_drill_runtime":  false,
+                             "frozen_c11c":  false
+                         }
+}

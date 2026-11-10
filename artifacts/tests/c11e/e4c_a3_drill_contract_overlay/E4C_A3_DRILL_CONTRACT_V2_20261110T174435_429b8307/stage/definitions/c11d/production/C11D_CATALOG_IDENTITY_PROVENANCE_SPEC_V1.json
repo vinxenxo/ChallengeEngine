@@ -1,0 +1,48 @@
+{
+  "identity_provenance_id": "c11d_catalog_identity_provenance",
+  "schema_version": "1.0",
+  "version": "1.0",
+  "authority": "D7.4",
+  "status": "CANONICAL",
+  "purpose": "Validate that the D7.3 canonical production catalog has stable identities, exact 1:1 matrix linkage, and a complete provenance chain without activating runtime or production execution.",
+  "source_of_truth": "D7.3 canonical catalog plus its governed predecessors",
+  "identity_rules": {
+    "catalog_key": "must equal matrix_key",
+    "catalog_item_id": "cat_ plus first 16 lowercase hex characters of SHA-256(catalog_key UTF-8)",
+    "identity_hash": "SHA-256 of canonical JSON for the catalog item excluding identity_hash, using UTF-8, sort_keys=true, compact separators, and trailing newline",
+    "stability": "identity values must be recomputable and unchanged across repeated validation"
+  },
+  "provenance_chain": [
+    "D7.1 canonical production matrix",
+    "D7.2 coverage validation",
+    "D6.1 canonical seed registry",
+    "D6.2 explicit seed resolver",
+    "D6.4 request/plan/provenance integration",
+    "D4.4 canonical production orchestrator plan owner"
+  ],
+  "required_governance": {
+    "matrix_authority": "CANONICAL_D7_1",
+    "catalog_authority": "CANONICAL_D7_3",
+    "master_seed": "NOT_ADOPTED",
+    "derivation_runtime_activation": false,
+    "cross_domain_seed_sharing": "FORBIDDEN",
+    "automatic_seed_generation": false,
+    "runtime_authority": "NONE",
+    "production_execution": false,
+    "renderer_execution": false,
+    "media_rendered_by_catalog": false,
+    "d4_8": "BLOCKED"
+  },
+  "expected_coverage": {
+    "matrix_rows": 90,
+    "catalog_items": 90,
+    "one_to_one": true
+  },
+  "protected_semantics": [
+    "winning_frame",
+    "close_calls",
+    "SimulationResult",
+    "WinningFrameDetector",
+    "RenderedFrameStream"
+  ]
+}

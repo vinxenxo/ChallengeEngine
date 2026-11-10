@@ -1,0 +1,67 @@
+{
+    "profile_id":  "challenge_8bit_v1",
+    "profile_version":  "1.0",
+    "profile_class":  "STYLE_PROFILE",
+    "target_family":  "Challenge",
+    "style":  "8-bit / chiptune",
+    "engine_id":  "c11d_music_engine_v5",
+    "engine_version":  "5.0",
+    "status":  "SPECIFIED",
+    "timbre":  {
+                   "waveform_palette":  [
+                                            "square",
+                                            "pulse",
+                                            "triangle",
+                                            "noise"
+                                        ],
+                   "character":  "digital_game_audio",
+                   "voicing":  "compact",
+                   "transient_character":  "defined"
+               },
+    "harmony":  {
+                    "complexity":  "low_to_medium",
+                    "voicing":  "compact_triads",
+                    "dissonance":  "controlled",
+                    "cadence":  "loop_friendly"
+                },
+    "rhythm":  {
+                   "grid":  "digital",
+                   "syncopation":  "controlled",
+                   "variation":  "seeded",
+                   "groove":  "mechanical_with_variation"
+               },
+    "motif":  {
+                  "structure":  "short_repeating",
+                  "repetition":  "high_with_variation",
+                  "variation":  "deterministically_seeded",
+                  "semantic_role":  "gameplay_flavour_without_gameplay_control"
+              },
+    "texture":  {
+                    "layers":  [
+                                   "bass",
+                                   "lead",
+                                   "percussion",
+                                   "accent"
+                               ],
+                    "density":  "medium",
+                    "noise_usage":  "controlled"
+                },
+    "spatial_treatment":  {
+                              "stereo_width":  "mobile_safe",
+                              "panning":  "subtle",
+                              "reverb":  "minimal",
+                              "phase_safe":  true,
+                              "mono_compatible":  true
+                          },
+    "mobile_constraints":  {
+                               "no_excessive_sub_bass":  true,
+                               "transient_clipping_forbidden":  true,
+                               "mono_compatibility_required":  true,
+                               "loudness_qa_required":  true
+                           },
+    "determinism":  {
+                        "dedicated_music_seed":  true,
+                        "gameplay_rng_consumption":  false,
+                        "structural_rng_consumption":  false
+                    }
+}

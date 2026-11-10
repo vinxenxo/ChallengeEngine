@@ -1,0 +1,37 @@
+{
+  "schema": "C11-D-D9-ACCEPTANCE-CLOSURE-V1",
+  "phase": "D9.4",
+  "status": "ACCEPTANCE_READY",
+  "authorized": false,
+  "execution": false,
+  "renderer_execution": false,
+  "release_authority": "NONE",
+  "production_execution": false,
+  "selection_mode": "EXPLICIT_PILOT_EVIDENCE",
+  "required_checkpoints": ["D9.0", "D9.1", "D9.2", "D9.3"],
+  "challenge_id": "CHALLENGE_001",
+  "seed": 12345,
+  "music_seed": 840001,
+  "negative_music_seed": 840002,
+  "delivery_profile_id": "REVIEW_720",
+  "presentation_profile_id": "social_default_v1",
+  "required_video_frames": 540,
+  "required_video_fps": "60/1",
+  "required_video_width": 720,
+  "required_video_height": 1280,
+  "required_audio_codec": "aac",
+  "required_audio_sample_rate_hz": 48000,
+  "required_audio_channels": 2,
+  "required_max_av_drift_seconds": 0.15,
+  "required_repeatability": {
+    "wav_sha256": "EXACT",
+    "mp4_sha256": "EXACT"
+  },
+  "required_negative_control": {
+    "music_seed_must_differ": true,
+    "wav_sha256_must_change": true,
+    "mp4_sha256_must_change": true
+  },
+  "allowed_write_root": "artifacts/tests/c11d_d9/d9_4",
+  "release_product_created": false
+}

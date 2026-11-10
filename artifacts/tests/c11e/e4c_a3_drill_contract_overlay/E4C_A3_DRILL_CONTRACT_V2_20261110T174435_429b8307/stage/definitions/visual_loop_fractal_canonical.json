@@ -1,0 +1,42 @@
+{
+    "schema_version": "2.0",
+    "content_id": "VISUAL_LOOP_FRACTAL_CANONICAL",
+    "content_version": "1.0.0",
+    "kind": "visual_loop",
+    "subtype": "fractal",
+    "engine_version": "1.0",
+    "authoring_version": "1.0",
+    "rng_version": "2.0",
+    "seed": 12345,
+    "presentation": {
+        "profile_id": "social_default_v1",
+        "coordinate_space": "2d"
+    },
+    "assets": {
+        "family_id": "f1"
+    },
+    "audio": {
+        "profile_id": "a1",
+        "enabled": false
+    },
+    "provenance": {
+        "author": "system",
+        "timestamp_ms": 1000
+    },
+    "payload": {
+        "domain": "visual_loop",
+        "duration": 2.0,
+        "fps": 30,
+        "frame_count": 60,
+        "visual_parameters": {
+            "generator": "fractal",
+            "speed": 1.0,
+            "complexity": 3,
+            "layers": [
+                {
+                    "blend_mode": "alpha"
+                }
+            ]
+        }
+    }
+}

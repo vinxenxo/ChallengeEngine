@@ -1,0 +1,52 @@
+{
+  "schema": "C11-D-D9.14-PRODUCTION-QUALIFICATION-AUTHORIZATION-V1",
+  "schema_version": "1.0",
+  "checkpoint_id": "D9.14_PRODUCTION_QUALIFICATION_AUTHORIZATION_20261009",
+  "status": "AUTHORIZED_BOUNDED_QUALIFICATION_ONLY",
+  "decision_date": "2026-10-09",
+  "decision_source": "Explicit operator instruction to unlock the D branch, establish a new baseline, generate videos and test production generation in this work session.",
+  "authorization_token": "RUN_C11D_PRODUCTION_QUALIFICATION_NO_RELEASE",
+  "scope": {
+    "mode": "EXISTING_C11C_PRODUCTION_GENERATORS_BOUNDED_QUALIFICATION",
+    "products": [
+      {"type": "challenge", "id": "CHALLENGE_001", "delivery_profile": "REVIEW_720"},
+      {"type": "visual_loop", "family": "geometric", "grammar": "harmonic_membrane", "delivery_profile": "REVIEW_720"},
+      {"type": "visual_drill", "family": "tracking", "difficulty_tier": 1, "delivery_profile": "REVIEW_720"}
+    ],
+    "checks": [
+      "real_mp4_output_and_ffprobe_validation",
+      "same_gameplay_seed_video_frame_replay",
+      "different_music_seed_changes_audio_identity",
+      "audio_video_stream_and_duration_validation",
+      "frozen_c11c_manifest_and_d_source_tree_unchanged"
+    ],
+    "output_root": "artifacts/production/c11d_qualification",
+    "requires_explicit_runtime_token": true,
+    "must_not_overwrite_existing_run": true
+  },
+  "not_authorized": {
+    "d4_8_global_activation": true,
+    "general_d_renderer_activation": true,
+    "unbounded_production_execution": true,
+    "release_or_publishing": true,
+    "D9_14_FULL_GUI_CERTIFICATION": true,
+    "D9_15_ACCEPTANCE_CLOSURE": true,
+    "D9_16_FULL_ACCEPTANCE_CLOSURE": true,
+    "D9_17_CLOSURE": true,
+    "final_D_BASELINE_FREEZE": true,
+    "C11C_SOURCE_OR_MANIFEST_MUTATION": true
+  },
+  "governance": {
+    "qualification_renderer_invocation": "EXISTING_C11C_PRODUCTION_LAUNCHERS_ONLY",
+    "c11d_editorial_renderer_binding": "NOT_CERTIFIED_BY_THIS_RUN",
+    "renderer_activation_for_general_D_requests": false,
+    "production_qualification_execution": true,
+    "release_authority": "NONE",
+    "D4_8": "LIMITED_QUALIFICATION_ONLY_NOT_GLOBAL_ACTIVATION",
+    "C11C_2_19_12": "IMMUTABLE_REFERENCE"
+  },
+  "immutable_reference": {
+    "manifest_path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+    "manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+  }
+}

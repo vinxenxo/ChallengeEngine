@@ -1,0 +1,19 @@
+{
+  "contract": "C11-D-D8.3-AUDIO-QA-V1",
+  "phase": "D8.3",
+  "scope_source": "definitions/c11d/d8/D8_MEDIA_SCOPE_V1.json",
+  "scope_mode": "EXPLICIT_REGISTRY_ONLY",
+  "current_state": "EMPTY_SCOPE",
+  "audio_target_extensions": [
+    ".mp4", ".mov", ".mkv", ".webm", ".avi", ".wmv", ".mxf", ".gif",
+    ".wav", ".mp3", ".m4a", ".aac", ".flac", ".ogg", ".opus", ".aiff"
+  ],
+  "forbidden_operations": [
+    "render", "encode", "transcode", "normalize", "mux", "extract",
+    "rewrite", "move", "copy", "rename", "delete", "quarantine"
+  ],
+  "release_authority": "NONE",
+  "production_execution": false,
+  "renderer_execution": false,
+  "d4_8": "BLOCKED"
+}

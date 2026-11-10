@@ -1,0 +1,44 @@
+{
+  "d7_full_acceptance_id": "c11d_d7_full_acceptance",
+  "schema_version": "1.0",
+  "version": "1.0",
+  "authority": "D7.5",
+  "status": "CANONICAL",
+  "purpose": "Close C11-D D7 only after D7.0 through D7.4 are PASS/CLOSED, canonical matrix/catalog/identity authorities agree, provenance is intact, gates remain disabled, and the acceptance is deterministic and mutation-safe.",
+  "predecessors": ["D7.0", "D7.1", "D7.2", "D7.3", "D7.4"],
+  "expected_coverage": {
+    "challenges": 9,
+    "matrix_rows": 90,
+    "catalog_items": 90,
+    "one_to_one": true
+  },
+  "canonical_authorities": {
+    "matrix": "CANONICAL_D7_1",
+    "catalog": "CANONICAL_D7_3",
+    "identity_provenance": "CANONICAL_D7_4"
+  },
+  "governance": {
+    "master_seed": "NOT_ADOPTED",
+    "derivation_runtime_activation": false,
+    "cross_domain_seed_sharing": "FORBIDDEN",
+    "automatic_seed_generation": false,
+    "d4_8": "BLOCKED",
+    "runtime_authority": "NONE",
+    "production_execution": false,
+    "renderer_execution": false,
+    "media_rendered_by_catalog": false
+  },
+  "protected_surfaces": [
+    "SimulationResult",
+    "winning_frame",
+    "close_calls",
+    "WinningFrameDetector",
+    "RenderedFrameStream",
+    "C11-C Visual Loops",
+    "C11-C Visual Drills",
+    "release/"
+  ],
+  "production_execution": false,
+  "runtime_authority": "NONE",
+  "release_write_policy": "D7.5 must not create or modify release/"
+}

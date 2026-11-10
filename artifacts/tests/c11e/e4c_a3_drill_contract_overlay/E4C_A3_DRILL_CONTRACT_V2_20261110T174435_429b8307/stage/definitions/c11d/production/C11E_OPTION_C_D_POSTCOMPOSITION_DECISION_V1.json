@@ -1,0 +1,47 @@
+{
+  "schema": "C11E-E-OPTION-C-D-POSTCOMPOSITION-ARCHITECTURE-DECISION-V1",
+  "schema_version": "1.0",
+  "decision_id": "C11E_OPTION_C_D_POSTCOMPOSITION_20261107",
+  "decision_date": "2026-11-07",
+  "decision_state": "OPERATOR_APPROVED_OPTION_C",
+  "decision_source": "EXPLICIT_OPERATOR_APPROVAL_IN_CONVERSATION",
+  "operator_decision": {
+    "selected_option": "C",
+    "architecture_id": "D_ONLY_POSTCOMPOSITION_OVER_IMMUTABLE_C_SOURCE",
+    "approval_text": "aprobado tu plan de elegir la decision C, adelante vamos"
+  },
+  "architecture": {
+    "c11c_source": "EXISTING_C11C_FAMILY_LAUNCHERS_CREATE_SEPARATE_SILENT_SOURCE_VIDEO",
+    "r1v": "MEASURE_ACTUAL_SOURCE_VIDEO_AND_DECODED_FRAME_IDENTITY_BEFORE_D_COMPOSITION",
+    "d_consumer": "ONE_D_OWNED_POSTCOMPOSITION_BOUNDARY_CONSUMES_CANONICAL_D9_9_D9_10_PARENT_IDENTITY_AND_IMMUTABLE_C_SOURCE",
+    "d_output": "SEPARATE_D_OWNED_OUTPUT_ARTIFACT_NEVER_OVERWRITES_OR_MASQUERADES_AS_C_SOURCE",
+    "audio": "D3_AND_MUX_REMAIN_A_LATER_SEPARATE_GATED_STAGE"
+  },
+  "source_isolation": {
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "generador_maestro_frozen_preimage_sha256": "4f10144c62c7bc149bd46aa37494b1df40c7185544b8477153150eec71c1aaf9",
+    "known_e4a6_d_only_postimage_sha256": "d42782e8f5bb94ff0ede653a1c4624dc91541cc8203abf136b09a8fc288a7d82",
+    "current_disposition": "KNOWN_E4A6_D_ONLY_POSTIMAGE_POLICY_CONFLICT_REMAINS_OPEN_PENDING_OPTION_C_CONSUMER_ACCEPTANCE",
+    "do_not_restore_or_modify_now": true,
+    "do_not_edit_frozen_manifest": true,
+    "do_not_add_protected_path_exception": true
+  },
+  "non_negotiable_constraints": {
+    "c11c_mechanics_rng_and_protected_paths_mutable": false,
+    "c11c_source_video_mutable": false,
+    "c11c_source_frame_order_or_timing_mutable": false,
+    "second_binder_allowed": false,
+    "sixth_gui_surface_allowed": false,
+    "gameplay_music_seed_domains_may_be_shared": false,
+    "d3_audio_or_mux_in_this_decision": false,
+    "renderer_activation_granted": false,
+    "release_authority": "NONE"
+  },
+  "approval_boundary": {
+    "architecture_choice_approved": true,
+    "option_c_static_contract_authorized": true,
+    "r1v_physical_execution_authorized": false,
+    "d_compositor_execution_authorized": false,
+    "production_or_promotion_authorized": false
+  }
+}

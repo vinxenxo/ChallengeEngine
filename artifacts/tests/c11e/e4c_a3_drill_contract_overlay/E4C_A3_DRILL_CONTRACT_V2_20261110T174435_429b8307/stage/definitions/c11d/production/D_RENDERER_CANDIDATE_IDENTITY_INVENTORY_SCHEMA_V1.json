@@ -1,0 +1,275 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c11d:renderer-candidate-identity-inventory:v1",
+  "title": "C11-D Renderer Candidate Identity Inventory Report V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "status",
+    "candidate_id",
+    "fingerprint_scope",
+    "source_count",
+    "source_inventory",
+    "source_fingerprint",
+    "protected_reference",
+    "review_packet_components",
+    "review_context",
+    "toolchain",
+    "governance",
+    "required_candidate_blockers",
+    "report_sha256"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11-D-RENDERER-CANDIDATE-IDENTITY-INVENTORY-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "IDENTITY_ONLY_REVIEW_PACKET_NOT_BASELINE_READY"
+    },
+    "candidate_id": {
+      "const": "D-RENDERER-CANDIDATE-IDENTITY-REVIEW-0.1"
+    },
+    "fingerprint_scope": {
+      "const": "DECLARED_RENDERER_CANDIDATE_REVIEW_SURFACE_ONLY_NOT_FULL_REPOSITORY_TREE"
+    },
+    "source_count": {
+      "type": "integer",
+      "minimum": 100
+    },
+    "source_inventory": {
+      "type": "array",
+      "minItems": 100,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "role",
+          "sha256",
+          "size_bytes"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "size_bytes": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "source_fingerprint": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "protected_reference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "matches_expected"
+      ],
+      "properties": {
+        "path": {
+          "const": "release/C11C_FREEZE_PACKAGE_MANIFEST.json"
+        },
+        "sha256": {
+          "const": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+        },
+        "matches_expected": {
+          "const": true
+        }
+      }
+    },
+    "review_packet_components": {
+      "type": "array",
+      "minItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "role",
+          "sha256",
+          "size_bytes"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "size_bytes": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "review_context": {
+      "type": "array",
+      "minItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "sha256",
+          "size_bytes"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "size_bytes": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "toolchain": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "python_version",
+        "python_implementation",
+        "host_platform",
+        "project_engine_features",
+        "godot_probe_status",
+        "godot_version"
+      ],
+      "properties": {
+        "python_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "python_implementation": {
+          "type": "string",
+          "minLength": 1
+        },
+        "host_platform": {
+          "type": "string",
+          "minLength": 1
+        },
+        "project_engine_features": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "godot_probe_status": {
+          "enum": [
+            "VERSION_PROBED",
+            "NOT_FOUND_ON_PATH",
+            "PROBE_FAILED",
+            "NOT_PROBED"
+          ]
+        },
+        "godot_version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "governance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "renderer_implementation",
+        "renderer_build_artifact",
+        "renderer_input_emitted",
+        "renderer_dispatch_invoked",
+        "renderer_activation",
+        "media_created",
+        "d4_8",
+        "release_authority",
+        "renderer_baseline_approved",
+        "renderer_baseline_frozen",
+        "baseline_approval",
+        "freeze_eligible"
+      ],
+      "properties": {
+        "renderer_implementation": {
+          "const": "NOT_IMPLEMENTED"
+        },
+        "renderer_build_artifact": {
+          "const": "NONE"
+        },
+        "renderer_input_emitted": {
+          "const": false
+        },
+        "renderer_dispatch_invoked": {
+          "const": false
+        },
+        "renderer_activation": {
+          "const": "OFF"
+        },
+        "media_created": {
+          "const": false
+        },
+        "d4_8": {
+          "const": "BLOCKED"
+        },
+        "release_authority": {
+          "const": "NONE"
+        },
+        "renderer_baseline_approved": {
+          "const": false
+        },
+        "renderer_baseline_frozen": {
+          "const": false
+        },
+        "baseline_approval": {
+          "const": "MISSING"
+        },
+        "freeze_eligible": {
+          "const": false
+        }
+      }
+    },
+    "required_candidate_blockers": {
+      "const": [
+        "D9_14_REAL_MEDIA_CERTIFICATION_BLOCKED",
+        "D9_16_FULL_ACCEPTANCE_NOT_CLOSED",
+        "D9_17_CLOSURE_NO_GO",
+        "D_RENDERER_BASELINE_APPROVAL_NOT_RECORDED",
+        "D_BASELINE_APPROVAL_NOT_RECORDED"
+      ]
+    },
+    "report_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}

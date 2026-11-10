@@ -1,0 +1,39 @@
+{
+  "policy_id": "c11d_production_matrix_coverage_policy",
+  "schema_version": "1.0",
+  "authority": "D7.2",
+  "purpose": "Validate the canonical D7.1 production matrix for complete coverage and inherited governance constraints without changing matrix authority.",
+  "coverage": {
+    "challenge_count": 9,
+    "delivery_profile_count": 5,
+    "mode_count": 2,
+    "expected_core_cases": 90,
+    "formula": "challenge_count * delivery_profile_count * mode_count",
+    "each_matrix_key_unique": true,
+    "each_dimension_value_complete": true
+  },
+  "constraints": {
+    "matrix_authority": "CANONICAL_D7_1",
+    "catalog_authority": "NOT_ESTABLISHED_IN_D7_1",
+    "gameplay_seed_source": "request.seed",
+    "music_seed_source": "request.music_seed",
+    "cross_domain_seed_sharing": "FORBIDDEN",
+    "master_seed": "NOT_ADOPTED",
+    "derivation_runtime_activation": false,
+    "automatic_seed_generation": false,
+    "personalization_core_default": "none_v1",
+    "variation_index_core_value": null,
+    "production_execution": false,
+    "renderer_execution": false,
+    "godot_production_execution": false,
+    "ffmpeg_production_execution": false,
+    "runtime_authority": "NONE"
+  },
+  "protected_surfaces": [
+    "winning_frame",
+    "close_calls",
+    "SimulationResult",
+    "WinningFrameDetector",
+    "RenderedFrameStream"
+  ]
+}

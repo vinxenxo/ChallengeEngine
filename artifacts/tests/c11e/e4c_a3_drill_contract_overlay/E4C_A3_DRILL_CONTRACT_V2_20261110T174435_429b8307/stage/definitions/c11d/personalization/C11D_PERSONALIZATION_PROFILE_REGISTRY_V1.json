@@ -1,0 +1,80 @@
+{
+  "registry_id": "c11d_personalization_profile_registry",
+  "registry_version": "1.0",
+  "status": "ACTIVE",
+  "runtime_authority": "NONE",
+  "profiles": [
+    {
+      "profile_id": "none_v1",
+      "profile_version": "1.0",
+      "status": "ACTIVE",
+      "scope": "EDITORIAL_PRESENTATION",
+      "allowed_targets": [],
+      "allowed_value_types": {},
+      "normalization": {},
+      "constraints": {
+        "enabled": false,
+        "unknown_fields": "REJECT"
+      }
+    },
+    {
+      "profile_id": "editorial_text_v1",
+      "profile_version": "1.0",
+      "status": "ACTIVE",
+      "scope": "EDITORIAL_PRESENTATION",
+      "allowed_targets": [
+        "title",
+        "subtitle",
+        "call_to_action",
+        "language",
+        "player_name",
+        "challenge_label"
+      ],
+      "allowed_value_types": {
+        "title": "string",
+        "subtitle": "string",
+        "call_to_action": "string",
+        "language": "string",
+        "player_name": "string",
+        "challenge_label": "string"
+      },
+      "normalization": {
+        "strings": "TRIM",
+        "language": "LOWERCASE",
+        "missing_optional_values": "UNKNOWN",
+        "empty_optional_values": "UNKNOWN",
+        "canonical_field_order": [
+          "title",
+          "subtitle",
+          "call_to_action",
+          "language",
+          "player_name",
+          "challenge_label"
+        ]
+      },
+      "constraints": {
+        "enabled": true,
+        "unknown_fields": "REJECT",
+        "max_string_length": 160,
+        "allowed_placeholders": [
+          "player_name",
+          "challenge_label"
+        ],
+        "simulation_fields": "REJECT"
+      }
+    }
+  ],
+  "protected": [
+    "seed",
+    "music_seed",
+    "mechanics",
+    "target",
+    "speed",
+    "collision",
+    "timing",
+    "winning_frame",
+    "close_calls",
+    "simulation_result",
+    "simulation_truth"
+  ]
+}
