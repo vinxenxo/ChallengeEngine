@@ -1,0 +1,111 @@
+{
+    "schema":  "C11E-E4C-DRILL-V2-INSTALL-RECEIPT-V1",
+    "run_id":  "E4C_INSTALL_20261110T095634Z_6438d0b7",
+    "status":  "PASS_ADD_ONLY_TRANSACTION",
+    "frozen_c11c_manifest_sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "replacement_count":  7,
+    "addition_count":  13,
+    "replacements":  [
+                         {
+                             "path":  "c11c-suite/c11c-producer/c11e_production_service.py",
+                             "preimage_sha256":  "08ab5a278de8ebb55795a57391c83a27207ce01920704c419b8e28be25ddcf65",
+                             "postimage_sha256":  "5dc15d355b86758a24ff0772e75ea1a889fd59503b1632ea26821856a08935dc",
+                             "backup":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_drill_overlay_install_v1\\E4C_INSTALL_20261110T095634Z_6438d0b7\\backup\\00_c11e_production_service.py.preimage.bak"
+                         },
+                         {
+                             "path":  "c11c-suite/c11c-producer/main.py",
+                             "preimage_sha256":  "ad88ac99a4582a6a470b8885425144ab7265188c3771ed4c48d8857c43343c55",
+                             "postimage_sha256":  "ddd9ce281b5da840042f1a03a63157758500cdaef70aa40e1e32e14ec1253fdf",
+                             "backup":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_drill_overlay_install_v1\\E4C_INSTALL_20261110T095634Z_6438d0b7\\backup\\01_main.py.preimage.bak"
+                         },
+                         {
+                             "path":  "c11c-suite/c11c-producer/test_c11e_production_service.py",
+                             "preimage_sha256":  "6fecc35f3f3d8dc0e138a70452b1eee9acadbcd8f95db05dc6518baad80ed285",
+                             "postimage_sha256":  "b3aea22cf713ba4382307ad6bbae777777b660bcd30b5c6c8f5497c5cf5817c5",
+                             "backup":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_drill_overlay_install_v1\\E4C_INSTALL_20261110T095634Z_6438d0b7\\backup\\02_test_c11e_production_service.py.preimage.bak"
+                         },
+                         {
+                             "path":  "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V1.json",
+                             "preimage_sha256":  "ff9714d3493cae3012b6efa11b07195b5c7bab3e57e88645fd8cb0bbd5ad3a4b",
+                             "postimage_sha256":  "872a395adf7b20273a14a937933f59f2ae7380fe06e38cb62775a4db9cdc8b95",
+                             "backup":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_drill_overlay_install_v1\\E4C_INSTALL_20261110T095634Z_6438d0b7\\backup\\03_D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V1.json.preimage.bak"
+                         },
+                         {
+                             "path":  "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V2.json",
+                             "preimage_sha256":  "570ba20b4a334a3fc3d8c5c991ef416971dd4d1ce466eb0ca95fc305e2a35e85",
+                             "postimage_sha256":  "60530add02fee5bd4d70056e49bf20be87dc5dc0886dd07444e44c0b14bee981",
+                             "backup":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_drill_overlay_install_v1\\E4C_INSTALL_20261110T095634Z_6438d0b7\\backup\\04_D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V2.json.preimage.bak"
+                         },
+                         {
+                             "path":  "definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1.json",
+                             "preimage_sha256":  "2075da9c33c689861a68d3bd8fb19b7ed593c6e76010ab200880746aa6d1a470",
+                             "postimage_sha256":  "5702092bc1c88e4b333dd30cc150f0d383cd2006121037b0198905c75a3af795",
+                             "backup":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_drill_overlay_install_v1\\E4C_INSTALL_20261110T095634Z_6438d0b7\\backup\\05_D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1.json.preimage.bak"
+                         },
+                         {
+                             "path":  "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_V1.json",
+                             "preimage_sha256":  "47608ceadff410f29955ecd200bafb5b42e448e11a5cb0f917de90a9f6d90f38",
+                             "postimage_sha256":  "a657d5334548cde2bb524e161d472d5fea098163b6693c0ef73b280982f20b1c",
+                             "backup":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_drill_overlay_install_v1\\E4C_INSTALL_20261110T095634Z_6438d0b7\\backup\\06_D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_V1.json.preimage.bak"
+                         }
+                     ],
+    "additions":  [
+                      {
+                          "path":  "docs/current/e/C11E_CURRENT_AUTHORITY_20261109_V114.md",
+                          "sha256":  "14a19d552220ffb3b3bcf53c6d5474c3b316da00941fa53a7f7e2ea90a109408"
+                      },
+                      {
+                          "path":  "docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261109_V112.md",
+                          "sha256":  "b7703870afe249dc255a1ae38ffdc9b4783e1bc76c74994770213d06019f98e5"
+                      },
+                      {
+                          "path":  "docs/current/e/C11E_E3_EXECUTION_BACKLOG_20261109_V89.md",
+                          "sha256":  "73ba207ae412411d2aa60f8941ddabb8b8d8954e8c8f59bd22e08a9106c4c276"
+                      },
+                      {
+                          "path":  "docs/current/e/C11D_E_BLOCKER_REMEDIATION_REGISTER_20261109_V35.md",
+                          "sha256":  "b864951649fff95fd322d58ae23cba47c1a4e5d721c8dad919d15283d4bd6723"
+                      },
+                      {
+                          "path":  "docs/current/e/C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261109_V61.md",
+                          "sha256":  "4691a2a7583d7b72c40f2cdea6217777113e523c85a98954d431e9d164362a5b"
+                      },
+                      {
+                          "path":  "docs/current/e/C11E_E4C_DRILL_EXECUTION_PLAN_20261109_V2.md",
+                          "sha256":  "0fb7c17a910acf561509c5dde157fe0a7b4633024cff6fb04912a5117be81c47"
+                      },
+                      {
+                          "path":  "docs/history/c11e/C11E_E4B_LOOP22_OPERATOR_ACCEPTANCE_CLOSEOUT_20261109_V2.md",
+                          "sha256":  "f9a09d34d04ea4bd92eb70cf3668b9da093542f8a94c0a391861805f841d1dd3"
+                      },
+                      {
+                          "path":  "docs/history/c11e/C11E_E4C_DRILL_BINDER_V2_INTEGRATION_FINDINGS_20261109_V1.md",
+                          "sha256":  "370f9bd3d099cf0d9e9f0ba15fc8d68e4e2b6bea909b92107743dd6b5e75853e"
+                      },
+                      {
+                          "path":  "docs/current/e/C11E_CURRENT_DOC_INDEX_20261109_V75.md",
+                          "sha256":  "6e78e3fb2f16195e4ce26b2bab76ef9ce5b9543aa5b30a72605dd4f21a3724ef"
+                      },
+                      {
+                          "path":  "docs/prompts/C11E_CONTINUATION_MASTER_PROMPT_20261109_V115.md",
+                          "sha256":  "0373b9300abf8d4b6058ef6f3b5eeef5a1f745edafaa7a45440cb5b9773f01f9"
+                      },
+                      {
+                          "path":  "docs/prompts/C11E_NEXT_WINDOW_START_PROMPT_20261109_V115.md",
+                          "sha256":  "0316d618fa82df50706144271c7c678c74d68b90234f9118a88cd302d4450d71"
+                      },
+                      {
+                          "path":  "docs/prompts/C11E_FIRST_PROMPT_20261109_V39.md",
+                          "sha256":  "86e63c6a773c25d3ea31a7785d39810d030140febf3f7fd0da268fab49ab54f4"
+                      },
+                      {
+                          "path":  "tools/c11d/d9/RUN_C11E_E4C_DRILL_BINDER_V2_ACCEPTANCE_V1.ps1",
+                          "sha256":  "8f25e5de0a5b8eb228e533fe2297eca171f945ce9a823a50ce1e05e40520fa6a"
+                      }
+                  ],
+    "git_checks":  "SKIPPED",
+    "commits":  "OPERATOR_MANAGED",
+    "renderer":  "OFF",
+    "media_created":  false,
+    "release_authority":  "NONE"
+}

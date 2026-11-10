@@ -1,0 +1,12 @@
+test_all_common_authoring_dependencies_are_pinned_in_v2_contract (tools.c11d.d9.test_d_renderer_dynamic_request_payload_binding_visual_drill_v2.VisualDrillDynamicRequestV2SourceChainTests.test_all_common_authoring_dependencies_are_pinned_in_v2_contract) ... ok
+test_exact_twenty_pair_matrix_and_schema_binding (tools.c11d.d9.test_d_renderer_dynamic_request_payload_binding_visual_drill_v2.VisualDrillDynamicRequestV2SourceChainTests.test_exact_twenty_pair_matrix_and_schema_binding) ... ok
+test_godot_harness_pins_are_closed_over_v2_contract_lineage (tools.c11d.d9.test_d_renderer_dynamic_request_payload_binding_visual_drill_v2.VisualDrillDynamicRequestV2SourceChainTests.test_godot_harness_pins_are_closed_over_v2_contract_lineage) ... ok
+test_source_pin_hash_mutation_fails_closed_in_isolated_temp_tree (tools.c11d.d9.test_d_renderer_dynamic_request_payload_binding_visual_drill_v2.VisualDrillDynamicRequestV2SourceChainTests.test_source_pin_hash_mutation_fails_closed_in_isolated_temp_tree) ... ok
+test_twenty_canonical_chain_resolutions_are_deterministic (tools.c11d.d9.test_d_renderer_dynamic_request_payload_binding_visual_drill_v2.VisualDrillDynamicRequestV2SourceChainTests.test_twenty_canonical_chain_resolutions_are_deterministic) ... ok
+test_unknown_or_malformed_selector_fail_closed (tools.c11d.d9.test_d_renderer_dynamic_request_payload_binding_visual_drill_v2.VisualDrillDynamicRequestV2SourceChainTests.test_unknown_or_malformed_selector_fail_closed) ... ok
+test_v2_receipts_require_verified_runtime_evidence (tools.c11d.d9.test_d_renderer_dynamic_request_payload_binding_visual_drill_v2.VisualDrillDynamicRequestV2SourceChainTests.test_v2_receipts_require_verified_runtime_evidence) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 56.372s
+
+OK

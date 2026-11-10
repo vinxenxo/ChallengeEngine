@@ -1,0 +1,63 @@
+{
+    "schema":  "C11E-E4C-GODOT-CONSOLE-RUNTIME-HOTFIX-RECEIPT-V3",
+    "run_id":  "E4C_GODOT_CONSOLE_HOTFIX_V3_20261110T151158Z_9ff5cef8",
+    "status":  "PASS_PINNED_REPLACEMENT_PLUS_ADD_ONLY",
+    "frozen_c11c_manifest_sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "runner":  {
+                   "path":  "tools/c11d/d9/RUN_C11E_E4C_DRILL_BINDER_V2_ACCEPTANCE_V1.ps1",
+                   "preimage_sha256":  "342398d6e75a458e46478df225df99f36241cdb7a65a8f33d644478c27c575e7",
+                   "postimage_sha256":  "2a039de904e4b6cf97e8f4e848a86b95c6ce8fa6a60a0b4b893c5430dcf9f6da",
+                   "backup":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_godot_discovery_hotfix\\E4C_GODOT_CONSOLE_HOTFIX_V3_20261110T151158Z_9ff5cef8\\backup\\RUNNER.preimage.bak"
+               },
+    "additions":  [
+                      {
+                          "path":  "docs/current/e/C11E_CURRENT_AUTHORITY_20261110_V116.md",
+                          "sha256":  "e1486017d58558a841cf0d4b1318da687b415c0f1689b022b08be66911799929"
+                      },
+                      {
+                          "path":  "docs/current/e/C11E_CURRENT_DOC_INDEX_20261110_V78.md",
+                          "sha256":  "b8b77fbbef457c16c3fc834db2b4f5c040e9f11dfcbb2f5417a5e8ec7d894cb4"
+                      },
+                      {
+                          "path":  "docs/current/e/C11E_E4C_DRILL_EXECUTION_PLAN_20261110_V4.md",
+                          "sha256":  "dfee7fb4ff4575bdf1f71649fec70e0106da4f3f474e684ceb9c75d4d64d3d98"
+                      },
+                      {
+                          "path":  "docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261110_V114.md",
+                          "sha256":  "c3fcf26664f613e91b082d51c9aafee0aa2d60bbc6239a479b187b95e16d0c5d"
+                      },
+                      {
+                          "path":  "docs/current/e/C11D_E_BLOCKER_REMEDIATION_REGISTER_20261110_V36.md",
+                          "sha256":  "3ce6068a3a992c8eb75c278382030e85d949c37526c42f0c0567962293b582b9"
+                      },
+                      {
+                          "path":  "docs/current/e/C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261110_V62.md",
+                          "sha256":  "ae886e0820d78f8a3d141208a13416bc1aef6459ef3376d27ed0add6f772c2f3"
+                      },
+                      {
+                          "path":  "docs/current/e/C11E_E3_EXECUTION_BACKLOG_20261110_V90.md",
+                          "sha256":  "bd93fc9c8856168b9eba7f2791c4fe433ffdc7de6ee2463544d116951280a45b"
+                      },
+                      {
+                          "path":  "docs/history/c11e/C11E_E4C_GODOT_CONSOLE_RUNTIME_FAILURE_AND_FIX_20261110_V3.md",
+                          "sha256":  "10bb127ee2c96f0f7cec07ee1c783680fb34a811dc450a3509228d51acce0c7f"
+                      },
+                      {
+                          "path":  "docs/prompts/C11E_CONTINUATION_MASTER_PROMPT_20261110_V117.md",
+                          "sha256":  "ce0f564ae46dbcfb67c07a75e5b8c9f23313a937f89b2dbcf5bd91050f436bd3"
+                      },
+                      {
+                          "path":  "docs/prompts/C11E_FIRST_PROMPT_20261110_V41.md",
+                          "sha256":  "d335f2c38653fd1f84e4dffd37c89529233667cd7f74545cff136cf8ec82708b"
+                      },
+                      {
+                          "path":  "docs/prompts/C11E_NEXT_WINDOW_START_PROMPT_20261110_V117.md",
+                          "sha256":  "3c9eebe98a0e1a414348a36c955d472a26fbb86d67c784ba62fe4620f1fd2d2d"
+                      }
+                  ],
+    "git_checks":  "SKIPPED",
+    "commits":  "OPERATOR_MANAGED",
+    "renderer":  "OFF",
+    "media_created":  false,
+    "release_authority":  "NONE"
+}

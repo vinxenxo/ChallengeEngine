@@ -1,0 +1,51 @@
+{
+    "schema":  "C11E-E4C-GODOT-AUTO-DISCOVERY-HOTFIX-RECEIPT-V2",
+    "run_id":  "E4C_GODOT_DISCOVERY_HOTFIX_V2_20261110T101455Z_3882eb98",
+    "status":  "PASS_PINNED_REPLACEMENT_PLUS_ADD_ONLY",
+    "frozen_c11c_manifest_sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "runner":  {
+                   "path":  "tools/c11d/d9/RUN_C11E_E4C_DRILL_BINDER_V2_ACCEPTANCE_V1.ps1",
+                   "preimage_sha256":  "8f25e5de0a5b8eb228e533fe2297eca171f945ce9a823a50ce1e05e40520fa6a",
+                   "postimage_sha256":  "342398d6e75a458e46478df225df99f36241cdb7a65a8f33d644478c27c575e7",
+                   "backup":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_godot_discovery_hotfix\\E4C_GODOT_DISCOVERY_HOTFIX_V2_20261110T101455Z_3882eb98\\backup\\RUNNER.preimage.bak"
+               },
+    "additions":  [
+                      {
+                          "path":  "docs/current/e/C11E_CURRENT_AUTHORITY_20261110_V115.md",
+                          "sha256":  "f34c8b9bc73ec357b0691836e2441ac479ad0491e11f858c00f6bc64710f671b"
+                      },
+                      {
+                          "path":  "docs/current/e/C11E_CURRENT_DOC_INDEX_20261110_V77.md",
+                          "sha256":  "f2fbeb40e249cb7793b1d5d6199984847ed0318c9274daa1b78836c4772991e6"
+                      },
+                      {
+                          "path":  "docs/current/e/C11E_E4C_DRILL_EXECUTION_PLAN_20261110_V3.md",
+                          "sha256":  "6001fc93cf3e076b16c1e6c48e8d93d8f49c08c22f4c0ad2cb4bf22c0410101e"
+                      },
+                      {
+                          "path":  "docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261110_V113.md",
+                          "sha256":  "98273cf0d979fb015f63d2df5be243477c0d7ba09db198cd0da7050386a029de"
+                      },
+                      {
+                          "path":  "docs/history/c11e/C11E_E4C_GODOT_AUTO_DISCOVERY_HOTFIX_20261110_V2.md",
+                          "sha256":  "7c3ab058e1087bf35374bb24ac4102359a23b735e286a10138ee1b631369d33d"
+                      },
+                      {
+                          "path":  "docs/prompts/C11E_CONTINUATION_MASTER_PROMPT_20261110_V116.md",
+                          "sha256":  "09d15a1887fd74127e9ceb689d8ead9b4ba17d05ccd78093d90bb778a57940ab"
+                      },
+                      {
+                          "path":  "docs/prompts/C11E_FIRST_PROMPT_20261110_V40.md",
+                          "sha256":  "b02076c9cbfe1f2f7704b361eda4fe5a799eb02d42d4facbc8bc98ac34aafce5"
+                      },
+                      {
+                          "path":  "docs/prompts/C11E_NEXT_WINDOW_START_PROMPT_20261110_V116.md",
+                          "sha256":  "3a627ee100a6d5e4e1ee9e4d8331bdb902849f9e6dcdb3070ad6a9a1a0f92a74"
+                      }
+                  ],
+    "git_checks":  "SKIPPED",
+    "commits":  "OPERATOR_MANAGED",
+    "renderer":  "OFF",
+    "media_created":  false,
+    "release_authority":  "NONE"
+}

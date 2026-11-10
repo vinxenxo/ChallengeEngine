@@ -1,0 +1,87 @@
+{
+    "schema":  "C11E-E4C-REUSED-PREFLIGHT-EVIDENCE-V1",
+    "status":  "PASS_REUSED_AFTER_CURRENT_SOURCE_PIN_REVALIDATION",
+    "prior_run_id":  "DRILLV2_20261110T101456Z_f7658bde",
+    "prior_evidence_directory":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_drill_binder_v2_acceptance\\DRILLV2_20261110T101456Z_f7658bde",
+    "python_version":  "3.13",
+    "py_compile":  "PASS_LOGS_PRESENT_AND_SUBSEQUENT_ORDERED_STAGES_COMPLETED",
+    "e1_service_tests":  "PASS_32_OF_32",
+    "drill_v2_source_chain":  "PASS_7_OF_7",
+    "dynamic_binding_v1":  "PASS_12_OF_12",
+    "request_scoped_binding":  "PASS_51_NEGATIVES",
+    "editorial_review_manifest":  "PASS_28_NEGATIVES",
+    "current_source_pins_revalidated":  true,
+    "current_frozen_manifest_revalidated":  true,
+    "reused_logs":  [
+                        {
+                            "path":  "PY_COMPILE.stdout.log",
+                            "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                            "bytes":  0
+                        },
+                        {
+                            "path":  "PY_COMPILE.stderr.log",
+                            "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                            "bytes":  0
+                        },
+                        {
+                            "path":  "PYTHON_VERSION.stdout.log",
+                            "sha256":  "aa766d729622db9621b64cf07ba9efc036e517eafd4b9b6a1b57c55948e2e10c",
+                            "bytes":  84
+                        },
+                        {
+                            "path":  "PYTHON_VERSION.stderr.log",
+                            "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                            "bytes":  0
+                        },
+                        {
+                            "path":  "E1_SERVICE_TESTS.stdout.log",
+                            "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                            "bytes":  0
+                        },
+                        {
+                            "path":  "E1_SERVICE_TESTS.stderr.log",
+                            "sha256":  "176700d4ed185b9fd9a2b323fc1575328446db0e24b20e8ea802f2d9121b464c",
+                            "bytes":  5993
+                        },
+                        {
+                            "path":  "DRILL_V2_SOURCE_CHAIN_TESTS.stdout.log",
+                            "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                            "bytes":  0
+                        },
+                        {
+                            "path":  "DRILL_V2_SOURCE_CHAIN_TESTS.stderr.log",
+                            "sha256":  "ca399b0d3ffad9916c4e7cbec2999edc5b7cdbc91685f5a136916dc450e891ee",
+                            "bytes":  1818
+                        },
+                        {
+                            "path":  "DYNAMIC_BINDING_V1_REGRESSION.stdout.log",
+                            "sha256":  "329eeeb131a946ace94d0c56dbb87c8fb7899fb47bbb0ea43a3a46d0d2b9a3a5",
+                            "bytes":  433
+                        },
+                        {
+                            "path":  "DYNAMIC_BINDING_V1_REGRESSION.stderr.log",
+                            "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                            "bytes":  0
+                        },
+                        {
+                            "path":  "REQUEST_SCOPED_BINDING_REGRESSION.stdout.log",
+                            "sha256":  "b061fedfde678c89aa957635ca5fa7bbfcd1957a08da3eee1e1373419a5c383d",
+                            "bytes":  498
+                        },
+                        {
+                            "path":  "REQUEST_SCOPED_BINDING_REGRESSION.stderr.log",
+                            "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                            "bytes":  0
+                        },
+                        {
+                            "path":  "EDITORIAL_REVIEW_MANIFEST_REGRESSION.stdout.log",
+                            "sha256":  "8db8e0a8affa055a62dcb71806945948c805c73ca21a0d51477251bbe0baa6a1",
+                            "bytes":  446
+                        },
+                        {
+                            "path":  "EDITORIAL_REVIEW_MANIFEST_REGRESSION.stderr.log",
+                            "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                            "bytes":  0
+                        }
+                    ]
+}

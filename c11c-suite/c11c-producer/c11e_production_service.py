@@ -2,8 +2,10 @@
 
 E1 is deliberately preparation-only and is the single entry point for GUI and
 CLI requests. It delegates request semantics to the accepted D9.9 resolver.
-For Visual Loop requests it also prepares the existing D9.10 bridge, D-only
-adapter envelope and family-stage contract, then seals them into the E intent.
+For Visual Loop requests it prepares the existing D9.10 bridge, D-only adapter
+envelope and family-stage contract. Visual Drill uses the same D9.9/D9.10 chain
+and the existing D9 dynamic-request binder V2 (4 types × 5 tiers), in a strict
+non-rendering preparation preview. Neither path invokes a renderer or media.
 It never dispatches a C runner, invokes Godot/FFmpeg, emits renderer-native
 input, or creates audio/video media.
 """
@@ -20,7 +22,7 @@ from pathlib import Path, PurePosixPath
 from typing import Any
 
 SERVICE_SCHEMA = "C11-E-PRODUCTION-INTENT-V1"
-SERVICE_VERSION = "0.3.0-E4B"
+SERVICE_VERSION = "0.4.0-E4C"
 EXPECTED_C11C_MANIFEST_SHA256 = "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
 EXPECTED_C11C_MANIFEST_BYTES = 796318
 SUPPORTED_CONTENT_TYPES = ("challenges", "visual_loops", "visual_drills")
@@ -264,6 +266,356 @@ def _prepare_loop_family_boundary(root: Path, resolved: Mapping[str, Any]) -> tu
     preparation["preparation_sha256"] = sha256(preparation)
     return preparation, extra_pins
 
+
+
+def _drill_source_text(root: Path, relative: str) -> str:
+    identity = _file_identity(root, relative)
+    return (root / Path(*PurePosixPath(relative).parts)).read_text(encoding="utf-8-sig")
+
+
+def _prepare_drill_family_boundary(
+    root: Path,
+    resolved: Mapping[str, Any],
+    raw_request: Mapping[str, Any],
+) -> tuple[dict[str, Any], list[dict[str, Any]]]:
+    """Prepare the existing D9.9/D9.10 + Drill V2 binder chain; no Godot/media.
+
+    The V2 binder is reused as-is. Its 20-selector real-Godot matrix remains a
+    separately gated evidence run; this E1 preparation records only the exact
+    canonical request/source-binding preview.
+    """
+    record = _assert_loop_operator_approvals(root)
+    by_id = {row["decision_id"]: row for row in record["decisions"]}
+    # E4B's composition approval is not consumed by Drill. These four exact
+    # current-hash decisions are the only policy identities recorded here.
+    drill_policy_ids = (
+        "A.1_SHARED_PRESENTATION_REGIONS",
+        "A.3_LOOP_DRILL_EDITORIAL_WINDOWS",
+        "B.1_UNIFIED_DELIVERY_TIMEBASE",
+        "D.1_AUDIO_MUSIC_DELIVERY_ENVELOPE",
+    )
+    drill_policy_decisions = []
+    for decision_id in drill_policy_ids:
+        row = by_id[decision_id]
+        drill_policy_decisions.append({
+            "decision_id": decision_id,
+            "proposal_path": row["proposal_path"],
+            "proposal_sha256": row["proposal_sha256"],
+            "decision": row["decision"],
+            "scope": "D_ONLY_DESIGN_AND_CONTRACT_IMPLEMENTATION_ONLY",
+        })
+
+    binder = _load_d9_boundary_module(root, "d_renderer_dynamic_request_payload_binding")
+    try:
+        contract_data = binder._load_contract_for_mode(root, "visual_drill_v2")
+        contract = contract_data[0]
+        canonical_selection = resolved["canonical_request"]["selection"]
+        # D9.9 produces a normalized selection. Feed the existing V2 binder an
+        # explicit four-key selector without adding aliases or a new binder.
+        drill_request = copy.deepcopy(dict(raw_request))
+        drill_request["selection"] = {
+            "content_type": "visual_drills",
+            "family_id": canonical_selection.get("family_id"),
+            "subtype_id": None,
+            "variant_id": canonical_selection.get("variant_id"),
+        }
+        chain = binder._build_canonical_chain(drill_request, root, allow_visual_drill_matrix=True)
+    except Exception as exc:
+        raise C11EProductionServiceError(f"Existing Drill dynamic binder V2 rejected the E1 request: {exc}") from exc
+
+    bound_result = chain["result"]
+    for key in ("request_hash", "editorial_hash", "plan_hash"):
+        if bound_result.get(key) != resolved.get(key):
+            raise C11EProductionServiceError(f"Drill V2 binder and E1 service disagree on canonical {key}")
+    bound_request = bound_result.get("canonical_request", {})
+    if bound_request.get("selection", {}).get("content_type") != "visual_drills":
+        raise C11EProductionServiceError("Drill V2 binder did not preserve visual_drills content type")
+    if bound_request.get("seed") != resolved["canonical_request"].get("seed") or bound_request.get("music_seed") != resolved["canonical_request"].get("music_seed"):
+        raise C11EProductionServiceError("Drill V2 binder changed gameplay/music seed domains")
+    if bound_request.get("seed") == bound_request.get("music_seed"):
+        raise C11EProductionServiceError("Drill gameplay and music seeds must remain distinct")
+
+    family_id = str(canonical_selection.get("family_id"))
+    variant_id = str(canonical_selection.get("variant_id"))
+    tier_match = re.fullmatch(r"tier-([1-5])", variant_id)
+    if not tier_match:
+        raise C11EProductionServiceError("Drill variant must be one canonical tier-1..tier-5 selector")
+    tier = int(tier_match.group(1))
+
+    producer_schema = json.loads((root / "c11c-suite" / "c11c-producer" / "producer_schema.json").read_text(encoding="utf-8-sig"))
+    drill_definition = producer_schema.get("drills", {}).get(family_id)
+    if not isinstance(drill_definition, Mapping):
+        raise C11EProductionServiceError(f"C11-C Producer schema does not define Drill family {family_id}")
+    if tier not in drill_definition.get("difficulty_values", []):
+        raise C11EProductionServiceError(f"Drill tier is not admitted by C11-C family schema: {family_id}/{tier}")
+    launcher = drill_definition.get("production_launcher")
+    if launcher != "c11c-suite/c11c-producer/run_visual_drill_production.ps1":
+        raise C11EProductionServiceError("Drill family must retain the canonical C11-C Drill launcher")
+
+    music_registry_rel = "profiles/presentation/c11c_visual_music_profiles.json"
+    music_registry = json.loads((root / music_registry_rel).read_text(encoding="utf-8-sig"))
+    music_binding = music_registry.get("bindings", {}).get(f"visual_drill/{family_id}")
+    if not isinstance(music_binding, Mapping):
+        raise C11EProductionServiceError(f"C11-C FAMILY_MUSIC_V4 Drill binding missing: {family_id}")
+    if music_binding.get("music_semantic_inputs") != ["seed"]:
+        raise C11EProductionServiceError("C11-C Drill family music must remain seeded only by its explicit music seed")
+    profile_id = music_binding.get("profile")
+    valid_profiles = {row.get("id") for row in music_registry.get("profiles", []) if isinstance(row, Mapping)}
+    if profile_id not in valid_profiles:
+        raise C11EProductionServiceError("C11-C Drill music profile is not in the canonical profile registry")
+
+    # Source-derived phase model. These C11-C files remain read-only and the
+    # D/E contract records their current identities; it never reimplements them.
+    phase_paths = [
+        "core/presentation/CountdownPresentationLogic.gd",
+        "core/presentation/VisualDrillPresentationPhaseLogic.gd",
+        "core/presentation/VisualDrillPresentationBinder.gd",
+        "core/presentation/rendering/VisualContentPlayer.gd",
+        "core/presentation/PresentationUI.gd",
+        launcher,
+        "c11c-suite/c11c-producer/C11CVisualDrillProducerEnvelopeGenerator.gd",
+    ]
+    phase_text = {path: _drill_source_text(root, path) for path in phase_paths}
+    phase_logic = phase_text["core/presentation/VisualDrillPresentationPhaseLogic.gd"]
+    countdown_logic = phase_text["core/presentation/CountdownPresentationLogic.gd"]
+    binder_text = phase_text["core/presentation/VisualDrillPresentationBinder.gd"]
+    player_text = phase_text["core/presentation/rendering/VisualContentPlayer.gd"]
+    ui_text = phase_text["core/presentation/PresentationUI.gd"]
+    launcher_text = phase_text[launcher]
+    required_markers = (
+        ("phase_logic", 'const END_CTA_SECONDS: float = 3.0' in phase_logic and '"PRE_ROLL"' in phase_logic and '"GAME"' in phase_logic and '"END_CTA"' in phase_logic and '"DONE"' in phase_logic),
+        ("countdown", 'const COUNTDOWN_SECONDS: float = 3.0' in countdown_logic),
+        ("binder_end_cta", 'if ui_state == "END_CTA":' in binder_text and 'model["cta_main"] = "¿LO CONSEGUISTE?"' in binder_text),
+        ("header_precedence", 'editorial_model["header"]["line_1"] = ""' in binder_text and 'editorial_model["header"]["line_2"] = ""' in binder_text and 'The CTA owns the header during END_CTA' in binder_text),
+        ("player_phase_dispatch", '"END_CTA"' in player_text and '"PRE_ROLL"' in player_text and '"GAME"' in player_text),
+        ("ui_header_owner", 'The CTA owns Header only.' in ui_text),
+        ("silent_launcher", '[switch]$NoSound' in launcher_text and 'if($NoSound)' in launcher_text),
+    )
+    failed_markers = [name for name, passed in required_markers if not passed]
+    if failed_markers:
+        raise C11EProductionServiceError("Drill C11-C phase/END_CTA contract markers changed: " + ", ".join(failed_markers))
+
+    music_generator_rel = "tools/prototypes/c11c_common/generate_c11c_family_music.py"
+    music_wrapper_rel = "tools/prototypes/c11c_common/C11CSafeAmbient.py"
+    music_generator_text = _drill_source_text(root, music_generator_rel)
+    music_wrapper_text = _drill_source_text(root, music_wrapper_rel)
+    sample_rate_match = re.search(r"(?m)^SAMPLE_RATE\s*=\s*(\d+)\s*$", music_generator_text)
+    channels_match = re.search(r"(?m)^CHANNELS\s*=\s*(\d+)\s*$", music_generator_text)
+    if not sample_rate_match or not channels_match:
+        raise C11EProductionServiceError("C11-C FAMILY_MUSIC_V4 native WAV format cannot be source-resolved")
+    if 'visual_drill/' not in music_wrapper_text or "FAMILY_MUSIC_V4" not in music_registry.get("mode", ""):
+        raise C11EProductionServiceError("C11-C native Drill music wrapper/registry identity mismatch")
+    # The historic C11-C Drill launcher currently passes its gameplay $Seed to
+    # its built-in audio call. E4C must therefore invoke it silently and use the
+    # exact native helper separately with request.music_seed; C11-C stays intact.
+    seed_coupling_present = bool(re.search(r"\$AudioGenerator\s+\$audio\s+\$Seed\b", launcher_text))
+    if not seed_coupling_present:
+        raise C11EProductionServiceError("C11-C Drill audio seed route changed; review before E4C orchestration")
+
+    policy_paths = [
+        "definitions/c11d/production/D_RENDERER_UNIFIED_PRESENTATION_REGION_POLICY_PROPOSAL_V1.json",
+        "definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
+        "definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_V1.json",
+        "definitions/c11d/production/D_RENDERER_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_PROPOSAL_V1.json",
+        LOOP_OPERATOR_DECISION_REL,
+    ]
+    family_paths = [
+        "c11c-suite/c11c-producer/producer_schema.json",
+        f"definitions/visual_drill_{family_id}_canonical.json",
+        f"profiles/difficulty/visual_drill_{family_id}.json",
+        music_registry_rel,
+        music_wrapper_rel,
+        music_generator_rel,
+    ]
+    # Carry the full V2 lineage plus family-specific and phase/music sources.
+    extra_paths = {row["path"] for row in contract_data[3]}
+    extra_paths.update({
+        "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V2.json",
+        "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_INPUT_SCHEMA_V2.json",
+        "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_SCHEMA_V2.json",
+        "tools/c11d/d9/d_renderer_dynamic_request_payload_binding.py",
+        "tools/c11d/d9/editorial_render_bridge.py",
+        "tools/c11d/d9/d_render_adapter.py",
+        "definitions/c11d/production/C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json",
+        "definitions/c11d/production/C11D_RENDER_ADAPTER_BOUNDARY_D9_10_V1.json",
+        *phase_paths,
+        *policy_paths,
+        *family_paths,
+    })
+    extra_pins = [_file_identity(root, path) for path in sorted(extra_paths)]
+
+    bridge = chain["bridge"]
+    envelope = chain["envelope"]
+    binding = chain["source_binding"]
+    binding_preview = {
+        "schema": "C11E-E4C-DRILL-DYNAMIC-BINDING-PREVIEW-V1",
+        "status": "EXISTING_D9_V2_REQUEST_CHAIN_VALIDATED_NOT_GODOT_MATERIALIZED",
+        "contract_identity": {
+            "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V2.json",
+            "schema": contract.get("schema"),
+            "schema_version": contract.get("schema_version"),
+            "sha256": _file_identity(root, "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V2.json")["sha256"],
+            "lineage_count": len(contract_data[3]),
+        },
+        "input_preview": binder._godot_input(chain, contract),
+        "request_scoped_source_binding_sha256": binder._sha_json(binding),
+        "request_scoped_source_binding_status": binding.get("status"),
+        "request_payload_manifest": "NOT_MATERIALIZED_BY_E1_REQUIRES_REAL_GODOT_V2_EXECUTION",
+        "runtime_repeat": "NOT_RUN_BY_E1",
+        "renderer_native_input_emitted": False,
+        "renderer_dispatch_invoked": False,
+        "media_created": False,
+        "release_authority": "NONE",
+    }
+    binding_preview["preview_sha256"] = sha256(binding_preview)
+
+    # The native D9.8 model/window proposal source chain has a known transitive
+    # stale-reference finding in the isolated V109 reconciliation. We do not
+    # use it to emit visible text here; this boundary only prepares canonical
+    # selector/source binding and records the C11-C native phase owner.
+    review_manifest_pin = _file_identity(root, "definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1.json")
+    window_proposal = json.loads((root / policy_paths[1]).read_text(encoding="utf-8-sig"))
+    window_lineage = window_proposal.get("source_lineage", [])
+    review_lineage_match = any(
+        isinstance(row, Mapping)
+        and row.get("path") == review_manifest_pin["path"]
+        and row.get("sha256") == review_manifest_pin["sha256"]
+        for row in window_lineage
+    )
+
+    phase_contract = {
+        "schema": "C11E-E4C-DRILL-NATIVE-PHASE-AND-END-CTA-CONTRACT-V1",
+        "status": "SOURCE_BOUND_NATIVE_PHASES_PRESERVED_NO_VISUAL_CONSUMPTION",
+        "source_pins": [_file_identity(root, path) for path in phase_paths],
+        "phase_sequence": [
+            {"phase": "PRE_ROLL", "duration_source": "CountdownPresentationLogic.COUNTDOWN_SECONDS", "duration_seconds": 3.0},
+            {"phase": "GAME", "duration_source": "ACTUAL_C11C_GENERATED_GAMEPLAY_FRAME_COUNT / FPS", "duration_seconds": None},
+            {"phase": "END_CTA", "duration_source": "VisualDrillPresentationPhaseLogic.END_CTA_SECONDS", "duration_seconds": 3.0},
+            {"phase": "DONE", "duration_source": "AFTER_TOTAL_PRESENTATION_FRAME_COUNT", "duration_seconds": 0.0},
+        ],
+        "frame_model": "ZERO_BASED_PRESENTATION_FRAME_INDEX; PRE_ROLL + GAME + END_CTA; C11-C PHASE LOGIC IS THE AUTHORITY",
+        "end_cta_precedence": {
+            "owner": "C11-C VisualDrillPresentationBinder",
+            "native_cta_header_authoritative": True,
+            "editorial_header_lines_1_and_2_suppressed_during_end_cta": True,
+            "footer_telemetry_remains_visible": True,
+            "d_adapter_may_override_native_cta": False,
+        },
+        "d_editorial_window_policy": {
+            "decision_id": "A.3_LOOP_DRILL_EDITORIAL_WINDOWS",
+            "approved_proposal_sha256": by_id["A.3_LOOP_DRILL_EDITORIAL_WINDOWS"]["proposal_sha256"],
+            "field_window_consumption": "NOT_ENABLED_BY_E1",
+            "transitive_review_manifest_lineage_current": review_lineage_match,
+            "visual_consumer_status": "BLOCKED_PENDING_CURRENT_POLICY_LINEAGE_RECONCILIATION" if not review_lineage_match else "NOT_IMPLEMENTED_E4C",
+        },
+        "renderer_native_input_emitted": False,
+        "media_created": False,
+    }
+    phase_contract["phase_contract_sha256"] = sha256(phase_contract)
+
+    stage = {
+        "schema": "C11E-E4C-DRILL-FAMILY-STAGE-CONTRACT-V1",
+        "status": "DRILL_FAMILY_BOUND_PREPARATION_NOT_DISPATCHABLE",
+        "request_identity": {
+            "request_id": str(bound_request.get("request_id")),
+            "request_hash": bound_result["request_hash"],
+            "plan_hash": bound_result["plan_hash"],
+            "editorial_hash": bound_result["editorial_hash"],
+            "bridge_record_hash": bridge["record_hash"],
+            "d_only_adapter_envelope_hash": envelope["envelope_hash"],
+            "drill_dynamic_binding_preview_sha256": binding_preview["preview_sha256"],
+        },
+        "content_identity": {
+            "content_type": "visual_drills",
+            "family_id": family_id,
+            "variant_id": variant_id,
+            "difficulty_tier": tier,
+            "canonical_source_path": f"definitions/visual_drill_{family_id}_canonical.json",
+            "difficulty_policy_path": f"profiles/difficulty/visual_drill_{family_id}.json",
+        },
+        "family_visual_stage": {
+            "launcher_path": launcher,
+            "argument_vector": [
+                "-Family", family_id,
+                "-Seed", str(bound_request["seed"]),
+                "-DifficultyTier", str(tier),
+                "-SpeedMultiplier", "1.0",
+                "-PacingMode", "constant",
+                "-DeliveryProfile", str(bound_request["delivery_profile_id"]),
+                "-NoSound",
+                "-OutputRoot", "<FRESH_ISOLATED_E4C_TEST_ROOT>",
+            ],
+            "parameter_policy": "E4C_DETERMINISTIC_REVIEW_DEFAULTS_V1_SPEED_1_0_PACING_CONSTANT; REVIEW_ONLY_UNTIL_EXPLICIT_REQUEST_FIELDS_EXIST",
+            "audio_switch": "-NoSound",
+            "gameplay_seed": bound_request["seed"],
+            "music_seed": bound_request["music_seed"],
+            "music_seed_passed_to_visual_launcher": False,
+            "launcher_execution": False,
+            "reason_not_executed": "D4_8_BLOCKED_AND_NO_RENDERER_EXECUTION_AUTHORITY",
+        },
+        "native_family_music": {
+            "route": "PRESERVE_EXISTING_C11C_FAMILY_MUSIC_V4",
+            "family_binding_id": f"visual_drill/{family_id}",
+            "profile_id": profile_id,
+            "registry_semantic_inputs": music_binding["music_semantic_inputs"],
+            "request_music_seed_field": "request.music_seed",
+            "generator_wrapper_path": music_wrapper_rel,
+            "generator_source_path": music_generator_rel,
+            "native_pcm_sample_rate_hz": int(sample_rate_match.group(1)),
+            "native_pcm_channels": int(channels_match.group(1)),
+            "music_seed_passed_as_native_generator_seed": True,
+            "audio_selection_or_generation_authorized": False,
+            "audio_generation_invoked": False,
+            "audio_payload_materialized": False,
+            "d3_v5_invoked": False,
+            "duration_source": "C11-C_GENERATED_DRILL_TOTAL_DURATION; MUST MATCH PRE_ROLL + GAME + END_CTA",
+        },
+        "dynamic_request_binding_preview": binding_preview,
+        "phase_and_end_cta_contract": phase_contract,
+        "policy_decisions": drill_policy_decisions,
+        "editorial": {
+            "values_preserved_in_d9_request": True,
+            "payload_field_consumption": "NOT_CONSUMED_E1",
+            "visual_field_windows": "NOT_EMITTED",
+            "visual_consumer": "BLOCKED_PENDING_E4C_PHASE_AND_POLICY_CLOSEOUT",
+        },
+        "governance": {
+            "family_stage_contract_created_in_memory": True,
+            "renderer_native_input_emitted": False,
+            "renderer_dispatch_invoked": False,
+            "launcher_invoked": False,
+            "godot_invoked": False,
+            "ffmpeg_invoked": False,
+            "media_created": False,
+            "audio_generated": False,
+            "c11c_source_mutation": False,
+            "d4_8": "BLOCKED",
+            "d9_10": "PREPARE_ONLY",
+            "release_authority": "NONE",
+        },
+    }
+    stage["contract_sha256"] = sha256(stage)
+
+    preparation = {
+        "schema": "C11E-E4C-SHARED-DRILL-BOUNDARY-PREPARATION-V1",
+        "status": "DRILL_FAMILY_STAGE_PREPARED_NOT_DISPATCHABLE",
+        "bridge_planning_record": bridge,
+        "d_only_adapter_envelope": envelope,
+        "drill_family_stage_contract": stage,
+        "dynamic_request_binding_preview": binding_preview,
+        "native_phase_and_end_cta_contract": phase_contract,
+        "required_source_pin_paths": sorted(extra_paths | {"tools/c11d/d9/d_renderer_dynamic_request_payload_binding.py"}),
+        "renderer_input_emitted": False,
+        "renderer_dispatch_invoked": False,
+        "launcher_invoked": False,
+        "godot_invoked": False,
+        "ffmpeg_invoked": False,
+        "audio_generation_invoked": False,
+        "media_created": False,
+        "release_authority": "NONE",
+    }
+    preparation["preparation_sha256"] = sha256(preparation)
+    return preparation, extra_pins
 
 def _build_music_contract(root: Path, canonical_request: Mapping[str, Any]) -> tuple[dict[str, Any], list[dict[str, Any]]]:
     """Resolve a sealed, non-dispatchable music binding; never imports or calls V5."""
@@ -562,9 +914,13 @@ def prepare_c11e_production_intent(
     music_contract, music_source_pins = _build_music_contract(root, canonical_request)
     loop_boundary_preparation = None
     loop_boundary_source_pins: list[dict[str, Any]] = []
+    drill_boundary_preparation = None
+    drill_boundary_source_pins: list[dict[str, Any]] = []
     if content_type == "visual_loops":
         loop_boundary_preparation, loop_boundary_source_pins = _prepare_loop_family_boundary(root, resolved)
-    source_identity = _source_identity(root, canonical_request, music_source_pins + loop_boundary_source_pins)
+    elif content_type == "visual_drills":
+        drill_boundary_preparation, drill_boundary_source_pins = _prepare_drill_family_boundary(root, resolved, request)
+    source_identity = _source_identity(root, canonical_request, music_source_pins + loop_boundary_source_pins + drill_boundary_source_pins)
     output_root = f"artifacts/production/c11e/{request_id}"
     output_path = root / Path(*PurePosixPath(output_root).parts)
     output_root_exists = output_path.exists()
@@ -608,6 +964,14 @@ def prepare_c11e_production_intent(
             "d_only_adapter_envelope_hash": loop_boundary_preparation["d_only_adapter_envelope"]["envelope_hash"],
             "loop_family_stage_contract_sha256": loop_boundary_preparation["loop_family_stage_contract"]["contract_sha256"],
         }
+    if drill_boundary_preparation is not None:
+        intent_semantics["d9_boundary_preparation_identity"] = {
+            "preparation_sha256": drill_boundary_preparation["preparation_sha256"],
+            "bridge_record_hash": drill_boundary_preparation["bridge_planning_record"]["record_hash"],
+            "d_only_adapter_envelope_hash": drill_boundary_preparation["d_only_adapter_envelope"]["envelope_hash"],
+            "drill_family_stage_contract_sha256": drill_boundary_preparation["drill_family_stage_contract"]["contract_sha256"],
+            "dynamic_request_binding_preview_sha256": drill_boundary_preparation["dynamic_request_binding_preview"]["preview_sha256"],
+        }
     intent_request = {
         "request_id": request_id,
         "mode": canonical_request["mode"],
@@ -619,7 +983,7 @@ def prepare_c11e_production_intent(
         intent_request["presentation_options"] = presentation_options
     intent: dict[str, Any] = {
         "schema": SERVICE_SCHEMA,
-        "schema_version": "1.2" if loop_boundary_preparation is not None else "1.1",
+        "schema_version": "1.3" if drill_boundary_preparation is not None else ("1.2" if loop_boundary_preparation is not None else "1.1"),
         "service_version": SERVICE_VERSION,
         "status": "PREPARED_E1_NOT_DISPATCHED",
         "request_origin": origin,
@@ -673,6 +1037,8 @@ def prepare_c11e_production_intent(
     }
     if loop_boundary_preparation is not None:
         intent["d9_boundary_preparation"] = loop_boundary_preparation
+    if drill_boundary_preparation is not None:
+        intent["d9_boundary_preparation"] = drill_boundary_preparation
     intent["intent_sha256"] = sha256(intent)
     return {"intent": intent, "resolver_result": resolved}
 
@@ -683,7 +1049,7 @@ def validate_c11e_production_intent(
 ) -> dict[str, Any]:
     """Validate self-seal, D9 hashes, seed separation, source pins and fail-closed flags."""
     root = _root(project_root)
-    if not isinstance(intent, Mapping) or intent.get("schema") != SERVICE_SCHEMA or intent.get("schema_version") not in {"1.1", "1.2"}:
+    if not isinstance(intent, Mapping) or intent.get("schema") != SERVICE_SCHEMA or intent.get("schema_version") not in {"1.1", "1.2", "1.3"}:
         raise C11EProductionServiceError("C11-E intent schema mismatch")
     supplied = intent.get("intent_sha256")
     unsigned = dict(intent)
@@ -702,7 +1068,7 @@ def validate_c11e_production_intent(
     if request.get("content_type") not in SUPPORTED_CONTENT_TYPES:
         raise C11EProductionServiceError("Unsupported C11-E content type")
     content_type = request.get("content_type")
-    expected_schema_version = "1.2" if content_type == "visual_loops" else "1.1"
+    expected_schema_version = "1.3" if content_type == "visual_drills" else ("1.2" if content_type == "visual_loops" else "1.1")
     if intent.get("schema_version") != expected_schema_version:
         raise C11EProductionServiceError("C11-E schema version does not match the family preparation contract")
     options_present = "presentation_options" in request
@@ -768,7 +1134,9 @@ def validate_c11e_production_intent(
     expected_gate = "E2" if content_type == "challenges" else "E4"
     if adapter.get("target_gate") != expected_gate or adapter.get("renderer_input_emitted") is not False:
         raise C11EProductionServiceError("Family adapter boundary identity mismatch")
+    identity = intent.get("identity", {})
     loop_preparation_identity = None
+    drill_preparation_identity = None
     if content_type == "visual_loops":
         preparation = intent.get("d9_boundary_preparation")
         if not isinstance(preparation, Mapping) or preparation.get("schema") != "C11E-E4B-SHARED-LOOP-BOUNDARY-PREPARATION-V1" or preparation.get("status") != "LOOP_FAMILY_STAGE_PREPARED_NOT_DISPATCHABLE":
@@ -808,9 +1176,84 @@ def validate_c11e_production_intent(
             "d_only_adapter_envelope_hash": envelope["envelope_hash"],
             "loop_family_stage_contract_sha256": family_stage["contract_sha256"],
         }
+    elif content_type == "visual_drills":
+        preparation = intent.get("d9_boundary_preparation")
+        if not isinstance(preparation, Mapping) or preparation.get("schema") != "C11E-E4C-SHARED-DRILL-BOUNDARY-PREPARATION-V1" or preparation.get("status") != "DRILL_FAMILY_STAGE_PREPARED_NOT_DISPATCHABLE":
+            raise C11EProductionServiceError("E4C shared Drill boundary preparation is missing")
+        unsigned_preparation = {key: value for key, value in preparation.items() if key != "preparation_sha256"}
+        if preparation.get("preparation_sha256") != sha256(unsigned_preparation):
+            raise C11EProductionServiceError("E4C shared Drill preparation self-hash mismatch")
+        bridge = preparation.get("bridge_planning_record")
+        envelope = preparation.get("d_only_adapter_envelope")
+        stage = preparation.get("drill_family_stage_contract")
+        binding_preview = preparation.get("dynamic_request_binding_preview")
+        phase_contract = preparation.get("native_phase_and_end_cta_contract")
+        if not all(isinstance(value, Mapping) for value in (bridge, envelope, stage, binding_preview, phase_contract)):
+            raise C11EProductionServiceError("E4C Drill preparation records are incomplete")
+        bridge_module = _load_d9_boundary_module(root, "editorial_render_bridge")
+        adapter_module = _load_d9_boundary_module(root, "d_render_adapter")
+        binder_module = _load_d9_boundary_module(root, "d_renderer_dynamic_request_payload_binding")
+        if bridge.get("schema") != bridge_module.RECORD_SCHEMA or bridge.get("status") != "PLANNING_ONLY_NOT_RENDERABLE":
+            raise C11EProductionServiceError("E4C D9.10 bridge is not planning-only")
+        if bridge.get("record_hash") != bridge_module.sha256({key: value for key, value in bridge.items() if key != "record_hash"}):
+            raise C11EProductionServiceError("E4C D9.10 bridge self-hash mismatch")
+        adapter_module.validate_d_only_adapter_envelope(envelope, root)
+        if stage.get("schema") != "C11E-E4C-DRILL-FAMILY-STAGE-CONTRACT-V1" or stage.get("status") != "DRILL_FAMILY_BOUND_PREPARATION_NOT_DISPATCHABLE":
+            raise C11EProductionServiceError("E4C Drill stage identity/status mismatch")
+        unsigned_stage = {key: value for key, value in stage.items() if key != "contract_sha256"}
+        if stage.get("contract_sha256") != sha256(unsigned_stage):
+            raise C11EProductionServiceError("E4C Drill stage self-hash mismatch")
+        if binding_preview.get("schema") != "C11E-E4C-DRILL-DYNAMIC-BINDING-PREVIEW-V1" or binding_preview.get("status") != "EXISTING_D9_V2_REQUEST_CHAIN_VALIDATED_NOT_GODOT_MATERIALIZED":
+            raise C11EProductionServiceError("E4C Drill dynamic binding preview is not the existing V2 binder path")
+        unsigned_binding_preview = {key: value for key, value in binding_preview.items() if key != "preview_sha256"}
+        if binding_preview.get("preview_sha256") != sha256(unsigned_binding_preview):
+            raise C11EProductionServiceError("E4C Drill dynamic binding preview self-hash mismatch")
+        if binding_preview.get("contract_identity", {}).get("schema") != binder_module.DRILL_V2_CONTRACT_ID or binding_preview.get("contract_identity", {}).get("schema_version") != "2.0":
+            raise C11EProductionServiceError("E4C Drill did not reuse the existing Dynamic Request Binding V2 contract")
+        input_preview = binding_preview.get("input_preview", {})
+        selected = request.get("selection", {})
+        if input_preview.get("request_hash") != identity.get("request_hash") or input_preview.get("selection", {}).get("content_type") != "visual_drills" or input_preview.get("selection", {}).get("family_id") != selected.get("family_id") or input_preview.get("selection", {}).get("variant_id") != selected.get("variant_id"):
+            raise C11EProductionServiceError("E4C Drill request-bound preview differs from E1 canonical selector identity")
+        if input_preview.get("seed") != gameplay.get("value") or input_preview.get("music_seed") != music.get("value") or input_preview.get("seed") == input_preview.get("music_seed"):
+            raise C11EProductionServiceError("E4C Drill dynamic preview seed domains are not independent")
+        if phase_contract.get("schema") != "C11E-E4C-DRILL-NATIVE-PHASE-AND-END-CTA-CONTRACT-V1" or phase_contract.get("status") != "SOURCE_BOUND_NATIVE_PHASES_PRESERVED_NO_VISUAL_CONSUMPTION":
+            raise C11EProductionServiceError("E4C Drill native phase/END_CTA contract identity mismatch")
+        unsigned_phase = {key: value for key, value in phase_contract.items() if key != "phase_contract_sha256"}
+        if phase_contract.get("phase_contract_sha256") != sha256(unsigned_phase):
+            raise C11EProductionServiceError("E4C Drill phase/END_CTA contract self-hash mismatch")
+        if phase_contract.get("end_cta_precedence", {}).get("native_cta_header_authoritative") is not True or phase_contract.get("end_cta_precedence", {}).get("d_adapter_may_override_native_cta") is not False:
+            raise C11EProductionServiceError("E4C Drill END_CTA precedence was weakened")
+        if stage.get("request_identity", {}).get("bridge_record_hash") != bridge.get("record_hash") or stage.get("request_identity", {}).get("d_only_adapter_envelope_hash") != envelope.get("envelope_hash") or stage.get("request_identity", {}).get("drill_dynamic_binding_preview_sha256") != binding_preview.get("preview_sha256"):
+            raise C11EProductionServiceError("E4C Drill stage is not bound to the existing D9.10/V2 records")
+        if stage.get("content_identity", {}).get("family_id") != selected.get("family_id") or stage.get("content_identity", {}).get("variant_id") != selected.get("variant_id") or stage.get("content_identity", {}).get("content_type") != "visual_drills":
+            raise C11EProductionServiceError("E4C Drill stage selector differs from the E1 request")
+        if stage.get("family_visual_stage", {}).get("audio_switch") != "-NoSound" or stage.get("family_visual_stage", {}).get("music_seed_passed_to_visual_launcher") is not False:
+            raise C11EProductionServiceError("E4C Drill C11-C visual launcher must remain silent and gameplay-seeded only")
+        if stage.get("native_family_music", {}).get("route") != "PRESERVE_EXISTING_C11C_FAMILY_MUSIC_V4" or stage.get("native_family_music", {}).get("request_music_seed_field") != "request.music_seed" or stage.get("native_family_music", {}).get("d3_v5_invoked") is not False:
+            raise C11EProductionServiceError("E4C Drill native family music route/seed identity changed")
+        if stage.get("governance", {}).get("d4_8") != "BLOCKED" or stage.get("governance", {}).get("d9_10") != "PREPARE_ONLY" or stage.get("governance", {}).get("release_authority") != "NONE":
+            raise C11EProductionServiceError("E4C Drill governance boundary changed")
+        for field in ("renderer_native_input_emitted", "renderer_dispatch_invoked", "launcher_invoked", "godot_invoked", "ffmpeg_invoked", "media_created", "audio_generated", "c11c_source_mutation"):
+            if stage.get("governance", {}).get(field) is not False:
+                raise C11EProductionServiceError(f"E4C Drill stage execution boundary changed: {field}")
+        required_paths = set(preparation.get("required_source_pin_paths", []))
+        pinned_paths = {row.get("path") for row in intent.get("source_identity", {}).get("source_pins", []) if isinstance(row, Mapping)}
+        if not required_paths or not required_paths.issubset(pinned_paths):
+            raise C11EProductionServiceError("E4C Drill dynamic binder/family source-pin coverage is incomplete")
+        if preparation.get("renderer_input_emitted") is not False or preparation.get("renderer_dispatch_invoked") is not False or preparation.get("launcher_invoked") is not False or preparation.get("godot_invoked") is not False or preparation.get("ffmpeg_invoked") is not False or preparation.get("audio_generation_invoked") is not False or preparation.get("media_created") is not False or preparation.get("release_authority") != "NONE":
+            raise C11EProductionServiceError("E4C Drill shared boundary crossed its prepare-only execution limits")
+        if adapter.get("status") != "NOT_CONNECTED_E1":
+            raise C11EProductionServiceError("E1 Drill visual consumer remains not connected; binding preview is not visual consumption")
+        drill_preparation_identity = {
+            "preparation_sha256": preparation["preparation_sha256"],
+            "bridge_record_hash": bridge["record_hash"],
+            "d_only_adapter_envelope_hash": envelope["envelope_hash"],
+            "drill_family_stage_contract_sha256": stage["contract_sha256"],
+            "dynamic_request_binding_preview_sha256": binding_preview["preview_sha256"],
+        }
     else:
         if adapter.get("status") != "NOT_CONNECTED_E1" or "d9_boundary_preparation" in intent:
-            raise C11EProductionServiceError("Non-Loop E1 family adapter must remain unconnected")
+            raise C11EProductionServiceError("Non-family E1 adapter must remain unconnected")
     identity = intent.get("identity", {})
     for field in ("request_hash", "editorial_hash", "plan_hash", "intent_hash"):
         value = identity.get(field)
@@ -862,6 +1305,8 @@ def validate_c11e_production_intent(
         intent_semantics["presentation_options"] = presentation_options
     if loop_preparation_identity is not None:
         intent_semantics["d9_boundary_preparation_identity"] = loop_preparation_identity
+    if drill_preparation_identity is not None:
+        intent_semantics["d9_boundary_preparation_identity"] = drill_preparation_identity
     if sha256(intent_semantics) != identity.get("intent_hash"):
         raise C11EProductionServiceError("C11-E semantic intent hash mismatch")
     return {"valid": True, "status": "PASS_E1_PREPARATION_ONLY", "intent_sha256": supplied, "source_pin_count": len(pinned), "renderer": False, "media_created": False}

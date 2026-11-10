@@ -247,6 +247,7 @@ class C11EProductionServiceTests(unittest.TestCase):
     def loop_request(*, family_id: str = "c11c_geometric_waves_v1", grammar_id: str = "harmonic_membrane", seed: int = 12345, music_seed: int = 840001, request_id: str = "C11E-E4B-SHARED-LOOP-001") -> dict:
         raw = request(seed=seed, music_seed=music_seed, request_id=request_id)
         raw["mode"] = "PRODUCTION"
+        raw["audio_enabled"] = True
         raw["selection"] = {
             "content_type": "visual_loops",
             "family_id": family_id,
@@ -360,9 +361,169 @@ class C11EProductionServiceTests(unittest.TestCase):
     def test_gui_uses_shared_loop_boundary_contract_instead_of_rebuilding_it(self):
         gui_source = (ROOT / "c11c-suite" / "c11c-producer" / "main.py").read_text(encoding="utf-8-sig")
         self.assertIn('d9_boundary_preparation = e1_intent.get("d9_boundary_preparation")', gui_source)
-        self.assertIn('"loop_boundary_preparation_equal": e1_intent.get("d9_boundary_preparation") == e_cli_intent.get("d9_boundary_preparation")', gui_source)
+        self.assertIn('"loop_boundary_preparation_equal": (', gui_source)
+        self.assertIn('content_type != "visual_loops"', gui_source)
         self.assertIn('write_json(run_root / "loop_family_stage_contract.json", loop_family_stage_contract)', gui_source)
 
+
+
+    @staticmethod
+    def drill_request(*, family_id: str = "tracking", tier: int = 1, seed: int = 12345, music_seed: int = 840001, request_id: str = "C11E-E4C-SHARED-DRILL-001") -> dict:
+        raw = request(seed=seed, music_seed=music_seed, request_id=request_id)
+        raw["mode"] = "PRODUCTION"
+        raw["audio_enabled"] = True
+        raw["selection"] = {
+            "content_type": "visual_drills",
+            "family_id": family_id,
+            "variant_id": f"tier-{tier}",
+        }
+        raw["production_override"] = {
+            "title": "E4C Drill title",
+            "subtitle": "E4C Drill subtitle",
+            "call_to_action": "Continue",
+            "language": "en",
+        }
+        return raw
+
+    def test_drill_shared_service_prepares_existing_v2_binding_and_preserves_native_phase_music(self):
+        intent = prepare_c11e_production_intent(self.drill_request(), ROOT, request_origin="GUI")["intent"]
+        self.assertEqual(intent["schema_version"], "1.3")
+        preparation = intent["d9_boundary_preparation"]
+        self.assertEqual(preparation["schema"], "C11E-E4C-SHARED-DRILL-BOUNDARY-PREPARATION-V1")
+        self.assertEqual(preparation["status"], "DRILL_FAMILY_STAGE_PREPARED_NOT_DISPATCHABLE")
+        stage = preparation["drill_family_stage_contract"]
+        self.assertEqual(stage["status"], "DRILL_FAMILY_BOUND_PREPARATION_NOT_DISPATCHABLE")
+        self.assertEqual(stage["dynamic_request_binding_preview"]["status"], "EXISTING_D9_V2_REQUEST_CHAIN_VALIDATED_NOT_GODOT_MATERIALIZED")
+        self.assertEqual(stage["dynamic_request_binding_preview"]["contract_identity"]["schema_version"], "2.0")
+        self.assertEqual(stage["content_identity"]["family_id"], "tracking")
+        self.assertEqual(stage["content_identity"]["difficulty_tier"], 1)
+        self.assertEqual(stage["family_visual_stage"]["audio_switch"], "-NoSound")
+        self.assertFalse(stage["family_visual_stage"]["music_seed_passed_to_visual_launcher"])
+        self.assertEqual(stage["native_family_music"]["route"], "PRESERVE_EXISTING_C11C_FAMILY_MUSIC_V4")
+        self.assertEqual(stage["native_family_music"]["request_music_seed_field"], "request.music_seed")
+        self.assertEqual(stage["native_family_music"]["profile_id"], "FLOWING_VECTOR")
+        self.assertEqual(stage["native_family_music"]["native_pcm_sample_rate_hz"], 44100)
+        self.assertEqual(stage["native_family_music"]["native_pcm_channels"], 2)
+        phase = preparation["native_phase_and_end_cta_contract"]
+        self.assertEqual([row["phase"] for row in phase["phase_sequence"]], ["PRE_ROLL", "GAME", "END_CTA", "DONE"])
+        self.assertEqual(phase["phase_sequence"][0]["duration_seconds"], 3.0)
+        self.assertEqual(phase["phase_sequence"][2]["duration_seconds"], 3.0)
+        self.assertTrue(phase["end_cta_precedence"]["native_cta_header_authoritative"])
+        self.assertTrue(phase["end_cta_precedence"]["editorial_header_lines_1_and_2_suppressed_during_end_cta"])
+        self.assertFalse(phase["end_cta_precedence"]["d_adapter_may_override_native_cta"])
+        self.assertEqual(intent["family_adapter"]["status"], "NOT_CONNECTED_E1")
+        self.assertFalse(intent["execution_boundary"]["renderer_input_emitted"])
+        self.assertFalse(intent["execution_boundary"]["renderer_dispatch_invoked"])
+        self.assertFalse(preparation["media_created"])
+        self.assertEqual(validate_c11e_production_intent(intent, ROOT)["status"], "PASS_E1_PREPARATION_ONLY")
+
+    def test_all_20_drill_type_tier_selectors_bind_through_existing_v2_chain(self):
+        families = ("tracking", "pursuit", "saccade", "peripheral_scan")
+        count = 0
+        for family_index, family_id in enumerate(families):
+            for tier in range(1, 6):
+                serial = family_index * 5 + tier
+                raw = self.drill_request(
+                    family_id=family_id,
+                    tier=tier,
+                    seed=120000 + serial,
+                    music_seed=820000 + serial,
+                    request_id=f"C11E-E4C-DRILL-{serial:02d}",
+                )
+                intent = prepare_c11e_production_intent(raw, ROOT, request_origin="TEST")["intent"]
+                result = validate_c11e_production_intent(intent, ROOT)
+                self.assertEqual(result["status"], "PASS_E1_PREPARATION_ONLY")
+                stage = intent["d9_boundary_preparation"]["drill_family_stage_contract"]
+                binding = stage["dynamic_request_binding_preview"]
+                self.assertEqual(stage["content_identity"]["family_id"], family_id)
+                self.assertEqual(stage["content_identity"]["variant_id"], f"tier-{tier}")
+                self.assertEqual(binding["input_preview"]["selection"]["family_id"], family_id)
+                self.assertEqual(binding["input_preview"]["selection"]["variant_id"], f"tier-{tier}")
+                self.assertEqual(binding["input_preview"]["seed"], raw["seed"])
+                self.assertEqual(binding["input_preview"]["music_seed"], raw["music_seed"])
+                self.assertNotEqual(binding["input_preview"]["seed"], binding["input_preview"]["music_seed"])
+                self.assertEqual(binding["request_payload_manifest"], "NOT_MATERIALIZED_BY_E1_REQUIRES_REAL_GODOT_V2_EXECUTION")
+                self.assertFalse(stage["governance"]["renderer_native_input_emitted"])
+                self.assertFalse(stage["governance"]["launcher_invoked"])
+                self.assertFalse(stage["governance"]["media_created"])
+                self.assertEqual(stage["native_family_music"]["route"], "PRESERVE_EXISTING_C11C_FAMILY_MUSIC_V4")
+                expected_music_profiles = {
+                    "tracking": "FLOWING_VECTOR",
+                    "pursuit": "ORGANIC_BLOOM",
+                    "saccade": "CIRCUIT_PULSE",
+                    "peripheral_scan": "ORBITAL_RITUAL",
+                }
+                self.assertEqual(stage["native_family_music"]["profile_id"], expected_music_profiles[family_id])
+                self.assertTrue(intent["delivery"]["audio_enabled"])
+                count += 1
+        self.assertEqual(count, 20)
+
+    def test_drill_boundary_is_repeatable_and_gui_cli_semantics_match(self):
+        raw = self.drill_request(request_id="C11E-E4C-DRILL-REPEATABLE-001")
+        gui = prepare_c11e_production_intent(raw, ROOT, request_origin="GUI")["intent"]
+        cli = prepare_c11e_production_intent(raw, ROOT, request_origin="CLI")["intent"]
+        repeat = prepare_c11e_production_intent(raw, ROOT, request_origin="GUI")["intent"]
+        self.assertEqual(gui["d9_boundary_preparation"], cli["d9_boundary_preparation"])
+        self.assertEqual(gui["d9_boundary_preparation"], repeat["d9_boundary_preparation"])
+        self.assertEqual(gui["identity"]["intent_hash"], cli["identity"]["intent_hash"])
+        self.assertNotEqual(gui["intent_sha256"], cli["intent_sha256"])
+
+    def test_drill_seed_collision_and_out_of_matrix_tier_fail_closed(self):
+        collided = self.drill_request(seed=12345, music_seed=12345, request_id="C11E-E4C-DRILL-SEED-COLLISION")
+        with self.assertRaises(C11EProductionServiceError):
+            prepare_c11e_production_intent(collided, ROOT)
+        invalid_tier = self.drill_request(tier=6, request_id="C11E-E4C-DRILL-TIER-06")
+        with self.assertRaises(C11EProductionServiceError):
+            prepare_c11e_production_intent(invalid_tier, ROOT)
+
+    def test_drill_boundary_tampering_fails_closed(self):
+        intent = copy.deepcopy(prepare_c11e_production_intent(self.drill_request(request_id="C11E-E4C-DRILL-TAMPER-001"), ROOT)["intent"])
+        intent["d9_boundary_preparation"]["drill_family_stage_contract"]["phase_and_end_cta_contract"]["end_cta_precedence"]["d_adapter_may_override_native_cta"] = True
+        with self.assertRaises(C11EProductionServiceError):
+            validate_c11e_production_intent(intent, ROOT)
+
+    def test_cli_drill_request_emits_the_same_shared_v2_boundary_contract(self):
+        with tempfile.TemporaryDirectory() as temp:
+            temp_root = Path(temp)
+            request_path = temp_root / "drill_request.json"
+            output_path = temp_root / "drill_intent.json"
+            raw = self.drill_request(
+                family_id="peripheral_scan",
+                tier=5,
+                seed=123456,
+                music_seed=840099,
+                request_id="C11E-E4C-CLI-DRILL-020",
+            )
+            request_path.write_text(json.dumps(raw), encoding="utf-8")
+            cli = ROOT / "c11c-suite" / "c11c-producer" / "c11e_production_cli.py"
+            run = subprocess.run(
+                [sys.executable, str(cli), "--request", str(request_path), "--origin", "CLI", "--output", str(output_path)],
+                cwd=ROOT, capture_output=True, text=True, encoding="utf-8", timeout=60,
+            )
+            self.assertEqual(run.returncode, 0, run.stdout + "\n" + run.stderr)
+            payload = json.loads(output_path.read_text(encoding="utf-8"))
+            self.assertEqual(payload["status"], "PASS_E1_PREPARATION_ONLY")
+            self.assertEqual(payload["intent"]["request_origin"], "CLI")
+            prep = payload["intent"]["d9_boundary_preparation"]
+            self.assertEqual(prep["status"], "DRILL_FAMILY_STAGE_PREPARED_NOT_DISPATCHABLE")
+            stage = prep["drill_family_stage_contract"]
+            self.assertEqual(stage["status"], "DRILL_FAMILY_BOUND_PREPARATION_NOT_DISPATCHABLE")
+            self.assertEqual(stage["content_identity"]["family_id"], "peripheral_scan")
+            self.assertEqual(stage["content_identity"]["variant_id"], "tier-5")
+            self.assertEqual(stage["dynamic_request_binding_preview"]["input_preview"]["seed"], 123456)
+            self.assertEqual(stage["dynamic_request_binding_preview"]["input_preview"]["music_seed"], 840099)
+            self.assertEqual(payload["validation"]["status"], "PASS_E1_PREPARATION_ONLY")
+            self.assertFalse(payload["execution_boundary"]["renderer_activation"])
+            self.assertFalse(payload["execution_boundary"]["media_created"])
+
+    def test_gui_source_consumes_drill_boundary_from_shared_service_without_rebuilding(self):
+        gui_source = (ROOT / "c11c-suite" / "c11c-producer" / "main.py").read_text(encoding="utf-8-sig")
+        self.assertIn('elif content_type == "visual_drills":', gui_source)
+        self.assertIn('drill_family_stage_contract = d9_boundary_preparation["drill_family_stage_contract"]', gui_source)
+        self.assertIn('write_json(run_root / "drill_family_stage_contract.json", drill_family_stage_contract)', gui_source)
+        self.assertIn('write_json(run_root / "drill_dynamic_request_binding_preview.json", drill_dynamic_binding_preview)', gui_source)
+        self.assertIn('"family_boundary_preparation_equal": (', gui_source)
+        self.assertIn('content_type in ("visual_loops", "visual_drills")', gui_source)
 
 
 if __name__ == "__main__":
