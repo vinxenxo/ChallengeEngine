@@ -312,6 +312,8 @@ class MainWindow(QMainWindow):
         self.proc: QProcess | None = None
         self.e3_process: QProcess | None = None
         self.e3_last_intent_path: Path | None = None
+        self.e4c_drill_process: QProcess | None = None
+        self.e4c_last_request_path: Path | None = None
         self.probe_file: Path | None = None
         self.rows: list[ParamRow] = []
         self._building_type = False
@@ -809,6 +811,20 @@ class MainWindow(QMainWindow):
         self.d9_e3_audio_pilot_button.clicked.connect(self._run_c11e_e3_audio_pilot)
         form.addWidget(self.d9_e3_audio_pilot_button, row, 0, 1, 4)
         row += 1
+        self.d9_drill_execute_button = QPushButton(
+            "C11-E E4C · EJECUTAR DRILL A/V CUALIFICACIÓN · C11-C + D + FAMILY_MUSIC_V4"
+        )
+        self.d9_drill_execute_button.setObjectName("Primary")
+        self.d9_drill_execute_button.setMinimumHeight(44)
+        self.d9_drill_execute_button.setEnabled(False)
+        self.d9_drill_execute_button.setToolTip(
+            "Ejecuta la petición Drill ya validada por E1 usando el mismo adaptador compartido GUI/CLI; "
+            "captura C11-C silenciosa, aplica el consumidor D, genera FAMILY_MUSIC_V4 con music_seed "
+            "independiente y valida FFmpeg/FFprobe. Solo cualificación aislada; release NONE."
+        )
+        self.d9_drill_execute_button.clicked.connect(self._run_e4c_drill_av_qualification)
+        form.addWidget(self.d9_drill_execute_button, row, 0, 1, 4)
+        row += 1
         notice = QLabel(
             "D9.10 prepara una envolvente de bindings exclusiva de C11-D desde la petición canónica, "
             "la personalización, el plan y sus hashes. La envolvente es solo inspeccionable: no es "
@@ -1059,6 +1075,8 @@ class MainWindow(QMainWindow):
 
     def _run_d9_universal_plan(self) -> None:
         self.e3_last_intent_path = None
+        self.e4c_last_request_path = None
+        self.d9_drill_execute_button.setEnabled(False)
         try:
             self._d9_save_universal_editorial_inputs()
             content_type = str(self.d9_content_type.currentData() or "")
@@ -1120,6 +1138,7 @@ class MainWindow(QMainWindow):
 
             request_path = run_root / "request.json"
             request_path.write_text(json.dumps(raw_request, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+            self.e4c_last_request_path = request_path
             # The GUI builds only the canonical D9.9 request. E1 applies its
             # existing Challenge visibility default internally; no UI option
             # is serialized into the strict universal request.
@@ -1297,9 +1316,93 @@ class MainWindow(QMainWindow):
             if not self.e3_last_intent_path.is_file():
                 self.e3_last_intent_path = None
                 raise FileNotFoundError("E1 intent file was not written after GUI/CLI parity PASS")
+            _editorial = e1_intent.get("editorial", {})
+            _has_visible_editorial = isinstance(_editorial, dict) and any(
+                isinstance(_editorial.get(_key), str)
+                and _editorial[_key].strip()
+                and _editorial[_key].strip().casefold() != "unknown"
+                for _key in ("title", "subtitle", "call_to_action")
+            )
+            if (
+                content_type == "visual_drills"
+                and raw_request["mode"] == "PRODUCTION"
+                and raw_request["audio_enabled"] is True
+                and raw_request["personalization_enabled"] is True
+                and raw_request["delivery_profile_id"] == "REVIEW_720"
+                and _has_visible_editorial
+                and self.e4c_last_request_path is not None
+            ):
+                self.d9_drill_execute_button.setEnabled(True)
         except Exception as exc:
             self.statusBar().showMessage("D9.9 universal plan failed; no product was created.")
             QMessageBox.warning(self, "C11-D Editorial Universal", str(exc))
+
+    def _run_e4c_drill_av_qualification(self) -> None:
+        """Execute the E4C D-owned Drill consumer through the shared E1 route."""
+        request_path = self.e4c_last_request_path
+        if request_path is None or not request_path.is_file():
+            QMessageBox.warning(self, "C11-E E4C Drill", "No existe una petición Drill E1 validada. Ejecuta primero RESOLVER + PLAN.")
+            self.d9_drill_execute_button.setEnabled(False)
+            return
+        if self.e4c_drill_process is not None and self.e4c_drill_process.state() != QProcess.NotRunning:
+            return
+        executor = PROJECT / "tools" / "c11d" / "d9" / "c11e_e4c_drill_execution.py"
+        if not executor.is_file():
+            QMessageBox.warning(self, "C11-E E4C Drill", f"No se encuentra el adaptador D de ejecución: {executor}")
+            return
+        self.d9_drill_execute_button.setEnabled(False)
+        self.d9_e1_view.appendPlainText("\n[E4C DRILL A/V] Starting shared E1 → C11-C silent source → D post-composition → FAMILY_MUSIC_V4 → FFmpeg/FFprobe...\n")
+        self.d9_output_tabs.setCurrentWidget(self.d9_e1_view)
+        self.e4c_drill_process = QProcess(self)
+        self.e4c_drill_process.setWorkingDirectory(str(PROJECT))
+        self.e4c_drill_process.setProgram(sys.executable)
+        self.e4c_drill_process.setArguments([
+            str(executor), "--request", str(request_path), "--project-root", str(PROJECT), "--origin", "GUI"
+        ])
+        self.e4c_drill_process.readyReadStandardOutput.connect(self._e4c_drill_read_stdout)
+        self.e4c_drill_process.readyReadStandardError.connect(self._e4c_drill_read_stderr)
+        self.e4c_drill_process.finished.connect(self._e4c_drill_finished)
+        self.e4c_drill_process.errorOccurred.connect(self._e4c_drill_process_error)
+        self.e4c_drill_process.start()
+
+    def _e4c_drill_read_stdout(self) -> None:
+        process = self.e4c_drill_process
+        if process is not None:
+            payload = bytes(process.readAllStandardOutput()).decode("utf-8", "replace")
+            if payload:
+                self.d9_e1_view.appendPlainText(payload.rstrip())
+
+    def _e4c_drill_read_stderr(self) -> None:
+        process = self.e4c_drill_process
+        if process is not None:
+            payload = bytes(process.readAllStandardError()).decode("utf-8", "replace")
+            if payload:
+                self.d9_e1_view.appendPlainText("[E4C STDERR] " + payload.rstrip())
+
+    def _e4c_drill_finished(self, exit_code: int, _exit_status: QProcess.ExitStatus) -> None:
+        self._e4c_drill_read_stdout()
+        self._e4c_drill_read_stderr()
+        process = self.e4c_drill_process
+        self.e4c_drill_process = None
+        if process is not None:
+            process.deleteLater()
+        self.d9_drill_execute_button.setEnabled(False)
+        if exit_code == 0:
+            self.d9_e1_view.appendPlainText("\nE4C_DRILL_AV_EXECUTION=PASS\n")
+            self.d9_evidence_label.setText("E4C DRILL A/V · C11-C + D + FAMILY_MUSIC_V4 · FFprobe PASS · release NONE")
+            self.statusBar().showMessage("E4C DRILL A/V QUALIFICATION PASS · isolated test-only · release NONE")
+        else:
+            self.d9_e1_view.appendPlainText(f"\nE4C_DRILL_AV_EXECUTION=FAIL_CLOSED exit={exit_code}\n")
+            self.statusBar().showMessage(f"E4C DRILL A/V qualification failed closed (exit {exit_code}); preserve evidence")
+
+    def _e4c_drill_process_error(self, error: QProcess.ProcessError) -> None:
+        self.d9_e1_view.appendPlainText(f"\nE4C_PROCESS_ERROR={error}\n")
+        self.statusBar().showMessage("E4C Drill execution process could not be started; no PASS recorded")
+        process = self.e4c_drill_process
+        if process is not None and process.state() == QProcess.NotRunning:
+            self.e4c_drill_process = None
+            process.deleteLater()
+            self.d9_drill_execute_button.setEnabled(False)
 
     def _run_e4b_loop_family_matrix(self) -> None:
         """Run the D9.9/D9.10/E1 preparation matrix for all existing Loop grammars."""

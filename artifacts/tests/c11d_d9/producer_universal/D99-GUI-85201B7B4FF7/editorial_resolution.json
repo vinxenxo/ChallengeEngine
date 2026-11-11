@@ -1,0 +1,45 @@
+{
+  "schema": "C11-D-D9-UNIVERSAL-EDITORIAL-RESOLUTION-V1",
+  "model_id": "C11D_UNIVERSAL_EDITORIAL_MODEL",
+  "selection": {
+    "content_type": "visual_drills",
+    "family_id": "tracking",
+    "subtype_id": null,
+    "variant_id": "tier-1",
+    "variant_scope_id": "visual-drill:tracking:tier-1",
+    "scope_keys": {
+      "content_type": "visual_drills",
+      "family": "visual-drill-type:tracking",
+      "subtype": null,
+      "variant": "visual-drill:tracking:tier-1"
+    },
+    "request_plan_compatible": false,
+    "d9_9_plan_compatible": true,
+    "d4_executable_compatible": false,
+    "difficulty_tier": 1,
+    "editable_fields": [
+      "title",
+      "subtitle",
+      "call_to_action",
+      "language"
+    ],
+    "request_plan_compatibility": "D9_9_UNIVERSAL_EDITORIAL_INTENT_PLAN_ONLY; D4_EXECUTABLE_COMPATIBILITY_NOT_PROVEN"
+  },
+  "values": {
+    "title": "SEGUIMIENTO VISUAL · NIVEL 1",
+    "subtitle": "Sigue el objetivo con precisión",
+    "call_to_action": "Mantén la mirada en el objetivo",
+    "language": "es"
+  },
+  "applied_layers": [
+    "production_override"
+  ],
+  "request_plan_compatible": false,
+  "d9_9_plan_compatible": true,
+  "d4_executable_compatible": false,
+  "request_plan_state": "D9_9_UNIVERSAL_EDITORIAL_INTENT_PLAN_ONLY",
+  "runtime_authority": "NONE",
+  "renderer_activation": false,
+  "production_execution": false,
+  "release_authority": "NONE"
+}

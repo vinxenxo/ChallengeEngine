@@ -1,0 +1,2491 @@
+from __future__ import annotations
+
+import copy
+import hashlib
+import importlib.util
+import json
+import os
+import random
+import re
+import subprocess
+import sys
+import uuid
+from datetime import datetime, timezone
+from dataclasses import dataclass, field
+from pathlib import Path
+from typing import Any
+
+from c11d_gui_request import (
+    build_production_request,
+    evaluate_gui_request,
+    resolve_delivery_profile_data,
+)
+
+from c11e_production_service import prepare_c11e_production_intent
+
+from PySide6.QtCore import QProcess, Qt
+from PySide6.QtGui import QFont, QTextCursor
+from PySide6.QtWidgets import (
+    QApplication,
+    QCheckBox,
+    QComboBox,
+    QFrame,
+    QGridLayout,
+    QGroupBox,
+    QHBoxLayout,
+    QLabel,
+    QLineEdit,
+    QMainWindow,
+    QMessageBox,
+    QPlainTextEdit,
+    QPushButton,
+    QScrollArea,
+    QSizePolicy,
+    QSlider,
+    QSpinBox,
+    QTableWidget,
+    QTableWidgetItem,
+    QTabWidget,
+    QVBoxLayout,
+    QWidget,
+)
+
+APP_VERSION = "0.12.0-E3"
+ROOT = Path(__file__).resolve().parent
+PROJECT = Path(os.environ.get("C11C_PROJECT_ROOT", ROOT.parents[1])).resolve()
+SCHEMA = json.loads((ROOT / "producer_schema.json").read_text(encoding="utf-8"))
+
+FAMILIES: dict[str, dict[str, Any]] = SCHEMA["families"]
+DRILLS: dict[str, dict[str, Any]] = SCHEMA["drills"]
+VIDEO_TYPES = {key: label for key, label in SCHEMA.get("video_types", [])}
+
+DELIVERY_FILE = PROJECT / "profiles" / "delivery" / "c11c_video_delivery_profiles.json"
+if DELIVERY_FILE.exists():
+    DELIVERY_CONFIG = json.loads(DELIVERY_FILE.read_text(encoding="utf-8"))
+else:
+    DELIVERY_CONFIG = {"standard_default": "MASTER_1080", "profiles": {}}
+
+
+def _load_universal_producer_module():
+    """Load the canonical D9.9 backend; GUI contains controls, not request logic."""
+    module_path = PROJECT / "tools" / "c11d" / "d9" / "universal_producer.py"
+    module_dir = str(module_path.parent)
+    if module_dir not in sys.path:
+        sys.path.insert(0, module_dir)
+    spec = importlib.util.spec_from_file_location("c11d_d99_universal_producer", module_path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"Unable to load D9.9 universal Producer adapter: {module_path}")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+    return module
+
+
+D9_UNIVERSAL = _load_universal_producer_module()
+from editorial_render_bridge import build_bridge_planning_record as build_d9_bridge_planning_record
+from d_render_adapter import prepare_d_only_adapter_envelope as prepare_d9_d_only_adapter_envelope
+from gui_real_media_certification import build_certification_gate as build_d914_certification_gate, validate_certification_gate as validate_d914_certification_gate
+
+
+def _load_d913_lifecycle_module():
+    module_path = PROJECT / "tools" / "c11d" / "d9" / "cross_suite_lifecycle.py"
+    if str(module_path.parent) not in sys.path:
+        sys.path.insert(0, str(module_path.parent))
+    spec = importlib.util.spec_from_file_location("c11d_d913_cross_suite_lifecycle", module_path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"Unable to load D9.13 lifecycle adapter: {module_path}")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+    return module
+
+
+D9_LIFECYCLE = _load_d913_lifecycle_module()
+D9_EDITORIAL_CATALOG = D9_UNIVERSAL.build_catalog(PROJECT)
+D9_EDITORIAL_MODEL = D9_UNIVERSAL.load_model(PROJECT)
+
+DELIVERY_ORDER = [
+    "MASTER_1080",
+    "REVIEW_720",
+    "MIN_540",
+    "META_REELS_FINAL_V1",
+    "LONGFORM_1080",
+]
+
+
+def resolve_delivery_profile(profile_id: str) -> tuple[str, dict[str, Any]]:
+    # Shared with the D9.5.1 request adapter so UI labels and D4 requests
+    # consume the same central delivery registry/alias semantics.
+    return resolve_delivery_profile_data(profile_id, DELIVERY_CONFIG)
+
+
+def delivery_label(profile_id: str) -> str:
+    try:
+        resolved_id, profile = resolve_delivery_profile(profile_id)
+    except ValueError:
+        return profile_id
+    width = profile.get("width", "?")
+    height = profile.get("height", "?")
+    if profile_id == "MASTER_1080":
+        return "MASTER · 1080×1920 · ESTÁNDAR"
+    if profile_id == "REVIEW_720":
+        return "REVIEW · 720×1280 · C11-C"
+    if profile_id == "MIN_540":
+        return "MÍNIMO · 540×960"
+    if profile_id == "META_REELS_FINAL_V1":
+        return f"META REELS FINAL · {width}×{height}"
+    if profile_id == "LONGFORM_1080":
+        return "LONGFORM · 1080×1920"
+    return f"{profile_id} · {width}×{height}"
+
+
+DELIVERY_PROFILES = [
+    pid for pid in DELIVERY_ORDER if pid in DELIVERY_CONFIG.get("profiles", {})
+]
+DEFAULT_DELIVERY = (
+    DELIVERY_CONFIG.get("standard_default")
+    if DELIVERY_CONFIG.get("standard_default") in DELIVERY_PROFILES
+    else (DELIVERY_PROFILES[0] if DELIVERY_PROFILES else "MASTER_1080")
+)
+
+
+def load_challenge_catalog() -> dict[str, dict[str, Any]]:
+    catalog: dict[str, dict[str, Any]] = {}
+    challenges_root = PROJECT / "challenges"
+    for path in sorted(challenges_root.glob("CHALLENGE_*.json")):
+        try:
+            payload = json.loads(path.read_text(encoding="utf-8"))
+            cid = str(payload.get("challenge_id") or path.stem)
+            video = payload.get("video") or {}
+            fps = int(video.get("fps", 60))
+            phase_seconds = sum(
+                float(video.get(key, 0.0))
+                for key in ("hook_duration", "game_duration", "reveal_duration", "cta_duration")
+            )
+            total_frames = int(round(phase_seconds * fps))
+            catalog[cid] = {
+                "id": cid,
+                "mechanic": str(payload.get("mechanic", "unknown")),
+                "fps": fps,
+                "duration_seconds": phase_seconds,
+                "frames": total_frames,
+                "assets": payload.get("assets", {}),
+                "seed": int((payload.get("generation") or {}).get("seed", 1)),
+                "path": str(path),
+            }
+        except (OSError, ValueError, TypeError, json.JSONDecodeError):
+            continue
+    return catalog
+
+
+CHALLENGES = load_challenge_catalog()
+
+
+@dataclass
+class Recipe:
+    operation: str
+    video_type: str
+    family: str = ""
+    grammar: str = "auto"
+    challenge_id: str = ""
+    count: int = 1
+    manual_seeds: list[int] | None = None
+    no_sound: bool = False
+    no_footer: bool = False
+    force: bool = False
+    workers: int = 7
+    resume: bool = False
+    reset: bool = False
+    export_gif: bool = False
+    delivery: str = DEFAULT_DELIVERY
+    targets: dict[str, Any] = field(default_factory=dict)
+    ui_row: int = -1
+    status: str = "EN COLA"
+    completed: bool = False
+    current_seed: int | None = None
+    failed_seeds: list[int] = field(default_factory=list)
+
+
+class ParamRow(QWidget):
+    """Compact visual control: slider + current value + random checkbox."""
+
+    def __init__(self, spec: dict[str, Any]):
+        super().__init__()
+        self.spec = spec
+        self.is_enum = spec["kind"] == "enum"
+        self.values = list(spec.get("values", [])) if self.is_enum else []
+        self.random_check = QCheckBox("ALEATORIO")
+        self.random_check.setChecked(True)
+        self.random_check.setMinimumWidth(105)
+        self.random_check.setToolTip("Dejar que la seed determine este parámetro")
+
+        self.slider = QSlider(Qt.Horizontal)
+        self.slider.setTracking(True)
+        self.slider.setMinimum(0)
+        if self.is_enum:
+            self.slider.setMaximum(max(0, len(self.values) - 1))
+        else:
+            minimum = float(spec["min"])
+            maximum = float(spec["max"])
+            step = float(spec["step"])
+            steps = max(1, int(round((maximum - minimum) / step)))
+            self.slider.setMaximum(steps)
+        self.slider.setValue(self.slider.maximum() // 2)
+        self.slider.setEnabled(False)
+        self.slider.setMinimumWidth(135)
+
+        self.value_label = QLabel(self._display_value())
+        self.value_label.setObjectName("SliderValue")
+        self.value_label.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
+        self.value_label.setMinimumWidth(105)
+
+        self.label = QLabel(str(spec["label"]))
+        self.label.setMinimumWidth(132)
+        self.label.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+
+        layout = QHBoxLayout(self)
+        layout.setContentsMargins(0, 0, 0, 0)
+        layout.setSpacing(7)
+        layout.addWidget(self.label)
+        layout.addWidget(self.slider, 1)
+        layout.addWidget(self.value_label)
+        layout.addWidget(self.random_check)
+
+        self.slider.valueChanged.connect(self._value_changed)
+        self.random_check.toggled.connect(self._random_toggled)
+
+    def _typed_value(self) -> Any:
+        if self.is_enum:
+            return self.values[self.slider.value()]
+        minimum = float(self.spec["min"])
+        step = float(self.spec["step"])
+        value = minimum + self.slider.value() * step
+        maximum = float(self.spec["max"])
+        return min(maximum, value)
+
+    def _display_value(self) -> str:
+        value = self._typed_value()
+        if self.is_enum:
+            return str(value)
+        step = float(self.spec["step"])
+        if step < 0.001:
+            return f"{value:.5f}"
+        if step < 0.01:
+            return f"{value:.3f}"
+        if step < 0.1:
+            return f"{value:.2f}"
+        if step < 1:
+            return f"{value:.1f}"
+        return f"{value:.0f}"
+
+    def _value_changed(self, _value: int) -> None:
+        self.value_label.setText(self._display_value())
+
+    def _random_toggled(self, random_enabled: bool) -> None:
+        self.slider.setEnabled(self.isEnabled() and not random_enabled)
+        self.value_label.setEnabled(not random_enabled)
+
+    def set_interactive(self, enabled: bool) -> None:
+        self.setEnabled(enabled)
+        self.random_check.setEnabled(enabled)
+        self.slider.setEnabled(enabled and not self.random_check.isChecked())
+        self.value_label.setEnabled(enabled and not self.random_check.isChecked())
+
+    def set_random(self) -> None:
+        self.random_check.setChecked(True)
+
+    def value(self) -> Any:
+        return None if self.random_check.isChecked() else self._typed_value()
+
+
+class MainWindow(QMainWindow):
+    def __init__(self) -> None:
+        super().__init__()
+        self.setWindowTitle(f"C11-C Producer {APP_VERSION}")
+        self.resize(1240, 860)
+        self.queue: list[Recipe] = []
+        self._table_recipes: list[Recipe] = []
+        self.current_recipe: Recipe | None = None
+        self.jobs: list[int] = []
+        self.job_total = 0
+        self.job_completed = 0
+        self.proc: QProcess | None = None
+        self.e3_process: QProcess | None = None
+        self.e3_last_intent_path: Path | None = None
+        self.probe_file: Path | None = None
+        self.rows: list[ParamRow] = []
+        self._building_type = False
+        self._build()
+        self._check_backend()
+        self._update_delivery_tooltip()
+
+    def _build(self) -> None:
+        root = QWidget()
+        self.setCentralWidget(root)
+        main = QVBoxLayout(root)
+        main.setContentsMargins(9, 9, 9, 7)
+        main.setSpacing(7)
+
+        self.tabs = QTabWidget()
+        c11c_tab = QWidget()
+        c11c_layout = QVBoxLayout(c11c_tab)
+        c11c_layout.setContentsMargins(4, 4, 4, 4)
+        cols = QHBoxLayout()
+        cols.setSpacing(8)
+        cols.addWidget(self._build_recipe(), 1)
+        cols.addWidget(self._build_queue(), 1)
+        c11c_layout.addLayout(cols, 1)
+        self.tabs.addTab(c11c_tab, "C11-C · PRODUCTOR EXISTENTE")
+        self.tabs.addTab(self._build_c11d_request_tab(), "C11-D · REQUEST + PERSONALIZACIÓN")
+        self.tabs.addTab(self._build_d9_universal_editorial_tab(), "C11-D · EDITORIAL UNIVERSAL (D9.9)")
+        main.addWidget(self.tabs, 1)
+
+        self.statusBar().showMessage("Preparado")
+
+    def _build_recipe(self) -> QGroupBox:
+        box = QGroupBox("CREAR PRODUCCIÓN")
+        root = QVBoxLayout(box)
+        root.setContentsMargins(10, 9, 10, 10)
+        root.setSpacing(7)
+
+        grid = QGridLayout()
+        grid.setHorizontalSpacing(8)
+        grid.setVerticalSpacing(6)
+
+        self.operation = QComboBox()
+        self.operation.addItem("A LA CARTA", "A_LA_CARTA")
+        for key, label in SCHEMA.get("batch_operations", [])[1:]:
+            self.operation.addItem(label, key)
+        self.operation.addItem("REGRESIÓN COMPLETA", "RUN_REGRESSION")
+
+        self.video_type = QComboBox()
+        for key in ("challenges", "visual_loops", "visual_drills"):
+            self.video_type.addItem(VIDEO_TYPES.get(key, key.upper()), key)
+
+        self.family = QComboBox()
+        self.grammar = QComboBox()
+        self.count = QSpinBox()
+        self.count.setRange(1, 500)
+        self.count.setValue(1)
+        self.seed_mode = QComboBox()
+        self.seed_mode.addItems(["SEEDS ALEATORIAS", "SEEDS MANUALES"])
+        self.manual = QLineEdit()
+        self.manual.setPlaceholderText("314159, 271828…")
+        self.manual.setEnabled(False)
+
+        self.family_label = QLabel("Familia")
+        self.subtype_label = QLabel("Subfamilia")
+        fields = [
+            (0, QLabel("Operación"), self.operation),
+            (1, QLabel("Tipo de vídeo"), self.video_type),
+            (2, self.family_label, self.family),
+            (3, self.subtype_label, self.grammar),
+            (4, QLabel("Cantidad"), self.count),
+            (5, QLabel("Seeds"), self.seed_mode),
+        ]
+        for row, label, widget in fields:
+            grid.addWidget(label, row, 0)
+            grid.addWidget(widget, row, 1)
+        grid.addWidget(self.manual, 6, 0, 1, 2)
+        root.addLayout(grid)
+
+        opts = QGridLayout()
+        opts.setHorizontalSpacing(8)
+        opts.setVerticalSpacing(4)
+        self.no_sound = QCheckBox("SIN AUDIO")
+        self.no_footer = QCheckBox("SIN FOOTER")
+        self.force = QCheckBox("FORCE")
+        opts.addWidget(self.no_sound, 0, 0)
+        opts.addWidget(self.no_footer, 0, 1)
+        opts.addWidget(self.force, 0, 2)
+        root.addLayout(opts)
+
+        out = QGridLayout()
+        out.setHorizontalSpacing(8)
+        out.setVerticalSpacing(4)
+        self.delivery = QComboBox()
+        for profile_id in DELIVERY_PROFILES:
+            self.delivery.addItem(delivery_label(profile_id), profile_id)
+        self.delivery.setCurrentIndex(max(0, self.delivery.findData(DEFAULT_DELIVERY)))
+        self.workers = QSpinBox()
+        self.workers.setRange(1, 7)
+        self.workers.setValue(7)
+        self.resume = QCheckBox("RESUME")
+        self.reset = QCheckBox("RESET")
+        self.export_gif = QCheckBox("GIF")
+        out.addWidget(QLabel("SALIDA"), 0, 0)
+        out.addWidget(self.delivery, 0, 1, 1, 2)
+        out.addWidget(QLabel("WORKERS"), 1, 0)
+        out.addWidget(self.workers, 1, 1)
+        out.addWidget(self.resume, 1, 2)
+        out.addWidget(self.reset, 2, 0)
+        out.addWidget(self.export_gif, 2, 1)
+        root.addLayout(out)
+
+        self.variation_box = QGroupBox("VARIACIÓN")
+        variation = QVBoxLayout(self.variation_box)
+        variation.setContentsMargins(8, 7, 8, 8)
+        variation.setSpacing(3)
+        self.pscroll = QScrollArea()
+        self.pscroll.setWidgetResizable(True)
+        self.pscroll.setFrameShape(QFrame.NoFrame)
+        self.pwidget = QWidget()
+        self.pl = QVBoxLayout(self.pwidget)
+        self.pl.setContentsMargins(2, 1, 2, 1)
+        self.pl.setSpacing(4)
+        self.pl.setAlignment(Qt.AlignTop)
+        self.pscroll.setWidget(self.pwidget)
+        variation.addWidget(self.pscroll, 1)
+        root.addWidget(self.variation_box, 1)
+
+        self.add = QPushButton("AÑADIR A LA COLA")
+        self.add.setObjectName("Primary")
+        self.add.setMinimumHeight(44)
+        root.addWidget(self.add)
+
+        self.operation.currentIndexChanged.connect(self._operation_changed)
+        self.video_type.currentIndexChanged.connect(self._video_type_changed)
+        self.family.currentIndexChanged.connect(self._refresh_family)
+        self.seed_mode.currentIndexChanged.connect(self._seed_mode_changed)
+        self.delivery.currentIndexChanged.connect(self._update_delivery_tooltip)
+        self.add.clicked.connect(self._add)
+        self._operation_changed(0)
+        return box
+
+    def _build_queue(self) -> QGroupBox:
+        box = QGroupBox("COLA DE PRODUCCIÓN")
+        root = QVBoxLayout(box)
+        root.setContentsMargins(10, 9, 10, 10)
+        root.setSpacing(7)
+
+        self.table = QTableWidget(0, 8)
+        self.table.setHorizontalHeaderLabels(
+            ["OPERACIÓN", "TIPO", "FAMILIA", "SUBTIPO", "CANTIDAD", "SALIDA", "WORKERS", "ESTADO"]
+        )
+        self.table.setSelectionBehavior(QTableWidget.SelectRows)
+        self.table.setSelectionMode(QTableWidget.SingleSelection)
+        self.table.setAlternatingRowColors(False)
+        self.table.verticalHeader().setVisible(False)
+        self.table.setShowGrid(False)
+        self.table.setSortingEnabled(False)
+        root.addWidget(self.table, 3)
+
+        btns = QHBoxLayout()
+        self.generate = QPushButton("GENERAR")
+        self.generate.setObjectName("Primary")
+        self.generate.setMinimumHeight(46)
+        self.remove = QPushButton("QUITAR")
+        self.clear = QPushButton("VACIAR")
+        btns.addWidget(self.generate, 2)
+        btns.addWidget(self.remove)
+        btns.addWidget(self.clear)
+        root.addLayout(btns)
+
+        lbox = QGroupBox("LOG")
+        ll = QVBoxLayout(lbox)
+        ll.setContentsMargins(7, 7, 7, 7)
+        self.log = QPlainTextEdit()
+        self.log.setReadOnly(True)
+        ll.addWidget(self.log)
+        root.addWidget(lbox, 2)
+
+        self.generate.clicked.connect(self.start)
+        self.remove.clicked.connect(self.remove_selected)
+        self.clear.clicked.connect(self._clear)
+        return box
+
+    def _build_c11d_request_tab(self) -> QWidget:
+        tab = QWidget()
+        layout = QHBoxLayout(tab)
+        layout.setContentsMargins(6, 6, 6, 6)
+        layout.setSpacing(10)
+
+        form_box = QGroupBox("D4 · PRODUCTION REQUEST")
+        form = QGridLayout(form_box)
+        form.setHorizontalSpacing(8)
+        form.setVerticalSpacing(6)
+        row = 0
+
+        self.d_mode = QComboBox()
+        self.d_mode.addItem("REVIEW · PLAN", "REVIEW")
+        self.d_mode.addItem("PRODUCTION · PLAN ONLY (D4.8 BLOCKED)", "PRODUCTION")
+        form.addWidget(QLabel("Modo"), row, 0)
+        form.addWidget(self.d_mode, row, 1, 1, 2)
+        row += 1
+
+        self.d_challenge = QComboBox()
+        for cid, item in sorted(CHALLENGES.items()):
+            self.d_challenge.addItem(
+                f"{cid} · {str(item['mechanic']).upper()} · {item['duration_seconds']:.0f}s",
+                cid,
+            )
+        form.addWidget(QLabel("Challenge"), row, 0)
+        form.addWidget(self.d_challenge, row, 1, 1, 2)
+        row += 1
+
+        self.d_seed = QSpinBox()
+        self.d_seed.setRange(1, 2147483646)
+        self.d_seed.setValue(12345)
+        self.d_music_seed = QSpinBox()
+        self.d_music_seed.setRange(1, 2147483646)
+        self.d_music_seed.setValue(840001)
+        form.addWidget(QLabel("Gameplay seed"), row, 0)
+        form.addWidget(self.d_seed, row, 1)
+        form.addWidget(QLabel("Music seed"), row, 2)
+        form.addWidget(self.d_music_seed, row, 3)
+        row += 1
+
+        self.d_delivery = QComboBox()
+        for profile_id in DELIVERY_PROFILES:
+            self.d_delivery.addItem(delivery_label(profile_id), profile_id)
+        review_index = self.d_delivery.findData("REVIEW_720")
+        self.d_delivery.setCurrentIndex(review_index if review_index >= 0 else 0)
+        form.addWidget(QLabel("Delivery profile"), row, 0)
+        form.addWidget(self.d_delivery, row, 1, 1, 3)
+        row += 1
+
+        self.d_presentation = QLineEdit("social_default_v1")
+        self.d_presentation.setPlaceholderText("presentation_profile_id")
+        form.addWidget(QLabel("Presentation profile"), row, 0)
+        form.addWidget(self.d_presentation, row, 1, 1, 3)
+        row += 1
+
+        self.d_variation = QSpinBox()
+        self.d_variation.setRange(0, 1000000)
+        self.d_variation.setValue(0)
+        self.d_audio = QCheckBox("Audio enabled")
+        self.d_audio.setChecked(True)
+        form.addWidget(QLabel("Variation index"), row, 0)
+        form.addWidget(self.d_variation, row, 1)
+        form.addWidget(self.d_audio, row, 2, 1, 2)
+        row += 1
+
+        divider = QLabel("PERSONALIZACIÓN EDITORIAL · editorial_text_v1")
+        divider.setObjectName("SectionHeader")
+        form.addWidget(divider, row, 0, 1, 4)
+        row += 1
+
+        self.d_personalization = QCheckBox("Activar personalización editorial")
+        self.d_personalization.setChecked(True)
+        form.addWidget(self.d_personalization, row, 0, 1, 4)
+        row += 1
+
+        self.d_title = QLineEdit()
+        self.d_subtitle = QLineEdit()
+        self.d_cta = QLineEdit()
+        self.d_language = QLineEdit("es")
+        self.d_player_name = QLineEdit()
+        self.d_challenge_label = QLineEdit()
+        for edit, placeholder in (
+            (self.d_title, "Título / hook"),
+            (self.d_subtitle, "Subtítulo (opcional)"),
+            (self.d_cta, "Llamada a la acción"),
+            (self.d_language, "Idioma, p. ej. es"),
+            (self.d_player_name, "Nombre de jugador (opcional)"),
+            (self.d_challenge_label, "Etiqueta del Challenge"),
+        ):
+            edit.setMaxLength(160)
+            edit.setPlaceholderText(placeholder)
+        for label, widget in (
+            ("Título", self.d_title),
+            ("Subtítulo", self.d_subtitle),
+            ("CTA", self.d_cta),
+            ("Idioma", self.d_language),
+            ("Player name", self.d_player_name),
+            ("Challenge label", self.d_challenge_label),
+        ):
+            form.addWidget(QLabel(label), row, 0)
+            form.addWidget(widget, row, 1, 1, 3)
+            row += 1
+
+        self.d_load_defaults = QPushButton("CARGAR TEXTOS BASE DEL CHALLENGE")
+        self.d_load_defaults.clicked.connect(self._load_c11d_editorial_defaults)
+        form.addWidget(self.d_load_defaults, row, 0, 1, 4)
+        row += 1
+
+        self.d_validate = QPushButton("VALIDAR REQUEST + GENERAR PLAN")
+        self.d_validate.setObjectName("Primary")
+        self.d_validate.setMinimumHeight(42)
+        self.d_validate.clicked.connect(self._validate_c11d_request)
+        form.addWidget(self.d_validate, row, 0, 1, 4)
+        row += 1
+
+        self.d_notice = QLabel(
+            "D4.8 = BLOCKED · Esta vista valida request, personalización y plan. "
+            "No activa renderer, no genera MP4 y no publica productos. La conexión "
+            "de los textos al render real se certificará en D9.5.2."
+        )
+        self.d_notice.setWordWrap(True)
+        self.d_notice.setObjectName("D4Notice")
+        form.addWidget(self.d_notice, row, 0, 1, 4)
+        layout.addWidget(form_box, 1)
+
+        output_box = QGroupBox("CANONICAL OUTPUT / PARIDAD / EVIDENCIA")
+        output_layout = QVBoxLayout(output_box)
+        self.d_output_tabs = QTabWidget()
+        self.d_request_view = QPlainTextEdit()
+        self.d_canonical_view = QPlainTextEdit()
+        self.d_personalization_view = QPlainTextEdit()
+        self.d_plan_view = QPlainTextEdit()
+        self.d_parity_view = QPlainTextEdit()
+        self.d_command_view = QPlainTextEdit()
+        for view in (
+            self.d_request_view,
+            self.d_canonical_view,
+            self.d_personalization_view,
+            self.d_plan_view,
+            self.d_parity_view,
+            self.d_command_view,
+        ):
+            view.setReadOnly(True)
+            view.setLineWrapMode(QPlainTextEdit.NoWrap)
+        for title, view in (
+            ("GUI REQUEST", self.d_request_view),
+            ("D4.2 CANONICAL", self.d_canonical_view),
+            ("D4.3 PERSONALIZATION", self.d_personalization_view),
+            ("D4.4 PLAN", self.d_plan_view),
+            ("GUI ↔ CLI PARITY", self.d_parity_view),
+            ("REPRODUCIBILITY", self.d_command_view),
+        ):
+            self.d_output_tabs.addTab(view, title)
+        output_layout.addWidget(self.d_output_tabs, 1)
+        self.d_evidence_label = QLabel("Todavía no se ha generado una evidencia D9.5.1.")
+        self.d_evidence_label.setWordWrap(True)
+        output_layout.addWidget(self.d_evidence_label)
+        layout.addWidget(output_box, 1)
+
+        self.d_personalization.toggled.connect(self._sync_c11d_personalization_controls)
+        self.d_challenge.currentIndexChanged.connect(self._update_c11d_presentation_default)
+        self._sync_c11d_personalization_controls(self.d_personalization.isChecked())
+        self._load_c11d_editorial_defaults()
+        return tab
+
+    def _build_d9_universal_editorial_tab(self) -> QWidget:
+        tab = QWidget()
+        layout = QHBoxLayout(tab)
+        layout.setContentsMargins(6, 6, 6, 6)
+        layout.setSpacing(10)
+
+        form_box = QGroupBox("D9.9–D9.10 · EDITORIAL UNIVERSAL / PLAN DE PUENTE")
+        form = QGridLayout(form_box)
+        form.setHorizontalSpacing(8)
+        form.setVerticalSpacing(6)
+        row = 0
+
+        self.d9_content_type = QComboBox()
+        self.d9_content_type.addItem("Challenge", "challenges")
+        self.d9_content_type.addItem("Visual Loop", "visual_loops")
+        self.d9_content_type.addItem("Visual Drill", "visual_drills")
+        self.d9_content_type.addItem("Longform · DESHABILITADO", "longform")
+        try:
+            self.d9_content_type.model().item(3).setEnabled(False)
+        except (AttributeError, TypeError):
+            pass
+        form.addWidget(QLabel("Tipo de contenido"), row, 0)
+        form.addWidget(self.d9_content_type, row, 1, 1, 3)
+        row += 1
+
+        self.d9_family = QComboBox()
+        self.d9_subtype = QComboBox()
+        self.d9_variant = QComboBox()
+        form.addWidget(QLabel("Familia / mecánica"), row, 0)
+        form.addWidget(self.d9_family, row, 1, 1, 3)
+        row += 1
+        form.addWidget(QLabel("Gramática / subtipo"), row, 0)
+        form.addWidget(self.d9_subtype, row, 1, 1, 3)
+        row += 1
+        form.addWidget(QLabel("Variante / tier"), row, 0)
+        form.addWidget(self.d9_variant, row, 1, 1, 3)
+        row += 1
+
+        self.d9_mode = QComboBox()
+        self.d9_mode.addItem("REVIEW · PLAN", "REVIEW")
+        self.d9_mode.addItem("PRODUCTION · PLAN ONLY (D4.8 BLOCKED)", "PRODUCTION")
+        form.addWidget(QLabel("Modo"), row, 0)
+        form.addWidget(self.d9_mode, row, 1, 1, 3)
+        row += 1
+
+        self.d9_seed = QSpinBox()
+        self.d9_seed.setRange(1, 2147483646)
+        self.d9_seed.setValue(12345)
+        self.d9_music_seed = QSpinBox()
+        self.d9_music_seed.setRange(1, 2147483646)
+        self.d9_music_seed.setValue(840001)
+        form.addWidget(QLabel("Gameplay seed"), row, 0)
+        form.addWidget(self.d9_seed, row, 1)
+        form.addWidget(QLabel("Music seed"), row, 2)
+        form.addWidget(self.d9_music_seed, row, 3)
+        row += 1
+
+        self.d9_delivery = QComboBox()
+        for profile_id in DELIVERY_PROFILES:
+            self.d9_delivery.addItem(delivery_label(profile_id), profile_id)
+        review_index = self.d9_delivery.findData("REVIEW_720")
+        self.d9_delivery.setCurrentIndex(review_index if review_index >= 0 else 0)
+        form.addWidget(QLabel("Delivery profile"), row, 0)
+        form.addWidget(self.d9_delivery, row, 1, 1, 3)
+        row += 1
+
+        self.d9_presentation = QLineEdit("social_default_v1")
+        self.d9_presentation.setMaxLength(160)
+        self.d9_variation = QSpinBox()
+        self.d9_variation.setRange(0, 1000000)
+        self.d9_variation.setValue(0)
+        form.addWidget(QLabel("Presentation profile"), row, 0)
+        form.addWidget(self.d9_presentation, row, 1, 1, 3)
+        row += 1
+        form.addWidget(QLabel("Variation index"), row, 0)
+        form.addWidget(self.d9_variation, row, 1)
+        self.d9_audio = QCheckBox("Audio enabled")
+        self.d9_audio.setChecked(True)
+        form.addWidget(self.d9_audio, row, 2, 1, 2)
+        row += 1
+
+        divider = QLabel("MODELO EDITORIAL · HERENCIA + OVERRIDE")
+        divider.setObjectName("SectionHeader")
+        form.addWidget(divider, row, 0, 1, 4)
+        row += 1
+        self.d9_personalization = QCheckBox("Activar datos editoriales en este plan")
+        self.d9_personalization.setChecked(True)
+        form.addWidget(self.d9_personalization, row, 0, 1, 4)
+        row += 1
+        self.d9_scope = QComboBox()
+        form.addWidget(QLabel("Editar ámbito"), row, 0)
+        form.addWidget(self.d9_scope, row, 1, 1, 3)
+        row += 1
+
+        self.d9_title = QLineEdit()
+        self.d9_subtitle = QLineEdit()
+        self.d9_cta = QLineEdit()
+        self.d9_language = QLineEdit("es")
+        self.d9_player_name = QLineEdit()
+        self.d9_challenge_label = QLineEdit()
+        self.d9_editorial_fields = {
+            "title": self.d9_title,
+            "subtitle": self.d9_subtitle,
+            "call_to_action": self.d9_cta,
+            "language": self.d9_language,
+            "player_name": self.d9_player_name,
+            "challenge_label": self.d9_challenge_label,
+        }
+        for field_name, label, widget, placeholder in (
+            ("title", "Título", self.d9_title, "Título editorial (máx. 160)"),
+            ("subtitle", "Subtítulo", self.d9_subtitle, "Descriptor / subtítulo"),
+            ("call_to_action", "CTA", self.d9_cta, "Llamada a la acción"),
+            ("language", "Idioma", self.d9_language, "es"),
+            ("player_name", "Player name", self.d9_player_name, "Solo Challenge"),
+            ("challenge_label", "Challenge label", self.d9_challenge_label, "Solo Challenge"),
+        ):
+            widget.setMaxLength(160)
+            widget.setPlaceholderText(placeholder)
+            form.addWidget(QLabel(label), row, 0)
+            form.addWidget(widget, row, 1, 1, 3)
+            row += 1
+
+        self.d9_validate = QPushButton("RESOLVER + PLAN EDITORIAL / PUENTE (SIN RENDER)")
+        self.d9_validate.setObjectName("Primary")
+        self.d9_validate.setMinimumHeight(42)
+        self.d9_validate.clicked.connect(self._run_d9_universal_plan)
+        form.addWidget(self.d9_validate, row, 0, 1, 4)
+        row += 1
+        self.d9_loop_family_matrix_button = QPushButton(
+            "C11-E E4B · VALIDAR 5 FAMILIAS / 27 GRAMÁTICAS · PLAN ONLY"
+        )
+        self.d9_loop_family_matrix_button.setToolTip(
+            "Ejecuta la matriz completa Loop mediante D9.9, D9.10 y E1. No invoca Godot, música, FFmpeg ni renderer."
+        )
+        self.d9_loop_family_matrix_button.clicked.connect(self._run_e4b_loop_family_matrix)
+        form.addWidget(self.d9_loop_family_matrix_button, row, 0, 1, 4)
+        row += 1
+        self.d9_certification_preflight = QPushButton("D9.14 REAL-MEDIA CERTIFICATION PREFLIGHT · NO MEDIA")
+        self.d9_certification_preflight.clicked.connect(self._run_d914_certification_preflight)
+        form.addWidget(self.d9_certification_preflight, row, 0, 1, 4)
+        row += 1
+        self.d9_e3_audio_pilot_button = QPushButton(
+            "C11-E E3 · AUDIO + MUX PILOT CHALLENGE_001 / R4 (SIN RERENDER)"
+        )
+        self.d9_e3_audio_pilot_button.setObjectName("Primary")
+        self.d9_e3_audio_pilot_button.setMinimumHeight(42)
+        self.d9_e3_audio_pilot_button.clicked.connect(self._run_c11e_e3_audio_pilot)
+        form.addWidget(self.d9_e3_audio_pilot_button, row, 0, 1, 4)
+        row += 1
+        notice = QLabel(
+            "D9.10 prepara una envolvente de bindings exclusiva de C11-D desde la petición canónica, "
+            "la personalización, el plan y sus hashes. La envolvente es solo inspeccionable: no es "
+            "entrada nativa del renderer y no se despacha. El renderer/producción siguen OFF hasta "
+            "superar las autorizaciones D; C11-C permanece intacto. D4.8 BLOCKED; release_authority=NONE."
+        )
+        notice.setWordWrap(True)
+        notice.setObjectName("D4Notice")
+        form.addWidget(notice, row, 0, 1, 4)
+
+        scroll = QScrollArea()
+        scroll.setWidgetResizable(True)
+        scroll.setWidget(form_box)
+        layout.addWidget(scroll, 1)
+
+        output_box = QGroupBox("RESOLUCIÓN / IDENTIDAD / PARIDAD GUI ↔ CLI")
+        output_layout = QVBoxLayout(output_box)
+        self.d9_output_tabs = QTabWidget()
+        self.d9_request_view = QPlainTextEdit()
+        self.d9_editorial_view = QPlainTextEdit()
+        self.d9_plan_view = QPlainTextEdit()
+        self.d9_parity_view = QPlainTextEdit()
+        self.d9_bridge_view = QPlainTextEdit()
+        self.d9_adapter_view = QPlainTextEdit()
+        self.d9_lifecycle_view = QPlainTextEdit()
+        self.d9_certification_view = QPlainTextEdit()
+        self.d9_certification_view.setPlainText("D9.14 GATE = BLOCKED. Future D frozen renderer baseline and explicit D4.8 authorization are absent. This view is preflight-only; no renderer or media will be started.")
+        self.d9_e3_audio_view = QPlainTextEdit()
+        self.d9_e3_audio_view.setPlainText(
+            "C11-E E3 audiovisual pilot has not run. Prepare a Challenge / CHALLENGE_001 E1 intent, "
+            "then execute D3 V5 + D3.3 mastering + FFmpeg mux against the accepted R4 video-only fixture. "
+            "This is isolated test media, not a production dispatch."
+        )
+        self.d9_e1_view = QPlainTextEdit()
+        self.d9_e1_view.setPlainText("C11-E E1 shared service has not prepared a request yet. E1 is preparation-only; no dispatch or media.")
+        self.d9_loop_matrix_view = QPlainTextEdit()
+        self.d9_loop_matrix_view.setPlainText(
+            "E4B full-family matrix not run. Use the diagnostic button for all 5 C11-C Loop families / 27 grammars. "
+            "This remains D9.9/D9.10/E1 plan-only; no renderer or family media is invoked."
+        )
+        for view in (self.d9_request_view, self.d9_editorial_view, self.d9_plan_view, self.d9_bridge_view, self.d9_adapter_view, self.d9_lifecycle_view, self.d9_certification_view, self.d9_e3_audio_view, self.d9_e1_view, self.d9_parity_view, self.d9_loop_matrix_view):
+            view.setReadOnly(True)
+            view.setLineWrapMode(QPlainTextEdit.NoWrap)
+        for title, view in (
+            ("CANONICAL REQUEST", self.d9_request_view),
+            ("EFFECTIVE EDITORIAL", self.d9_editorial_view),
+            ("UNIVERSAL PLAN", self.d9_plan_view),
+            ("EDITORIAL → RENDER BRIDGE (PLAN ONLY)", self.d9_bridge_view),
+            ("D-ONLY RENDER ADAPTER (PREPARED / OFF)", self.d9_adapter_view),
+            ("CROSS-SUITE LIFECYCLE (D9.13 · PLAN ONLY)", self.d9_lifecycle_view),
+            ("D9.14 · REAL-MEDIA CERTIFICATION GATE (BLOCKED)", self.d9_certification_view),
+            ("C11-E · E3 AUDIO + MUX PILOT (TEST ONLY)", self.d9_e3_audio_view),
+            ("C11-E · SERVICIO COMPARTIDO (E1 · SIN DISPATCH)", self.d9_e1_view),
+            ("E4B · MATRIZ 5 FAMILIAS / 27 GRAMÁTICAS", self.d9_loop_matrix_view),
+            ("GUI ↔ CLI PARITY", self.d9_parity_view),
+        ):
+            self.d9_output_tabs.addTab(view, title)
+        output_layout.addWidget(self.d9_output_tabs, 1)
+        self.d9_evidence_label = QLabel("Todavía no se ha generado evidencia D9.9/D9.10.")
+        self.d9_evidence_label.setWordWrap(True)
+        output_layout.addWidget(self.d9_evidence_label)
+        layout.addWidget(output_box, 1)
+
+        self.d9_profile_values = {layer: {} for layer in ("global", "content_type", "family", "subtype", "variant")}
+        self.d9_production_override: dict[str, str] = {}
+        self.d9_active_scope: tuple[str, str | None] | None = None
+        self.d9_content_type.currentIndexChanged.connect(self._d9_universal_type_changed)
+        self.d9_family.currentIndexChanged.connect(self._d9_universal_family_changed)
+        self.d9_subtype.currentIndexChanged.connect(self._d9_universal_selection_changed)
+        self.d9_variant.currentIndexChanged.connect(self._d9_universal_selection_changed)
+        self.d9_scope.currentIndexChanged.connect(self._d9_universal_scope_changed)
+        self.d9_personalization.toggled.connect(self._d9_sync_universal_editorial_controls)
+        self._d9_universal_type_changed(self.d9_content_type.currentIndex())
+        return tab
+
+    def _d9_universal_selection_input(self) -> dict[str, Any]:
+        content_type = str(self.d9_content_type.currentData() or "")
+        selection: dict[str, Any] = {"content_type": content_type}
+        family_id = self.d9_family.currentData()
+        if family_id not in (None, ""):
+            selection["family_id"] = str(family_id)
+        if content_type == "visual_loops":
+            subtype_id = self.d9_subtype.currentData()
+            if subtype_id not in (None, ""):
+                selection["subtype_id"] = str(subtype_id)
+        if content_type in {"challenges", "visual_drills"}:
+            variant_id = self.d9_variant.currentData()
+            if variant_id not in (None, ""):
+                selection["variant_id"] = str(variant_id)
+        return selection
+
+    def _d9_universal_type_changed(self, _index: int = -1) -> None:
+        self._d9_save_universal_editorial_inputs()
+        content_type = str(self.d9_content_type.currentData() or "")
+        content_spec = D9_EDITORIAL_CATALOG["content_types"].get(content_type, {})
+        families = content_spec.get("families", [])
+        self.d9_family.blockSignals(True)
+        self.d9_family.clear()
+        for family in families:
+            self.d9_family.addItem(str(family.get("label", family["id"])), family["id"])
+        self.d9_family.blockSignals(False)
+        self.d9_family.setEnabled(bool(families))
+        self._d9_universal_family_changed(self.d9_family.currentIndex())
+
+    def _d9_universal_family_changed(self, _index: int = -1) -> None:
+        self._d9_save_universal_editorial_inputs()
+        content_type = str(self.d9_content_type.currentData() or "")
+        family_id = self.d9_family.currentData()
+        content_spec = D9_EDITORIAL_CATALOG["content_types"].get(content_type, {})
+        family = next((item for item in content_spec.get("families", []) if item.get("id") == family_id), None)
+        self.d9_subtype.blockSignals(True)
+        self.d9_variant.blockSignals(True)
+        self.d9_subtype.clear()
+        self.d9_variant.clear()
+        if family and content_type == "visual_loops":
+            for subtype in family.get("subtypes", []):
+                self.d9_subtype.addItem(str(subtype.get("label", subtype["id"])), subtype["id"])
+            self.d9_variant.addItem("Sin variante nativa · usa variation index", None)
+            self.d9_subtype.setEnabled(True)
+            self.d9_variant.setEnabled(False)
+        elif family and content_type in {"challenges", "visual_drills"}:
+            self.d9_subtype.addItem("No aplica al contrato de este tipo", None)
+            self.d9_subtype.setEnabled(False)
+            for variant in family.get("variants", []):
+                label = variant.get("label", variant["id"])
+                if content_type == "visual_drills":
+                    label = f"Tier {variant.get('difficulty_tier')} · {variant['id']}"
+                self.d9_variant.addItem(str(label), variant["id"])
+            self.d9_variant.setEnabled(True)
+        else:
+            self.d9_subtype.addItem("No disponible", None)
+            self.d9_variant.addItem("No disponible", None)
+            self.d9_subtype.setEnabled(False)
+            self.d9_variant.setEnabled(False)
+        self.d9_subtype.blockSignals(False)
+        self.d9_variant.blockSignals(False)
+        self._d9_refresh_universal_scope_choices()
+
+    def _d9_universal_selection_changed(self, _index: int = -1) -> None:
+        self._d9_save_universal_editorial_inputs()
+        self._d9_refresh_universal_scope_choices()
+
+    def _d9_universal_scope_changed(self, _index: int = -1) -> None:
+        """Persist edits in the prior scope, then load values for the new scope."""
+        self._d9_save_universal_editorial_inputs()
+        self._d9_load_universal_editorial_inputs()
+
+    def _d9_scope_descriptor(self, layer: str) -> tuple[str, str | None]:
+        selection = self._d9_universal_selection_input()
+        if layer == "production_override":
+            return layer, None
+        if layer == "global":
+            return layer, None
+        if layer == "content_type":
+            return layer, str(selection.get("content_type", ""))
+        try:
+            node = D9_UNIVERSAL.resolve_editorial_values(selection, {}, {}, PROJECT)["selection"]
+            key = node.get("scope_keys", {}).get(layer)
+        except Exception:
+            key = None
+        if not key:
+            return layer, None
+        return layer, str(key)
+
+    def _d9_refresh_universal_scope_choices(self) -> None:
+        content_type = str(self.d9_content_type.currentData() or "")
+        layers = [("Producción · override individual", "production_override"), ("Global · predeterminado", "global"), ("Tipo de contenido", "content_type")]
+        try:
+            node = D9_UNIVERSAL.resolve_editorial_values(self._d9_universal_selection_input(), {}, {}, PROJECT)["selection"]
+            scope_keys = node.get("scope_keys", {})
+            if scope_keys.get("family"):
+                layers.append(("Familia / mecánica", "family"))
+            if scope_keys.get("subtype"):
+                layers.append(("Subtipo / gramática", "subtype"))
+            if scope_keys.get("variant"):
+                layers.append(("Variante seleccionada", "variant"))
+        except Exception:
+            # Unsupported/empty selector state still exposes only the local override/global scopes.
+            pass
+        old_layer = self.d9_scope.currentData() if self.d9_scope.count() else "production_override"
+        self.d9_scope.blockSignals(True)
+        self.d9_scope.clear()
+        for label, key in layers:
+            self.d9_scope.addItem(label, key)
+        index = self.d9_scope.findData(old_layer)
+        if index < 0:
+            index = self.d9_scope.findData("production_override")
+        self.d9_scope.setCurrentIndex(max(0, index))
+        self.d9_scope.blockSignals(False)
+        self._d9_load_universal_editorial_inputs()
+
+    def _d9_scope_values(self) -> dict[str, str]:
+        if self.d9_active_scope is None:
+            return {}
+        layer, scope_id = self.d9_active_scope
+        if layer == "production_override":
+            return self.d9_production_override
+        if layer == "global":
+            return self.d9_profile_values["global"]
+        if scope_id is None:
+            return {}
+        return self.d9_profile_values[layer].get(scope_id, {})
+
+    def _d9_save_universal_editorial_inputs(self) -> None:
+        if self.d9_active_scope is None or not hasattr(self, "d9_editorial_fields"):
+            return
+        if not self.d9_personalization.isChecked():
+            return
+        layer, scope_id = self.d9_active_scope
+        target: dict[str, str]
+        if layer == "production_override":
+            target = self.d9_production_override
+        elif layer == "global":
+            target = self.d9_profile_values["global"]
+        elif scope_id is not None:
+            target = self.d9_profile_values[layer].setdefault(scope_id, {})
+        else:
+            return
+        for field_name, widget in self.d9_editorial_fields.items():
+            value = widget.text().strip()
+            if widget.isEnabled() and value:
+                target[field_name] = value
+            elif widget.isEnabled():
+                target.pop(field_name, None)
+        if layer not in {"production_override", "global"} and scope_id is not None and not target:
+            self.d9_profile_values[layer].pop(scope_id, None)
+
+    def _d9_load_universal_editorial_inputs(self) -> None:
+        layer = str(self.d9_scope.currentData() or "production_override")
+        descriptor = self._d9_scope_descriptor(layer)
+        self.d9_active_scope = descriptor
+        values = self._d9_scope_values()
+        for field_name, widget in self.d9_editorial_fields.items():
+            widget.blockSignals(True)
+            widget.setText(str(values.get(field_name, "")))
+            widget.blockSignals(False)
+        self._d9_sync_universal_editorial_controls(self.d9_personalization.isChecked())
+
+    def _d9_sync_universal_editorial_controls(self, enabled: bool) -> None:
+        content_type = str(self.d9_content_type.currentData() or "")
+        model_spec = D9_EDITORIAL_MODEL.get("content_types", {}).get(content_type, {})
+        allowed = set(model_spec.get("editable_fields", []))
+        layer = str(self.d9_scope.currentData() or "production_override")
+        if layer == "global":
+            allowed.intersection_update({"title", "subtitle", "call_to_action", "language"})
+        for field_name, widget in self.d9_editorial_fields.items():
+            widget.setEnabled(bool(enabled and field_name in allowed))
+
+    def _run_d9_universal_plan(self) -> None:
+        self.e3_last_intent_path = None
+        try:
+            self._d9_save_universal_editorial_inputs()
+            content_type = str(self.d9_content_type.currentData() or "")
+            selection = self._d9_universal_selection_input()
+            request_id = "D99-GUI-" + uuid.uuid4().hex[:12].upper()
+            enabled = bool(self.d9_personalization.isChecked())
+            editorial_profile = copy.deepcopy(self.d9_profile_values) if enabled else {}
+            production_override = copy.deepcopy(self.d9_production_override) if enabled else {}
+            raw_request = {
+                "schema": D9_UNIVERSAL.REQUEST_SCHEMA_ID,
+                "schema_version": "1.0",
+                "request_id": request_id,
+                "mode": str(self.d9_mode.currentData()),
+                "selection": selection,
+                "seed": int(self.d9_seed.value()),
+                "music_seed": int(self.d9_music_seed.value()),
+                "delivery_profile_id": str(self.d9_delivery.currentData()),
+                "presentation_profile_id": self.d9_presentation.text().strip() or "UNKNOWN",
+                "variation_index": int(self.d9_variation.value()),
+                "audio_enabled": bool(self.d9_audio.isChecked()),
+                "personalization_enabled": enabled,
+                "editorial_profile": editorial_profile,
+                "production_override": production_override,
+                "provenance": {"source_revision": "C11D-D9.10-PRODUCER-0.11.1", "request_origin": "GUI"},
+            }
+            e1_prepared = prepare_c11e_production_intent(
+                raw_request, PROJECT, request_origin="GUI", resolver_module=D9_UNIVERSAL
+            )
+            e1_intent = e1_prepared["intent"]
+            result = e1_prepared["resolver_result"]
+            loop_family_stage_contract = None
+            drill_family_stage_contract = None
+            drill_dynamic_binding_preview = None
+            if content_type == "visual_loops":
+                d9_boundary_preparation = e1_intent.get("d9_boundary_preparation")
+                if not isinstance(d9_boundary_preparation, dict):
+                    raise RuntimeError("C11-E shared service did not return the Loop D9.10/family-stage preparation")
+                bridge_record = d9_boundary_preparation["bridge_planning_record"]
+                adapter_envelope = d9_boundary_preparation["d_only_adapter_envelope"]
+                loop_family_stage_contract = d9_boundary_preparation["loop_family_stage_contract"]
+            elif content_type == "visual_drills":
+                d9_boundary_preparation = e1_intent.get("d9_boundary_preparation")
+                if not isinstance(d9_boundary_preparation, dict):
+                    raise RuntimeError("C11-E shared service did not return the Drill D9.10/dynamic-binding preparation")
+                bridge_record = d9_boundary_preparation["bridge_planning_record"]
+                adapter_envelope = d9_boundary_preparation["d_only_adapter_envelope"]
+                drill_family_stage_contract = d9_boundary_preparation["drill_family_stage_contract"]
+                drill_dynamic_binding_preview = d9_boundary_preparation["dynamic_request_binding_preview"]
+            else:
+                bridge_record = build_d9_bridge_planning_record(result, PROJECT)
+                adapter_envelope = prepare_d9_d_only_adapter_envelope(result, bridge_record, PROJECT)
+            evidence_root = PROJECT / "artifacts" / "tests" / "c11d_d9" / "producer_universal"
+            evidence_root.mkdir(parents=True, exist_ok=True)
+            run_root = evidence_root / request_id
+            run_root.mkdir(parents=False, exist_ok=False)
+
+            def write_json(path: Path, value: Any) -> None:
+                path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+            request_path = run_root / "request.json"
+            request_path.write_text(json.dumps(raw_request, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+            # The GUI builds only the canonical D9.9 request. E1 applies its
+            # existing Challenge visibility default internally; no UI option
+            # is serialized into the strict universal request.
+            d9_request = dict(raw_request)
+            d9_request_path = run_root / "d9_request.json"
+            d9_request_path.write_text(json.dumps(d9_request, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+            cli_path = PROJECT / "tools" / "c11d" / "d9" / "universal_producer_cli.py"
+            cli_run = subprocess.run(
+                [sys.executable, str(cli_path), "--request", str(d9_request_path), "--print-json"],
+                cwd=str(PROJECT), capture_output=True, text=True, encoding="utf-8", timeout=45,
+            )
+            if cli_run.returncode != 0:
+                raise RuntimeError("D9.9/D9.10 canonical CLI failed: " + cli_run.stderr.strip())
+            cli_result = json.loads(cli_run.stdout)
+            e_cli_path = ROOT / "c11e_production_cli.py"
+            e_cli_run = subprocess.run(
+                [sys.executable, str(e_cli_path), "--request", str(request_path), "--origin", "CLI", "--print-json"],
+                cwd=str(PROJECT), capture_output=True, text=True, encoding="utf-8", timeout=45,
+            )
+            if e_cli_run.returncode != 0:
+                raise RuntimeError("C11-E shared production CLI failed: " + e_cli_run.stderr.strip())
+            e_cli_payload = json.loads(e_cli_run.stdout)
+            e_cli_intent = e_cli_payload["intent"]
+            e1_parity_checks = {
+                "semantic_intent_hash_equal": e1_intent["identity"]["intent_hash"] == e_cli_intent["identity"]["intent_hash"],
+                "request_hash_equal": e1_intent["identity"]["request_hash"] == e_cli_intent["identity"]["request_hash"],
+                "editorial_hash_equal": e1_intent["identity"]["editorial_hash"] == e_cli_intent["identity"]["editorial_hash"],
+                "plan_hash_equal": e1_intent["identity"]["plan_hash"] == e_cli_intent["identity"]["plan_hash"],
+                "selection_equal": e1_intent["request"]["selection"] == e_cli_intent["request"]["selection"],
+                "editorial_equal": e1_intent["editorial"] == e_cli_intent["editorial"],
+                "presentation_options_equal": e1_intent["request"].get("presentation_options") == e_cli_intent["request"].get("presentation_options"),
+                "seed_domains_equal": e1_intent["seed_domains"] == e_cli_intent["seed_domains"],
+                "gui_origin_preserved": e1_intent["request_origin"] == "GUI",
+                "cli_origin_preserved": e_cli_intent["request_origin"] == "CLI",
+                "both_fail_closed": e1_intent["execution_boundary"] == e_cli_intent["execution_boundary"],
+                "loop_boundary_preparation_equal": (
+                    content_type != "visual_loops"
+                    or e1_intent.get("d9_boundary_preparation") == e_cli_intent.get("d9_boundary_preparation")
+                ),
+                "family_boundary_preparation_equal": (
+                    e1_intent.get("d9_boundary_preparation") == e_cli_intent.get("d9_boundary_preparation")
+                    if content_type in ("visual_loops", "visual_drills")
+                    else e1_intent.get("d9_boundary_preparation") is None and e_cli_intent.get("d9_boundary_preparation") is None
+                ),
+            }
+            e1_parity = {
+                "schema": "C11-E-E1-GUI-CLI-SHARED-SERVICE-PARITY-V1",
+                "status": "PASS" if all(e1_parity_checks.values()) else "FAIL",
+                "checks": e1_parity_checks,
+                "gui_intent_sha256": e1_intent["intent_sha256"],
+                "cli_intent_sha256": e_cli_intent["intent_sha256"],
+                "semantic_intent_hash": e1_intent["identity"]["intent_hash"],
+                "renderer": False,
+                "production_execution": False,
+                "media_created": False,
+                "release_authority": "NONE",
+            }
+            parity_checks = {
+                "canonical_request_equal": result["canonical_request"] == cli_result["canonical_request"],
+                "request_hash_equal": result["request_hash"] == cli_result["request_hash"],
+                "editorial_hash_equal": result["editorial_hash"] == cli_result["editorial_hash"],
+                "plan_equal": result["plan"] == cli_result["plan"],
+                "plan_hash_equal": result["plan_hash"] == cli_result["plan_hash"],
+                "bridge_planning_record_equal": bridge_record == cli_result.get("bridge_planning_record"),
+                "d_only_adapter_envelope_equal": adapter_envelope == cli_result.get("d_only_adapter_envelope"),
+            }
+            parity = {
+                "schema": "C11-D-D9.10-UNIVERSAL-GUI-CLI-ADAPTER-PARITY-V1",
+                "status": "PASS" if all(parity_checks.values()) else "FAIL",
+                "content_type": content_type,
+                "selection": result["canonical_request"]["selection"],
+                "checks": parity_checks,
+                "gui_request_hash": result["request_hash"],
+                "cli_request_hash": cli_result["request_hash"],
+                "gui_plan_hash": result["plan_hash"],
+                "cli_plan_hash": cli_result["plan_hash"],
+                "bridge_record_hash": bridge_record["record_hash"],
+                "cli_bridge_record_hash": (cli_result.get("bridge_planning_record") or {}).get("record_hash"),
+                "d_only_adapter_envelope_hash": adapter_envelope["envelope_hash"],
+                "cli_d_only_adapter_envelope_hash": (cli_result.get("d_only_adapter_envelope") or {}).get("envelope_hash"),
+                "d_only_adapter_prepare_invoked": True,
+                "renderer_dispatch_invoked": False,
+                "renderer_input_emitted": False,
+                "renderer": False,
+                "production_execution": False,
+                "release_authority": "NONE",
+            }
+            parity["e1_shared_service"] = e1_parity
+            parity["status"] = "PASS" if parity["status"] == "PASS" and e1_parity["status"] == "PASS" else "FAIL"
+            write_json(run_root / "canonical_request.json", result["canonical_request"])
+            write_json(run_root / "editorial_resolution.json", result["editorial_resolution"])
+            write_json(run_root / "universal_plan.json", result["plan"])
+            write_json(run_root / "editorial_render_bridge_plan.json", bridge_record)
+            write_json(run_root / "d_render_adapter_envelope.json", adapter_envelope)
+            if loop_family_stage_contract is not None:
+                write_json(run_root / "loop_family_stage_contract.json", loop_family_stage_contract)
+            if drill_family_stage_contract is not None:
+                write_json(run_root / "drill_family_stage_contract.json", drill_family_stage_contract)
+                write_json(run_root / "drill_dynamic_request_binding_preview.json", drill_dynamic_binding_preview)
+            write_json(run_root / "d4_subplan_evidence.json", result["d4_evidence"] or {"status": "NOT_APPLICABLE"})
+            write_json(run_root / "gui_cli_parity.json", parity)
+            write_json(run_root / "c11e_production_intent.json", e1_intent)
+            write_json(run_root / "c11e_gui_cli_parity.json", e1_parity)
+            e1_receipt = {
+                "schema": "C11-E-E1-PRODUCTION-INTENT-RECEIPT-V1",
+                "status": "PASS_E1_PREPARATION_ONLY" if e1_parity["status"] == "PASS" else "FAIL",
+                "request_id": request_id,
+                "intent_sha256": e1_intent["intent_sha256"],
+                "request_hash": e1_intent["identity"]["request_hash"],
+                "editorial_hash": e1_intent["identity"]["editorial_hash"],
+                "plan_hash": e1_intent["identity"]["plan_hash"],
+                "gui_cli_parity": e1_parity["status"],
+                "loop_family_stage_contract_sha256": (loop_family_stage_contract or {}).get("contract_sha256"),
+                "drill_family_stage_contract_sha256": (drill_family_stage_contract or {}).get("contract_sha256"),
+                "drill_dynamic_request_binding_preview_sha256": (drill_dynamic_binding_preview or {}).get("preview_sha256"),
+                "renderer_input_emitted": False,
+                "renderer_dispatch_invoked": False,
+                "production_execution": False,
+                "media_created": False,
+                "release_authority": "NONE",
+                "evidence_root": str(run_root.relative_to(PROJECT)).replace("/", "\\"),
+            }
+            write_json(run_root / "c11e_production_intent_receipt.json", e1_receipt)
+            receipt = {
+                "schema": "C11-D-D9.10-PRODUCER-BRIDGE-PLANNING-RECEIPT-V1",
+                "phase": "D9.10",
+                "result": "PASS_BRIDGE_PLANNING_ONLY" if parity["status"] == "PASS" else "FAIL",
+                "status": result["status"],
+                "request_id": request_id,
+                "request_hash": result["request_hash"],
+                "editorial_hash": result["editorial_hash"],
+                "plan_hash": result["plan_hash"],
+                "bridge_record_hash": bridge_record["record_hash"],
+                "d_only_adapter_envelope_hash": adapter_envelope["envelope_hash"],
+                "d_only_adapter_status": adapter_envelope["status"],
+                "renderer_dispatch_invoked": False,
+                "gui_cli_parity": parity["status"],
+                "content_type": content_type,
+                "selection": result["canonical_request"]["selection"],
+                "renderer_execution": False,
+                "production_execution": False,
+                "release_authority": "NONE",
+                "d4_8": "BLOCKED",
+                "evidence_root": str(run_root.relative_to(PROJECT)).replace("/", "\\"),
+            }
+            write_json(run_root / "producer_universal_receipt.json", receipt)
+            lifecycle_receipt = D9_LIFECYCLE.build_lifecycle_receipt(raw_request, PROJECT, run_root)
+            write_json(run_root / "cross_suite_lifecycle_receipt.json", lifecycle_receipt)
+            D9_LIFECYCLE.validate_lifecycle_receipt(lifecycle_receipt, PROJECT, verify_current=True)
+            self.d9_request_view.setPlainText(json.dumps(result["canonical_request"], ensure_ascii=False, indent=2))
+            self.d9_editorial_view.setPlainText(json.dumps(result["editorial_resolution"], ensure_ascii=False, indent=2))
+            self.d9_plan_view.setPlainText(json.dumps(result["plan"], ensure_ascii=False, indent=2))
+            self.d9_bridge_view.setPlainText(json.dumps(bridge_record, ensure_ascii=False, indent=2))
+            self.d9_adapter_view.setPlainText(json.dumps(adapter_envelope, ensure_ascii=False, indent=2))
+            self.d9_lifecycle_view.setPlainText(json.dumps(lifecycle_receipt, ensure_ascii=False, indent=2))
+            self.d9_parity_view.setPlainText(json.dumps(parity, ensure_ascii=False, indent=2))
+            self.d9_e1_view.setPlainText(json.dumps({
+                "intent": e1_intent,
+                "loop_family_stage_contract": loop_family_stage_contract,
+                "drill_family_stage_contract": drill_family_stage_contract,
+                "drill_dynamic_request_binding_preview": drill_dynamic_binding_preview,
+                "gui_cli_parity": e1_parity,
+                "receipt": e1_receipt,
+            }, ensure_ascii=False, indent=2))
+            self.d9_evidence_label.setText(f"D9.9/D9.10/D9.13 + C11-E E1 · GUI/CLI={e1_parity['status']} · {run_root} · lifecycle={lifecycle_receipt['lifecycle_id']}")
+            self.d9_output_tabs.setCurrentWidget(self.d9_e1_view if e1_parity["status"] == "PASS" else self.d9_parity_view)
+            if parity["status"] != "PASS":
+                raise AssertionError("D9.9 GUI/CLI request or plan identity mismatch")
+            self.statusBar().showMessage(
+                f"D9.13 LIFECYCLE PASS · C11-E E1 SERVICE {e1_parity['status']} · {content_type} · plan-only / renderer OFF"
+            )
+            if e1_parity["status"] != "PASS":
+                raise AssertionError("C11-E E1 shared GUI/CLI service parity failed")
+            self.e3_last_intent_path = run_root / "c11e_production_intent.json"
+            if not self.e3_last_intent_path.is_file():
+                self.e3_last_intent_path = None
+                raise FileNotFoundError("E1 intent file was not written after GUI/CLI parity PASS")
+        except Exception as exc:
+            self.statusBar().showMessage("D9.9 universal plan failed; no product was created.")
+            QMessageBox.warning(self, "C11-D Editorial Universal", str(exc))
+
+    def _run_e4b_loop_family_matrix(self) -> None:
+        """Run the D9.9/D9.10/E1 preparation matrix for all existing Loop grammars."""
+        try:
+            self._d9_save_universal_editorial_inputs()
+            if str(self.d9_content_type.currentData() or "") != "visual_loops":
+                raise RuntimeError("Selecciona Visual Loop en el formulario D9.9 antes de ejecutar la matriz E4B.")
+            if str(self.d9_mode.currentData() or "") != "REVIEW":
+                raise RuntimeError("La matriz E4B solo admite REVIEW · PLAN; no se acepta modo PRODUCTION.")
+            if not self.d9_audio.isChecked() or not self.d9_personalization.isChecked():
+                raise RuntimeError("La matriz E4B requiere Audio ON y Personalization ON.")
+            matrix_dir = PROJECT / "tools" / "c11d" / "d9"
+            if str(matrix_dir) not in sys.path:
+                sys.path.insert(0, str(matrix_dir))
+            from c11e_e4b_loop_family_matrix import run_loop_family_matrix
+
+            run_id = "E4B_LOOP_GUI_" + datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ") + "_" + uuid.uuid4().hex[:8].upper()
+            template_request = {
+                "schema": D9_UNIVERSAL.REQUEST_SCHEMA_ID,
+                "schema_version": "1.0",
+                "request_id": run_id + "_TEMPLATE",
+                "mode": "REVIEW",
+                "selection": self._d9_universal_selection_input(),
+                "seed": int(self.d9_seed.value()),
+                "music_seed": int(self.d9_music_seed.value()),
+                "delivery_profile_id": str(self.d9_delivery.currentData()),
+                "presentation_profile_id": self.d9_presentation.text().strip() or "UNKNOWN",
+                "variation_index": int(self.d9_variation.value()),
+                "audio_enabled": True,
+                "personalization_enabled": True,
+                "editorial_profile": {
+                    layer: {key: value for key, value in values.items() if key in {"title", "subtitle", "call_to_action", "language"}}
+                    for layer, values in self.d9_profile_values.items()
+                },
+                "production_override": {
+                    key: value for key, value in self.d9_production_override.items()
+                    if key in {"title", "subtitle", "call_to_action", "language"}
+                },
+                "provenance": {"source_revision": "C11E-E4B-LOOP-FAMILY-MATRIX-V1", "request_origin": "GUI"},
+            }
+            evidence_root = PROJECT / "artifacts" / "tests" / "c11e" / "e4b_loop_family_matrix" / run_id
+            report = run_loop_family_matrix(
+                PROJECT,
+                template_request,
+                request_origin="GUI",
+                output_root=evidence_root,
+                run_id=run_id,
+            )
+            if report.get("status") != "PASS_LOOP_FAMILY_PLAN_MATRIX_ONLY":
+                raise AssertionError("E4B Loop family matrix did not return PASS")
+            summary = {
+                "status": report["status"],
+                "run_id": run_id,
+                "families": report["scope"]["family_count"],
+                "grammars": report["scope"]["grammar_count"],
+                "cases": report["scope"]["case_count"],
+                "deterministic_repeats": report["scope"]["deterministic_repeats"],
+                "seed_relations": len(report["seed_domain_relations"]),
+                "music_route": "PRESERVE_EXISTING_C11C_FAMILY_MUSIC_PATH",
+                "renderer": False,
+                "dispatch": False,
+                "media_created": False,
+                "d4_8": "BLOCKED",
+                "release_authority": "NONE",
+                "evidence_root": str(evidence_root),
+            }
+            self.d9_loop_matrix_view.setPlainText(json.dumps(summary, ensure_ascii=False, indent=2))
+            self.d9_output_tabs.setCurrentWidget(self.d9_loop_matrix_view)
+            self.d9_evidence_label.setText(
+                f"E4B LOOP FAMILY MATRIX · {report['scope']['family_count']} familias / "
+                f"{report['scope']['grammar_count']} gramáticas / {report['scope']['case_count']} casos · {evidence_root}"
+            )
+            self.statusBar().showMessage("E4B LOOP FAMILY MATRIX PASS · D9.9/D9.10/E1 PLAN-ONLY · RENDERER OFF")
+            QMessageBox.information(
+                self,
+                "C11-E E4B Loop",
+                f"Matriz PASS: {report['scope']['family_count']} familias, "
+                f"{report['scope']['grammar_count']} gramáticas y {report['scope']['case_count']} escenarios.\n\n"
+                f"Evidencia: {evidence_root}\n\nRenderer OFF · Media OFF · Release NONE.",
+            )
+        except Exception as exc:
+            self.statusBar().showMessage("E4B Loop family matrix failed; no product or media was created.")
+            QMessageBox.warning(self, "C11-E E4B Loop Family Matrix", str(exc))
+
+    def _run_c11e_e3_audio_pilot(self) -> None:
+        """Run the isolated E3 Challenge audio/mux pilot from the existing Producer GUI."""
+        if self.e3_process is not None and self.e3_process.state() != QProcess.NotRunning:
+            self.statusBar().showMessage("C11-E E3 audio pilot is already running.")
+            return
+        try:
+            # Apply the exact R4 provenance fixture through the existing D9.9 form.
+            self.d9_content_type.setCurrentIndex(self.d9_content_type.findData("challenges"))
+            family_index = self.d9_family.findData("key")
+            if family_index < 0:
+                raise RuntimeError("D9.9 catalog does not expose the CHALLENGE_001 key family.")
+            self.d9_family.setCurrentIndex(family_index)
+            variant_index = self.d9_variant.findData("CHALLENGE_001")
+            if variant_index < 0:
+                raise RuntimeError("D9.9 catalog does not expose CHALLENGE_001.")
+            self.d9_variant.setCurrentIndex(variant_index)
+            self.d9_mode.setCurrentIndex(self.d9_mode.findData("REVIEW"))
+            self.d9_seed.setValue(193847)
+            self.d9_music_seed.setValue(840001)
+            self.d9_delivery.setCurrentIndex(self.d9_delivery.findData("REVIEW_720"))
+            self.d9_presentation.setText("social_default_v1")
+            self.d9_variation.setValue(0)
+            self.d9_audio.setChecked(True)
+            self.d9_personalization.setChecked(True)
+            self.d9_scope.setCurrentIndex(max(0, self.d9_scope.findData("production_override")))
+            self.d9_title.setText("C11-E CHALLENGE_001 E3 AUDIO PILOT")
+
+            self.d9_e3_audio_view.setPlainText(
+                "Preparing canonical E1 GUI intent and executing the existing GUI/CLI parity checks...\n"
+                "Gameplay seed: 193847\nMusic seed A/B: 840001\nMusic seed C control: 840002\n"
+                "Source: accepted E2 R4 CHALLENGE_001 A video-only MP4 (270 frames / 30 FPS / 9 seconds).\n"
+                "No gameplay renderer invocation. Output is test evidence under Documents."
+            )
+            self.d9_output_tabs.setCurrentWidget(self.d9_e3_audio_view)
+            self._run_d9_universal_plan()
+            intent_path = self.e3_last_intent_path
+            if intent_path is None or not intent_path.is_file():
+                self.d9_e3_audio_view.appendPlainText(
+                    "\nE1 GUI/CLI preparation did not produce a validated intent. E3 was not launched."
+                )
+                self.d9_output_tabs.setCurrentWidget(self.d9_e3_audio_view)
+                return
+
+            runner = ROOT / "c11e_e3_audio_pilot.py"
+            fixture_root = PROJECT / "tools" / "c11e" / "e3" / "fixtures"
+            source_video = fixture_root / "CHALLENGE_001_R4_A_REVIEW_720.mp4"
+            source_receipt = fixture_root / "C11E_E2_R4_RENDER_RECEIPT.json"
+            source_sha = fixture_root / "C11E_E2_R4_RENDER_RECEIPT.json.sha256"
+            missing = [str(p) for p in (runner, source_video, source_receipt, source_sha) if not p.is_file()]
+            if missing:
+                raise FileNotFoundError("E3 pilot payload/fixture missing: " + "; ".join(missing))
+
+            run_id = "C11E_E3_AUDIO_PILOT_GUI_" + datetime.now().strftime("%Y%m%d_%H%M%S_") + uuid.uuid4().hex[:8]
+            output_root = Path.home() / "Documents" / "C11E_E3_AUDIO_PILOT_TESTS" / run_id
+            if output_root.exists():
+                raise FileExistsError(f"E3 output root already exists: {output_root}")
+
+            args = [
+                str(runner),
+                "--root", str(PROJECT),
+                "--intent", str(intent_path),
+                "--source-video", str(source_video),
+                "--source-receipt", str(source_receipt),
+                "--source-receipt-sha256", str(source_sha),
+                "--output-root", str(output_root),
+                "--operator-gui",
+            ]
+            self.e3_process = QProcess(self)
+            self.e3_process.setWorkingDirectory(str(PROJECT))
+            self.e3_process.setProgram(sys.executable)
+            self.e3_process.setArguments(args)
+            self.e3_process.readyReadStandardOutput.connect(self._e3_audio_read_stdout)
+            self.e3_process.readyReadStandardError.connect(self._e3_audio_read_stderr)
+            self.e3_process.finished.connect(self._e3_audio_finished)
+            self.e3_process.errorOccurred.connect(self._e3_audio_process_error)
+            self.d9_e3_audio_view.appendPlainText(
+                "\nE3 AUDIO PILOT STARTING\n"
+                + "INTENT=" + str(intent_path) + "\n"
+                + "SOURCE_VIDEO=" + str(source_video) + "\n"
+                + "OUTPUT=" + str(output_root) + "\n"
+                + "COMMAND=" + sys.executable + " " + " ".join(args)
+            )
+            self.d9_e3_audio_pilot_button.setEnabled(False)
+            self.statusBar().showMessage("C11-E E3 audio/mastering/FFmpeg/FFprobe pilot running · test-only")
+            self.e3_process.start()
+        except Exception as exc:
+            self.e3_last_intent_path = None
+            self.d9_e3_audio_view.appendPlainText("\nE3 NOT STARTED\n" + str(exc))
+            self.d9_output_tabs.setCurrentWidget(self.d9_e3_audio_view)
+            QMessageBox.warning(self, "C11-E E3 Audio Pilot", str(exc))
+
+    def _e3_audio_read_stdout(self) -> None:
+        if self.e3_process is not None:
+            data = bytes(self.e3_process.readAllStandardOutput()).decode("utf-8", errors="replace")
+            if data:
+                self.d9_e3_audio_view.moveCursor(QTextCursor.End)
+                self.d9_e3_audio_view.insertPlainText(data)
+
+    def _e3_audio_read_stderr(self) -> None:
+        if self.e3_process is not None:
+            data = bytes(self.e3_process.readAllStandardError()).decode("utf-8", errors="replace")
+            if data:
+                self.d9_e3_audio_view.moveCursor(QTextCursor.End)
+                self.d9_e3_audio_view.insertPlainText(data)
+
+    def _e3_audio_finished(self, exit_code: int, _exit_status: QProcess.ExitStatus) -> None:
+        process = self.e3_process
+        if process is not None:
+            self._e3_audio_read_stdout()
+            self._e3_audio_read_stderr()
+        if exit_code == 0:
+            self.d9_e3_audio_view.appendPlainText(
+                "\nC11-E E3 AUDIO PILOT: PASS (TEST ONLY)\n"
+                "release_authority=NONE\nproduction_product_created=false\n"
+                "Consulta el recibo y los tres MP4 de prueba en la ruta OUTPUT indicada arriba."
+            )
+            self.statusBar().showMessage("C11-E E3 audio pilot PASS · test-only · release authority NONE")
+        else:
+            self.d9_e3_audio_view.appendPlainText(
+                f"\nC11-E E3 AUDIO PILOT: FAIL · exit_code={exit_code}\n"
+                "Conserva el directorio de evidencia y los logs. No se ha autorizado producción."
+            )
+            self.statusBar().showMessage(f"C11-E E3 audio pilot FAIL · exit={exit_code} · evidence retained")
+        self.e3_process = None
+        self.d9_e3_audio_pilot_button.setEnabled(True)
+
+    def _e3_audio_process_error(self, error: QProcess.ProcessError) -> None:
+        if self.e3_process is not None and self.e3_process.state() == QProcess.NotRunning:
+            self.d9_e3_audio_view.appendPlainText(f"\nE3 PROCESS ERROR: {error}\n")
+            self.e3_process = None
+            self.d9_e3_audio_pilot_button.setEnabled(True)
+            self.statusBar().showMessage("C11-E E3 process could not start; inspect the E3 output tab.")
+
+    def _run_d914_certification_preflight(self) -> None:
+        """Show the canonical D9.14 readiness gate; never launches production."""
+        try:
+            gate = build_d914_certification_gate(PROJECT)
+            result = validate_d914_certification_gate(gate, PROJECT)
+            display = {"gate": gate, "validation": result}
+            self.d9_certification_view.setPlainText(json.dumps(display, ensure_ascii=False, indent=2))
+            self.d9_output_tabs.setCurrentWidget(self.d9_certification_view)
+            self.statusBar().showMessage(
+                f"D9.14 GATE BLOCKED AS REQUIRED · cases={gate['case_count']} · renderer OFF · media=false · D4.8 BLOCKED"
+            )
+        except Exception as exc:
+            self.d9_certification_view.setPlainText(json.dumps({"status": "FAIL_CLOSED", "error": str(exc)}, ensure_ascii=False, indent=2))
+            self.d9_output_tabs.setCurrentWidget(self.d9_certification_view)
+            self.statusBar().showMessage("D9.14 preflight failed closed; no renderer or media was started.")
+
+    def _sync_c11d_personalization_controls(self, enabled: bool) -> None:
+        for widget in (
+            self.d_title,
+            self.d_subtitle,
+            self.d_cta,
+            self.d_language,
+            self.d_player_name,
+            self.d_challenge_label,
+        ):
+            widget.setEnabled(enabled)
+
+    def _selected_c11d_challenge_document(self) -> dict[str, Any]:
+        cid = str(self.d_challenge.currentData() or "")
+        item = CHALLENGES.get(cid)
+        if not item:
+            raise ValueError("Selecciona un Challenge válido.")
+        path = Path(item["path"])
+        document = json.loads(path.read_text(encoding="utf-8-sig"))
+        if str(document.get("challenge_id", "")) != cid:
+            raise ValueError(f"Challenge ID/file mismatch: {cid}")
+        return document
+
+    def _update_c11d_presentation_default(self, _index: int = -1) -> None:
+        try:
+            document = self._selected_c11d_challenge_document()
+            profile_id = str((document.get("presentation") or {}).get("profile", "UNKNOWN"))
+            if not self.d_presentation.text().strip() or self.d_presentation.text().strip() == "social_default_v1":
+                self.d_presentation.setText(profile_id)
+        except Exception:
+            return
+
+    def _load_c11d_editorial_defaults(self) -> None:
+        try:
+            document = self._selected_c11d_challenge_document()
+            content = document.get("content") or {}
+            self.d_title.setText(str(content.get("hook", ""))[:160])
+            self.d_cta.setText(str(content.get("cta", ""))[:160])
+            self.d_challenge_label.setText(str(document.get("mechanic", "UNKNOWN")).upper()[:160])
+            self.d_presentation.setText(str((document.get("presentation") or {}).get("profile", "UNKNOWN")))
+            self.statusBar().showMessage("Textos base cargados desde la definición existente; los cambios aún son plan-only.")
+        except Exception as exc:
+            QMessageBox.warning(self, "C11-D Request", str(exc))
+
+    def _verify_c11d_planning_predecessors(self) -> None:
+        receipt_paths = (
+            PROJECT / "artifacts" / "tests" / "c11d_d4" / "d4_2" / "d4_2_validation_receipt.json",
+            PROJECT / "artifacts" / "tests" / "c11d_d4" / "d4_3" / "d4_3_validation_receipt.json",
+            PROJECT / "artifacts" / "tests" / "c11d_d4" / "d4_4" / "d4_4_validation_receipt.json",
+            PROJECT / "artifacts" / "tests" / "c11d_d4" / "d4_6" / "d4_6_validation_receipt.json",
+            PROJECT / "artifacts" / "tests" / "c11d_d4" / "d4_7" / "d4_7_validation_receipt.json",
+        )
+        for receipt_path in receipt_paths:
+            if not receipt_path.is_file():
+                raise RuntimeError(f"Falta evidencia PASS/CLOSED previa de D4: {receipt_path}")
+            receipt = json.loads(receipt_path.read_text(encoding="utf-8-sig"))
+            if receipt.get("result") != "PASS" or receipt.get("status") != "CLOSED":
+                raise RuntimeError(f"El checkpoint D4 no está PASS/CLOSED: {receipt_path}")
+
+    def _validate_c11d_request(self) -> None:
+        try:
+            self._verify_c11d_planning_predecessors()
+            challenge_document = self._selected_c11d_challenge_document()
+            requested_profile = str(self.d_delivery.currentData())
+            _resolved_id, resolved_profile = resolve_delivery_profile(requested_profile)
+            request_id = "C11D-GUI-{0}-{1}".format(
+                datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ"),
+                uuid.uuid4().hex[:10].upper(),
+            )
+            editorial_values = {
+                "title": self.d_title.text(),
+                "subtitle": self.d_subtitle.text(),
+                "call_to_action": self.d_cta.text(),
+                "language": self.d_language.text(),
+                "player_name": self.d_player_name.text(),
+                "challenge_label": self.d_challenge_label.text(),
+            }
+            request = build_production_request(
+                request_id=request_id,
+                mode=str(self.d_mode.currentData()),
+                challenge_document=challenge_document,
+                delivery_profile_id=requested_profile,
+                resolved_delivery_profile=resolved_profile,
+                presentation_profile_id=self.d_presentation.text().strip() or "UNKNOWN",
+                seed=int(self.d_seed.value()),
+                music_seed=int(self.d_music_seed.value()),
+                audio_enabled=bool(self.d_audio.isChecked()),
+                variation_index=int(self.d_variation.value()),
+                personalization_enabled=bool(self.d_personalization.isChecked()),
+                editorial_values=editorial_values,
+            )
+            result = evaluate_gui_request(request, PROJECT)
+
+            evidence_root = PROJECT / "artifacts" / "tests" / "c11d_d9" / "producer_gui"
+            evidence_root.mkdir(parents=True, exist_ok=True)
+            run_root = evidence_root / request_id
+            run_root.mkdir(parents=False, exist_ok=False)
+
+            def write_json(path: Path, value: Any) -> None:
+                path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+            write_json(run_root / "request.json", result["request"])
+            write_json(run_root / "canonical_request.json", result["canonical_request"])
+            write_json(run_root / "resolved_personalization.json", result["resolved_personalization"])
+            write_json(run_root / "production_plan.json", result["plan"])
+            write_json(run_root / "gui_cli_parity.json", result["parity"])
+            receipt = {
+                "schema": "C11-D-D9.5.1-PRODUCER-GUI-RECEIPT-V1",
+                "phase": "D9.5.1",
+                "result": "PASS_PLAN_ONLY",
+                "status": "PLANNED",
+                "request_id": request_id,
+                "request_hash": result["request_hash"],
+                "personalization_hash": result["personalization_hash"],
+                "plan_hash": result["plan_hash"],
+                "gui_cli_parity": result["parity"]["status"],
+                "renderer_execution": False,
+                "production_execution": False,
+                "release_authority": "NONE",
+                "d4_8": "BLOCKED",
+                "evidence_root": str(run_root.relative_to(PROJECT)).replace("/", "\\"),
+            }
+            write_json(run_root / "producer_gui_receipt.json", receipt)
+
+            relative_request = str((run_root / "request.json").relative_to(PROJECT)).replace("/", "\\")
+            relative_plan = str((run_root / "production_plan_cli.json").relative_to(PROJECT)).replace("/", "\\")
+            command = f'python .\\tools\\c11d\\d4\\production_cli.py --request ".\\{relative_request}" --output ".\\{relative_plan}"'
+            self.d_request_view.setPlainText(json.dumps(request, ensure_ascii=False, indent=2))
+            self.d_canonical_view.setPlainText(json.dumps(result["canonical_request"], ensure_ascii=False, indent=2))
+            self.d_personalization_view.setPlainText(json.dumps(result["resolved_personalization"], ensure_ascii=False, indent=2))
+            self.d_plan_view.setPlainText(json.dumps(result["plan"], ensure_ascii=False, indent=2))
+            self.d_parity_view.setPlainText(json.dumps(result["parity"], ensure_ascii=False, indent=2))
+            self.d_command_view.setPlainText(
+                "PLAN ONLY — reproduce with the canonical D4.5 CLI:\n\n" + command
+                + "\n\nThe CLI command consumes the saved request; it does not activate the renderer."
+            )
+            self.d_evidence_label.setText(f"Evidencia: {run_root}")
+            self.d_output_tabs.setCurrentWidget(self.d_parity_view)
+            self.statusBar().showMessage(
+                f"D9.5.1 PLAN PASS · GUI/CLI parity exact · plan={result['plan_hash'][:12]} · D4.8 BLOCKED"
+            )
+        except Exception as exc:
+            self.statusBar().showMessage("D9.5.1 plan failed; no product was created.")
+            QMessageBox.warning(self, "C11-D Request / Personalización", str(exc))
+
+    def _clear_rows(self) -> None:
+        while self.pl.count():
+            item = self.pl.takeAt(0)
+            widget = item.widget()
+            if widget:
+                widget.deleteLater()
+        self.rows = []
+
+    def _video_type_changed(self, _idx: int) -> None:
+        if self._building_type or self.operation.currentData() != "A_LA_CARTA":
+            return
+        self._building_type = True
+        try:
+            video_type = str(self.video_type.currentData())
+            self._clear_rows()
+            self.family.blockSignals(True)
+            self.grammar.blockSignals(True)
+            self.family.clear()
+            self.grammar.clear()
+
+            if video_type == "challenges":
+                self.family_label.setText("Challenge")
+                self.subtype_label.setText("Mecánica")
+                for cid, item in sorted(CHALLENGES.items()):
+                    self.family.addItem(
+                        f"{cid} · {item['mechanic'].upper()} · {item['duration_seconds']:.0f}s",
+                        cid,
+                    )
+                self._refresh_challenges()
+                self.variation_box.setVisible(False)
+                self.no_footer.setChecked(False)
+                self.no_footer.setEnabled(False)
+            elif video_type == "visual_loops":
+                self.family_label.setText("Familia")
+                self.subtype_label.setText("Gramática")
+                self.family.addItems([value["name"] for value in FAMILIES.values()])
+                self._refresh_family(0)
+                self.variation_box.setVisible(True)
+                self.no_footer.setEnabled(True)
+            else:
+                self.family_label.setText("Familia")
+                self.subtype_label.setText("Dificultad")
+                self.family.addItems([value["name"] for value in DRILLS.values()])
+                self._refresh_family(0)
+                self.variation_box.setVisible(True)
+                self.no_footer.setChecked(False)
+                self.no_footer.setEnabled(False)
+            self.family.blockSignals(False)
+            self.grammar.blockSignals(False)
+        finally:
+            self._building_type = False
+        if video_type != "challenges":
+            self._refresh_family(self.family.currentIndex() if self.family.count() else 0)
+        self._seed_mode_changed(self.seed_mode.currentIndex())
+        self._set_status(f"{VIDEO_TYPES.get(video_type, video_type)}")
+
+    def _refresh_challenges(self) -> None:
+        cid = str(self.family.currentData() or "")
+        item = CHALLENGES.get(cid)
+        self.grammar.clear()
+        if item:
+            self.grammar.addItem(item["mechanic"].upper(), item["mechanic"])
+
+    def _refresh_family(self, idx: int) -> None:
+        if self._building_type:
+            return
+        video_type = str(self.video_type.currentData())
+        if video_type == "challenges":
+            self._refresh_challenges()
+            return
+        self._clear_rows()
+        if video_type == "visual_loops":
+            ids = list(FAMILIES)
+            if not ids:
+                return
+            idx = max(0, min(idx, len(ids) - 1))
+            family_id = ids[idx]
+            self.family.blockSignals(True)
+            self.family.setCurrentIndex(idx)
+            self.family.blockSignals(False)
+            self.grammar.clear()
+            for code, label in FAMILIES[family_id].get("grammars", []):
+                self.grammar.addItem(label, code)
+            for spec in FAMILIES[family_id].get("params", []):
+                row = ParamRow(spec)
+                self.rows.append(row)
+                self.pl.addWidget(row)
+        elif video_type == "visual_drills":
+            ids = list(DRILLS)
+            if not ids:
+                return
+            idx = max(0, min(idx, len(ids) - 1))
+            family_id = ids[idx]
+            self.family.blockSignals(True)
+            self.family.setCurrentIndex(idx)
+            self.family.blockSignals(False)
+            self.grammar.clear()
+            for tier in range(1, 6):
+                self.grammar.addItem(f"TIER {tier}", str(tier))
+            for spec in DRILLS[family_id].get("parameters", []):
+                row = ParamRow(spec)
+                self.rows.append(row)
+                self.pl.addWidget(row)
+        self._seed_mode_changed(self.seed_mode.currentIndex())
+
+    def _operation_changed(self, _idx: int) -> None:
+        op = str(self.operation.currentData())
+        batch = op != "A_LA_CARTA"
+        utility = op == "RUN_REGRESSION"
+        self.video_type.setEnabled(not batch)
+        self.family.setEnabled(not batch)
+        self.grammar.setEnabled(not batch)
+        self.count.setEnabled(not batch)
+        self.seed_mode.setEnabled(not batch)
+        self.manual.setEnabled(False)
+        self.no_sound.setEnabled(not batch and not utility)
+        self.no_footer.setEnabled(not batch and not utility)
+        self.force.setEnabled(not batch and not utility)
+        self.delivery.setEnabled(not batch and not utility)
+        self.workers.setEnabled(True)
+        self.resume.setEnabled(batch and not utility)
+        self.reset.setEnabled(batch and not utility and op != "REVIEW_CHALLENGES")
+        self.export_gif.setEnabled(not utility)
+        self.add.setEnabled(True)
+        self.variation_box.setVisible(not batch and not utility and str(self.video_type.currentData()) != "challenges")
+        if batch:
+            self.variation_box.setVisible(False)
+        if utility:
+            self.variation_box.setVisible(False)
+        else:
+            self._video_type_changed(self.video_type.currentIndex())
+
+    def _seed_mode_changed(self, idx: int) -> None:
+        active = self.operation.currentData() == "A_LA_CARTA"
+        manual = idx == 1
+        self.manual.setEnabled(active and manual)
+        for row in self.rows:
+            row.set_interactive(active)
+
+    def _update_delivery_tooltip(self, _idx: int = -1) -> None:
+        profile_id = str(self.delivery.currentData() or "")
+        try:
+            resolved_id, profile = resolve_delivery_profile(profile_id)
+            width = profile.get("width", "?")
+            height = profile.get("height", "?")
+            fps = profile.get("fps", profile.get("fps_max", "?"))
+            codec = str(profile.get("codec", "h264")).upper()
+            audio = f"{profile.get('audio_codec', 'AAC').upper()} {profile.get('audio_sample_rate_hz', 48000)} Hz estéreo"
+            self.delivery.setToolTip(
+                f"{profile_id} · {width}×{height} · {fps} FPS · {codec} · {audio}\nBase: {resolved_id}"
+            )
+        except ValueError as exc:
+            self.delivery.setToolTip(str(exc))
+
+    def _set_status(self, text: str) -> None:
+        self.statusBar().showMessage(text)
+
+    def _add(self) -> None:
+        try:
+            op = str(self.operation.currentData())
+            if op == "RUN_REGRESSION":
+                recipe = Recipe(op, "utility", workers=int(self.workers.value()))
+                self.queue.append(recipe)
+                self._add_row(recipe)
+                return
+            if op != "A_LA_CARTA":
+                if self.resume.isChecked() and self.reset.isChecked():
+                    raise ValueError("RESUME y RESET son excluyentes.")
+                recipe = Recipe(
+                    op,
+                    "batch",
+                    count=1,
+                    workers=int(self.workers.value()),
+                    resume=self.resume.isChecked(),
+                    reset=self.reset.isChecked(),
+                    export_gif=self.export_gif.isChecked(),
+                    no_sound=self.no_sound.isChecked(),
+                    delivery="REVIEW_720",
+                )
+                self.queue.append(recipe)
+                self._add_row(recipe)
+                return
+
+            video_type = str(self.video_type.currentData())
+            manual = self._manual_seeds() if self.seed_mode.currentIndex() == 1 else []
+            delivery = str(self.delivery.currentData() or DEFAULT_DELIVERY)
+
+            if video_type == "challenges":
+                cid = str(self.family.currentData() or "")
+                if cid not in CHALLENGES:
+                    raise ValueError("Selecciona un Challenge válido.")
+                recipe = Recipe(
+                    op,
+                    video_type,
+                    family=str(self.family.currentText()),
+                    grammar=str(self.grammar.currentData() or ""),
+                    challenge_id=cid,
+                    count=self.count.value(),
+                    manual_seeds=manual,
+                    no_sound=self.no_sound.isChecked(),
+                    force=self.force.isChecked(),
+                    export_gif=self.export_gif.isChecked(),
+                    delivery=delivery,
+                )
+            else:
+                ids = list(FAMILIES if video_type == "visual_loops" else DRILLS)
+                if not ids:
+                    raise ValueError("No hay familias disponibles.")
+                family_id = ids[self.family.currentIndex()]
+                targets = {
+                    row.spec["key"]: value
+                    for row in self.rows
+                    if (value := row.value()) is not None
+                }
+                grammar = str(self.grammar.currentData() or "auto")
+                if video_type == "visual_loops" and manual and (grammar != "auto" or targets):
+                    raise ValueError(
+                        "Con seeds manuales, deja gramática y variación en ALEATORIO."
+                    )
+                recipe = Recipe(
+                    op,
+                    video_type,
+                    family=family_id,
+                    grammar=grammar,
+                    count=self.count.value(),
+                    manual_seeds=manual,
+                    no_sound=self.no_sound.isChecked(),
+                    no_footer=self.no_footer.isChecked(),
+                    force=self.force.isChecked(),
+                    workers=1,
+                    targets=targets,
+                    delivery=delivery,
+                    export_gif=self.export_gif.isChecked(),
+                )
+            already_produced = self._recipe_already_produced(recipe) and not recipe.force
+            if already_produced:
+                recipe.status = "YA PRODUCIDO"
+                recipe.completed = True
+                self._add_row(recipe)
+            else:
+                self.queue.append(recipe)
+                self._add_row(recipe)
+        except Exception as exc:
+            QMessageBox.warning(self, "Configuración inválida", str(exc))
+
+    def _manual_seeds(self) -> list[int]:
+        try:
+            values = [int(x.strip()) for x in self.manual.text().split(",") if x.strip()]
+        except ValueError as exc:
+            raise ValueError("Seeds inválidas: deben ser enteros.") from exc
+        if not values or any(x < 1 or x > 2_147_483_646 for x in values):
+            raise ValueError("Seeds inválidas: rango permitido 1..2147483646.")
+        if len(set(values)) != len(values):
+            raise ValueError("Las seeds manuales deben ser únicas.")
+        if len(values) != self.count.value():
+            raise ValueError(f"Necesitas exactamente {self.count.value()} seeds manuales.")
+        return values
+
+    def _recipe_already_produced(self, recipe: Recipe) -> bool:
+        if not recipe.manual_seeds:
+            return False
+
+        def matches_profile(product_dir: Path) -> bool:
+            manifest = product_dir / "production_manifest.json"
+            if not manifest.exists():
+                return False
+            try:
+                data = json.loads(manifest.read_text(encoding="utf-8"))
+            except (OSError, json.JSONDecodeError):
+                return False
+            return str(data.get("delivery_profile", "")) == recipe.delivery and any(product_dir.glob("*.mp4"))
+
+        for seed in recipe.manual_seeds:
+            if recipe.video_type == "challenges":
+                base = PROJECT / "artifacts" / "production" / "audiovisual" / "challenges" / recipe.challenge_id / f"seed_{seed}"
+                if not matches_profile(base):
+                    return False
+            elif recipe.video_type in ("visual_loops", "visual_drills"):
+                family_root = recipe.family if recipe.video_type == "visual_loops" else str(Path("visual_drills") / recipe.family)
+                base = PROJECT / "artifacts" / "production" / "audiovisual" / family_root
+                if not base.exists() or not any(matches_profile(p) for p in base.iterdir() if p.is_dir() and f"seed_{seed}" in p.name):
+                    return False
+            else:
+                return False
+        return True
+
+    def _add_row(self, recipe: Recipe) -> None:
+        row = self.table.rowCount()
+        recipe.ui_row = row
+        self._table_recipes.append(recipe)
+        self.table.insertRow(row)
+        values = [
+            recipe.operation,
+            recipe.video_type,
+            recipe.family or recipe.challenge_id,
+            recipe.grammar or "—",
+            str(recipe.count),
+            recipe.delivery if recipe.video_type != "batch" else "—",
+            str(recipe.workers),
+            recipe.status,
+        ]
+        for index, value in enumerate(values):
+            item = QTableWidgetItem(value)
+            item.setFlags(item.flags() & ~Qt.ItemIsEditable)
+            self.table.setItem(row, index, item)
+        state = "done" if recipe.status == "YA PRODUCIDO" else "pending"
+        self._style_row(row, state)
+        if state != "done":
+            self.table.selectRow(row)
+
+    def _reindex_rows(self) -> None:
+        for index, recipe in enumerate(self._table_recipes):
+            recipe.ui_row = index
+
+    def _style_row(self, row: int, state: str) -> None:
+        if row < 0 or row >= self.table.rowCount():
+            return
+        if state == "done":
+            foreground = Qt.GlobalColor.darkGray
+        elif state == "error":
+            foreground = Qt.GlobalColor.red
+        else:
+            foreground = Qt.GlobalColor.white
+        for col in range(self.table.columnCount()):
+            item = self.table.item(row, col)
+            if item:
+                item.setForeground(foreground)
+                item.setToolTip("Producción completada" if state == "done" else "")
+
+    def _set_recipe_status(self, recipe: Recipe, status: str, state: str = "pending") -> None:
+        recipe.status = status
+        row = recipe.ui_row
+        if 0 <= row < self.table.rowCount():
+            self.table.item(row, 7).setText(status)
+            self._style_row(row, state)
+            self.table.selectRow(row)
+
+    def remove_selected(self) -> None:
+        if self.proc:
+            return
+        row = self.table.currentRow()
+        if row < 0 or row >= len(self._table_recipes):
+            return
+        recipe = self._table_recipes[row]
+        if recipe in self.queue:
+            self.queue.remove(recipe)
+        self._table_recipes.pop(row)
+        self.table.removeRow(row)
+        self._reindex_rows()
+        self._set_status("Elemento eliminado")
+
+    def _clear(self) -> None:
+        if self.proc:
+            return
+        self.queue.clear()
+        self._table_recipes.clear()
+        self.table.setRowCount(0)
+        self._set_status("Cola vacía")
+
+    def start(self) -> None:
+        if self.proc or not self.queue:
+            return
+        self.generate.setEnabled(False)
+        self._run_recipe()
+
+    def _run_recipe(self) -> None:
+        if not self.queue:
+            self.current_recipe = None
+            self.generate.setEnabled(True)
+            self._set_status("Producción finalizada")
+            self.log.appendPlainText("\n=== PRODUCCIÓN FINALIZADA ===")
+            return
+        self.current_recipe = self.queue[0]
+        self.jobs = []
+        self.job_total = 0
+        self.job_completed = 0
+        recipe = self.current_recipe
+        if recipe.ui_row >= 0:
+            self.table.selectRow(recipe.ui_row)
+        if recipe.operation == "RUN_REGRESSION":
+            self._set_recipe_status(recipe, "REGRESIÓN")
+            self._launch_python_regression()
+            return
+        if recipe.operation != "A_LA_CARTA":
+            if recipe.operation == "REVIEW_CHALLENGES":
+                script = PROJECT / "tools" / "qa" / "c11" / "run_c11c_challenge_bulk_qa.ps1"
+                args = ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", str(script)]
+                if recipe.resume:
+                    args.append("-Resume")
+                self._set_recipe_status(recipe, "REVIEW CHALLENGES")
+                self._launch(args)
+                return
+
+            script = PROJECT / "tools" / "prototypes" / "c11c_bulk" / "run_c11c_art_direction_batch_v4.ps1"
+            args = ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", str(script), "-Workers", str(recipe.workers)]
+            mapping = {
+                "REVIEW_LOOPS": ["-Loops"],
+                "REVIEW_DRILLS": ["-Drills"],
+                "REVIEW_LONGFORMS": ["-Longforms"],
+                "REVIEW_LOOPS_DRILLS": ["-Loops", "-Drills"],
+                "REVIEW_LOOPS_LONGFORMS": ["-Loops", "-Longforms"],
+                "REVIEW_DRILLS_LONGFORMS": ["-Drills", "-Longforms"],
+                "REVIEW_ALL": ["-All"],
+            }
+            args += mapping.get(recipe.operation, [])
+            if recipe.resume:
+                args.append("-Resume")
+            if recipe.reset:
+                args.append("-Reset")
+            if recipe.export_gif:
+                args.append("-ExportGif")
+            if recipe.no_sound:
+                args.append("-NoSound")
+            self._set_recipe_status(recipe, "REVIEW")
+            self._launch(args)
+            return
+
+        if recipe.video_type == "challenges":
+            self.jobs = list(recipe.manual_seeds) if recipe.manual_seeds else self._new_unique_seeds(recipe.count)
+            self.job_total = len(self.jobs)
+            self._run_challenge_job()
+            return
+        if recipe.video_type == "visual_drills":
+            self.jobs = list(recipe.manual_seeds) if recipe.manual_seeds else self._new_unique_seeds(recipe.count)
+            self.job_total = len(self.jobs)
+            self._run_content_job()
+            return
+        self._prepare_loop_jobs()
+
+    def _prepare_loop_jobs(self) -> None:
+        recipe = self.current_recipe
+        if recipe is None:
+            return
+        if recipe.manual_seeds:
+            self.jobs = list(recipe.manual_seeds)
+            self.job_total = len(self.jobs)
+            self._run_content_job()
+            return
+        if recipe.grammar == "auto" and not recipe.targets:
+            existing = self._existing(recipe.family)
+            while len(self.jobs) < recipe.count:
+                seed = random.randint(1, 2_147_483_646)
+                if seed not in existing and seed not in self.jobs:
+                    self.jobs.append(seed)
+            self.job_total = len(self.jobs)
+            self.log.appendPlainText("[SEEDS RANDOM] " + ", ".join(map(str, self.jobs)))
+            self._run_content_job()
+            return
+
+        request = {
+            "family": FAMILIES[recipe.family]["internal"],
+            "count": recipe.count,
+            "target": dict(recipe.targets),
+            "excluded_seeds": sorted(self._existing(recipe.family)),
+            "max_candidates": 300_000,
+            "start_seed": random.randint(1, 2_147_483_646),
+        }
+        if recipe.grammar != "auto":
+            request["target"]["grammar_name"] = recipe.grammar
+
+        self.probe_file = ROOT / ".runtime" / "request.json"
+        self.probe_file.parent.mkdir(parents=True, exist_ok=True)
+        self.probe_file.write_text(json.dumps(request, ensure_ascii=False), encoding="utf-8")
+        answer = ROOT / ".runtime" / "response.json"
+        answer.unlink(missing_ok=True)
+        self._set_status("Buscando seeds compatibles…")
+        self.log.appendPlainText("[SEED PLANNER] búsqueda en curso")
+
+        self.proc = QProcess(self)
+        self.proc.setWorkingDirectory(str(PROJECT))
+        self.proc.setProgram("godot")
+        self.proc.setArguments(["--headless", "--path", str(PROJECT), "--script", str(ROOT / "seed_probe.gd"), "--", str(self.probe_file)])
+        self.proc.readyReadStandardOutput.connect(self._out)
+        self.proc.readyReadStandardError.connect(self._err)
+        self.proc.finished.connect(self._probe_done)
+        self.proc.start()
+
+    def _probe_done(self, code: int, _status: Any) -> None:
+        process = self.proc
+        self.proc = None
+        self._out()
+        self._err()
+        if process:
+            process.deleteLater()
+        answer = ROOT / ".runtime" / "response.json"
+        payload: dict[str, Any] | None = None
+        if answer.exists():
+            try:
+                payload = json.loads(answer.read_text(encoding="utf-8"))
+            except (OSError, json.JSONDecodeError) as exc:
+                payload = {"ok": False, "error": str(exc)}
+            answer.unlink(missing_ok=True)
+        if self.probe_file:
+            self.probe_file.unlink(missing_ok=True)
+            self.probe_file = None
+        if code != 0 or not payload or not payload.get("ok"):
+            self._finish_error((payload or {}).get("error", f"seed_probe exit {code}"))
+            return
+        self.jobs = [int(item["seed"]) for item in payload["results"]]
+        self.job_total = len(self.jobs)
+        self.log.appendPlainText("[SEEDS PLANNER] " + ", ".join(map(str, self.jobs)))
+        self._run_content_job()
+
+    def _new_unique_seeds(self, count: int) -> list[int]:
+        seeds: list[int] = []
+        seen: set[int] = set()
+        while len(seeds) < count:
+            value = random.randint(1, 2_147_483_646)
+            if value not in seen:
+                seen.add(value)
+                seeds.append(value)
+        return seeds
+
+    def _existing(self, family: str) -> set[int]:
+        base = PROJECT / "artifacts" / "production" / "audiovisual" / family
+        existing: set[int] = set()
+        if base.exists():
+            for path in base.glob("*_seed_*"):
+                match = re.search(r"_seed_(\d+)", path.name)
+                if match:
+                    existing.add(int(match.group(1)))
+        return existing
+
+    def _run_challenge_job(self) -> None:
+        if not self.jobs:
+            self._job_complete()
+            return
+        recipe = self.current_recipe
+        if recipe is None:
+            return
+        seed = self.jobs.pop(0)
+        recipe.current_seed = seed
+        self.job_completed = self.job_total - len(self.jobs) - 1
+        script = PROJECT / "tools" / "prototypes" / "c11c_bulk" / "run_c11c_challenge_production.ps1"
+        args = [
+            "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", str(script),
+            "-ChallengeId", recipe.challenge_id, "-Seed", str(seed),
+            "-DeliveryProfile", recipe.delivery,
+            "-OutputRoot", str(PROJECT / "artifacts" / "production" / "audiovisual" / "challenges" / recipe.challenge_id / f"seed_{seed}"),
+        ]
+        if recipe.no_sound:
+            args.append("-NoSound")
+        if recipe.force:
+            args.append("-Force")
+        if recipe.export_gif:
+            args.append("-ExportGif")
+        self._set_recipe_status(recipe, f"GENERANDO {self.job_completed + 1}/{self.job_total} · {seed}")
+        self._launch(args)
+
+    def _run_content_job(self) -> None:
+        if not self.jobs:
+            self._job_complete()
+            return
+        recipe = self.current_recipe
+        if recipe is None:
+            return
+        seed = self.jobs.pop(0)
+        recipe.current_seed = seed
+        job_index = self.job_total - len(self.jobs)
+        if recipe.video_type == "visual_drills":
+            params = recipe.targets or {}
+            tier = int(recipe.grammar) if recipe.grammar not in ("auto", "AUTO", "") else random.randint(1, 5)
+            speed = float(params.get("speed_multiplier", random.uniform(*DRILLS[recipe.family].get("random_speed_range", [1.0, 1.0]))))
+            pacing = str(params.get("pacing_mode", random.choice(["constant", "accelerating", "pulsed"]))) if recipe.family == "tracking" else "constant"
+            script = ROOT / "run_visual_drill_production.ps1"
+            args = [
+                "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", str(script),
+                "-Family", recipe.family, "-Seed", str(seed), "-DifficultyTier", str(tier),
+                "-SpeedMultiplier", f"{speed:.5f}", "-PacingMode", pacing,
+                "-DeliveryProfile", recipe.delivery,
+            ]
+        else:
+            script = PROJECT / "tools" / "prototypes" / "c11c_bulk" / "run_c11c_production.ps1"
+            args = [
+                "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", str(script),
+                "-Family", recipe.family, "-Seed", str(seed), "-DeliveryProfile", recipe.delivery,
+            ]
+            if recipe.grammar and recipe.grammar != "auto":
+                args += ["-Grammar", recipe.grammar]
+        if recipe.no_sound:
+            args.append("-NoSound")
+        if recipe.no_footer:
+            args.append("-NoFooter")
+        if recipe.force:
+            args.append("-Force")
+        if recipe.export_gif:
+            args.append("-ExportGif")
+        self._set_recipe_status(recipe, f"GENERANDO {job_index}/{self.job_total} · {seed}")
+        self._launch(args)
+
+    def _job_complete(self) -> None:
+        recipe = self.current_recipe
+        if recipe is None:
+            return
+        failed = len(recipe.failed_seeds)
+        if failed:
+            successful = max(0, self.job_total - failed)
+            self._set_recipe_status(recipe, f"FINALIZADA {successful}/{self.job_total} · {failed} ERROR", "error")
+            recipe.completed = False
+            self._set_status(f"Elemento finalizado con {failed} error(es)")
+        else:
+            self._set_recipe_status(recipe, "COMPLETADA", "done")
+            recipe.completed = True
+            self._set_status("Elemento completado")
+        recipe.current_seed = None
+        if recipe in self.queue:
+            self.queue.remove(recipe)
+        self.current_recipe = None
+        self.jobs = []
+        self.job_total = 0
+        self.job_completed = 0
+        self._run_recipe()
+        if not self.queue:
+            self.table.clearSelection()
+
+    def _launch_python_regression(self) -> None:
+        self.log.appendPlainText("[LAUNCH] python .\\tests\\run_all.py")
+        self.proc = QProcess(self)
+        self.proc.setWorkingDirectory(str(PROJECT))
+        self.proc.setProgram(sys.executable)
+        self.proc.setArguments([str(PROJECT / "tests" / "run_all.py")])
+        self.proc.readyReadStandardOutput.connect(self._out)
+        self.proc.readyReadStandardError.connect(self._err)
+        self.proc.finished.connect(self._done)
+        self.proc.errorOccurred.connect(self._process_error)
+        self.proc.start()
+
+    def _launch(self, args: list[str]) -> None:
+        if self.proc:
+            return
+        self.log.appendPlainText("\n[LAUNCH] powershell.exe " + " ".join(self._display_arg(a) for a in args))
+        self.proc = QProcess(self)
+        self.proc.setWorkingDirectory(str(PROJECT))
+        self.proc.setProgram("powershell.exe")
+        self.proc.setArguments(args)
+        self.proc.readyReadStandardOutput.connect(self._out)
+        self.proc.readyReadStandardError.connect(self._err)
+        self.proc.finished.connect(self._done)
+        self.proc.errorOccurred.connect(self._process_error)
+        self.proc.start()
+
+    @staticmethod
+    def _display_arg(value: str) -> str:
+        return f'"{value}"' if any(ch.isspace() for ch in value) else value
+
+    def _out(self) -> None:
+        if self.proc:
+            data = bytes(self.proc.readAllStandardOutput()).decode("utf-8", errors="replace")
+            if data:
+                self.log.appendPlainText(data.rstrip())
+
+    def _err(self) -> None:
+        if self.proc:
+            data = bytes(self.proc.readAllStandardError()).decode("utf-8", errors="replace")
+            if data:
+                self.log.appendPlainText("[STDERR] " + data.rstrip())
+
+    def _process_error(self, error: QProcess.ProcessError) -> None:
+        if self.proc is None:
+            return
+        if error != QProcess.ProcessError.FailedToStart:
+            return
+        self._out()
+        self._err()
+        process = self.proc
+        self.proc = None
+        if process:
+            process.deleteLater()
+        self._finish_error("No se pudo iniciar el proceso externo (QProcess FailedToStart).")
+
+    def _finish_error(self, message: str) -> None:
+        recipe = self.current_recipe
+        self.log.appendPlainText("[ERROR] " + message)
+        if recipe is None:
+            self.generate.setEnabled(bool(self.queue))
+            self._set_status("Proceso fallido")
+            self._run_recipe()
+            return
+
+        # A single failed seed must not poison the rest of the queue.
+        if recipe.operation == "A_LA_CARTA" and recipe.current_seed is not None:
+            failed_seed = recipe.current_seed
+            if failed_seed not in recipe.failed_seeds:
+                recipe.failed_seeds.append(failed_seed)
+            remaining = len(self.jobs)
+            recipe.current_seed = None
+            if remaining:
+                self._set_recipe_status(
+                    recipe,
+                    f"ERROR {failed_seed} · CONTINÚA {self.job_total - remaining}/{self.job_total}",
+                    "error",
+                )
+                self._set_status(f"Seed {failed_seed} falló; continúa la cola")
+                self.log.appendPlainText(
+                    f"[JOB-ERROR] seed={failed_seed} registrado; continuando con {remaining} job(s) restantes."
+                )
+                if recipe.video_type == "challenges":
+                    self._run_challenge_job()
+                else:
+                    self._run_content_job()
+                return
+
+            # Last seed failed: finalize this recipe and continue with the next one.
+            self._job_complete()
+            return
+
+        # Batch/utility failure: isolate this recipe and continue with the next queue item.
+        self._set_recipe_status(recipe, "ERROR", "error")
+        recipe.completed = False
+        recipe.current_seed = None
+        self.jobs = []
+        self.job_total = 0
+        self.job_completed = 0
+        if recipe in self.queue:
+            self.queue.remove(recipe)
+        self.current_recipe = None
+        self.generate.setEnabled(bool(self.queue))
+        self._set_status("Proceso fallido · cola continua")
+        self._run_recipe()
+
+    def _done(self, code: int, _status: Any) -> None:
+        self._out()
+        self._err()
+        process = self.proc
+        self.proc = None
+        if process:
+            process.deleteLater()
+        if code != 0:
+            self._finish_error(f"Launcher terminó con código {code}. Revisa el LOG.")
+            return
+
+        recipe = self.current_recipe
+        if recipe is None:
+            return
+        recipe.current_seed = None
+        if recipe.operation == "RUN_REGRESSION":
+            self._job_complete()
+            return
+        if recipe.video_type == "challenges":
+            self._run_challenge_job()
+            return
+        if recipe.operation == "A_LA_CARTA":
+            self._run_content_job()
+            return
+        self._job_complete()
+
+    def _check_backend(self) -> None:
+        profile_source = PROJECT / SCHEMA["backend_profile_source"]
+        if not profile_source.exists():
+            self._set_status("BACKEND no encontrado")
+            self.generate.setEnabled(False)
+            return
+        actual = hashlib.sha256(profile_source.read_bytes()).hexdigest()
+        expected = SCHEMA["backend_profile_sha256"]
+        backend_ok = actual == expected
+        delivery_ok = DELIVERY_FILE.exists() and bool(DELIVERY_PROFILES)
+        challenge_ok = len(CHALLENGES) == 9
+        if backend_ok and delivery_ok and challenge_ok:
+            self._set_status("BACKEND 2.16.9 FROZEN · DELIVERY OK · CHALLENGES 9/9")
+        else:
+            flags = []
+            if not backend_ok:
+                flags.append("BACKEND HASH MISMATCH")
+            if not delivery_ok:
+                flags.append("DELIVERY CONFIG MISSING")
+            if not challenge_ok:
+                flags.append(f"CHALLENGES {len(CHALLENGES)}/9")
+            self._set_status(" · ".join(flags))
+            self.generate.setEnabled(False)
+
+
+STYLE = """
+QWidget{background:#080d14;color:#e7f7ff;font-family:\"Segoe UI\";font-size:12px;}
+QLabel{background:transparent;color:#d9edf5;}
+QGroupBox{background:#0d141d;border:1px solid #234353;border-radius:8px;margin-top:8px;padding:8px;font-weight:700;color:#69f5ff;}
+QGroupBox::title{subcontrol-origin:margin;left:9px;padding:0 5px;color:#69f5ff;}
+QComboBox,QLineEdit,QSpinBox,QDoubleSpinBox{background:#0a1119;color:#e7f7ff;border:1px solid #315365;border-radius:5px;min-height:34px;padding:0 8px;font-size:13px;selection-background-color:#ff2bd6;}
+QComboBox:focus,QLineEdit:focus,QSpinBox:focus,QDoubleSpinBox:focus{border:1px solid #00f0ff;}
+QComboBox::drop-down{width:28px;border-left:1px solid #244655;background:#111c27;}
+QComboBox QAbstractItemView{background:#0d141d;color:#e7f7ff;border:1px solid #00aeca;selection-background-color:#ff2bd6;selection-color:#ffffff;padding:4px;}
+QCheckBox{min-height:26px;spacing:5px;color:#cbeaf2;}
+QCheckBox::indicator{width:16px;height:16px;border:1px solid #356274;border-radius:3px;background:#091019;}
+QCheckBox::indicator:checked{background:#00d9ff;border:1px solid #00f0ff;}
+QPushButton{background:#101a24;color:#dffaff;border:1px solid #325668;border-radius:6px;min-height:36px;padding:0 12px;font-weight:700;}
+QPushButton:hover{background:#162532;border-color:#00d9ff;color:#ffffff;}
+QPushButton#Primary{background:#00c8e6;color:#031018;border-color:#00f0ff;min-height:44px;font-size:14px;}
+QPushButton#Primary:hover{background:#45eaff;border-color:#ff2bd6;}
+QPushButton#Primary:pressed{background:#ff2bd6;color:#ffffff;border-color:#ff71df;}
+QTableWidget,QPlainTextEdit{background:#09111a;color:#dffaff;border:1px solid #274655;border-radius:6px;}
+QTableWidget::item{padding:7px 6px;border-bottom:1px solid #142632;}
+QTableWidget::item:selected{background:#ff2bd6;color:#ffffff;border:1px solid #ff71df;}
+QHeaderView::section{background:#101c27;color:#69f5ff;padding:7px;font-weight:800;border:0;border-right:1px solid #203643;min-height:25px;}
+QScrollArea{border:0;background:#0d141d;}
+QScrollBar:vertical{width:11px;background:#09111a;}
+QScrollBar::handle:vertical{background:#284a5a;min-height:28px;border-radius:5px;}
+QScrollBar::handle:vertical:hover{background:#00b9d5;}
+QSlider::groove:horizontal{height:5px;border-radius:2px;background:#213441;}
+QSlider::sub-page:horizontal{background:#00cfe8;border-radius:2px;}
+QSlider::handle:horizontal{width:15px;margin:-5px 0;border-radius:8px;background:#ff2bd6;border:1px solid #ff8be8;}
+QSlider::handle:horizontal:hover{background:#ff71df;}
+QLabel#SliderValue{color:#a9f7ff;font-family:"Consolas";font-size:11px;}
+QStatusBar{background:#070c12;color:#6ff5ff;border-top:1px solid #1e3743;}
+"""
+
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    app.setFont(QFont("Segoe UI", 10))
+    app.setStyleSheet(STYLE)
+    window = MainWindow()
+    window.show()
+    raise SystemExit(app.exec())

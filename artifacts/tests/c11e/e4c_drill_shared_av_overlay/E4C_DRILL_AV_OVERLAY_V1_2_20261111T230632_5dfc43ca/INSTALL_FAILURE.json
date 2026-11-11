@@ -1,0 +1,26 @@
+{
+    "schema":  "C11E-E4C-DRILL-SHARED-AV-INSTALL-FAILURE-V1_2",
+    "status":  "FAIL_CLOSED",
+    "stage":  "TRANSACTION_START",
+    "run_id":  "E4C_DRILL_AV_OVERLAY_V1_2_20261111T230632_5dfc43ca",
+    "error":  "Excepción al llamar a \"Replace\" con los argumentos \"4\": \"La ruta de acceso no tiene un formato válido.\"",
+    "script_stack_trace":  "en \u003cScriptBlock\u003e, C:\\Users\\vinxe\\AppData\\Local\\Temp\\C11E_E4C_DRILL_SHARED_AV_EXECUTION_V1_2_5b597f071ad4494cbd27a542126eac61\\INSTALL_C11E_E4C_DRILL_SHARED_AV_EXECUTION_V1_2.ps1: línea 393",
+    "rollback":  "COMPLETE",
+    "journal":  [
+                    {
+                        "operation_id":  "OP-001",
+                        "kind":  "REPLACE",
+                        "destination":  "c11c-suite/c11c-producer/main.py",
+                        "pre_sha256":  "ddd9ce281b5da840042f1a03a63157758500cdaef70aa40e1e32e14ec1253fdf",
+                        "post_sha256":  "86eeca0c3fc37105c1202295db3f27e6dc249f4eafdcb48c5709cd2d76164393",
+                        "backup_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_drill_shared_av_overlay\\E4C_DRILL_AV_OVERLAY_V1_2_20261111T230632_5dfc43ca\\backups\\c11c-suite\\c11c-producer\\main.py",
+                        "state":  "JOURNALED_BEFORE_MUTATION",
+                        "rollback":  "ALREADY_PREIMAGE"
+                    }
+                ],
+    "git_checks":  "SKIPPED",
+    "commits":  "OPERATOR_MANAGED",
+    "c11c_source_mutation":  false,
+    "production_dispatch":  false,
+    "release_authority":  "NONE"
+}

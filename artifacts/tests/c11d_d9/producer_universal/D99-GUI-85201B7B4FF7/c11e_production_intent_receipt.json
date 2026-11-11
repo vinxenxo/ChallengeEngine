@@ -1,0 +1,19 @@
+{
+  "schema": "C11-E-E1-PRODUCTION-INTENT-RECEIPT-V1",
+  "status": "PASS_E1_PREPARATION_ONLY",
+  "request_id": "D99-GUI-85201B7B4FF7",
+  "intent_sha256": "30d5c4873c5cfb1ff100903dfd70e99eee15505e467be1b4abcb1262f4f152b6",
+  "request_hash": "a009ba20f6fdbf4ca346d18f11d34708fe4aba38a3e4fce6bfe16e2fe7a5676d",
+  "editorial_hash": "e137d187e70a9767f769929b777ee777a65388706b672c55a06b9bb3aca5e078",
+  "plan_hash": "27609010130853411c9693ff2a1b8bdb826112777e776c2ef78cb78bd8807cf7",
+  "gui_cli_parity": "PASS",
+  "loop_family_stage_contract_sha256": null,
+  "drill_family_stage_contract_sha256": "e901f0892ad8edfd857b7fff941e4c30f44d1b49d42e7ec65e1bfc1b3fb4b921",
+  "drill_dynamic_request_binding_preview_sha256": "4bf29a17bcdbc26b82d31cd0804aab8abcfead67ad6c83c74426317de56e15d5",
+  "renderer_input_emitted": false,
+  "renderer_dispatch_invoked": false,
+  "production_execution": false,
+  "media_created": false,
+  "release_authority": "NONE",
+  "evidence_root": "artifacts\\tests\\c11d_d9\\producer_universal\\D99-GUI-85201B7B4FF7"
+}
