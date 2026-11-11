@@ -1,0 +1,16 @@
+{
+    "schema":  "C11E-E4C-DRILL-VISUAL-PIXEL-CONSUMER-INSTALL-FAILURE-V4",
+    "status":  "FAILED_CLOSED",
+    "run_id":  "E4C_DRILL_VISUAL_PIXEL_CONSUMER_V4_20261111T001315_ed8f8d25",
+    "stage":  "STAGED_VALIDATION",
+    "error":  "Python 3.13 + Pillow/RAQM preflight failed; inspect C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_drill_visual_pixel_consumer\\E4C_DRILL_VISUAL_PIXEL_CONSUMER_V4_20261111T001315_ed8f8d25\\PYTHON_PILLOW_RUNTIME.stderr.log; no repository write occurred",
+    "journal":  [
+
+                ],
+    "rollback_status":  "NOT_NEEDED",
+    "renderer":  "OFF",
+    "media_created":  false,
+    "release_authority":  "NONE",
+    "staging_root":  "C:\\Users\\vinxe\\AppData\\Local\\Temp\\C11EDRILLPIX_8f242062",
+    "evidence_directory":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_drill_visual_pixel_consumer\\E4C_DRILL_VISUAL_PIXEL_CONSUMER_V4_20261111T001315_ed8f8d25"
+}

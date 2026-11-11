@@ -1,0 +1,16 @@
+{
+    "schema":  "C11E-E4C-DRILL-VISUAL-PIXEL-CONSUMER-INSTALL-FAILURE-V7",
+    "status":  "FAILED_CLOSED",
+    "run_id":  "E4C_DRILL_VISUAL_PIXEL_CONSUMER_V7_20261111T005427_2ca2a4a6",
+    "stage":  "STAGED_VALIDATION",
+    "error":  "Existing Qt runtime preflight failed for C:\\Users\\vinxe\\AppData\\Local\\Programs\\Python\\Python313\\python.exe. Required: Python 3.13.x + existing PySide6 \u003e=6.8,\u003c7 + working QImage/QPainter with offscreen platform. Observed: Traceback (most recent call last):\r\n  File \"\u003cstring\u003e\", line 1, in \u003cmodule\u003e\r\n    import sys,json; from PySide6 import __version__ as pver; from PySide6.QtCore import QT_VERSION_STR; from PySide6.QtGui import QGuiApplication,QImage,QPainter; app=QGuiApplication.instance() or QGuiApplication([\"C11E-E4C-QT-PROBE\"]); image=QImage(8,8,QImage.Format.Format_RGB888); painter=QPainter(image); active=bool(painter.isActive()); painter.end(); version=tuple(int(x) for x in pver.split(\".\")[:2]); good=sys.version_info[:2] == (3,13) and version \u003e= (6,8) and version \u003c (7,0) and not image.isNull() and active; print(json.dumps({\"executable\":sys.executable,\"python\":\"{}.{}.{}\".format(*sys.version_info[:3]),\"pyside6\":pver,\"qt\":QT_VERSION_STR,\"qimage\":not image.isNull(),\"qpainter\":active})); raise SystemExit(0 if good else 42)\r\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\nImportError: cannot import name \u0027QT_VERSION_STR\u0027 from \u0027PySide6.QtCore\u0027 (C:\\Users\\vinxe\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\PySide6\\QtCore.pyd). This installer NEVER installs or upgrades Python packages and never changes shared environment dependencies.",
+    "journal":  [
+
+                ],
+    "rollback_status":  "NOT_NEEDED",
+    "renderer":  "OFF",
+    "media_created":  false,
+    "release_authority":  "NONE",
+    "staging_root":  "C:\\Users\\vinxe\\AppData\\Local\\Temp\\C11EDRILLPIX_05dcadaf",
+    "evidence_directory":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_drill_visual_pixel_consumer\\E4C_DRILL_VISUAL_PIXEL_CONSUMER_V7_20261111T005427_2ca2a4a6"
+}

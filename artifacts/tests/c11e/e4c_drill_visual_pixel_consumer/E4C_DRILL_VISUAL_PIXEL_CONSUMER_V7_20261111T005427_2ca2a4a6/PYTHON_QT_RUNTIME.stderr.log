@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import sys,json; from PySide6 import __version__ as pver; from PySide6.QtCore import QT_VERSION_STR; from PySide6.QtGui import QGuiApplication,QImage,QPainter; app=QGuiApplication.instance() or QGuiApplication(["C11E-E4C-QT-PROBE"]); image=QImage(8,8,QImage.Format.Format_RGB888); painter=QPainter(image); active=bool(painter.isActive()); painter.end(); version=tuple(int(x) for x in pver.split(".")[:2]); good=sys.version_info[:2] == (3,13) and version >= (6,8) and version < (7,0) and not image.isNull() and active; print(json.dumps({"executable":sys.executable,"python":"{}.{}.{}".format(*sys.version_info[:3]),"pyside6":pver,"qt":QT_VERSION_STR,"qimage":not image.isNull(),"qpainter":active})); raise SystemExit(0 if good else 42)
+                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ImportError: cannot import name 'QT_VERSION_STR' from 'PySide6.QtCore' (C:\Users\vinxe\AppData\Local\Programs\Python\Python313\Lib\site-packages\PySide6\QtCore.pyd)

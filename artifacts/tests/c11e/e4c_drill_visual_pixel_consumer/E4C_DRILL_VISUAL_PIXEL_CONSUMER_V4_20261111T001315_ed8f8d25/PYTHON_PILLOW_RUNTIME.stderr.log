@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import sys,json; from PIL import __version__ as pver, features; raqm=bool(features.check_feature("raqm")); print(json.dumps({"python":"{}.{}.{}".format(*sys.version_info[:3]),"pillow":pver,"raqm":raqm})); raise SystemExit(0 if sys.version_info[:2] == (3,13) and raqm else 42)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'PIL'

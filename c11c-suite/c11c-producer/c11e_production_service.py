@@ -273,6 +273,120 @@ def _drill_source_text(root: Path, relative: str) -> str:
     return (root / Path(*PurePosixPath(relative).parts)).read_text(encoding="utf-8-sig")
 
 
+A3_LINEAGE_BRIDGE_REL = "docs/current/e/C11E_E4C_A3_REVIEW_MANIFEST_LINEAGE_RECONCILIATION_20261110_V2.json"
+A3_LINEAGE_BRIDGE_SHA256 = "aec0e387f167f4b821b7d94f06a67f78f498be939fe3cda857d20ce550819cac"
+A3_HISTORICAL_REVIEW_MANIFEST_SHA256 = "2075da9c33c689861a68d3bd8fb19b7ed593c6e76010ab200880746aa6d1a470"
+A3_CURRENT_REVIEW_MANIFEST_SHA256 = "5702092bc1c88e4b333dd30cc150f0d383cd2006121037b0198905c75a3af795"
+A3_FIELD_WINDOW_PROPOSAL_SHA256 = "609a4d183aac07c2cbe1abaf41444160fdd137217faffbead3aef618320d57dc"
+A3_POLICY_DECISION_RECORD_SHA256 = "49efd5494f351f09d7597c4699e9c12e361b36884b6bfadacd822e6ff1480e04"
+
+
+def _resolve_a3_review_manifest_lineage(
+    root: Path, window_proposal: Mapping[str, Any], review_manifest_pin: Mapping[str, Any]
+) -> dict[str, Any]:
+    """Resolve the immutable A.3 predecessor reference through the attested V2 bridge.
+
+    The A.3 proposal remains byte-identical and still names the historical review-manifest
+    preimage. V5 installed the reviewed successor as a single-pointer refresh and archived
+    the exact preimage. This function verifies that attestation rather than mutating A.3.
+    """
+    def read_json(relative: str) -> dict[str, Any]:
+        try:
+            value = json.loads((root / Path(*PurePosixPath(relative).parts)).read_text(encoding="utf-8-sig"))
+        except Exception as exc:
+            raise C11EProductionServiceError(f"A.3 lineage bridge JSON invalid: {relative}: {exc}") from exc
+        if not isinstance(value, dict):
+            raise C11EProductionServiceError(f"A.3 lineage bridge record must be an object: {relative}")
+        return value
+
+    bridge_path = root / Path(*PurePosixPath(A3_LINEAGE_BRIDGE_REL).parts)
+    bridge_identity = _file_identity(root, A3_LINEAGE_BRIDGE_REL)
+    if bridge_identity["sha256"] != A3_LINEAGE_BRIDGE_SHA256:
+        raise C11EProductionServiceError("A.3 lineage bridge SHA-256 mismatch")
+    bridge = read_json(A3_LINEAGE_BRIDGE_REL)
+    if bridge.get("schema") != "C11E-E4C-A3-REVIEW-MANIFEST-LINEAGE-RECONCILIATION-V2" or bridge.get("status") != "ATTESTED_SINGLE_SOURCE_LINEAGE_POINTER_REFRESH_NO_POLICY_CHANGE":
+        raise C11EProductionServiceError("A.3 lineage bridge schema/status mismatch")
+
+    proposal_path = "definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json"
+    proposal_identity = _file_identity(root, proposal_path)
+    if proposal_identity["sha256"] != A3_FIELD_WINDOW_PROPOSAL_SHA256:
+        raise C11EProductionServiceError("A.3 field-window proposal is not the approved immutable proposal")
+    policy = bridge.get("approved_policy", {})
+    a3 = policy.get("a3", {})
+    decision_ref = policy.get("a3_decision_record", {})
+    if a3.get("path") != proposal_path or a3.get("sha256") != A3_FIELD_WINDOW_PROPOSAL_SHA256 or a3.get("decision") != "APPROVE_AS_PROPOSED":
+        raise C11EProductionServiceError("A.3 lineage bridge does not bind the exact approved field-window proposal")
+    if decision_ref.get("sha256") != A3_POLICY_DECISION_RECORD_SHA256:
+        raise C11EProductionServiceError("A.3 lineage bridge references another operator decision record")
+    decision_record = read_json(decision_ref["path"])
+    if _file_identity(root, decision_ref["path"])["sha256"] != A3_POLICY_DECISION_RECORD_SHA256:
+        raise C11EProductionServiceError("A.3 operator decision record SHA-256 mismatch")
+    a3_decisions = {row.get("decision_id"): row for row in decision_record.get("decisions", []) if isinstance(row, Mapping)}
+    accepted = a3_decisions.get("A.3_LOOP_DRILL_EDITORIAL_WINDOWS")
+    if not isinstance(accepted, Mapping) or accepted.get("decision") != "APPROVE_AS_PROPOSED" or accepted.get("proposal_sha256") != A3_FIELD_WINDOW_PROPOSAL_SHA256:
+        raise C11EProductionServiceError("A.3 exact-hash operator approval is missing")
+
+    lineage = bridge.get("review_manifest_lineage", {})
+    manifest_rel = "definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1.json"
+    archive_rel = "docs/history/c11e/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1_PRE_D98_LINEAGE_REFRESH_20261106.json"
+    if lineage.get("path") != manifest_rel or lineage.get("historical_archive_path") != archive_rel:
+        raise C11EProductionServiceError("A.3 bridge review-manifest path identity mismatch")
+    if lineage.get("historical_sha256") != A3_HISTORICAL_REVIEW_MANIFEST_SHA256 or lineage.get("current_sha256") != A3_CURRENT_REVIEW_MANIFEST_SHA256:
+        raise C11EProductionServiceError("A.3 bridge historical/current review-manifest hash mismatch")
+    if lineage.get("allowed_json_pointer_difference") != ["/source_lineage/6/sha256"]:
+        raise C11EProductionServiceError("A.3 bridge permits an unexpected structural difference")
+    if lineage.get("installed_transition", {}).get("only_changed_json_pointer") != "/source_lineage/6/sha256":
+        raise C11EProductionServiceError("A.3 installed transition is not the single approved pointer update")
+    archive_identity = _file_identity(root, archive_rel)
+    if archive_identity["sha256"] != A3_HISTORICAL_REVIEW_MANIFEST_SHA256 or archive_identity["bytes"] != 8591:
+        raise C11EProductionServiceError("A.3 historical review-manifest archive is absent or changed")
+    current_identity = _file_identity(root, manifest_rel)
+    if current_identity["sha256"] != A3_CURRENT_REVIEW_MANIFEST_SHA256 or current_identity["bytes"] != 8591:
+        raise C11EProductionServiceError("A.3 current review-manifest postimage is absent or changed")
+    if dict(review_manifest_pin) != current_identity:
+        raise C11EProductionServiceError("A.3 current review-manifest pin differs from bridge attestation")
+
+    historical = read_json(archive_rel)
+    current = read_json(manifest_rel)
+    expected_current = copy.deepcopy(historical)
+    try:
+        old_pointer = expected_current["source_lineage"][6]["sha256"]
+        new_pointer = lineage["new_pointer_value"]
+        expected_current["source_lineage"][6]["sha256"] = new_pointer
+    except Exception as exc:
+        raise C11EProductionServiceError("A.3 review-manifest pointer location is malformed") from exc
+    if old_pointer != lineage.get("old_pointer_value") or new_pointer != "dabb458fc2215156ddb5ebea7e8ebec811098886ce2858733ba9fb13f6075ccb":
+        raise C11EProductionServiceError("A.3 old/new D9.8 pointer values differ from attestation")
+    if current != expected_current:
+        raise C11EProductionServiceError("A.3 review manifest differs beyond the single attested JSON pointer")
+    model_rel = "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json"
+    model_identity = _file_identity(root, model_rel)
+    if model_identity["sha256"] != new_pointer or lineage.get("pointer_target_path") != model_rel:
+        raise C11EProductionServiceError("A.3 new lineage pointer does not target the pinned D9.8 model")
+
+    proposal_lineage = window_proposal.get("source_lineage", [])
+    historical_reference = any(
+        isinstance(row, Mapping) and row.get("path") == manifest_rel and row.get("sha256") == A3_HISTORICAL_REVIEW_MANIFEST_SHA256
+        for row in proposal_lineage
+    )
+    if not historical_reference:
+        raise C11EProductionServiceError("A.3 immutable field-window proposal does not reference the attested historical manifest")
+    return {
+        "status": "PASS_A3_ATTESTED_SINGLE_POINTER_LINEAGE_BRIDGE",
+        "bridge_path": A3_LINEAGE_BRIDGE_REL,
+        "bridge_sha256": A3_LINEAGE_BRIDGE_SHA256,
+        "field_window_proposal_sha256": A3_FIELD_WINDOW_PROPOSAL_SHA256,
+        "historical_manifest_sha256": A3_HISTORICAL_REVIEW_MANIFEST_SHA256,
+        "current_manifest_sha256": A3_CURRENT_REVIEW_MANIFEST_SHA256,
+        "historical_archive_path": archive_rel,
+        "single_pointer_difference": "/source_lineage/6/sha256",
+        "d98_model_sha256": new_pointer,
+        "proposal_bytes_mutated": False,
+        "renderer_admission": False,
+        "release_authority": "NONE",
+    }
+
+
 def _prepare_drill_family_boundary(
     root: Path,
     resolved: Mapping[str, Any],
@@ -367,11 +481,16 @@ def _prepare_drill_family_boundary(
     # Source-derived phase model. These C11-C files remain read-only and the
     # D/E contract records their current identities; it never reimplements them.
     phase_paths = [
+        # The exact eight immutable C11-C presentation owners audited by A.3.
         "core/presentation/CountdownPresentationLogic.gd",
         "core/presentation/VisualDrillPresentationPhaseLogic.gd",
         "core/presentation/VisualDrillPresentationBinder.gd",
         "core/presentation/rendering/VisualContentPlayer.gd",
+        "core/presentation/C11CVisualEditorialLayer.gd",
         "core/presentation/PresentationUI.gd",
+        "core/presentation/SocialUIBinder.gd",
+        "core/presentation/UnifiedSocialFrame.gd",
+        # Read-only D/E launcher and envelope references; neither is modified.
         launcher,
         "c11c-suite/c11c-producer/C11CVisualDrillProducerEnvelopeGenerator.gd",
     ]
@@ -441,6 +560,10 @@ def _prepare_drill_family_boundary(
         *phase_paths,
         *policy_paths,
         *family_paths,
+        A3_LINEAGE_BRIDGE_REL,
+        "definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1.json",
+        "docs/history/c11e/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1_PRE_D98_LINEAGE_REFRESH_20261106.json",
+        "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
     })
     extra_pins = [_file_identity(root, path) for path in sorted(extra_paths)]
 
@@ -475,13 +598,8 @@ def _prepare_drill_family_boundary(
     # selector/source binding and records the C11-C native phase owner.
     review_manifest_pin = _file_identity(root, "definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1.json")
     window_proposal = json.loads((root / policy_paths[1]).read_text(encoding="utf-8-sig"))
-    window_lineage = window_proposal.get("source_lineage", [])
-    review_lineage_match = any(
-        isinstance(row, Mapping)
-        and row.get("path") == review_manifest_pin["path"]
-        and row.get("sha256") == review_manifest_pin["sha256"]
-        for row in window_lineage
-    )
+    lineage_resolution = _resolve_a3_review_manifest_lineage(root, window_proposal, review_manifest_pin)
+    review_lineage_match = lineage_resolution.get("status") == "PASS_A3_ATTESTED_SINGLE_POINTER_LINEAGE_BRIDGE"
 
     phase_contract = {
         "schema": "C11E-E4C-DRILL-NATIVE-PHASE-AND-END-CTA-CONTRACT-V1",
@@ -506,7 +624,8 @@ def _prepare_drill_family_boundary(
             "approved_proposal_sha256": by_id["A.3_LOOP_DRILL_EDITORIAL_WINDOWS"]["proposal_sha256"],
             "field_window_consumption": "NOT_ENABLED_BY_E1",
             "transitive_review_manifest_lineage_current": review_lineage_match,
-            "visual_consumer_status": "BLOCKED_PENDING_CURRENT_POLICY_LINEAGE_RECONCILIATION" if not review_lineage_match else "NOT_IMPLEMENTED_E4C",
+            "lineage_resolution": lineage_resolution,
+            "visual_consumer_status": "READY_FOR_D_OWNED_ISOLATED_VISUAL_CONSUMER_TESTS" if review_lineage_match else "BLOCKED_PENDING_CURRENT_POLICY_LINEAGE_RECONCILIATION",
         },
         "renderer_native_input_emitted": False,
         "media_created": False,
@@ -1221,6 +1340,12 @@ def validate_c11e_production_intent(
         unsigned_phase = {key: value for key, value in phase_contract.items() if key != "phase_contract_sha256"}
         if phase_contract.get("phase_contract_sha256") != sha256(unsigned_phase):
             raise C11EProductionServiceError("E4C Drill phase/END_CTA contract self-hash mismatch")
+        a3_window = phase_contract.get("d_editorial_window_policy", {})
+        lineage_resolution = a3_window.get("lineage_resolution", {})
+        if a3_window.get("transitive_review_manifest_lineage_current") is not True or lineage_resolution.get("status") != "PASS_A3_ATTESTED_SINGLE_POINTER_LINEAGE_BRIDGE" or lineage_resolution.get("bridge_sha256") != A3_LINEAGE_BRIDGE_SHA256:
+            raise C11EProductionServiceError("E4C Drill A.3 transitive policy lineage is not bridged to the installed review-manifest postimage")
+        if a3_window.get("visual_consumer_status") != "READY_FOR_D_OWNED_ISOLATED_VISUAL_CONSUMER_TESTS":
+            raise C11EProductionServiceError("E4C Drill visual consumer is not cleared for isolated D-owned tests")
         if phase_contract.get("end_cta_precedence", {}).get("native_cta_header_authoritative") is not True or phase_contract.get("end_cta_precedence", {}).get("d_adapter_may_override_native_cta") is not False:
             raise C11EProductionServiceError("E4C Drill END_CTA precedence was weakened")
         if stage.get("request_identity", {}).get("bridge_record_hash") != bridge.get("record_hash") or stage.get("request_identity", {}).get("d_only_adapter_envelope_hash") != envelope.get("envelope_hash") or stage.get("request_identity", {}).get("drill_dynamic_binding_preview_sha256") != binding_preview.get("preview_sha256"):

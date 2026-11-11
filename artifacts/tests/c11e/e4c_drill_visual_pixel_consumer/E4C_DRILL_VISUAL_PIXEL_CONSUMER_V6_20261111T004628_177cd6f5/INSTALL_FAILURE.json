@@ -1,0 +1,16 @@
+{
+    "schema":  "C11E-E4C-DRILL-VISUAL-PIXEL-CONSUMER-INSTALL-FAILURE-V6",
+    "status":  "FAILED_CLOSED",
+    "run_id":  "E4C_DRILL_VISUAL_PIXEL_CONSUMER_V6_20261111T004628_177cd6f5",
+    "stage":  "STAGED_VALIDATION",
+    "error":  "Staged PowerShell runner style guide V15 lacks required rule: No new Python dependency",
+    "journal":  [
+
+                ],
+    "rollback_status":  "NOT_NEEDED",
+    "renderer":  "OFF",
+    "media_created":  false,
+    "release_authority":  "NONE",
+    "staging_root":  "C:\\Users\\vinxe\\AppData\\Local\\Temp\\C11EDRILLPIX_71251c32",
+    "evidence_directory":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_drill_visual_pixel_consumer\\E4C_DRILL_VISUAL_PIXEL_CONSUMER_V6_20261111T004628_177cd6f5"
+}

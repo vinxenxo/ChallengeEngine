@@ -1,0 +1,112 @@
+[
+    {
+        "Mode":  "ADD",
+        "Destination":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\current\\e\\C11D_E_BLOCKER_REMEDIATION_REGISTER_20261111_V49.md",
+        "ExpectedPostimage":  "44cb0de6f629a0bf8450293e8966ecf1df679c828400b0fb303536b4e2dbfcae",
+        "Temp":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\current\\e\\C11D_E_BLOCKER_REMEDIATION_REGISTER_20261111_V49.md.e33db1a9c2ae4bc5a69ab2423797a5ff.stage"
+    },
+    {
+        "Mode":  "ADD",
+        "Destination":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\current\\e\\C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261111_V75.md",
+        "ExpectedPostimage":  "124cd803d98bbdadee8d839042834d0ff15cd3688696f0c13905811f1e901015",
+        "Temp":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\current\\e\\C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261111_V75.md.ca3dfa9e34bd430d92e703b42a3d4e63.stage"
+    },
+    {
+        "Mode":  "ADD",
+        "Destination":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\current\\e\\C11E_CURRENT_AUTHORITY_20261111_V129.md",
+        "ExpectedPostimage":  "1930406c9dead8931aee53953de1742f9aabdae5dc877e7938d545e3f4b0a1be",
+        "Temp":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\current\\e\\C11E_CURRENT_AUTHORITY_20261111_V129.md.8f7f5a8743bd4ac9b7dc23bc48165ef0.stage"
+    },
+    {
+        "Mode":  "ADD",
+        "Destination":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\current\\e\\C11E_CURRENT_DOC_INDEX_20261111_V91.md",
+        "ExpectedPostimage":  "55477decfd3c42e05e0cf0599acfe9995e4b032c29d4ccc424537bcf8e800dc1",
+        "Temp":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\current\\e\\C11E_CURRENT_DOC_INDEX_20261111_V91.md.071aba99af1043d08b6c4e970844ebb3.stage"
+    },
+    {
+        "Mode":  "ADD",
+        "Destination":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\current\\e\\C11E_E3_EXECUTION_BACKLOG_20261111_V103.md",
+        "ExpectedPostimage":  "47b2c91396131f5600941434276a259a02f7ac8b356cf4f0218fae71a6d18c58",
+        "Temp":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\current\\e\\C11E_E3_EXECUTION_BACKLOG_20261111_V103.md.d90cfe46b5e6445e8f2ace1ba5b0c575.stage"
+    },
+    {
+        "Mode":  "ADD",
+        "Destination":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\current\\e\\C11E_E4C_DRILL_COMPOSITION_DECISION_DOCKET_20261110_V9.md",
+        "ExpectedPostimage":  "0a293b7c600079785d546e69b392623445d6ee23918249365cf537b480a2dbe4",
+        "Temp":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\current\\e\\C11E_E4C_DRILL_COMPOSITION_DECISION_DOCKET_20261110_V9.md.ce3617ab5b1e489f9f83f7b0152eb0af.stage"
+    },
+    {
+        "Mode":  "ADD",
+        "Destination":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\current\\e\\C11E_E4C_DRILL_EXECUTION_PLAN_20261111_V17.md",
+        "ExpectedPostimage":  "4f02890f68255c8b040134a961cb0a3c32a7a076c1efdc449d4244a965ea997f",
+        "Temp":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\current\\e\\C11E_E4C_DRILL_EXECUTION_PLAN_20261111_V17.md.e02597d8bc1049b3b2696526e2a4223e.stage"
+    },
+    {
+        "Mode":  "ADD",
+        "Destination":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\current\\e\\C11E_E4C_DRILL_VISUAL_CONSUMER_SPEC_20261111_V9.md",
+        "ExpectedPostimage":  "7c38f845383ebcd2f632ced69a5f93164d20c00b1e2ff6e7d9c594cf970753b2",
+        "Temp":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\current\\e\\C11E_E4C_DRILL_VISUAL_CONSUMER_SPEC_20261111_V9.md.245df47e9d8d4f61a9dad83e020ee776.stage"
+    },
+    {
+        "Mode":  "ADD",
+        "Destination":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\current\\e\\C11E_GATES_ACCEPTANCE_MATRIX_20261111_V127.md",
+        "ExpectedPostimage":  "ac5fe3d9cf2036c6f817eeabfd01b5c793e7dd8ea5baf2552d74c1838b3fcff4",
+        "Temp":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\current\\e\\C11E_GATES_ACCEPTANCE_MATRIX_20261111_V127.md.262b0e5dd3ed4352b223f3d0915b567b.stage"
+    },
+    {
+        "Mode":  "ADD",
+        "Destination":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\current\\e\\C11E_POWERSHELL_RUNNER_STYLE_GUIDE_20261111_V18.md",
+        "ExpectedPostimage":  "96a9feedf75dd59dbdc0480986af58a1744a0801d2afba0c67974c6aa63552bb",
+        "Temp":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\current\\e\\C11E_POWERSHELL_RUNNER_STYLE_GUIDE_20261111_V18.md.f2b0eafa7dfa428e9f5d048c2efdb9fb.stage"
+    },
+    {
+        "Mode":  "ADD",
+        "Destination":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\history\\c11e\\C11E_E4C_DRILL_VISUAL_PIXEL_CONSUMER_IMPLEMENTATION_20261111_V10.md",
+        "ExpectedPostimage":  "2cd4d5b67868e9015d4804c318ef8c9586c196d3795b80a7dc72667cea90a668",
+        "Temp":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\history\\c11e\\C11E_E4C_DRILL_VISUAL_PIXEL_CONSUMER_IMPLEMENTATION_20261111_V10.md.4b0cf8b070bf403a896e8eb93eec76c4.stage"
+    },
+    {
+        "Mode":  "ADD",
+        "Destination":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\history\\c11e\\C11E_INSTALLER_INCIDENT_REGISTER_20261111_V9.md",
+        "ExpectedPostimage":  "bdb47a36c8b48a187b337ade8412f1291dbcf2aea37f555a5cf2754eb12a852b",
+        "Temp":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\history\\c11e\\C11E_INSTALLER_INCIDENT_REGISTER_20261111_V9.md.ac0852704c054fecb2683273b9701584.stage"
+    },
+    {
+        "Mode":  "ADD",
+        "Destination":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\prompts\\C11E_CONTINUATION_MASTER_PROMPT_20261111_V130.md",
+        "ExpectedPostimage":  "4dae75487c78d95abb16d07970355cb37e9d279b54138b8fed44c74d7b7983d7",
+        "Temp":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\prompts\\C11E_CONTINUATION_MASTER_PROMPT_20261111_V130.md.4c8f5f6a86ed4ede89fe6bd3189cf3b1.stage"
+    },
+    {
+        "Mode":  "ADD",
+        "Destination":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\prompts\\C11E_FIRST_PROMPT_20261111_V54.md",
+        "ExpectedPostimage":  "609bd2044e1cb9305bb34ed7500e5df93e28a1ec456d059d2bbf3c0125de84d3",
+        "Temp":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\prompts\\C11E_FIRST_PROMPT_20261111_V54.md.9a6c3852a49445fca89e0c90f5b630ea.stage"
+    },
+    {
+        "Mode":  "ADD",
+        "Destination":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\prompts\\C11E_NEXT_WINDOW_START_PROMPT_20261111_V130.md",
+        "ExpectedPostimage":  "388f7409c259ed696833d0bc0d89a0a7749a4c220b62cb0116bb86f7d5abb782",
+        "Temp":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\prompts\\C11E_NEXT_WINDOW_START_PROMPT_20261111_V130.md.b5d8996dbf9d48b38d64fb9f1505cf2f.stage"
+    },
+    {
+        "Mode":  "ADD",
+        "Destination":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\tools\\c11d\\d9\\c11e_e4c_drill_visual_composition_consumer.py",
+        "ExpectedPostimage":  "ba81e0b5e4a9f29b3ff5fd670bce424a592453dfa06ef5dce356e772044a99aa",
+        "Temp":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\tools\\c11d\\d9\\c11e_e4c_drill_visual_composition_consumer.py.2d32126dc51c4bb5af348cbc58444c67.stage"
+    },
+    {
+        "Mode":  "ADD",
+        "Destination":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\tools\\c11d\\d9\\test_c11e_e4c_drill_visual_composition_consumer.py",
+        "ExpectedPostimage":  "aedeb5754d94fdbaad134a653f57ca07466c845dcef081c8774668245455a7a0",
+        "Temp":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\tools\\c11d\\d9\\test_c11e_e4c_drill_visual_composition_consumer.py.9c8a6f48bad64b7ca3cdd8851ff43021.stage"
+    },
+    {
+        "Mode":  "REPLACE",
+        "Destination":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\c11c-suite\\c11c-producer\\c11e_production_service.py",
+        "Backup":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_drill_visual_pixel_consumer\\E4C_DRILL_VISUAL_PIXEL_CONSUMER_V9_20261111T010356_ba402c74\\backups\\c11c-suite__c11c-producer__c11e_production_service.py.preimage",
+        "ExpectedPreimage":  "5dc15d355b86758a24ff0772e75ea1a889fd59503b1632ea26821856a08935dc",
+        "ExpectedPostimage":  "e5dbf9baa72d4c066ff8ba24006df954700d72a5b0f11f9f88aec653e84dce87",
+        "Temp":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\c11c-suite\\c11c-producer\\c11e_production_service.py.6700caae10eb427881bfe8fc0fb02922.stage"
+    }
+]

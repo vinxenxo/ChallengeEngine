@@ -1,0 +1,16 @@
+{
+    "schema":  "C11E-E4C-DRILL-VISUAL-PIXEL-CONSUMER-INSTALL-FAILURE-V8",
+    "status":  "FAILED_CLOSED",
+    "run_id":  "E4C_DRILL_VISUAL_PIXEL_CONSUMER_V7_20261111T005908_e8a6a3b0",
+    "stage":  "STAGED_VALIDATION",
+    "error":  "La variable \u0027$testSource\u0027 no se puede recuperar porque no se ha establecido.",
+    "journal":  [
+
+                ],
+    "rollback_status":  "NOT_NEEDED",
+    "renderer":  "OFF",
+    "media_created":  false,
+    "release_authority":  "NONE",
+    "staging_root":  "C:\\Users\\vinxe\\AppData\\Local\\Temp\\C11EDRILLPIX_b0689226",
+    "evidence_directory":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_drill_visual_pixel_consumer\\E4C_DRILL_VISUAL_PIXEL_CONSUMER_V7_20261111T005908_e8a6a3b0"
+}
