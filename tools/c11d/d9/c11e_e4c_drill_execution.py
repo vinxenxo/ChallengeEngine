@@ -111,6 +111,53 @@ def product_id_for(family: str, gameplay_seed: int, tier: int, speed: float) -> 
     return f"VisualDrill_{family}_seed_{gameplay_seed}_T{tier}_constant_S{speed_tag:03d}"
 
 
+def format_invariant_speed_multiplier(value: float) -> str:
+    """Format a locale-independent decimal for the PowerShell wrapper."""
+    try:
+        number = float(value)
+    except (TypeError, ValueError, OverflowError) as exc:
+        raise DrillExecutionError("speed_multiplier is not numeric") from exc
+    if not math.isfinite(number) or not 0.1 <= number <= 3.0:
+        raise DrillExecutionError("speed_multiplier outside canonical 0.1..3.0 range")
+    return format(number, ".5f")
+
+
+def build_c11c_launcher_wrapper_script() -> str:
+    """Return a PS 5.1 wrapper which passes SpeedMultiplier as a typed Double."""
+    return r"""[CmdletBinding()]
+param(
+    [Parameter(Mandatory=$true)][string]$LauncherPath,
+    [Parameter(Mandatory=$true)][string]$Family,
+    [Parameter(Mandatory=$true)][int]$Seed,
+    [Parameter(Mandatory=$true)][int]$DifficultyTier,
+    [Parameter(Mandatory=$true)][string]$SpeedMultiplierInvariant,
+    [Parameter(Mandatory=$true)][string]$PacingMode,
+    [Parameter(Mandatory=$true)][string]$DeliveryProfile,
+    [Parameter(Mandatory=$true)][string]$OutputRoot
+)
+$ErrorActionPreference = 'Stop'
+Set-StrictMode -Version Latest
+$culture = [System.Globalization.CultureInfo]::InvariantCulture
+$speed = [double]::Parse($SpeedMultiplierInvariant, [System.Globalization.NumberStyles]::Float, $culture)
+if ([double]::IsNaN($speed) -or [double]::IsInfinity($speed) -or $speed -lt 0.1 -or $speed -gt 3.0) {
+    throw "SpeedMultiplier outside canonical 0.1..3.0 range: $SpeedMultiplierInvariant"
+}
+$thread = [System.Threading.Thread]::CurrentThread
+$originalCulture = $thread.CurrentCulture
+$originalUiCulture = $thread.CurrentUICulture
+try {
+    $thread.CurrentCulture = $culture
+    $thread.CurrentUICulture = $culture
+    & $LauncherPath -Family $Family -Seed $Seed -DifficultyTier $DifficultyTier -SpeedMultiplier $speed -PacingMode $PacingMode -DeliveryProfile $DeliveryProfile -NoSound -OutputRoot $OutputRoot
+    if (-not $?) { throw 'C11-C Drill launcher returned an unsuccessful PowerShell status' }
+}
+finally {
+    $thread.CurrentCulture = $originalCulture
+    $thread.CurrentUICulture = $originalUiCulture
+}
+"""
+
+
 def validate_request(raw: Mapping[str, Any]) -> tuple[str, int, int, int, int]:
     selection = raw.get("selection")
     if not isinstance(selection, Mapping) or selection.get("content_type") != "visual_drills":
@@ -654,18 +701,28 @@ def execute_drill_av_request(
         # The existing C11-C launcher is always silent here. Its built-in audio
         # path couples its Seed argument to the music generator; FAMILY_MUSIC_V4
         # is invoked separately below with the canonical request.music_seed.
-        import locale
-        try:
-            locale.setlocale(locale.LC_NUMERIC, "")
-            decimal_separator = locale.localeconv().get("decimal_point") or "."
-        except Exception:
-            decimal_separator = "."
-        speed_argument = f"{speed:.5f}".replace(".", decimal_separator)
+        # Pass speed through an invariant-string wrapper. The wrapper parses it
+        # using InvariantCulture, then invokes the existing C11-C script with an
+        # already-typed System.Double. No locale-dependent numeric text reaches
+        # the C11-C parameter binder; the pinned launcher remains unmodified.
+        speed_argument = format_invariant_speed_multiplier(speed)
+        launcher_wrapper = logs_dir / "invoke_c11c_drill_launcher.ps1"
+        launcher_wrapper.write_text(build_c11c_launcher_wrapper_script(), encoding="utf-8")
+        receipt["native_launcher_invocation"] = {
+            "wrapper_path": str(launcher_wrapper),
+            "wrapper_sha256": sha_file(launcher_wrapper),
+            "speed_multiplier_invariant_argument": speed_argument,
+            "speed_multiplier_typed_before_c11c_binding": True,
+            "host_locale_used_for_numeric_formatting": False,
+            "c11c_launcher_source_modified": False,
+        }
+        write_json(run_root / "E4C_DRILL_AV_QUALIFICATION_RUNNING.json", receipt)
         producer_command = [
-            powershell, "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", str(launcher),
-            "-Family", family, "-Seed", str(gameplay_seed), "-DifficultyTier", str(tier),
-            "-SpeedMultiplier", speed_argument, "-PacingMode", "constant", "-DeliveryProfile", "REVIEW_720",
-            "-NoSound", "-OutputRoot", str(native_root),
+            powershell, "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", str(launcher_wrapper),
+            "-LauncherPath", str(launcher), "-Family", family, "-Seed", str(gameplay_seed),
+            "-DifficultyTier", str(tier), "-SpeedMultiplierInvariant", speed_argument,
+            "-PacingMode", "constant", "-DeliveryProfile", "REVIEW_720",
+            "-OutputRoot", str(native_root),
         ]
         producer_log = logs_dir / "c11c_drill_producer.log"
         with producer_log.open("w", encoding="utf-8") as log:

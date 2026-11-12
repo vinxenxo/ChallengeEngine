@@ -1,0 +1,1 @@
+{"status": "PASS_E4C_DRILL_SINGLE_SELECTOR_A_V_QUALIFICATION", "request_id": "E4C-CLI-SMOKE-20261112T091253Z-5a2e96b8", "selector": "tracking/tier-1", "final_A_sha256": "7604f69e7c28e044a4bdb7fccc76c74604495ec9bbe4b46fcbca23a62b7c49ba", "video_bitstream_identical_A_C": true, "audio_bitstream_changed_A_C": true, "release_authority": "NONE"}

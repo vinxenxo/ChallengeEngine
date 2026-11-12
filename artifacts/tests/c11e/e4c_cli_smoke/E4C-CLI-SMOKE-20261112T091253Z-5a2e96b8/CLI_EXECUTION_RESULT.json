@@ -1,0 +1,21 @@
+{
+  "audio_bitstream_changed_A_C": true,
+  "composed_frames": 810,
+  "evidence_root": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\c11e\\E4C-CLI-SMOKE-20261112T091253Z-5a2e96b8",
+  "family_music_profile": "FLOWING_VECTOR",
+  "final_A": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\c11e\\E4C-CLI-SMOKE-20261112T091253Z-5a2e96b8\\E4C-CLI-SMOKE-20261112T091253Z-5a2e96b8_A_music_840001.mp4",
+  "final_A_sha256": "7604f69e7c28e044a4bdb7fccc76c74604495ec9bbe4b46fcbca23a62b7c49ba",
+  "final_C_changed_music": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\c11e\\E4C-CLI-SMOKE-20261112T091253Z-5a2e96b8\\qualification\\E4C-CLI-SMOKE-20261112T091253Z-5a2e96b8_C_changed_music_840002.mp4",
+  "gameplay_seed": 12345,
+  "music_seed_A_B": 840001,
+  "music_seed_C": 840002,
+  "production_dispatch": false,
+  "receipt": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\c11e\\E4C-CLI-SMOKE-20261112T091253Z-5a2e96b8\\E4C_DRILL_AV_QUALIFICATION_RECEIPT.json",
+  "release_authority": "NONE",
+  "renderer": "C11C_SOURCE_CAPTURE_AND_D_POSTCOMPOSITION_QUALIFICATION",
+  "request_id": "E4C-CLI-SMOKE-20261112T091253Z-5a2e96b8",
+  "selector": "tracking/tier-1",
+  "source_frames": 810,
+  "status": "PASS_E4C_DRILL_SINGLE_SELECTOR_A_V_QUALIFICATION",
+  "video_bitstream_identical_A_C": true
+}

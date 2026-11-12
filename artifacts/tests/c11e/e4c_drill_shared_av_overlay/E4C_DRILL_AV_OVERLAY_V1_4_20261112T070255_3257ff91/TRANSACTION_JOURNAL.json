@@ -1,0 +1,189 @@
+[
+    {
+        "operation_id":  "OP-001",
+        "kind":  "REPLACE",
+        "destination":  "tools/c11d/d9/c11e_e4c_drill_execution.py",
+        "pre_sha256":  "b4750a2fa2d39dfefca7028e4e9571bc8e1158e22cca221feb9d33025158bf2d",
+        "post_sha256":  "51fe92c24506788918f896216055f2f1f21a7abf4ad9bf369c9ee63cbac5983a",
+        "backup_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_drill_shared_av_overlay\\E4C_DRILL_AV_OVERLAY_V1_4_20261112T070255_3257ff91\\backups\\tools\\c11d\\d9\\c11e_e4c_drill_execution.py",
+        "replace_backup_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_drill_shared_av_overlay\\E4C_DRILL_AV_OVERLAY_V1_4_20261112T070255_3257ff91\\file-replace-backups\\OP-001.bbf3b429b70e49b6a7854add41ee8cf9.preimage",
+        "state":  "APPLIED_AND_VERIFIED",
+        "rollback":  "PENDING"
+    },
+    {
+        "operation_id":  "OP-002",
+        "kind":  "REPLACE",
+        "destination":  "tests/test_c11e_e4c_drill_execution.py",
+        "pre_sha256":  "0a7f24e713d5931f1237c6f2c1533635ff09011c4b334b145d585ebd265ef3a4",
+        "post_sha256":  "3e212913bbb457263db8d4015751eb31531fd2a788c602a8d6ee4bcf6e551552",
+        "backup_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_drill_shared_av_overlay\\E4C_DRILL_AV_OVERLAY_V1_4_20261112T070255_3257ff91\\backups\\tests\\test_c11e_e4c_drill_execution.py",
+        "replace_backup_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_drill_shared_av_overlay\\E4C_DRILL_AV_OVERLAY_V1_4_20261112T070255_3257ff91\\file-replace-backups\\OP-002.97da59c399e4402a8b3f0e0ff25206dd.preimage",
+        "state":  "APPLIED_AND_VERIFIED",
+        "rollback":  "PENDING"
+    },
+    {
+        "operation_id":  "OP-003",
+        "kind":  "ADD",
+        "destination":  "docs/current/e/C11D_E_BLOCKER_REMEDIATION_REGISTER_20261112_V51.md",
+        "pre_sha256":  null,
+        "post_sha256":  "ffcfdaa2ea222f9a87a4b7b137b5cd9bd32811d77cd7d2470b934632d4ac7dab",
+        "backup_path":  null,
+        "replace_backup_path":  null,
+        "state":  "APPLIED_AND_VERIFIED",
+        "rollback":  "PENDING"
+    },
+    {
+        "operation_id":  "OP-004",
+        "kind":  "ADD",
+        "destination":  "docs/current/e/C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261112_V77.md",
+        "pre_sha256":  null,
+        "post_sha256":  "b6ba05d7053cc9d4cd305a8d808e3b271963d9636e0b592be343755fe1ecdb77",
+        "backup_path":  null,
+        "replace_backup_path":  null,
+        "state":  "APPLIED_AND_VERIFIED",
+        "rollback":  "PENDING"
+    },
+    {
+        "operation_id":  "OP-005",
+        "kind":  "ADD",
+        "destination":  "docs/current/e/C11E_CURRENT_AUTHORITY_20261112_V134.md",
+        "pre_sha256":  null,
+        "post_sha256":  "fb653e813bf582d53f04e3e2bb7d0fb63a894f0dd0c591d9d0467e34555b4afc",
+        "backup_path":  null,
+        "replace_backup_path":  null,
+        "state":  "APPLIED_AND_VERIFIED",
+        "rollback":  "PENDING"
+    },
+    {
+        "operation_id":  "OP-006",
+        "kind":  "ADD",
+        "destination":  "docs/current/e/C11E_CURRENT_DOC_INDEX_20261112_V96.md",
+        "pre_sha256":  null,
+        "post_sha256":  "f2dbe52ce19af554e3a7486e331c6080eb310eb640a8ac5fefd38d0c2412b4e4",
+        "backup_path":  null,
+        "replace_backup_path":  null,
+        "state":  "APPLIED_AND_VERIFIED",
+        "rollback":  "PENDING"
+    },
+    {
+        "operation_id":  "OP-007",
+        "kind":  "ADD",
+        "destination":  "docs/current/e/C11E_E3_EXECUTION_BACKLOG_20261112_V105.md",
+        "pre_sha256":  null,
+        "post_sha256":  "250f27cd3af8b20e752040a84aba521bc60d6c44f993e5c29467335455cad2ad",
+        "backup_path":  null,
+        "replace_backup_path":  null,
+        "state":  "APPLIED_AND_VERIFIED",
+        "rollback":  "PENDING"
+    },
+    {
+        "operation_id":  "OP-008",
+        "kind":  "ADD",
+        "destination":  "docs/current/e/C11E_E4C_DRILL_EXECUTION_PLAN_20261112_V22.md",
+        "pre_sha256":  null,
+        "post_sha256":  "f32129dc29b1133415440c6e6dc5dff98c4a14319db89de722d29e2fe314ea75",
+        "backup_path":  null,
+        "replace_backup_path":  null,
+        "state":  "APPLIED_AND_VERIFIED",
+        "rollback":  "PENDING"
+    },
+    {
+        "operation_id":  "OP-009",
+        "kind":  "ADD",
+        "destination":  "docs/current/e/C11E_E4C_DRILL_VISUAL_CONSUMER_SPEC_20261112_V11.md",
+        "pre_sha256":  null,
+        "post_sha256":  "ea9815743842cf4915001bcbed01c11c489a6f377e014092188ee07e06ec2925",
+        "backup_path":  null,
+        "replace_backup_path":  null,
+        "state":  "APPLIED_AND_VERIFIED",
+        "rollback":  "PENDING"
+    },
+    {
+        "operation_id":  "OP-010",
+        "kind":  "ADD",
+        "destination":  "docs/current/e/C11E_E4C_DRILL_VISUAL_PIXEL_CONSUMER_IMPLEMENTATION_20261112_V12.md",
+        "pre_sha256":  null,
+        "post_sha256":  "11cd3a2c7cee799cd77b2268004fcb31b968b1b477289f914bf2887d4d03644a",
+        "backup_path":  null,
+        "replace_backup_path":  null,
+        "state":  "APPLIED_AND_VERIFIED",
+        "rollback":  "PENDING"
+    },
+    {
+        "operation_id":  "OP-011",
+        "kind":  "ADD",
+        "destination":  "docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261112_V129.md",
+        "pre_sha256":  null,
+        "post_sha256":  "86e0ab72b6c63f88cb52a54e1627144f64d7d51dea7cdcc7f74638e0e6ff7bbf",
+        "backup_path":  null,
+        "replace_backup_path":  null,
+        "state":  "APPLIED_AND_VERIFIED",
+        "rollback":  "PENDING"
+    },
+    {
+        "operation_id":  "OP-012",
+        "kind":  "ADD",
+        "destination":  "docs/current/e/C11E_INSTALLER_INCIDENT_REGISTER_20261112_V14.md",
+        "pre_sha256":  null,
+        "post_sha256":  "9aa86799522a958abd783d7e9d8b721606e935fc210d5a261ad1f8f499dc47f8",
+        "backup_path":  null,
+        "replace_backup_path":  null,
+        "state":  "APPLIED_AND_VERIFIED",
+        "rollback":  "PENDING"
+    },
+    {
+        "operation_id":  "OP-013",
+        "kind":  "ADD",
+        "destination":  "docs/current/e/C11E_POWERSHELL_RUNNER_STYLE_GUIDE_20261112_V20.md",
+        "pre_sha256":  null,
+        "post_sha256":  "a50df485c59d5ed82f7e75efe6aa3f37212ca27bf33de4adb5b2ecae6e55113e",
+        "backup_path":  null,
+        "replace_backup_path":  null,
+        "state":  "APPLIED_AND_VERIFIED",
+        "rollback":  "PENDING"
+    },
+    {
+        "operation_id":  "OP-014",
+        "kind":  "ADD",
+        "destination":  "docs/history/c11e/C11E_E4C_DRILL_LOCALE_DECIMAL_ARGUMENT_FAILURE_20261112_V1.md",
+        "pre_sha256":  null,
+        "post_sha256":  "e89468382db40e68626185d1c8ddc3029387824d658ce5c825af94dce41db95d",
+        "backup_path":  null,
+        "replace_backup_path":  null,
+        "state":  "APPLIED_AND_VERIFIED",
+        "rollback":  "PENDING"
+    },
+    {
+        "operation_id":  "OP-015",
+        "kind":  "ADD",
+        "destination":  "prompts/C11E_CONTINUATION_MASTER_PROMPT_20261112_V135.md",
+        "pre_sha256":  null,
+        "post_sha256":  "314d9599150adcef02ab78cc956c5ec8e87322405c74d0ee3ab22fde3f7342a1",
+        "backup_path":  null,
+        "replace_backup_path":  null,
+        "state":  "APPLIED_AND_VERIFIED",
+        "rollback":  "PENDING"
+    },
+    {
+        "operation_id":  "OP-016",
+        "kind":  "ADD",
+        "destination":  "prompts/C11E_FIRST_PROMPT_20261112_V59.md",
+        "pre_sha256":  null,
+        "post_sha256":  "407642b790c9e5d3645ab77313077196d94cdc1157485c3f3f95e1d0b69f8839",
+        "backup_path":  null,
+        "replace_backup_path":  null,
+        "state":  "APPLIED_AND_VERIFIED",
+        "rollback":  "PENDING"
+    },
+    {
+        "operation_id":  "OP-017",
+        "kind":  "ADD",
+        "destination":  "prompts/C11E_NEXT_WINDOW_START_PROMPT_20261112_V135.md",
+        "pre_sha256":  null,
+        "post_sha256":  "99735b2ffa2f7705f3f8331c070c4738a7285db7083535fd1937c8725a8414ce",
+        "backup_path":  null,
+        "replace_backup_path":  null,
+        "state":  "APPLIED_AND_VERIFIED",
+        "rollback":  "PENDING"
+    }
+]

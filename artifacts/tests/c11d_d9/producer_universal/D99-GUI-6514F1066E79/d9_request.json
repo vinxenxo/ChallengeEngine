@@ -1,0 +1,35 @@
+{
+  "schema": "C11-D-D9.9-UNIVERSAL-PRODUCER-REQUEST-V1",
+  "schema_version": "1.0",
+  "request_id": "D99-GUI-6514F1066E79",
+  "mode": "PRODUCTION",
+  "selection": {
+    "content_type": "visual_drills",
+    "family_id": "tracking",
+    "variant_id": "tier-1"
+  },
+  "seed": 12345,
+  "music_seed": 840001,
+  "delivery_profile_id": "REVIEW_720",
+  "presentation_profile_id": "social_default_v1",
+  "variation_index": 0,
+  "audio_enabled": true,
+  "personalization_enabled": true,
+  "editorial_profile": {
+    "global": {},
+    "content_type": {},
+    "family": {},
+    "subtype": {},
+    "variant": {}
+  },
+  "production_override": {
+    "title": "SEGUIMIENTO VISUAL · NIVEL 1",
+    "subtitle": "Sigue el objetivo con precisión",
+    "call_to_action": "Mantén la mirada en el objetivo",
+    "language": "es"
+  },
+  "provenance": {
+    "source_revision": "C11D-D9.10-PRODUCER-0.11.1",
+    "request_origin": "GUI"
+  }
+}

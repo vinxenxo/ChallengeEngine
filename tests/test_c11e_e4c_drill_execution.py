@@ -15,6 +15,8 @@ from c11e_e4c_drill_execution import (  # noqa: E402
     changed_music_seed,
     phase_for_final_frame,
     product_id_for,
+    format_invariant_speed_multiplier,
+    build_c11c_launcher_wrapper_script,
     require_visible_editorial,
     validate_request,
     _source_pins,
@@ -57,6 +59,30 @@ class DrillExecutionHelpersTests(unittest.TestCase):
     def test_product_id_uses_native_source_naming(self):
         self.assertEqual(product_id_for("tracking", 12345, 1, 0.75), "VisualDrill_tracking_seed_12345_T1_constant_S075")
         self.assertEqual(product_id_for("peripheral_scan", 12345, 5, 1.5), "VisualDrill_peripheral_scan_seed_12345_T5_constant_S150")
+
+    def test_speed_multiplier_argument_is_ascii_decimal_and_locale_independent(self):
+        self.assertEqual(format_invariant_speed_multiplier(0.75), "0.75000")
+        self.assertEqual(format_invariant_speed_multiplier(1.5), "1.50000")
+        with self.assertRaisesRegex(DrillExecutionError, "0.1..3.0"):
+            format_invariant_speed_multiplier(75000.0)
+
+    def test_c11c_wrapper_parses_invariant_string_then_passes_typed_double(self):
+        source = build_c11c_launcher_wrapper_script()
+        self.assertIn("[System.Globalization.CultureInfo]::InvariantCulture", source)
+        self.assertIn("[double]::Parse($SpeedMultiplierInvariant", source)
+        self.assertIn("-SpeedMultiplier $speed", source)
+        self.assertIn("$thread.CurrentCulture = $culture", source)
+        self.assertIn("$thread.CurrentUICulture = $culture", source)
+        # The wrapper is executed in-process by the installer's es-ES smoke test;
+        # it must never use `exit`, which would terminate the installer host.
+        self.assertNotIn("exit 0", source.lower())
+
+    def test_executor_does_not_use_host_locale_for_c11c_speed_argument(self):
+        source_path = EXECUTOR_DIR / "c11e_e4c_drill_execution.py"
+        source = source_path.read_text(encoding="utf-8")
+        self.assertNotIn("locale.setlocale", source)
+        self.assertNotIn("locale.localeconv", source)
+        self.assertIn('"-SpeedMultiplierInvariant", speed_argument', source)
 
     def valid_request(self):
         return {

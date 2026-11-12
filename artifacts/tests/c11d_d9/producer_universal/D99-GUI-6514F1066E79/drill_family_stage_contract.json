@@ -1,0 +1,265 @@
+{
+  "schema": "C11E-E4C-DRILL-FAMILY-STAGE-CONTRACT-V1",
+  "status": "DRILL_FAMILY_BOUND_PREPARATION_NOT_DISPATCHABLE",
+  "request_identity": {
+    "request_id": "D99-GUI-6514F1066E79",
+    "request_hash": "f1334159bbce968664c97b0ace9b7b07c7a4230a7db57ab3c1ded74df6c855bb",
+    "plan_hash": "0689c533050e7ae47078f7d4b496cbab019eee5db59639f390a4038dda6544b0",
+    "editorial_hash": "e137d187e70a9767f769929b777ee777a65388706b672c55a06b9bb3aca5e078",
+    "bridge_record_hash": "cf6397552f302186dea4c8eea884a98da19ca6e8d7449db1b9e9b8e3342e9b45",
+    "d_only_adapter_envelope_hash": "fcbd13b4cab60d64b4d6a464db1b5510444ace91e77b81c68e16a3881db644e9",
+    "drill_dynamic_binding_preview_sha256": "9dcee3e94747748117bea79b01b12645b8f4b80a58de618097f57eb90b6113ec"
+  },
+  "content_identity": {
+    "content_type": "visual_drills",
+    "family_id": "tracking",
+    "variant_id": "tier-1",
+    "difficulty_tier": 1,
+    "canonical_source_path": "definitions/visual_drill_tracking_canonical.json",
+    "difficulty_policy_path": "profiles/difficulty/visual_drill_tracking.json"
+  },
+  "family_visual_stage": {
+    "launcher_path": "c11c-suite/c11c-producer/run_visual_drill_production.ps1",
+    "argument_vector": [
+      "-Family",
+      "tracking",
+      "-Seed",
+      "12345",
+      "-DifficultyTier",
+      "1",
+      "-SpeedMultiplier",
+      "1.0",
+      "-PacingMode",
+      "constant",
+      "-DeliveryProfile",
+      "REVIEW_720",
+      "-NoSound",
+      "-OutputRoot",
+      "<FRESH_ISOLATED_E4C_TEST_ROOT>"
+    ],
+    "parameter_policy": "E4C_DETERMINISTIC_REVIEW_DEFAULTS_V1_SPEED_1_0_PACING_CONSTANT; REVIEW_ONLY_UNTIL_EXPLICIT_REQUEST_FIELDS_EXIST",
+    "audio_switch": "-NoSound",
+    "gameplay_seed": 12345,
+    "music_seed": 840001,
+    "music_seed_passed_to_visual_launcher": false,
+    "launcher_execution": false,
+    "reason_not_executed": "D4_8_BLOCKED_AND_NO_RENDERER_EXECUTION_AUTHORITY"
+  },
+  "native_family_music": {
+    "route": "PRESERVE_EXISTING_C11C_FAMILY_MUSIC_V4",
+    "family_binding_id": "visual_drill/tracking",
+    "profile_id": "FLOWING_VECTOR",
+    "registry_semantic_inputs": [
+      "seed"
+    ],
+    "request_music_seed_field": "request.music_seed",
+    "generator_wrapper_path": "tools/prototypes/c11c_common/C11CSafeAmbient.py",
+    "generator_source_path": "tools/prototypes/c11c_common/generate_c11c_family_music.py",
+    "native_pcm_sample_rate_hz": 44100,
+    "native_pcm_channels": 2,
+    "music_seed_passed_as_native_generator_seed": true,
+    "audio_selection_or_generation_authorized": false,
+    "audio_generation_invoked": false,
+    "audio_payload_materialized": false,
+    "d3_v5_invoked": false,
+    "duration_source": "C11-C_GENERATED_DRILL_TOTAL_DURATION; MUST MATCH PRE_ROLL + GAME + END_CTA"
+  },
+  "dynamic_request_binding_preview": {
+    "schema": "C11E-E4C-DRILL-DYNAMIC-BINDING-PREVIEW-V1",
+    "status": "EXISTING_D9_V2_REQUEST_CHAIN_VALIDATED_NOT_GODOT_MATERIALIZED",
+    "contract_identity": {
+      "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V2.json",
+      "schema": "C11-D-RENDERER-DYNAMIC-REQUEST-PAYLOAD-BINDING-CONTRACT-V2",
+      "schema_version": "2.0",
+      "sha256": "60530add02fee5bd4d70056e49bf20be87dc5dc0886dd07444e44c0b14bee981",
+      "lineage_count": 67
+    },
+    "input_preview": {
+      "schema": "C11-D-D9-DYNAMIC-REQUEST-PAYLOAD-INPUT-V2",
+      "schema_version": "2.0",
+      "request_id": "D99-GUI-6514F1066E79",
+      "request_hash": "f1334159bbce968664c97b0ace9b7b07c7a4230a7db57ab3c1ded74df6c855bb",
+      "selection": {
+        "content_type": "visual_drills",
+        "family_id": "tracking",
+        "subtype_id": null,
+        "variant_id": "tier-1"
+      },
+      "seed": 12345,
+      "music_seed": 840001,
+      "variation_index": 0,
+      "presentation_profile_id": "social_default_v1",
+      "delivery_profile_id": "REVIEW_720"
+    },
+    "request_scoped_source_binding_sha256": "f9d1c5e927b952e2be7cc4addf829f8afaa4df4cb1197480e9ef1ca1556c2edd",
+    "request_scoped_source_binding_status": "PREPARATION_ONLY_REQUEST_SCOPED_PAYLOAD_BINDING_REVIEW_NOT_RENDERER_INPUT",
+    "request_payload_manifest": "NOT_MATERIALIZED_BY_E1_REQUIRES_REAL_GODOT_V2_EXECUTION",
+    "runtime_repeat": "NOT_RUN_BY_E1",
+    "renderer_native_input_emitted": false,
+    "renderer_dispatch_invoked": false,
+    "media_created": false,
+    "release_authority": "NONE",
+    "preview_sha256": "9dcee3e94747748117bea79b01b12645b8f4b80a58de618097f57eb90b6113ec"
+  },
+  "phase_and_end_cta_contract": {
+    "schema": "C11E-E4C-DRILL-NATIVE-PHASE-AND-END-CTA-CONTRACT-V1",
+    "status": "SOURCE_BOUND_NATIVE_PHASES_PRESERVED_NO_VISUAL_CONSUMPTION",
+    "source_pins": [
+      {
+        "path": "core/presentation/CountdownPresentationLogic.gd",
+        "bytes": 1219,
+        "sha256": "b163ea114cc48af2dfd957ee92d00d524ea5b96b5966850f5ca8d6e5ec933379"
+      },
+      {
+        "path": "core/presentation/VisualDrillPresentationPhaseLogic.gd",
+        "bytes": 1899,
+        "sha256": "6555d08ac3c0098b20a57e924b0c4ff2df006a23fa00a81b254fa5ebd5bb2494"
+      },
+      {
+        "path": "core/presentation/VisualDrillPresentationBinder.gd",
+        "bytes": 11830,
+        "sha256": "cb6acc408252b8b794177d8f5923a3b151646eebdfd1efe9a30fdd6221de82c0"
+      },
+      {
+        "path": "core/presentation/rendering/VisualContentPlayer.gd",
+        "bytes": 13876,
+        "sha256": "58d86d56ebd7507c9e800c83010103b9be12f1b5dca9356da61ca623e4cf0145"
+      },
+      {
+        "path": "core/presentation/C11CVisualEditorialLayer.gd",
+        "bytes": 19047,
+        "sha256": "f8f718c067a4d7a088cc16f244cc40209e7183bec93e44d8cb66eb6dd404cf7d"
+      },
+      {
+        "path": "core/presentation/PresentationUI.gd",
+        "bytes": 8981,
+        "sha256": "a55fea5a4525ea247144a4da88242f4ac602c3a014f7d02b50d032ce99224730"
+      },
+      {
+        "path": "core/presentation/SocialUIBinder.gd",
+        "bytes": 1742,
+        "sha256": "b15a062bf327d0c2bbc4ead0e877914f912528cc56e388df20dd84eb89863a3c"
+      },
+      {
+        "path": "core/presentation/UnifiedSocialFrame.gd",
+        "bytes": 2087,
+        "sha256": "d80c07103f56a2abfe34be60547285e61b0d03b50a5ed93c3c72d4241f6585ba"
+      },
+      {
+        "path": "c11c-suite/c11c-producer/run_visual_drill_production.ps1",
+        "bytes": 17066,
+        "sha256": "ad6a7f0a6ce87804363810123f76ff0765b1582426cb2c8f69f6864ec3a0c808"
+      },
+      {
+        "path": "c11c-suite/c11c-producer/C11CVisualDrillProducerEnvelopeGenerator.gd",
+        "bytes": 6640,
+        "sha256": "9e2a2f394db7efce6f646600d0bb8f4ee8488c87a184df1a0fb7f7cdcb9066e9"
+      }
+    ],
+    "phase_sequence": [
+      {
+        "phase": "PRE_ROLL",
+        "duration_source": "CountdownPresentationLogic.COUNTDOWN_SECONDS",
+        "duration_seconds": 3.0
+      },
+      {
+        "phase": "GAME",
+        "duration_source": "ACTUAL_C11C_GENERATED_GAMEPLAY_FRAME_COUNT / FPS",
+        "duration_seconds": null
+      },
+      {
+        "phase": "END_CTA",
+        "duration_source": "VisualDrillPresentationPhaseLogic.END_CTA_SECONDS",
+        "duration_seconds": 3.0
+      },
+      {
+        "phase": "DONE",
+        "duration_source": "AFTER_TOTAL_PRESENTATION_FRAME_COUNT",
+        "duration_seconds": 0.0
+      }
+    ],
+    "frame_model": "ZERO_BASED_PRESENTATION_FRAME_INDEX; PRE_ROLL + GAME + END_CTA; C11-C PHASE LOGIC IS THE AUTHORITY",
+    "end_cta_precedence": {
+      "owner": "C11-C VisualDrillPresentationBinder",
+      "native_cta_header_authoritative": true,
+      "editorial_header_lines_1_and_2_suppressed_during_end_cta": true,
+      "footer_telemetry_remains_visible": true,
+      "d_adapter_may_override_native_cta": false
+    },
+    "d_editorial_window_policy": {
+      "decision_id": "A.3_LOOP_DRILL_EDITORIAL_WINDOWS",
+      "approved_proposal_sha256": "609a4d183aac07c2cbe1abaf41444160fdd137217faffbead3aef618320d57dc",
+      "field_window_consumption": "NOT_ENABLED_BY_E1",
+      "transitive_review_manifest_lineage_current": true,
+      "lineage_resolution": {
+        "status": "PASS_A3_ATTESTED_SINGLE_POINTER_LINEAGE_BRIDGE",
+        "bridge_path": "docs/current/e/C11E_E4C_A3_REVIEW_MANIFEST_LINEAGE_RECONCILIATION_20261110_V2.json",
+        "bridge_sha256": "aec0e387f167f4b821b7d94f06a67f78f498be939fe3cda857d20ce550819cac",
+        "field_window_proposal_sha256": "609a4d183aac07c2cbe1abaf41444160fdd137217faffbead3aef618320d57dc",
+        "historical_manifest_sha256": "2075da9c33c689861a68d3bd8fb19b7ed593c6e76010ab200880746aa6d1a470",
+        "current_manifest_sha256": "5702092bc1c88e4b333dd30cc150f0d383cd2006121037b0198905c75a3af795",
+        "historical_archive_path": "docs/history/c11e/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1_PRE_D98_LINEAGE_REFRESH_20261106.json",
+        "single_pointer_difference": "/source_lineage/6/sha256",
+        "d98_model_sha256": "dabb458fc2215156ddb5ebea7e8ebec811098886ce2858733ba9fb13f6075ccb",
+        "proposal_bytes_mutated": false,
+        "renderer_admission": false,
+        "release_authority": "NONE"
+      },
+      "visual_consumer_status": "READY_FOR_D_OWNED_ISOLATED_VISUAL_CONSUMER_TESTS"
+    },
+    "renderer_native_input_emitted": false,
+    "media_created": false,
+    "phase_contract_sha256": "7ccebe7547939ef41c996dfca950df314506a5d27b983ff6600b3c0c8ad1ac00"
+  },
+  "policy_decisions": [
+    {
+      "decision_id": "A.1_SHARED_PRESENTATION_REGIONS",
+      "proposal_path": "definitions/c11d/production/D_RENDERER_UNIFIED_PRESENTATION_REGION_POLICY_PROPOSAL_V1.json",
+      "proposal_sha256": "101092bb32127bb8854a501a9215c0b6cf69581594383903716907d49719c01a",
+      "decision": "APPROVE_AS_PROPOSED",
+      "scope": "D_ONLY_DESIGN_AND_CONTRACT_IMPLEMENTATION_ONLY"
+    },
+    {
+      "decision_id": "A.3_LOOP_DRILL_EDITORIAL_WINDOWS",
+      "proposal_path": "definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
+      "proposal_sha256": "609a4d183aac07c2cbe1abaf41444160fdd137217faffbead3aef618320d57dc",
+      "decision": "APPROVE_AS_PROPOSED",
+      "scope": "D_ONLY_DESIGN_AND_CONTRACT_IMPLEMENTATION_ONLY"
+    },
+    {
+      "decision_id": "B.1_UNIFIED_DELIVERY_TIMEBASE",
+      "proposal_path": "definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_V1.json",
+      "proposal_sha256": "41a62b0766db47cd99772f28642ef67766314f20f0f7891789d6b7497bbfee85",
+      "decision": "APPROVE_AS_PROPOSED",
+      "scope": "D_ONLY_DESIGN_AND_CONTRACT_IMPLEMENTATION_ONLY"
+    },
+    {
+      "decision_id": "D.1_AUDIO_MUSIC_DELIVERY_ENVELOPE",
+      "proposal_path": "definitions/c11d/production/D_RENDERER_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_PROPOSAL_V1.json",
+      "proposal_sha256": "3dd4874e1b6506de6d9ddbe6ad1b567a284b94cc00ef1bac0d35d1731af05e23",
+      "decision": "APPROVE_AS_PROPOSED",
+      "scope": "D_ONLY_DESIGN_AND_CONTRACT_IMPLEMENTATION_ONLY"
+    }
+  ],
+  "editorial": {
+    "values_preserved_in_d9_request": true,
+    "payload_field_consumption": "NOT_CONSUMED_E1",
+    "visual_field_windows": "NOT_EMITTED",
+    "visual_consumer": "BLOCKED_PENDING_E4C_PHASE_AND_POLICY_CLOSEOUT"
+  },
+  "governance": {
+    "family_stage_contract_created_in_memory": true,
+    "renderer_native_input_emitted": false,
+    "renderer_dispatch_invoked": false,
+    "launcher_invoked": false,
+    "godot_invoked": false,
+    "ffmpeg_invoked": false,
+    "media_created": false,
+    "audio_generated": false,
+    "c11c_source_mutation": false,
+    "d4_8": "BLOCKED",
+    "d9_10": "PREPARE_ONLY",
+    "release_authority": "NONE"
+  },
+  "contract_sha256": "af9301b50bb8159015440fd232fd4966a08c8b9bfa6fc8831ca612ef34c2211d"
+}

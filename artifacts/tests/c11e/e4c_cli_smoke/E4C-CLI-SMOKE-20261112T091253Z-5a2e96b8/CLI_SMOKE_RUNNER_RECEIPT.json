@@ -1,0 +1,23 @@
+{
+    "schema":  "C11E-E4C-CLI-SMOKE-RUNNER-RECEIPT-V1",
+    "status":  "PASS_E4C_DRILL_CLI_SINGLE_SELECTOR_AV_SMOKE",
+    "request_id":  "E4C-CLI-SMOKE-20261112T091253Z-5a2e96b8",
+    "request_origin":  "CLI",
+    "selector":  "tracking/tier-1",
+    "gameplay_seed":  12345,
+    "music_seed_a_b":  840001,
+    "music_seed_c":  840002,
+    "source_pins_pre":  19,
+    "source_pins_post":  19,
+    "shared_executor":  "c11e_e4c_drill_execution.py",
+    "qualification_receipt":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\c11e\\E4C-CLI-SMOKE-20261112T091253Z-5a2e96b8\\E4C_DRILL_AV_QUALIFICATION_RECEIPT.json",
+    "cli_summary":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_cli_smoke\\E4C-CLI-SMOKE-20261112T091253Z-5a2e96b8\\CLI_EXECUTION_RESULT.json",
+    "stdout_log":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_cli_smoke\\E4C-CLI-SMOKE-20261112T091253Z-5a2e96b8\\CLI_STDOUT.log",
+    "stderr_log":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_cli_smoke\\E4C-CLI-SMOKE-20261112T091253Z-5a2e96b8\\CLI_STDERR.log",
+    "started_local":  "2026-11-12T10:12:54.2372535+01:00",
+    "finished_local":  "2026-11-12T10:15:09.7726848+01:00",
+    "process_exit_code":  0,
+    "c11c_source_mutation":  false,
+    "production_dispatch":  false,
+    "release_authority":  "NONE"
+}

@@ -1,0 +1,19 @@
+{
+  "schema": "C11-E-E1-PRODUCTION-INTENT-RECEIPT-V1",
+  "status": "PASS_E1_PREPARATION_ONLY",
+  "request_id": "D99-GUI-6514F1066E79",
+  "intent_sha256": "26078754a00b78e56f3ddbd59a7f36835f79e4ee9aaac57dd6bee68ddbf0b24b",
+  "request_hash": "f1334159bbce968664c97b0ace9b7b07c7a4230a7db57ab3c1ded74df6c855bb",
+  "editorial_hash": "e137d187e70a9767f769929b777ee777a65388706b672c55a06b9bb3aca5e078",
+  "plan_hash": "0689c533050e7ae47078f7d4b496cbab019eee5db59639f390a4038dda6544b0",
+  "gui_cli_parity": "PASS",
+  "loop_family_stage_contract_sha256": null,
+  "drill_family_stage_contract_sha256": "af9301b50bb8159015440fd232fd4966a08c8b9bfa6fc8831ca612ef34c2211d",
+  "drill_dynamic_request_binding_preview_sha256": "9dcee3e94747748117bea79b01b12645b8f4b80a58de618097f57eb90b6113ec",
+  "renderer_input_emitted": false,
+  "renderer_dispatch_invoked": false,
+  "production_execution": false,
+  "media_created": false,
+  "release_authority": "NONE",
+  "evidence_root": "artifacts\\tests\\c11d_d9\\producer_universal\\D99-GUI-6514F1066E79"
+}
