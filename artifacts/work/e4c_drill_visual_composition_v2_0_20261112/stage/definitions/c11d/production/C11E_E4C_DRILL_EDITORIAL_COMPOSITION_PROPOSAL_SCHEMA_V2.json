@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://c11e.local/schemas/C11E_E4C_DRILL_EDITORIAL_COMPOSITION_PROPOSAL_V2.schema.json",
+  "title": "C11-E E4C Drill Editorial Composition Proposal V2 — native social body pixel identity",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "schema_version",
+    "proposal_id",
+    "status",
+    "purpose",
+    "authority",
+    "scope",
+    "geometry",
+    "phase_ownership",
+    "timebase",
+    "invariants",
+    "execution_boundary"
+  ],
+  "properties": {
+    "schema": {
+      "const": "C11E-E4C-DRILL-EDITORIAL-COMPOSITION-PROPOSAL-V2"
+    },
+    "schema_version": {
+      "const": "2.0"
+    },
+    "proposal_id": {
+      "const": "C11E_E4C_DRILL_EDITORIAL_COMPOSITION_V2_SOCIAL_BODY_PIXEL_EXACT"
+    },
+    "status": {
+      "const": "USER_DIRECTED_D_OWNED_V2_CONTRACT"
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authority": {
+      "type": "object",
+      "required": [
+        "frozen_c11c_manifest_sha256",
+        "presentation_profile_path",
+        "presentation_profile_sha256",
+        "presentation_profile_bytes",
+        "authoritative_geometry_function",
+        "supersedes_for_D_consumer_only"
+      ]
+    },
+    "scope": {
+      "type": "object",
+      "required": [
+        "content_type",
+        "families",
+        "tiers",
+        "selector_count",
+        "delivery_profile",
+        "canvas",
+        "editorial_fields",
+        "language"
+      ]
+    },
+    "geometry": {
+      "type": "object",
+      "required": [
+        "delivery_profile_id",
+        "canvas",
+        "background_rgb_hex",
+        "header_rect",
+        "body_rect",
+        "footer_rect",
+        "source_frame_viewport",
+        "source_frame_transform",
+        "editorial_text_blocks",
+        "source_geometry_authority"
+      ]
+    },
+    "phase_ownership": {
+      "type": "object",
+      "required": [
+        "PRE_ROLL",
+        "GAME",
+        "END_CTA",
+        "DONE"
+      ]
+    },
+    "timebase": {
+      "type": "object",
+      "required": [
+        "proposal_path",
+        "proposal_sha256",
+        "pre_roll_frames",
+        "game_frames",
+        "end_cta_frames",
+        "total_frames",
+        "fps",
+        "frame_order",
+        "temporal_resampling"
+      ]
+    },
+    "invariants": {
+      "type": "object",
+      "required": [
+        "GAME_body_pixel_identity",
+        "source_scale",
+        "interpolation",
+        "PRE_ROLL_full_frame_identity",
+        "END_CTA_full_frame_identity",
+        "editorial_visibility"
+      ]
+    },
+    "execution_boundary": {
+      "type": "object",
+      "required": [
+        "D_owned_design_and_contract_implementation_only",
+        "isolated_requalification_from_existing_captured_media",
+        "new_native_capture",
+        "godot_invocation",
+        "audio_generation",
+        "production_renderer_activation",
+        "production_dispatch",
+        "c11c_source_mutation",
+        "release_authority"
+      ]
+    }
+  }
+}

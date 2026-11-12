@@ -1,0 +1,411 @@
+{
+  "schema": "C11E-E4C-VISUAL-COMPOSITION-V2-OVERLAY-MANIFEST-V2_0",
+  "package_id": "C11E_E4C_DRILL_VISUAL_COMPOSITION_V2_REQUALIFICATION_V2_0_20261112",
+  "date": "2026-11-12",
+  "package_class": "HASH_GUARDED_ONE_FILE_REPLACE_PLUS_ADD_ONLY",
+  "purpose": "Consolidated geometry-contract validation correction: exact 9:16 metadata and 4/3 logical-to-REVIEW_720 projection; requalify existing captured media only.",
+  "replace_count": 1,
+  "add_count": 24,
+  "payload_count": 25,
+  "source_pins": [
+    {
+      "path": "assets/fonts/Inter-Bold.otf",
+      "sha256": "9fc6261e817d0b1b2bf1953d8799bb1c837d11aeebbf83ae352e7b4d6de6425d"
+    },
+    {
+      "path": "assets/fonts/NotoSansMono-Regular.ttf",
+      "sha256": "6b692c4b6d15ccf59f1c1fe8d11cb8a92f51960f3e9f1f523781755a3af7e29f"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/C11CVisualDrillProducerEnvelopeGenerator.gd",
+      "sha256": "9e2a2f394db7efce6f646600d0bb8f4ee8488c87a184df1a0fb7f7cdcb9066e9"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/c11e_production_cli.py",
+      "sha256": "3e530e535accc31455207d1e8e3253140c95b390348b4ee252ec8b5ee140869a"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/c11e_production_service.py",
+      "sha256": "e5dbf9baa72d4c066ff8ba24006df954700d72a5b0f11f9f88aec653e84dce87"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/main.py",
+      "sha256": "86eeca0c3fc37105c1202295db3f27e6dc249f4eafdcb48c5709cd2d76164393"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/run_visual_drill_production.ps1",
+      "sha256": "ad6a7f0a6ce87804363810123f76ff0765b1582426cb2c8f69f6864ec3a0c808"
+    },
+    {
+      "path": "core/presentation/PresentationProfile.gd",
+      "sha256": "187b1cf8ab96b9031785a0f36b0054a60383c97cb3d81906c7d9bbcd373bef24"
+    },
+    {
+      "path": "core/presentation/rendering/VisualContentPlayer.gd",
+      "sha256": "58d86d56ebd7507c9e800c83010103b9be12f1b5dca9356da61ca623e4cf0145"
+    },
+    {
+      "path": "core/presentation/rendering/VisualContentPlayer.tscn",
+      "sha256": "8c3005a68aa0e818b078b06ae31054524d523b95e396dc1676dce28374ff8b27"
+    },
+    {
+      "path": "definitions/c11d/production/C11E_E4C_DRILL_PRESENTATION_TIMEBASE_PROPOSAL_SCHEMA_V1.json",
+      "sha256": "c5cedcd749a6702dc47b1de0bd67c57721bb9a06cee5cb3709cdc1b17d8a6806"
+    },
+    {
+      "path": "definitions/c11d/production/C11E_E4C_DRILL_PRESENTATION_TIMEBASE_PROPOSAL_V1.json",
+      "sha256": "44ab3b0fa09a6f7d42cd8cf2f1122cada6cbffe16a7a6b53c2af5e88d5daddc8"
+    },
+    {
+      "path": "profiles/difficulty/visual_drill_peripheral_scan.json",
+      "sha256": "7c52112bf9c106152d7fe03b646bde0f415881a04efb75560d731fa3f18fa73e"
+    },
+    {
+      "path": "profiles/difficulty/visual_drill_pursuit.json",
+      "sha256": "ab6a29af53bdb45fb6976bfdd558e3275c477eb7ad9afd61b9d01e36d43afb05"
+    },
+    {
+      "path": "profiles/difficulty/visual_drill_saccade.json",
+      "sha256": "6be50f582ef5ce11d36b72943750b88e72da67d858d67c3ac3d38d33c11ccf38"
+    },
+    {
+      "path": "profiles/difficulty/visual_drill_tracking.json",
+      "sha256": "6de8812bd46904e122ecdd0eae22fb2979bd75399c34779248c6569e833c921e"
+    },
+    {
+      "path": "profiles/presentation/c11c_visual_music_profiles.json",
+      "sha256": "b78706c5a9adbf1581d925f522b76cc3419983177de213734cc79996af5cbf58"
+    },
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    {
+      "path": "tools/c11d/d9/c11e_e4c_drill_execution.py",
+      "sha256": "51fe92c24506788918f896216055f2f1f21a7abf4ad9bf369c9ee63cbac5983a"
+    },
+    {
+      "path": "tools/prototypes/c11c_common/C11CSafeAmbient.py",
+      "sha256": "c376fd44a3115f0d800213d95e28143363748e16c7b5800369fcadbf237fb02c"
+    },
+    {
+      "path": "tools/prototypes/c11c_common/generate_c11c_family_music.py",
+      "sha256": "41bb8f9842ac941ea86c838f272b11bd0642973b26e92defa006721a3d8cb84d"
+    }
+  ],
+  "replacements": [
+    {
+      "destination": "tools/c11d/d9/c11e_e4c_drill_visual_composition_consumer.py",
+      "package_path": "payload/replace/tools/c11d/d9/c11e_e4c_drill_visual_composition_consumer.py",
+      "bytes": 36466,
+      "sha256": "4d7c8acffe1a0a3a1c1b33f09a5c82d5d8fc65525b1e8b9b9265c9a788427d9b",
+      "preimage_sha256": "ba81e0b5e4a9f29b3ff5fd670bce424a592453dfa06ef5dce356e772044a99aa"
+    }
+  ],
+  "additions": [
+    {
+      "destination": "definitions/c11d/production/C11E_E4C_DRILL_EDITORIAL_COMPOSITION_PROPOSAL_SCHEMA_V2.json",
+      "package_path": "payload/add/definitions/c11d/production/C11E_E4C_DRILL_EDITORIAL_COMPOSITION_PROPOSAL_SCHEMA_V2.json",
+      "bytes": 3050,
+      "sha256": "9de12b1ede0849de14446af50345769502165dc7a2191aca71f20702fb855baa"
+    },
+    {
+      "destination": "definitions/c11d/production/C11E_E4C_DRILL_EDITORIAL_COMPOSITION_PROPOSAL_V2.json",
+      "package_path": "payload/add/definitions/c11d/production/C11E_E4C_DRILL_EDITORIAL_COMPOSITION_PROPOSAL_V2.json",
+      "bytes": 6105,
+      "sha256": "700447531e299be44d119c52caa44ee797ec00fbad6a0d7a08ad5bbeff82b5e2"
+    },
+    {
+      "destination": "docs/current/e/C11D_E_BLOCKER_REMEDIATION_REGISTER_20261112_V57.md",
+      "package_path": "payload/add/docs/current/e/C11D_E_BLOCKER_REMEDIATION_REGISTER_20261112_V57.md",
+      "bytes": 26709,
+      "sha256": "182dbdeadb5a89214fbb3f3d9e679f0e6289619454958ba6b920c7cde25f7cce"
+    },
+    {
+      "destination": "docs/current/e/C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261112_V83.md",
+      "package_path": "payload/add/docs/current/e/C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261112_V83.md",
+      "bytes": 27832,
+      "sha256": "a6828485d7efcff4384f2b93a7e2104937c029651ff75ad56e665d49b37b404f"
+    },
+    {
+      "destination": "docs/current/e/C11E_CURRENT_AUTHORITY_20261112_V140.md",
+      "package_path": "payload/add/docs/current/e/C11E_CURRENT_AUTHORITY_20261112_V140.md",
+      "bytes": 50577,
+      "sha256": "2888e93d444bde10c3977be147cfd759f2ced09b8527177f9b96ae901b79f21d"
+    },
+    {
+      "destination": "docs/current/e/C11E_CURRENT_DOC_INDEX_20261112_V102.md",
+      "package_path": "payload/add/docs/current/e/C11E_CURRENT_DOC_INDEX_20261112_V102.md",
+      "bytes": 29975,
+      "sha256": "249a90faab0a4f1d2f7a2d0e3b6a6d9b42805fd82719bb36f09685ea6a4e36c6"
+    },
+    {
+      "destination": "docs/current/e/C11E_E3_EXECUTION_BACKLOG_20261112_V111.md",
+      "package_path": "payload/add/docs/current/e/C11E_E3_EXECUTION_BACKLOG_20261112_V111.md",
+      "bytes": 29864,
+      "sha256": "4a7b547b9cf85b7484c3893f5677f3653d59d618985698623d6bfede74ad3e66"
+    },
+    {
+      "destination": "docs/current/e/C11E_E4C_DRILL_COMPOSITION_OPERATOR_DECISION_RECORD_20261112_V2.json",
+      "package_path": "payload/add/docs/current/e/C11E_E4C_DRILL_COMPOSITION_OPERATOR_DECISION_RECORD_20261112_V2.json",
+      "bytes": 2925,
+      "sha256": "bceef9a22c27447ccbef5487339c25626e4cb4c5d32509809b832411655914e8"
+    },
+    {
+      "destination": "docs/current/e/C11E_E4C_DRILL_EXECUTION_PLAN_20261112_V28.md",
+      "package_path": "payload/add/docs/current/e/C11E_E4C_DRILL_EXECUTION_PLAN_20261112_V28.md",
+      "bytes": 45492,
+      "sha256": "d7d77a56e85c11c8b12e969d1301b5726ebf961adb761c15c5f5c611bfaf380c"
+    },
+    {
+      "destination": "docs/current/e/C11E_E4C_DRILL_VISUAL_CONSUMER_SPEC_20261112_V13.md",
+      "package_path": "payload/add/docs/current/e/C11E_E4C_DRILL_VISUAL_CONSUMER_SPEC_20261112_V13.md",
+      "bytes": 11402,
+      "sha256": "080bbac628955560c0a716ca192b053601af116646e59beabb7215104e4900a8"
+    },
+    {
+      "destination": "docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261112_V135.md",
+      "package_path": "payload/add/docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261112_V135.md",
+      "bytes": 29665,
+      "sha256": "3b2e8c08c53ab2a892a059781ad4f829e92c251cced6f39a637fb07d90483858"
+    },
+    {
+      "destination": "docs/current/e/C11E_INSTALLER_INCIDENT_REGISTER_20261112_V20.md",
+      "package_path": "payload/add/docs/current/e/C11E_INSTALLER_INCIDENT_REGISTER_20261112_V20.md",
+      "bytes": 36461,
+      "sha256": "4513d93c0f2c9dfacf106638dc2cc86d3c97003d3141ace09eb20aa380c608c3"
+    },
+    {
+      "destination": "docs/history/c11e/C11E_E4C_DRILL_V1_7_INSTALLER_DESTINATION_CLASSIFICATION_20261112_V1.md",
+      "package_path": "payload/add/docs/history/c11e/C11E_E4C_DRILL_V1_7_INSTALLER_DESTINATION_CLASSIFICATION_20261112_V1.md",
+      "bytes": 2861,
+      "sha256": "3cac90166e184517c988a32113a302ba3f2b2ddbbea7a9d595021e8dc2f3ce50"
+    },
+    {
+      "destination": "docs/history/c11e/C11E_E4C_DRILL_V1_8_INSTALLER_PACKAGE_BINDING_INCIDENT_20261112_V1.md",
+      "package_path": "payload/add/docs/history/c11e/C11E_E4C_DRILL_V1_8_INSTALLER_PACKAGE_BINDING_INCIDENT_20261112_V1.md",
+      "bytes": 2871,
+      "sha256": "37b837ba14e821e64bbb5e2a2819e2690562afe0a74db4396fe7dad01b2c6710"
+    },
+    {
+      "destination": "docs/history/c11e/C11E_E4C_DRILL_V1_9_GEOMETRY_CONTRACT_TEST_FAILURE_20261112_V1.md",
+      "package_path": "payload/add/docs/history/c11e/C11E_E4C_DRILL_V1_9_GEOMETRY_CONTRACT_TEST_FAILURE_20261112_V1.md",
+      "bytes": 3435,
+      "sha256": "a400522e7bcb9a04c8cc1b808f20364bf4c23299d6d64a56f7ec4c3d1f02b312"
+    },
+    {
+      "destination": "docs/history/c11e/C11E_E4C_DRILL_V1_COMPOSITION_ROOT_CAUSE_20261112_V1.md",
+      "package_path": "payload/add/docs/history/c11e/C11E_E4C_DRILL_V1_COMPOSITION_ROOT_CAUSE_20261112_V1.md",
+      "bytes": 2574,
+      "sha256": "b5383fc57b079a10ba6275c8b0aeb026013110503092c1edd6018f7e6f0d6f17"
+    },
+    {
+      "destination": "docs/history/c11e/C11E_E4C_DRILL_V2_EXISTING_MEDIA_REQUALIFICATION_20261112_V1.md",
+      "package_path": "payload/add/docs/history/c11e/C11E_E4C_DRILL_V2_EXISTING_MEDIA_REQUALIFICATION_20261112_V1.md",
+      "bytes": 2196,
+      "sha256": "2f650be4d39da10d175e087354df81e4cbfa6ab256595393ea1afdee7954c950"
+    },
+    {
+      "destination": "docs/history/c11e/C11E_E4C_DRILL_VISUAL_CONSUMER_V2_IMPLEMENTATION_20261112_V1.md",
+      "package_path": "payload/add/docs/history/c11e/C11E_E4C_DRILL_VISUAL_CONSUMER_V2_IMPLEMENTATION_20261112_V1.md",
+      "bytes": 2613,
+      "sha256": "fb843bb62e7fc5f1f8916d34bda9481176ce46bb777f120778f69c999714a116"
+    },
+    {
+      "destination": "prompts/C11E_CONTINUATION_MASTER_PROMPT_20261112_V141.md",
+      "package_path": "payload/add/prompts/C11E_CONTINUATION_MASTER_PROMPT_20261112_V141.md",
+      "bytes": 13357,
+      "sha256": "6940b13979aa46b1d170780ad19279a2aa21e78ae96f71a308579dc430480182"
+    },
+    {
+      "destination": "prompts/C11E_FIRST_PROMPT_20261112_V65.md",
+      "package_path": "payload/add/prompts/C11E_FIRST_PROMPT_20261112_V65.md",
+      "bytes": 9778,
+      "sha256": "8207146f20104bb699d68c2a35612ac64ffa2e4f9d9177a82fa302b8ccce5ba4"
+    },
+    {
+      "destination": "prompts/C11E_NEXT_WINDOW_START_PROMPT_20261112_V141.md",
+      "package_path": "payload/add/prompts/C11E_NEXT_WINDOW_START_PROMPT_20261112_V141.md",
+      "bytes": 8965,
+      "sha256": "0a48fdc07dd04745d00fdd8fb550a49c1d743ceeefa67e281490fb96834f7b0c"
+    },
+    {
+      "destination": "tests/test_c11e_e4c_drill_visual_composition_consumer.py",
+      "package_path": "payload/add/tests/test_c11e_e4c_drill_visual_composition_consumer.py",
+      "bytes": 12263,
+      "sha256": "62327e32ed4c15b497efb4a93fecc1d484cebff0b79beaa7ced5099905ffb2bf"
+    },
+    {
+      "destination": "tools/c11d/d9/REQUALIFY_C11E_E4C_DRILL_AV_FROM_EXISTING_EVIDENCE_V2.py",
+      "package_path": "payload/add/tools/c11d/d9/REQUALIFY_C11E_E4C_DRILL_AV_FROM_EXISTING_EVIDENCE_V2.py",
+      "bytes": 27488,
+      "sha256": "a41b95d000b7107c36f02f45691862679b6163b1584acda0cf2ddd41e01cafaa"
+    },
+    {
+      "destination": "tools/c11d/d9/RUN_C11E_E4C_DRILL_AV_EXISTING_MEDIA_V2_REQUALIFICATION.ps1",
+      "package_path": "payload/add/tools/c11d/d9/RUN_C11E_E4C_DRILL_AV_EXISTING_MEDIA_V2_REQUALIFICATION.ps1",
+      "bytes": 5434,
+      "sha256": "749d28c2848b855fc9fee6c317b1bbf84efc2f2b3c250f0cf39358c5e96b9ddd"
+    }
+  ],
+  "package_files": [
+    {
+      "path": "INSTALL_C11E_E4C_DRILL_VISUAL_COMPOSITION_V2_V2_0.ps1",
+      "bytes": 31224,
+      "sha256": "0de98202cb84aeeaf14c1c4acd6972b2d302a251634187c7dd57b76fc0ca5062"
+    },
+    {
+      "path": "README.md",
+      "bytes": 4964,
+      "sha256": "db36807bff3d82e5ff1ad9474ceda4c6fa95f433bcad2ce03c0e629575c859d3"
+    },
+    {
+      "path": "payload/add/definitions/c11d/production/C11E_E4C_DRILL_EDITORIAL_COMPOSITION_PROPOSAL_SCHEMA_V2.json",
+      "bytes": 3050,
+      "sha256": "9de12b1ede0849de14446af50345769502165dc7a2191aca71f20702fb855baa"
+    },
+    {
+      "path": "payload/add/definitions/c11d/production/C11E_E4C_DRILL_EDITORIAL_COMPOSITION_PROPOSAL_V2.json",
+      "bytes": 6105,
+      "sha256": "700447531e299be44d119c52caa44ee797ec00fbad6a0d7a08ad5bbeff82b5e2"
+    },
+    {
+      "path": "payload/add/docs/current/e/C11D_E_BLOCKER_REMEDIATION_REGISTER_20261112_V57.md",
+      "bytes": 26709,
+      "sha256": "182dbdeadb5a89214fbb3f3d9e679f0e6289619454958ba6b920c7cde25f7cce"
+    },
+    {
+      "path": "payload/add/docs/current/e/C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261112_V83.md",
+      "bytes": 27832,
+      "sha256": "a6828485d7efcff4384f2b93a7e2104937c029651ff75ad56e665d49b37b404f"
+    },
+    {
+      "path": "payload/add/docs/current/e/C11E_CURRENT_AUTHORITY_20261112_V140.md",
+      "bytes": 50577,
+      "sha256": "2888e93d444bde10c3977be147cfd759f2ced09b8527177f9b96ae901b79f21d"
+    },
+    {
+      "path": "payload/add/docs/current/e/C11E_CURRENT_DOC_INDEX_20261112_V102.md",
+      "bytes": 29975,
+      "sha256": "249a90faab0a4f1d2f7a2d0e3b6a6d9b42805fd82719bb36f09685ea6a4e36c6"
+    },
+    {
+      "path": "payload/add/docs/current/e/C11E_E3_EXECUTION_BACKLOG_20261112_V111.md",
+      "bytes": 29864,
+      "sha256": "4a7b547b9cf85b7484c3893f5677f3653d59d618985698623d6bfede74ad3e66"
+    },
+    {
+      "path": "payload/add/docs/current/e/C11E_E4C_DRILL_COMPOSITION_OPERATOR_DECISION_RECORD_20261112_V2.json",
+      "bytes": 2925,
+      "sha256": "bceef9a22c27447ccbef5487339c25626e4cb4c5d32509809b832411655914e8"
+    },
+    {
+      "path": "payload/add/docs/current/e/C11E_E4C_DRILL_EXECUTION_PLAN_20261112_V28.md",
+      "bytes": 45492,
+      "sha256": "d7d77a56e85c11c8b12e969d1301b5726ebf961adb761c15c5f5c611bfaf380c"
+    },
+    {
+      "path": "payload/add/docs/current/e/C11E_E4C_DRILL_VISUAL_CONSUMER_SPEC_20261112_V13.md",
+      "bytes": 11402,
+      "sha256": "080bbac628955560c0a716ca192b053601af116646e59beabb7215104e4900a8"
+    },
+    {
+      "path": "payload/add/docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261112_V135.md",
+      "bytes": 29665,
+      "sha256": "3b2e8c08c53ab2a892a059781ad4f829e92c251cced6f39a637fb07d90483858"
+    },
+    {
+      "path": "payload/add/docs/current/e/C11E_INSTALLER_INCIDENT_REGISTER_20261112_V20.md",
+      "bytes": 36461,
+      "sha256": "4513d93c0f2c9dfacf106638dc2cc86d3c97003d3141ace09eb20aa380c608c3"
+    },
+    {
+      "path": "payload/add/docs/history/c11e/C11E_E4C_DRILL_V1_7_INSTALLER_DESTINATION_CLASSIFICATION_20261112_V1.md",
+      "bytes": 2861,
+      "sha256": "3cac90166e184517c988a32113a302ba3f2b2ddbbea7a9d595021e8dc2f3ce50"
+    },
+    {
+      "path": "payload/add/docs/history/c11e/C11E_E4C_DRILL_V1_8_INSTALLER_PACKAGE_BINDING_INCIDENT_20261112_V1.md",
+      "bytes": 2871,
+      "sha256": "37b837ba14e821e64bbb5e2a2819e2690562afe0a74db4396fe7dad01b2c6710"
+    },
+    {
+      "path": "payload/add/docs/history/c11e/C11E_E4C_DRILL_V1_9_GEOMETRY_CONTRACT_TEST_FAILURE_20261112_V1.md",
+      "bytes": 3435,
+      "sha256": "a400522e7bcb9a04c8cc1b808f20364bf4c23299d6d64a56f7ec4c3d1f02b312"
+    },
+    {
+      "path": "payload/add/docs/history/c11e/C11E_E4C_DRILL_V1_COMPOSITION_ROOT_CAUSE_20261112_V1.md",
+      "bytes": 2574,
+      "sha256": "b5383fc57b079a10ba6275c8b0aeb026013110503092c1edd6018f7e6f0d6f17"
+    },
+    {
+      "path": "payload/add/docs/history/c11e/C11E_E4C_DRILL_V2_EXISTING_MEDIA_REQUALIFICATION_20261112_V1.md",
+      "bytes": 2196,
+      "sha256": "2f650be4d39da10d175e087354df81e4cbfa6ab256595393ea1afdee7954c950"
+    },
+    {
+      "path": "payload/add/docs/history/c11e/C11E_E4C_DRILL_VISUAL_CONSUMER_V2_IMPLEMENTATION_20261112_V1.md",
+      "bytes": 2613,
+      "sha256": "fb843bb62e7fc5f1f8916d34bda9481176ce46bb777f120778f69c999714a116"
+    },
+    {
+      "path": "payload/add/prompts/C11E_CONTINUATION_MASTER_PROMPT_20261112_V141.md",
+      "bytes": 13357,
+      "sha256": "6940b13979aa46b1d170780ad19279a2aa21e78ae96f71a308579dc430480182"
+    },
+    {
+      "path": "payload/add/prompts/C11E_FIRST_PROMPT_20261112_V65.md",
+      "bytes": 9778,
+      "sha256": "8207146f20104bb699d68c2a35612ac64ffa2e4f9d9177a82fa302b8ccce5ba4"
+    },
+    {
+      "path": "payload/add/prompts/C11E_NEXT_WINDOW_START_PROMPT_20261112_V141.md",
+      "bytes": 8965,
+      "sha256": "0a48fdc07dd04745d00fdd8fb550a49c1d743ceeefa67e281490fb96834f7b0c"
+    },
+    {
+      "path": "payload/add/tests/test_c11e_e4c_drill_visual_composition_consumer.py",
+      "bytes": 12263,
+      "sha256": "62327e32ed4c15b497efb4a93fecc1d484cebff0b79beaa7ced5099905ffb2bf"
+    },
+    {
+      "path": "payload/add/tools/c11d/d9/REQUALIFY_C11E_E4C_DRILL_AV_FROM_EXISTING_EVIDENCE_V2.py",
+      "bytes": 27488,
+      "sha256": "a41b95d000b7107c36f02f45691862679b6163b1584acda0cf2ddd41e01cafaa"
+    },
+    {
+      "path": "payload/add/tools/c11d/d9/RUN_C11E_E4C_DRILL_AV_EXISTING_MEDIA_V2_REQUALIFICATION.ps1",
+      "bytes": 5434,
+      "sha256": "749d28c2848b855fc9fee6c317b1bbf84efc2f2b3c250f0cf39358c5e96b9ddd"
+    },
+    {
+      "path": "payload/replace/tools/c11d/d9/c11e_e4c_drill_visual_composition_consumer.py",
+      "bytes": 36466,
+      "sha256": "4d7c8acffe1a0a3a1c1b33f09a5c82d5d8fc65525b1e8b9b9265c9a788427d9b"
+    }
+  ],
+  "governance": {
+    "active_checkout": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+    "active_checkout_is_only_source_authority": true,
+    "git_checks": "SKIPPED",
+    "commits": "OPERATOR_MANAGED",
+    "pip_or_dependency_changes": false,
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "c11c_source_mutation": false,
+    "e1_service_mutation": false,
+    "gui_cli_entrypoint_mutation": false,
+    "d_shared_av_executor_mutation": false,
+    "new_native_capture": false,
+    "godot_invoked": false,
+    "family_music_generation": false,
+    "production_dispatch": false,
+    "release_authority": "NONE",
+    "e1_status": "PREPARE_ONLY",
+    "family_adapter_status": "NOT_CONNECTED_E1",
+    "install_requires_windows_powershell": "5.1",
+    "python": "3.13 existing executable",
+    "pyside6": "existing runtime only",
+    "transaction": "preflight all package/source/destination hashes; journal before writes; atomic replacement; hash-guarded rollback"
+  }
+}
