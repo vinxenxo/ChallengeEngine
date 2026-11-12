@@ -484,12 +484,10 @@ def validate_plan(plan: Mapping[str, Any]) -> None:
     for key, expected in EXPECTED_SOCIAL_REGIONS.items():
         if geometry.get(key) != expected:
             raise DrillVisualConsumerError(f"V2 plan social region mismatch: {key}")
-    # The source viewport is a consumed geometry input, not descriptive
-    # metadata.  It must be the full native social body at the same final
-    # coordinates.  Hashing an altered plan is therefore insufficient to make
-    # a legacy centred/contained 504x896 viewport valid.
     if geometry.get("source_frame_viewport") != EXPECTED_SOCIAL_REGIONS["body_rect"]:
-        raise DrillVisualConsumerError("V2 source viewport must be the exact social_regions.body_rect")
+        raise DrillVisualConsumerError(
+            "V2 source viewport must be the exact social_regions.body_rect"
+        )
     transform = geometry.get("source_frame_transform", {})
     if transform.get("mode") != "PIXEL_EXACT_BODY_CROP" or transform.get("scale") != 1.0 or transform.get("interpolation") is not False:
         raise DrillVisualConsumerError("V2 plan attempted a transform other than pixel-exact body crop")

@@ -1,0 +1,196 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema": "C11E-E4C-DRILL-EDITORIAL-COMPOSITION-PROPOSAL-V2",
+  "schema_version": "2.0",
+  "proposal_id": "C11E_E4C_DRILL_EDITORIAL_COMPOSITION_V2_SOCIAL_BODY_PIXEL_EXACT",
+  "status": "USER_DIRECTED_D_OWNED_V2_CONTRACT",
+  "purpose": "Correct the E4C Drill D consumer so GAME displays only the exact native C11-C social body pixels while PRE_ROLL and END_CTA pass the complete native frame unchanged.",
+  "authority": {
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "presentation_profile_path": "core/presentation/PresentationProfile.gd",
+    "presentation_profile_sha256": "187b1cf8ab96b9031785a0f36b0054a60383c97cb3d81906c7d9bbcd373bef24",
+    "presentation_profile_bytes": 8837,
+    "authoritative_geometry_function": "get_social_regions",
+    "supersedes_for_D_consumer_only": "C11E_E4C_DRILL_EDITORIAL_COMPOSITION_PROPOSAL_V1"
+  },
+  "scope": {
+    "content_type": "visual_drills",
+    "families": [
+      "tracking",
+      "pursuit",
+      "saccade",
+      "peripheral_scan"
+    ],
+    "tiers": [
+      "tier-1",
+      "tier-2",
+      "tier-3",
+      "tier-4",
+      "tier-5"
+    ],
+    "selector_count": 20,
+    "delivery_profile": "REVIEW_720",
+    "canvas": [
+      720,
+      1280
+    ],
+    "editorial_fields": [
+      "title",
+      "subtitle",
+      "call_to_action"
+    ],
+    "language": "METADATA_ONLY"
+  },
+  "geometry": {
+    "delivery_profile_id": "REVIEW_720",
+    "canvas": {
+      "x": 0,
+      "y": 0,
+      "width": 720,
+      "height": 1280,
+      "aspect_ratio": "9:16"
+    },
+    "background_rgb_hex": "05070B",
+    "header_rect": {
+      "x": 0,
+      "y": 0,
+      "width": 720,
+      "height": 192
+    },
+    "body_rect": {
+      "x": 0,
+      "y": 192,
+      "width": 720,
+      "height": 896
+    },
+    "footer_rect": {
+      "x": 0,
+      "y": 1088,
+      "width": 720,
+      "height": 192
+    },
+    "source_frame_viewport": {
+      "x": 0,
+      "y": 192,
+      "width": 720,
+      "height": 896
+    },
+    "source_frame_transform": {
+      "mode": "PIXEL_EXACT_BODY_CROP",
+      "scale": 1.0,
+      "interpolation": false,
+      "resampling": false,
+      "aspect_ratio_preserved": true,
+      "nonuniform_stretch": false,
+      "source_frame_order": "IDENTITY",
+      "source_frame_count_mutation": false,
+      "source_frame_index_mapping": "IDENTITY",
+      "temporal_resampling": false,
+      "native_body_pixel_identity_required": true,
+      "excluded_native_regions": [
+        "header_rect",
+        "footer_rect"
+      ]
+    },
+    "editorial_text_blocks": {
+      "call_to_action": {
+        "font": "NotoSansMono-Regular",
+        "font_size_px": 15,
+        "height": 66,
+        "line_height_px": 22,
+        "max_chars_per_line_conservative": 71,
+        "max_lines": 3,
+        "region": "BOTTOM_BAND",
+        "width": 648,
+        "x": 36,
+        "y": 1151
+      },
+      "subtitle": {
+        "font": "Inter-Bold",
+        "font_size_px": 15,
+        "height": 92,
+        "line_height_px": 19,
+        "max_chars_per_line_conservative": 41,
+        "max_lines": 4,
+        "region": "TOP_BAND",
+        "width": 648,
+        "x": 36,
+        "y": 100
+      },
+      "title": {
+        "font": "Inter-Bold",
+        "font_size_px": 15,
+        "height": 92,
+        "line_height_px": 19,
+        "max_chars_per_line_conservative": 41,
+        "max_lines": 4,
+        "region": "TOP_BAND",
+        "width": 648,
+        "x": 36,
+        "y": 0
+      }
+    },
+    "overflow_policy": "NO_TRUNCATION_NO_ELLIPSIS_FAIL_CLOSED_IF_FONT_COVERAGE_OR_LAYOUT_CAPACITY_IS_NOT_PROVEN",
+    "line_break_policy": "D_OWNED_LAYOUT_BREAKS_ONLY_SOURCE_EDITORIAL_VALUE_AND_HASH_UNCHANGED",
+    "source_geometry_authority": {
+      "path": "core/presentation/PresentationProfile.gd",
+      "sha256": "187b1cf8ab96b9031785a0f36b0054a60383c97cb3d81906c7d9bbcd373bef24",
+      "bytes": 8837,
+      "function": "get_social_regions",
+      "logical_source_canvas": {
+        "width": 540,
+        "height": 960
+      },
+      "header_ratio": 0.15,
+      "footer_ratio": 0.15,
+      "body_ratio": 0.7,
+      "pixel_scale": 1.3333333333333333,
+      "semantic_note": "get_social_regions is full-width social geometry; get_composition_geometry is safe-area compatibility geometry and is not used as the Drill body viewport."
+    }
+  },
+  "phase_ownership": {
+    "PRE_ROLL": "NATIVE_FULL_FRAME_PASSTHROUGH_NO_D_OVERLAY",
+    "GAME": "CROP_EXACT_NATIVE_social_regions.body_rect_TO_SAME_CANVAS_COORDINATES_THEN_DRAW_D_EDITORIAL_IN_HEADER_AND_FOOTER",
+    "END_CTA": "NATIVE_FULL_FRAME_PASSTHROUGH_NO_D_OVERLAY_NATIVE_C11C_CTA_RETAINS_OWNERSHIP",
+    "DONE": "NO_FRAME"
+  },
+  "timebase": {
+    "proposal_path": "definitions/c11d/production/C11E_E4C_DRILL_PRESENTATION_TIMEBASE_PROPOSAL_V1.json",
+    "proposal_sha256": "44ab3b0fa09a6f7d42cd8cf2f1122cada6cbffe16a7a6b53c2af5e88d5daddc8",
+    "pre_roll_frames": 90,
+    "game_frames": 630,
+    "end_cta_frames": 90,
+    "total_frames": 810,
+    "fps": 30,
+    "frame_order": "IDENTITY",
+    "temporal_resampling": false
+  },
+  "invariants": {
+    "GAME_body_pixel_identity": "BYTE_EXACT_RGB888_SOURCE_CROP_EQUALS_DESTINATION_BODY_RECT",
+    "source_scale": 1.0,
+    "interpolation": false,
+    "nonuniform_stretch": false,
+    "PRE_ROLL_full_frame_identity": true,
+    "END_CTA_full_frame_identity": true,
+    "native_header_footer_in_GAME": "EXCLUDED_FROM_BODY; D_OUTER_BANDS_REPLACE_THEM",
+    "editorial_visibility": {
+      "PRE_ROLL": false,
+      "GAME": true,
+      "END_CTA": false,
+      "DONE": false
+    },
+    "source_frame_order_mutation": false,
+    "source_frame_count_mutation": false
+  },
+  "execution_boundary": {
+    "D_owned_design_and_contract_implementation_only": true,
+    "isolated_requalification_from_existing_captured_media": true,
+    "new_native_capture": false,
+    "godot_invocation": false,
+    "audio_generation": false,
+    "production_renderer_activation": false,
+    "production_dispatch": false,
+    "c11c_source_mutation": false,
+    "release_authority": "NONE"
+  }
+}

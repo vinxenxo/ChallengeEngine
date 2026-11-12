@@ -1,0 +1,131 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "C11E E4C Drill presentation timebase proposal schema V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema",
+    "schema_version",
+    "proposal_id",
+    "status",
+    "purpose",
+    "authority",
+    "source_semantics",
+    "candidate_mapping",
+    "worked_example",
+    "semantic_guards",
+    "approval",
+    "execution_boundary"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "schema": {
+      "const": "C11E-E4C-DRILL-PRESENTATION-TIMEBASE-PROPOSAL-V1"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "proposal_id": {
+      "const": "C11E_E4C_DRILL_PRESENTATION_TIMEBASE_V1"
+    },
+    "status": {
+      "const": "PROPOSED_NOT_APPROVED_NOT_RENDERER_INPUT"
+    },
+    "purpose": {
+      "type": "string"
+    },
+    "authority": {
+      "type": "object",
+      "required": [
+        "frozen_c11c_manifest_sha256",
+        "a3_proposal_sha256",
+        "a3_operator_decision_record_sha256",
+        "a3_lineage_bridge_sha256",
+        "b1_proposal_sha256",
+        "b1_decision",
+        "source_pins"
+      ]
+    },
+    "source_semantics": {
+      "type": "object",
+      "required": [
+        "fps_authority",
+        "pre_roll_frames",
+        "game_payload_frames",
+        "end_cta_frames",
+        "total_final_frames",
+        "player_frame_index_contract"
+      ]
+    },
+    "candidate_mapping": {
+      "type": "object",
+      "required": [
+        "formula",
+        "pre_roll_frames",
+        "end_cta_frames",
+        "game_payload_interval",
+        "final_game_interval",
+        "phase_visibility",
+        "source_frame_mapping",
+        "frame_rate",
+        "frame_order",
+        "frame_count",
+        "a3_field_window_convention"
+      ]
+    },
+    "worked_example": {
+      "type": "object",
+      "required": [
+        "fps",
+        "game_payload_frames",
+        "pre_roll_frames",
+        "end_cta_frames",
+        "total_final_frames",
+        "game_payload_frame_0_maps_to_final_frame",
+        "game_payload_frame_629_maps_to_final_frame",
+        "final_game_interval",
+        "pre_roll_interval",
+        "end_cta_interval"
+      ]
+    },
+    "semantic_guards": {
+      "type": "object",
+      "required": [
+        "native_end_cta_owner",
+        "d_editorial_does_not_compete_with_native_end_cta",
+        "a3_field_values_and_hashes_unchanged",
+        "request_seed",
+        "request_music_seed",
+        "b1_preserves_delivery_cadence",
+        "d1_audio_asset_selection_or_generation_authorized",
+        "renderer_native_input_authorized",
+        "production_dispatch_authorized",
+        "media_creation_authorized"
+      ]
+    },
+    "approval": {
+      "type": "object",
+      "required": [
+        "timebase_mapping_approved",
+        "operator_decision_required_for_exact_proposal_sha256",
+        "approval_scope_if_granted"
+      ]
+    },
+    "execution_boundary": {
+      "type": "object",
+      "required": [
+        "mode",
+        "renderer",
+        "renderer_native_input_emitted",
+        "renderer_activation",
+        "production_dispatch",
+        "media_created",
+        "c11c_source_mutation",
+        "release_authority"
+      ]
+    }
+  }
+}
