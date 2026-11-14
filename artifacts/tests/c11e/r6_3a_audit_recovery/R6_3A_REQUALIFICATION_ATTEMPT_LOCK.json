@@ -1,0 +1,9 @@
+{
+    "schema":  "C11E-R6_3A-REQUALIFICATION-ONE-SHOT-LOCK-V1",
+    "status":  "ATTEMPT_RESERVED",
+    "original_install_run_id":  "C11E_E4C_V2_3_R6_3A_20261114T163406Z_fc8436fa",
+    "package_sha256":  "47d5a30c315365eb7a31e37fc4bc1c2ff6ca0a297d1e57eccf89c3f5a024b96e",
+    "recovery_invocation_id":  "20261114T192552Z_7650ad32",
+    "reserved_utc":  "2026-11-14T19:25:56.0976361Z",
+    "retry_policy":  "NO_AUTOMATIC_RETRY_AFTER_CHILD_START"
+}

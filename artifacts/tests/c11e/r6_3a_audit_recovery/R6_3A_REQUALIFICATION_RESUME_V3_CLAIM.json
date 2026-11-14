@@ -1,0 +1,17 @@
+{
+    "schema":  "C11E-R6_3A-RESUME-V3-ONE-SHOT-CLAIM-V1",
+    "status":  "CHILD_LAUNCH_AUTHORIZATION_CONSUMED",
+    "original_install_run_id":  "C11E_E4C_V2_3_R6_3A_20261114T163406Z_fc8436fa",
+    "original_package_sha256":  "47d5a30c315365eb7a31e37fc4bc1c2ff6ca0a297d1e57eccf89c3f5a024b96e",
+    "recovery_invocation_id":  "20261114T192552Z_7650ad32",
+    "previous_lock_sha256":  "02b2d59a81ebce19f80046fb631ffc76a9572e965f29016f29799ac0f41959db",
+    "previous_failure":  "PARENT_TEE_PARAMETER_SET_BINDING_FAILURE_BEFORE_CHILD_OUTPUT_ID",
+    "previous_child_started":  false,
+    "runner_relative_path":  "tools/c11d/d9/RUN_C11E_E4C_V2_3_R6_3A_ROLE_STYLE_REQUALIFICATION.ps1",
+    "runner_sha256":  "01bb39f778a82320e0fcd446cb417e87ca29ada9d88cec8abdde85ff6840192a",
+    "child_timeout_seconds":  1800,
+    "stdout_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\r6_3a_audit_recovery\\20261114T192552Z_7650ad32\\REQUALIFICATION.stdout.v3.log",
+    "stderr_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\r6_3a_audit_recovery\\20261114T192552Z_7650ad32\\REQUALIFICATION.stderr.v3.log",
+    "retry_policy":  "NO_RETRY_AFTER_CREATE_NEW_MARKER",
+    "authorized_utc":  "2026-11-14T20:27:33.2197745Z"
+}
