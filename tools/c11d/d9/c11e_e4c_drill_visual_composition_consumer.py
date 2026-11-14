@@ -1,8 +1,10 @@
 """D-owned Visual Drill V2 consumer with social-body pixel identity.
 
 GAME copies only PresentationProfile.get_social_regions().body_rect into the
-720x1280 REVIEW_720 body, without scaling or interpolation. PRE_ROLL and END_CTA
-are full-frame native passthrough. This module never launches C11-C, Godot,
+720x1280 REVIEW_720 body, without scaling or interpolation. The user-directed
+D-owned family-title bridge replaces only the native PRE_ROLL title footprint
+and draws the same title style in GAME; PRE_ROLL body/footer and END_CTA remain
+pixel-identical to native frames. This module never launches C11-C, Godot,
 FFmpeg, audio generation, or production renderer dispatch.
 """
 from __future__ import annotations
@@ -40,6 +42,23 @@ INTER_FONT_REL = "assets/fonts/Inter-Bold.otf"
 MONO_FONT_REL = "assets/fonts/NotoSansMono-Regular.ttf"
 PRESENTATION_PROFILE_REL = "core/presentation/PresentationProfile.gd"
 PRESENTATION_PROFILE_SHA = "187b1cf8ab96b9031785a0f36b0054a60383c97cb3d81906c7d9bbcd373bef24"
+EDITORIAL_STYLE_AMENDMENT_REL = "definitions/c11d/production/C11E_E4C_DRILL_EDITORIAL_FAMILY_TITLE_AMENDMENT_R1_20261114.json"
+EDITORIAL_STYLE_AMENDMENT_SHA = "1d0d5393368ca1e1ecb867059314e28463205fffc81e8af902909896e0ac7331"
+FAMILY_TITLE_STYLE = {
+    "font": "Inter-Bold",
+    "font_size_px": 22,
+    "line_height_px": 29,
+    "color_rgb": [235, 215, 161],
+    "alignment": "CENTER",
+    "rect": {"x": 36, "y": 63, "width": 648, "height": 104},
+    "native_title_mask": {"x": 184, "y": 64, "width": 352, "height": 102},
+    "max_lines": 3,
+    "animation": "STATIC_NO_ANIMATION_OBSERVED_IN_TRACKING_TIER_1_PRE_ROLL",
+}
+GAME_SUBTITLE_BLOCK = {
+    "font": "Inter-Bold", "font_size_px": 15, "line_height_px": 19, "max_lines": 1,
+    "region": "TOP_BAND", "x": 36, "y": 169, "width": 648, "height": 21,
+}
 
 # Exact REVIEW_720 projection of PresentationProfile.get_social_regions().
 # The canvas carries aspect_ratio metadata in addition to its rectangle fields.
@@ -139,8 +158,14 @@ def _json_sha(value: Any) -> str:
     return _sha_bytes(payload.encode("utf-8"))
 
 
+def _editorial_amendment_path(root: Path) -> Path:
+    """Resolve the immutable amendment from the active project, or a test-only staged path."""
+    override = os.environ.get("C11E_EDITORIAL_AMENDMENT_PATH")
+    return Path(override).resolve() if override else root / Path(*EDITORIAL_STYLE_AMENDMENT_REL.split("/"))
+
+
 def _read_json(root: Path, relative: str) -> dict[str, Any]:
-    path = root / Path(*relative.split("/"))
+    path = _editorial_amendment_path(root) if relative == EDITORIAL_STYLE_AMENDMENT_REL else root / Path(*relative.split("/"))
     try:
         value = json.loads(path.read_text(encoding="utf-8-sig"))
     except Exception as exc:
@@ -163,9 +188,11 @@ def _verify_decision_and_proposals(root: Path) -> tuple[dict[str, Any], dict[str
         (TIMEBASE_SCHEMA_REL, TIMEBASE_SCHEMA_SHA),
         (DECISION_REL, DECISION_SHA),
         (PRESENTATION_PROFILE_REL, PRESENTATION_PROFILE_SHA),
+        (EDITORIAL_STYLE_AMENDMENT_REL, EDITORIAL_STYLE_AMENDMENT_SHA),
     )
     for relative, digest in expected:
-        if _sha_file(root / relative) != digest:
+        source_path = _editorial_amendment_path(root) if relative == EDITORIAL_STYLE_AMENDMENT_REL else root / relative
+        if _sha_file(source_path) != digest:
             raise DrillVisualConsumerError(f"approved V2 design/source pin mismatch: {relative}")
     if decision.get("decision_semantics") != "USER_DIRECTED_V2_D_OWNED_CONTRACT_AND_ISOLATED_REQUALIFICATION_ONLY":
         raise DrillVisualConsumerError("V2 user decision does not have the exact D-owned scope")
@@ -195,6 +222,15 @@ def _verify_decision_and_proposals(root: Path) -> tuple[dict[str, Any], dict[str
         raise DrillVisualConsumerError("V2 D-owned design implementation is not explicitly authorized")
     if scope.get("isolated_requalification_from_existing_captured_media_authorized") is not True:
         raise DrillVisualConsumerError("V2 existing-media isolated requalification is not authorized")
+    amendment = _read_json(root, EDITORIAL_STYLE_AMENDMENT_REL)
+    if amendment.get("schema") != "C11E-E4C-DRILL-EDITORIAL-FAMILY-TITLE-AMENDMENT-V1" or amendment.get("status") != "USER_DIRECTED_D_OWNED_PRESENTATION_AMENDMENT":
+        raise DrillVisualConsumerError("family-title editorial amendment schema/status mismatch")
+    if amendment.get("scope", {}).get("native_renderer_mutation") is not False or amendment.get("scope", {}).get("c11c_source_mutation") is not False:
+        raise DrillVisualConsumerError("family-title amendment crosses the protected C11-C boundary")
+    if amendment.get("family_title_style") != FAMILY_TITLE_STYLE:
+        raise DrillVisualConsumerError("family-title style differs from the immutable amendment contract")
+    if amendment.get("game_subtitle_block") != GAME_SUBTITLE_BLOCK:
+        raise DrillVisualConsumerError("GAME subtitle block differs from the approved family-title layout amendment")
     if composition.get("status") != "USER_DIRECTED_D_OWNED_V2_CONTRACT" or timebase.get("status") != "PROPOSED_NOT_APPROVED_NOT_RENDERER_INPUT":
         raise DrillVisualConsumerError("V2 composition approval or immutable V1 timebase status changed")
     geometry = composition.get("geometry", {})
@@ -587,15 +623,15 @@ def map_phase_frame(phase: str, player_frame_index: int, gameplay_frame_count: i
     if phase == "PRE_ROLL":
         if not 0 <= player_frame_index < pre:
             raise DrillVisualConsumerError("PRE_ROLL index outside native phase range")
-        return {"phase": phase, "final_presentation_frame_index": player_frame_index, "source_frame_index": 0, "d_editorial_visible": False, "pre_roll_frames": pre, "gameplay_frames": gameplay_frame_count, "end_cta_frames": end, "total_frames": total}
+        return {"phase": phase, "final_presentation_frame_index": player_frame_index, "source_frame_index": 0, "d_editorial_visible": False, "d_editorial_title_slot_open": True, "pre_roll_frames": pre, "gameplay_frames": gameplay_frame_count, "end_cta_frames": end, "total_frames": total}
     if phase == "GAME":
         if not 0 <= player_frame_index < gameplay_frame_count:
             raise DrillVisualConsumerError("GAME payload index outside [0, gameplay_frame_count)")
-        return {"phase": phase, "final_presentation_frame_index": pre + player_frame_index, "source_frame_index": player_frame_index, "d_editorial_visible": True, "pre_roll_frames": pre, "gameplay_frames": gameplay_frame_count, "end_cta_frames": end, "total_frames": total}
+        return {"phase": phase, "final_presentation_frame_index": pre + player_frame_index, "source_frame_index": player_frame_index, "d_editorial_visible": True, "d_editorial_title_slot_open": True, "pre_roll_frames": pre, "gameplay_frames": gameplay_frame_count, "end_cta_frames": end, "total_frames": total}
     if phase == "END_CTA":
         if not pre + gameplay_frame_count <= player_frame_index < total:
             raise DrillVisualConsumerError("END_CTA index outside native final-stream phase range")
-        return {"phase": phase, "final_presentation_frame_index": player_frame_index, "source_frame_index": gameplay_frame_count - 1, "d_editorial_visible": False, "pre_roll_frames": pre, "gameplay_frames": gameplay_frame_count, "end_cta_frames": end, "total_frames": total}
+        return {"phase": phase, "final_presentation_frame_index": player_frame_index, "source_frame_index": gameplay_frame_count - 1, "d_editorial_visible": False, "d_editorial_title_slot_open": False, "pre_roll_frames": pre, "gameplay_frames": gameplay_frame_count, "end_cta_frames": end, "total_frames": total}
     if phase == "DONE":
         return {"phase": phase, "final_presentation_frame_index": None, "source_frame_index": None, "d_editorial_visible": False, "pre_roll_frames": pre, "gameplay_frames": gameplay_frame_count, "end_cta_frames": end, "total_frames": total}
     raise DrillVisualConsumerError(f"unknown native Drill phase: {phase}")
@@ -646,12 +682,25 @@ def _build_composition_plan_from_preparation(
         },
         "selection": {"content_type": "visual_drills", "family_id": family_id, "variant_id": variant_id},
         "family_music": {"route": "PRESERVE_EXISTING_C11C_FAMILY_MUSIC_V4", "profile_id": expected_profile, "gameplay_seed_field": "request.seed", "music_seed_field": "request.music_seed", "d3_v5_invoked": False},
-        "approval": {"decision_record_sha256": DECISION_SHA, "composition_proposal_sha256": COMPOSITION_SHA, "timebase_proposal_sha256": TIMEBASE_SHA, "status": "USER_DIRECTED_V2_D_OWNED_CONTRACT_ONLY"},
+        "approval": {"decision_record_sha256": DECISION_SHA, "composition_proposal_sha256": COMPOSITION_SHA, "timebase_proposal_sha256": TIMEBASE_SHA, "editorial_family_title_amendment_sha256": EDITORIAL_STYLE_AMENDMENT_SHA, "status": "USER_DIRECTED_V2_D_OWNED_CONTRACT_ONLY"},
         "geometry": geometry,
-        "text": {"raw_editorial_preserved": True, "visible_fields": fields, "language_metadata_only": editor.get("language"), "layout_static_for_sequence": bool(fields), "phase_visibility": {"PRE_ROLL": False, "GAME": bool(fields), "END_CTA": False, "DONE": False}},
+        "text": {
+            "raw_editorial_preserved": True,
+            "visible_fields": fields,
+            "language_metadata_only": editor.get("language"),
+            "layout_static_for_sequence": bool(fields),
+            "family_title_style": dict(FAMILY_TITLE_STYLE),
+            "game_subtitle_block": dict(GAME_SUBTITLE_BLOCK),
+            "phase_visibility": {"PRE_ROLL": bool(fields.get("title")), "GAME": bool(fields), "END_CTA": False, "DONE": False},
+            "field_phase_visibility": {
+                "title": ["PRE_ROLL", "GAME"] if fields.get("title") else [],
+                "subtitle": ["GAME"] if fields.get("subtitle") else [],
+                "call_to_action": ["GAME"] if fields.get("call_to_action") else [],
+            },
+        },
         "timebase": {"formula": "final_presentation_frame_index = pre_roll_frames + game_payload_frame_index", "pre_roll_seconds": 3.0, "end_cta_seconds": 3.0, "source_fps_is_authoritative": True, "frame_count_order_fps_preserved": True, "temporal_resampling": False},
         "native_phase_ownership": {"source_phase_contract_sha256": phase_contract.get("phase_contract_sha256"), "native_end_cta_header_authoritative": True, "d_may_override_native_end_cta": False},
-        "source_pins": {**font_hashes, "presentation_profile": {"path": PRESENTATION_PROFILE_REL, "bytes": 8837, "sha256": PRESENTATION_PROFILE_SHA}, "c11c_phase_source_pins": phase_contract.get("source_pins", [])},
+        "source_pins": {**font_hashes, "presentation_profile": {"path": PRESENTATION_PROFILE_REL, "bytes": 8837, "sha256": PRESENTATION_PROFILE_SHA}, "editorial_family_title_amendment": {"path": EDITORIAL_STYLE_AMENDMENT_REL, "sha256": EDITORIAL_STYLE_AMENDMENT_SHA}, "c11c_phase_source_pins": phase_contract.get("source_pins", [])},
         "governance": {"renderer_native_input_emitted": False, "renderer_dispatch_invoked": False, "renderer_activation": False, "godot_invoked": False, "ffmpeg_invoked": False, "media_created": False, "audio_generated": False, "c11c_source_mutation": False, "d4_8": "BLOCKED", "d9_10": "PREPARE_ONLY", "release_authority": "NONE"},
     }
     plan["plan_sha256"] = _json_sha(plan)
@@ -691,6 +740,29 @@ def validate_plan(plan: Mapping[str, Any]) -> None:
     approval = plan.get("approval", {})
     if approval.get("composition_proposal_sha256") != COMPOSITION_SHA or approval.get("timebase_proposal_sha256") != TIMEBASE_SHA or approval.get("decision_record_sha256") != DECISION_SHA:
         raise DrillVisualConsumerError("D Drill V2 plan is not bound to its exact decision/proposal/timebase hashes")
+    if approval.get("editorial_family_title_amendment_sha256") != EDITORIAL_STYLE_AMENDMENT_SHA:
+        raise DrillVisualConsumerError("D Drill V2 plan is not bound to the user-directed family-title amendment")
+    text_contract = plan.get("text", {})
+    if text_contract.get("family_title_style") != FAMILY_TITLE_STYLE:
+        raise DrillVisualConsumerError("D Drill V2 family-title rendering style changed")
+    if text_contract.get("game_subtitle_block") != GAME_SUBTITLE_BLOCK:
+        raise DrillVisualConsumerError("D Drill V2 GAME subtitle placement changed")
+    fields = text_contract.get("visible_fields", {})
+    expected_visibility = {
+        "PRE_ROLL": bool(fields.get("title")),
+        "GAME": bool(fields),
+        "END_CTA": False,
+        "DONE": False,
+    }
+    if text_contract.get("phase_visibility") != expected_visibility:
+        raise DrillVisualConsumerError("D Drill V2 phase visibility differs from the family-title amendment")
+    expected_field_visibility = {
+        "title": ["PRE_ROLL", "GAME"] if fields.get("title") else [],
+        "subtitle": ["GAME"] if fields.get("subtitle") else [],
+        "call_to_action": ["GAME"] if fields.get("call_to_action") else [],
+    }
+    if text_contract.get("field_phase_visibility") != expected_field_visibility:
+        raise DrillVisualConsumerError("D Drill V2 field-level phase visibility changed")
     geometry = plan.get("geometry", {})
     for key, expected in EXPECTED_SOCIAL_REGIONS.items():
         if geometry.get(key) != expected:
@@ -705,6 +777,9 @@ def validate_plan(plan: Mapping[str, Any]) -> None:
     profile_pin = plan.get("source_pins", {}).get("presentation_profile", {})
     if profile_pin != {"path": PRESENTATION_PROFILE_REL, "bytes": 8837, "sha256": PRESENTATION_PROFILE_SHA}:
         raise DrillVisualConsumerError("V2 plan lacks the exact PresentationProfile.gd social geometry pin")
+    amendment_pin = plan.get("source_pins", {}).get("editorial_family_title_amendment", {})
+    if amendment_pin != {"path": EDITORIAL_STYLE_AMENDMENT_REL, "sha256": EDITORIAL_STYLE_AMENDMENT_SHA}:
+        raise DrillVisualConsumerError("V2 plan lacks the exact family-title amendment source pin")
     governance = plan.get("governance", {})
     for key in ("renderer_native_input_emitted", "renderer_dispatch_invoked", "renderer_activation", "godot_invoked", "ffmpeg_invoked", "media_created", "audio_generated", "c11c_source_mutation"):
         if governance.get(key) is not False:
@@ -759,6 +834,81 @@ def _wrap_text(text: str, font: QFont, max_width: int, max_lines: int, field: st
         raise DrillVisualConsumerError(f"{field} exceeds approved line capacity ({max_lines}); no ellipsis/truncation")
     return lines
 
+def _row_median_background(source: QImage, y: int, left_x: int, right_x: int) -> QColor:
+    """Estimate the undisturbed header row from pixels outside the native title mask."""
+    samples = []
+    for x in range(0, left_x, 4):
+        c = source.pixelColor(x, y)
+        samples.append((c.red(), c.green(), c.blue()))
+    for x in range(right_x, source.width(), 4):
+        c = source.pixelColor(x, y)
+        samples.append((c.red(), c.green(), c.blue()))
+    if not samples:
+        raise DrillVisualConsumerError("cannot sample native header background outside title mask")
+    channels = []
+    for channel in range(3):
+        values = sorted(row[channel] for row in samples)
+        channels.append(values[len(values) // 2])
+    return QColor(*channels)
+
+
+def _clear_native_title(source: QImage, style: Mapping[str, Any]) -> QImage:
+    """Remove only the known native family-title footprint, preserving row background and all other pixels."""
+    result = source.copy()
+    mask = style["native_title_mask"]
+    x, y, width, height = (int(mask[k]) for k in ("x", "y", "width", "height"))
+    if x <= 0 or y < 0 or x + width >= source.width() or y + height >= 188:
+        raise DrillVisualConsumerError("native title replacement mask is outside the approved family header area")
+    painter = QPainter(result)
+    if not painter.isActive():
+        raise DrillVisualConsumerError("Qt QPainter could not activate for native title replacement")
+    try:
+        for row in range(y, y + height):
+            painter.fillRect(x, row, width, 1, _row_median_background(source, row, x, x + width))
+    finally:
+        painter.end()
+    return result
+
+
+def _draw_family_title(painter: QPainter, root: Path, text: str, style: Mapping[str, Any]) -> dict[str, Any]:
+    """Draw the D editorial title with the native Drill family title typographic signature."""
+    if not text:
+        return {"visible": False, "line_count": 0}
+    if style != FAMILY_TITLE_STYLE:
+        raise DrillVisualConsumerError("family-title style does not match the approved amendment")
+    font = _font(root, INTER_FONT_REL, int(style["font_size_px"]))
+    cmap = _font_codepoints(root / INTER_FONT_REL)
+    missing = sorted({ord(ch) for ch in text if not ch.isspace()} - cmap)
+    raw_font = QRawFont.fromFont(font)
+    missing.extend(ord(ch) for ch in text if not ch.isspace() and not raw_font.supportsCharacter(ord(ch)))
+    if missing:
+        preview = ",".join(f"U+{cp:04X}" for cp in sorted(set(missing))[:8])
+        raise DrillVisualConsumerError(f"family title font coverage is incomplete: {preview}")
+    rect = style["rect"]
+    bx, by, bwidth, bheight = (int(rect[k]) for k in ("x", "y", "width", "height"))
+    lines = _wrap_text(text, font, bwidth, int(style["max_lines"]), "family_title")
+    line_height = int(style["line_height_px"])
+    total_height = len(lines) * line_height
+    if total_height > bheight:
+        raise DrillVisualConsumerError("family title exceeds its native-style header height")
+    metrics = QFontMetricsF(font)
+    ascent = float(metrics.ascent())
+    top = by + (bheight - total_height) / 2.0
+    painter.setFont(font)
+    painter.setPen(QColor(*style["color_rgb"]))
+    for index, line in enumerate(lines):
+        advance = _text_advance(font, line)
+        left = bx + (bwidth - advance) / 2.0
+        baseline = top + index * line_height + ascent
+        bounds = metrics.tightBoundingRect(line)
+        if left + bounds.left() < bx or left + bounds.left() + bounds.width() > bx + bwidth:
+            raise DrillVisualConsumerError("centered family title glyphs exceed the native-style header width")
+        if baseline + bounds.top() < by or baseline + bounds.top() + bounds.height() > by + bheight:
+            raise DrillVisualConsumerError("centered family title glyphs exceed the native-style header height")
+        painter.drawText(QPointF(float(left), baseline), line)
+    return {"visible": True, "line_count": len(lines), "alignment": "CENTER", "font": style["font"], "font_size_px": style["font_size_px"], "color_rgb": style["color_rgb"], "animation": style["animation"]}
+
+
 def compose_frame(
     source_frame: QImage,
     plan: Mapping[str, Any],
@@ -769,7 +919,7 @@ def compose_frame(
     fps_den: int = 1,
     project_root: Path | str | None = None,
 ) -> dict[str, Any]:
-    """Return native phase passthrough or exact GAME social-body composition."""
+    """Apply the D family-title bridge in PRE_ROLL/GAME; preserve native GAME body and END_CTA."""
     validate_plan(plan)
     if not isinstance(source_frame, QImage):
         raise DrillVisualConsumerError("source_frame must be a Qt QImage")
@@ -781,33 +931,56 @@ def compose_frame(
     if phase == "DONE":
         raise DrillVisualConsumerError("DONE has no delivery frame")
 
-    # Native C11-C owns the complete PRE_ROLL and END_CTA frames. Do not compose
-    # a D canvas around these phases, even when GAME editorial fields exist.
-    if phase in ("PRE_ROLL", "END_CTA"):
-        passthrough = source_rgb.copy()
+    text_contract = plan.get("text", {})
+    fields = text_contract.get("visible_fields", {})
+    title = fields.get("title", "")
+    mapping["d_editorial_title_slot_open"] = bool(title) and phase in ("PRE_ROLL", "GAME")
+    style = text_contract.get("family_title_style", FAMILY_TITLE_STYLE)
+    root = Path(project_root).resolve() if project_root is not None else None
+
+    if phase == "PRE_ROLL":
+        if not title:
+            passthrough = source_rgb.copy()
+            return {"image": passthrough, "mapping": mapping, "mode": "NATIVE_PHASE_FULL_FRAME_PASSTHROUGH_NO_EDITORIAL_TITLE", "source_rgb_sha256": original_sha, "source_unchanged": _image_rgb_sha256(source_rgb) == original_sha, "native_full_frame_identity": _image_rgb_sha256(passthrough) == original_sha, "d_editorial_title_visible": False}
+        if root is None or not root.is_dir():
+            raise DrillVisualConsumerError("project_root is required for PRE_ROLL family-title replacement")
+        replaced = _clear_native_title(source_rgb, style)
+        painter = QPainter(replaced)
+        if not painter.isActive():
+            raise DrillVisualConsumerError("Qt QPainter could not activate for PRE_ROLL family-title rendering")
+        try:
+            painter.setRenderHint(QPainter.RenderHint.TextAntialiasing, True)
+            title_render = _draw_family_title(painter, root, title, style)
+        finally:
+            painter.end()
+        body = source_rgb.copy(0, 192, 720, 896)
+        body_out = replaced.copy(0, 192, 720, 896)
+        footer = source_rgb.copy(0, 1088, 720, 192)
+        footer_out = replaced.copy(0, 1088, 720, 192)
+        body_same = _image_rgb_bytes(body) == _image_rgb_bytes(body_out)
+        footer_same = _image_rgb_bytes(footer) == _image_rgb_bytes(footer_out)
+        if not body_same or not footer_same:
+            raise DrillVisualConsumerError("PRE_ROLL family-title replacement modified native body/countdown or footer")
         return {
-            "image": passthrough,
-            "mapping": mapping,
-            "mode": "NATIVE_PHASE_FULL_FRAME_PASSTHROUGH",
-            "source_rgb_sha256": original_sha,
-            "source_unchanged": _image_rgb_sha256(source_rgb) == original_sha,
-            "native_full_frame_identity": _image_rgb_sha256(passthrough) == original_sha,
+            "image": replaced, "mapping": mapping, "mode": "D_PREROLL_FAMILY_TITLE_REPLACEMENT_NATIVE_BODY_PRESERVED",
+            "source_rgb_sha256": original_sha, "source_unchanged": _image_rgb_sha256(source_rgb) == original_sha,
+            "native_body_pixel_identity": body_same, "native_footer_pixel_identity": footer_same,
+            "native_title_replaced": True, "d_editorial_title_visible": True, "family_title_render": title_render,
         }
 
-    fields = plan.get("text", {}).get("visible_fields", {})
+    if phase == "END_CTA":
+        passthrough = source_rgb.copy()
+        return {
+            "image": passthrough, "mapping": mapping, "mode": "NATIVE_PHASE_FULL_FRAME_PASSTHROUGH",
+            "source_rgb_sha256": original_sha, "source_unchanged": _image_rgb_sha256(source_rgb) == original_sha,
+            "native_full_frame_identity": _image_rgb_sha256(passthrough) == original_sha, "d_editorial_title_visible": False,
+        }
+
+    if phase != "GAME":
+        raise DrillVisualConsumerError(f"unsupported delivery phase: {phase}")
     if not fields:
         passthrough = source_rgb.copy()
-        return {
-            "image": passthrough,
-            "mapping": mapping,
-            "mode": "UNCHANGED_FULL_FRAME_PASSTHROUGH",
-            "source_rgb_sha256": original_sha,
-            "source_unchanged": _image_rgb_sha256(source_rgb) == original_sha,
-        }
-    if phase != "GAME" or mapping.get("d_editorial_visible") is not True:
-        raise DrillVisualConsumerError("D editorial composition is allowed only on GAME frames")
-
-    root = Path(project_root).resolve() if project_root is not None else None
+        return {"image": passthrough, "mapping": mapping, "mode": "UNCHANGED_FULL_FRAME_PASSTHROUGH", "source_rgb_sha256": original_sha, "source_unchanged": _image_rgb_sha256(source_rgb) == original_sha, "d_editorial_title_visible": False}
     if root is None or not root.is_dir():
         raise DrillVisualConsumerError("project_root is required when GAME editorial composition is active")
     geometry = plan["geometry"]
@@ -829,18 +1002,18 @@ def compose_frame(
     painter = QPainter(composed)
     if not painter.isActive():
         raise DrillVisualConsumerError("Qt QPainter could not activate on the D-owned RGB canvas")
-    # No source scaling, filtering or resampling. Source body pixel (x,y) is
-    # copied to the identical destination coordinate (x,y).
-    painter.drawImage(QPoint(x, y), native_body)
+    title_render: dict[str, Any] = {"visible": False}
     try:
+        painter.drawImage(QPoint(x, y), native_body)
         painter.setRenderHint(QPainter.RenderHint.TextAntialiasing, True)
-        painter.setPen(QColor(245, 247, 250))
+        if title:
+            title_render = _draw_family_title(painter, root, title, style)
         blocks = geometry["editorial_text_blocks"]
-        for key in ("title", "subtitle", "call_to_action"):
+        for key in ("subtitle", "call_to_action"):
             value = fields.get(key)
             if not value:
                 continue
-            block = blocks[key]
+            block = text_contract["game_subtitle_block"] if key == "subtitle" else blocks[key]
             rel_font = INTER_FONT_REL if block["font"] == "Inter-Bold" else MONO_FONT_REL
             font = _font(root, rel_font, int(block["font_size_px"]))
             cmap = _font_codepoints(root / rel_font)
@@ -868,16 +1041,16 @@ def compose_frame(
                 bottom = top + bounds.height()
                 if left < bx or right > bx + bwidth or top < by or bottom > by + bheight:
                     raise DrillVisualConsumerError(f"{key} shaped glyphs exceed approved text block")
+                painter.setPen(QColor(245, 247, 250) if key == "subtitle" else QColor(205, 208, 210))
                 painter.drawText(QPointF(float(bx), baseline), line)
     finally:
         painter.end()
+    body_identity = _image_rgb_sha256(composed.copy(x, y, width, height)) == _image_rgb_sha256(native_body)
     return {
-        "image": composed,
-        "mapping": mapping,
-        "mode": "D_GAME_BODY_PIXEL_EXACT_COMPOSITION",
-        "source_rgb_sha256": original_sha,
-        "native_body_rgb_sha256": _image_rgb_sha256(native_body),
+        "image": composed, "mapping": mapping, "mode": "D_GAME_BODY_PIXEL_EXACT_FAMILY_TITLE_COMPOSITION",
+        "source_rgb_sha256": original_sha, "native_body_rgb_sha256": _image_rgb_sha256(native_body),
         "source_unchanged": _image_rgb_sha256(source_rgb) == original_sha,
-        "native_body_pixel_identity": _image_rgb_sha256(composed.copy(x, y, width, height)) == _image_rgb_sha256(native_body),
+        "native_body_pixel_identity": body_identity, "d_editorial_title_visible": bool(title),
+        "family_title_render": title_render,
     }
 

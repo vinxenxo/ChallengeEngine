@@ -1,0 +1,2126 @@
+{
+  "audio_acceptance": "PENDING_OPERATOR_LISTENING_REVIEW",
+  "c11c_launcher_invoked": false,
+  "d_composition": {
+    "decode_log": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\c11e\\E4C-CLI-COMPOSITION-V2-R6-TITLE-BRIDGE-20261114T143615Z-fba77da2\\qualification\\v2_ffmpeg_decode_stderr.log",
+    "encode_log": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\c11e\\E4C-CLI-COMPOSITION-V2-R6-TITLE-BRIDGE-20261114T143615Z-fba77da2\\qualification\\v2_ffmpeg_encode_stderr.log",
+    "end_cta_native_full_frame_identity_frames": 90,
+    "frames_composed": 810,
+    "frames_expected": 810,
+    "game_native_body_pixel_identity_frames": 630,
+    "native_full_frame_passthrough_frames": 90,
+    "phase_counts": {
+      "END_CTA": 90,
+      "GAME": 630,
+      "PRE_ROLL": 90
+    },
+    "pre_roll_native_body_pixel_identity_frames": 90,
+    "pre_roll_native_footer_pixel_identity_frames": 90,
+    "sampled_frames": [
+      {
+        "frame_index": 0,
+        "mode": "D_PREROLL_FAMILY_TITLE_REPLACEMENT_NATIVE_BODY_PRESERVED",
+        "native_body_pixel_identity": true,
+        "native_full_frame_identity": false,
+        "output_rgb_sha256": "a27845789f566cd4920981d02cf3d097553a253b830cb813e7a2a9efbdf630a8",
+        "phase": "PRE_ROLL",
+        "phase_index": 0,
+        "source_rgb_sha256": "c1af3a53f72512a3a467a526e0e849f7cf033c03c378b4db84fc5295083da7e4"
+      },
+      {
+        "frame_index": 89,
+        "mode": "D_PREROLL_FAMILY_TITLE_REPLACEMENT_NATIVE_BODY_PRESERVED",
+        "native_body_pixel_identity": true,
+        "native_full_frame_identity": false,
+        "output_rgb_sha256": "d24cb60271150f29bbb3292206468ba4a7e903155ae6d407763e37447942b693",
+        "phase": "PRE_ROLL",
+        "phase_index": 89,
+        "source_rgb_sha256": "76f489e3048feea23d2acd8a7d7afab312b9be995859202b2b2732b9aa1a99e4"
+      },
+      {
+        "frame_index": 90,
+        "mode": "D_GAME_BODY_PIXEL_EXACT_FAMILY_TITLE_COMPOSITION",
+        "native_body_pixel_identity": true,
+        "native_full_frame_identity": false,
+        "output_rgb_sha256": "5d04495d9f1a966b5020155c3c14520310efb8feeee9bd5f7990bcce1a73830d",
+        "phase": "GAME",
+        "phase_index": 0,
+        "source_rgb_sha256": "98a4c23ccd98ab32a040dad27ed8fba894eaefbe06aee95edf3c83a3bb78a5f3"
+      },
+      {
+        "frame_index": 405,
+        "mode": "D_GAME_BODY_PIXEL_EXACT_FAMILY_TITLE_COMPOSITION",
+        "native_body_pixel_identity": true,
+        "native_full_frame_identity": false,
+        "output_rgb_sha256": "f6820994c9e3847456609736c6e8bdc2f3520214630b16c8b3b2b1054eafcce8",
+        "phase": "GAME",
+        "phase_index": 315,
+        "source_rgb_sha256": "b02e06c631838d6074156b1e6e141491258fd53fb73e6d42c599a5ebe4cf194d"
+      },
+      {
+        "frame_index": 719,
+        "mode": "D_GAME_BODY_PIXEL_EXACT_FAMILY_TITLE_COMPOSITION",
+        "native_body_pixel_identity": true,
+        "native_full_frame_identity": false,
+        "output_rgb_sha256": "9caa9f71cdac98b0b3b07144d5cfd9cd72b3e435e860fa235b8cade580949193",
+        "phase": "GAME",
+        "phase_index": 629,
+        "source_rgb_sha256": "4cfe6d96102ba55ba500a04088c7caa5df0d0bdcb55ce529aba6386bb44285f9"
+      },
+      {
+        "frame_index": 720,
+        "mode": "NATIVE_PHASE_FULL_FRAME_PASSTHROUGH",
+        "native_body_pixel_identity": false,
+        "native_full_frame_identity": true,
+        "output_rgb_sha256": "37fdfc81ae4f3be8a8b7cb45f758bf6368ebd6459016c6f66186d688ed61fc10",
+        "phase": "END_CTA",
+        "phase_index": 720,
+        "source_rgb_sha256": "37fdfc81ae4f3be8a8b7cb45f758bf6368ebd6459016c6f66186d688ed61fc10"
+      },
+      {
+        "frame_index": 809,
+        "mode": "NATIVE_PHASE_FULL_FRAME_PASSTHROUGH",
+        "native_body_pixel_identity": false,
+        "native_full_frame_identity": true,
+        "output_rgb_sha256": "1d54a7c056541bed1899141a0abfc5ee1d2acb5e4262a2441f61aa65569dc2e6",
+        "phase": "END_CTA",
+        "phase_index": 809,
+        "source_rgb_sha256": "1d54a7c056541bed1899141a0abfc5ee1d2acb5e4262a2441f61aa65569dc2e6"
+      }
+    ],
+    "silent_video_bytes": 795762,
+    "silent_video_path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\c11e\\E4C-CLI-COMPOSITION-V2-R6-TITLE-BRIDGE-20261114T143615Z-fba77da2\\qualification\\d_composed_silent_v2.mp4",
+    "silent_video_sha256": "1febc8b51744a673dcb6187a69755cb28dc7259a3f34609882e4a37297bbe5cf"
+  },
+  "d_consumer_contract": "V2_FAMILY_TITLE_BRIDGE_PRE_ROLL_AND_GAME_SOCIAL_BODY_PIXEL_EXACT",
+  "d_executor_replaced": false,
+  "e1_source_pins": {
+    "count": 91,
+    "post": [
+      {
+        "bytes": 208,
+        "path": "assets/c6/car.svg",
+        "sha256": "93a6f78d9654f7917ab2287800858a937e9c68c458cc60bf417d6f2b98c1a96d"
+      },
+      {
+        "bytes": 127,
+        "path": "assets/c6/garage_background.svg",
+        "sha256": "c9d8acdae725ca7726fc8ad23a046e4aac4d9e454b45db40d2c770732b31ab1e"
+      },
+      {
+        "bytes": 192,
+        "path": "assets/c6/parking_target.svg",
+        "sha256": "ec2dcafd7dfc99ff501eb2d93b93906680a30c48cf0741807cbbdd915a18cfb3"
+      },
+      {
+        "bytes": 6640,
+        "path": "c11c-suite/c11c-producer/C11CVisualDrillProducerEnvelopeGenerator.gd",
+        "sha256": "9e2a2f394db7efce6f646600d0bb8f4ee8488c87a184df1a0fb7f7cdcb9066e9"
+      },
+      {
+        "bytes": 9183,
+        "path": "c11c-suite/c11c-producer/c11d_gui_request.py",
+        "sha256": "0e95109ffd3ba5655d28292309196349470ab7958a467f096543a2c98c22976e"
+      },
+      {
+        "bytes": 32714,
+        "path": "c11c-suite/c11c-producer/producer_schema.json",
+        "sha256": "564f11fb4fee9221910dc373550650172eda4f106d6dc25532cc43cb8e6314a0"
+      },
+      {
+        "bytes": 17066,
+        "path": "c11c-suite/c11c-producer/run_visual_drill_production.ps1",
+        "sha256": "ad6a7f0a6ce87804363810123f76ff0765b1582426cb2c8f69f6864ec3a0c808"
+      },
+      {
+        "bytes": 1543,
+        "path": "challenges/CHALLENGE_004.json",
+        "sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71"
+      },
+      {
+        "bytes": 1116,
+        "path": "core/authoring/VisualAuthoringAssemblyContext.gd",
+        "sha256": "c57fc199d7c3ef46b0fae0d7be8d70090c816979184c259908b0484138b1f896"
+      },
+      {
+        "bytes": 6049,
+        "path": "core/authoring/VisualAuthoringGenerator.gd",
+        "sha256": "abbe109b7ca625dce7a044bb6dc37582a6b6ee5156faa439c63c420a5758195e"
+      },
+      {
+        "bytes": 1254,
+        "path": "core/authoring/VisualAuthoringPolicyRegistry.gd",
+        "sha256": "f84a94566900aff055813f537892577c929caa1d11c76f7187faf33ca52de437"
+      },
+      {
+        "bytes": 460,
+        "path": "core/authoring/VisualAuthoringRegistry.gd",
+        "sha256": "f39ec38bfa39723c88bbcb067b8ea2d2052aa5ef2b8e66653431650518156af8"
+      },
+      {
+        "bytes": 1204,
+        "path": "core/authoring/VisualAuthoringRequest.gd",
+        "sha256": "02100b371603167964c20f127e984f8968e03af08016cc60cc820e0e2e37b0c1"
+      },
+      {
+        "bytes": 1671,
+        "path": "core/authoring/VisualAuthoringRequestValidator.gd",
+        "sha256": "85eb9ec5050a78133bacb54d34a4a5464f014a41feff3599e5a2f8e76a14a30c"
+      },
+      {
+        "bytes": 4540,
+        "path": "core/authoring/VisualDifficultyResolver.gd",
+        "sha256": "8f46acb2b54dba99de19db7290883a5849037afb336eb21c5f725f29ee4ecd8b"
+      },
+      {
+        "bytes": 19275,
+        "path": "core/authoring/VisualDrillSeedVariation.gd",
+        "sha256": "ecd07dca143886fac355c040b1bfcee3badb7dacbe4abd95ed340c4dcb8a3567"
+      },
+      {
+        "bytes": 2720,
+        "path": "core/authoring/adapters/VisualDrillAuthoringAdapter.gd",
+        "sha256": "d0b547b032101c592912cf4db25ba787a6aa4a6e7b4c01211397ea187502a263"
+      },
+      {
+        "bytes": 1785,
+        "path": "core/authoring/adapters/VisualLoopAuthoringAdapter.gd",
+        "sha256": "44682906d4c534f5ca7c56b2a0c3ce10babd73d13389e50c5f8511cd8dff6bcc"
+      },
+      {
+        "bytes": 786,
+        "path": "core/data/FrameSnapshot.gd",
+        "sha256": "61060d0937063400447cd5f2513265cb82d8e38017f5bd097c2870da03967180"
+      },
+      {
+        "bytes": 25891,
+        "path": "core/execution/ChallengeRuntimeBridge.gd",
+        "sha256": "c53f04df064b3697f8dd02cd779f8ef002a4e3e2d40fa0e01aa7d9b1a80a8191"
+      },
+      {
+        "bytes": 3721,
+        "path": "core/execution/ChallengeTimelineBuilder.gd",
+        "sha256": "35a47ad126a2e11577933a03b251f47732e580693e5c08e45d3b6af047c8c9af"
+      },
+      {
+        "bytes": 9007,
+        "path": "core/mechanics/parking/ParkingMechanicV2.gd",
+        "sha256": "c78dbc1adcc95ad4981f3c704c69630edc54c25473c479f10bb154efe6f105cd"
+      },
+      {
+        "bytes": 19047,
+        "path": "core/presentation/C11CVisualEditorialLayer.gd",
+        "sha256": "f8f718c067a4d7a088cc16f244cc40209e7183bec93e44d8cb66eb6dd404cf7d"
+      },
+      {
+        "bytes": 6954,
+        "path": "core/presentation/ChallengePresentationBinder.gd",
+        "sha256": "755ecfc9cc6e1ee51738938583217ab8a470c1a1f290bb107e91e19990d74b47"
+      },
+      {
+        "bytes": 1219,
+        "path": "core/presentation/CountdownPresentationLogic.gd",
+        "sha256": "b163ea114cc48af2dfd957ee92d00d524ea5b96b5966850f5ca8d6e5ec933379"
+      },
+      {
+        "bytes": 8837,
+        "path": "core/presentation/PresentationProfile.gd",
+        "sha256": "187b1cf8ab96b9031785a0f36b0054a60383c97cb3d81906c7d9bbcd373bef24"
+      },
+      {
+        "bytes": 8981,
+        "path": "core/presentation/PresentationUI.gd",
+        "sha256": "a55fea5a4525ea247144a4da88242f4ac602c3a014f7d02b50d032ce99224730"
+      },
+      {
+        "bytes": 1742,
+        "path": "core/presentation/SocialUIBinder.gd",
+        "sha256": "b15a062bf327d0c2bbc4ead0e877914f912528cc56e388df20dd84eb89863a3c"
+      },
+      {
+        "bytes": 2087,
+        "path": "core/presentation/UnifiedSocialFrame.gd",
+        "sha256": "d80c07103f56a2abfe34be60547285e61b0d03b50a5ed93c3c72d4241f6585ba"
+      },
+      {
+        "bytes": 11830,
+        "path": "core/presentation/VisualDrillPresentationBinder.gd",
+        "sha256": "cb6acc408252b8b794177d8f5923a3b151646eebdfd1efe9a30fdd6221de82c0"
+      },
+      {
+        "bytes": 1899,
+        "path": "core/presentation/VisualDrillPresentationPhaseLogic.gd",
+        "sha256": "6555d08ac3c0098b20a57e924b0c4ff2df006a23fa00a81b254fa5ebd5bb2494"
+      },
+      {
+        "bytes": 13876,
+        "path": "core/presentation/rendering/VisualContentPlayer.gd",
+        "sha256": "58d86d56ebd7507c9e800c83010103b9be12f1b5dca9356da61ca623e4cf0145"
+      },
+      {
+        "bytes": 3593,
+        "path": "core/simulation/SimulationResult.gd",
+        "sha256": "2e040003d1a1661f84f049d69dbfb0ab07537f9d837fa4484667041c5abac296"
+      },
+      {
+        "bytes": 12932,
+        "path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+        "sha256": "dabb458fc2215156ddb5ebea7e8ebec811098886ce2858733ba9fb13f6075ccb"
+      },
+      {
+        "bytes": 4990,
+        "path": "definitions/c11d/production/C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json",
+        "sha256": "5726310b48e9a85540d48b1e78784571ba04c3f900a5c09add35b49ce5575504"
+      },
+      {
+        "bytes": 3497,
+        "path": "definitions/c11d/production/C11D_RENDER_ADAPTER_BOUNDARY_D9_10_V1.json",
+        "sha256": "bcc9e96cb1acf3ce6c06b5f9ca894a9721aef2d5caeca4f5e4392baf5f4fb63d"
+      },
+      {
+        "bytes": 1761,
+        "path": "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json",
+        "sha256": "342a61338c80a2f1616e8e9f38986bd90f410257c0e321f99840380fb0fd804b"
+      },
+      {
+        "bytes": 4675,
+        "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_PREVIEW_V1.json",
+        "sha256": "67daa1f83ac151906059695bb4d87974819c2d16d3715b78b00657bfdac54f7a"
+      },
+      {
+        "bytes": 21540,
+        "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_SCHEMA_V1.json",
+        "sha256": "3c880a18d037bc6b7376c3007495b50e66daa3fd6d0eab6100b7298b3e9b03e0"
+      },
+      {
+        "bytes": 39082,
+        "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_SCHEMA_V2.json",
+        "sha256": "10f2371b66d453342f280b9d16b588874bc846777108b375ba9207530d83579f"
+      },
+      {
+        "bytes": 17947,
+        "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V2.json",
+        "sha256": "60530add02fee5bd4d70056e49bf20be87dc5dc0886dd07444e44c0b14bee981"
+      },
+      {
+        "bytes": 4308,
+        "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_INPUT_SCHEMA_V2.json",
+        "sha256": "ec9d38b07513bf0b8eeccfa6aa119d24f695eb4f59144c859e9122c7b8be561c"
+      },
+      {
+        "bytes": 8591,
+        "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1.json",
+        "sha256": "5702092bc1c88e4b333dd30cc150f0d383cd2006121037b0198905c75a3af795"
+      },
+      {
+        "bytes": 8376,
+        "path": "definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
+        "sha256": "609a4d183aac07c2cbe1abaf41444160fdd137217faffbead3aef618320d57dc"
+      },
+      {
+        "bytes": 9851,
+        "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_SCHEMA_V1.json",
+        "sha256": "df58d21292baab962acd0ae2d7f082ff2323ae15cc0b7b31a4b89f95188b2438"
+      },
+      {
+        "bytes": 10422,
+        "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_V1.json",
+        "sha256": "a657d5334548cde2bb524e161d472d5fea098163b6693c0ef73b280982f20b1c"
+      },
+      {
+        "bytes": 15810,
+        "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_SCHEMA_V1.json",
+        "sha256": "45b1df4af2861bd23641cdaca6e4a2b7e2872bcedd1e36b590b132fd09195ff0"
+      },
+      {
+        "bytes": 13006,
+        "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_V1.json",
+        "sha256": "a70c12fa6ba61e6502938190ddbdb06eb03bd0df3e4cd2f6311cd34446a8188c"
+      },
+      {
+        "bytes": 7457,
+        "path": "definitions/c11d/production/D_RENDERER_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_PROPOSAL_V1.json",
+        "sha256": "3dd4874e1b6506de6d9ddbe6ad1b567a284b94cc00ef1bac0d35d1731af05e23"
+      },
+      {
+        "bytes": 9507,
+        "path": "definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_V1.json",
+        "sha256": "41a62b0766db47cd99772f28642ef67766314f20f0f7891789d6b7497bbfee85"
+      },
+      {
+        "bytes": 9440,
+        "path": "definitions/c11d/production/D_RENDERER_UNIFIED_PRESENTATION_REGION_POLICY_PROPOSAL_V1.json",
+        "sha256": "101092bb32127bb8854a501a9215c0b6cf69581594383903716907d49719c01a"
+      },
+      {
+        "bytes": 7998,
+        "path": "definitions/c11d/production/D_RENDERER_VISUAL_DRILL_SELECTOR_AUTHORING_COVERAGE_SCHEMA_V1.json",
+        "sha256": "93d2162a078d7c8fa7fcd882cf4e4e6f3daccd77f03f4ba74e036ae367cb9cc7"
+      },
+      {
+        "bytes": 6526,
+        "path": "definitions/c11d/production/D_RENDERER_VISUAL_DRILL_SELECTOR_AUTHORING_COVERAGE_V1.json",
+        "sha256": "444496d3a1c1eda1f8bf722c68d9e6197acc006fd4462bd55ac58b4aecc8eb5a"
+      },
+      {
+        "bytes": 8329,
+        "path": "definitions/c11d/production/D_RENDERER_VISUAL_PAYLOAD_MATERIALIZATION_PREVIEW_V1.json",
+        "sha256": "53b6da626131c56f770172129e0cc1cd40947098228bfaa499a1e8e8e76ad411"
+      },
+      {
+        "bytes": 8862,
+        "path": "definitions/visual_drill_peripheral_scan_canonical.json",
+        "sha256": "aaf50f9223bad678df15589110dfcd6ff42dda89326a0a84bc5a5f51d133a904"
+      },
+      {
+        "bytes": 133532,
+        "path": "definitions/visual_drill_pursuit_canonical.json",
+        "sha256": "dfe2bce9913df8ebe4f92d06eec5d22736338214e71b497dde3562a6927600bc"
+      },
+      {
+        "bytes": 1328,
+        "path": "definitions/visual_drill_saccade_canonical.json",
+        "sha256": "daba3fa558f6898a17107ab68894d15c58fa5b2127e8da7d7b11b203f4ddfaa1"
+      },
+      {
+        "bytes": 1511,
+        "path": "definitions/visual_drill_tracking_canonical.json",
+        "sha256": "54d432c80f190f4ac5dcb8ef5b135e16f18c378da120f35723fd5be944719ec3"
+      },
+      {
+        "bytes": 591,
+        "path": "definitions/visual_loop_geometric_canonical.json",
+        "sha256": "648eb36225dd4c090457b4da3c9e8eca218c26c8f995cf02a39914cf3f860dcc"
+      },
+      {
+        "bytes": 3737,
+        "path": "docs/current/e/C11E_E4B_OPERATOR_POLICY_DECISION_RECORD_20261106_V1.json",
+        "sha256": "49efd5494f351f09d7597c4699e9c12e361b36884b6bfadacd822e6ff1480e04"
+      },
+      {
+        "bytes": 4770,
+        "path": "docs/current/e/C11E_E4C_A3_REVIEW_MANIFEST_LINEAGE_RECONCILIATION_20261110_V2.json",
+        "sha256": "aec0e387f167f4b821b7d94f06a67f78f498be939fe3cda857d20ce550819cac"
+      },
+      {
+        "bytes": 8591,
+        "path": "docs/history/c11e/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1_PRE_D98_LINEAGE_REFRESH_20261106.json",
+        "sha256": "2075da9c33c689861a68d3bd8fb19b7ed593c6e76010ab200880746aa6d1a470"
+      },
+      {
+        "bytes": 3158,
+        "path": "profiles/delivery/c11c_video_delivery_profiles.json",
+        "sha256": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3"
+      },
+      {
+        "bytes": 2426,
+        "path": "profiles/difficulty/visual_drill_peripheral_scan.json",
+        "sha256": "7c52112bf9c106152d7fe03b646bde0f415881a04efb75560d731fa3f18fa73e"
+      },
+      {
+        "bytes": 2121,
+        "path": "profiles/difficulty/visual_drill_pursuit.json",
+        "sha256": "ab6a29af53bdb45fb6976bfdd558e3275c477eb7ad9afd61b9d01e36d43afb05"
+      },
+      {
+        "bytes": 2295,
+        "path": "profiles/difficulty/visual_drill_saccade.json",
+        "sha256": "6be50f582ef5ce11d36b72943750b88e72da67d858d67c3ac3d38d33c11ccf38"
+      },
+      {
+        "bytes": 2658,
+        "path": "profiles/difficulty/visual_drill_tracking.json",
+        "sha256": "6de8812bd46904e122ecdd0eae22fb2979bd75399c34779248c6569e833c921e"
+      },
+      {
+        "bytes": 7038,
+        "path": "profiles/presentation/c11c_visual_music_profiles.json",
+        "sha256": "b78706c5a9adbf1581d925f522b76cc3419983177de213734cc79996af5cbf58"
+      },
+      {
+        "bytes": 796318,
+        "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+        "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+      },
+      {
+        "bytes": 19222,
+        "path": "tools/c11d/d9/audit_visual_drill_selector_authoring_coverage.gd",
+        "sha256": "9785284652e8c8adedea8423d54929a2e7386645e5dfded68bb4fdf7b26ae02b"
+      },
+      {
+        "bytes": 15051,
+        "path": "tools/c11d/d9/d_render_adapter.py",
+        "sha256": "222742677cd498368429a3ec0dcdd922c44197bb5ada3638081138fb77c31bf1"
+      },
+      {
+        "bytes": 15400,
+        "path": "tools/c11d/d9/d_renderer_challenge_visual_payload_preview.py",
+        "sha256": "93f9ffbbc7ea92efa6098b59c221c1fb191aa7aae47a2e2c84a7fbe1fc1e786f"
+      },
+      {
+        "bytes": 86068,
+        "path": "tools/c11d/d9/d_renderer_dynamic_request_payload_binding.py",
+        "sha256": "bad418fcee9b219c4ccd3f3720b8d623737b9790968608ba3f605430c8bb149b"
+      },
+      {
+        "bytes": 26957,
+        "path": "tools/c11d/d9/d_renderer_request_scoped_payload_binding.py",
+        "sha256": "3b3ced5f51309fff791a166109baebd37511b354b1704ae2e59a0b9aa4e6df8b"
+      },
+      {
+        "bytes": 40250,
+        "path": "tools/c11d/d9/d_renderer_request_scoped_payload_materialization_binding.py",
+        "sha256": "244426e8f742e221f1fbb6885103135bd01d202cb6c8b641f877bd089e81ab9d"
+      },
+      {
+        "bytes": 22375,
+        "path": "tools/c11d/d9/d_renderer_visual_drill_selector_authoring_coverage.py",
+        "sha256": "a9058ee68de5da1de89ecd57b4fd28a9619c446829f34617c84585e50274eb5a"
+      },
+      {
+        "bytes": 11889,
+        "path": "tools/c11d/d9/d_renderer_visual_payload_materialization_preview.py",
+        "sha256": "cebe9b79c519675e61aa0d136ec08814e38eef91d3f55d19e9355929d677bfee"
+      },
+      {
+        "bytes": 10868,
+        "path": "tools/c11d/d9/editorial_render_bridge.py",
+        "sha256": "fe9d40052b0f4ff6f1c862c010ae7b3b13070b6ce935be6d62f9dcaec63a644a"
+      },
+      {
+        "bytes": 23596,
+        "path": "tools/c11d/d9/materialize_visual_drill_dynamic_request_payload_in_memory_v2.gd",
+        "sha256": "10c34da13748de3fd106144f66b410f144deb4422dd2871de38f64f8cd714ad0"
+      },
+      {
+        "bytes": 6780,
+        "path": "tools/c11d/d9/test_d_renderer_visual_drill_selector_authoring_coverage.py",
+        "sha256": "03ad131b39d7db0a286b00083c674a76f1dcaa8543c873503180fba2748e85e8"
+      },
+      {
+        "bytes": 27585,
+        "path": "tools/c11d/d9/universal_editorial_model.py",
+        "sha256": "dac95fb698b52f96432a517d8ec3196a397e5e6bd3c025300350dd55ddce3afd"
+      },
+      {
+        "bytes": 19692,
+        "path": "tools/c11d/d9/universal_producer.py",
+        "sha256": "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1"
+      },
+      {
+        "bytes": 16138,
+        "path": "tools/prototypes/c11c_common/C11CPaletteBank.gd",
+        "sha256": "6b64d99afb148b0dc5b0f8e27b50558e9b77df4d2fdff98d52495d81d53fdd14"
+      },
+      {
+        "bytes": 1739,
+        "path": "tools/prototypes/c11c_common/C11CSafeAmbient.py",
+        "sha256": "c376fd44a3115f0d800213d95e28143363748e16c7b5800369fcadbf237fb02c"
+      },
+      {
+        "bytes": 13703,
+        "path": "tools/prototypes/c11c_common/C11CVariationProfile.gd",
+        "sha256": "f7df994d8842183275bc331decd75762a153f3100248c7cc8b590e34c1347e2d"
+      },
+      {
+        "bytes": 1048,
+        "path": "tools/prototypes/c11c_common/C11CVisualLoopDuration.gd",
+        "sha256": "4ea0b0decbd3a22ade42023e819a74872f312b63facc1163dc73a7c656fdbaf8"
+      },
+      {
+        "bytes": 16382,
+        "path": "tools/prototypes/c11c_common/generate_c11c_family_music.py",
+        "sha256": "41bb8f9842ac941ea86c838f272b11bd0642973b26e92defa006721a3d8cb84d"
+      },
+      {
+        "bytes": 10073,
+        "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWaves.gdshader",
+        "sha256": "737149389a37d92f1f6947de93d89903aa5429eda23b1c8b261cc1ce3d6e7154"
+      },
+      {
+        "bytes": 11359,
+        "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesPrototype.gd",
+        "sha256": "ab2560cbe7fa42c5cad3b143aa59d1f2a0dc047682f7667983c7c0a0f6dbb61c"
+      },
+      {
+        "bytes": 3918,
+        "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesRenderer.gd",
+        "sha256": "4cf42e5e464e9aec86d7dd38caca226c1c451543c17ea87197d9acf8e8659783"
+      },
+      {
+        "bytes": 1531,
+        "path": "tools/prototypes/c11c_geometric_waves_v1/definition.json",
+        "sha256": "4c4589ed6bbe5ee3c3c702d5a2fb9dac08682e6cc1820883ba5af1845642b4a1"
+      }
+    ],
+    "pre": [
+      {
+        "bytes": 208,
+        "path": "assets/c6/car.svg",
+        "sha256": "93a6f78d9654f7917ab2287800858a937e9c68c458cc60bf417d6f2b98c1a96d"
+      },
+      {
+        "bytes": 127,
+        "path": "assets/c6/garage_background.svg",
+        "sha256": "c9d8acdae725ca7726fc8ad23a046e4aac4d9e454b45db40d2c770732b31ab1e"
+      },
+      {
+        "bytes": 192,
+        "path": "assets/c6/parking_target.svg",
+        "sha256": "ec2dcafd7dfc99ff501eb2d93b93906680a30c48cf0741807cbbdd915a18cfb3"
+      },
+      {
+        "bytes": 6640,
+        "path": "c11c-suite/c11c-producer/C11CVisualDrillProducerEnvelopeGenerator.gd",
+        "sha256": "9e2a2f394db7efce6f646600d0bb8f4ee8488c87a184df1a0fb7f7cdcb9066e9"
+      },
+      {
+        "bytes": 9183,
+        "path": "c11c-suite/c11c-producer/c11d_gui_request.py",
+        "sha256": "0e95109ffd3ba5655d28292309196349470ab7958a467f096543a2c98c22976e"
+      },
+      {
+        "bytes": 32714,
+        "path": "c11c-suite/c11c-producer/producer_schema.json",
+        "sha256": "564f11fb4fee9221910dc373550650172eda4f106d6dc25532cc43cb8e6314a0"
+      },
+      {
+        "bytes": 17066,
+        "path": "c11c-suite/c11c-producer/run_visual_drill_production.ps1",
+        "sha256": "ad6a7f0a6ce87804363810123f76ff0765b1582426cb2c8f69f6864ec3a0c808"
+      },
+      {
+        "bytes": 1543,
+        "path": "challenges/CHALLENGE_004.json",
+        "sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71"
+      },
+      {
+        "bytes": 1116,
+        "path": "core/authoring/VisualAuthoringAssemblyContext.gd",
+        "sha256": "c57fc199d7c3ef46b0fae0d7be8d70090c816979184c259908b0484138b1f896"
+      },
+      {
+        "bytes": 6049,
+        "path": "core/authoring/VisualAuthoringGenerator.gd",
+        "sha256": "abbe109b7ca625dce7a044bb6dc37582a6b6ee5156faa439c63c420a5758195e"
+      },
+      {
+        "bytes": 1254,
+        "path": "core/authoring/VisualAuthoringPolicyRegistry.gd",
+        "sha256": "f84a94566900aff055813f537892577c929caa1d11c76f7187faf33ca52de437"
+      },
+      {
+        "bytes": 460,
+        "path": "core/authoring/VisualAuthoringRegistry.gd",
+        "sha256": "f39ec38bfa39723c88bbcb067b8ea2d2052aa5ef2b8e66653431650518156af8"
+      },
+      {
+        "bytes": 1204,
+        "path": "core/authoring/VisualAuthoringRequest.gd",
+        "sha256": "02100b371603167964c20f127e984f8968e03af08016cc60cc820e0e2e37b0c1"
+      },
+      {
+        "bytes": 1671,
+        "path": "core/authoring/VisualAuthoringRequestValidator.gd",
+        "sha256": "85eb9ec5050a78133bacb54d34a4a5464f014a41feff3599e5a2f8e76a14a30c"
+      },
+      {
+        "bytes": 4540,
+        "path": "core/authoring/VisualDifficultyResolver.gd",
+        "sha256": "8f46acb2b54dba99de19db7290883a5849037afb336eb21c5f725f29ee4ecd8b"
+      },
+      {
+        "bytes": 19275,
+        "path": "core/authoring/VisualDrillSeedVariation.gd",
+        "sha256": "ecd07dca143886fac355c040b1bfcee3badb7dacbe4abd95ed340c4dcb8a3567"
+      },
+      {
+        "bytes": 2720,
+        "path": "core/authoring/adapters/VisualDrillAuthoringAdapter.gd",
+        "sha256": "d0b547b032101c592912cf4db25ba787a6aa4a6e7b4c01211397ea187502a263"
+      },
+      {
+        "bytes": 1785,
+        "path": "core/authoring/adapters/VisualLoopAuthoringAdapter.gd",
+        "sha256": "44682906d4c534f5ca7c56b2a0c3ce10babd73d13389e50c5f8511cd8dff6bcc"
+      },
+      {
+        "bytes": 786,
+        "path": "core/data/FrameSnapshot.gd",
+        "sha256": "61060d0937063400447cd5f2513265cb82d8e38017f5bd097c2870da03967180"
+      },
+      {
+        "bytes": 25891,
+        "path": "core/execution/ChallengeRuntimeBridge.gd",
+        "sha256": "c53f04df064b3697f8dd02cd779f8ef002a4e3e2d40fa0e01aa7d9b1a80a8191"
+      },
+      {
+        "bytes": 3721,
+        "path": "core/execution/ChallengeTimelineBuilder.gd",
+        "sha256": "35a47ad126a2e11577933a03b251f47732e580693e5c08e45d3b6af047c8c9af"
+      },
+      {
+        "bytes": 9007,
+        "path": "core/mechanics/parking/ParkingMechanicV2.gd",
+        "sha256": "c78dbc1adcc95ad4981f3c704c69630edc54c25473c479f10bb154efe6f105cd"
+      },
+      {
+        "bytes": 19047,
+        "path": "core/presentation/C11CVisualEditorialLayer.gd",
+        "sha256": "f8f718c067a4d7a088cc16f244cc40209e7183bec93e44d8cb66eb6dd404cf7d"
+      },
+      {
+        "bytes": 6954,
+        "path": "core/presentation/ChallengePresentationBinder.gd",
+        "sha256": "755ecfc9cc6e1ee51738938583217ab8a470c1a1f290bb107e91e19990d74b47"
+      },
+      {
+        "bytes": 1219,
+        "path": "core/presentation/CountdownPresentationLogic.gd",
+        "sha256": "b163ea114cc48af2dfd957ee92d00d524ea5b96b5966850f5ca8d6e5ec933379"
+      },
+      {
+        "bytes": 8837,
+        "path": "core/presentation/PresentationProfile.gd",
+        "sha256": "187b1cf8ab96b9031785a0f36b0054a60383c97cb3d81906c7d9bbcd373bef24"
+      },
+      {
+        "bytes": 8981,
+        "path": "core/presentation/PresentationUI.gd",
+        "sha256": "a55fea5a4525ea247144a4da88242f4ac602c3a014f7d02b50d032ce99224730"
+      },
+      {
+        "bytes": 1742,
+        "path": "core/presentation/SocialUIBinder.gd",
+        "sha256": "b15a062bf327d0c2bbc4ead0e877914f912528cc56e388df20dd84eb89863a3c"
+      },
+      {
+        "bytes": 2087,
+        "path": "core/presentation/UnifiedSocialFrame.gd",
+        "sha256": "d80c07103f56a2abfe34be60547285e61b0d03b50a5ed93c3c72d4241f6585ba"
+      },
+      {
+        "bytes": 11830,
+        "path": "core/presentation/VisualDrillPresentationBinder.gd",
+        "sha256": "cb6acc408252b8b794177d8f5923a3b151646eebdfd1efe9a30fdd6221de82c0"
+      },
+      {
+        "bytes": 1899,
+        "path": "core/presentation/VisualDrillPresentationPhaseLogic.gd",
+        "sha256": "6555d08ac3c0098b20a57e924b0c4ff2df006a23fa00a81b254fa5ebd5bb2494"
+      },
+      {
+        "bytes": 13876,
+        "path": "core/presentation/rendering/VisualContentPlayer.gd",
+        "sha256": "58d86d56ebd7507c9e800c83010103b9be12f1b5dca9356da61ca623e4cf0145"
+      },
+      {
+        "bytes": 3593,
+        "path": "core/simulation/SimulationResult.gd",
+        "sha256": "2e040003d1a1661f84f049d69dbfb0ab07537f9d837fa4484667041c5abac296"
+      },
+      {
+        "bytes": 12932,
+        "path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+        "sha256": "dabb458fc2215156ddb5ebea7e8ebec811098886ce2858733ba9fb13f6075ccb"
+      },
+      {
+        "bytes": 4990,
+        "path": "definitions/c11d/production/C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json",
+        "sha256": "5726310b48e9a85540d48b1e78784571ba04c3f900a5c09add35b49ce5575504"
+      },
+      {
+        "bytes": 3497,
+        "path": "definitions/c11d/production/C11D_RENDER_ADAPTER_BOUNDARY_D9_10_V1.json",
+        "sha256": "bcc9e96cb1acf3ce6c06b5f9ca894a9721aef2d5caeca4f5e4392baf5f4fb63d"
+      },
+      {
+        "bytes": 1761,
+        "path": "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json",
+        "sha256": "342a61338c80a2f1616e8e9f38986bd90f410257c0e321f99840380fb0fd804b"
+      },
+      {
+        "bytes": 4675,
+        "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_PREVIEW_V1.json",
+        "sha256": "67daa1f83ac151906059695bb4d87974819c2d16d3715b78b00657bfdac54f7a"
+      },
+      {
+        "bytes": 21540,
+        "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_SCHEMA_V1.json",
+        "sha256": "3c880a18d037bc6b7376c3007495b50e66daa3fd6d0eab6100b7298b3e9b03e0"
+      },
+      {
+        "bytes": 39082,
+        "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_SCHEMA_V2.json",
+        "sha256": "10f2371b66d453342f280b9d16b588874bc846777108b375ba9207530d83579f"
+      },
+      {
+        "bytes": 17947,
+        "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V2.json",
+        "sha256": "60530add02fee5bd4d70056e49bf20be87dc5dc0886dd07444e44c0b14bee981"
+      },
+      {
+        "bytes": 4308,
+        "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_INPUT_SCHEMA_V2.json",
+        "sha256": "ec9d38b07513bf0b8eeccfa6aa119d24f695eb4f59144c859e9122c7b8be561c"
+      },
+      {
+        "bytes": 8591,
+        "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1.json",
+        "sha256": "5702092bc1c88e4b333dd30cc150f0d383cd2006121037b0198905c75a3af795"
+      },
+      {
+        "bytes": 8376,
+        "path": "definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
+        "sha256": "609a4d183aac07c2cbe1abaf41444160fdd137217faffbead3aef618320d57dc"
+      },
+      {
+        "bytes": 9851,
+        "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_SCHEMA_V1.json",
+        "sha256": "df58d21292baab962acd0ae2d7f082ff2323ae15cc0b7b31a4b89f95188b2438"
+      },
+      {
+        "bytes": 10422,
+        "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_V1.json",
+        "sha256": "a657d5334548cde2bb524e161d472d5fea098163b6693c0ef73b280982f20b1c"
+      },
+      {
+        "bytes": 15810,
+        "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_SCHEMA_V1.json",
+        "sha256": "45b1df4af2861bd23641cdaca6e4a2b7e2872bcedd1e36b590b132fd09195ff0"
+      },
+      {
+        "bytes": 13006,
+        "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_V1.json",
+        "sha256": "a70c12fa6ba61e6502938190ddbdb06eb03bd0df3e4cd2f6311cd34446a8188c"
+      },
+      {
+        "bytes": 7457,
+        "path": "definitions/c11d/production/D_RENDERER_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_PROPOSAL_V1.json",
+        "sha256": "3dd4874e1b6506de6d9ddbe6ad1b567a284b94cc00ef1bac0d35d1731af05e23"
+      },
+      {
+        "bytes": 9507,
+        "path": "definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_V1.json",
+        "sha256": "41a62b0766db47cd99772f28642ef67766314f20f0f7891789d6b7497bbfee85"
+      },
+      {
+        "bytes": 9440,
+        "path": "definitions/c11d/production/D_RENDERER_UNIFIED_PRESENTATION_REGION_POLICY_PROPOSAL_V1.json",
+        "sha256": "101092bb32127bb8854a501a9215c0b6cf69581594383903716907d49719c01a"
+      },
+      {
+        "bytes": 7998,
+        "path": "definitions/c11d/production/D_RENDERER_VISUAL_DRILL_SELECTOR_AUTHORING_COVERAGE_SCHEMA_V1.json",
+        "sha256": "93d2162a078d7c8fa7fcd882cf4e4e6f3daccd77f03f4ba74e036ae367cb9cc7"
+      },
+      {
+        "bytes": 6526,
+        "path": "definitions/c11d/production/D_RENDERER_VISUAL_DRILL_SELECTOR_AUTHORING_COVERAGE_V1.json",
+        "sha256": "444496d3a1c1eda1f8bf722c68d9e6197acc006fd4462bd55ac58b4aecc8eb5a"
+      },
+      {
+        "bytes": 8329,
+        "path": "definitions/c11d/production/D_RENDERER_VISUAL_PAYLOAD_MATERIALIZATION_PREVIEW_V1.json",
+        "sha256": "53b6da626131c56f770172129e0cc1cd40947098228bfaa499a1e8e8e76ad411"
+      },
+      {
+        "bytes": 8862,
+        "path": "definitions/visual_drill_peripheral_scan_canonical.json",
+        "sha256": "aaf50f9223bad678df15589110dfcd6ff42dda89326a0a84bc5a5f51d133a904"
+      },
+      {
+        "bytes": 133532,
+        "path": "definitions/visual_drill_pursuit_canonical.json",
+        "sha256": "dfe2bce9913df8ebe4f92d06eec5d22736338214e71b497dde3562a6927600bc"
+      },
+      {
+        "bytes": 1328,
+        "path": "definitions/visual_drill_saccade_canonical.json",
+        "sha256": "daba3fa558f6898a17107ab68894d15c58fa5b2127e8da7d7b11b203f4ddfaa1"
+      },
+      {
+        "bytes": 1511,
+        "path": "definitions/visual_drill_tracking_canonical.json",
+        "sha256": "54d432c80f190f4ac5dcb8ef5b135e16f18c378da120f35723fd5be944719ec3"
+      },
+      {
+        "bytes": 591,
+        "path": "definitions/visual_loop_geometric_canonical.json",
+        "sha256": "648eb36225dd4c090457b4da3c9e8eca218c26c8f995cf02a39914cf3f860dcc"
+      },
+      {
+        "bytes": 3737,
+        "path": "docs/current/e/C11E_E4B_OPERATOR_POLICY_DECISION_RECORD_20261106_V1.json",
+        "sha256": "49efd5494f351f09d7597c4699e9c12e361b36884b6bfadacd822e6ff1480e04"
+      },
+      {
+        "bytes": 4770,
+        "path": "docs/current/e/C11E_E4C_A3_REVIEW_MANIFEST_LINEAGE_RECONCILIATION_20261110_V2.json",
+        "sha256": "aec0e387f167f4b821b7d94f06a67f78f498be939fe3cda857d20ce550819cac"
+      },
+      {
+        "bytes": 8591,
+        "path": "docs/history/c11e/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1_PRE_D98_LINEAGE_REFRESH_20261106.json",
+        "sha256": "2075da9c33c689861a68d3bd8fb19b7ed593c6e76010ab200880746aa6d1a470"
+      },
+      {
+        "bytes": 3158,
+        "path": "profiles/delivery/c11c_video_delivery_profiles.json",
+        "sha256": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3"
+      },
+      {
+        "bytes": 2426,
+        "path": "profiles/difficulty/visual_drill_peripheral_scan.json",
+        "sha256": "7c52112bf9c106152d7fe03b646bde0f415881a04efb75560d731fa3f18fa73e"
+      },
+      {
+        "bytes": 2121,
+        "path": "profiles/difficulty/visual_drill_pursuit.json",
+        "sha256": "ab6a29af53bdb45fb6976bfdd558e3275c477eb7ad9afd61b9d01e36d43afb05"
+      },
+      {
+        "bytes": 2295,
+        "path": "profiles/difficulty/visual_drill_saccade.json",
+        "sha256": "6be50f582ef5ce11d36b72943750b88e72da67d858d67c3ac3d38d33c11ccf38"
+      },
+      {
+        "bytes": 2658,
+        "path": "profiles/difficulty/visual_drill_tracking.json",
+        "sha256": "6de8812bd46904e122ecdd0eae22fb2979bd75399c34779248c6569e833c921e"
+      },
+      {
+        "bytes": 7038,
+        "path": "profiles/presentation/c11c_visual_music_profiles.json",
+        "sha256": "b78706c5a9adbf1581d925f522b76cc3419983177de213734cc79996af5cbf58"
+      },
+      {
+        "bytes": 796318,
+        "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+        "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+      },
+      {
+        "bytes": 19222,
+        "path": "tools/c11d/d9/audit_visual_drill_selector_authoring_coverage.gd",
+        "sha256": "9785284652e8c8adedea8423d54929a2e7386645e5dfded68bb4fdf7b26ae02b"
+      },
+      {
+        "bytes": 15051,
+        "path": "tools/c11d/d9/d_render_adapter.py",
+        "sha256": "222742677cd498368429a3ec0dcdd922c44197bb5ada3638081138fb77c31bf1"
+      },
+      {
+        "bytes": 15400,
+        "path": "tools/c11d/d9/d_renderer_challenge_visual_payload_preview.py",
+        "sha256": "93f9ffbbc7ea92efa6098b59c221c1fb191aa7aae47a2e2c84a7fbe1fc1e786f"
+      },
+      {
+        "bytes": 86068,
+        "path": "tools/c11d/d9/d_renderer_dynamic_request_payload_binding.py",
+        "sha256": "bad418fcee9b219c4ccd3f3720b8d623737b9790968608ba3f605430c8bb149b"
+      },
+      {
+        "bytes": 26957,
+        "path": "tools/c11d/d9/d_renderer_request_scoped_payload_binding.py",
+        "sha256": "3b3ced5f51309fff791a166109baebd37511b354b1704ae2e59a0b9aa4e6df8b"
+      },
+      {
+        "bytes": 40250,
+        "path": "tools/c11d/d9/d_renderer_request_scoped_payload_materialization_binding.py",
+        "sha256": "244426e8f742e221f1fbb6885103135bd01d202cb6c8b641f877bd089e81ab9d"
+      },
+      {
+        "bytes": 22375,
+        "path": "tools/c11d/d9/d_renderer_visual_drill_selector_authoring_coverage.py",
+        "sha256": "a9058ee68de5da1de89ecd57b4fd28a9619c446829f34617c84585e50274eb5a"
+      },
+      {
+        "bytes": 11889,
+        "path": "tools/c11d/d9/d_renderer_visual_payload_materialization_preview.py",
+        "sha256": "cebe9b79c519675e61aa0d136ec08814e38eef91d3f55d19e9355929d677bfee"
+      },
+      {
+        "bytes": 10868,
+        "path": "tools/c11d/d9/editorial_render_bridge.py",
+        "sha256": "fe9d40052b0f4ff6f1c862c010ae7b3b13070b6ce935be6d62f9dcaec63a644a"
+      },
+      {
+        "bytes": 23596,
+        "path": "tools/c11d/d9/materialize_visual_drill_dynamic_request_payload_in_memory_v2.gd",
+        "sha256": "10c34da13748de3fd106144f66b410f144deb4422dd2871de38f64f8cd714ad0"
+      },
+      {
+        "bytes": 6780,
+        "path": "tools/c11d/d9/test_d_renderer_visual_drill_selector_authoring_coverage.py",
+        "sha256": "03ad131b39d7db0a286b00083c674a76f1dcaa8543c873503180fba2748e85e8"
+      },
+      {
+        "bytes": 27585,
+        "path": "tools/c11d/d9/universal_editorial_model.py",
+        "sha256": "dac95fb698b52f96432a517d8ec3196a397e5e6bd3c025300350dd55ddce3afd"
+      },
+      {
+        "bytes": 19692,
+        "path": "tools/c11d/d9/universal_producer.py",
+        "sha256": "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1"
+      },
+      {
+        "bytes": 16138,
+        "path": "tools/prototypes/c11c_common/C11CPaletteBank.gd",
+        "sha256": "6b64d99afb148b0dc5b0f8e27b50558e9b77df4d2fdff98d52495d81d53fdd14"
+      },
+      {
+        "bytes": 1739,
+        "path": "tools/prototypes/c11c_common/C11CSafeAmbient.py",
+        "sha256": "c376fd44a3115f0d800213d95e28143363748e16c7b5800369fcadbf237fb02c"
+      },
+      {
+        "bytes": 13703,
+        "path": "tools/prototypes/c11c_common/C11CVariationProfile.gd",
+        "sha256": "f7df994d8842183275bc331decd75762a153f3100248c7cc8b590e34c1347e2d"
+      },
+      {
+        "bytes": 1048,
+        "path": "tools/prototypes/c11c_common/C11CVisualLoopDuration.gd",
+        "sha256": "4ea0b0decbd3a22ade42023e819a74872f312b63facc1163dc73a7c656fdbaf8"
+      },
+      {
+        "bytes": 16382,
+        "path": "tools/prototypes/c11c_common/generate_c11c_family_music.py",
+        "sha256": "41bb8f9842ac941ea86c838f272b11bd0642973b26e92defa006721a3d8cb84d"
+      },
+      {
+        "bytes": 10073,
+        "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWaves.gdshader",
+        "sha256": "737149389a37d92f1f6947de93d89903aa5429eda23b1c8b261cc1ce3d6e7154"
+      },
+      {
+        "bytes": 11359,
+        "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesPrototype.gd",
+        "sha256": "ab2560cbe7fa42c5cad3b143aa59d1f2a0dc047682f7667983c7c0a0f6dbb61c"
+      },
+      {
+        "bytes": 3918,
+        "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesRenderer.gd",
+        "sha256": "4cf42e5e464e9aec86d7dd38caca226c1c451543c17ea87197d9acf8e8659783"
+      },
+      {
+        "bytes": 1531,
+        "path": "tools/prototypes/c11c_geometric_waves_v1/definition.json",
+        "sha256": "4c4589ed6bbe5ee3c3c702d5a2fb9dac08682e6cc1820883ba5af1845642b4a1"
+      }
+    ],
+    "unchanged": true
+  },
+  "e1_status": "PREPARE_ONLY",
+  "editorial_family_title_amendment_sha256": "1d0d5393368ca1e1ecb867059314e28463205fffc81e8af902909896e0ac7331",
+  "evidence_root": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\c11e\\E4C-CLI-COMPOSITION-V2-R6-TITLE-BRIDGE-20261114T143615Z-fba77da2",
+  "family_adapter_status": "NOT_CONNECTED_E1",
+  "family_music_generation_invoked": false,
+  "family_music_wavs_reused": true,
+  "family_title_animation": "STATIC_NO_ANIMATION_OBSERVED_IN_TRACKING_TIER_1_PRE_ROLL",
+  "family_title_style": {
+    "alignment": "CENTER",
+    "animation": "STATIC_NO_ANIMATION_OBSERVED_IN_TRACKING_TIER_1_PRE_ROLL",
+    "color_rgb": [
+      235,
+      215,
+      161
+    ],
+    "font": "Inter-Bold",
+    "font_size_px": 22,
+    "line_height_px": 29,
+    "max_lines": 3,
+    "native_title_mask": {
+      "height": 102,
+      "width": 352,
+      "x": 184,
+      "y": 64
+    },
+    "rect": {
+      "height": 104,
+      "width": 648,
+      "x": 36,
+      "y": 63
+    }
+  },
+  "ffmpeg_version": "ffmpeg version 9.0-full_build-www.gyan.dev Copyright (c) 2000-2026 the FFmpeg developers",
+  "ffprobe_version": "ffprobe version 9.0-full_build-www.gyan.dev Copyright (c) 2007-2026 the FFmpeg developers",
+  "final_A": {
+    "audio": {
+      "avg_frame_rate": "0/0",
+      "bit_rate": "192272",
+      "bits_per_sample": 0,
+      "channel_layout": "stereo",
+      "channels": 2,
+      "codec_long_name": "AAC (Advanced Audio Coding)",
+      "codec_name": "aac",
+      "codec_tag": "0x6134706d",
+      "codec_tag_string": "mp4a",
+      "codec_type": "audio",
+      "disposition": {
+        "attached_pic": 0,
+        "captions": 0,
+        "clean_effects": 0,
+        "comment": 0,
+        "default": 1,
+        "dependent": 0,
+        "descriptions": 0,
+        "dub": 0,
+        "forced": 0,
+        "hearing_impaired": 0,
+        "karaoke": 0,
+        "lyrics": 0,
+        "metadata": 0,
+        "multilayer": 0,
+        "non_diegetic": 0,
+        "original": 0,
+        "still_image": 0,
+        "timed_thumbnails": 0,
+        "visual_impaired": 0
+      },
+      "duration": "27.000000",
+      "duration_ts": 1296000,
+      "extradata_size": 5,
+      "id": "0x2",
+      "index": 1,
+      "initial_padding": 1024,
+      "mime_codec_string": "mp4a.40.2",
+      "nb_frames": "1267",
+      "nb_read_frames": "1266",
+      "profile": "LC",
+      "r_frame_rate": "0/0",
+      "sample_fmt": "fltp",
+      "sample_rate": "48000",
+      "start_pts": 0,
+      "start_time": "0.000000",
+      "tags": {
+        "handler_name": "SoundHandler",
+        "language": "und"
+      },
+      "time_base": "1/48000"
+    },
+    "av_start_delta_seconds": 0.0,
+    "bytes": 1465791,
+    "duration_seconds": 27.0,
+    "ffprobe": {
+      "format": {
+        "bit_rate": "434308",
+        "duration": "27.000000",
+        "filename": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\c11e\\E4C-CLI-COMPOSITION-V2-R6-TITLE-BRIDGE-20261114T143615Z-fba77da2\\E4C-CLI-COMPOSITION-V2-R6-TITLE-BRIDGE-20261114T143615Z-fba77da2_A_music_840001_A.mp4",
+        "format_long_name": "QuickTime / MOV",
+        "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+        "nb_programs": 0,
+        "nb_stream_groups": 0,
+        "nb_streams": 2,
+        "probe_score": 100,
+        "size": "1465791",
+        "start_time": "0.000000",
+        "tags": {
+          "compatible_brands": "isomiso2avc1mp41",
+          "encoder": "Lavf63.1.100",
+          "major_brand": "isom",
+          "minor_version": "512"
+        }
+      },
+      "streams": [
+        {
+          "avg_frame_rate": "30/1",
+          "bit_rate": "232727",
+          "bits_per_raw_sample": "8",
+          "chroma_location": "left",
+          "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+          "codec_name": "h264",
+          "codec_tag": "0x31637661",
+          "codec_tag_string": "avc1",
+          "codec_type": "video",
+          "coded_height": 1280,
+          "coded_width": 720,
+          "color_range": "tv",
+          "color_space": "bt709",
+          "disposition": {
+            "attached_pic": 0,
+            "captions": 0,
+            "clean_effects": 0,
+            "comment": 0,
+            "default": 1,
+            "dependent": 0,
+            "descriptions": 0,
+            "dub": 0,
+            "forced": 0,
+            "hearing_impaired": 0,
+            "karaoke": 0,
+            "lyrics": 0,
+            "metadata": 0,
+            "multilayer": 0,
+            "non_diegetic": 0,
+            "original": 0,
+            "still_image": 0,
+            "timed_thumbnails": 0,
+            "visual_impaired": 0
+          },
+          "duration": "27.000000",
+          "duration_ts": 414720,
+          "extradata_size": 48,
+          "field_order": "progressive",
+          "has_b_frames": 2,
+          "height": 1280,
+          "id": "0x1",
+          "index": 0,
+          "is_avc": "true",
+          "level": 31,
+          "mime_codec_string": "avc1.64001f",
+          "nal_length_size": "4",
+          "nb_frames": "810",
+          "nb_read_frames": "810",
+          "pix_fmt": "yuv420p",
+          "profile": "High",
+          "r_frame_rate": "30/1",
+          "refs": 4,
+          "start_pts": 0,
+          "start_time": "0.000000",
+          "tags": {
+            "encoder": "Lavc63.1.100 libx264",
+            "handler_name": "VideoHandler",
+            "language": "und"
+          },
+          "time_base": "1/15360",
+          "width": 720
+        },
+        {
+          "avg_frame_rate": "0/0",
+          "bit_rate": "192272",
+          "bits_per_sample": 0,
+          "channel_layout": "stereo",
+          "channels": 2,
+          "codec_long_name": "AAC (Advanced Audio Coding)",
+          "codec_name": "aac",
+          "codec_tag": "0x6134706d",
+          "codec_tag_string": "mp4a",
+          "codec_type": "audio",
+          "disposition": {
+            "attached_pic": 0,
+            "captions": 0,
+            "clean_effects": 0,
+            "comment": 0,
+            "default": 1,
+            "dependent": 0,
+            "descriptions": 0,
+            "dub": 0,
+            "forced": 0,
+            "hearing_impaired": 0,
+            "karaoke": 0,
+            "lyrics": 0,
+            "metadata": 0,
+            "multilayer": 0,
+            "non_diegetic": 0,
+            "original": 0,
+            "still_image": 0,
+            "timed_thumbnails": 0,
+            "visual_impaired": 0
+          },
+          "duration": "27.000000",
+          "duration_ts": 1296000,
+          "extradata_size": 5,
+          "id": "0x2",
+          "index": 1,
+          "initial_padding": 1024,
+          "mime_codec_string": "mp4a.40.2",
+          "nb_frames": "1267",
+          "nb_read_frames": "1266",
+          "profile": "LC",
+          "r_frame_rate": "0/0",
+          "sample_fmt": "fltp",
+          "sample_rate": "48000",
+          "start_pts": 0,
+          "start_time": "0.000000",
+          "tags": {
+            "handler_name": "SoundHandler",
+            "language": "und"
+          },
+          "time_base": "1/48000"
+        }
+      ]
+    },
+    "mux_log": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\c11e\\E4C-CLI-COMPOSITION-V2-R6-TITLE-BRIDGE-20261114T143615Z-fba77da2\\qualification\\E4C-CLI-COMPOSITION-V2-R6-TITLE-BRIDGE-20261114T143615Z-fba77da2_A_music_840001_A_mux.log",
+    "path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\c11e\\E4C-CLI-COMPOSITION-V2-R6-TITLE-BRIDGE-20261114T143615Z-fba77da2\\E4C-CLI-COMPOSITION-V2-R6-TITLE-BRIDGE-20261114T143615Z-fba77da2_A_music_840001_A.mp4",
+    "sha256": "47a756ac7c62c91e07e3e38dc0e02f78ae07931437243ae26facd8f3ab808be6",
+    "video": {
+      "avg_frame_rate": "30/1",
+      "bit_rate": "232727",
+      "bits_per_raw_sample": "8",
+      "chroma_location": "left",
+      "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+      "codec_name": "h264",
+      "codec_tag": "0x31637661",
+      "codec_tag_string": "avc1",
+      "codec_type": "video",
+      "coded_height": 1280,
+      "coded_width": 720,
+      "color_range": "tv",
+      "color_space": "bt709",
+      "disposition": {
+        "attached_pic": 0,
+        "captions": 0,
+        "clean_effects": 0,
+        "comment": 0,
+        "default": 1,
+        "dependent": 0,
+        "descriptions": 0,
+        "dub": 0,
+        "forced": 0,
+        "hearing_impaired": 0,
+        "karaoke": 0,
+        "lyrics": 0,
+        "metadata": 0,
+        "multilayer": 0,
+        "non_diegetic": 0,
+        "original": 0,
+        "still_image": 0,
+        "timed_thumbnails": 0,
+        "visual_impaired": 0
+      },
+      "duration": "27.000000",
+      "duration_ts": 414720,
+      "extradata_size": 48,
+      "field_order": "progressive",
+      "has_b_frames": 2,
+      "height": 1280,
+      "id": "0x1",
+      "index": 0,
+      "is_avc": "true",
+      "level": 31,
+      "mime_codec_string": "avc1.64001f",
+      "nal_length_size": "4",
+      "nb_frames": "810",
+      "nb_read_frames": "810",
+      "pix_fmt": "yuv420p",
+      "profile": "High",
+      "r_frame_rate": "30/1",
+      "refs": 4,
+      "start_pts": 0,
+      "start_time": "0.000000",
+      "tags": {
+        "encoder": "Lavc63.1.100 libx264",
+        "handler_name": "VideoHandler",
+        "language": "und"
+      },
+      "time_base": "1/15360",
+      "width": 720
+    }
+  },
+  "final_B": {
+    "audio": {
+      "avg_frame_rate": "0/0",
+      "bit_rate": "192272",
+      "bits_per_sample": 0,
+      "channel_layout": "stereo",
+      "channels": 2,
+      "codec_long_name": "AAC (Advanced Audio Coding)",
+      "codec_name": "aac",
+      "codec_tag": "0x6134706d",
+      "codec_tag_string": "mp4a",
+      "codec_type": "audio",
+      "disposition": {
+        "attached_pic": 0,
+        "captions": 0,
+        "clean_effects": 0,
+        "comment": 0,
+        "default": 1,
+        "dependent": 0,
+        "descriptions": 0,
+        "dub": 0,
+        "forced": 0,
+        "hearing_impaired": 0,
+        "karaoke": 0,
+        "lyrics": 0,
+        "metadata": 0,
+        "multilayer": 0,
+        "non_diegetic": 0,
+        "original": 0,
+        "still_image": 0,
+        "timed_thumbnails": 0,
+        "visual_impaired": 0
+      },
+      "duration": "27.000000",
+      "duration_ts": 1296000,
+      "extradata_size": 5,
+      "id": "0x2",
+      "index": 1,
+      "initial_padding": 1024,
+      "mime_codec_string": "mp4a.40.2",
+      "nb_frames": "1267",
+      "nb_read_frames": "1266",
+      "profile": "LC",
+      "r_frame_rate": "0/0",
+      "sample_fmt": "fltp",
+      "sample_rate": "48000",
+      "start_pts": 0,
+      "start_time": "0.000000",
+      "tags": {
+        "handler_name": "SoundHandler",
+        "language": "und"
+      },
+      "time_base": "1/48000"
+    },
+    "av_start_delta_seconds": 0.0,
+    "bytes": 1465791,
+    "duration_seconds": 27.0,
+    "ffprobe": {
+      "format": {
+        "bit_rate": "434308",
+        "duration": "27.000000",
+        "filename": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\c11e\\E4C-CLI-COMPOSITION-V2-R6-TITLE-BRIDGE-20261114T143615Z-fba77da2\\E4C-CLI-COMPOSITION-V2-R6-TITLE-BRIDGE-20261114T143615Z-fba77da2_B_music_840001_B.mp4",
+        "format_long_name": "QuickTime / MOV",
+        "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+        "nb_programs": 0,
+        "nb_stream_groups": 0,
+        "nb_streams": 2,
+        "probe_score": 100,
+        "size": "1465791",
+        "start_time": "0.000000",
+        "tags": {
+          "compatible_brands": "isomiso2avc1mp41",
+          "encoder": "Lavf63.1.100",
+          "major_brand": "isom",
+          "minor_version": "512"
+        }
+      },
+      "streams": [
+        {
+          "avg_frame_rate": "30/1",
+          "bit_rate": "232727",
+          "bits_per_raw_sample": "8",
+          "chroma_location": "left",
+          "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+          "codec_name": "h264",
+          "codec_tag": "0x31637661",
+          "codec_tag_string": "avc1",
+          "codec_type": "video",
+          "coded_height": 1280,
+          "coded_width": 720,
+          "color_range": "tv",
+          "color_space": "bt709",
+          "disposition": {
+            "attached_pic": 0,
+            "captions": 0,
+            "clean_effects": 0,
+            "comment": 0,
+            "default": 1,
+            "dependent": 0,
+            "descriptions": 0,
+            "dub": 0,
+            "forced": 0,
+            "hearing_impaired": 0,
+            "karaoke": 0,
+            "lyrics": 0,
+            "metadata": 0,
+            "multilayer": 0,
+            "non_diegetic": 0,
+            "original": 0,
+            "still_image": 0,
+            "timed_thumbnails": 0,
+            "visual_impaired": 0
+          },
+          "duration": "27.000000",
+          "duration_ts": 414720,
+          "extradata_size": 48,
+          "field_order": "progressive",
+          "has_b_frames": 2,
+          "height": 1280,
+          "id": "0x1",
+          "index": 0,
+          "is_avc": "true",
+          "level": 31,
+          "mime_codec_string": "avc1.64001f",
+          "nal_length_size": "4",
+          "nb_frames": "810",
+          "nb_read_frames": "810",
+          "pix_fmt": "yuv420p",
+          "profile": "High",
+          "r_frame_rate": "30/1",
+          "refs": 4,
+          "start_pts": 0,
+          "start_time": "0.000000",
+          "tags": {
+            "encoder": "Lavc63.1.100 libx264",
+            "handler_name": "VideoHandler",
+            "language": "und"
+          },
+          "time_base": "1/15360",
+          "width": 720
+        },
+        {
+          "avg_frame_rate": "0/0",
+          "bit_rate": "192272",
+          "bits_per_sample": 0,
+          "channel_layout": "stereo",
+          "channels": 2,
+          "codec_long_name": "AAC (Advanced Audio Coding)",
+          "codec_name": "aac",
+          "codec_tag": "0x6134706d",
+          "codec_tag_string": "mp4a",
+          "codec_type": "audio",
+          "disposition": {
+            "attached_pic": 0,
+            "captions": 0,
+            "clean_effects": 0,
+            "comment": 0,
+            "default": 1,
+            "dependent": 0,
+            "descriptions": 0,
+            "dub": 0,
+            "forced": 0,
+            "hearing_impaired": 0,
+            "karaoke": 0,
+            "lyrics": 0,
+            "metadata": 0,
+            "multilayer": 0,
+            "non_diegetic": 0,
+            "original": 0,
+            "still_image": 0,
+            "timed_thumbnails": 0,
+            "visual_impaired": 0
+          },
+          "duration": "27.000000",
+          "duration_ts": 1296000,
+          "extradata_size": 5,
+          "id": "0x2",
+          "index": 1,
+          "initial_padding": 1024,
+          "mime_codec_string": "mp4a.40.2",
+          "nb_frames": "1267",
+          "nb_read_frames": "1266",
+          "profile": "LC",
+          "r_frame_rate": "0/0",
+          "sample_fmt": "fltp",
+          "sample_rate": "48000",
+          "start_pts": 0,
+          "start_time": "0.000000",
+          "tags": {
+            "handler_name": "SoundHandler",
+            "language": "und"
+          },
+          "time_base": "1/48000"
+        }
+      ]
+    },
+    "mux_log": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\c11e\\E4C-CLI-COMPOSITION-V2-R6-TITLE-BRIDGE-20261114T143615Z-fba77da2\\qualification\\E4C-CLI-COMPOSITION-V2-R6-TITLE-BRIDGE-20261114T143615Z-fba77da2_B_music_840001_B_mux.log",
+    "path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\c11e\\E4C-CLI-COMPOSITION-V2-R6-TITLE-BRIDGE-20261114T143615Z-fba77da2\\E4C-CLI-COMPOSITION-V2-R6-TITLE-BRIDGE-20261114T143615Z-fba77da2_B_music_840001_B.mp4",
+    "sha256": "47a756ac7c62c91e07e3e38dc0e02f78ae07931437243ae26facd8f3ab808be6",
+    "video": {
+      "avg_frame_rate": "30/1",
+      "bit_rate": "232727",
+      "bits_per_raw_sample": "8",
+      "chroma_location": "left",
+      "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+      "codec_name": "h264",
+      "codec_tag": "0x31637661",
+      "codec_tag_string": "avc1",
+      "codec_type": "video",
+      "coded_height": 1280,
+      "coded_width": 720,
+      "color_range": "tv",
+      "color_space": "bt709",
+      "disposition": {
+        "attached_pic": 0,
+        "captions": 0,
+        "clean_effects": 0,
+        "comment": 0,
+        "default": 1,
+        "dependent": 0,
+        "descriptions": 0,
+        "dub": 0,
+        "forced": 0,
+        "hearing_impaired": 0,
+        "karaoke": 0,
+        "lyrics": 0,
+        "metadata": 0,
+        "multilayer": 0,
+        "non_diegetic": 0,
+        "original": 0,
+        "still_image": 0,
+        "timed_thumbnails": 0,
+        "visual_impaired": 0
+      },
+      "duration": "27.000000",
+      "duration_ts": 414720,
+      "extradata_size": 48,
+      "field_order": "progressive",
+      "has_b_frames": 2,
+      "height": 1280,
+      "id": "0x1",
+      "index": 0,
+      "is_avc": "true",
+      "level": 31,
+      "mime_codec_string": "avc1.64001f",
+      "nal_length_size": "4",
+      "nb_frames": "810",
+      "nb_read_frames": "810",
+      "pix_fmt": "yuv420p",
+      "profile": "High",
+      "r_frame_rate": "30/1",
+      "refs": 4,
+      "start_pts": 0,
+      "start_time": "0.000000",
+      "tags": {
+        "encoder": "Lavc63.1.100 libx264",
+        "handler_name": "VideoHandler",
+        "language": "und"
+      },
+      "time_base": "1/15360",
+      "width": 720
+    }
+  },
+  "final_C": {
+    "audio": {
+      "avg_frame_rate": "0/0",
+      "bit_rate": "191946",
+      "bits_per_sample": 0,
+      "channel_layout": "stereo",
+      "channels": 2,
+      "codec_long_name": "AAC (Advanced Audio Coding)",
+      "codec_name": "aac",
+      "codec_tag": "0x6134706d",
+      "codec_tag_string": "mp4a",
+      "codec_type": "audio",
+      "disposition": {
+        "attached_pic": 0,
+        "captions": 0,
+        "clean_effects": 0,
+        "comment": 0,
+        "default": 1,
+        "dependent": 0,
+        "descriptions": 0,
+        "dub": 0,
+        "forced": 0,
+        "hearing_impaired": 0,
+        "karaoke": 0,
+        "lyrics": 0,
+        "metadata": 0,
+        "multilayer": 0,
+        "non_diegetic": 0,
+        "original": 0,
+        "still_image": 0,
+        "timed_thumbnails": 0,
+        "visual_impaired": 0
+      },
+      "duration": "27.000000",
+      "duration_ts": 1296000,
+      "extradata_size": 5,
+      "id": "0x2",
+      "index": 1,
+      "initial_padding": 1024,
+      "mime_codec_string": "mp4a.40.2",
+      "nb_frames": "1267",
+      "nb_read_frames": "1266",
+      "profile": "LC",
+      "r_frame_rate": "0/0",
+      "sample_fmt": "fltp",
+      "sample_rate": "48000",
+      "start_pts": 0,
+      "start_time": "0.000000",
+      "tags": {
+        "handler_name": "SoundHandler",
+        "language": "und"
+      },
+      "time_base": "1/48000"
+    },
+    "av_start_delta_seconds": 0.0,
+    "bytes": 1464689,
+    "duration_seconds": 27.0,
+    "ffprobe": {
+      "format": {
+        "bit_rate": "433981",
+        "duration": "27.000000",
+        "filename": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\c11e\\E4C-CLI-COMPOSITION-V2-R6-TITLE-BRIDGE-20261114T143615Z-fba77da2\\E4C-CLI-COMPOSITION-V2-R6-TITLE-BRIDGE-20261114T143615Z-fba77da2_C_changed_music_840002.mp4",
+        "format_long_name": "QuickTime / MOV",
+        "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+        "nb_programs": 0,
+        "nb_stream_groups": 0,
+        "nb_streams": 2,
+        "probe_score": 100,
+        "size": "1464689",
+        "start_time": "0.000000",
+        "tags": {
+          "compatible_brands": "isomiso2avc1mp41",
+          "encoder": "Lavf63.1.100",
+          "major_brand": "isom",
+          "minor_version": "512"
+        }
+      },
+      "streams": [
+        {
+          "avg_frame_rate": "30/1",
+          "bit_rate": "232727",
+          "bits_per_raw_sample": "8",
+          "chroma_location": "left",
+          "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+          "codec_name": "h264",
+          "codec_tag": "0x31637661",
+          "codec_tag_string": "avc1",
+          "codec_type": "video",
+          "coded_height": 1280,
+          "coded_width": 720,
+          "color_range": "tv",
+          "color_space": "bt709",
+          "disposition": {
+            "attached_pic": 0,
+            "captions": 0,
+            "clean_effects": 0,
+            "comment": 0,
+            "default": 1,
+            "dependent": 0,
+            "descriptions": 0,
+            "dub": 0,
+            "forced": 0,
+            "hearing_impaired": 0,
+            "karaoke": 0,
+            "lyrics": 0,
+            "metadata": 0,
+            "multilayer": 0,
+            "non_diegetic": 0,
+            "original": 0,
+            "still_image": 0,
+            "timed_thumbnails": 0,
+            "visual_impaired": 0
+          },
+          "duration": "27.000000",
+          "duration_ts": 414720,
+          "extradata_size": 48,
+          "field_order": "progressive",
+          "has_b_frames": 2,
+          "height": 1280,
+          "id": "0x1",
+          "index": 0,
+          "is_avc": "true",
+          "level": 31,
+          "mime_codec_string": "avc1.64001f",
+          "nal_length_size": "4",
+          "nb_frames": "810",
+          "nb_read_frames": "810",
+          "pix_fmt": "yuv420p",
+          "profile": "High",
+          "r_frame_rate": "30/1",
+          "refs": 4,
+          "start_pts": 0,
+          "start_time": "0.000000",
+          "tags": {
+            "encoder": "Lavc63.1.100 libx264",
+            "handler_name": "VideoHandler",
+            "language": "und"
+          },
+          "time_base": "1/15360",
+          "width": 720
+        },
+        {
+          "avg_frame_rate": "0/0",
+          "bit_rate": "191946",
+          "bits_per_sample": 0,
+          "channel_layout": "stereo",
+          "channels": 2,
+          "codec_long_name": "AAC (Advanced Audio Coding)",
+          "codec_name": "aac",
+          "codec_tag": "0x6134706d",
+          "codec_tag_string": "mp4a",
+          "codec_type": "audio",
+          "disposition": {
+            "attached_pic": 0,
+            "captions": 0,
+            "clean_effects": 0,
+            "comment": 0,
+            "default": 1,
+            "dependent": 0,
+            "descriptions": 0,
+            "dub": 0,
+            "forced": 0,
+            "hearing_impaired": 0,
+            "karaoke": 0,
+            "lyrics": 0,
+            "metadata": 0,
+            "multilayer": 0,
+            "non_diegetic": 0,
+            "original": 0,
+            "still_image": 0,
+            "timed_thumbnails": 0,
+            "visual_impaired": 0
+          },
+          "duration": "27.000000",
+          "duration_ts": 1296000,
+          "extradata_size": 5,
+          "id": "0x2",
+          "index": 1,
+          "initial_padding": 1024,
+          "mime_codec_string": "mp4a.40.2",
+          "nb_frames": "1267",
+          "nb_read_frames": "1266",
+          "profile": "LC",
+          "r_frame_rate": "0/0",
+          "sample_fmt": "fltp",
+          "sample_rate": "48000",
+          "start_pts": 0,
+          "start_time": "0.000000",
+          "tags": {
+            "handler_name": "SoundHandler",
+            "language": "und"
+          },
+          "time_base": "1/48000"
+        }
+      ]
+    },
+    "mux_log": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\c11e\\E4C-CLI-COMPOSITION-V2-R6-TITLE-BRIDGE-20261114T143615Z-fba77da2\\qualification\\E4C-CLI-COMPOSITION-V2-R6-TITLE-BRIDGE-20261114T143615Z-fba77da2_C_changed_music_840002_mux.log",
+    "path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\c11e\\E4C-CLI-COMPOSITION-V2-R6-TITLE-BRIDGE-20261114T143615Z-fba77da2\\E4C-CLI-COMPOSITION-V2-R6-TITLE-BRIDGE-20261114T143615Z-fba77da2_C_changed_music_840002.mp4",
+    "sha256": "0b2aa984c1427da917c05f24d9a429bb6618c48b8920b01622ddbedfc5b4c420",
+    "video": {
+      "avg_frame_rate": "30/1",
+      "bit_rate": "232727",
+      "bits_per_raw_sample": "8",
+      "chroma_location": "left",
+      "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+      "codec_name": "h264",
+      "codec_tag": "0x31637661",
+      "codec_tag_string": "avc1",
+      "codec_type": "video",
+      "coded_height": 1280,
+      "coded_width": 720,
+      "color_range": "tv",
+      "color_space": "bt709",
+      "disposition": {
+        "attached_pic": 0,
+        "captions": 0,
+        "clean_effects": 0,
+        "comment": 0,
+        "default": 1,
+        "dependent": 0,
+        "descriptions": 0,
+        "dub": 0,
+        "forced": 0,
+        "hearing_impaired": 0,
+        "karaoke": 0,
+        "lyrics": 0,
+        "metadata": 0,
+        "multilayer": 0,
+        "non_diegetic": 0,
+        "original": 0,
+        "still_image": 0,
+        "timed_thumbnails": 0,
+        "visual_impaired": 0
+      },
+      "duration": "27.000000",
+      "duration_ts": 414720,
+      "extradata_size": 48,
+      "field_order": "progressive",
+      "has_b_frames": 2,
+      "height": 1280,
+      "id": "0x1",
+      "index": 0,
+      "is_avc": "true",
+      "level": 31,
+      "mime_codec_string": "avc1.64001f",
+      "nal_length_size": "4",
+      "nb_frames": "810",
+      "nb_read_frames": "810",
+      "pix_fmt": "yuv420p",
+      "profile": "High",
+      "r_frame_rate": "30/1",
+      "refs": 4,
+      "start_pts": 0,
+      "start_time": "0.000000",
+      "tags": {
+        "encoder": "Lavc63.1.100 libx264",
+        "handler_name": "VideoHandler",
+        "language": "und"
+      },
+      "time_base": "1/15360",
+      "width": 720
+    }
+  },
+  "geometry": {
+    "body": [
+      0,
+      192,
+      720,
+      896
+    ],
+    "footer": [
+      0,
+      1088,
+      720,
+      192
+    ],
+    "header": [
+      0,
+      0,
+      720,
+      192
+    ]
+  },
+  "godot_invoked": false,
+  "native_capture_reused": true,
+  "native_source_ffprobe": {
+    "format": {
+      "bit_rate": "329617",
+      "duration": "27.000000",
+      "filename": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\c11e\\E4C-CLI-SMOKE-20261112T091253Z-5a2e96b8\\native_source\\tracking\\VisualDrill_tracking_seed_12345_T1_constant_S075\\VisualDrill_tracking_seed_12345_T1_constant_S075.mp4",
+      "format_long_name": "QuickTime / MOV",
+      "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+      "nb_programs": 0,
+      "nb_stream_groups": 0,
+      "nb_streams": 1,
+      "probe_score": 100,
+      "size": "1112459",
+      "start_time": "0.000000",
+      "tags": {
+        "compatible_brands": "isomiso2avc1mp41",
+        "encoder": "Lavf63.1.100",
+        "major_brand": "isom",
+        "minor_version": "512"
+      }
+    },
+    "streams": [
+      {
+        "avg_frame_rate": "30/1",
+        "bit_rate": "326553",
+        "bits_per_raw_sample": "8",
+        "chroma_location": "left",
+        "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+        "codec_name": "h264",
+        "codec_tag": "0x31637661",
+        "codec_tag_string": "avc1",
+        "codec_type": "video",
+        "coded_height": 1280,
+        "coded_width": 720,
+        "color_range": "pc",
+        "color_space": "bt470bg",
+        "display_aspect_ratio": "9:16",
+        "disposition": {
+          "attached_pic": 0,
+          "captions": 0,
+          "clean_effects": 0,
+          "comment": 0,
+          "default": 1,
+          "dependent": 0,
+          "descriptions": 0,
+          "dub": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "karaoke": 0,
+          "lyrics": 0,
+          "metadata": 0,
+          "multilayer": 0,
+          "non_diegetic": 0,
+          "original": 0,
+          "still_image": 0,
+          "timed_thumbnails": 0,
+          "visual_impaired": 0
+        },
+        "duration": "27.000000",
+        "duration_ts": 414720,
+        "extradata_size": 49,
+        "field_order": "progressive",
+        "has_b_frames": 2,
+        "height": 1280,
+        "id": "0x1",
+        "index": 0,
+        "is_avc": "true",
+        "level": 31,
+        "mime_codec_string": "avc1.64001f",
+        "nal_length_size": "4",
+        "nb_frames": "810",
+        "nb_read_frames": "810",
+        "pix_fmt": "yuvj420p",
+        "profile": "High",
+        "r_frame_rate": "30/1",
+        "refs": 4,
+        "sample_aspect_ratio": "1:1",
+        "start_pts": 0,
+        "start_time": "0.000000",
+        "tags": {
+          "encoder": "Lavc63.1.100 libx264",
+          "handler_name": "VideoHandler",
+          "language": "und"
+        },
+        "time_base": "1/15360",
+        "width": 720
+      }
+    ]
+  },
+  "new_native_capture": false,
+  "operator_review_bundle": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\c11e\\E4C-CLI-COMPOSITION-V2-R6-TITLE-BRIDGE-20261114T143615Z-fba77da2\\E4C_V2_OPERATOR_REVIEW_BUNDLE.zip",
+  "operator_review_bundle_bytes": 5274560,
+  "operator_review_bundle_embedded_receipt_role": "PRE_BUNDLE_SNAPSHOT_NO_SELF_REFERENCE",
+  "operator_review_bundle_embedded_receipt_sha256": "6e2a61c9346a3b76a09192a01a1287f37b8b05e6cbce51d6b9a1c6cdcb304168",
+  "operator_review_bundle_sha256": "7fe634f7ca1e9f49e9d7f11b79c0e0107e9920c40f92a86b599f7440cc6efd26",
+  "operator_review_frames": [
+    {
+      "bytes": 128943,
+      "frame_index": 0,
+      "path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\c11e\\E4C-CLI-COMPOSITION-V2-R6-TITLE-BRIDGE-20261114T143615Z-fba77da2\\operator_review\\frame_000_PRE_ROLL_FIRST.png",
+      "phase_label": "PRE_ROLL_FIRST",
+      "sha256": "80ce73c307a5883056f6ad6e4ab1d771032b328354e7dfaae9123970b6f11e19"
+    },
+    {
+      "bytes": 128822,
+      "frame_index": 89,
+      "path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\c11e\\E4C-CLI-COMPOSITION-V2-R6-TITLE-BRIDGE-20261114T143615Z-fba77da2\\operator_review\\frame_089_PRE_ROLL_LAST.png",
+      "phase_label": "PRE_ROLL_LAST",
+      "sha256": "3d0a0656f9b791349b4e259b7ad73b2472144319956ea596b50a770068c5664d"
+    },
+    {
+      "bytes": 65443,
+      "frame_index": 90,
+      "path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\c11e\\E4C-CLI-COMPOSITION-V2-R6-TITLE-BRIDGE-20261114T143615Z-fba77da2\\operator_review\\frame_090_GAME_FIRST.png",
+      "phase_label": "GAME_FIRST",
+      "sha256": "5fb6c939fcd3b27259d2c2185dc2b73a46e8ed6c2dafd4b86c133787442d4e96"
+    },
+    {
+      "bytes": 120991,
+      "frame_index": 405,
+      "path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\c11e\\E4C-CLI-COMPOSITION-V2-R6-TITLE-BRIDGE-20261114T143615Z-fba77da2\\operator_review\\frame_405_GAME_MID.png",
+      "phase_label": "GAME_MID",
+      "sha256": "6aaf8e4265c6523a628db491010a14c0d6d0ba287b8f2e4a72bb3bcd7a65a60d"
+    },
+    {
+      "bytes": 127592,
+      "frame_index": 719,
+      "path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\c11e\\E4C-CLI-COMPOSITION-V2-R6-TITLE-BRIDGE-20261114T143615Z-fba77da2\\operator_review\\frame_719_GAME_LAST.png",
+      "phase_label": "GAME_LAST",
+      "sha256": "3cedb6305f9abad0fed5ef4263a771c7c68037208d60b142f47dbbc59c1ae1a3"
+    },
+    {
+      "bytes": 160360,
+      "frame_index": 720,
+      "path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\c11e\\E4C-CLI-COMPOSITION-V2-R6-TITLE-BRIDGE-20261114T143615Z-fba77da2\\operator_review\\frame_720_END_CTA_FIRST.png",
+      "phase_label": "END_CTA_FIRST",
+      "sha256": "7739640c29428c47e98c0790b5f2508c3e877d1d941aaa543481881ac6927cd0"
+    },
+    {
+      "bytes": 240125,
+      "frame_index": 809,
+      "path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\c11e\\E4C-CLI-COMPOSITION-V2-R6-TITLE-BRIDGE-20261114T143615Z-fba77da2\\operator_review\\frame_809_END_CTA_LAST.png",
+      "phase_label": "END_CTA_LAST",
+      "sha256": "b922099fcff3956dcdb159e1642b686041300d677b6dd4ab3323e77e386f185a"
+    }
+  ],
+  "presentation_profile_sha256": "187b1cf8ab96b9031785a0f36b0054a60383c97cb3d81906c7d9bbcd373bef24",
+  "production_dispatch": false,
+  "release_authority": "NONE",
+  "request_id": "E4C-CLI-COMPOSITION-V2-R6-TITLE-BRIDGE-20261114T143615Z-fba77da2",
+  "schema": "C11E-E4C-DRILL-V2-EXISTING-MEDIA-REQUALIFICATION-RECEIPT-V1",
+  "silent_video_ffprobe": {
+    "format": {
+      "bit_rate": "235781",
+      "duration": "27.000000",
+      "filename": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\c11e\\E4C-CLI-COMPOSITION-V2-R6-TITLE-BRIDGE-20261114T143615Z-fba77da2\\qualification\\d_composed_silent_v2.mp4",
+      "format_long_name": "QuickTime / MOV",
+      "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+      "nb_programs": 0,
+      "nb_stream_groups": 0,
+      "nb_streams": 1,
+      "probe_score": 100,
+      "size": "795762",
+      "start_time": "0.000000",
+      "tags": {
+        "compatible_brands": "isomiso2avc1mp41",
+        "encoder": "Lavf63.1.100",
+        "major_brand": "isom",
+        "minor_version": "512"
+      }
+    },
+    "streams": [
+      {
+        "avg_frame_rate": "30/1",
+        "bit_rate": "232727",
+        "bits_per_raw_sample": "8",
+        "chroma_location": "left",
+        "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+        "codec_name": "h264",
+        "codec_tag": "0x31637661",
+        "codec_tag_string": "avc1",
+        "codec_type": "video",
+        "coded_height": 1280,
+        "coded_width": 720,
+        "color_range": "tv",
+        "color_space": "bt709",
+        "disposition": {
+          "attached_pic": 0,
+          "captions": 0,
+          "clean_effects": 0,
+          "comment": 0,
+          "default": 1,
+          "dependent": 0,
+          "descriptions": 0,
+          "dub": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "karaoke": 0,
+          "lyrics": 0,
+          "metadata": 0,
+          "multilayer": 0,
+          "non_diegetic": 0,
+          "original": 0,
+          "still_image": 0,
+          "timed_thumbnails": 0,
+          "visual_impaired": 0
+        },
+        "duration": "27.000000",
+        "duration_ts": 414720,
+        "extradata_size": 48,
+        "field_order": "progressive",
+        "has_b_frames": 2,
+        "height": 1280,
+        "id": "0x1",
+        "index": 0,
+        "is_avc": "true",
+        "level": 31,
+        "mime_codec_string": "avc1.64001f",
+        "nal_length_size": "4",
+        "nb_frames": "810",
+        "nb_read_frames": "810",
+        "pix_fmt": "yuv420p",
+        "profile": "High",
+        "r_frame_rate": "30/1",
+        "refs": 4,
+        "start_pts": 0,
+        "start_time": "0.000000",
+        "tags": {
+          "encoder": "Lavc63.1.100 libx264",
+          "handler_name": "VideoHandler",
+          "language": "und"
+        },
+        "time_base": "1/15360",
+        "width": 720
+      }
+    ]
+  },
+  "source_music_wav_sha256": {
+    "A": "e54b960c799102fb104a99ccd7b94c4a41b5b22d54665acda72106b36646f277",
+    "B": "e54b960c799102fb104a99ccd7b94c4a41b5b22d54665acda72106b36646f277",
+    "C": "5e81b6426f7915c7cad4c658fc24b90cd17c870a4497f45136a53e43b71efd40"
+  },
+  "source_native_mp4_sha256": "d10950bca9358de4ffe8a9f4f24c8c35cdb37e25050775a9220a4d15ffb45338",
+  "source_receipt_sha256": "57fe829b2ae83fc16a962710b8a1ef8e4635ebf8fd4326714ed24c69c4a0f903",
+  "source_request_id": "E4C-CLI-SMOKE-20261112T091253Z-5a2e96b8",
+  "status": "PASS_V2_TECHNICAL_REQUALIFICATION_PENDING_OPERATOR_VISUAL_AUDIO_ACCEPTANCE",
+  "stream_hashes": {
+    "audio": {
+      "A": "2fd32bfeb275c53ae4d754796793d6c7c8ece5144de4d5ae83c2132952dd4501",
+      "B": "2fd32bfeb275c53ae4d754796793d6c7c8ece5144de4d5ae83c2132952dd4501",
+      "C": "e018e6c81a88b8d9ab216267f042d2c5f18b0e477fa3e84951958fa8ac63d9ad"
+    },
+    "audio_A_B_identical": true,
+    "audio_C_distinct": true,
+    "video": {
+      "A": "b47d404a044f1233e367a190c5958c365a060828ba84019c4c49b9a40675b5ad",
+      "B": "b47d404a044f1233e367a190c5958c365a060828ba84019c4c49b9a40675b5ad",
+      "C": "b47d404a044f1233e367a190c5958c365a060828ba84019c4c49b9a40675b5ad"
+    },
+    "video_A_B_C_identical": true
+  },
+  "title_visibility": {
+    "END_CTA": false,
+    "GAME": true,
+    "PRE_ROLL": true
+  },
+  "visual_acceptance": "PENDING_OPERATOR_REVIEW"
+}

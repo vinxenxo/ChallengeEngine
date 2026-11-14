@@ -141,5 +141,11 @@ class ExistingOutputRecoveryTests(unittest.TestCase):
         self.assertEqual(recovery.EXPECTED_INTENT_FILE_SHA256, "dfc861764302d7a6dec71de4532828dfe146708ed33dd2483b9c611bdd2f9a94")
         self.assertNotEqual(recovery.EXPECTED_INTENT_SHA256, recovery.EXPECTED_INTENT_FILE_SHA256)
 
+    def test_stored_output_plan_is_v2_and_legacy_r3_is_not_publishable(self):
+        source = SCRIPT.read_text(encoding="utf-8-sig")
+        self.assertIn('"C11E-E4C-DRILL-VISUAL-COMPOSITION-PLAN-V2"', source)
+        self.assertIn("legacy R3 output predates the family-title bridge", source)
+        self.assertNotIn('plan.get("schema") != "C11E-E4C-DRILL-VISUAL-COMPOSITION-PLAN-V1"', source)
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

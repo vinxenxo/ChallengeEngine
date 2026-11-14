@@ -201,8 +201,10 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         raise ValueError("existing V2 composition plan does not match the captured R3 postimage")
     plan = read_json(plan_path)
     geometry = plan.get("geometry", {})
-    if plan.get("schema") != "C11E-E4C-DRILL-VISUAL-COMPOSITION-PLAN-V1":
-        raise ValueError("stored composition plan schema mismatch")
+    if plan.get("schema") != "C11E-E4C-DRILL-VISUAL-COMPOSITION-PLAN-V2":
+        raise ValueError("stored composition plan schema mismatch: output plan must be V2")
+    if plan.get("approval", {}).get("editorial_family_title_amendment_sha256") != "a8d1eddc636e7951a95fac9d9e272dc2bf1a7154c8826e14e64326915e545972":
+        raise ValueError("legacy R3 output predates the family-title bridge; do not publish it for operator review; run the R6 fresh requalification")
     if plan.get("approval", {}).get("decision_record_sha256") != "bceef9a22c27447ccbef5487339c25626e4cb4c5d32509809b832411655914e8":
         raise ValueError("stored plan immutable decision pin mismatch")
     if geometry.get("canvas") != {"x": 0, "y": 0, "width": 720, "height": 1280, "aspect_ratio": "9:16"}:

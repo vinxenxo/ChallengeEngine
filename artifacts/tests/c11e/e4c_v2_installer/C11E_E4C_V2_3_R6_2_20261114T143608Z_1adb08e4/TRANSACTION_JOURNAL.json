@@ -1,0 +1,208 @@
+﻿{
+    "schema":  "C11E-E4C-V2_3-R6_2-INSTALL-JOURNAL-V1",
+    "run_id":  "C11E_E4C_V2_3_R6_2_20261114T143608Z_1adb08e4",
+    "stage":  "POSTIMAGE_AND_POSTPIN_AUDIT",
+    "operations":  [
+                       {
+                           "operation":  "REPLACE",
+                           "relative_path":  "tests/test_c11e_e4c_drill_visual_composition_consumer.py",
+                           "destination":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\tests\\test_c11e_e4c_drill_visual_composition_consumer.py",
+                           "preimage_sha256":  "42e4cb8097ea9536dca63627e82c240ce0bb5b73baf03152269a35ac219a68eb",
+                           "postimage_sha256":  "81a45c8afdb61469b5a0715ab7113f2f883e46fa9f49b006cc0c058d8d409e01",
+                           "backup_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_v2_installer\\C11E_E4C_V2_3_R6_2_20261114T143608Z_1adb08e4\\backups\\000.C11E_E4C_V2_3_R6_2_20261114T143608Z_1adb08e4.preimage.bak",
+                           "status":  "REPLACED_POSTIMAGE_VERIFIED",
+                           "rollback":  "NOT_REQUIRED"
+                       },
+                       {
+                           "operation":  "REPLACE",
+                           "relative_path":  "tests/test_c11e_e4c_existing_output_recovery.py",
+                           "destination":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\tests\\test_c11e_e4c_existing_output_recovery.py",
+                           "preimage_sha256":  "2887e0dc04439efd8871965f1294f712f3963fe0046ec2a13aab4e09f0ab636d",
+                           "postimage_sha256":  "4f1805e5884f84e6e36f8ddf1a4f20ac328fdeffbd35322d843838be90c618f2",
+                           "backup_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_v2_installer\\C11E_E4C_V2_3_R6_2_20261114T143608Z_1adb08e4\\backups\\001.C11E_E4C_V2_3_R6_2_20261114T143608Z_1adb08e4.preimage.bak",
+                           "status":  "REPLACED_POSTIMAGE_VERIFIED",
+                           "rollback":  "NOT_REQUIRED"
+                       },
+                       {
+                           "operation":  "REPLACE",
+                           "relative_path":  "tools/c11d/d9/RECOVER_C11E_E4C_V2_EXISTING_OUTPUT_REVIEW_V1.py",
+                           "destination":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\tools\\c11d\\d9\\RECOVER_C11E_E4C_V2_EXISTING_OUTPUT_REVIEW_V1.py",
+                           "preimage_sha256":  "79aaf996dfce0c4bf81da595d310dc4c5d7fad8cd16e53ee468deeea5651c750",
+                           "postimage_sha256":  "2428e677a481c816b5fbcbbf41bee3537aa156c67da37681f713ececd03f82d5",
+                           "backup_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_v2_installer\\C11E_E4C_V2_3_R6_2_20261114T143608Z_1adb08e4\\backups\\002.C11E_E4C_V2_3_R6_2_20261114T143608Z_1adb08e4.preimage.bak",
+                           "status":  "REPLACED_POSTIMAGE_VERIFIED",
+                           "rollback":  "NOT_REQUIRED"
+                       },
+                       {
+                           "operation":  "REPLACE",
+                           "relative_path":  "tools/c11d/d9/REQUALIFY_C11E_E4C_DRILL_AV_FROM_EXISTING_EVIDENCE_V2.py",
+                           "destination":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\tools\\c11d\\d9\\REQUALIFY_C11E_E4C_DRILL_AV_FROM_EXISTING_EVIDENCE_V2.py",
+                           "preimage_sha256":  "acb40648d75644beab7e16a3c8a089acb8378b128bab189d254078ce0abfaeb2",
+                           "postimage_sha256":  "9a20a6a8d1cae775d4072b445eaa1164b4907af4be59dc025ca6bfac03f99944",
+                           "backup_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_v2_installer\\C11E_E4C_V2_3_R6_2_20261114T143608Z_1adb08e4\\backups\\003.C11E_E4C_V2_3_R6_2_20261114T143608Z_1adb08e4.preimage.bak",
+                           "status":  "REPLACED_POSTIMAGE_VERIFIED",
+                           "rollback":  "NOT_REQUIRED"
+                       },
+                       {
+                           "operation":  "REPLACE",
+                           "relative_path":  "tools/c11d/d9/c11e_e4c_drill_visual_composition_consumer.py",
+                           "destination":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\tools\\c11d\\d9\\c11e_e4c_drill_visual_composition_consumer.py",
+                           "preimage_sha256":  "867f0eb7d1e90ad58c56aec2d9309274ae583e54d809759be4aa66f76ffb3d9e",
+                           "postimage_sha256":  "217629197d13fc0f5cf0d41641d6c2a749d621caf52f58b93de646d0d791df53",
+                           "backup_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_v2_installer\\C11E_E4C_V2_3_R6_2_20261114T143608Z_1adb08e4\\backups\\004.C11E_E4C_V2_3_R6_2_20261114T143608Z_1adb08e4.preimage.bak",
+                           "status":  "REPLACED_POSTIMAGE_VERIFIED",
+                           "rollback":  "NOT_REQUIRED"
+                       },
+                       {
+                           "operation":  "ADD",
+                           "relative_path":  "definitions/c11d/production/C11E_E4C_DRILL_EDITORIAL_FAMILY_TITLE_AMENDMENT_R1_20261114.json",
+                           "destination":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\definitions\\c11d\\production\\C11E_E4C_DRILL_EDITORIAL_FAMILY_TITLE_AMENDMENT_R1_20261114.json",
+                           "preimage_sha256":  null,
+                           "postimage_sha256":  "1d0d5393368ca1e1ecb867059314e28463205fffc81e8af902909896e0ac7331",
+                           "backup_path":  null,
+                           "status":  "ADDED_POSTIMAGE_VERIFIED",
+                           "rollback":  "NOT_REQUIRED"
+                       },
+                       {
+                           "operation":  "ADD",
+                           "relative_path":  "docs/current/e/C11D_E_BLOCKER_REMEDIATION_REGISTER_20261114_V63.md",
+                           "destination":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\current\\e\\C11D_E_BLOCKER_REMEDIATION_REGISTER_20261114_V63.md",
+                           "preimage_sha256":  null,
+                           "postimage_sha256":  "ababe0ff73bb77828a321c371a9aa0fd889eb0e6d1e35306c53ed1d488dc88e8",
+                           "backup_path":  null,
+                           "status":  "ADDED_POSTIMAGE_VERIFIED",
+                           "rollback":  "NOT_REQUIRED"
+                       },
+                       {
+                           "operation":  "ADD",
+                           "relative_path":  "docs/current/e/C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261114_V89.md",
+                           "destination":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\current\\e\\C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261114_V89.md",
+                           "preimage_sha256":  null,
+                           "postimage_sha256":  "e8d5c23aed14f5c40ec48f1a4777aadf967bd0f002cf3ef4231b5da497cc19fb",
+                           "backup_path":  null,
+                           "status":  "ADDED_POSTIMAGE_VERIFIED",
+                           "rollback":  "NOT_REQUIRED"
+                       },
+                       {
+                           "operation":  "ADD",
+                           "relative_path":  "docs/current/e/C11E_CURRENT_AUTHORITY_20261114_V146.md",
+                           "destination":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\current\\e\\C11E_CURRENT_AUTHORITY_20261114_V146.md",
+                           "preimage_sha256":  null,
+                           "postimage_sha256":  "d4bba396cb1c1ab6fc89f38524e1834fac26e59bbdd66da1b2a7b5480faaa72d",
+                           "backup_path":  null,
+                           "status":  "ADDED_POSTIMAGE_VERIFIED",
+                           "rollback":  "NOT_REQUIRED"
+                       },
+                       {
+                           "operation":  "ADD",
+                           "relative_path":  "docs/current/e/C11E_CURRENT_DOC_INDEX_20261114_V108.md",
+                           "destination":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\current\\e\\C11E_CURRENT_DOC_INDEX_20261114_V108.md",
+                           "preimage_sha256":  null,
+                           "postimage_sha256":  "acb3882aea9a0397efd9109f5da9c5ceb388bcf4ae468af7cf6e224ca32d01ca",
+                           "backup_path":  null,
+                           "status":  "ADDED_POSTIMAGE_VERIFIED",
+                           "rollback":  "NOT_REQUIRED"
+                       },
+                       {
+                           "operation":  "ADD",
+                           "relative_path":  "docs/current/e/C11E_E3_EXECUTION_BACKLOG_20261114_V117.md",
+                           "destination":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\current\\e\\C11E_E3_EXECUTION_BACKLOG_20261114_V117.md",
+                           "preimage_sha256":  null,
+                           "postimage_sha256":  "5d48a1c82ec7d017ca00c4d3ff17b22fcc99d663e0fa26c353c0439867b3ccfe",
+                           "backup_path":  null,
+                           "status":  "ADDED_POSTIMAGE_VERIFIED",
+                           "rollback":  "NOT_REQUIRED"
+                       },
+                       {
+                           "operation":  "ADD",
+                           "relative_path":  "docs/current/e/C11E_E4C_DRILL_EXECUTION_PLAN_20261114_V34.md",
+                           "destination":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\current\\e\\C11E_E4C_DRILL_EXECUTION_PLAN_20261114_V34.md",
+                           "preimage_sha256":  null,
+                           "postimage_sha256":  "4ee76ad4ece22b5565fb8cc131a64b95903abbe412a5324fbfa8d4cc1b606a53",
+                           "backup_path":  null,
+                           "status":  "ADDED_POSTIMAGE_VERIFIED",
+                           "rollback":  "NOT_REQUIRED"
+                       },
+                       {
+                           "operation":  "ADD",
+                           "relative_path":  "docs/current/e/C11E_E4C_DRILL_VISUAL_CONSUMER_SPEC_20261114_V18.md",
+                           "destination":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\current\\e\\C11E_E4C_DRILL_VISUAL_CONSUMER_SPEC_20261114_V18.md",
+                           "preimage_sha256":  null,
+                           "postimage_sha256":  "09e2c3f4a2363243c5021c75d51d26ea1917be9075376fbfa2395f2c1c843127",
+                           "backup_path":  null,
+                           "status":  "ADDED_POSTIMAGE_VERIFIED",
+                           "rollback":  "NOT_REQUIRED"
+                       },
+                       {
+                           "operation":  "ADD",
+                           "relative_path":  "docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261114_V141.md",
+                           "destination":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\current\\e\\C11E_GATES_ACCEPTANCE_MATRIX_20261114_V141.md",
+                           "preimage_sha256":  null,
+                           "postimage_sha256":  "612bedf3129c0d3b0c6cd220746abbcd3ba2606aabad2d166593016377227c49",
+                           "backup_path":  null,
+                           "status":  "ADDED_POSTIMAGE_VERIFIED",
+                           "rollback":  "NOT_REQUIRED"
+                       },
+                       {
+                           "operation":  "ADD",
+                           "relative_path":  "docs/current/e/C11E_INSTALLER_INCIDENT_REGISTER_20261114_V26.md",
+                           "destination":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\current\\e\\C11E_INSTALLER_INCIDENT_REGISTER_20261114_V26.md",
+                           "preimage_sha256":  null,
+                           "postimage_sha256":  "905bc4327c2843038de60bcdecf7e845979323dc888da405cd760aaf3c982b79",
+                           "backup_path":  null,
+                           "status":  "ADDED_POSTIMAGE_VERIFIED",
+                           "rollback":  "NOT_REQUIRED"
+                       },
+                       {
+                           "operation":  "ADD",
+                           "relative_path":  "docs/history/c11e/C11E_E4C_R6_2_TEST_ORACLE_AND_STOP_ON_FAIL_CORRECTION_20261114_V1.md",
+                           "destination":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\history\\c11e\\C11E_E4C_R6_2_TEST_ORACLE_AND_STOP_ON_FAIL_CORRECTION_20261114_V1.md",
+                           "preimage_sha256":  null,
+                           "postimage_sha256":  "945b1f4d48b9b2dbb39268e7a4274af5c18c98c3230ba92519e24ca608e6918f",
+                           "backup_path":  null,
+                           "status":  "ADDED_POSTIMAGE_VERIFIED",
+                           "rollback":  "NOT_REQUIRED"
+                       },
+                       {
+                           "operation":  "ADD",
+                           "relative_path":  "prompts/C11E_CONTINUATION_MASTER_PROMPT_20261114_V148.md",
+                           "destination":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\prompts\\C11E_CONTINUATION_MASTER_PROMPT_20261114_V148.md",
+                           "preimage_sha256":  null,
+                           "postimage_sha256":  "169e36cccbb0ab69c0398e3b2153fca72b10ed1212d82fd60ebf656408fcbead",
+                           "backup_path":  null,
+                           "status":  "ADDED_POSTIMAGE_VERIFIED",
+                           "rollback":  "NOT_REQUIRED"
+                       },
+                       {
+                           "operation":  "ADD",
+                           "relative_path":  "prompts/C11E_FIRST_PROMPT_20261114_V72.md",
+                           "destination":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\prompts\\C11E_FIRST_PROMPT_20261114_V72.md",
+                           "preimage_sha256":  null,
+                           "postimage_sha256":  "d5354b59b41ec811525225b49b7a336a7053e6b7b2c89a433f716198e3f7648f",
+                           "backup_path":  null,
+                           "status":  "ADDED_POSTIMAGE_VERIFIED",
+                           "rollback":  "NOT_REQUIRED"
+                       },
+                       {
+                           "operation":  "ADD",
+                           "relative_path":  "prompts/C11E_NEXT_WINDOW_START_PROMPT_20261114_V148.md",
+                           "destination":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\prompts\\C11E_NEXT_WINDOW_START_PROMPT_20261114_V148.md",
+                           "preimage_sha256":  null,
+                           "postimage_sha256":  "e7bdf1157554b479525b6681c08260fe1b926f1c99f754c9e6587eab237c98a0",
+                           "backup_path":  null,
+                           "status":  "ADDED_POSTIMAGE_VERIFIED",
+                           "rollback":  "NOT_REQUIRED"
+                       },
+                       {
+                           "operation":  "ADD",
+                           "relative_path":  "tools/c11d/d9/RUN_C11E_E4C_V2_3_R6_FAMILY_TITLE_BRIDGE_REQUALIFICATION.ps1",
+                           "destination":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\tools\\c11d\\d9\\RUN_C11E_E4C_V2_3_R6_FAMILY_TITLE_BRIDGE_REQUALIFICATION.ps1",
+                           "preimage_sha256":  null,
+                           "postimage_sha256":  "b5e6a940425872ec48b434838cbeeeaffa4f8ac005e0b51a52155e3d084b321b",
+                           "backup_path":  null,
+                           "status":  "ADDED_POSTIMAGE_VERIFIED",
+                           "rollback":  "NOT_REQUIRED"
+                       }
+                   ],
+    "updated_utc":  "2026-11-14T14:36:12.4957064Z"
+}

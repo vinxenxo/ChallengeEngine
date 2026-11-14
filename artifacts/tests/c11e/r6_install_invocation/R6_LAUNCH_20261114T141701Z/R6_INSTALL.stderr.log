@@ -1,0 +1,12 @@
+C:\Users\vinxe\Downloads\C11E_E4C_DRILL_HISTORICAL_REQUALIFIER_V2_3_R6_20261114_VERIFIED_20261114T141701Z\INSTALL_C11E_
+E4C_V2_3_R6_FAMILY_TITLE_BRIDGE.ps1 : FAIL_CLOSED_PRE_TRANSACTION_NO_DESTINATION_WRITES: REPLACE_PREIMAGE_UNKNOWN: 
+tests/test_c11e_e4c_drill_visual_composition_consumer.py 
+current=42e4cb8097ea9536dca63627e82c240ce0bb5b73baf03152269a35ac219a68eb
+En C:\Users\vinxe\Downloads\C11E_E4C_DRILL_HISTORICAL_REQUALIFIER_V2_3_R6_20261114_VERIFIED_20261114T141701Z\INSTALL_C1
+1E_E4C_V2_3_R6_FAMILY_TITLE_BRIDGE.ps1: 47 Car cter: 854
++ ... ='+$script:EvidenceRoot)}else{Write-Error ($status+': '+$err)};exit 1 ...
++                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [Write-Error], WriteErrorException
+    + FullyQualifiedErrorId : Microsoft.PowerShell.Commands.WriteErrorException,INSTALL_C11E_E4C_V2_3_R6_FAMILY_TITLE_ 
+   BRIDGE.ps1
+ 

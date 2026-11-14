@@ -14,6 +14,7 @@ import os
 import re
 import subprocess
 import sys
+import zipfile
 from pathlib import Path, PureWindowsPath
 from datetime import datetime, timezone
 from typing import Any
@@ -135,7 +136,9 @@ def compose_all_frames_v2(
     counts = {"PRE_ROLL": 0, "GAME": 0, "END_CTA": 0}
     sample_rows: list[dict[str, Any]] = []
     game_identity_checked = 0
-    passthrough_identity_checked = 0
+    pre_roll_body_identity_checked = 0
+    pre_roll_footer_identity_checked = 0
+    end_cta_full_frame_identity_checked = 0
     with decode_log.open("w", encoding="utf-8") as dec_log, encode_log.open("w", encoding="utf-8") as enc_log:
         decoder = subprocess.Popen(decode_command, stdout=subprocess.PIPE, stderr=dec_log, cwd=str(project_root))
         encoder = subprocess.Popen(encode_command, stdin=subprocess.PIPE, stdout=subprocess.DEVNULL, stderr=enc_log, cwd=str(project_root))
@@ -160,20 +163,42 @@ def compose_all_frames_v2(
                 mapping = result.get("mapping", {})
                 if mapping.get("phase") != phase or mapping.get("d_editorial_visible") is not (phase == "GAME"):
                     raise RuntimeError(f"V2 phase/editorial visibility mismatch at frame {frame_index}")
-                if phase == "GAME":
+                expected_title_slot = bool(plan.get("text", {}).get("visible_fields", {}).get("title")) and phase in ("PRE_ROLL", "GAME")
+                if mapping.get("d_editorial_title_slot_open") is not expected_title_slot:
+                    raise RuntimeError(f"V2 family-title phase slot mismatch at frame {frame_index}")
+                if phase == "PRE_ROLL":
+                    source_body = source.copy(0, 192, 720, 896)
+                    output_body = composed.copy(0, 192, 720, 896)
+                    source_footer = source.copy(0, 1088, 720, 192)
+                    output_footer = composed.copy(0, 1088, 720, 192)
+                    if consumer._image_rgb_bytes(source_body) != consumer._image_rgb_bytes(output_body):
+                        raise RuntimeError(f"V2 PRE_ROLL native countdown/body is not pixel-identical at frame {frame_index}")
+                    if consumer._image_rgb_bytes(source_footer) != consumer._image_rgb_bytes(output_footer):
+                        raise RuntimeError(f"V2 PRE_ROLL native footer is not pixel-identical at frame {frame_index}")
+                    if expected_title_slot and result.get("native_title_replaced") is not True:
+                        raise RuntimeError(f"V2 PRE_ROLL family title was not replaced at frame {frame_index}")
+                    if result.get("native_body_pixel_identity") is not True or result.get("native_footer_pixel_identity") is not True:
+                        raise RuntimeError(f"V2 PRE_ROLL body/footer identity attestation missing at frame {frame_index}")
+                    pre_roll_body_identity_checked += 1
+                    pre_roll_footer_identity_checked += 1
+                elif phase == "GAME":
                     source_body = source.copy(0, 192, 720, 896)
                     output_body = composed.copy(0, 192, 720, 896)
                     if consumer._image_rgb_bytes(source_body) != consumer._image_rgb_bytes(output_body):
                         raise RuntimeError(f"V2 GAME native body is not pixel-identical at frame {frame_index}")
                     if result.get("native_body_pixel_identity") is not True:
                         raise RuntimeError(f"V2 consumer did not attest body pixel identity at frame {frame_index}")
+                    if expected_title_slot and not result.get("family_title_render", {}).get("visible"):
+                        raise RuntimeError(f"V2 GAME family title was not rendered at frame {frame_index}")
                     game_identity_checked += 1
-                else:
+                elif phase == "END_CTA":
                     if consumer._image_rgb_bytes(composed) != consumer._image_rgb_bytes(source):
-                        raise RuntimeError(f"V2 {phase} did not pass through complete native frame at frame {frame_index}")
+                        raise RuntimeError(f"V2 END_CTA did not pass through complete native frame at frame {frame_index}")
                     if result.get("native_full_frame_identity") is not True:
-                        raise RuntimeError(f"V2 {phase} passthrough attestation missing at frame {frame_index}")
-                    passthrough_identity_checked += 1
+                        raise RuntimeError(f"V2 END_CTA passthrough attestation missing at frame {frame_index}")
+                    end_cta_full_frame_identity_checked += 1
+                else:
+                    raise RuntimeError(f"V2 unexpected composition phase at frame {frame_index}: {phase}")
                 expected_final = frame_index if phase != "GAME" else PRE_ROLL_FRAMES + phase_index
                 if mapping.get("final_presentation_frame_index") != expected_final:
                     raise RuntimeError(f"V2 timebase mapping changed at frame {frame_index}")
@@ -210,14 +235,17 @@ def compose_all_frames_v2(
             raise
     if counts != {"PRE_ROLL": 90, "GAME": 630, "END_CTA": 90}:
         raise RuntimeError(f"V2 phase-count mismatch: {counts}")
-    if game_identity_checked != 630 or passthrough_identity_checked != 180:
-        raise RuntimeError("V2 pixel identity sample cardinality mismatch")
+    if (game_identity_checked, pre_roll_body_identity_checked, pre_roll_footer_identity_checked, end_cta_full_frame_identity_checked) != (630, 90, 90, 90):
+        raise RuntimeError("V2 pixel identity cardinality mismatch: GAME=630, PRE_ROLL body/footer=90/90, END_CTA=90")
     if not target_mp4.is_file() or target_mp4.stat().st_size <= 0:
         raise RuntimeError("V2 silent composed MP4 missing")
     return {
         "frames_expected": TOTAL_FRAMES, "frames_composed": sum(counts.values()),
         "phase_counts": counts, "game_native_body_pixel_identity_frames": game_identity_checked,
-        "native_full_frame_passthrough_frames": passthrough_identity_checked,
+        "pre_roll_native_body_pixel_identity_frames": pre_roll_body_identity_checked,
+        "pre_roll_native_footer_pixel_identity_frames": pre_roll_footer_identity_checked,
+        "end_cta_native_full_frame_identity_frames": end_cta_full_frame_identity_checked,
+        "native_full_frame_passthrough_frames": end_cta_full_frame_identity_checked,
         "sampled_frames": sample_rows, "silent_video_path": str(target_mp4),
         "silent_video_sha256": sha256_file(target_mp4), "silent_video_bytes": target_mp4.stat().st_size,
         "decode_log": str(decode_log), "encode_log": str(encode_log),
@@ -407,7 +435,11 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         "family_music_generation_invoked": False,
         "family_music_wavs_reused": True,
         "d_executor_replaced": False,
-        "d_consumer_contract": "V2_SOCIAL_BODY_PIXEL_EXACT",
+        "d_consumer_contract": "V2_FAMILY_TITLE_BRIDGE_PRE_ROLL_AND_GAME_SOCIAL_BODY_PIXEL_EXACT",
+        "editorial_family_title_amendment_sha256": consumer.EDITORIAL_STYLE_AMENDMENT_SHA,
+        "family_title_style": consumer.FAMILY_TITLE_STYLE,
+        "family_title_animation": "STATIC_NO_ANIMATION_OBSERVED_IN_TRACKING_TIER_1_PRE_ROLL",
+        "title_visibility": {"PRE_ROLL": True, "GAME": True, "END_CTA": False},
         "geometry": {"header": [0,0,720,192], "body": [0,192,720,896], "footer": [0,1088,720,192]},
         "presentation_profile_sha256": PRESENTATION_PROFILE_SHA256,
         "e1_source_pins": {"count": len(old_pins), "pre": old_pins, "post": post_pins, "unchanged": True},
@@ -428,13 +460,43 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
     write_json(output_root / "E4C_DRILL_V2_REQUALIFICATION_RECEIPT.json", result)
     write_progress(progress_path, "COMPLETE", technical_status=result["status"], final_outputs=list(finals.keys()), review_frame_count=len(review_frames), source_pins_unchanged=True)
     (output_root / "OPERATOR_REVIEW_CHECKLIST.md").write_text(
-        "# E4C Drill V2 operator review\n\n"
-        "Review the A/B/C outputs and the seven extracted frames. Confirm: (1) PRE_ROLL is the complete native frame; "
-        "(2) GAME shows the native visual effect only in the full-width body rectangle; (3) native tracking header and telemetry footer "
-        "are absent from GAME; (4) D title/subtitle occupy the top band and D CTA the bottom band; (5) END_CTA is the complete native frame "
-        "with native C11-C ownership; (6) A and B audio are identical in content, C differs; (7) no A/V sync or clipping artefacts.\n\n"
-        "This review is required before the selector is counted as V2-accepted. This receipt grants no production dispatch or release authority.\n",
+        "# E4C Drill V2 operator review — family-title bridge R6\n\n"
+        "Review the A/B/C outputs and seven extracted frames. Confirm: (1) the editorial title is already visible on PRE_ROLL frame 0/countdown, "
+        "in the same Inter-Bold 22px warm-gold centered family-title treatment; (2) the native countdown/body and native footer remain pixel-identical "
+        "through all 90 PRE_ROLL frames; (3) the same title treatment remains in GAME from its first frame; (4) subtitle is directly beneath it, "
+        "and CTA remains in the approved lower band; (5) all 630 GAME body pixels remain identical to native C11-C; (6) all 90 END_CTA frames "
+        "remain complete native passthrough; (7) the sampled tracking/tier-1 family title was static in the source (no native title animation observed); "
+        "(8) A/B audio are identical and C differs; (9) no A/V sync, clipping or playback artefacts.\n\n"
+        "This is technical PASS_PENDING_OPERATOR_VISUAL_AUDIO_ACCEPTANCE. Human review is required before the selector counts toward 20/20. "
+        "No production dispatch or release authority is granted.\n",
         encoding="utf-8", newline="\n")
+    bundle = output_root / "E4C_V2_OPERATOR_REVIEW_BUNDLE.zip"
+    bundle_paths = [output_root / "E4C_DRILL_V2_REQUALIFICATION_RECEIPT.json", output_root / "OPERATOR_REVIEW_CHECKLIST.md",
+                    output_root / "V2_REQUALIFICATION_PROGRESS.json", output_root / "d_composition_plan_v2.json"]
+    bundle_paths.extend(Path(row["path"]) for row in review_frames)
+    bundle_paths.extend(Path(finals[key]["path"]) for key in ("A", "B", "C"))
+    embedded_receipt_sha = sha256_file(output_root / "E4C_DRILL_V2_REQUALIFICATION_RECEIPT.json")
+    bundle_manifest = {
+        "schema": "C11E-E4C-V2-OPERATOR-REVIEW-BUNDLE-MANIFEST-V1",
+        "request_id": run_id,
+        "embedded_receipt_role": "PRE_BUNDLE_SNAPSHOT_NO_SELF_REFERENCE",
+        "embedded_receipt_sha256": embedded_receipt_sha,
+        "files": [{"path": item.relative_to(output_root).as_posix(), "bytes": item.stat().st_size, "sha256": sha256_file(item)} for item in bundle_paths],
+        "production_dispatch": False, "release_authority": "NONE",
+    }
+    manifest_path = output_root / "E4C_V2_OPERATOR_REVIEW_BUNDLE_MANIFEST.json"
+    write_json(manifest_path, bundle_manifest)
+    with zipfile.ZipFile(bundle, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=6) as archive:
+        for item in bundle_paths:
+            archive.write(item, item.relative_to(output_root).as_posix())
+        archive.write(manifest_path, manifest_path.relative_to(output_root).as_posix())
+    result["operator_review_bundle"] = str(bundle)
+    result["operator_review_bundle_embedded_receipt_role"] = "PRE_BUNDLE_SNAPSHOT_NO_SELF_REFERENCE"
+    result["operator_review_bundle_embedded_receipt_sha256"] = embedded_receipt_sha
+    result["operator_review_bundle_sha256"] = sha256_file(bundle)
+    result["operator_review_bundle_bytes"] = bundle.stat().st_size
+    write_json(output_root / "E4C_DRILL_V2_REQUALIFICATION_RECEIPT.json", result)
+    write_progress(progress_path, "OPERATOR_REVIEW_BUNDLE_CREATED", review_frame_count=len(review_frames), bundle_sha256=result["operator_review_bundle_sha256"], bundle_bytes=result["operator_review_bundle_bytes"])
     return result
 
 

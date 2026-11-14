@@ -1,0 +1,92 @@
+{
+  "date": "2026-11-14",
+  "family_title_style": {
+    "alignment": "CENTER",
+    "animation": "STATIC_NO_ANIMATION_OBSERVED_IN_TRACKING_TIER_1_PRE_ROLL",
+    "color_rgb": [
+      235,
+      215,
+      161
+    ],
+    "font": "Inter-Bold",
+    "font_size_px": 22,
+    "line_height_px": 29,
+    "max_lines": 3,
+    "native_title_mask": {
+      "x": 184,
+      "y": 64,
+      "width": 352,
+      "height": 102
+    },
+    "rect": {
+      "x": 36,
+      "y": 63,
+      "width": 648,
+      "height": 104
+    }
+  },
+  "game_subtitle_block": {
+    "font": "Inter-Bold",
+    "font_size_px": 15,
+    "line_height_px": 19,
+    "max_lines": 1,
+    "region": "TOP_BAND",
+    "x": 36,
+    "y": 169,
+    "width": 648,
+    "height": 21
+  },
+  "observed_native_style": {
+    "alignment": "CENTER",
+    "animation": "STATIC_NO_ANIMATION_OBSERVED_IN_TRACKING_TIER_1_PRE_ROLL",
+    "color_rgb": [
+      235,
+      215,
+      161
+    ],
+    "evidence": "Existing R3 A/B/C output sampled at PRE_ROLL frame indices 0, 15, 30, 45, 60, 75 and 89",
+    "font_asset": "assets/fonts/Inter-Bold.otf",
+    "font_size_px": 22,
+    "line_height_px": 29,
+    "native_title_bounds_px": [
+      222,
+      77,
+      496,
+      154
+    ],
+    "selector": "visual_drills/tracking/tier-1",
+    "native_title_line_tops_px": [
+      77,
+      106,
+      136
+    ]
+  },
+  "operator_direction": {
+    "requirements": [
+      "Replace the default family title from the first PRE_ROLL/countdown frame with the request's editorial title",
+      "Keep the same family title treatment across PRE_ROLL and GAME",
+      "Preserve family font, size, warm title color, centered alignment, vertical placement and any evidenced title animation",
+      "Do not modify countdown numerals, native gameplay body, native END_CTA, music, or timing",
+      "Match the observed native title vertical centre and line rhythm from sampled PRE_ROLL pixels; GAME subtitle must remain directly below the shared title region"
+    ],
+    "source": "operator visual review of tracking/tier-1 V2 output"
+  },
+  "schema": "C11E-E4C-DRILL-EDITORIAL-FAMILY-TITLE-AMENDMENT-V1",
+  "scope": {
+    "audio_generation": false,
+    "audio_mux_reused_from_prior_output": false,
+    "c11c_source_mutation": false,
+    "d_owned_post_composition_only": true,
+    "end_cta_full_frame_identity_required": true,
+    "end_cta_override": false,
+    "game_body_pixel_identity_required": true,
+    "native_renderer_mutation": false,
+    "new_native_capture": false,
+    "pre_roll_body_and_countdown_identity_required": true,
+    "production_dispatch": false,
+    "release_authority": "NONE",
+    "renderer_native_input_emission": false,
+    "timebase_90_630_90_810_unchanged": true
+  },
+  "status": "USER_DIRECTED_D_OWNED_PRESENTATION_AMENDMENT"
+}

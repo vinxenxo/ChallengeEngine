@@ -11,7 +11,7 @@ os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 from PySide6.QtGui import QColor, QImage
 
 ROOT = Path(os.environ.get("C11E_TEST_PROJECT_ROOT", Path(__file__).resolve().parents[3])).resolve()
-TOOLS = ROOT / "tools" / "c11d" / "d9"
+TOOLS = Path(os.environ.get("C11E_TEST_CONSUMER_MODULE_DIR", ROOT / "tools" / "c11d" / "d9")).resolve()
 if str(TOOLS) not in sys.path:
     sys.path.insert(0, str(TOOLS))
 import c11e_e4c_drill_visual_composition_consumer as consumer
@@ -29,6 +29,7 @@ class DrillVisualCompositionConsumerV2Tests(unittest.TestCase):
                 "decision_record_sha256": consumer.DECISION_SHA,
                 "composition_proposal_sha256": consumer.COMPOSITION_SHA,
                 "timebase_proposal_sha256": consumer.TIMEBASE_SHA,
+                "editorial_family_title_amendment_sha256": consumer.EDITORIAL_STYLE_AMENDMENT_SHA,
                 "status": "USER_DIRECTED_V2_D_OWNED_CONTRACT_ONLY",
             },
             "geometry": geometry,
@@ -41,13 +42,24 @@ class DrillVisualCompositionConsumerV2Tests(unittest.TestCase):
                 },
                 "language_metadata_only": "es",
                 "layout_static_for_sequence": True,
-                "phase_visibility": {"PRE_ROLL": False, "GAME": True, "END_CTA": False, "DONE": False},
+                "family_title_style": dict(consumer.FAMILY_TITLE_STYLE),
+                "game_subtitle_block": dict(consumer.GAME_SUBTITLE_BLOCK),
+                "phase_visibility": {"PRE_ROLL": True, "GAME": True, "END_CTA": False, "DONE": False},
+                "field_phase_visibility": {
+                    "title": ["PRE_ROLL", "GAME"],
+                    "subtitle": ["GAME"],
+                    "call_to_action": ["GAME"],
+                },
             },
             "source_pins": {
                 "presentation_profile": {
                     "path": consumer.PRESENTATION_PROFILE_REL,
                     "bytes": 8837,
                     "sha256": consumer.PRESENTATION_PROFILE_SHA,
+                },
+                "editorial_family_title_amendment": {
+                    "path": consumer.EDITORIAL_STYLE_AMENDMENT_REL,
+                    "sha256": consumer.EDITORIAL_STYLE_AMENDMENT_SHA,
                 }
             },
             "governance": {
@@ -74,6 +86,7 @@ class DrillVisualCompositionConsumerV2Tests(unittest.TestCase):
         self.assertEqual(consumer._sha_file(ROOT / consumer.DECISION_REL), consumer.DECISION_SHA)
         self.assertEqual(consumer._sha_file(ROOT / consumer.TIMEBASE_PROPOSAL_REL), consumer.TIMEBASE_SHA)
         self.assertEqual(consumer._sha_file(ROOT / consumer.TIMEBASE_SCHEMA_REL), consumer.TIMEBASE_SCHEMA_SHA)
+        self.assertEqual(consumer._sha_file(consumer._editorial_amendment_path(ROOT)), consumer.EDITORIAL_STYLE_AMENDMENT_SHA)
 
     def test_02_geometry_is_exact_full_width_social_regions(self):
         g = self.plan["geometry"]
@@ -94,12 +107,21 @@ class DrillVisualCompositionConsumerV2Tests(unittest.TestCase):
         with self.assertRaises(consumer.DrillVisualConsumerError):
             consumer.validate_plan(altered)
 
-    def test_05_preroll_is_complete_native_frame_passthrough(self):
+    def test_05_preroll_replaces_family_title_from_first_frame_and_preserves_native_body(self):
         result = consumer.compose_frame(self.source, self.plan, "PRE_ROLL", 0, 630, 30, 1, ROOT)
-        self.assertEqual(result["mode"], "NATIVE_PHASE_FULL_FRAME_PASSTHROUGH")
-        self.assertEqual(consumer._image_rgb_bytes(result["image"]), consumer._image_rgb_bytes(self.source))
-        self.assertTrue(result["native_full_frame_identity"])
+        self.assertEqual(result["mode"], "D_PREROLL_FAMILY_TITLE_REPLACEMENT_NATIVE_BODY_PRESERVED")
+        self.assertTrue(result["native_title_replaced"])
+        self.assertTrue(result["d_editorial_title_visible"])
+        self.assertTrue(result["mapping"]["d_editorial_title_slot_open"])
         self.assertFalse(result["mapping"]["d_editorial_visible"])
+        self.assertTrue(result["native_body_pixel_identity"])
+        self.assertTrue(result["native_footer_pixel_identity"])
+        self.assertEqual(consumer._image_rgb_bytes(result["image"].copy(0, 192, 720, 896)), consumer._image_rgb_bytes(self.source.copy(0, 192, 720, 896)))
+        self.assertEqual(consumer._image_rgb_bytes(result["image"].copy(0, 1088, 720, 192)), consumer._image_rgb_bytes(self.source.copy(0, 1088, 720, 192)))
+        self.assertNotEqual(consumer._image_rgb_bytes(result["image"].copy(0, 0, 720, 192)), consumer._image_rgb_bytes(self.source.copy(0, 0, 720, 192)))
+        self.assertEqual(result["family_title_render"]["alignment"], "CENTER")
+        self.assertEqual(result["family_title_render"]["font"], "Inter-Bold")
+        self.assertEqual(result["family_title_render"]["font_size_px"], 22)
 
     def test_06_end_cta_is_complete_native_frame_passthrough(self):
         result = consumer.compose_frame(self.source, self.plan, "END_CTA", 720, 630, 30, 1, ROOT)
@@ -114,7 +136,7 @@ class DrillVisualCompositionConsumerV2Tests(unittest.TestCase):
         actual = result["image"].copy(0, 192, 720, 896)
         self.assertEqual(consumer._image_rgb_bytes(actual), consumer._image_rgb_bytes(expected))
         self.assertTrue(result["native_body_pixel_identity"])
-        self.assertEqual(result["mode"], "D_GAME_BODY_PIXEL_EXACT_COMPOSITION")
+        self.assertEqual(result["mode"], "D_GAME_BODY_PIXEL_EXACT_FAMILY_TITLE_COMPOSITION")
 
     def test_08_native_header_and_footer_are_not_embedded_in_game_body(self):
         result = consumer.compose_frame(self.source, self.plan, "GAME", 200, 630, 30, 1, ROOT)
@@ -123,25 +145,43 @@ class DrillVisualCompositionConsumerV2Tests(unittest.TestCase):
         self.assertEqual(consumer._pixel_rgb(output, 700, 190), (5, 7, 11))
         self.assertEqual(consumer._pixel_rgb(output, 700, 1279), (5, 7, 11))
 
-    def test_09_d_editorial_is_drawn_only_during_game(self):
+    def test_09_same_family_title_style_is_used_in_preroll_and_game(self):
+        pre = consumer.compose_frame(self.source, self.plan, "PRE_ROLL", 0, 630, 30, 1, ROOT)
         game = consumer.compose_frame(self.source, self.plan, "GAME", 0, 630, 30, 1, ROOT)
+        self.assertTrue(pre["d_editorial_title_visible"])
+        self.assertTrue(game["d_editorial_title_visible"])
+        self.assertFalse(pre["mapping"]["d_editorial_visible"])
         self.assertTrue(game["mapping"]["d_editorial_visible"])
-        for phase, index in (("PRE_ROLL", 0), ("END_CTA", 720)):
-            result = consumer.compose_frame(self.source, self.plan, phase, index, 630, 30, 1, ROOT)
-            self.assertFalse(result["mapping"]["d_editorial_visible"])
-            self.assertEqual(result["mode"], "NATIVE_PHASE_FULL_FRAME_PASSTHROUGH")
+        self.assertEqual(pre["family_title_render"], game["family_title_render"])
+        self.assertFalse(consumer.compose_frame(self.source, self.plan, "END_CTA", 720, 630, 30, 1, ROOT)["d_editorial_title_visible"])
 
-    def test_10_d_editorial_renders_in_top_and_bottom_bands_on_game(self):
+    def test_10_family_title_subtitle_and_cta_use_distinct_approved_regions(self):
         result = consumer.compose_frame(self.source, self.plan, "GAME", 1, 630, 30, 1, ROOT)
-        for rect in ((36, 0, 648, 92), (36, 1151, 648, 66)):
+        # The approved title is warm gold RGB(235,215,161), not neutral white.
+        # Subtitle and CTA are near-white. Apply a per-region chromatic threshold
+        # so the test verifies the approved rendering instead of rejecting gold.
+        self.assertEqual(consumer.FAMILY_TITLE_STYLE["color_rgb"], [235, 215, 161])
+        regions = (
+            ("family_title_gold", (36, 63, 648, 104), (180, 160, 110)),
+            ("subtitle_near_white", (36, 169, 648, 21), (180, 180, 180)),
+            ("cta_near_white", (36, 1151, 648, 66), (180, 180, 180)),
+        )
+        for label, rect, floor_rgb in regions:
             patch = result["image"].copy(*rect).convertToFormat(QImage.Format.Format_RGB888)
             raw = consumer._image_rgb_bytes(patch)
-            bright = sum(1 for i in range(0, len(raw), 3) if min(raw[i:i+3]) > 180)
-            self.assertGreater(bright, 8)
+            qualifying = sum(
+                1 for i in range(0, len(raw), 3)
+                if raw[i] > floor_rgb[0]
+                and raw[i + 1] > floor_rgb[1]
+                and raw[i + 2] > floor_rgb[2]
+            )
+            self.assertGreater(qualifying, 8, f"{label} missing from its approved region")
 
     def test_11_empty_editorial_uses_full_frame_passthrough(self):
         altered = copy.deepcopy(self.plan)
         altered["text"]["visible_fields"] = {}
+        altered["text"]["phase_visibility"] = {"PRE_ROLL": False, "GAME": False, "END_CTA": False, "DONE": False}
+        altered["text"]["field_phase_visibility"] = {"title": [], "subtitle": [], "call_to_action": []}
         altered["plan_sha256"] = consumer._json_sha({k: v for k, v in altered.items() if k != "plan_sha256"})
         result = consumer.compose_frame(self.source, altered, "GAME", 0, 630, 30, 1, ROOT)
         self.assertEqual(result["mode"], "UNCHANGED_FULL_FRAME_PASSTHROUGH")
@@ -206,140 +246,43 @@ class DrillVisualCompositionConsumerV2Tests(unittest.TestCase):
         self.assertEqual(self.composition["geometry"]["body_rect"], consumer.EXPECTED_SOCIAL_REGIONS["body_rect"])
         consumer.validate_plan(self.plan)
 
-    def _historical_fixture(self):
-        import json
-        import tempfile
-        from pathlib import Path
-        temp = tempfile.TemporaryDirectory()
-        root = Path(temp.name).resolve()
-        relative = "artifacts/production/c11e/accepted-smoke"
-        evidence = root.joinpath(*relative.split("/"))
-        evidence.mkdir(parents=True)
-        pins = [
-            {"path": f"source/pin_{index:02d}.py", "bytes": index + 1, "sha256": hashlib.sha256(f"pin-{index}".encode()).hexdigest()}
-            for index in range(91)
-        ]
-        preparation = {
-            "schema": "C11E-DRILL-FAMILY-STAGE-PREPARATION-V1",
-            "status": "DRILL_FAMILY_STAGE_PREPARED_NOT_DISPATCHABLE",
-            "renderer_input_emitted": False, "renderer_dispatch_invoked": False,
-            "renderer_activation": False, "media_created": False, "audio_generation_invoked": False,
-            "ffmpeg_invoked": False, "godot_invoked": False, "launcher_invoked": False,
-            "release_authority": "NONE",
-        }
-        preparation["preparation_sha256"] = consumer._json_sha(preparation)
-        intent = {
-            "schema": "C11-E-PRODUCTION-INTENT-V1", "schema_version": "1.3",
-            "status": "PREPARED_E1_NOT_DISPATCHED", "request_origin": "CLI",
-            "request": {"content_type": "visual_drills", "request_id": "accepted-smoke", "selection": {"family_id": "tracking", "variant_id": "tier-1"}},
-            "output": {"created": False, "overwrite_policy": "DENY_EXISTING", "planned_root": relative, "planned_root_exists": False},
-            "d9_boundary_preparation": preparation,
-            "execution_boundary": {"d4_8": "BLOCKED", "dispatch_authorized": False, "media_created": False, "production_execution": False, "release_authority": "NONE", "renderer_activation": False, "renderer_dispatch_invoked": False, "renderer_input_emitted": False},
-            "family_adapter": {"status": "NOT_CONNECTED_E1", "renderer_input_emitted": False},
-            "source_identity": {"source_pins": pins, "c11c_manifest": {"bytes": 796318, "disposition": "IMMUTABLE_REFERENCE_ONLY", "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json", "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"}},
-        }
-        intent["intent_sha256"] = consumer._json_sha(intent)
-        receipt = {
-            "schema": "C11E-E4C-DRILL-SHARED-EXECUTION-RECEIPT-V1",
-            "status": "PASS_E4C_DRILL_SINGLE_SELECTOR_A_V_QUALIFICATION",
-            "request_origin": "CLI", "request_id": "accepted-smoke", "evidence_root": str(evidence),
-            "e1_validation": {"status": "PASS_E1_PREPARATION_ONLY", "valid": True, "intent_sha256": intent["intent_sha256"], "source_pin_count": 91, "media_created": False, "renderer": False},
-            "e1_gui_cli_parity": {"status": "PASS_E1_SHARED_GUI_CLI_INTENT_PARITY", "semantic_identity_equal": True, "cli_intent_sha256": intent["intent_sha256"], "origin_used_for_execution": "CLI"},
-            "family_adapter_preparation_status": "NOT_CONNECTED_E1", "production_dispatch": False, "release_authority": "NONE", "c11c_source_mutation": False, "source_pin_count": 91,
-            "c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953", "c11c_frozen_manifest_unchanged": True,
-            "source_pins_pre_execution": pins, "source_pins_immediately_pre_renderer": copy.deepcopy(pins), "source_pins_post_execution": copy.deepcopy(pins),
-        }
-        (evidence / "E4C_DRILL_AV_QUALIFICATION_RECEIPT.json").write_text(json.dumps(receipt), encoding="utf-8")
-        (evidence / "e1_intent.json").write_text(json.dumps(intent), encoding="utf-8")
-        return temp, root, evidence, intent, receipt
+    def test_21_amendment_is_bound_by_exact_sha_in_plan_and_approval(self):
+        self.assertEqual(self.plan["approval"]["editorial_family_title_amendment_sha256"], consumer.EDITORIAL_STYLE_AMENDMENT_SHA)
+        self.assertEqual(self.plan["source_pins"]["editorial_family_title_amendment"]["sha256"], consumer.EDITORIAL_STYLE_AMENDMENT_SHA)
 
-    def test_21_historical_existing_media_accepts_exact_prepared_intent_and_receipt(self):
-        temp, root, evidence, intent, receipt = self._historical_fixture()
-        try:
-            from unittest.mock import patch
-            preparation = consumer._validate_historical_intent(root, intent, receipt, evidence)
-            self.assertEqual(preparation["status"], "DRILL_FAMILY_STAGE_PREPARED_NOT_DISPATCHABLE")
-            with patch.object(consumer, "_build_composition_plan_from_preparation", return_value={"test_plan": True}) as build:
-                result = consumer.build_composition_plan_for_existing_media(intent, root, receipt, evidence)
-            self.assertEqual(result, {"test_plan": True})
-            build.assert_called_once_with(intent, root, preparation)
-        finally:
-            temp.cleanup()
+    def test_22_family_title_style_geometry_and_animation_match_source_observation(self):
+        self.assertEqual(consumer.FAMILY_TITLE_STYLE["font_size_px"], 22)
+        self.assertEqual(consumer.FAMILY_TITLE_STYLE["line_height_px"], 29)
+        self.assertEqual(consumer.FAMILY_TITLE_STYLE["rect"], {"x": 36, "y": 63, "width": 648, "height": 104})
+        self.assertEqual(consumer.FAMILY_TITLE_STYLE["color_rgb"], [235, 215, 161])
+        self.assertEqual(consumer.GAME_SUBTITLE_BLOCK["y"], 169)
+        self.assertEqual(consumer.FAMILY_TITLE_STYLE["animation"], "STATIC_NO_ANIMATION_OBSERVED_IN_TRACKING_TIER_1_PRE_ROLL")
+        self.assertEqual(consumer.compose_frame(self.source, self.plan, "PRE_ROLL", 30, 630, 30, 1, ROOT)["family_title_render"]["animation"], consumer.FAMILY_TITLE_STYLE["animation"])
 
-    def test_22_historical_receipt_intent_hash_mismatch_is_rejected(self):
-        temp, root, evidence, intent, receipt = self._historical_fixture()
-        try:
-            receipt["e1_validation"]["intent_sha256"] = "0" * 64
-            (evidence / "E4C_DRILL_AV_QUALIFICATION_RECEIPT.json").write_text(__import__("json").dumps(receipt), encoding="utf-8")
-            with self.assertRaises(consumer.DrillVisualConsumerError):
-                consumer._validate_historical_intent(root, intent, receipt, evidence)
-        finally:
-            temp.cleanup()
+    def test_23_countdown_pixels_remain_exact_for_all_preroll_samples(self):
+        for frame_index in (0, 15, 30, 45, 60, 75, 89):
+            result = consumer.compose_frame(self.source, self.plan, "PRE_ROLL", frame_index, 630, 30, 1, ROOT)
+            self.assertEqual(consumer._image_rgb_bytes(result["image"].copy(0, 192, 720, 896)), consumer._image_rgb_bytes(self.source.copy(0, 192, 720, 896)))
 
-    def test_23_non_pass_e1_preparation_receipt_is_rejected(self):
-        temp, root, evidence, intent, receipt = self._historical_fixture()
-        try:
-            receipt["e1_validation"]["status"] = "FAIL"
-            (evidence / "E4C_DRILL_AV_QUALIFICATION_RECEIPT.json").write_text(__import__("json").dumps(receipt), encoding="utf-8")
-            with self.assertRaises(consumer.DrillVisualConsumerError):
-                consumer._validate_historical_intent(root, intent, receipt, evidence)
-        finally:
-            temp.cleanup()
+    def test_24_title_phase_visibility_rejects_late_only_title(self):
+        altered = copy.deepcopy(self.plan)
+        altered["text"]["phase_visibility"]["PRE_ROLL"] = False
+        altered["plan_sha256"] = consumer._json_sha({k: v for k, v in altered.items() if k != "plan_sha256"})
+        with self.assertRaises(consumer.DrillVisualConsumerError):
+            consumer.validate_plan(altered)
 
-    def test_24_historical_source_pin_mismatch_is_rejected(self):
-        temp, root, evidence, intent, receipt = self._historical_fixture()
-        try:
-            receipt["source_pins_post_execution"][0]["sha256"] = "0" * 64
-            (evidence / "E4C_DRILL_AV_QUALIFICATION_RECEIPT.json").write_text(__import__("json").dumps(receipt), encoding="utf-8")
-            with self.assertRaises(consumer.DrillVisualConsumerError):
-                consumer._validate_historical_intent(root, intent, receipt, evidence)
-        finally:
-            temp.cleanup()
+    def test_25_subtitle_must_remain_below_family_title(self):
+        self.assertGreaterEqual(consumer.GAME_SUBTITLE_BLOCK["y"], consumer.FAMILY_TITLE_STYLE["rect"]["y"] + consumer.FAMILY_TITLE_STYLE["rect"]["height"])
+        self.assertLessEqual(consumer.GAME_SUBTITLE_BLOCK["y"] + consumer.GAME_SUBTITLE_BLOCK["height"], 192)
 
-    def test_25_historical_output_root_mismatch_and_traversal_are_rejected(self):
-        temp, root, evidence, intent, receipt = self._historical_fixture()
-        try:
-            with self.assertRaises(consumer.DrillVisualConsumerError):
-                consumer._validate_historical_intent(root, intent, receipt, root / "other")
-            altered = copy.deepcopy(intent)
-            altered["output"]["planned_root"] = "../../outside"
-            altered["intent_sha256"] = consumer._json_sha({k: v for k, v in altered.items() if k != "intent_sha256"})
-            receipt["e1_validation"]["intent_sha256"] = altered["intent_sha256"]
-            receipt["e1_gui_cli_parity"]["cli_intent_sha256"] = altered["intent_sha256"]
-            (evidence / "e1_intent.json").write_text(__import__("json").dumps(altered), encoding="utf-8")
-            (evidence / "E4C_DRILL_AV_QUALIFICATION_RECEIPT.json").write_text(__import__("json").dumps(receipt), encoding="utf-8")
-            with self.assertRaises(consumer.DrillVisualConsumerError):
-                consumer._validate_historical_intent(root, altered, receipt, evidence)
-        finally:
-            temp.cleanup()
+    def test_26_preroll_footer_is_not_repainted_by_title_bridge(self):
+        result = consumer.compose_frame(self.source, self.plan, "PRE_ROLL", 89, 630, 30, 1, ROOT)
+        self.assertEqual(consumer._image_rgb_bytes(result["image"].copy(0, 1088, 720, 192)), consumer._image_rgb_bytes(self.source.copy(0, 1088, 720, 192)))
 
-    def test_26_historical_output_creation_snapshot_must_remain_deny_existing_false(self):
-        temp, root, evidence, intent, receipt = self._historical_fixture()
-        try:
-            altered = copy.deepcopy(intent)
-            altered["output"]["planned_root_exists"] = True
-            altered["intent_sha256"] = consumer._json_sha({k: v for k, v in altered.items() if k != "intent_sha256"})
-            (evidence / "e1_intent.json").write_text(__import__("json").dumps(altered), encoding="utf-8")
-            receipt["e1_validation"]["intent_sha256"] = altered["intent_sha256"]
-            receipt["e1_gui_cli_parity"]["cli_intent_sha256"] = altered["intent_sha256"]
-            (evidence / "E4C_DRILL_AV_QUALIFICATION_RECEIPT.json").write_text(__import__("json").dumps(receipt), encoding="utf-8")
-            with self.assertRaises(consumer.DrillVisualConsumerError):
-                consumer._validate_historical_intent(root, altered, receipt, evidence)
-        finally:
-            temp.cleanup()
-
-    def test_27_ordinary_plan_builder_still_uses_strict_e1_validation(self):
-        import tempfile
-        from unittest.mock import patch
-        with tempfile.TemporaryDirectory() as td:
-            root = Path(td).resolve()
-            intent = {"request": {"request_id": "live-path"}}
-            preparation = {"status": "LIVE_E1_VALIDATED"}
-            with patch.object(consumer, "_validate_intent", return_value=preparation) as validate, patch.object(consumer, "_build_composition_plan_from_preparation", return_value={"live_path": True}) as build:
-                result = consumer.build_composition_plan(intent, root)
-            self.assertEqual(result, {"live_path": True})
-            validate.assert_called_once_with(root, intent)
-            build.assert_called_once_with(intent, root, preparation)
+    def test_27_end_cta_remains_exact_full_frame_passthrough(self):
+        result = consumer.compose_frame(self.source, self.plan, "END_CTA", 809, 630, 30, 1, ROOT)
+        self.assertTrue(result["native_full_frame_identity"])
+        self.assertEqual(consumer._image_rgb_bytes(result["image"]), consumer._image_rgb_bytes(self.source))
 
 
 if __name__ == "__main__":
