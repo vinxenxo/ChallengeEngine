@@ -1,0 +1,35 @@
+{
+  "audio_enabled": true,
+  "delivery_profile_id": "REVIEW_720",
+  "editorial_profile": {
+    "content_type": {},
+    "family": {},
+    "global": {},
+    "subtype": {},
+    "variant": {}
+  },
+  "mode": "PRODUCTION",
+  "music_seed": 840001,
+  "personalization_enabled": true,
+  "presentation_profile_id": "social_default_v1",
+  "production_override": {
+    "call_to_action": "Mantén la mirada en el objetivo",
+    "language": "es",
+    "subtitle": "Sigue el objetivo con precisión",
+    "title": "SEGUIMIENTO VISUAL · NIVEL 1"
+  },
+  "provenance": {
+    "request_origin": "CLI",
+    "source_revision": "C11D-D9.10-PRODUCER-0.11.1"
+  },
+  "request_id": "E4C-CLI-SMOKE-20261112T091253Z-5a2e96b8",
+  "schema": "C11-D-D9.9-UNIVERSAL-PRODUCER-REQUEST-V1",
+  "schema_version": "1.0",
+  "seed": 12345,
+  "selection": {
+    "content_type": "visual_drills",
+    "family_id": "tracking",
+    "variant_id": "tier-1"
+  },
+  "variation_index": 0
+}

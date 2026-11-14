@@ -1,0 +1,1343 @@
+{
+  "d9_boundary_preparation": {
+    "audio_generation_invoked": false,
+    "bridge_planning_record": {
+      "audio_enabled": true,
+      "content_type": "visual_drills",
+      "contract_identity": {
+        "schema": "C11-D-D9.10-EDITORIAL-RENDER-BRIDGE-CONTRACT-V1",
+        "schema_version": "1.0",
+        "sha256": "55eedb88a76b491bae3fb1093f8dd03717b3c2a2464e130dc460da80d88cb3ed"
+      },
+      "contract_schema": "C11-D-D9.10-EDITORIAL-RENDER-BRIDGE-CONTRACT-V1",
+      "d4_8": "BLOCKED",
+      "delivery_profile_id": "REVIEW_720",
+      "editorial": {
+        "allowlist_source": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+        "destination_contract": "FUTURE_D_RENDERER_BINDER_NOT_DEFINED",
+        "fields": [
+          "call_to_action",
+          "language",
+          "subtitle",
+          "title"
+        ],
+        "values_hash": "13693794c5263b9c2df316dd1631bac4f92a2d14990aa771a47478a704eb936a"
+      },
+      "editorial_model_identity": {
+        "checkpoint": "D9.8",
+        "schema": "C11-D-D9-UNIVERSAL-EDITORIAL-MODEL-V1",
+        "schema_version": "1.0",
+        "sha256": "b1756152f8080f4794d11041531d66d15769393fe8f76fc67466f2cda201c271"
+      },
+      "field_mappings": {
+        "audio": {
+          "classification": "EXPLICIT_REQUEST_FLAG_ONLY",
+          "music_seed_domain": "MUSIC",
+          "source": "plan.audio_enabled"
+        },
+        "content_identity": {
+          "classification": "IDENTITY_ONLY",
+          "destination": "future_d_renderer_contract.content_identity",
+          "editable": false,
+          "source": "plan.selection"
+        },
+        "delivery_profile": {
+          "classification": "REGISTERED_PROFILE_REFERENCE_ONLY",
+          "destination": "future_d_renderer_contract.delivery_profile_id",
+          "source": "plan.resolved_delivery_profile_id"
+        },
+        "editorial": {
+          "allowlist_source": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+          "classification": "EDITORIAL_ALLOWLIST_ONLY",
+          "destination": "future_d_renderer_contract.editorial_bindings",
+          "must_not_override_simulation_or_telemetry": true,
+          "source": "plan.editorial"
+        },
+        "gameplay_seed": {
+          "cross_domain_sharing": "FORBIDDEN",
+          "derivation": false,
+          "domain": "GAMEPLAY",
+          "owner": "request.seed",
+          "source": "plan.seed"
+        },
+        "music_seed": {
+          "cross_domain_sharing": "FORBIDDEN",
+          "derivation": false,
+          "domain": "MUSIC",
+          "owner": "request.music_seed",
+          "source": "plan.music_seed"
+        },
+        "presentation_profile": {
+          "classification": "REGISTERED_PROFILE_REFERENCE_ONLY",
+          "destination": "future_d_renderer_contract.presentation_profile_id",
+          "source": "plan.presentation_profile_id"
+        },
+        "provenance": {
+          "classification": "IMMUTABLE_LINEAGE",
+          "sha256_required_for_future_media": true,
+          "sources": [
+            "result.request_hash",
+            "result.editorial_hash",
+            "result.plan_hash"
+          ]
+        },
+        "variation": {
+          "classification": "TECHNICAL_REQUEST_VALUE_NOT_EDITORIAL",
+          "runtime_derivation": false,
+          "source": "plan.variation_index"
+        }
+      },
+      "future_d_frozen_baseline_gates": [
+        "FUTURE_D_RENDERER_BASELINE_FROZEN_AND_IDENTIFIED",
+        "RENDER_ADAPTER_CONTRACT_VERSIONED_AND_HASHED",
+        "CONTENT_BINDER_COMPATIBILITY_MATRIX_PASS",
+        "D4_8_EXPLICIT_GOVERNANCE_AUTHORIZATION",
+        "GAMEPLAY_AND_MUSIC_SEED_ISOLATION_TESTS_PASS",
+        "EDITORIAL_ONLY_MUTATION_DETERMINISM_TESTS_PASS",
+        "RENDERER_AND_MEDIA_PROVENANCE_CHAIN_PASS",
+        "VISUAL_AND_AUDIO_QA_GATES_PASS",
+        "CATALOG_REPRODUCTION_AND_NEGATIVE_ACCEPTANCE_PASS"
+      ],
+      "governance": {
+        "automatic_seed_generation": false,
+        "cross_domain_seed_sharing": "FORBIDDEN",
+        "d4_8": "BLOCKED",
+        "master_seed": "NOT_ADOPTED",
+        "production_execution": false,
+        "release_authority": "NONE",
+        "renderer_activation": false,
+        "runtime_seed_derivation": false
+      },
+      "identity": {
+        "d4_plan_hash": null,
+        "d4_request_hash": null,
+        "editorial_hash": "e137d187e70a9767f769929b777ee777a65388706b672c55a06b9bb3aca5e078",
+        "plan_hash": "65fb0ae570440fb0feb424dc6cb9551ab8f2e8e7dacff5d118a65ba6e77352ab",
+        "request_hash": "b05793ae320bf9520c81efafe32b1a0089f0418622421fbee399213928434016"
+      },
+      "media_output_created": false,
+      "output_artifact_path": null,
+      "presentation_profile_id": "social_default_v1",
+      "production_execution": false,
+      "record_hash": "a04314ed554402c4d9191b8fb21f614ae1240bed26b6b946f846d2a8d9d9c70e",
+      "release_authority": "NONE",
+      "renderer_activation": false,
+      "renderer_adapter_invoked": false,
+      "renderer_input_emitted": false,
+      "request_id": "E4C-CLI-SMOKE-20261112T091253Z-5a2e96b8",
+      "route": {
+        "render_adapter_state": "NOT_DEFINED",
+        "required_d4_subplan_status": "NOT_APPLICABLE_NO_D4_LOOP_DRILL_CONTRACT",
+        "required_plan_kind": "UNIVERSAL_EDITORIAL_INTENT_PLAN_ONLY",
+        "route_id": "FUTURE_D_NATIVE_VISUAL_DRILL_ADAPTER_REQUIRED"
+      },
+      "schema": "C11-D-D9.10-EDITORIAL-RENDER-BRIDGE-PLAN-V1",
+      "schema_version": "1.0",
+      "seed_contract": {
+        "automatic_seed_generation": false,
+        "cross_domain_seed_sharing": "FORBIDDEN",
+        "gameplay_seed": 12345,
+        "gameplay_seed_domain": "GAMEPLAY",
+        "gameplay_seed_source": "canonical_plan.seed",
+        "music_seed": 840001,
+        "music_seed_domain": "MUSIC",
+        "music_seed_source": "canonical_plan.music_seed",
+        "runtime_seed_derivation": false
+      },
+      "selection": {
+        "content_type": "visual_drills",
+        "difficulty_tier": 1,
+        "family_id": "tracking",
+        "subtype_id": null,
+        "variant_id": "tier-1",
+        "variant_scope_id": "visual-drill:tracking:tier-1"
+      },
+      "status": "PLANNING_ONLY_NOT_RENDERABLE",
+      "variation_index": 0
+    },
+    "d_only_adapter_envelope": {
+      "adapter_contract_identity": {
+        "schema": "C11-D-D9.10-RENDER-ADAPTER-BOUNDARY-CONTRACT-V1",
+        "schema_version": "1.0",
+        "sha256": "af3494d7fa100a75b95994f824bfe256c76fe7d9095e3905fa4d28647e3863df"
+      },
+      "adapter_execution": {
+        "adapter_prepare_enabled": true,
+        "mode": "PREPARE_ONLY",
+        "reason_not_dispatched": "D4.8_BLOCKED_AND_D_BASELINE_NOT_APPROVED",
+        "renderer_dispatch_invoked": false,
+        "scope": "C11-D_ONLY"
+      },
+      "binding_preview": {
+        "audio_enabled": true,
+        "delivery_profile_id": "REVIEW_720",
+        "derived_telemetry": "NOT_BOUND",
+        "editorial_allowlist_fields": [
+          "call_to_action",
+          "language",
+          "subtitle",
+          "title"
+        ],
+        "editorial_bindings": {
+          "call_to_action": "Mantén la mirada en el objetivo",
+          "language": "es",
+          "subtitle": "Sigue el objetivo con precisión",
+          "title": "SEGUIMIENTO VISUAL · NIVEL 1"
+        },
+        "presentation_profile_id": "social_default_v1",
+        "seed_contract": {
+          "automatic_seed_generation": false,
+          "cross_domain_seed_sharing": "FORBIDDEN",
+          "gameplay_seed": 12345,
+          "gameplay_seed_domain": "GAMEPLAY",
+          "gameplay_seed_source": "canonical_request.seed",
+          "music_seed": 840001,
+          "music_seed_domain": "MUSIC",
+          "music_seed_source": "canonical_request.music_seed",
+          "runtime_seed_derivation": false
+        },
+        "simulation_truth": "NOT_BOUND",
+        "variation_index": 0
+      },
+      "bridge_contract_identity": {
+        "schema": "C11-D-D9.10-EDITORIAL-RENDER-BRIDGE-CONTRACT-V1",
+        "schema_version": "1.0",
+        "sha256": "55eedb88a76b491bae3fb1093f8dd03717b3c2a2464e130dc460da80d88cb3ed"
+      },
+      "c11c_source_mutation": false,
+      "content_identity": {
+        "content_type": "visual_drills",
+        "difficulty_tier": 1,
+        "family_id": "tracking",
+        "subtype_id": null,
+        "variant_id": "tier-1",
+        "variant_scope_id": "visual-drill:tracking:tier-1"
+      },
+      "d4_8": "BLOCKED",
+      "d_only_adapter_prepare_invoked": true,
+      "editorial_model_identity": {
+        "checkpoint": "D9.8",
+        "schema": "C11-D-D9-UNIVERSAL-EDITORIAL-MODEL-V1",
+        "schema_version": "1.0",
+        "sha256": "b1756152f8080f4794d11041531d66d15769393fe8f76fc67466f2cda201c271"
+      },
+      "envelope_hash": "0a383d2451a819b374b32927eb251003961c0cd9025d10accb35d19c32ec9eb2",
+      "media_output_created": false,
+      "output_artifact_path": null,
+      "policy_identity": null,
+      "production_execution": false,
+      "release_authority": "NONE",
+      "renderer_activation": false,
+      "renderer_dispatch_invoked": false,
+      "renderer_input_emitted": false,
+      "schema": "C11-D-D9.10-D-ONLY-RENDER-ADAPTER-ENVELOPE-V1",
+      "schema_version": "1.0",
+      "source_identity": {
+        "bridge_record_hash": "a04314ed554402c4d9191b8fb21f614ae1240bed26b6b946f846d2a8d9d9c70e",
+        "editorial_hash": "e137d187e70a9767f769929b777ee777a65388706b672c55a06b9bb3aca5e078",
+        "plan_hash": "65fb0ae570440fb0feb424dc6cb9551ab8f2e8e7dacff5d118a65ba6e77352ab",
+        "request_hash": "b05793ae320bf9520c81efafe32b1a0089f0418622421fbee399213928434016",
+        "request_id": "E4C-CLI-SMOKE-20261112T091253Z-5a2e96b8"
+      },
+      "status": "PREPARED_NOT_DISPATCHED_RENDERER_DISABLED"
+    },
+    "drill_family_stage_contract": {
+      "content_identity": {
+        "canonical_source_path": "definitions/visual_drill_tracking_canonical.json",
+        "content_type": "visual_drills",
+        "difficulty_policy_path": "profiles/difficulty/visual_drill_tracking.json",
+        "difficulty_tier": 1,
+        "family_id": "tracking",
+        "variant_id": "tier-1"
+      },
+      "contract_sha256": "70f8b0586036312d7a7fea05871e55e0b763233686de68684d0a67e644955696",
+      "dynamic_request_binding_preview": {
+        "contract_identity": {
+          "lineage_count": 67,
+          "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V2.json",
+          "schema": "C11-D-RENDERER-DYNAMIC-REQUEST-PAYLOAD-BINDING-CONTRACT-V2",
+          "schema_version": "2.0",
+          "sha256": "60530add02fee5bd4d70056e49bf20be87dc5dc0886dd07444e44c0b14bee981"
+        },
+        "input_preview": {
+          "delivery_profile_id": "REVIEW_720",
+          "music_seed": 840001,
+          "presentation_profile_id": "social_default_v1",
+          "request_hash": "b05793ae320bf9520c81efafe32b1a0089f0418622421fbee399213928434016",
+          "request_id": "E4C-CLI-SMOKE-20261112T091253Z-5a2e96b8",
+          "schema": "C11-D-D9-DYNAMIC-REQUEST-PAYLOAD-INPUT-V2",
+          "schema_version": "2.0",
+          "seed": 12345,
+          "selection": {
+            "content_type": "visual_drills",
+            "family_id": "tracking",
+            "subtype_id": null,
+            "variant_id": "tier-1"
+          },
+          "variation_index": 0
+        },
+        "media_created": false,
+        "preview_sha256": "f597aaee6b30ecc116c650bfad55d9ad25ff26dbaba47d0b49479cb72aa818e2",
+        "release_authority": "NONE",
+        "renderer_dispatch_invoked": false,
+        "renderer_native_input_emitted": false,
+        "request_payload_manifest": "NOT_MATERIALIZED_BY_E1_REQUIRES_REAL_GODOT_V2_EXECUTION",
+        "request_scoped_source_binding_sha256": "3f08affe18fd73104c63db7afd575dbc76704e011de90ceeb8590abff8788072",
+        "request_scoped_source_binding_status": "PREPARATION_ONLY_REQUEST_SCOPED_PAYLOAD_BINDING_REVIEW_NOT_RENDERER_INPUT",
+        "runtime_repeat": "NOT_RUN_BY_E1",
+        "schema": "C11E-E4C-DRILL-DYNAMIC-BINDING-PREVIEW-V1",
+        "status": "EXISTING_D9_V2_REQUEST_CHAIN_VALIDATED_NOT_GODOT_MATERIALIZED"
+      },
+      "editorial": {
+        "payload_field_consumption": "NOT_CONSUMED_E1",
+        "values_preserved_in_d9_request": true,
+        "visual_consumer": "BLOCKED_PENDING_E4C_PHASE_AND_POLICY_CLOSEOUT",
+        "visual_field_windows": "NOT_EMITTED"
+      },
+      "family_visual_stage": {
+        "argument_vector": [
+          "-Family",
+          "tracking",
+          "-Seed",
+          "12345",
+          "-DifficultyTier",
+          "1",
+          "-SpeedMultiplier",
+          "1.0",
+          "-PacingMode",
+          "constant",
+          "-DeliveryProfile",
+          "REVIEW_720",
+          "-NoSound",
+          "-OutputRoot",
+          "<FRESH_ISOLATED_E4C_TEST_ROOT>"
+        ],
+        "audio_switch": "-NoSound",
+        "gameplay_seed": 12345,
+        "launcher_execution": false,
+        "launcher_path": "c11c-suite/c11c-producer/run_visual_drill_production.ps1",
+        "music_seed": 840001,
+        "music_seed_passed_to_visual_launcher": false,
+        "parameter_policy": "E4C_DETERMINISTIC_REVIEW_DEFAULTS_V1_SPEED_1_0_PACING_CONSTANT; REVIEW_ONLY_UNTIL_EXPLICIT_REQUEST_FIELDS_EXIST",
+        "reason_not_executed": "D4_8_BLOCKED_AND_NO_RENDERER_EXECUTION_AUTHORITY"
+      },
+      "governance": {
+        "audio_generated": false,
+        "c11c_source_mutation": false,
+        "d4_8": "BLOCKED",
+        "d9_10": "PREPARE_ONLY",
+        "family_stage_contract_created_in_memory": true,
+        "ffmpeg_invoked": false,
+        "godot_invoked": false,
+        "launcher_invoked": false,
+        "media_created": false,
+        "release_authority": "NONE",
+        "renderer_dispatch_invoked": false,
+        "renderer_native_input_emitted": false
+      },
+      "native_family_music": {
+        "audio_generation_invoked": false,
+        "audio_payload_materialized": false,
+        "audio_selection_or_generation_authorized": false,
+        "d3_v5_invoked": false,
+        "duration_source": "C11-C_GENERATED_DRILL_TOTAL_DURATION; MUST MATCH PRE_ROLL + GAME + END_CTA",
+        "family_binding_id": "visual_drill/tracking",
+        "generator_source_path": "tools/prototypes/c11c_common/generate_c11c_family_music.py",
+        "generator_wrapper_path": "tools/prototypes/c11c_common/C11CSafeAmbient.py",
+        "music_seed_passed_as_native_generator_seed": true,
+        "native_pcm_channels": 2,
+        "native_pcm_sample_rate_hz": 44100,
+        "profile_id": "FLOWING_VECTOR",
+        "registry_semantic_inputs": [
+          "seed"
+        ],
+        "request_music_seed_field": "request.music_seed",
+        "route": "PRESERVE_EXISTING_C11C_FAMILY_MUSIC_V4"
+      },
+      "phase_and_end_cta_contract": {
+        "d_editorial_window_policy": {
+          "approved_proposal_sha256": "609a4d183aac07c2cbe1abaf41444160fdd137217faffbead3aef618320d57dc",
+          "decision_id": "A.3_LOOP_DRILL_EDITORIAL_WINDOWS",
+          "field_window_consumption": "NOT_ENABLED_BY_E1",
+          "lineage_resolution": {
+            "bridge_path": "docs/current/e/C11E_E4C_A3_REVIEW_MANIFEST_LINEAGE_RECONCILIATION_20261110_V2.json",
+            "bridge_sha256": "aec0e387f167f4b821b7d94f06a67f78f498be939fe3cda857d20ce550819cac",
+            "current_manifest_sha256": "5702092bc1c88e4b333dd30cc150f0d383cd2006121037b0198905c75a3af795",
+            "d98_model_sha256": "dabb458fc2215156ddb5ebea7e8ebec811098886ce2858733ba9fb13f6075ccb",
+            "field_window_proposal_sha256": "609a4d183aac07c2cbe1abaf41444160fdd137217faffbead3aef618320d57dc",
+            "historical_archive_path": "docs/history/c11e/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1_PRE_D98_LINEAGE_REFRESH_20261106.json",
+            "historical_manifest_sha256": "2075da9c33c689861a68d3bd8fb19b7ed593c6e76010ab200880746aa6d1a470",
+            "proposal_bytes_mutated": false,
+            "release_authority": "NONE",
+            "renderer_admission": false,
+            "single_pointer_difference": "/source_lineage/6/sha256",
+            "status": "PASS_A3_ATTESTED_SINGLE_POINTER_LINEAGE_BRIDGE"
+          },
+          "transitive_review_manifest_lineage_current": true,
+          "visual_consumer_status": "READY_FOR_D_OWNED_ISOLATED_VISUAL_CONSUMER_TESTS"
+        },
+        "end_cta_precedence": {
+          "d_adapter_may_override_native_cta": false,
+          "editorial_header_lines_1_and_2_suppressed_during_end_cta": true,
+          "footer_telemetry_remains_visible": true,
+          "native_cta_header_authoritative": true,
+          "owner": "C11-C VisualDrillPresentationBinder"
+        },
+        "frame_model": "ZERO_BASED_PRESENTATION_FRAME_INDEX; PRE_ROLL + GAME + END_CTA; C11-C PHASE LOGIC IS THE AUTHORITY",
+        "media_created": false,
+        "phase_contract_sha256": "7ccebe7547939ef41c996dfca950df314506a5d27b983ff6600b3c0c8ad1ac00",
+        "phase_sequence": [
+          {
+            "duration_seconds": 3.0,
+            "duration_source": "CountdownPresentationLogic.COUNTDOWN_SECONDS",
+            "phase": "PRE_ROLL"
+          },
+          {
+            "duration_seconds": null,
+            "duration_source": "ACTUAL_C11C_GENERATED_GAMEPLAY_FRAME_COUNT / FPS",
+            "phase": "GAME"
+          },
+          {
+            "duration_seconds": 3.0,
+            "duration_source": "VisualDrillPresentationPhaseLogic.END_CTA_SECONDS",
+            "phase": "END_CTA"
+          },
+          {
+            "duration_seconds": 0.0,
+            "duration_source": "AFTER_TOTAL_PRESENTATION_FRAME_COUNT",
+            "phase": "DONE"
+          }
+        ],
+        "renderer_native_input_emitted": false,
+        "schema": "C11E-E4C-DRILL-NATIVE-PHASE-AND-END-CTA-CONTRACT-V1",
+        "source_pins": [
+          {
+            "bytes": 1219,
+            "path": "core/presentation/CountdownPresentationLogic.gd",
+            "sha256": "b163ea114cc48af2dfd957ee92d00d524ea5b96b5966850f5ca8d6e5ec933379"
+          },
+          {
+            "bytes": 1899,
+            "path": "core/presentation/VisualDrillPresentationPhaseLogic.gd",
+            "sha256": "6555d08ac3c0098b20a57e924b0c4ff2df006a23fa00a81b254fa5ebd5bb2494"
+          },
+          {
+            "bytes": 11830,
+            "path": "core/presentation/VisualDrillPresentationBinder.gd",
+            "sha256": "cb6acc408252b8b794177d8f5923a3b151646eebdfd1efe9a30fdd6221de82c0"
+          },
+          {
+            "bytes": 13876,
+            "path": "core/presentation/rendering/VisualContentPlayer.gd",
+            "sha256": "58d86d56ebd7507c9e800c83010103b9be12f1b5dca9356da61ca623e4cf0145"
+          },
+          {
+            "bytes": 19047,
+            "path": "core/presentation/C11CVisualEditorialLayer.gd",
+            "sha256": "f8f718c067a4d7a088cc16f244cc40209e7183bec93e44d8cb66eb6dd404cf7d"
+          },
+          {
+            "bytes": 8981,
+            "path": "core/presentation/PresentationUI.gd",
+            "sha256": "a55fea5a4525ea247144a4da88242f4ac602c3a014f7d02b50d032ce99224730"
+          },
+          {
+            "bytes": 1742,
+            "path": "core/presentation/SocialUIBinder.gd",
+            "sha256": "b15a062bf327d0c2bbc4ead0e877914f912528cc56e388df20dd84eb89863a3c"
+          },
+          {
+            "bytes": 2087,
+            "path": "core/presentation/UnifiedSocialFrame.gd",
+            "sha256": "d80c07103f56a2abfe34be60547285e61b0d03b50a5ed93c3c72d4241f6585ba"
+          },
+          {
+            "bytes": 17066,
+            "path": "c11c-suite/c11c-producer/run_visual_drill_production.ps1",
+            "sha256": "ad6a7f0a6ce87804363810123f76ff0765b1582426cb2c8f69f6864ec3a0c808"
+          },
+          {
+            "bytes": 6640,
+            "path": "c11c-suite/c11c-producer/C11CVisualDrillProducerEnvelopeGenerator.gd",
+            "sha256": "9e2a2f394db7efce6f646600d0bb8f4ee8488c87a184df1a0fb7f7cdcb9066e9"
+          }
+        ],
+        "status": "SOURCE_BOUND_NATIVE_PHASES_PRESERVED_NO_VISUAL_CONSUMPTION"
+      },
+      "policy_decisions": [
+        {
+          "decision": "APPROVE_AS_PROPOSED",
+          "decision_id": "A.1_SHARED_PRESENTATION_REGIONS",
+          "proposal_path": "definitions/c11d/production/D_RENDERER_UNIFIED_PRESENTATION_REGION_POLICY_PROPOSAL_V1.json",
+          "proposal_sha256": "101092bb32127bb8854a501a9215c0b6cf69581594383903716907d49719c01a",
+          "scope": "D_ONLY_DESIGN_AND_CONTRACT_IMPLEMENTATION_ONLY"
+        },
+        {
+          "decision": "APPROVE_AS_PROPOSED",
+          "decision_id": "A.3_LOOP_DRILL_EDITORIAL_WINDOWS",
+          "proposal_path": "definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
+          "proposal_sha256": "609a4d183aac07c2cbe1abaf41444160fdd137217faffbead3aef618320d57dc",
+          "scope": "D_ONLY_DESIGN_AND_CONTRACT_IMPLEMENTATION_ONLY"
+        },
+        {
+          "decision": "APPROVE_AS_PROPOSED",
+          "decision_id": "B.1_UNIFIED_DELIVERY_TIMEBASE",
+          "proposal_path": "definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_V1.json",
+          "proposal_sha256": "41a62b0766db47cd99772f28642ef67766314f20f0f7891789d6b7497bbfee85",
+          "scope": "D_ONLY_DESIGN_AND_CONTRACT_IMPLEMENTATION_ONLY"
+        },
+        {
+          "decision": "APPROVE_AS_PROPOSED",
+          "decision_id": "D.1_AUDIO_MUSIC_DELIVERY_ENVELOPE",
+          "proposal_path": "definitions/c11d/production/D_RENDERER_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_PROPOSAL_V1.json",
+          "proposal_sha256": "3dd4874e1b6506de6d9ddbe6ad1b567a284b94cc00ef1bac0d35d1731af05e23",
+          "scope": "D_ONLY_DESIGN_AND_CONTRACT_IMPLEMENTATION_ONLY"
+        }
+      ],
+      "request_identity": {
+        "bridge_record_hash": "a04314ed554402c4d9191b8fb21f614ae1240bed26b6b946f846d2a8d9d9c70e",
+        "d_only_adapter_envelope_hash": "0a383d2451a819b374b32927eb251003961c0cd9025d10accb35d19c32ec9eb2",
+        "drill_dynamic_binding_preview_sha256": "f597aaee6b30ecc116c650bfad55d9ad25ff26dbaba47d0b49479cb72aa818e2",
+        "editorial_hash": "e137d187e70a9767f769929b777ee777a65388706b672c55a06b9bb3aca5e078",
+        "plan_hash": "65fb0ae570440fb0feb424dc6cb9551ab8f2e8e7dacff5d118a65ba6e77352ab",
+        "request_hash": "b05793ae320bf9520c81efafe32b1a0089f0418622421fbee399213928434016",
+        "request_id": "E4C-CLI-SMOKE-20261112T091253Z-5a2e96b8"
+      },
+      "schema": "C11E-E4C-DRILL-FAMILY-STAGE-CONTRACT-V1",
+      "status": "DRILL_FAMILY_BOUND_PREPARATION_NOT_DISPATCHABLE"
+    },
+    "dynamic_request_binding_preview": {
+      "contract_identity": {
+        "lineage_count": 67,
+        "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V2.json",
+        "schema": "C11-D-RENDERER-DYNAMIC-REQUEST-PAYLOAD-BINDING-CONTRACT-V2",
+        "schema_version": "2.0",
+        "sha256": "60530add02fee5bd4d70056e49bf20be87dc5dc0886dd07444e44c0b14bee981"
+      },
+      "input_preview": {
+        "delivery_profile_id": "REVIEW_720",
+        "music_seed": 840001,
+        "presentation_profile_id": "social_default_v1",
+        "request_hash": "b05793ae320bf9520c81efafe32b1a0089f0418622421fbee399213928434016",
+        "request_id": "E4C-CLI-SMOKE-20261112T091253Z-5a2e96b8",
+        "schema": "C11-D-D9-DYNAMIC-REQUEST-PAYLOAD-INPUT-V2",
+        "schema_version": "2.0",
+        "seed": 12345,
+        "selection": {
+          "content_type": "visual_drills",
+          "family_id": "tracking",
+          "subtype_id": null,
+          "variant_id": "tier-1"
+        },
+        "variation_index": 0
+      },
+      "media_created": false,
+      "preview_sha256": "f597aaee6b30ecc116c650bfad55d9ad25ff26dbaba47d0b49479cb72aa818e2",
+      "release_authority": "NONE",
+      "renderer_dispatch_invoked": false,
+      "renderer_native_input_emitted": false,
+      "request_payload_manifest": "NOT_MATERIALIZED_BY_E1_REQUIRES_REAL_GODOT_V2_EXECUTION",
+      "request_scoped_source_binding_sha256": "3f08affe18fd73104c63db7afd575dbc76704e011de90ceeb8590abff8788072",
+      "request_scoped_source_binding_status": "PREPARATION_ONLY_REQUEST_SCOPED_PAYLOAD_BINDING_REVIEW_NOT_RENDERER_INPUT",
+      "runtime_repeat": "NOT_RUN_BY_E1",
+      "schema": "C11E-E4C-DRILL-DYNAMIC-BINDING-PREVIEW-V1",
+      "status": "EXISTING_D9_V2_REQUEST_CHAIN_VALIDATED_NOT_GODOT_MATERIALIZED"
+    },
+    "ffmpeg_invoked": false,
+    "godot_invoked": false,
+    "launcher_invoked": false,
+    "media_created": false,
+    "native_phase_and_end_cta_contract": {
+      "d_editorial_window_policy": {
+        "approved_proposal_sha256": "609a4d183aac07c2cbe1abaf41444160fdd137217faffbead3aef618320d57dc",
+        "decision_id": "A.3_LOOP_DRILL_EDITORIAL_WINDOWS",
+        "field_window_consumption": "NOT_ENABLED_BY_E1",
+        "lineage_resolution": {
+          "bridge_path": "docs/current/e/C11E_E4C_A3_REVIEW_MANIFEST_LINEAGE_RECONCILIATION_20261110_V2.json",
+          "bridge_sha256": "aec0e387f167f4b821b7d94f06a67f78f498be939fe3cda857d20ce550819cac",
+          "current_manifest_sha256": "5702092bc1c88e4b333dd30cc150f0d383cd2006121037b0198905c75a3af795",
+          "d98_model_sha256": "dabb458fc2215156ddb5ebea7e8ebec811098886ce2858733ba9fb13f6075ccb",
+          "field_window_proposal_sha256": "609a4d183aac07c2cbe1abaf41444160fdd137217faffbead3aef618320d57dc",
+          "historical_archive_path": "docs/history/c11e/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1_PRE_D98_LINEAGE_REFRESH_20261106.json",
+          "historical_manifest_sha256": "2075da9c33c689861a68d3bd8fb19b7ed593c6e76010ab200880746aa6d1a470",
+          "proposal_bytes_mutated": false,
+          "release_authority": "NONE",
+          "renderer_admission": false,
+          "single_pointer_difference": "/source_lineage/6/sha256",
+          "status": "PASS_A3_ATTESTED_SINGLE_POINTER_LINEAGE_BRIDGE"
+        },
+        "transitive_review_manifest_lineage_current": true,
+        "visual_consumer_status": "READY_FOR_D_OWNED_ISOLATED_VISUAL_CONSUMER_TESTS"
+      },
+      "end_cta_precedence": {
+        "d_adapter_may_override_native_cta": false,
+        "editorial_header_lines_1_and_2_suppressed_during_end_cta": true,
+        "footer_telemetry_remains_visible": true,
+        "native_cta_header_authoritative": true,
+        "owner": "C11-C VisualDrillPresentationBinder"
+      },
+      "frame_model": "ZERO_BASED_PRESENTATION_FRAME_INDEX; PRE_ROLL + GAME + END_CTA; C11-C PHASE LOGIC IS THE AUTHORITY",
+      "media_created": false,
+      "phase_contract_sha256": "7ccebe7547939ef41c996dfca950df314506a5d27b983ff6600b3c0c8ad1ac00",
+      "phase_sequence": [
+        {
+          "duration_seconds": 3.0,
+          "duration_source": "CountdownPresentationLogic.COUNTDOWN_SECONDS",
+          "phase": "PRE_ROLL"
+        },
+        {
+          "duration_seconds": null,
+          "duration_source": "ACTUAL_C11C_GENERATED_GAMEPLAY_FRAME_COUNT / FPS",
+          "phase": "GAME"
+        },
+        {
+          "duration_seconds": 3.0,
+          "duration_source": "VisualDrillPresentationPhaseLogic.END_CTA_SECONDS",
+          "phase": "END_CTA"
+        },
+        {
+          "duration_seconds": 0.0,
+          "duration_source": "AFTER_TOTAL_PRESENTATION_FRAME_COUNT",
+          "phase": "DONE"
+        }
+      ],
+      "renderer_native_input_emitted": false,
+      "schema": "C11E-E4C-DRILL-NATIVE-PHASE-AND-END-CTA-CONTRACT-V1",
+      "source_pins": [
+        {
+          "bytes": 1219,
+          "path": "core/presentation/CountdownPresentationLogic.gd",
+          "sha256": "b163ea114cc48af2dfd957ee92d00d524ea5b96b5966850f5ca8d6e5ec933379"
+        },
+        {
+          "bytes": 1899,
+          "path": "core/presentation/VisualDrillPresentationPhaseLogic.gd",
+          "sha256": "6555d08ac3c0098b20a57e924b0c4ff2df006a23fa00a81b254fa5ebd5bb2494"
+        },
+        {
+          "bytes": 11830,
+          "path": "core/presentation/VisualDrillPresentationBinder.gd",
+          "sha256": "cb6acc408252b8b794177d8f5923a3b151646eebdfd1efe9a30fdd6221de82c0"
+        },
+        {
+          "bytes": 13876,
+          "path": "core/presentation/rendering/VisualContentPlayer.gd",
+          "sha256": "58d86d56ebd7507c9e800c83010103b9be12f1b5dca9356da61ca623e4cf0145"
+        },
+        {
+          "bytes": 19047,
+          "path": "core/presentation/C11CVisualEditorialLayer.gd",
+          "sha256": "f8f718c067a4d7a088cc16f244cc40209e7183bec93e44d8cb66eb6dd404cf7d"
+        },
+        {
+          "bytes": 8981,
+          "path": "core/presentation/PresentationUI.gd",
+          "sha256": "a55fea5a4525ea247144a4da88242f4ac602c3a014f7d02b50d032ce99224730"
+        },
+        {
+          "bytes": 1742,
+          "path": "core/presentation/SocialUIBinder.gd",
+          "sha256": "b15a062bf327d0c2bbc4ead0e877914f912528cc56e388df20dd84eb89863a3c"
+        },
+        {
+          "bytes": 2087,
+          "path": "core/presentation/UnifiedSocialFrame.gd",
+          "sha256": "d80c07103f56a2abfe34be60547285e61b0d03b50a5ed93c3c72d4241f6585ba"
+        },
+        {
+          "bytes": 17066,
+          "path": "c11c-suite/c11c-producer/run_visual_drill_production.ps1",
+          "sha256": "ad6a7f0a6ce87804363810123f76ff0765b1582426cb2c8f69f6864ec3a0c808"
+        },
+        {
+          "bytes": 6640,
+          "path": "c11c-suite/c11c-producer/C11CVisualDrillProducerEnvelopeGenerator.gd",
+          "sha256": "9e2a2f394db7efce6f646600d0bb8f4ee8488c87a184df1a0fb7f7cdcb9066e9"
+        }
+      ],
+      "status": "SOURCE_BOUND_NATIVE_PHASES_PRESERVED_NO_VISUAL_CONSUMPTION"
+    },
+    "preparation_sha256": "579b326d4ab86f0866680a827c2a1ceef70b81ffa421b47f14000f85fe0df260",
+    "release_authority": "NONE",
+    "renderer_dispatch_invoked": false,
+    "renderer_input_emitted": false,
+    "required_source_pin_paths": [
+      "assets/c6/car.svg",
+      "assets/c6/garage_background.svg",
+      "assets/c6/parking_target.svg",
+      "c11c-suite/c11c-producer/C11CVisualDrillProducerEnvelopeGenerator.gd",
+      "c11c-suite/c11c-producer/producer_schema.json",
+      "c11c-suite/c11c-producer/run_visual_drill_production.ps1",
+      "challenges/CHALLENGE_004.json",
+      "core/authoring/VisualAuthoringAssemblyContext.gd",
+      "core/authoring/VisualAuthoringGenerator.gd",
+      "core/authoring/VisualAuthoringPolicyRegistry.gd",
+      "core/authoring/VisualAuthoringRegistry.gd",
+      "core/authoring/VisualAuthoringRequest.gd",
+      "core/authoring/VisualAuthoringRequestValidator.gd",
+      "core/authoring/VisualDifficultyResolver.gd",
+      "core/authoring/VisualDrillSeedVariation.gd",
+      "core/authoring/adapters/VisualDrillAuthoringAdapter.gd",
+      "core/authoring/adapters/VisualLoopAuthoringAdapter.gd",
+      "core/data/FrameSnapshot.gd",
+      "core/execution/ChallengeRuntimeBridge.gd",
+      "core/execution/ChallengeTimelineBuilder.gd",
+      "core/mechanics/parking/ParkingMechanicV2.gd",
+      "core/presentation/C11CVisualEditorialLayer.gd",
+      "core/presentation/ChallengePresentationBinder.gd",
+      "core/presentation/CountdownPresentationLogic.gd",
+      "core/presentation/PresentationProfile.gd",
+      "core/presentation/PresentationUI.gd",
+      "core/presentation/SocialUIBinder.gd",
+      "core/presentation/UnifiedSocialFrame.gd",
+      "core/presentation/VisualDrillPresentationBinder.gd",
+      "core/presentation/VisualDrillPresentationPhaseLogic.gd",
+      "core/presentation/rendering/VisualContentPlayer.gd",
+      "core/simulation/SimulationResult.gd",
+      "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+      "definitions/c11d/production/C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json",
+      "definitions/c11d/production/C11D_RENDER_ADAPTER_BOUNDARY_D9_10_V1.json",
+      "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json",
+      "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_PREVIEW_V1.json",
+      "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_SCHEMA_V1.json",
+      "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_SCHEMA_V2.json",
+      "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V2.json",
+      "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_INPUT_SCHEMA_V2.json",
+      "definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1.json",
+      "definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
+      "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_SCHEMA_V1.json",
+      "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_V1.json",
+      "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_SCHEMA_V1.json",
+      "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_V1.json",
+      "definitions/c11d/production/D_RENDERER_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_PROPOSAL_V1.json",
+      "definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_V1.json",
+      "definitions/c11d/production/D_RENDERER_UNIFIED_PRESENTATION_REGION_POLICY_PROPOSAL_V1.json",
+      "definitions/c11d/production/D_RENDERER_VISUAL_DRILL_SELECTOR_AUTHORING_COVERAGE_SCHEMA_V1.json",
+      "definitions/c11d/production/D_RENDERER_VISUAL_DRILL_SELECTOR_AUTHORING_COVERAGE_V1.json",
+      "definitions/c11d/production/D_RENDERER_VISUAL_PAYLOAD_MATERIALIZATION_PREVIEW_V1.json",
+      "definitions/visual_drill_peripheral_scan_canonical.json",
+      "definitions/visual_drill_pursuit_canonical.json",
+      "definitions/visual_drill_saccade_canonical.json",
+      "definitions/visual_drill_tracking_canonical.json",
+      "definitions/visual_loop_geometric_canonical.json",
+      "docs/current/e/C11E_E4B_OPERATOR_POLICY_DECISION_RECORD_20261106_V1.json",
+      "docs/current/e/C11E_E4C_A3_REVIEW_MANIFEST_LINEAGE_RECONCILIATION_20261110_V2.json",
+      "docs/history/c11e/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1_PRE_D98_LINEAGE_REFRESH_20261106.json",
+      "profiles/delivery/c11c_video_delivery_profiles.json",
+      "profiles/difficulty/visual_drill_peripheral_scan.json",
+      "profiles/difficulty/visual_drill_pursuit.json",
+      "profiles/difficulty/visual_drill_saccade.json",
+      "profiles/difficulty/visual_drill_tracking.json",
+      "profiles/presentation/c11c_visual_music_profiles.json",
+      "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "tools/c11d/d9/audit_visual_drill_selector_authoring_coverage.gd",
+      "tools/c11d/d9/d_render_adapter.py",
+      "tools/c11d/d9/d_renderer_challenge_visual_payload_preview.py",
+      "tools/c11d/d9/d_renderer_dynamic_request_payload_binding.py",
+      "tools/c11d/d9/d_renderer_request_scoped_payload_binding.py",
+      "tools/c11d/d9/d_renderer_request_scoped_payload_materialization_binding.py",
+      "tools/c11d/d9/d_renderer_visual_drill_selector_authoring_coverage.py",
+      "tools/c11d/d9/d_renderer_visual_payload_materialization_preview.py",
+      "tools/c11d/d9/editorial_render_bridge.py",
+      "tools/c11d/d9/materialize_visual_drill_dynamic_request_payload_in_memory_v2.gd",
+      "tools/c11d/d9/test_d_renderer_visual_drill_selector_authoring_coverage.py",
+      "tools/c11d/d9/universal_editorial_model.py",
+      "tools/c11d/d9/universal_producer.py",
+      "tools/prototypes/c11c_common/C11CPaletteBank.gd",
+      "tools/prototypes/c11c_common/C11CSafeAmbient.py",
+      "tools/prototypes/c11c_common/C11CVariationProfile.gd",
+      "tools/prototypes/c11c_common/C11CVisualLoopDuration.gd",
+      "tools/prototypes/c11c_common/generate_c11c_family_music.py",
+      "tools/prototypes/c11c_geometric_waves_v1/GeometricWaves.gdshader",
+      "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesPrototype.gd",
+      "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesRenderer.gd",
+      "tools/prototypes/c11c_geometric_waves_v1/definition.json"
+    ],
+    "schema": "C11E-E4C-SHARED-DRILL-BOUNDARY-PREPARATION-V1",
+    "status": "DRILL_FAMILY_STAGE_PREPARED_NOT_DISPATCHABLE"
+  },
+  "delivery": {
+    "audio_enabled": true,
+    "presentation_profile_id": "social_default_v1",
+    "requested_profile_id": "REVIEW_720",
+    "resolved_profile_id": "REVIEW_720"
+  },
+  "editorial": {
+    "call_to_action": "Mantén la mirada en el objetivo",
+    "language": "es",
+    "subtitle": "Sigue el objetivo con precisión",
+    "title": "SEGUIMIENTO VISUAL · NIVEL 1"
+  },
+  "editorial_field_consumption": {
+    "call_to_action": {
+      "consumer_status": "NOT_CONSUMED_E1",
+      "required_gate": "E4",
+      "resolved": true
+    },
+    "language": {
+      "consumer_status": "NOT_CONSUMED_E1",
+      "required_gate": "E4",
+      "resolved": true
+    },
+    "subtitle": {
+      "consumer_status": "NOT_CONSUMED_E1",
+      "required_gate": "E4",
+      "resolved": true
+    },
+    "title": {
+      "consumer_status": "NOT_CONSUMED_E1",
+      "required_gate": "E4",
+      "resolved": true
+    }
+  },
+  "execution_boundary": {
+    "d4_8": "BLOCKED",
+    "dispatch_authorized": false,
+    "media_created": false,
+    "production_execution": false,
+    "release_authority": "NONE",
+    "renderer_activation": false,
+    "renderer_dispatch_invoked": false,
+    "renderer_input_emitted": false
+  },
+  "family_adapter": {
+    "adapter_id": "c11e_visual_drills_adapter",
+    "renderer_input_emitted": false,
+    "status": "NOT_CONNECTED_E1",
+    "target_gate": "E4"
+  },
+  "identity": {
+    "editorial_hash": "e137d187e70a9767f769929b777ee777a65388706b672c55a06b9bb3aca5e078",
+    "intent_hash": "0ad4f6972143cfc40570141a778ecd37bf40524df431b7de30bcfb0499e4135e",
+    "plan_hash": "65fb0ae570440fb0feb424dc6cb9551ab8f2e8e7dacff5d118a65ba6e77352ab",
+    "request_hash": "b05793ae320bf9520c81efafe32b1a0089f0418622421fbee399213928434016"
+  },
+  "intent_sha256": "9dfe5c1c4568ed7fbc4bb4260d47da4e518b1a163811fb88f2a9f1bff55c304e",
+  "music_contract": {
+    "audio_created": false,
+    "audio_enabled": true,
+    "contract_id": "C11E_E3_2_D3_V5_E1_MUSIC_CONTRACT_V1",
+    "contract_path": null,
+    "contract_sha256": null,
+    "contract_version": "1.0",
+    "dispatch_authorized": false,
+    "dispatchable": false,
+    "engine": null,
+    "engine_invoked": false,
+    "engine_request": null,
+    "ffmpeg_mux_invoked": false,
+    "music_seed": 840001,
+    "music_seed_field": "request.music_seed",
+    "release_authority": "NONE",
+    "renderer_invoked": false,
+    "route": "PRESERVE_EXISTING_C11C_FAMILY_MUSIC_PATH",
+    "status": "PROTECTED_FAMILY_NOT_REWIRED",
+    "style_profile": null,
+    "unresolved_engine_parameters": [],
+    "variation_index": 0
+  },
+  "output": {
+    "created": false,
+    "overwrite_policy": "DENY_EXISTING",
+    "planned_root": "artifacts/production/c11e/E4C-CLI-SMOKE-20261112T091253Z-5a2e96b8",
+    "planned_root_exists": false
+  },
+  "request": {
+    "content_type": "visual_drills",
+    "mode": "PRODUCTION",
+    "request_id": "E4C-CLI-SMOKE-20261112T091253Z-5a2e96b8",
+    "selection": {
+      "content_type": "visual_drills",
+      "difficulty_tier": 1,
+      "family_id": "tracking",
+      "subtype_id": null,
+      "variant_id": "tier-1",
+      "variant_scope_id": "visual-drill:tracking:tier-1"
+    },
+    "variation_index": 0
+  },
+  "request_origin": "CLI",
+  "schema": "C11-E-PRODUCTION-INTENT-V1",
+  "schema_version": "1.3",
+  "seed_domains": {
+    "automatic_generation": false,
+    "cross_domain_sharing": "FORBIDDEN",
+    "gameplay": {
+      "field": "request.seed",
+      "value": 12345
+    },
+    "independent_domains": true,
+    "music": {
+      "field": "request.music_seed",
+      "value": 840001
+    },
+    "runtime_derivation": false
+  },
+  "service_version": "0.4.0-E4C",
+  "source_identity": {
+    "c11c_manifest": {
+      "bytes": 796318,
+      "disposition": "IMMUTABLE_REFERENCE_ONLY",
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    "source_pins": [
+      {
+        "bytes": 19692,
+        "path": "tools/c11d/d9/universal_producer.py",
+        "sha256": "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1"
+      },
+      {
+        "bytes": 27585,
+        "path": "tools/c11d/d9/universal_editorial_model.py",
+        "sha256": "dac95fb698b52f96432a517d8ec3196a397e5e6bd3c025300350dd55ddce3afd"
+      },
+      {
+        "bytes": 9183,
+        "path": "c11c-suite/c11c-producer/c11d_gui_request.py",
+        "sha256": "0e95109ffd3ba5655d28292309196349470ab7958a467f096543a2c98c22976e"
+      },
+      {
+        "bytes": 12932,
+        "path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+        "sha256": "dabb458fc2215156ddb5ebea7e8ebec811098886ce2858733ba9fb13f6075ccb"
+      },
+      {
+        "bytes": 1761,
+        "path": "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json",
+        "sha256": "342a61338c80a2f1616e8e9f38986bd90f410257c0e321f99840380fb0fd804b"
+      },
+      {
+        "bytes": 3158,
+        "path": "profiles/delivery/c11c_video_delivery_profiles.json",
+        "sha256": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3"
+      },
+      {
+        "bytes": 32714,
+        "path": "c11c-suite/c11c-producer/producer_schema.json",
+        "sha256": "564f11fb4fee9221910dc373550650172eda4f106d6dc25532cc43cb8e6314a0"
+      },
+      {
+        "bytes": 208,
+        "path": "assets/c6/car.svg",
+        "sha256": "93a6f78d9654f7917ab2287800858a937e9c68c458cc60bf417d6f2b98c1a96d"
+      },
+      {
+        "bytes": 127,
+        "path": "assets/c6/garage_background.svg",
+        "sha256": "c9d8acdae725ca7726fc8ad23a046e4aac4d9e454b45db40d2c770732b31ab1e"
+      },
+      {
+        "bytes": 192,
+        "path": "assets/c6/parking_target.svg",
+        "sha256": "ec2dcafd7dfc99ff501eb2d93b93906680a30c48cf0741807cbbdd915a18cfb3"
+      },
+      {
+        "bytes": 6640,
+        "path": "c11c-suite/c11c-producer/C11CVisualDrillProducerEnvelopeGenerator.gd",
+        "sha256": "9e2a2f394db7efce6f646600d0bb8f4ee8488c87a184df1a0fb7f7cdcb9066e9"
+      },
+      {
+        "bytes": 17066,
+        "path": "c11c-suite/c11c-producer/run_visual_drill_production.ps1",
+        "sha256": "ad6a7f0a6ce87804363810123f76ff0765b1582426cb2c8f69f6864ec3a0c808"
+      },
+      {
+        "bytes": 1543,
+        "path": "challenges/CHALLENGE_004.json",
+        "sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71"
+      },
+      {
+        "bytes": 1116,
+        "path": "core/authoring/VisualAuthoringAssemblyContext.gd",
+        "sha256": "c57fc199d7c3ef46b0fae0d7be8d70090c816979184c259908b0484138b1f896"
+      },
+      {
+        "bytes": 6049,
+        "path": "core/authoring/VisualAuthoringGenerator.gd",
+        "sha256": "abbe109b7ca625dce7a044bb6dc37582a6b6ee5156faa439c63c420a5758195e"
+      },
+      {
+        "bytes": 1254,
+        "path": "core/authoring/VisualAuthoringPolicyRegistry.gd",
+        "sha256": "f84a94566900aff055813f537892577c929caa1d11c76f7187faf33ca52de437"
+      },
+      {
+        "bytes": 460,
+        "path": "core/authoring/VisualAuthoringRegistry.gd",
+        "sha256": "f39ec38bfa39723c88bbcb067b8ea2d2052aa5ef2b8e66653431650518156af8"
+      },
+      {
+        "bytes": 1204,
+        "path": "core/authoring/VisualAuthoringRequest.gd",
+        "sha256": "02100b371603167964c20f127e984f8968e03af08016cc60cc820e0e2e37b0c1"
+      },
+      {
+        "bytes": 1671,
+        "path": "core/authoring/VisualAuthoringRequestValidator.gd",
+        "sha256": "85eb9ec5050a78133bacb54d34a4a5464f014a41feff3599e5a2f8e76a14a30c"
+      },
+      {
+        "bytes": 4540,
+        "path": "core/authoring/VisualDifficultyResolver.gd",
+        "sha256": "8f46acb2b54dba99de19db7290883a5849037afb336eb21c5f725f29ee4ecd8b"
+      },
+      {
+        "bytes": 19275,
+        "path": "core/authoring/VisualDrillSeedVariation.gd",
+        "sha256": "ecd07dca143886fac355c040b1bfcee3badb7dacbe4abd95ed340c4dcb8a3567"
+      },
+      {
+        "bytes": 2720,
+        "path": "core/authoring/adapters/VisualDrillAuthoringAdapter.gd",
+        "sha256": "d0b547b032101c592912cf4db25ba787a6aa4a6e7b4c01211397ea187502a263"
+      },
+      {
+        "bytes": 1785,
+        "path": "core/authoring/adapters/VisualLoopAuthoringAdapter.gd",
+        "sha256": "44682906d4c534f5ca7c56b2a0c3ce10babd73d13389e50c5f8511cd8dff6bcc"
+      },
+      {
+        "bytes": 786,
+        "path": "core/data/FrameSnapshot.gd",
+        "sha256": "61060d0937063400447cd5f2513265cb82d8e38017f5bd097c2870da03967180"
+      },
+      {
+        "bytes": 25891,
+        "path": "core/execution/ChallengeRuntimeBridge.gd",
+        "sha256": "c53f04df064b3697f8dd02cd779f8ef002a4e3e2d40fa0e01aa7d9b1a80a8191"
+      },
+      {
+        "bytes": 3721,
+        "path": "core/execution/ChallengeTimelineBuilder.gd",
+        "sha256": "35a47ad126a2e11577933a03b251f47732e580693e5c08e45d3b6af047c8c9af"
+      },
+      {
+        "bytes": 9007,
+        "path": "core/mechanics/parking/ParkingMechanicV2.gd",
+        "sha256": "c78dbc1adcc95ad4981f3c704c69630edc54c25473c479f10bb154efe6f105cd"
+      },
+      {
+        "bytes": 19047,
+        "path": "core/presentation/C11CVisualEditorialLayer.gd",
+        "sha256": "f8f718c067a4d7a088cc16f244cc40209e7183bec93e44d8cb66eb6dd404cf7d"
+      },
+      {
+        "bytes": 6954,
+        "path": "core/presentation/ChallengePresentationBinder.gd",
+        "sha256": "755ecfc9cc6e1ee51738938583217ab8a470c1a1f290bb107e91e19990d74b47"
+      },
+      {
+        "bytes": 1219,
+        "path": "core/presentation/CountdownPresentationLogic.gd",
+        "sha256": "b163ea114cc48af2dfd957ee92d00d524ea5b96b5966850f5ca8d6e5ec933379"
+      },
+      {
+        "bytes": 8837,
+        "path": "core/presentation/PresentationProfile.gd",
+        "sha256": "187b1cf8ab96b9031785a0f36b0054a60383c97cb3d81906c7d9bbcd373bef24"
+      },
+      {
+        "bytes": 8981,
+        "path": "core/presentation/PresentationUI.gd",
+        "sha256": "a55fea5a4525ea247144a4da88242f4ac602c3a014f7d02b50d032ce99224730"
+      },
+      {
+        "bytes": 1742,
+        "path": "core/presentation/SocialUIBinder.gd",
+        "sha256": "b15a062bf327d0c2bbc4ead0e877914f912528cc56e388df20dd84eb89863a3c"
+      },
+      {
+        "bytes": 2087,
+        "path": "core/presentation/UnifiedSocialFrame.gd",
+        "sha256": "d80c07103f56a2abfe34be60547285e61b0d03b50a5ed93c3c72d4241f6585ba"
+      },
+      {
+        "bytes": 11830,
+        "path": "core/presentation/VisualDrillPresentationBinder.gd",
+        "sha256": "cb6acc408252b8b794177d8f5923a3b151646eebdfd1efe9a30fdd6221de82c0"
+      },
+      {
+        "bytes": 1899,
+        "path": "core/presentation/VisualDrillPresentationPhaseLogic.gd",
+        "sha256": "6555d08ac3c0098b20a57e924b0c4ff2df006a23fa00a81b254fa5ebd5bb2494"
+      },
+      {
+        "bytes": 13876,
+        "path": "core/presentation/rendering/VisualContentPlayer.gd",
+        "sha256": "58d86d56ebd7507c9e800c83010103b9be12f1b5dca9356da61ca623e4cf0145"
+      },
+      {
+        "bytes": 3593,
+        "path": "core/simulation/SimulationResult.gd",
+        "sha256": "2e040003d1a1661f84f049d69dbfb0ab07537f9d837fa4484667041c5abac296"
+      },
+      {
+        "bytes": 4990,
+        "path": "definitions/c11d/production/C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json",
+        "sha256": "5726310b48e9a85540d48b1e78784571ba04c3f900a5c09add35b49ce5575504"
+      },
+      {
+        "bytes": 3497,
+        "path": "definitions/c11d/production/C11D_RENDER_ADAPTER_BOUNDARY_D9_10_V1.json",
+        "sha256": "bcc9e96cb1acf3ce6c06b5f9ca894a9721aef2d5caeca4f5e4392baf5f4fb63d"
+      },
+      {
+        "bytes": 4675,
+        "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_PREVIEW_V1.json",
+        "sha256": "67daa1f83ac151906059695bb4d87974819c2d16d3715b78b00657bfdac54f7a"
+      },
+      {
+        "bytes": 21540,
+        "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_SCHEMA_V1.json",
+        "sha256": "3c880a18d037bc6b7376c3007495b50e66daa3fd6d0eab6100b7298b3e9b03e0"
+      },
+      {
+        "bytes": 39082,
+        "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_SCHEMA_V2.json",
+        "sha256": "10f2371b66d453342f280b9d16b588874bc846777108b375ba9207530d83579f"
+      },
+      {
+        "bytes": 17947,
+        "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V2.json",
+        "sha256": "60530add02fee5bd4d70056e49bf20be87dc5dc0886dd07444e44c0b14bee981"
+      },
+      {
+        "bytes": 4308,
+        "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_INPUT_SCHEMA_V2.json",
+        "sha256": "ec9d38b07513bf0b8eeccfa6aa119d24f695eb4f59144c859e9122c7b8be561c"
+      },
+      {
+        "bytes": 8591,
+        "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1.json",
+        "sha256": "5702092bc1c88e4b333dd30cc150f0d383cd2006121037b0198905c75a3af795"
+      },
+      {
+        "bytes": 8376,
+        "path": "definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
+        "sha256": "609a4d183aac07c2cbe1abaf41444160fdd137217faffbead3aef618320d57dc"
+      },
+      {
+        "bytes": 9851,
+        "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_SCHEMA_V1.json",
+        "sha256": "df58d21292baab962acd0ae2d7f082ff2323ae15cc0b7b31a4b89f95188b2438"
+      },
+      {
+        "bytes": 10422,
+        "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_V1.json",
+        "sha256": "a657d5334548cde2bb524e161d472d5fea098163b6693c0ef73b280982f20b1c"
+      },
+      {
+        "bytes": 15810,
+        "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_SCHEMA_V1.json",
+        "sha256": "45b1df4af2861bd23641cdaca6e4a2b7e2872bcedd1e36b590b132fd09195ff0"
+      },
+      {
+        "bytes": 13006,
+        "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_V1.json",
+        "sha256": "a70c12fa6ba61e6502938190ddbdb06eb03bd0df3e4cd2f6311cd34446a8188c"
+      },
+      {
+        "bytes": 7457,
+        "path": "definitions/c11d/production/D_RENDERER_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_PROPOSAL_V1.json",
+        "sha256": "3dd4874e1b6506de6d9ddbe6ad1b567a284b94cc00ef1bac0d35d1731af05e23"
+      },
+      {
+        "bytes": 9507,
+        "path": "definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_V1.json",
+        "sha256": "41a62b0766db47cd99772f28642ef67766314f20f0f7891789d6b7497bbfee85"
+      },
+      {
+        "bytes": 9440,
+        "path": "definitions/c11d/production/D_RENDERER_UNIFIED_PRESENTATION_REGION_POLICY_PROPOSAL_V1.json",
+        "sha256": "101092bb32127bb8854a501a9215c0b6cf69581594383903716907d49719c01a"
+      },
+      {
+        "bytes": 7998,
+        "path": "definitions/c11d/production/D_RENDERER_VISUAL_DRILL_SELECTOR_AUTHORING_COVERAGE_SCHEMA_V1.json",
+        "sha256": "93d2162a078d7c8fa7fcd882cf4e4e6f3daccd77f03f4ba74e036ae367cb9cc7"
+      },
+      {
+        "bytes": 6526,
+        "path": "definitions/c11d/production/D_RENDERER_VISUAL_DRILL_SELECTOR_AUTHORING_COVERAGE_V1.json",
+        "sha256": "444496d3a1c1eda1f8bf722c68d9e6197acc006fd4462bd55ac58b4aecc8eb5a"
+      },
+      {
+        "bytes": 8329,
+        "path": "definitions/c11d/production/D_RENDERER_VISUAL_PAYLOAD_MATERIALIZATION_PREVIEW_V1.json",
+        "sha256": "53b6da626131c56f770172129e0cc1cd40947098228bfaa499a1e8e8e76ad411"
+      },
+      {
+        "bytes": 8862,
+        "path": "definitions/visual_drill_peripheral_scan_canonical.json",
+        "sha256": "aaf50f9223bad678df15589110dfcd6ff42dda89326a0a84bc5a5f51d133a904"
+      },
+      {
+        "bytes": 133532,
+        "path": "definitions/visual_drill_pursuit_canonical.json",
+        "sha256": "dfe2bce9913df8ebe4f92d06eec5d22736338214e71b497dde3562a6927600bc"
+      },
+      {
+        "bytes": 1328,
+        "path": "definitions/visual_drill_saccade_canonical.json",
+        "sha256": "daba3fa558f6898a17107ab68894d15c58fa5b2127e8da7d7b11b203f4ddfaa1"
+      },
+      {
+        "bytes": 1511,
+        "path": "definitions/visual_drill_tracking_canonical.json",
+        "sha256": "54d432c80f190f4ac5dcb8ef5b135e16f18c378da120f35723fd5be944719ec3"
+      },
+      {
+        "bytes": 591,
+        "path": "definitions/visual_loop_geometric_canonical.json",
+        "sha256": "648eb36225dd4c090457b4da3c9e8eca218c26c8f995cf02a39914cf3f860dcc"
+      },
+      {
+        "bytes": 3737,
+        "path": "docs/current/e/C11E_E4B_OPERATOR_POLICY_DECISION_RECORD_20261106_V1.json",
+        "sha256": "49efd5494f351f09d7597c4699e9c12e361b36884b6bfadacd822e6ff1480e04"
+      },
+      {
+        "bytes": 4770,
+        "path": "docs/current/e/C11E_E4C_A3_REVIEW_MANIFEST_LINEAGE_RECONCILIATION_20261110_V2.json",
+        "sha256": "aec0e387f167f4b821b7d94f06a67f78f498be939fe3cda857d20ce550819cac"
+      },
+      {
+        "bytes": 8591,
+        "path": "docs/history/c11e/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1_PRE_D98_LINEAGE_REFRESH_20261106.json",
+        "sha256": "2075da9c33c689861a68d3bd8fb19b7ed593c6e76010ab200880746aa6d1a470"
+      },
+      {
+        "bytes": 2426,
+        "path": "profiles/difficulty/visual_drill_peripheral_scan.json",
+        "sha256": "7c52112bf9c106152d7fe03b646bde0f415881a04efb75560d731fa3f18fa73e"
+      },
+      {
+        "bytes": 2121,
+        "path": "profiles/difficulty/visual_drill_pursuit.json",
+        "sha256": "ab6a29af53bdb45fb6976bfdd558e3275c477eb7ad9afd61b9d01e36d43afb05"
+      },
+      {
+        "bytes": 2295,
+        "path": "profiles/difficulty/visual_drill_saccade.json",
+        "sha256": "6be50f582ef5ce11d36b72943750b88e72da67d858d67c3ac3d38d33c11ccf38"
+      },
+      {
+        "bytes": 2658,
+        "path": "profiles/difficulty/visual_drill_tracking.json",
+        "sha256": "6de8812bd46904e122ecdd0eae22fb2979bd75399c34779248c6569e833c921e"
+      },
+      {
+        "bytes": 7038,
+        "path": "profiles/presentation/c11c_visual_music_profiles.json",
+        "sha256": "b78706c5a9adbf1581d925f522b76cc3419983177de213734cc79996af5cbf58"
+      },
+      {
+        "bytes": 796318,
+        "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+        "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+      },
+      {
+        "bytes": 19222,
+        "path": "tools/c11d/d9/audit_visual_drill_selector_authoring_coverage.gd",
+        "sha256": "9785284652e8c8adedea8423d54929a2e7386645e5dfded68bb4fdf7b26ae02b"
+      },
+      {
+        "bytes": 15051,
+        "path": "tools/c11d/d9/d_render_adapter.py",
+        "sha256": "222742677cd498368429a3ec0dcdd922c44197bb5ada3638081138fb77c31bf1"
+      },
+      {
+        "bytes": 15400,
+        "path": "tools/c11d/d9/d_renderer_challenge_visual_payload_preview.py",
+        "sha256": "93f9ffbbc7ea92efa6098b59c221c1fb191aa7aae47a2e2c84a7fbe1fc1e786f"
+      },
+      {
+        "bytes": 86068,
+        "path": "tools/c11d/d9/d_renderer_dynamic_request_payload_binding.py",
+        "sha256": "bad418fcee9b219c4ccd3f3720b8d623737b9790968608ba3f605430c8bb149b"
+      },
+      {
+        "bytes": 26957,
+        "path": "tools/c11d/d9/d_renderer_request_scoped_payload_binding.py",
+        "sha256": "3b3ced5f51309fff791a166109baebd37511b354b1704ae2e59a0b9aa4e6df8b"
+      },
+      {
+        "bytes": 40250,
+        "path": "tools/c11d/d9/d_renderer_request_scoped_payload_materialization_binding.py",
+        "sha256": "244426e8f742e221f1fbb6885103135bd01d202cb6c8b641f877bd089e81ab9d"
+      },
+      {
+        "bytes": 22375,
+        "path": "tools/c11d/d9/d_renderer_visual_drill_selector_authoring_coverage.py",
+        "sha256": "a9058ee68de5da1de89ecd57b4fd28a9619c446829f34617c84585e50274eb5a"
+      },
+      {
+        "bytes": 11889,
+        "path": "tools/c11d/d9/d_renderer_visual_payload_materialization_preview.py",
+        "sha256": "cebe9b79c519675e61aa0d136ec08814e38eef91d3f55d19e9355929d677bfee"
+      },
+      {
+        "bytes": 10868,
+        "path": "tools/c11d/d9/editorial_render_bridge.py",
+        "sha256": "fe9d40052b0f4ff6f1c862c010ae7b3b13070b6ce935be6d62f9dcaec63a644a"
+      },
+      {
+        "bytes": 23596,
+        "path": "tools/c11d/d9/materialize_visual_drill_dynamic_request_payload_in_memory_v2.gd",
+        "sha256": "10c34da13748de3fd106144f66b410f144deb4422dd2871de38f64f8cd714ad0"
+      },
+      {
+        "bytes": 6780,
+        "path": "tools/c11d/d9/test_d_renderer_visual_drill_selector_authoring_coverage.py",
+        "sha256": "03ad131b39d7db0a286b00083c674a76f1dcaa8543c873503180fba2748e85e8"
+      },
+      {
+        "bytes": 16138,
+        "path": "tools/prototypes/c11c_common/C11CPaletteBank.gd",
+        "sha256": "6b64d99afb148b0dc5b0f8e27b50558e9b77df4d2fdff98d52495d81d53fdd14"
+      },
+      {
+        "bytes": 1739,
+        "path": "tools/prototypes/c11c_common/C11CSafeAmbient.py",
+        "sha256": "c376fd44a3115f0d800213d95e28143363748e16c7b5800369fcadbf237fb02c"
+      },
+      {
+        "bytes": 13703,
+        "path": "tools/prototypes/c11c_common/C11CVariationProfile.gd",
+        "sha256": "f7df994d8842183275bc331decd75762a153f3100248c7cc8b590e34c1347e2d"
+      },
+      {
+        "bytes": 1048,
+        "path": "tools/prototypes/c11c_common/C11CVisualLoopDuration.gd",
+        "sha256": "4ea0b0decbd3a22ade42023e819a74872f312b63facc1163dc73a7c656fdbaf8"
+      },
+      {
+        "bytes": 16382,
+        "path": "tools/prototypes/c11c_common/generate_c11c_family_music.py",
+        "sha256": "41bb8f9842ac941ea86c838f272b11bd0642973b26e92defa006721a3d8cb84d"
+      },
+      {
+        "bytes": 10073,
+        "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWaves.gdshader",
+        "sha256": "737149389a37d92f1f6947de93d89903aa5429eda23b1c8b261cc1ce3d6e7154"
+      },
+      {
+        "bytes": 11359,
+        "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesPrototype.gd",
+        "sha256": "ab2560cbe7fa42c5cad3b143aa59d1f2a0dc047682f7667983c7c0a0f6dbb61c"
+      },
+      {
+        "bytes": 3918,
+        "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesRenderer.gd",
+        "sha256": "4cf42e5e464e9aec86d7dd38caca226c1c451543c17ea87197d9acf8e8659783"
+      },
+      {
+        "bytes": 1531,
+        "path": "tools/prototypes/c11c_geometric_waves_v1/definition.json",
+        "sha256": "4c4589ed6bbe5ee3c3c702d5a2fb9dac08682e6cc1820883ba5af1845642b4a1"
+      }
+    ]
+  },
+  "status": "PREPARED_E1_NOT_DISPATCHED"
+}

@@ -1,0 +1,8 @@
+{
+  "error": "review frame extraction failed for 0: Unrecognized option 'vsync'.\nError splitting the argument list: Option not found\n",
+  "error_type": "RuntimeError",
+  "release_authority": "NONE",
+  "schema": "C11E-E4C-V2-REQUALIFICATION-PROGRESS-V1",
+  "stage": "FAILED",
+  "updated_utc": "2026-11-14T00:35:20.927868Z"
+}

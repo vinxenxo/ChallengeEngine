@@ -1,0 +1,158 @@
+﻿{
+    "schema":  "C11E-E4C-R5-EXISTING-OUTPUT-RECOVERY-DIAGNOSTIC-V1",
+    "status":  "RECOVERY_FAILED_OR_INCOMPLETE",
+    "request_id":  "E4C-CLI-COMPOSITION-V2-20261114T003422Z-a4d913f9",
+    "reason":  "{\"schema\": \"C11E-E4C-V2-EXISTING-OUTPUT-RECOVERY-FAILURE-V1\", \"status\": \"FAIL_CLOSED_EXISTING_OUTPUT_RECOVERY\", \"request_id\": \"E4C-CLI-COMPOSITION-V2-20261114T003422Z-a4d913f9\", \"error_type\": \"ValueError\", \"error\": \"stored composition plan schema mismatch\", \"frame_composition_repeated\": false, \"audio_mux_repeated\": false, \"production_dispatch\": false, \"release_authority\": \"NONE\"}",
+    "python_exit_code":  -1,
+    "project_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+    "evidence_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\c11e\\E4C-CLI-SMOKE-20261112T091253Z-5a2e96b8",
+    "output_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\c11e\\E4C-CLI-COMPOSITION-V2-20261114T003422Z-a4d913f9",
+    "recovery_script":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\tools\\c11d\\d9\\RECOVER_C11E_E4C_V2_EXISTING_OUTPUT_REVIEW_V1.py",
+    "recovery_script_sha256":  "79aaf996dfce0c4bf81da595d310dc4c5d7fad8cd16e53ee468deeea5651c750",
+    "intent_file_sha256":  "dfc861764302d7a6dec71de4532828dfe146708ed33dd2483b9c611bdd2f9a94",
+    "expected_intent_file_sha256":  "dfc861764302d7a6dec71de4532828dfe146708ed33dd2483b9c611bdd2f9a94",
+    "expected_intent_canonical_sha256":  "9dfe5c1c4568ed7fbc4bb4260d47da4e518b1a163811fb88f2a9f1bff55c304e",
+    "review_frames":  [
+
+                      ],
+    "review_bundle_exists":  false,
+    "inventory":  [
+                      {
+                          "path":  "recovery_stderr.log",
+                          "bytes":  0,
+                          "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                      },
+                      {
+                          "path":  "recovery_stdout.log",
+                          "bytes":  0,
+                          "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                      },
+                      {
+                          "path":  "snapshot/installed_sources/c11e_e4c_drill_execution.py",
+                          "bytes":  52828,
+                          "sha256":  "51fe92c24506788918f896216055f2f1f21a7abf4ad9bf369c9ee63cbac5983a"
+                      },
+                      {
+                          "path":  "snapshot/installed_sources/c11e_e4c_drill_visual_composition_consumer.py",
+                          "bytes":  50917,
+                          "sha256":  "867f0eb7d1e90ad58c56aec2d9309274ae583e54d809759be4aa66f76ffb3d9e"
+                      },
+                      {
+                          "path":  "snapshot/installed_sources/RECOVER_C11E_E4C_V2_EXISTING_OUTPUT_REVIEW_V1.py",
+                          "bytes":  28031,
+                          "sha256":  "79aaf996dfce0c4bf81da595d310dc4c5d7fad8cd16e53ee468deeea5651c750"
+                      },
+                      {
+                          "path":  "snapshot/output_root/d_composition_plan_v2.json",
+                          "bytes":  8077,
+                          "sha256":  "3bbdabdb106461bafb699ae889205c9d53be41fe9e94f58c7254c925e8e628fe"
+                      },
+                      {
+                          "path":  "snapshot/output_root/E4C-CLI-COMPOSITION-V2-20261114T003422Z-a4d913f9_A_music_840001_A.mp4",
+                          "bytes":  1455889,
+                          "sha256":  "8808b5244c118dc74d9a6fcf9d5e5b49b8ddae33f686794a170fe76cbc971bc1"
+                      },
+                      {
+                          "path":  "snapshot/output_root/E4C-CLI-COMPOSITION-V2-20261114T003422Z-a4d913f9_B_music_840001_B.mp4",
+                          "bytes":  1455889,
+                          "sha256":  "8808b5244c118dc74d9a6fcf9d5e5b49b8ddae33f686794a170fe76cbc971bc1"
+                      },
+                      {
+                          "path":  "snapshot/output_root/E4C-CLI-COMPOSITION-V2-20261114T003422Z-a4d913f9_C_changed_music_840002.mp4",
+                          "bytes":  1454787,
+                          "sha256":  "677edb16b0b1fcf47962633624df53ec5c53201080c95d5f563f10b1957c1961"
+                      },
+                      {
+                          "path":  "snapshot/output_root/E4C_DRILL_V2_REQUALIFICATION_FAILURE.json",
+                          "bytes":  591,
+                          "sha256":  "f6b9589a773e69861905838e8b3f0a54fe8cca6606d7d46207f75831f018cbf2"
+                      },
+                      {
+                          "path":  "snapshot/output_root/V2_REQUALIFICATION_PROGRESS.json",
+                          "bytes":  326,
+                          "sha256":  "2fdaacab3ad28588f85a753d89889a2053d9ccccd8896523e5fa1ccd32985210"
+                      },
+                      {
+                          "path":  "snapshot/output_root/qualification/d_composed_silent_v2.mp4",
+                          "bytes":  785860,
+                          "sha256":  "d674aa7700414c49c5b5ca957c4390da6e0020cea2de9d84750f30c6f14e14a5"
+                      },
+                      {
+                          "path":  "snapshot/output_root/qualification/E4C-CLI-COMPOSITION-V2-20261114T003422Z-a4d913f9_A_music_840001_A_mux.log",
+                          "bytes":  0,
+                          "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                      },
+                      {
+                          "path":  "snapshot/output_root/qualification/E4C-CLI-COMPOSITION-V2-20261114T003422Z-a4d913f9_B_music_840001_B_mux.log",
+                          "bytes":  0,
+                          "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                      },
+                      {
+                          "path":  "snapshot/output_root/qualification/E4C-CLI-COMPOSITION-V2-20261114T003422Z-a4d913f9_C_changed_music_840002_mux.log",
+                          "bytes":  0,
+                          "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                      },
+                      {
+                          "path":  "snapshot/output_root/qualification/v2_audio_stream_hash_A.log",
+                          "bytes":  0,
+                          "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                      },
+                      {
+                          "path":  "snapshot/output_root/qualification/v2_audio_stream_hash_B.log",
+                          "bytes":  0,
+                          "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                      },
+                      {
+                          "path":  "snapshot/output_root/qualification/v2_audio_stream_hash_C.log",
+                          "bytes":  0,
+                          "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                      },
+                      {
+                          "path":  "snapshot/output_root/qualification/v2_ffmpeg_decode_stderr.log",
+                          "bytes":  0,
+                          "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                      },
+                      {
+                          "path":  "snapshot/output_root/qualification/v2_ffmpeg_encode_stderr.log",
+                          "bytes":  0,
+                          "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                      },
+                      {
+                          "path":  "snapshot/output_root/qualification/v2_video_stream_hash_A.log",
+                          "bytes":  0,
+                          "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                      },
+                      {
+                          "path":  "snapshot/output_root/qualification/v2_video_stream_hash_B.log",
+                          "bytes":  0,
+                          "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                      },
+                      {
+                          "path":  "snapshot/output_root/qualification/v2_video_stream_hash_C.log",
+                          "bytes":  0,
+                          "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                      },
+                      {
+                          "path":  "snapshot/source_evidence/d_composition_plan.json",
+                          "bytes":  7256,
+                          "sha256":  "794bfd42e476f6e975f52ecc855931f533ef7814954b7804970101f2014bc5a1"
+                      },
+                      {
+                          "path":  "snapshot/source_evidence/e1_intent.json",
+                          "bytes":  59664,
+                          "sha256":  "dfc861764302d7a6dec71de4532828dfe146708ed33dd2483b9c611bdd2f9a94"
+                      },
+                      {
+                          "path":  "snapshot/source_evidence/E4C_DRILL_AV_QUALIFICATION_RECEIPT.json",
+                          "bytes":  83496,
+                          "sha256":  "57fe829b2ae83fc16a962710b8a1ef8e4635ebf8fd4326714ed24c69c4a0f903"
+                      },
+                      {
+                          "path":  "snapshot/source_evidence/request.json",
+                          "bytes":  973,
+                          "sha256":  "886c21782ded4759585352f01615aecc0d6639628285c0293e53a59dc953000e"
+                      }
+                  ],
+    "production_dispatch":  false,
+    "release_authority":  "NONE"
+}

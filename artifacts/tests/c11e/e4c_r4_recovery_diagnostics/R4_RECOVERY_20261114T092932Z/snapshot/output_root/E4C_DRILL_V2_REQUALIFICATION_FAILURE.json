@@ -1,0 +1,14 @@
+{
+  "c11c_launcher_invoked": false,
+  "error": "review frame extraction failed for 0: Unrecognized option 'vsync'.\nError splitting the argument list: Option not found\n",
+  "error_type": "RuntimeError",
+  "family_music_generation_invoked": false,
+  "godot_invoked": false,
+  "native_capture_reused": true,
+  "new_native_capture": false,
+  "production_dispatch": false,
+  "release_authority": "NONE",
+  "request_id": "E4C-CLI-COMPOSITION-V2-20261114T003422Z-a4d913f9",
+  "schema": "C11E-E4C-DRILL-V2-EXISTING-MEDIA-REQUALIFICATION-FAILURE-V1",
+  "status": "FAIL_CLOSED_V2_REQUALIFICATION"
+}

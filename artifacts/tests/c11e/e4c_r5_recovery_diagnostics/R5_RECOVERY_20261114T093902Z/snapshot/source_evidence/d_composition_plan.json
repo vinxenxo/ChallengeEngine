@@ -1,0 +1,208 @@
+{
+  "approval": {
+    "composition_proposal_sha256": "b22f9eb6fce39f877e432ff5f0051ecf5ab8575ecb9f580fe5f158994222fc09",
+    "decision_record_sha256": "eb95da188065b8ebcb2371e2a6bcff6762ce000a5ca74f8ea384ecec4ee58303",
+    "status": "APPROVED_AS_PROPOSED_D_OWNED_DESIGN_CONTRACT_ONLY",
+    "timebase_proposal_sha256": "44ab3b0fa09a6f7d42cd8cf2f1122cada6cbffe16a7a6b53c2af5e88d5daddc8"
+  },
+  "family_music": {
+    "d3_v5_invoked": false,
+    "gameplay_seed_field": "request.seed",
+    "music_seed_field": "request.music_seed",
+    "profile_id": "FLOWING_VECTOR",
+    "route": "PRESERVE_EXISTING_C11C_FAMILY_MUSIC_V4"
+  },
+  "geometry": {
+    "background_rgb_hex": "05070B",
+    "bottom_editorial_band": {
+      "height": 192,
+      "width": 720,
+      "x": 0,
+      "y": 1088
+    },
+    "canvas": {
+      "aspect_ratio": "9:16",
+      "height": 1280,
+      "width": 720
+    },
+    "delivery_profile_id": "REVIEW_720",
+    "editorial_text_blocks": {
+      "call_to_action": {
+        "font": "NotoSansMono-Regular",
+        "font_size_px": 15,
+        "height": 66,
+        "line_height_px": 22,
+        "max_chars_per_line_conservative": 71,
+        "max_lines": 3,
+        "region": "BOTTOM_BAND",
+        "width": 648,
+        "x": 36,
+        "y": 1151
+      },
+      "subtitle": {
+        "font": "Inter-Bold",
+        "font_size_px": 15,
+        "height": 92,
+        "line_height_px": 19,
+        "max_chars_per_line_conservative": 41,
+        "max_lines": 4,
+        "region": "TOP_BAND",
+        "width": 648,
+        "x": 36,
+        "y": 100
+      },
+      "title": {
+        "font": "Inter-Bold",
+        "font_size_px": 15,
+        "height": 92,
+        "line_height_px": 19,
+        "max_chars_per_line_conservative": 41,
+        "max_lines": 4,
+        "region": "TOP_BAND",
+        "width": 648,
+        "x": 36,
+        "y": 0
+      }
+    },
+    "line_break_policy": "D_OWNED_LAYOUT_BREAKS_ONLY_SOURCE_EDITORIAL_VALUE_AND_HASH_UNCHANGED",
+    "overflow_policy": "NO_TRUNCATION_NO_ELLIPSIS_FAIL_CLOSED_IF_FONT_COVERAGE_OR_LAYOUT_CAPACITY_IS_NOT_PROVEN",
+    "source_frame_transform": {
+      "aspect_ratio_preserved": true,
+      "cropping": false,
+      "mode": "UNIFORM_CONTAIN",
+      "nonuniform_stretch": false,
+      "scale_x": 0.7,
+      "scale_y": 0.7,
+      "source_frame_count_mutation": false,
+      "source_frame_index_mapping": "IDENTITY",
+      "source_frame_order_mutation": false,
+      "temporal_resampling": false,
+      "yuv420p_chroma_alignment": "EVEN_X_Y_WIDTH_HEIGHT"
+    },
+    "source_frame_viewport": {
+      "height": 896,
+      "width": 504,
+      "x": 108,
+      "y": 192
+    },
+    "top_editorial_band": {
+      "height": 192,
+      "width": 720,
+      "x": 0,
+      "y": 0
+    }
+  },
+  "governance": {
+    "audio_generated": false,
+    "c11c_source_mutation": false,
+    "d4_8": "BLOCKED",
+    "d9_10": "PREPARE_ONLY",
+    "ffmpeg_invoked": false,
+    "godot_invoked": false,
+    "media_created": false,
+    "release_authority": "NONE",
+    "renderer_activation": false,
+    "renderer_dispatch_invoked": false,
+    "renderer_native_input_emitted": false
+  },
+  "intent_identity": {
+    "editorial_hash": "e137d187e70a9767f769929b777ee777a65388706b672c55a06b9bb3aca5e078",
+    "intent_sha256": "9dfe5c1c4568ed7fbc4bb4260d47da4e518b1a163811fb88f2a9f1bff55c304e",
+    "plan_hash": "65fb0ae570440fb0feb424dc6cb9551ab8f2e8e7dacff5d118a65ba6e77352ab",
+    "request_hash": "b05793ae320bf9520c81efafe32b1a0089f0418622421fbee399213928434016",
+    "request_id": "E4C-CLI-SMOKE-20261112T091253Z-5a2e96b8"
+  },
+  "native_phase_ownership": {
+    "d_may_override_native_end_cta": false,
+    "native_end_cta_header_authoritative": true,
+    "source_phase_contract_sha256": "7ccebe7547939ef41c996dfca950df314506a5d27b983ff6600b3c0c8ad1ac00"
+  },
+  "plan_sha256": "5337b3308758fbb1db4056b4a911cd6e175ddb8994f4c7d53edac4828383512b",
+  "schema": "C11E-E4C-DRILL-VISUAL-COMPOSITION-PLAN-V1",
+  "selection": {
+    "content_type": "visual_drills",
+    "family_id": "tracking",
+    "variant_id": "tier-1"
+  },
+  "source_pins": {
+    "assets/fonts/Inter-Bold.otf": "9fc6261e817d0b1b2bf1953d8799bb1c837d11aeebbf83ae352e7b4d6de6425d",
+    "assets/fonts/NotoSansMono-Regular.ttf": "6b692c4b6d15ccf59f1c1fe8d11cb8a92f51960f3e9f1f523781755a3af7e29f",
+    "c11c_phase_source_pins": [
+      {
+        "bytes": 1219,
+        "path": "core/presentation/CountdownPresentationLogic.gd",
+        "sha256": "b163ea114cc48af2dfd957ee92d00d524ea5b96b5966850f5ca8d6e5ec933379"
+      },
+      {
+        "bytes": 1899,
+        "path": "core/presentation/VisualDrillPresentationPhaseLogic.gd",
+        "sha256": "6555d08ac3c0098b20a57e924b0c4ff2df006a23fa00a81b254fa5ebd5bb2494"
+      },
+      {
+        "bytes": 11830,
+        "path": "core/presentation/VisualDrillPresentationBinder.gd",
+        "sha256": "cb6acc408252b8b794177d8f5923a3b151646eebdfd1efe9a30fdd6221de82c0"
+      },
+      {
+        "bytes": 13876,
+        "path": "core/presentation/rendering/VisualContentPlayer.gd",
+        "sha256": "58d86d56ebd7507c9e800c83010103b9be12f1b5dca9356da61ca623e4cf0145"
+      },
+      {
+        "bytes": 19047,
+        "path": "core/presentation/C11CVisualEditorialLayer.gd",
+        "sha256": "f8f718c067a4d7a088cc16f244cc40209e7183bec93e44d8cb66eb6dd404cf7d"
+      },
+      {
+        "bytes": 8981,
+        "path": "core/presentation/PresentationUI.gd",
+        "sha256": "a55fea5a4525ea247144a4da88242f4ac602c3a014f7d02b50d032ce99224730"
+      },
+      {
+        "bytes": 1742,
+        "path": "core/presentation/SocialUIBinder.gd",
+        "sha256": "b15a062bf327d0c2bbc4ead0e877914f912528cc56e388df20dd84eb89863a3c"
+      },
+      {
+        "bytes": 2087,
+        "path": "core/presentation/UnifiedSocialFrame.gd",
+        "sha256": "d80c07103f56a2abfe34be60547285e61b0d03b50a5ed93c3c72d4241f6585ba"
+      },
+      {
+        "bytes": 17066,
+        "path": "c11c-suite/c11c-producer/run_visual_drill_production.ps1",
+        "sha256": "ad6a7f0a6ce87804363810123f76ff0765b1582426cb2c8f69f6864ec3a0c808"
+      },
+      {
+        "bytes": 6640,
+        "path": "c11c-suite/c11c-producer/C11CVisualDrillProducerEnvelopeGenerator.gd",
+        "sha256": "9e2a2f394db7efce6f646600d0bb8f4ee8488c87a184df1a0fb7f7cdcb9066e9"
+      }
+    ]
+  },
+  "status": "D_OWNED_VISUAL_CONSUMER_READY_FOR_ISOLATED_PIXEL_TESTS",
+  "text": {
+    "language_metadata_only": "es",
+    "layout_static_for_sequence": true,
+    "phase_visibility": {
+      "DONE": false,
+      "END_CTA": false,
+      "GAME": true,
+      "PRE_ROLL": false
+    },
+    "raw_editorial_preserved": true,
+    "visible_fields": {
+      "call_to_action": "Mantén la mirada en el objetivo",
+      "subtitle": "Sigue el objetivo con precisión",
+      "title": "SEGUIMIENTO VISUAL · NIVEL 1"
+    }
+  },
+  "timebase": {
+    "end_cta_seconds": 3.0,
+    "formula": "final_presentation_frame_index = pre_roll_frames + game_payload_frame_index",
+    "frame_count_order_fps_preserved": true,
+    "pre_roll_seconds": 3.0,
+    "source_fps_is_authoritative": true,
+    "temporal_resampling": false
+  }
+}

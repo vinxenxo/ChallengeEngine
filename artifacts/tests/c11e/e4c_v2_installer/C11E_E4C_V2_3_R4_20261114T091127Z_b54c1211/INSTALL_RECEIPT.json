@@ -1,0 +1,23 @@
+﻿{
+    "schema":  "C11E-E4C-V2_3_R4-INSTALL-RECEIPT-V1",
+    "status":  "PASS_REPLACE_AND_ADD_ONLY_INSTALL",
+    "run_id":  "C11E_E4C_V2_3_R4_20261114T091127Z_b54c1211",
+    "package_id":  "C11E_E4C_DRILL_HISTORICAL_REQUALIFIER_V2_3_R4_20261114",
+    "package_zip_sha256":  "dd69aaf3cde04d435f471f2a8d5986ac443beb3ba4dce845ccb2f7d3584489da",
+    "source_pins":  "21/21 PASS",
+    "replacement_count":  1,
+    "add_count":  16,
+    "postimages":  "17/17 PASS",
+    "backups":  "1/1 PASS",
+    "powershell_ast":  "3/3 PASS",
+    "py_compile":  "3/3 PASS",
+    "recovery_tests":  "12/12 PASS",
+    "file_replace_preflight":  "FORWARD_AND_ROLLBACK_PASS",
+    "source_pins_post":  "21/21 PASS",
+    "journal_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_v2_installer\\C11E_E4C_V2_3_R4_20261114T091127Z_b54c1211\\TRANSACTION_JOURNAL.json",
+    "frozen_c11c_manifest":  "PASS",
+    "c11c_source_mutation":  false,
+    "e1_service_mutation":  false,
+    "production_dispatch":  false,
+    "release_authority":  "NONE"
+}

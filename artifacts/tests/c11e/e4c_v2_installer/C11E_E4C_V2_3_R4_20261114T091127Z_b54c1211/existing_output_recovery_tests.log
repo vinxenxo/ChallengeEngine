@@ -1,0 +1,18 @@
+
+test_existing_review_frame_is_never_overwritten (__main__.ExistingOutputRecoveryTests.test_existing_review_frame_is_never_overwritten) ... ok
+test_expected_aac_hashes_match_ab_and_change_c (__main__.ExistingOutputRecoveryTests.test_expected_aac_hashes_match_ab_and_change_c) ... ok
+test_expected_composition_timebase (__main__.ExistingOutputRecoveryTests.test_expected_composition_timebase) ... ok
+test_expected_final_inventory_is_exactly_three_outputs (__main__.ExistingOutputRecoveryTests.test_expected_final_inventory_is_exactly_three_outputs) ... ok
+test_extract_command_uses_modern_fps_mode_not_removed_vsync (__main__.ExistingOutputRecoveryTests.test_extract_command_uses_modern_fps_mode_not_removed_vsync) ... ok
+test_extract_failure_is_fail_closed_and_logged (__main__.ExistingOutputRecoveryTests.test_extract_failure_is_fail_closed_and_logged) ... ok
+test_extract_frame_logs_exact_command_and_result (__main__.ExistingOutputRecoveryTests.test_extract_frame_logs_exact_command_and_result) ... ok
+test_final_probe_requires_aac_lc_and_sync (__main__.ExistingOutputRecoveryTests.test_final_probe_requires_aac_lc_and_sync) ... ok
+test_main_requalifier_is_patched_to_fps_mode (__main__.ExistingOutputRecoveryTests.test_main_requalifier_is_patched_to_fps_mode) ... ok
+test_recovery_is_bound_to_one_existing_run (__main__.ExistingOutputRecoveryTests.test_recovery_is_bound_to_one_existing_run) ... ok
+test_run_rejects_any_other_run_id_before_touching_project (__main__.ExistingOutputRecoveryTests.test_run_rejects_any_other_run_id_before_touching_project) ... ok
+test_video_contract_rejects_wrong_codec_or_count (__main__.ExistingOutputRecoveryTests.test_video_contract_rejects_wrong_codec_or_count) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.102s
+
+OK

@@ -235,7 +235,7 @@ def extract_review_frames(ffmpeg: Path, final_a: Path, review_dir: Path, executo
         # Commas in select are escaped for FFmpeg's filter parser; process args
         # are passed directly, not through PowerShell/string-shell interpolation.
         expression = f"select=eq(n\\,{index})"
-        command = [str(ffmpeg), "-y", "-hide_banner", "-loglevel", "error", "-i", str(final_a), "-vf", expression, "-vsync", "0", "-frames:v", "1", str(target)]
+        command = [str(ffmpeg), "-y", "-hide_banner", "-loglevel", "error", "-i", str(final_a), "-vf", expression, "-fps_mode", "passthrough", "-frames:v", "1", str(target)]
         result = subprocess.run(command, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=120)
         if result.returncode != 0 or not target.is_file() or target.stat().st_size <= 0:
             raise RuntimeError(f"review frame extraction failed for {index}: {result.stderr[-2000:]}")
