@@ -135,6 +135,8 @@ def compose_all_frames_v2(
     ]
     counts = {"PRE_ROLL": 0, "GAME": 0, "END_CTA": 0}
     sample_rows: list[dict[str, Any]] = []
+    editorial_role_style_resolution: dict[str, Any] | None = None
+    editorial_role_render: dict[str, Any] | None = None
     game_identity_checked = 0
     pre_roll_body_identity_checked = 0
     pre_roll_footer_identity_checked = 0
@@ -190,6 +192,19 @@ def compose_all_frames_v2(
                         raise RuntimeError(f"V2 consumer did not attest body pixel identity at frame {frame_index}")
                     if expected_title_slot and not result.get("family_title_render", {}).get("visible"):
                         raise RuntimeError(f"V2 GAME family title was not rendered at frame {frame_index}")
+                    expected_role_fields = [key for key in ("subtitle", "call_to_action") if plan.get("text", {}).get("visible_fields", {}).get(key)]
+                    current_palette_resolution = result.get("editorial_role_style_resolution")
+                    current_role_render = result.get("editorial_role_render")
+                    if expected_role_fields:
+                        if not isinstance(current_palette_resolution, dict) or not isinstance(current_role_render, dict):
+                            raise RuntimeError(f"V2 editorial role-style attestation missing at frame {frame_index}")
+                        if any(not current_role_render.get(key, {}).get("visible") for key in expected_role_fields):
+                            raise RuntimeError(f"V2 editorial role field was not rendered at frame {frame_index}")
+                        if editorial_role_style_resolution is None:
+                            editorial_role_style_resolution = current_palette_resolution
+                            editorial_role_render = current_role_render
+                        elif current_palette_resolution != editorial_role_style_resolution or current_role_render != editorial_role_render:
+                            raise RuntimeError(f"V2 editorial role style/palette changed across GAME sequence at frame {frame_index}")
                     game_identity_checked += 1
                 elif phase == "END_CTA":
                     if consumer._image_rgb_bytes(composed) != consumer._image_rgb_bytes(source):
@@ -216,6 +231,8 @@ def compose_all_frames_v2(
                         "output_rgb_sha256": consumer._image_rgb_sha256(composed),
                         "native_body_pixel_identity": result.get("native_body_pixel_identity", False),
                         "native_full_frame_identity": result.get("native_full_frame_identity", False),
+                        "editorial_role_style_resolution": result.get("editorial_role_style_resolution"),
+                        "editorial_role_render": result.get("editorial_role_render"),
                     })
             if decoder.stdout.read(1):
                 raise RuntimeError("native source contains extra frames beyond the preserved 810-frame timebase")
@@ -246,7 +263,14 @@ def compose_all_frames_v2(
         "pre_roll_native_footer_pixel_identity_frames": pre_roll_footer_identity_checked,
         "end_cta_native_full_frame_identity_frames": end_cta_full_frame_identity_checked,
         "native_full_frame_passthrough_frames": end_cta_full_frame_identity_checked,
-        "sampled_frames": sample_rows, "silent_video_path": str(target_mp4),
+        "sampled_frames": sample_rows,
+        "editorial_role_style_resolution": editorial_role_style_resolution,
+        "editorial_role_render": editorial_role_render,
+        "editorial_role_style_amendment_sha256": consumer.EDITORIAL_ROLE_STYLE_AMENDMENT_SHA,
+        "c11c_editorial_layer_sha256": consumer.C11C_EDITORIAL_LAYER_SHA,
+        "c11c_typography_sha256": consumer.C11C_TYPOGRAPHY_SHA,
+        "c11c_drill_palette_bank_sha256": consumer.DRILL_PALETTE_BANK_SHA,
+        "silent_video_path": str(target_mp4),
         "silent_video_sha256": sha256_file(target_mp4), "silent_video_bytes": target_mp4.stat().st_size,
         "decode_log": str(decode_log), "encode_log": str(encode_log),
     }
@@ -435,8 +459,12 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         "family_music_generation_invoked": False,
         "family_music_wavs_reused": True,
         "d_executor_replaced": False,
-        "d_consumer_contract": "V2_FAMILY_TITLE_BRIDGE_PRE_ROLL_AND_GAME_SOCIAL_BODY_PIXEL_EXACT",
+        "d_consumer_contract": "V2_FAMILY_TITLE_PLUS_C11C_ROLE_STYLE_INHERITANCE_PRE_ROLL_AND_GAME_SOCIAL_BODY_PIXEL_EXACT",
         "editorial_family_title_amendment_sha256": consumer.EDITORIAL_STYLE_AMENDMENT_SHA,
+        "editorial_role_style_amendment_sha256": consumer.EDITORIAL_ROLE_STYLE_AMENDMENT_SHA,
+        "editorial_role_style_contract": consumer.EDITORIAL_ROLE_STYLE_CONTRACT,
+        "editorial_role_style_resolution": composition.get("editorial_role_style_resolution"),
+        "editorial_role_render": composition.get("editorial_role_render"),
         "family_title_style": consumer.FAMILY_TITLE_STYLE,
         "family_title_animation": "STATIC_NO_ANIMATION_OBSERVED_IN_TRACKING_TIER_1_PRE_ROLL",
         "title_visibility": {"PRE_ROLL": True, "GAME": True, "END_CTA": False},
@@ -460,12 +488,13 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
     write_json(output_root / "E4C_DRILL_V2_REQUALIFICATION_RECEIPT.json", result)
     write_progress(progress_path, "COMPLETE", technical_status=result["status"], final_outputs=list(finals.keys()), review_frame_count=len(review_frames), source_pins_unchanged=True)
     (output_root / "OPERATOR_REVIEW_CHECKLIST.md").write_text(
-        "# E4C Drill V2 operator review — family-title bridge R6\n\n"
+        "# E4C Drill V2 operator review — family-title + C11C role-style bridge R6.3\n\n"
         "Review the A/B/C outputs and seven extracted frames. Confirm: (1) the editorial title is already visible on PRE_ROLL frame 0/countdown, "
         "in the same Inter-Bold 22px warm-gold centered family-title treatment; (2) the native countdown/body and native footer remain pixel-identical "
-        "through all 90 PRE_ROLL frames; (3) the same title treatment remains in GAME from its first frame; (4) subtitle is directly beneath it, "
-        "and CTA remains in the approved lower band; (5) all 630 GAME body pixels remain identical to native C11-C; (6) all 90 END_CTA frames "
-        "remain complete native passthrough; (7) the sampled tracking/tier-1 family title was static in the source (no native title animation observed); "
+        "through all 90 PRE_ROLL frames; (3) the same title treatment remains in GAME from its first frame; (4) subtitle uses the C11C HEADER role: "
+        "Inter-Bold 22px, horizontal center, vertical bottom, dynamically resolved C11C palette text_secondary color, black 1px outline at alpha 0.72; (5) CTA uses the C11C FOOTER role: Noto Sans Mono Regular "
+        "16px, horizontal center, vertical top, dynamically resolved C11C palette text_data color, black 1px outline at alpha 0.78; the receipt records the palette inferred from the native GAME background; "
+        "(6) all 630 GAME body pixels remain identical to native C11-C; (7) all 90 END_CTA frames remain complete native passthrough; "
         "(8) A/B audio are identical and C differs; (9) no A/V sync, clipping or playback artefacts.\n\n"
         "This is technical PASS_PENDING_OPERATOR_VISUAL_AUDIO_ACCEPTANCE. Human review is required before the selector counts toward 20/20. "
         "No production dispatch or release authority is granted.\n",

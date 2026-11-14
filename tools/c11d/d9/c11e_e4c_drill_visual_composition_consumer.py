@@ -14,6 +14,7 @@ from functools import lru_cache
 import json
 import math
 import os
+import re
 import struct
 import sys
 import unicodedata
@@ -30,6 +31,8 @@ from PySide6.QtGui import (
     QGuiApplication,
     QImage,
     QPainter,
+    QPainterPath,
+    QPen,
     QRawFont,
 )
 
@@ -44,6 +47,21 @@ PRESENTATION_PROFILE_REL = "core/presentation/PresentationProfile.gd"
 PRESENTATION_PROFILE_SHA = "187b1cf8ab96b9031785a0f36b0054a60383c97cb3d81906c7d9bbcd373bef24"
 EDITORIAL_STYLE_AMENDMENT_REL = "definitions/c11d/production/C11E_E4C_DRILL_EDITORIAL_FAMILY_TITLE_AMENDMENT_R1_20261114.json"
 EDITORIAL_STYLE_AMENDMENT_SHA = "1d0d5393368ca1e1ecb867059314e28463205fffc81e8af902909896e0ac7331"
+EDITORIAL_ROLE_STYLE_AMENDMENT_REL = "definitions/c11d/production/C11E_E4C_DRILL_EDITORIAL_ROLE_STYLE_AMENDMENT_R1_20261114.json"
+EDITORIAL_ROLE_STYLE_AMENDMENT_SHA = "9d1a47ff9752e5fb60d8c4c474c47033b82f8f2c095ab6e28e43143a9ff92fd2"
+C11C_EDITORIAL_LAYER_REL = "core/presentation/C11CVisualEditorialLayer.gd"
+C11C_EDITORIAL_LAYER_SHA = "f8f718c067a4d7a088cc16f244cc40209e7183bec93e44d8cb66eb6dd404cf7d"
+C11C_TYPOGRAPHY_REL = "core/presentation/C11CVisualTypography.gd"
+C11C_TYPOGRAPHY_SHA = "9ee823a28cef721a26f66436b5b168d92f5b9d1597ed6e4e3f518debb0910633"
+DRILL_PALETTE_BANK_REL = "tools/prototypes/c11c_common/C11CDrillPaletteBank.gd"
+DRILL_PALETTE_BANK_SHA = "757786a6bcc4e819fd43c1c41ea29e8b00dbe3b3f2f5c72fa19776a368b3c8ec"
+DRILL_PALETTE_ARRAYS = {
+    "tracking": "TRACKING_PALETTES",
+    "pursuit": "PURSUIT_PALETTES",
+    "saccade": "SACCADE_PALETTES",
+    "peripheral_scan": "PERIPHERAL_PALETTES",
+}
+EDITORIAL_ROLE_STYLE_CONTRACT = {'schema': 'C11E-E4C-DRILL-EDITORIAL-ROLE-STYLE-CONTRACT-V1', 'style_authority': {'editorial_layer': {'path': 'core/presentation/C11CVisualEditorialLayer.gd', 'sha256': 'f8f718c067a4d7a088cc16f244cc40209e7183bec93e44d8cb66eb6dd404cf7d'}, 'typography_service': {'path': 'core/presentation/C11CVisualTypography.gd', 'sha256': '9ee823a28cef721a26f66436b5b168d92f5b9d1597ed6e4e3f518debb0910633'}, 'drill_palette_bank': {'path': 'tools/prototypes/c11c_common/C11CDrillPaletteBank.gd', 'sha256': '757786a6bcc4e819fd43c1c41ea29e8b00dbe3b3f2f5c72fa19776a368b3c8ec'}}, 'palette_resolution': {'method': 'NEAREST_C11C_FAMILY_PALETTE_BACKGROUND_FROM_NATIVE_GAME_BODY_EDGE_MEDIAN', 'source': 'UNMODIFIED_C11C_NATIVE_GAME_FRAME', 'sample_x': [8, 16, 704, 712], 'sample_y': [205, 300, 500, 700, 900, 1000, 1080], 'maximum_channel_delta': 8, 'match_policy': 'UNIQUE_NEAREST_PALETTE_WITH_MINIMUM_SEPARATION_OR_FAIL_CLOSED', 'minimum_nearest_neighbor_separation': 1, 'palette_roles': {'subtitle': 'text_secondary', 'call_to_action': 'text_data'}}, 'roles': {'family_title': {'authority': 'R6_FAMILY_TITLE_AMENDMENT_R1', 'font': 'Inter-Bold', 'font_size_px': 22, 'line_height_px': 29, 'color_rgb': [235, 215, 161], 'alignment': 'CENTER', 'outline_width_px': 0}, 'subtitle': {'source_role': 'C11C_HEADER', 'font': 'Inter-Bold', 'font_size_px': 22, 'line_height_px': 29, 'color_role': 'palette.text_secondary', 'alignment': 'CENTER', 'vertical_alignment': 'BOTTOM', 'outline_width_px': 1, 'outline_color_rgb': [0, 0, 0], 'outline_alpha': 0.72, 'size_projection': 'D_720PX_SINGLE_LINE_HEADER_FIT_TO_R6_RESERVED_HEADER_BAND'}, 'call_to_action': {'source_role': 'C11C_FOOTER', 'font': 'NotoSansMono-Regular', 'font_size_px': 16, 'line_height_px': 22, 'color_role': 'palette.text_data', 'alignment': 'CENTER', 'vertical_alignment': 'TOP', 'outline_width_px': 1, 'outline_color_rgb': [0, 0, 0], 'outline_alpha': 0.78, 'size_projection': 'C11C_FOOTER_FONT_SIZE_16_DELIVERY_PX'}}, 'scope': {'d_owned_consumer_only': True, 'c11c_source_mutation': False, 'native_frame_mutation': False, 'game_body_pixel_identity_required': True, 'pre_roll_body_and_footer_passthrough_required': True, 'end_cta_full_frame_passthrough_required': True, 'renderer_activation': False, 'production_dispatch': False, 'release_authority': 'NONE'}, 'game_subtitle_role_block': {'font': 'Inter-Bold', 'font_size_px': 22, 'line_height_px': 29, 'max_lines': 1, 'region': 'TOP_BAND', 'x': 36, 'y': 163, 'width': 648, 'height': 29, 'alignment': 'CENTER', 'color_role': 'palette.text_secondary'}}
 FAMILY_TITLE_STYLE = {
     "font": "Inter-Bold",
     "font_size_px": 22,
@@ -58,6 +76,16 @@ FAMILY_TITLE_STYLE = {
 GAME_SUBTITLE_BLOCK = {
     "font": "Inter-Bold", "font_size_px": 15, "line_height_px": 19, "max_lines": 1,
     "region": "TOP_BAND", "x": 36, "y": 169, "width": 648, "height": 21,
+}
+GAME_SUBTITLE_ROLE_BLOCK = {
+    "font": "Inter-Bold", "font_size_px": 22, "line_height_px": 29, "max_lines": 1,
+    "region": "TOP_BAND", "x": 36, "y": 163, "width": 648, "height": 29,
+    "alignment": "CENTER", "color_role": "palette.text_secondary",
+}
+GAME_CTA_STYLE = {
+    "font": "NotoSansMono-Regular", "font_size_px": 16, "line_height_px": 22,
+    "alignment": "CENTER", "color_role": "palette.text_data",
+    "outline_width_px": 1, "outline_color_rgb": [0, 0, 0], "outline_alpha": 0.78,
 }
 
 # Exact REVIEW_720 projection of PresentationProfile.get_social_regions().
@@ -159,13 +187,24 @@ def _json_sha(value: Any) -> str:
 
 
 def _editorial_amendment_path(root: Path) -> Path:
-    """Resolve the immutable amendment from the active project, or a test-only staged path."""
+    """Resolve the immutable R6 family-title amendment or its test-only staged path."""
     override = os.environ.get("C11E_EDITORIAL_AMENDMENT_PATH")
     return Path(override).resolve() if override else root / Path(*EDITORIAL_STYLE_AMENDMENT_REL.split("/"))
 
 
+def _editorial_role_style_amendment_path(root: Path) -> Path:
+    """Resolve the immutable R6.3 role-style amendment or its test-only staged path."""
+    override = os.environ.get("C11E_EDITORIAL_ROLE_STYLE_AMENDMENT_PATH")
+    return Path(override).resolve() if override else root / Path(*EDITORIAL_ROLE_STYLE_AMENDMENT_REL.split("/"))
+
+
 def _read_json(root: Path, relative: str) -> dict[str, Any]:
-    path = _editorial_amendment_path(root) if relative == EDITORIAL_STYLE_AMENDMENT_REL else root / Path(*relative.split("/"))
+    if relative == EDITORIAL_STYLE_AMENDMENT_REL:
+        path = _editorial_amendment_path(root)
+    elif relative == EDITORIAL_ROLE_STYLE_AMENDMENT_REL:
+        path = _editorial_role_style_amendment_path(root)
+    else:
+        path = root / Path(*relative.split("/"))
     try:
         value = json.loads(path.read_text(encoding="utf-8-sig"))
     except Exception as exc:
@@ -189,9 +228,18 @@ def _verify_decision_and_proposals(root: Path) -> tuple[dict[str, Any], dict[str
         (DECISION_REL, DECISION_SHA),
         (PRESENTATION_PROFILE_REL, PRESENTATION_PROFILE_SHA),
         (EDITORIAL_STYLE_AMENDMENT_REL, EDITORIAL_STYLE_AMENDMENT_SHA),
+        (EDITORIAL_ROLE_STYLE_AMENDMENT_REL, EDITORIAL_ROLE_STYLE_AMENDMENT_SHA),
+        (C11C_EDITORIAL_LAYER_REL, C11C_EDITORIAL_LAYER_SHA),
+        (C11C_TYPOGRAPHY_REL, C11C_TYPOGRAPHY_SHA),
+        (DRILL_PALETTE_BANK_REL, DRILL_PALETTE_BANK_SHA),
     )
     for relative, digest in expected:
-        source_path = _editorial_amendment_path(root) if relative == EDITORIAL_STYLE_AMENDMENT_REL else root / relative
+        if relative == EDITORIAL_STYLE_AMENDMENT_REL:
+            source_path = _editorial_amendment_path(root)
+        elif relative == EDITORIAL_ROLE_STYLE_AMENDMENT_REL:
+            source_path = _editorial_role_style_amendment_path(root)
+        else:
+            source_path = root / relative
         if _sha_file(source_path) != digest:
             raise DrillVisualConsumerError(f"approved V2 design/source pin mismatch: {relative}")
     if decision.get("decision_semantics") != "USER_DIRECTED_V2_D_OWNED_CONTRACT_AND_ISOLATED_REQUALIFICATION_ONLY":
@@ -231,6 +279,13 @@ def _verify_decision_and_proposals(root: Path) -> tuple[dict[str, Any], dict[str
         raise DrillVisualConsumerError("family-title style differs from the immutable amendment contract")
     if amendment.get("game_subtitle_block") != GAME_SUBTITLE_BLOCK:
         raise DrillVisualConsumerError("GAME subtitle block differs from the approved family-title layout amendment")
+    role_amendment = _read_json(root, EDITORIAL_ROLE_STYLE_AMENDMENT_REL)
+    if role_amendment.get("schema") != "C11E-E4C-DRILL-EDITORIAL-ROLE-STYLE-AMENDMENT-V1" or role_amendment.get("status") != "USER_DIRECTED_D_OWNED_ROLE_STYLE_INHERITANCE_AMENDMENT":
+        raise DrillVisualConsumerError("editorial role-style amendment schema/status mismatch")
+    if role_amendment.get("role_style_contract") != EDITORIAL_ROLE_STYLE_CONTRACT:
+        raise DrillVisualConsumerError("editorial role-style amendment differs from pinned C11C role contract")
+    if role_amendment.get("role_style_contract", {}).get("scope", {}).get("c11c_source_mutation") is not False:
+        raise DrillVisualConsumerError("editorial role-style amendment crosses the frozen C11C source boundary")
     if composition.get("status") != "USER_DIRECTED_D_OWNED_V2_CONTRACT" or timebase.get("status") != "PROPOSED_NOT_APPROVED_NOT_RENDERER_INPUT":
         raise DrillVisualConsumerError("V2 composition approval or immutable V1 timebase status changed")
     geometry = composition.get("geometry", {})
@@ -682,7 +737,7 @@ def _build_composition_plan_from_preparation(
         },
         "selection": {"content_type": "visual_drills", "family_id": family_id, "variant_id": variant_id},
         "family_music": {"route": "PRESERVE_EXISTING_C11C_FAMILY_MUSIC_V4", "profile_id": expected_profile, "gameplay_seed_field": "request.seed", "music_seed_field": "request.music_seed", "d3_v5_invoked": False},
-        "approval": {"decision_record_sha256": DECISION_SHA, "composition_proposal_sha256": COMPOSITION_SHA, "timebase_proposal_sha256": TIMEBASE_SHA, "editorial_family_title_amendment_sha256": EDITORIAL_STYLE_AMENDMENT_SHA, "status": "USER_DIRECTED_V2_D_OWNED_CONTRACT_ONLY"},
+        "approval": {"decision_record_sha256": DECISION_SHA, "composition_proposal_sha256": COMPOSITION_SHA, "timebase_proposal_sha256": TIMEBASE_SHA, "editorial_family_title_amendment_sha256": EDITORIAL_STYLE_AMENDMENT_SHA, "editorial_role_style_amendment_sha256": EDITORIAL_ROLE_STYLE_AMENDMENT_SHA, "status": "USER_DIRECTED_V2_D_OWNED_CONTRACT_ONLY"},
         "geometry": geometry,
         "text": {
             "raw_editorial_preserved": True,
@@ -690,7 +745,8 @@ def _build_composition_plan_from_preparation(
             "language_metadata_only": editor.get("language"),
             "layout_static_for_sequence": bool(fields),
             "family_title_style": dict(FAMILY_TITLE_STYLE),
-            "game_subtitle_block": dict(GAME_SUBTITLE_BLOCK),
+            "game_subtitle_block": dict(GAME_SUBTITLE_ROLE_BLOCK),
+            "editorial_role_style_contract": EDITORIAL_ROLE_STYLE_CONTRACT,
             "phase_visibility": {"PRE_ROLL": bool(fields.get("title")), "GAME": bool(fields), "END_CTA": False, "DONE": False},
             "field_phase_visibility": {
                 "title": ["PRE_ROLL", "GAME"] if fields.get("title") else [],
@@ -700,7 +756,7 @@ def _build_composition_plan_from_preparation(
         },
         "timebase": {"formula": "final_presentation_frame_index = pre_roll_frames + game_payload_frame_index", "pre_roll_seconds": 3.0, "end_cta_seconds": 3.0, "source_fps_is_authoritative": True, "frame_count_order_fps_preserved": True, "temporal_resampling": False},
         "native_phase_ownership": {"source_phase_contract_sha256": phase_contract.get("phase_contract_sha256"), "native_end_cta_header_authoritative": True, "d_may_override_native_end_cta": False},
-        "source_pins": {**font_hashes, "presentation_profile": {"path": PRESENTATION_PROFILE_REL, "bytes": 8837, "sha256": PRESENTATION_PROFILE_SHA}, "editorial_family_title_amendment": {"path": EDITORIAL_STYLE_AMENDMENT_REL, "sha256": EDITORIAL_STYLE_AMENDMENT_SHA}, "c11c_phase_source_pins": phase_contract.get("source_pins", [])},
+        "source_pins": {**font_hashes, "presentation_profile": {"path": PRESENTATION_PROFILE_REL, "bytes": 8837, "sha256": PRESENTATION_PROFILE_SHA}, "editorial_family_title_amendment": {"path": EDITORIAL_STYLE_AMENDMENT_REL, "sha256": EDITORIAL_STYLE_AMENDMENT_SHA}, "editorial_role_style_amendment": {"path": EDITORIAL_ROLE_STYLE_AMENDMENT_REL, "sha256": EDITORIAL_ROLE_STYLE_AMENDMENT_SHA}, "c11c_editorial_layer": {"path": C11C_EDITORIAL_LAYER_REL, "sha256": C11C_EDITORIAL_LAYER_SHA}, "c11c_typography": {"path": C11C_TYPOGRAPHY_REL, "sha256": C11C_TYPOGRAPHY_SHA}, "drill_palette_bank": {"path": DRILL_PALETTE_BANK_REL, "sha256": DRILL_PALETTE_BANK_SHA}, "c11c_phase_source_pins": phase_contract.get("source_pins", [])},
         "governance": {"renderer_native_input_emitted": False, "renderer_dispatch_invoked": False, "renderer_activation": False, "godot_invoked": False, "ffmpeg_invoked": False, "media_created": False, "audio_generated": False, "c11c_source_mutation": False, "d4_8": "BLOCKED", "d9_10": "PREPARE_ONLY", "release_authority": "NONE"},
     }
     plan["plan_sha256"] = _json_sha(plan)
@@ -742,11 +798,18 @@ def validate_plan(plan: Mapping[str, Any]) -> None:
         raise DrillVisualConsumerError("D Drill V2 plan is not bound to its exact decision/proposal/timebase hashes")
     if approval.get("editorial_family_title_amendment_sha256") != EDITORIAL_STYLE_AMENDMENT_SHA:
         raise DrillVisualConsumerError("D Drill V2 plan is not bound to the user-directed family-title amendment")
+    if approval.get("editorial_role_style_amendment_sha256") != EDITORIAL_ROLE_STYLE_AMENDMENT_SHA:
+        raise DrillVisualConsumerError("D Drill V2 plan is not bound to the user-directed role-style amendment")
     text_contract = plan.get("text", {})
     if text_contract.get("family_title_style") != FAMILY_TITLE_STYLE:
         raise DrillVisualConsumerError("D Drill V2 family-title rendering style changed")
-    if text_contract.get("game_subtitle_block") != GAME_SUBTITLE_BLOCK:
-        raise DrillVisualConsumerError("D Drill V2 GAME subtitle placement changed")
+    if text_contract.get("game_subtitle_block") != GAME_SUBTITLE_ROLE_BLOCK:
+        raise DrillVisualConsumerError("D Drill V2 GAME subtitle role-style block changed")
+    if text_contract.get("editorial_role_style_contract") != EDITORIAL_ROLE_STYLE_CONTRACT:
+        raise DrillVisualConsumerError("D Drill V2 editorial role-style contract changed")
+    selection = plan.get("selection", {})
+    if selection.get("family_id") not in DRILL_FAMILIES or selection.get("variant_id") not in DRILL_TIERS:
+        raise DrillVisualConsumerError("D Drill V2 role-style plan selector is not in the 20-selector matrix")
     fields = text_contract.get("visible_fields", {})
     expected_visibility = {
         "PRE_ROLL": bool(fields.get("title")),
@@ -780,6 +843,15 @@ def validate_plan(plan: Mapping[str, Any]) -> None:
     amendment_pin = plan.get("source_pins", {}).get("editorial_family_title_amendment", {})
     if amendment_pin != {"path": EDITORIAL_STYLE_AMENDMENT_REL, "sha256": EDITORIAL_STYLE_AMENDMENT_SHA}:
         raise DrillVisualConsumerError("V2 plan lacks the exact family-title amendment source pin")
+    role_style_pins = plan.get("source_pins", {})
+    for key, path, digest in (
+        ("editorial_role_style_amendment", EDITORIAL_ROLE_STYLE_AMENDMENT_REL, EDITORIAL_ROLE_STYLE_AMENDMENT_SHA),
+        ("c11c_editorial_layer", C11C_EDITORIAL_LAYER_REL, C11C_EDITORIAL_LAYER_SHA),
+        ("c11c_typography", C11C_TYPOGRAPHY_REL, C11C_TYPOGRAPHY_SHA),
+        ("drill_palette_bank", DRILL_PALETTE_BANK_REL, DRILL_PALETTE_BANK_SHA),
+    ):
+        if role_style_pins.get(key) != {"path": path, "sha256": digest}:
+            raise DrillVisualConsumerError(f"V2 plan lacks exact style authority pin: {key}")
     governance = plan.get("governance", {})
     for key in ("renderer_native_input_emitted", "renderer_dispatch_invoked", "renderer_activation", "godot_invoked", "ffmpeg_invoked", "media_created", "audio_generated", "c11c_source_mutation"):
         if governance.get(key) is not False:
@@ -896,6 +968,7 @@ def _draw_family_title(painter: QPainter, root: Path, text: str, style: Mapping[
     top = by + (bheight - total_height) / 2.0
     painter.setFont(font)
     painter.setPen(QColor(*style["color_rgb"]))
+    line_rows = []
     for index, line in enumerate(lines):
         advance = _text_advance(font, line)
         left = bx + (bwidth - advance) / 2.0
@@ -906,7 +979,186 @@ def _draw_family_title(painter: QPainter, root: Path, text: str, style: Mapping[
         if baseline + bounds.top() < by or baseline + bounds.top() + bounds.height() > by + bheight:
             raise DrillVisualConsumerError("centered family title glyphs exceed the native-style header height")
         painter.drawText(QPointF(float(left), baseline), line)
-    return {"visible": True, "line_count": len(lines), "alignment": "CENTER", "font": style["font"], "font_size_px": style["font_size_px"], "color_rgb": style["color_rgb"], "animation": style["animation"]}
+        glyph_left = float(left) + float(bounds.left())
+        glyph_top = float(baseline) + float(bounds.top())
+        line_rows.append({"line": line, "glyph_bounds": [round(glyph_left, 3), round(glyph_top, 3), round(glyph_left + bounds.width(), 3), round(glyph_top + bounds.height(), 3)], "baseline": round(float(baseline), 3)})
+    return {"visible": True, "line_count": len(lines), "alignment": "CENTER", "font": style["font"], "font_size_px": style["font_size_px"], "color_rgb": style["color_rgb"], "animation": style["animation"], "line_rows": line_rows}
+
+
+@lru_cache(maxsize=4)
+def _drill_palette_rows(root_text: str, family_id: str) -> tuple[dict[str, Any], ...]:
+    """Read the pinned, protected C11C palette bank; cache parsed rows per family."""
+    root = Path(root_text)
+    path = root / Path(*DRILL_PALETTE_BANK_REL.split("/"))
+    if _sha_file(path) != DRILL_PALETTE_BANK_SHA:
+        raise DrillVisualConsumerError("protected C11C Drill palette-bank source pin mismatch")
+    array_name = DRILL_PALETTE_ARRAYS.get(family_id)
+    if array_name is None:
+        raise DrillVisualConsumerError(f"unsupported Drill family for palette resolution: {family_id}")
+    source = path.read_text(encoding="utf-8-sig")
+    match = re.search(r"const\s+" + re.escape(array_name) + r"\s*:=\s*\[(.*?)\n\]", source, re.S)
+    if not match:
+        raise DrillVisualConsumerError(f"pinned C11C palette array is missing: {array_name}")
+    row_texts = re.findall(r'\{[^{}]*"name"[^{}]*\}', match.group(1))
+    if len(row_texts) != 24:
+        raise DrillVisualConsumerError(f"pinned C11C palette inventory count changed for {family_id}: {len(row_texts)}")
+    rows: list[dict[str, Any]] = []
+    for row_text in row_texts:
+        values = dict(re.findall(r'"([A-Za-z0-9_]+)"\s*:\s*"([0-9A-Fa-f]{6})"', row_text))
+        name_match = re.search(r'"name"\s*:\s*"([^"]+)"', row_text)
+        if not name_match or not all(key in values for key in ("background", "text_secondary")):
+            raise DrillVisualConsumerError("pinned C11C palette row is incomplete")
+        data_hex = values.get("text_data") or values.get("target_soft")
+        if not data_hex:
+            raise DrillVisualConsumerError("pinned C11C palette row has no footer data color")
+        rows.append({
+            "family_id": family_id, "name": name_match.group(1),
+            "background_rgb": _hex_rgb(values["background"]),
+            "header_secondary_rgb": _hex_rgb(values["text_secondary"]),
+            "footer_data_rgb": _hex_rgb(data_hex),
+        })
+    backgrounds = [row["background_rgb"] for row in rows]
+    if len(set(backgrounds)) != len(backgrounds):
+        raise DrillVisualConsumerError(f"pinned C11C palette backgrounds are not unique for {family_id}")
+    return tuple(rows)
+
+
+def _hex_rgb(value: str) -> tuple[int, int, int]:
+    raw = str(value).lstrip("#")
+    if not re.fullmatch(r"[0-9A-Fa-f]{6}", raw):
+        raise DrillVisualConsumerError(f"invalid RGB hex in C11C palette bank: {value!r}")
+    return tuple(int(raw[index:index + 2], 16) for index in (0, 2, 4))
+
+
+def _resolve_native_palette_style(source_frame: QImage, root: Path, family_id: str) -> dict[str, Any]:
+    """Resolve the unique nearest C11C family palette from untouched native GAME pixels.
+
+    C11C palette backgrounds are intentionally close. A radius query can therefore
+    match several valid palettes even when the native frame is an exact instance of
+    one palette. Rank the complete pinned family bank by max-channel RGB distance;
+    accept only a nearest candidate within the declared tolerance and with the
+    declared minimum integer separation from the runner-up. Exact ties fail closed.
+    """
+    xs = EDITORIAL_ROLE_STYLE_CONTRACT["palette_resolution"]["sample_x"]
+    ys = EDITORIAL_ROLE_STYLE_CONTRACT["palette_resolution"]["sample_y"]
+    samples = [
+        (source_frame.pixelColor(x, y).red(), source_frame.pixelColor(x, y).green(), source_frame.pixelColor(x, y).blue())
+        for y in ys for x in xs
+    ]
+    medians = []
+    for channel in range(3):
+        ordered = sorted(pixel[channel] for pixel in samples)
+        medians.append(int(ordered[len(ordered) // 2]))
+    observed = tuple(medians)
+    policy = EDITORIAL_ROLE_STYLE_CONTRACT["palette_resolution"]
+    tolerance = int(policy["maximum_channel_delta"])
+    minimum_separation = int(policy["minimum_nearest_neighbor_separation"])
+    ranked = []
+    for palette in _drill_palette_rows(str(root), family_id):
+        expected = palette["background_rgb"]
+        delta = tuple(abs(observed[index] - expected[index]) for index in range(3))
+        distance = max(delta)
+        ranked.append((distance, palette))
+    ranked.sort(key=lambda item: (item[0], item[1]["name"]))
+    best_distance, palette = ranked[0]
+    runner_up_distance, runner_up_palette = ranked[1]
+    confidence_margin = runner_up_distance - best_distance
+    if best_distance > tolerance or confidence_margin < minimum_separation:
+        closest = [(d, p["name"], p["background_rgb"]) for d, p in ranked[:3]]
+        raise DrillVisualConsumerError(
+            f"native GAME background has no confident nearest {family_id} C11C palette; "
+            f"tolerance={tolerance}; minimum_separation={minimum_separation}; observed={observed}; "
+            f"best={best_distance}/{palette['name']}; runner_up={runner_up_distance}/{runner_up_palette['name']}; "
+            f"confidence_margin={confidence_margin}; closest={closest}"
+        )
+    return {
+        "family_id": family_id,
+        "palette_name": palette["name"],
+        "palette_background_rgb": list(palette["background_rgb"]),
+        "observed_native_background_rgb": list(observed),
+        "max_channel_delta": best_distance,
+        "runner_up_max_channel_delta": runner_up_distance,
+        "confidence_margin": confidence_margin,
+        "minimum_required_confidence_margin": minimum_separation,
+        "header_secondary_rgb": list(palette["header_secondary_rgb"]),
+        "footer_data_rgb": list(palette["footer_data_rgb"]),
+        "palette_bank_sha256": DRILL_PALETTE_BANK_SHA,
+        "resolution_method": "NATIVE_GAME_BODY_BACKGROUND_UNIQUE_NEAREST_FAMILY_PALETTE",
+    }
+
+
+def _draw_editorial_role_text(
+    painter: QPainter, root: Path, text: str, block: Mapping[str, Any], style: Mapping[str, Any],
+    color_rgb: list[int] | tuple[int, int, int], field: str,
+) -> dict[str, Any]:
+    """Draw a centered, role-styled editorial field with the C11C one-pixel outline."""
+    if not text:
+        return {"visible": False, "line_count": 0}
+    font_name = str(style["font"])
+    rel_font = INTER_FONT_REL if font_name == "Inter-Bold" else MONO_FONT_REL if font_name == "NotoSansMono-Regular" else None
+    if rel_font is None:
+        raise DrillVisualConsumerError(f"unsupported editorial role font: {font_name}")
+    font = _font(root, rel_font, int(style["font_size_px"]))
+    cmap = _font_codepoints(root / rel_font)
+    missing = sorted({ord(ch) for ch in text if not ch.isspace()} - cmap)
+    raw_font = QRawFont.fromFont(font)
+    missing.extend(ord(ch) for ch in text if not ch.isspace() and not raw_font.supportsCharacter(ord(ch)))
+    missing = sorted(set(missing))
+    if missing:
+        preview = ",".join(f"U+{cp:04X}" for cp in missing[:8])
+        raise DrillVisualConsumerError(f"{field} font coverage is incomplete: {preview}")
+    if str(style.get("alignment")) != "CENTER" or str(block.get("alignment", "CENTER")) != "CENTER":
+        raise DrillVisualConsumerError(f"{field} role alignment must remain explicitly CENTER")
+    block_color_role = block.get("color_role")
+    if block_color_role is not None and block_color_role != style.get("color_role"):
+        raise DrillVisualConsumerError(f"{field} block and role color authority differ")
+    bx, by, bwidth, bheight = (int(block[k]) for k in ("x", "y", "width", "height"))
+    lines = _wrap_text(text, font, bwidth, int(block["max_lines"]), field)
+    metrics = QFontMetricsF(font)
+    line_height = int(style["line_height_px"])
+    total_height = len(lines) * line_height
+    if total_height > bheight:
+        raise DrillVisualConsumerError(f"{field} lines exceed approved role-style block height")
+    vertical = str(style.get("vertical_alignment", "TOP"))
+    if vertical == "CENTER":
+        top = float(by) + (float(bheight) - float(total_height)) / 2.0
+    elif vertical == "TOP":
+        top = float(by)
+    elif vertical == "BOTTOM":
+        top = float(by) + float(bheight) - float(total_height)
+    else:
+        raise DrillVisualConsumerError(f"unsupported editorial role vertical alignment: {vertical}")
+    ascent = float(metrics.ascent())
+    line_rows = []
+    for index, line in enumerate(lines):
+        advance = _text_advance(font, line)
+        text_x = float(bx) + (float(bwidth) - advance) / 2.0
+        baseline = top + index * line_height + ascent
+        bounds = metrics.tightBoundingRect(line)
+        left = text_x + bounds.left()
+        glyph_top = baseline + bounds.top()
+        right = left + bounds.width()
+        glyph_bottom = glyph_top + bounds.height()
+        if left < bx or right > bx + bwidth or glyph_top < by or glyph_bottom > by + bheight:
+            raise DrillVisualConsumerError(f"{field} centered shaped glyphs exceed approved role-style block")
+        path = QPainterPath()
+        path.addText(QPointF(text_x, baseline), font, line)
+        outline_width = int(style.get("outline_width_px", 0))
+        if outline_width > 0:
+            outline_rgb = style.get("outline_color_rgb", [0, 0, 0])
+            alpha = int(round(float(style.get("outline_alpha", 1.0)) * 255.0))
+            painter.strokePath(path, QPen(QColor(int(outline_rgb[0]), int(outline_rgb[1]), int(outline_rgb[2]), alpha), float(outline_width)))
+        painter.fillPath(path, QColor(*[int(v) for v in color_rgb]))
+        line_rows.append({"line": line, "glyph_bounds": [round(left, 3), round(glyph_top, 3), round(right, 3), round(glyph_bottom, 3)], "baseline": round(baseline, 3)})
+    return {
+        "visible": True, "role": str(style["source_role"]), "font": font_name,
+        "font_size_px": int(style["font_size_px"]), "line_height_px": line_height,
+        "alignment": str(style["alignment"]), "vertical_alignment": vertical,
+        "color_rgb": [int(v) for v in color_rgb], "color_role": str(style["color_role"]),
+        "outline_width_px": int(style.get("outline_width_px", 0)),
+        "outline_alpha": float(style.get("outline_alpha", 0.0)), "line_count": len(lines),
+        "line_rows": line_rows,
+    }
 
 
 def compose_frame(
@@ -1009,40 +1261,24 @@ def compose_frame(
         if title:
             title_render = _draw_family_title(painter, root, title, style)
         blocks = geometry["editorial_text_blocks"]
+        role_palette = _resolve_native_palette_style(source_rgb, root, str(plan["selection"]["family_id"])) if fields.get("subtitle") or fields.get("call_to_action") else None
+        editorial_role_render: dict[str, Any] = {}
         for key in ("subtitle", "call_to_action"):
             value = fields.get(key)
             if not value:
                 continue
-            block = text_contract["game_subtitle_block"] if key == "subtitle" else blocks[key]
-            rel_font = INTER_FONT_REL if block["font"] == "Inter-Bold" else MONO_FONT_REL
-            font = _font(root, rel_font, int(block["font_size_px"]))
-            cmap = _font_codepoints(root / rel_font)
-            missing = sorted({ord(ch) for ch in value if not ch.isspace()} - cmap)
-            raw_font = QRawFont.fromFont(font)
-            missing.extend(ord(ch) for ch in value if not ch.isspace() and not raw_font.supportsCharacter(ord(ch)))
-            missing = sorted(set(missing))
-            if missing:
-                preview = ",".join(f"U+{cp:04X}" for cp in missing[:8])
-                raise DrillVisualConsumerError(f"{key} font coverage is incomplete: {preview}")
-            lines = _wrap_text(value, font, int(block["width"]), int(block["max_lines"]), key)
-            metrics = QFontMetricsF(font)
-            line_height = int(block["line_height_px"])
-            bx, by, bwidth, bheight = (int(block[k]) for k in ("x", "y", "width", "height"))
-            if len(lines) * line_height > bheight:
-                raise DrillVisualConsumerError(f"{key} lines exceed approved block height")
-            painter.setFont(font)
-            ascent = float(metrics.ascent())
-            for index, line in enumerate(lines):
-                baseline = float(by + index * line_height) + ascent
-                bounds = metrics.tightBoundingRect(line)
-                left = float(bx) + bounds.left()
-                top = baseline + bounds.top()
-                right = left + bounds.width()
-                bottom = top + bounds.height()
-                if left < bx or right > bx + bwidth or top < by or bottom > by + bheight:
-                    raise DrillVisualConsumerError(f"{key} shaped glyphs exceed approved text block")
-                painter.setPen(QColor(245, 247, 250) if key == "subtitle" else QColor(205, 208, 210))
-                painter.drawText(QPointF(float(bx), baseline), line)
+            if role_palette is None:
+                raise DrillVisualConsumerError("editorial role palette was not resolved")
+            if key == "subtitle":
+                block = text_contract["game_subtitle_block"]
+                role_style = EDITORIAL_ROLE_STYLE_CONTRACT["roles"]["subtitle"]
+                color_rgb = role_palette["header_secondary_rgb"]
+            else:
+                block = blocks[key]
+                role_style = GAME_CTA_STYLE
+                role_style = {**role_style, "source_role": "C11C_FOOTER", "vertical_alignment": "TOP"}
+                color_rgb = role_palette["footer_data_rgb"]
+            editorial_role_render[key] = _draw_editorial_role_text(painter, root, value, block, role_style, color_rgb, key)
     finally:
         painter.end()
     body_identity = _image_rgb_sha256(composed.copy(x, y, width, height)) == _image_rgb_sha256(native_body)
@@ -1052,5 +1288,7 @@ def compose_frame(
         "source_unchanged": _image_rgb_sha256(source_rgb) == original_sha,
         "native_body_pixel_identity": body_identity, "d_editorial_title_visible": bool(title),
         "family_title_render": title_render,
+        "editorial_role_style_resolution": role_palette,
+        "editorial_role_render": editorial_role_render,
     }
 

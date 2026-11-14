@@ -30,9 +30,11 @@ class DrillVisualCompositionConsumerV2Tests(unittest.TestCase):
                 "composition_proposal_sha256": consumer.COMPOSITION_SHA,
                 "timebase_proposal_sha256": consumer.TIMEBASE_SHA,
                 "editorial_family_title_amendment_sha256": consumer.EDITORIAL_STYLE_AMENDMENT_SHA,
+                "editorial_role_style_amendment_sha256": consumer.EDITORIAL_ROLE_STYLE_AMENDMENT_SHA,
                 "status": "USER_DIRECTED_V2_D_OWNED_CONTRACT_ONLY",
             },
             "geometry": geometry,
+            "selection": {"content_type": "visual_drills", "family_id": "tracking", "variant_id": "tier-1"},
             "text": {
                 "raw_editorial_preserved": True,
                 "visible_fields": {
@@ -43,7 +45,8 @@ class DrillVisualCompositionConsumerV2Tests(unittest.TestCase):
                 "language_metadata_only": "es",
                 "layout_static_for_sequence": True,
                 "family_title_style": dict(consumer.FAMILY_TITLE_STYLE),
-                "game_subtitle_block": dict(consumer.GAME_SUBTITLE_BLOCK),
+                "game_subtitle_block": dict(consumer.GAME_SUBTITLE_ROLE_BLOCK),
+                "editorial_role_style_contract": consumer.EDITORIAL_ROLE_STYLE_CONTRACT,
                 "phase_visibility": {"PRE_ROLL": True, "GAME": True, "END_CTA": False, "DONE": False},
                 "field_phase_visibility": {
                     "title": ["PRE_ROLL", "GAME"],
@@ -60,7 +63,11 @@ class DrillVisualCompositionConsumerV2Tests(unittest.TestCase):
                 "editorial_family_title_amendment": {
                     "path": consumer.EDITORIAL_STYLE_AMENDMENT_REL,
                     "sha256": consumer.EDITORIAL_STYLE_AMENDMENT_SHA,
-                }
+                },
+                "editorial_role_style_amendment": {"path": consumer.EDITORIAL_ROLE_STYLE_AMENDMENT_REL, "sha256": consumer.EDITORIAL_ROLE_STYLE_AMENDMENT_SHA},
+                "c11c_editorial_layer": {"path": consumer.C11C_EDITORIAL_LAYER_REL, "sha256": consumer.C11C_EDITORIAL_LAYER_SHA},
+                "c11c_typography": {"path": consumer.C11C_TYPOGRAPHY_REL, "sha256": consumer.C11C_TYPOGRAPHY_SHA},
+                "drill_palette_bank": {"path": consumer.DRILL_PALETTE_BANK_REL, "sha256": consumer.DRILL_PALETTE_BANK_SHA},
             },
             "governance": {
                 "renderer_native_input_emitted": False, "renderer_dispatch_invoked": False,
@@ -75,7 +82,8 @@ class DrillVisualCompositionConsumerV2Tests(unittest.TestCase):
         cls.source.fill(QColor(20, 30, 40))
         painter = consumer.QPainter(cls.source)
         painter.fillRect(0, 0, 720, 192, QColor(170, 10, 20))
-        painter.fillRect(0, 192, 720, 896, QColor(10, 170, 20))
+        # Exact C11C TRACKING/AQUAMARINE_SUN native GAME body background.
+        painter.fillRect(0, 192, 720, 896, QColor(3, 17, 13))
         painter.fillRect(0, 1088, 720, 192, QColor(10, 20, 170))
         painter.end()
         cls.source_hash = consumer._image_rgb_sha256(cls.source)
@@ -87,6 +95,10 @@ class DrillVisualCompositionConsumerV2Tests(unittest.TestCase):
         self.assertEqual(consumer._sha_file(ROOT / consumer.TIMEBASE_PROPOSAL_REL), consumer.TIMEBASE_SHA)
         self.assertEqual(consumer._sha_file(ROOT / consumer.TIMEBASE_SCHEMA_REL), consumer.TIMEBASE_SCHEMA_SHA)
         self.assertEqual(consumer._sha_file(consumer._editorial_amendment_path(ROOT)), consumer.EDITORIAL_STYLE_AMENDMENT_SHA)
+        self.assertEqual(consumer._sha_file(consumer._editorial_role_style_amendment_path(ROOT)), consumer.EDITORIAL_ROLE_STYLE_AMENDMENT_SHA)
+        self.assertEqual(consumer._sha_file(ROOT / consumer.C11C_EDITORIAL_LAYER_REL), consumer.C11C_EDITORIAL_LAYER_SHA)
+        self.assertEqual(consumer._sha_file(ROOT / consumer.C11C_TYPOGRAPHY_REL), consumer.C11C_TYPOGRAPHY_SHA)
+        self.assertEqual(consumer._sha_file(ROOT / consumer.DRILL_PALETTE_BANK_REL), consumer.DRILL_PALETTE_BANK_SHA)
 
     def test_02_geometry_is_exact_full_width_social_regions(self):
         g = self.plan["geometry"]
@@ -141,7 +153,7 @@ class DrillVisualCompositionConsumerV2Tests(unittest.TestCase):
     def test_08_native_header_and_footer_are_not_embedded_in_game_body(self):
         result = consumer.compose_frame(self.source, self.plan, "GAME", 200, 630, 30, 1, ROOT)
         output = result["image"]
-        self.assertEqual(consumer._pixel_rgb(output, 350, 500), (10, 170, 20))
+        self.assertEqual(consumer._pixel_rgb(output, 350, 500), (3, 17, 13))
         self.assertEqual(consumer._pixel_rgb(output, 700, 190), (5, 7, 11))
         self.assertEqual(consumer._pixel_rgb(output, 700, 1279), (5, 7, 11))
 
@@ -157,25 +169,38 @@ class DrillVisualCompositionConsumerV2Tests(unittest.TestCase):
 
     def test_10_family_title_subtitle_and_cta_use_distinct_approved_regions(self):
         result = consumer.compose_frame(self.source, self.plan, "GAME", 1, 630, 30, 1, ROOT)
-        # The approved title is warm gold RGB(235,215,161), not neutral white.
-        # Subtitle and CTA are near-white. Apply a per-region chromatic threshold
-        # so the test verifies the approved rendering instead of rejecting gold.
         self.assertEqual(consumer.FAMILY_TITLE_STYLE["color_rgb"], [235, 215, 161])
+        self.assertEqual(result["editorial_role_style_resolution"]["palette_name"], "AQUAMARINE_SUN")
+        roles = result["editorial_role_render"]
+        self.assertEqual(roles["subtitle"]["role"], "C11C_HEADER")
+        self.assertEqual(roles["subtitle"]["font"], "Inter-Bold")
+        self.assertEqual(roles["subtitle"]["font_size_px"], 22)
+        self.assertEqual(roles["subtitle"]["alignment"], "CENTER")
+        self.assertEqual(roles["subtitle"]["color_rgb"], [255, 249, 232])
+        self.assertEqual(roles["subtitle"]["outline_width_px"], 1)
+        self.assertEqual(roles["subtitle"]["vertical_alignment"], "BOTTOM")
+        self.assertEqual(roles["call_to_action"]["role"], "C11C_FOOTER")
+        self.assertEqual(roles["call_to_action"]["font"], "NotoSansMono-Regular")
+        self.assertEqual(roles["call_to_action"]["font_size_px"], 16)
+        self.assertEqual(roles["call_to_action"]["alignment"], "CENTER")
+        self.assertEqual(roles["call_to_action"]["color_rgb"], [230, 255, 248])
+        self.assertEqual(roles["call_to_action"]["outline_width_px"], 1)
+        self.assertEqual(roles["call_to_action"]["vertical_alignment"], "TOP")
         regions = (
             ("family_title_gold", (36, 63, 648, 104), (180, 160, 110)),
-            ("subtitle_near_white", (36, 169, 648, 21), (180, 180, 180)),
-            ("cta_near_white", (36, 1151, 648, 66), (180, 180, 180)),
+            ("subtitle_palette", (36, 163, 648, 29), (180, 180, 180)),
+            ("cta_palette", (36, 1151, 648, 66), (180, 180, 180)),
         )
         for label, rect, floor_rgb in regions:
             patch = result["image"].copy(*rect).convertToFormat(QImage.Format.Format_RGB888)
             raw = consumer._image_rgb_bytes(patch)
             qualifying = sum(
                 1 for i in range(0, len(raw), 3)
-                if raw[i] > floor_rgb[0]
-                and raw[i + 1] > floor_rgb[1]
-                and raw[i + 2] > floor_rgb[2]
+                if raw[i] > floor_rgb[0] and raw[i + 1] > floor_rgb[1] and raw[i + 2] > floor_rgb[2]
             )
             self.assertGreater(qualifying, 8, f"{label} missing from its approved region")
+        self.assertEqual(roles["subtitle"]["line_count"], 1)
+        self.assertEqual(roles["call_to_action"]["line_count"], 1)
 
     def test_11_empty_editorial_uses_full_frame_passthrough(self):
         altered = copy.deepcopy(self.plan)
@@ -256,6 +281,8 @@ class DrillVisualCompositionConsumerV2Tests(unittest.TestCase):
         self.assertEqual(consumer.FAMILY_TITLE_STYLE["rect"], {"x": 36, "y": 63, "width": 648, "height": 104})
         self.assertEqual(consumer.FAMILY_TITLE_STYLE["color_rgb"], [235, 215, 161])
         self.assertEqual(consumer.GAME_SUBTITLE_BLOCK["y"], 169)
+        self.assertEqual(consumer.GAME_SUBTITLE_ROLE_BLOCK["y"], 163)
+        self.assertEqual(consumer.GAME_SUBTITLE_ROLE_BLOCK["font_size_px"], 22)
         self.assertEqual(consumer.FAMILY_TITLE_STYLE["animation"], "STATIC_NO_ANIMATION_OBSERVED_IN_TRACKING_TIER_1_PRE_ROLL")
         self.assertEqual(consumer.compose_frame(self.source, self.plan, "PRE_ROLL", 30, 630, 30, 1, ROOT)["family_title_render"]["animation"], consumer.FAMILY_TITLE_STYLE["animation"])
 
@@ -271,9 +298,14 @@ class DrillVisualCompositionConsumerV2Tests(unittest.TestCase):
         with self.assertRaises(consumer.DrillVisualConsumerError):
             consumer.validate_plan(altered)
 
-    def test_25_subtitle_must_remain_below_family_title(self):
-        self.assertGreaterEqual(consumer.GAME_SUBTITLE_BLOCK["y"], consumer.FAMILY_TITLE_STYLE["rect"]["y"] + consumer.FAMILY_TITLE_STYLE["rect"]["height"])
-        self.assertLessEqual(consumer.GAME_SUBTITLE_BLOCK["y"] + consumer.GAME_SUBTITLE_BLOCK["height"], 192)
+    def test_25_subtitle_glyphs_do_not_overlap_family_title_glyphs(self):
+        result = consumer.compose_frame(self.source, self.plan, "GAME", 0, 630, 30, 1, ROOT)
+        title_rows = result["family_title_render"]["line_rows"]
+        subtitle_rows = result["editorial_role_render"]["subtitle"]["line_rows"]
+        title_bottom = max(row["glyph_bounds"][3] for row in title_rows)
+        subtitle_top = min(row["glyph_bounds"][1] for row in subtitle_rows)
+        self.assertGreaterEqual(subtitle_top, title_bottom)
+        self.assertEqual(consumer.GAME_SUBTITLE_ROLE_BLOCK["y"] + consumer.GAME_SUBTITLE_ROLE_BLOCK["height"], 192)
 
     def test_26_preroll_footer_is_not_repainted_by_title_bridge(self):
         result = consumer.compose_frame(self.source, self.plan, "PRE_ROLL", 89, 630, 30, 1, ROOT)
@@ -283,6 +315,70 @@ class DrillVisualCompositionConsumerV2Tests(unittest.TestCase):
         result = consumer.compose_frame(self.source, self.plan, "END_CTA", 809, 630, 30, 1, ROOT)
         self.assertTrue(result["native_full_frame_identity"])
         self.assertEqual(consumer._image_rgb_bytes(result["image"]), consumer._image_rgb_bytes(self.source))
+
+    def test_28_role_palette_resolver_reads_selected_family_palette_dynamically(self):
+        resolved = consumer._resolve_native_palette_style(self.source, ROOT, "tracking")
+        self.assertEqual(resolved["palette_name"], "AQUAMARINE_SUN")
+        self.assertEqual(resolved["palette_background_rgb"], [3, 17, 13])
+        self.assertEqual(resolved["header_secondary_rgb"], [255, 249, 232])
+        self.assertEqual(resolved["footer_data_rgb"], [230, 255, 248])
+        self.assertGreaterEqual(resolved["confidence_margin"], 1)
+
+        # The accepted R6 native GAME body has median edge RGB (1,15,12).
+        # Five palettes lie inside the old +/-8 radius; nearest-neighbor ranking
+        # must select AQUAMARINE_SUN with a confidence margin of four levels.
+        native_r6 = QImage(720, 1280, QImage.Format.Format_RGB888)
+        native_r6.fill(QColor(1, 15, 12))
+        resolved_native = consumer._resolve_native_palette_style(native_r6, ROOT, "tracking")
+        self.assertEqual(resolved_native["palette_name"], "AQUAMARINE_SUN")
+        self.assertEqual(resolved_native["max_channel_delta"], 2)
+        self.assertEqual(resolved_native["runner_up_max_channel_delta"], 6)
+        self.assertEqual(resolved_native["confidence_margin"], 4)
+
+    def test_29_unmatched_or_ambiguous_native_palette_fails_closed(self):
+        unknown = QImage(720, 1280, QImage.Format.Format_RGB888)
+        unknown.fill(QColor(77, 81, 83))
+        with self.assertRaises(consumer.DrillVisualConsumerError):
+            consumer._resolve_native_palette_style(unknown, ROOT, "tracking")
+
+        # This RGB is equidistant from AQUAMARINE_SUN and MOSS_CORAL (delta 2).
+        # A tie must never silently choose by ordering.
+        ambiguous = QImage(720, 1280, QImage.Format.Format_RGB888)
+        ambiguous.fill(QColor(5, 17, 12))
+        with self.assertRaises(consumer.DrillVisualConsumerError):
+            consumer._resolve_native_palette_style(ambiguous, ROOT, "tracking")
+
+    def test_30_all_four_drill_families_have_distinct_pinned_palette_rows(self):
+        for family in consumer.DRILL_FAMILIES:
+            rows = consumer._drill_palette_rows(str(ROOT), family)
+            self.assertEqual(len(rows), 24)
+            self.assertEqual(len({tuple(row["background_rgb"]) for row in rows}), 24)
+            for row in rows:
+                source = QImage(720, 1280, QImage.Format.Format_RGB888)
+                source.fill(QColor(1, 2, 3))
+                color = QColor(*row["background_rgb"])
+                painter = consumer.QPainter(source)
+                painter.fillRect(0, 192, 720, 896, color)
+                painter.end()
+                resolved = consumer._resolve_native_palette_style(source, ROOT, family)
+                self.assertEqual(resolved["palette_name"], row["name"])
+                self.assertEqual(resolved["max_channel_delta"], 0)
+                self.assertGreaterEqual(resolved["confidence_margin"], 1)
+
+    def test_31_role_style_contract_is_bound_to_c11c_frozen_sources(self):
+        contract = consumer.EDITORIAL_ROLE_STYLE_CONTRACT
+        self.assertEqual(contract["style_authority"]["editorial_layer"]["sha256"], consumer.C11C_EDITORIAL_LAYER_SHA)
+        self.assertEqual(contract["style_authority"]["typography_service"]["sha256"], consumer.C11C_TYPOGRAPHY_SHA)
+        self.assertEqual(contract["style_authority"]["drill_palette_bank"]["sha256"], consumer.DRILL_PALETTE_BANK_SHA)
+        self.assertFalse(contract["scope"]["c11c_source_mutation"])
+        self.assertEqual(contract["scope"]["release_authority"], "NONE")
+
+    def test_32_role_style_metadata_is_stable_for_repeated_game_frames(self):
+        a = consumer.compose_frame(self.source, self.plan, "GAME", 10, 630, 30, 1, ROOT)
+        b = consumer.compose_frame(self.source, self.plan, "GAME", 400, 630, 30, 1, ROOT)
+        self.assertEqual(a["editorial_role_style_resolution"], b["editorial_role_style_resolution"])
+        self.assertEqual(a["editorial_role_render"], b["editorial_role_render"])
+        self.assertTrue(a["native_body_pixel_identity"] and b["native_body_pixel_identity"])
 
 
 if __name__ == "__main__":

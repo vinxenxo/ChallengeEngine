@@ -1,0 +1,11 @@
+C:\Users\vinxe\AppData\Local\Temp\C11E_E4C_R6_3A_PACKAGE_40b9aabf970949c4b3b8ee7c46a3fd31\VERIFY_C11E_E4C_V2_3_R6_3A_IN
+STALL_V1.ps1 : R6_3A_INDEPENDENT_AUDIT_FAILED: REPLACEMENT_BACKUP_FAIL: 
+tests/test_c11e_e4c_drill_visual_composition_consumer.py
+En C:\Users\vinxe\AppData\Local\Temp\C11E_E4C_R6_3A_PACKAGE_40b9aabf970949c4b3b8ee7c46a3fd31\VERIFY_C11E_E4C_V2_3_R6_3A
+_INSTALL_V1.ps1: 28 Car cter: 8
++ }catch{Write-Error ('R6_3A_INDEPENDENT_AUDIT_FAILED: '+$_.Exception.M ...
++        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [Write-Error], WriteErrorException
+    + FullyQualifiedErrorId : Microsoft.PowerShell.Commands.WriteErrorException,VERIFY_C11E_E4C_V2_3_R6_3A_INSTALL_V1. 
+   ps1
+ 

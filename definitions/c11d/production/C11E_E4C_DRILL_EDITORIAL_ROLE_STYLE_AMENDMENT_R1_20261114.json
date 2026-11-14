@@ -1,0 +1,129 @@
+{
+  "schema": "C11E-E4C-DRILL-EDITORIAL-ROLE-STYLE-AMENDMENT-V1",
+  "status": "USER_DIRECTED_D_OWNED_ROLE_STYLE_INHERITANCE_AMENDMENT",
+  "created_utc": "2026-11-14",
+  "supersedes": "R6.2 visual operator review: layout and family-title bridge accepted; subtitle/CTA role styling rejected",
+  "role_style_contract": {
+    "schema": "C11E-E4C-DRILL-EDITORIAL-ROLE-STYLE-CONTRACT-V1",
+    "style_authority": {
+      "editorial_layer": {
+        "path": "core/presentation/C11CVisualEditorialLayer.gd",
+        "sha256": "f8f718c067a4d7a088cc16f244cc40209e7183bec93e44d8cb66eb6dd404cf7d"
+      },
+      "typography_service": {
+        "path": "core/presentation/C11CVisualTypography.gd",
+        "sha256": "9ee823a28cef721a26f66436b5b168d92f5b9d1597ed6e4e3f518debb0910633"
+      },
+      "drill_palette_bank": {
+        "path": "tools/prototypes/c11c_common/C11CDrillPaletteBank.gd",
+        "sha256": "757786a6bcc4e819fd43c1c41ea29e8b00dbe3b3f2f5c72fa19776a368b3c8ec"
+      }
+    },
+    "palette_resolution": {
+      "method": "NEAREST_C11C_FAMILY_PALETTE_BACKGROUND_FROM_NATIVE_GAME_BODY_EDGE_MEDIAN",
+      "source": "UNMODIFIED_C11C_NATIVE_GAME_FRAME",
+      "sample_x": [
+        8,
+        16,
+        704,
+        712
+      ],
+      "sample_y": [
+        205,
+        300,
+        500,
+        700,
+        900,
+        1000,
+        1080
+      ],
+      "maximum_channel_delta": 8,
+      "match_policy": "UNIQUE_NEAREST_PALETTE_WITH_MINIMUM_SEPARATION_OR_FAIL_CLOSED",
+      "palette_roles": {
+        "subtitle": "text_secondary",
+        "call_to_action": "text_data"
+      },
+      "minimum_nearest_neighbor_separation": 1
+    },
+    "roles": {
+      "family_title": {
+        "authority": "R6_FAMILY_TITLE_AMENDMENT_R1",
+        "font": "Inter-Bold",
+        "font_size_px": 22,
+        "line_height_px": 29,
+        "color_rgb": [
+          235,
+          215,
+          161
+        ],
+        "alignment": "CENTER",
+        "outline_width_px": 0
+      },
+      "subtitle": {
+        "source_role": "C11C_HEADER",
+        "font": "Inter-Bold",
+        "font_size_px": 22,
+        "line_height_px": 29,
+        "color_role": "palette.text_secondary",
+        "alignment": "CENTER",
+        "vertical_alignment": "BOTTOM",
+        "outline_width_px": 1,
+        "outline_color_rgb": [
+          0,
+          0,
+          0
+        ],
+        "outline_alpha": 0.72,
+        "size_projection": "D_720PX_SINGLE_LINE_HEADER_FIT_TO_R6_RESERVED_HEADER_BAND"
+      },
+      "call_to_action": {
+        "source_role": "C11C_FOOTER",
+        "font": "NotoSansMono-Regular",
+        "font_size_px": 16,
+        "line_height_px": 22,
+        "color_role": "palette.text_data",
+        "alignment": "CENTER",
+        "vertical_alignment": "TOP",
+        "outline_width_px": 1,
+        "outline_color_rgb": [
+          0,
+          0,
+          0
+        ],
+        "outline_alpha": 0.78,
+        "size_projection": "C11C_FOOTER_FONT_SIZE_16_DELIVERY_PX"
+      }
+    },
+    "scope": {
+      "d_owned_consumer_only": true,
+      "c11c_source_mutation": false,
+      "native_frame_mutation": false,
+      "game_body_pixel_identity_required": true,
+      "pre_roll_body_and_footer_passthrough_required": true,
+      "end_cta_full_frame_passthrough_required": true,
+      "renderer_activation": false,
+      "production_dispatch": false,
+      "release_authority": "NONE"
+    },
+    "game_subtitle_role_block": {
+      "font": "Inter-Bold",
+      "font_size_px": 22,
+      "line_height_px": 29,
+      "max_lines": 1,
+      "region": "TOP_BAND",
+      "x": 36,
+      "y": 163,
+      "width": 648,
+      "height": 29,
+      "alignment": "CENTER",
+      "color_role": "palette.text_secondary"
+    }
+  },
+  "rationale": [
+    "R6.2 consumer geometry contained no C11C editorial role-style contract for subtitle and CTA.",
+    "R6.2 used hard-coded subtitle/CTA colors and left-origin text drawing instead of role-derived palette colors and centered alignment.",
+    "C11CVisualEditorialLayer uses a centered Inter-Bold header role with header_secondary color and black outline, and a centered Noto Sans Mono footer role with footer_data color and black outline.",
+    "The D consumer retains C11C header horizontal centering and bottom vertical alignment, projecting the header role to a 22px one-line subtitle in the reserved 29px band after the approved R6 family title; CTA retains the C11C 16px top-aligned footer role.",
+    "Active role colors are resolved from the exact C11C Drill palette bank using the unmodified native GAME body background; no palette is hard-coded for a particular selector."
+  ]
+}
