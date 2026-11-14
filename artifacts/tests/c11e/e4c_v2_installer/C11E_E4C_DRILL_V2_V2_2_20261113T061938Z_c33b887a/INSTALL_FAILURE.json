@@ -1,0 +1,20 @@
+﻿{
+    "schema":  "C11E-E4C-VISUAL-COMPOSITION-V2-INSTALL-FAILURE-V2_2",
+    "status":  "FAIL_CLOSED_PRE_TRANSACTION_NO_DESTINATION_WRITES",
+    "run_id":  "C11E_E4C_DRILL_V2_V2_2_20261113T061938Z_c33b887a",
+    "stage":  "STAGING_AND_PYTHON_TESTS",
+    "error":  "PYTHON_EXIT=1; command=C:\\Users\\vinxe\\AppData\\Local\\Programs\\Python\\Python313\\python.exe \"C:\\Users\\vinxe\\AppData\\Local\\Temp\\C11E_E4C_V2_STAGE_69efe11b\\tests\\test_c11e_e4c_drill_visual_composition_consumer.py\"; stdout=; stderr=setUpClass (__main__.DrillVisualCompositionConsumerV2Tests) ... ERROR\r\n\r\n======================================================================\r\nERROR: setUpClass (__main__.DrillVisualCompositionConsumerV2Tests)\r\n----------------------------------------------------------------------\r\nTraceback (most recent call last):\r\n  File \"C:\\Users\\vinxe\\AppData\\Local\\Temp\\C11E_E4C_V2_STAGE_69efe11b\\tests\\test_c11e_e4c_drill_visual_composition_consumer.py\", line 23, in setUpClass\r\n    cls.composition, cls.schema, cls.timebase, cls.timebase_schema = consumer._verify_decision_and_proposals(ROOT)\r\n                                                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^\r\n  File \"C:\\Users\\vinxe\\AppData\\Local\\Temp\\C11E_E4C_V2_STAGE_69efe11b\\tools\\c11d\\d9\\c11e_e4c_drill_visual_composition_consumer.py\", line 169, in _verify_decision_and_proposals\r\n    raise DrillVisualConsumerError(f\"approved V2 design/source pin mismatch: {relative}\")\r\nc11e_e4c_drill_visual_composition_consumer.DrillVisualConsumerError: approved V2 design/source pin mismatch: docs/current/e/C11E_E4C_DRILL_COMPOSITION_OPERATOR_DECISION_RECORD_20261112_V2.json\r\n\r\n----------------------------------------------------------------------\r\nRan 0 tests in 0.067s\r\n\r\nFAILED (errors=1)\r\n",
+    "python_command":  "C:\\Users\\vinxe\\AppData\\Local\\Programs\\Python\\Python313\\python.exe \"C:\\Users\\vinxe\\AppData\\Local\\Temp\\C11E_E4C_V2_STAGE_69efe11b\\tests\\test_c11e_e4c_drill_visual_composition_consumer.py\"",
+    "journal_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_v2_installer\\C11E_E4C_DRILL_V2_V2_2_20261113T061938Z_c33b887a\\TRANSACTION_JOURNAL.json",
+    "journal":  [
+
+                ],
+    "rollback_errors":  [
+
+                        ],
+    "git_checks":  "SKIPPED",
+    "commits":  "OPERATOR_MANAGED",
+    "c11c_source_mutation":  false,
+    "production_dispatch":  false,
+    "release_authority":  "NONE"
+}

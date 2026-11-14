@@ -1,0 +1,97 @@
+﻿{
+    "schema":  "C11E-E4C-V2_2-PIN-ALIGNED-R1-INDEPENDENT-POST-INSTALL-AUDIT-V1",
+    "status":  "PASS_INDEPENDENT_POST_INSTALL_AUDIT",
+    "run_id":  "C11E_E4C_DRILL_V2_V2_2_20261113T064019Z_4f27257a",
+    "package_zip_sha256":  "c51ac1a2c6b48060d5805de28298450014f28364216cdabc1a293892714d21e8",
+    "checks":  [
+                   {
+                       "name":  "PACKAGE_ZIP_SHA256",
+                       "status":  "PASS",
+                       "detail":  "c51ac1a2c6b48060d5805de28298450014f28364216cdabc1a293892714d21e8"
+                   },
+                   {
+                       "name":  "MANIFEST_SCHEMA_AND_ID",
+                       "status":  "PASS",
+                       "detail":  "C11E_E4C_DRILL_VISUAL_COMPOSITION_V2_REQUALIFICATION_V2_2_20261112"
+                   },
+                   {
+                       "name":  "MANIFEST_COUNTS",
+                       "status":  "PASS",
+                       "detail":  "pins=21; replace=1; add=24; files=27"
+                   },
+                   {
+                       "name":  "PACKAGE_FILES_27_OF_27",
+                       "status":  "PASS",
+                       "detail":  ""
+                   },
+                   {
+                       "name":  "RECEIPT_SCHEMA_STATUS",
+                       "status":  "PASS",
+                       "detail":  "PASS_REPLACE_AND_ADD_ONLY_INSTALL"
+                   },
+                   {
+                       "name":  "RECEIPT_RUN_PACKAGE_ZIP",
+                       "status":  "PASS",
+                       "detail":  "run=C11E_E4C_DRILL_V2_V2_2_20261113T064019Z_4f27257a; package=C11E_E4C_DRILL_VISUAL_COMPOSITION_V2_REQUALIFICATION_V2_2_20261112"
+                   },
+                   {
+                       "name":  "RECEIPT_COUNTS_AND_STAGES",
+                       "status":  "PASS",
+                       "detail":  "Receipt stage/count fields"
+                   },
+                   {
+                       "name":  "RECEIPT_GOVERNANCE",
+                       "status":  "PASS",
+                       "detail":  "Protected C11-C/E1/dispatch and authority fields"
+                   },
+                   {
+                       "name":  "JOURNAL_SCHEMA_STAGE",
+                       "status":  "PASS",
+                       "detail":  "POSTIMAGE_AND_POSTPIN_AUDIT"
+                   },
+                   {
+                       "name":  "RECEIPT_JOURNAL_LINK",
+                       "status":  "PASS",
+                       "detail":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_v2_installer\\C11E_E4C_DRILL_V2_V2_2_20261113T064019Z_4f27257a\\TRANSACTION_JOURNAL.json"
+                   },
+                   {
+                       "name":  "RECEIPT_REPLACEMENT_HASH",
+                       "status":  "PASS",
+                       "detail":  "tools/c11d/d9/c11e_e4c_drill_visual_composition_consumer.py"
+                   },
+                   {
+                       "name":  "JOURNAL_OPERATION_COUNT",
+                       "status":  "PASS",
+                       "detail":  "25"
+                   },
+                   {
+                       "name":  "JOURNAL_MATRIX_AND_25_POSTIMAGES",
+                       "status":  "PASS",
+                       "detail":  ""
+                   },
+                   {
+                       "name":  "SOURCE_PINS_POST_21_OF_21",
+                       "status":  "PASS",
+                       "detail":  ""
+                   },
+                   {
+                       "name":  "FROZEN_C11C_MANIFEST",
+                       "status":  "PASS",
+                       "detail":  "bytes=796318; sha256=e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+                   },
+                   {
+                       "name":  "IMMUTABLE_DECISION_RECORD",
+                       "status":  "PASS",
+                       "detail":  "bytes=2925; sha256=bceef9a22c27447ccbef5487339c25626e4cb4c5d32509809b832411655914e8"
+                   }
+               ],
+    "failure_count":  0,
+    "failures":  [
+
+                 ],
+    "protected_source_mutation":  false,
+    "production_dispatch":  false,
+    "release_authority":  "NONE",
+    "git_checks":  "SKIPPED",
+    "commits":  "OPERATOR_MANAGED"
+}

@@ -1,0 +1,17 @@
+﻿{
+    "schema":  "C11E-E4C-V2_3-R3-INDEPENDENT-POST-INSTALL-AUDIT-V1",
+    "status":  "PASS_INDEPENDENT_POST_INSTALL_AUDIT",
+    "run_id":  "C11E_E4C_HISTORICAL_REQUAL_V2_3_R3_20261114T002229Z_eec825d1",
+    "package_zip_sha256":  "d15ade856e461f33b64c06429b28a29d822dc38bfad2efe0c149221c0c689cc0",
+    "package_files":  "20/20 PASS",
+    "journal_operations":  "17/17 PASS",
+    "postimages":  "17/17 PASS",
+    "replacement_backups":  "2/2 PASS",
+    "source_pins":  "21/21 PASS",
+    "frozen_c11c_manifest":  "PASS",
+    "immutable_decision_record":  "PASS",
+    "source_mutation":  false,
+    "production_dispatch":  false,
+    "release_authority":  "NONE",
+    "updated_utc":  "2026-11-14T00:34:08.9172781Z"
+}

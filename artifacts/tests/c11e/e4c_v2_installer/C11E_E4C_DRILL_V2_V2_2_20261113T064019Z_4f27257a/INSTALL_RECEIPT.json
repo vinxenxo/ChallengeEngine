@@ -1,0 +1,60 @@
+﻿{
+    "schema":  "C11E-E4C-VISUAL-COMPOSITION-V2-INSTALL-RECEIPT-V2_2",
+    "status":  "PASS_REPLACE_AND_ADD_ONLY_INSTALL",
+    "run_id":  "C11E_E4C_DRILL_V2_V2_2_20261113T064019Z_4f27257a",
+    "package_id":  "C11E_E4C_DRILL_VISUAL_COMPOSITION_V2_REQUALIFICATION_V2_2_20261112",
+    "package_zip_sha256":  "c51ac1a2c6b48060d5805de28298450014f28364216cdabc1a293892714d21e8",
+    "source_pins":  "21/21 PASS",
+    "replacement_count":  1,
+    "replacement_postimages":  [
+                                   {
+                                       "path":  "tools/c11d/d9/c11e_e4c_drill_visual_composition_consumer.py",
+                                       "sha256":  "e5cf97651e546ad86e2a4d46698553038e4161dc97a55da2654f197ed71f623c"
+                                   }
+                               ],
+    "add_count":  24,
+    "added":  [
+                  "definitions/c11d/production/C11E_E4C_DRILL_EDITORIAL_COMPOSITION_PROPOSAL_SCHEMA_V2.json",
+                  "definitions/c11d/production/C11E_E4C_DRILL_EDITORIAL_COMPOSITION_PROPOSAL_V2.json",
+                  "docs/current/e/C11D_E_BLOCKER_REMEDIATION_REGISTER_20261112_V58.md",
+                  "docs/current/e/C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261112_V84.md",
+                  "docs/current/e/C11E_CURRENT_AUTHORITY_20261112_V141.md",
+                  "docs/current/e/C11E_CURRENT_DOC_INDEX_20261112_V103.md",
+                  "docs/current/e/C11E_E3_EXECUTION_BACKLOG_20261112_V112.md",
+                  "docs/current/e/C11E_E4C_DRILL_COMPOSITION_OPERATOR_DECISION_RECORD_20261112_V2.json",
+                  "docs/current/e/C11E_E4C_DRILL_EXECUTION_PLAN_20261112_V29.md",
+                  "docs/current/e/C11E_E4C_DRILL_VISUAL_CONSUMER_SPEC_20261112_V13.md",
+                  "docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261112_V136.md",
+                  "docs/current/e/C11E_INSTALLER_INCIDENT_REGISTER_20261112_V21.md",
+                  "docs/history/c11e/C11E_E4C_DRILL_V1_7_INSTALLER_DESTINATION_CLASSIFICATION_20261112_V1.md",
+                  "docs/history/c11e/C11E_E4C_DRILL_V1_8_INSTALLER_PACKAGE_BINDING_INCIDENT_20261112_V1.md",
+                  "docs/history/c11e/C11E_E4C_DRILL_V1_9_GEOMETRY_CONTRACT_TEST_FAILURE_20261112_V1.md",
+                  "docs/history/c11e/C11E_E4C_DRILL_V1_COMPOSITION_ROOT_CAUSE_20261112_V1.md",
+                  "docs/history/c11e/C11E_E4C_DRILL_V2_EXISTING_MEDIA_REQUALIFICATION_20261112_V1.md",
+                  "docs/history/c11e/C11E_E4C_DRILL_VISUAL_CONSUMER_V2_IMPLEMENTATION_20261112_V1.md",
+                  "prompts/C11E_CONTINUATION_MASTER_PROMPT_20261112_V142.md",
+                  "prompts/C11E_FIRST_PROMPT_20261112_V66.md",
+                  "prompts/C11E_NEXT_WINDOW_START_PROMPT_20261112_V142.md",
+                  "tests/test_c11e_e4c_drill_visual_composition_consumer.py",
+                  "tools/c11d/d9/REQUALIFY_C11E_E4C_DRILL_AV_FROM_EXISTING_EVIDENCE_V2.py",
+                  "tools/c11d/d9/RUN_C11E_E4C_DRILL_AV_EXISTING_MEDIA_V2_REQUALIFICATION.ps1"
+              ],
+    "skipped_identical":  [
+
+                          ],
+    "powershell_ast":  "2/2 PASS",
+    "python_runtime":  "3.13/PySide6/Qt OFFSCREEN PASS",
+    "py_compile":  "3/3 PASS",
+    "staged_tests":  "20/20 PASS",
+    "file_replace_preflight":  "FORWARD_AND_ROLLBACK_PASS",
+    "postimages":  "ALL PASS",
+    "source_pins_post":  "21/21 PASS",
+    "journal_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_v2_installer\\C11E_E4C_DRILL_V2_V2_2_20261113T064019Z_4f27257a\\TRANSACTION_JOURNAL.json",
+    "c11c_source_mutation":  false,
+    "e1_service_mutation":  false,
+    "gui_cli_entrypoint_mutation":  false,
+    "dispatch":  false,
+    "git_checks":  "SKIPPED",
+    "commits":  "OPERATOR_MANAGED",
+    "release_authority":  "NONE"
+}

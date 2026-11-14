@@ -1,0 +1,45 @@
+﻿{
+    "schema":  "C11E-E4C-V2_2-FILE-REPLACE-PATH-PREFLIGHT-V1",
+    "status":  "PASS",
+    "package_id":  "C11E_E4C_DRILL_VISUAL_COMPOSITION_V2_REQUALIFICATION_V2_2_20261112",
+    "run_id":  "C11E_E4C_DRILL_V2_V2_2_20261113T061924Z_7c2e5422",
+    "max_path_characters_excluding_nul":  259,
+    "path_lengths":  [
+                         {
+                             "name":  "EVIDENCE_ROOT",
+                             "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_v2_installer\\C11E_E4C_DRILL_V2_V2_2_20261113T061924Z_7c2e5422",
+                             "characters":  139
+                         },
+                         {
+                             "name":  "FORWARD_BACKUP",
+                             "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_v2_installer\\C11E_E4C_DRILL_V2_V2_2_20261113T061924Z_7c2e5422\\backups\\000.C11E_E4C_DRILL_V2_V2_2_20261113T061924Z_7c2e5422.preimage.bak",
+                             "characters":  213
+                         },
+                         {
+                             "name":  "ROLLBACK_BACKUP",
+                             "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_v2_installer\\C11E_E4C_DRILL_V2_V2_2_20261113T061924Z_7c2e5422\\backups\\000.C11E_E4C_DRILL_V2_V2_2_20261113T061924Z_7c2e5422.preimage.bak.displaced_64328ff42a854cf6bcb1063c7f5d8f6c",
+                             "characters":  256
+                         },
+                         {
+                             "name":  "REPLACEMENT_TEMP",
+                             "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\tools\\c11d\\d9\\c11e_e4c_drill_visual_composition_consumer.py.C11E_E4C_DRILL_V2_V2_2_20261113T061924Z_7c2e5422.tmp",
+                             "characters":  165
+                         },
+                         {
+                             "name":  "MAX_ADD_OR_REPLACE_TEMP",
+                             "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\history\\c11e\\C11E_E4C_DRILL_V1_7_INSTALLER_DESTINATION_CLASSIFICATION_20261112_V1.md.C11E_E4C_DRILL_V2_V2_2_20261113T061924Z_7c2e5422.tmp",
+                             "characters":  195
+                         }
+                     ],
+    "forward_file_replace":  "PASS",
+    "rollback_file_replace":  "PASS",
+    "preimage_sha256":  "5d0f32e5e6f506d3ec7a51505f720dd79ad8cdf6741fa0f9b8298f5774e93123",
+    "postimage_sha256":  "828e9051c377c1151ccee3357d681b3d951311fbe5c9394954a97e9a531fddb2",
+    "probe_files_cleaned":  true,
+    "prior_v2_1_temp_status":  "FOUND_EXPECTED_POSTIMAGE_PRESERVED",
+    "prior_v2_1_temp_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\tools\\c11d\\d9\\c11e_e4c_drill_visual_composition_consumer.py.C11E_E4C_DRILL_V2_V2_1_20261112T183331Z_ef153df2.tmp",
+    "checkout_source_mutation":  false,
+    "c11c_mutation":  false,
+    "production_dispatch":  false,
+    "release_authority":  "NONE"
+}

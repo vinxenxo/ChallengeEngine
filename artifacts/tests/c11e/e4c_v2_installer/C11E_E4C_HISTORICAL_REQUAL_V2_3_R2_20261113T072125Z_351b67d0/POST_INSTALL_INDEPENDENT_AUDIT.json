@@ -1,0 +1,20 @@
+﻿{
+    "schema":  "C11E-E4C-V2_3-R2-INDEPENDENT-POST-INSTALL-AUDIT-V1",
+    "status":  "PASS_INDEPENDENT_POST_INSTALL_AUDIT",
+    "run_id":  "C11E_E4C_HISTORICAL_REQUAL_V2_3_R2_20261113T072125Z_351b67d0",
+    "package_id":  "C11E_E4C_DRILL_HISTORICAL_REQUALIFIER_V2_3_R2_20261113",
+    "package_zip_sha256":  "594c36dd07d1a931fc6abf7eabefe9db6b770a48dccf07367cb0e16d05af8740",
+    "package_files":  "19/19 PASS",
+    "operation_matrix":  "4 REPLACE + 13 ADD_ONLY",
+    "journal_operations":  "17/17 PASS",
+    "postimages":  "17/17 PASS",
+    "replacement_backups":  "4/4 PREIMAGE SHA PASS",
+    "source_pins":  "21/21 PASS",
+    "frozen_c11c_manifest":  "PASS",
+    "immutable_decision_record":  "PASS",
+    "c11c_source_mutation":  false,
+    "e1_service_mutation":  false,
+    "production_dispatch":  false,
+    "release_authority":  "NONE",
+    "audited_utc":  "2026-11-14T00:08:07.8191230Z"
+}

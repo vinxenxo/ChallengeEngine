@@ -1,0 +1,16 @@
+
+test_runner_captures_failure_in_progress_checkpoint (__main__.RequalifierWaitTimeoutContractTests.test_runner_captures_failure_in_progress_checkpoint) ... ok
+test_runner_checkpoints_frame_composition_every_30_frames (__main__.RequalifierWaitTimeoutContractTests.test_runner_checkpoints_frame_composition_every_30_frames) ... ok
+test_runner_has_atomic_progress_writer (__main__.RequalifierWaitTimeoutContractTests.test_runner_has_atomic_progress_writer) ... ok
+test_runner_publishes_required_stages (__main__.RequalifierWaitTimeoutContractTests.test_runner_publishes_required_stages) ... ok
+test_seconds_are_converted_to_milliseconds (__main__.RequalifierWaitTimeoutContractTests.test_seconds_are_converted_to_milliseconds) ... ok
+test_timeout_failure_records_seconds_and_milliseconds (__main__.RequalifierWaitTimeoutContractTests.test_timeout_failure_records_seconds_and_milliseconds) ... ok
+test_timeout_kills_descendant_process_tree (__main__.RequalifierWaitTimeoutContractTests.test_timeout_kills_descendant_process_tree) ... ok
+test_timeout_seconds_are_explicitly_1800 (__main__.RequalifierWaitTimeoutContractTests.test_timeout_seconds_are_explicitly_1800) ... ok
+test_wait_for_exit_poll_uses_bounded_millisecond_value (__main__.RequalifierWaitTimeoutContractTests.test_wait_for_exit_poll_uses_bounded_millisecond_value) ... ok
+test_wrapper_polls_progress_file (__main__.RequalifierWaitTimeoutContractTests.test_wrapper_polls_progress_file) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.033s
+
+OK

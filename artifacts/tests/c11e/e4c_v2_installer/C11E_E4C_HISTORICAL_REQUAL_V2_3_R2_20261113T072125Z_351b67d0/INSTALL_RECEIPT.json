@@ -1,0 +1,61 @@
+﻿{
+    "schema":  "C11E-E4C-HISTORICAL-REQUALIFIER-V2_3-R2-INSTALL-RECEIPT-V1",
+    "status":  "PASS_REPLACE_AND_ADD_ONLY_INSTALL",
+    "run_id":  "C11E_E4C_HISTORICAL_REQUAL_V2_3_R2_20261113T072125Z_351b67d0",
+    "package_id":  "C11E_E4C_DRILL_HISTORICAL_REQUALIFIER_V2_3_R2_20261113",
+    "package_zip_sha256":  "594c36dd07d1a931fc6abf7eabefe9db6b770a48dccf07367cb0e16d05af8740",
+    "source_pins":  "21/21 PASS",
+    "replacement_count":  4,
+    "replacement_postimages":  [
+                                   {
+                                       "path":  "tools/c11d/d9/c11e_e4c_drill_visual_composition_consumer.py",
+                                       "sha256":  "867f0eb7d1e90ad58c56aec2d9309274ae583e54d809759be4aa66f76ffb3d9e"
+                                   },
+                                   {
+                                       "path":  "tests/test_c11e_e4c_drill_visual_composition_consumer.py",
+                                       "sha256":  "42e4cb8097ea9536dca63627e82c240ce0bb5b73baf03152269a35ac219a68eb"
+                                   },
+                                   {
+                                       "path":  "tools/c11d/d9/REQUALIFY_C11E_E4C_DRILL_AV_FROM_EXISTING_EVIDENCE_V2.py",
+                                       "sha256":  "64aa3d8fcc5eee0594c54ae9986e4db6d0302257c21b669156c41df13dd4d320"
+                                   },
+                                   {
+                                       "path":  "tools/c11d/d9/RUN_C11E_E4C_DRILL_AV_EXISTING_MEDIA_V2_REQUALIFICATION.ps1",
+                                       "sha256":  "5199ae1923019ed6a849ff8b7237d8f9b0c159c9c3c7962d7aab5ab0168939f8"
+                                   }
+                               ],
+    "add_count":  13,
+    "added":  [
+                  "docs/current/e/C11E_CURRENT_AUTHORITY_20261113_V142.md",
+                  "docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261113_V137.md",
+                  "docs/current/e/C11E_E3_EXECUTION_BACKLOG_20261113_V113.md",
+                  "docs/current/e/C11D_E_BLOCKER_REMEDIATION_REGISTER_20261113_V59.md",
+                  "docs/current/e/C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261113_V85.md",
+                  "docs/current/e/C11E_E4C_DRILL_EXECUTION_PLAN_20261113_V30.md",
+                  "docs/current/e/C11E_E4C_DRILL_VISUAL_CONSUMER_SPEC_20261113_V14.md",
+                  "docs/current/e/C11E_CURRENT_DOC_INDEX_20261113_V104.md",
+                  "docs/current/e/C11E_INSTALLER_INCIDENT_REGISTER_20261113_V22.md",
+                  "docs/history/c11e/C11E_E4C_V2_REQUALIFIER_HISTORICAL_E1_OUTPUT_ROOT_REVALIDATION_20261113_V1.md",
+                  "prompts/C11E_CONTINUATION_MASTER_PROMPT_20261113_V143.md",
+                  "prompts/C11E_NEXT_WINDOW_START_PROMPT_20261113_V143.md",
+                  "prompts/C11E_FIRST_PROMPT_20261113_V67.md"
+              ],
+    "skipped_identical":  [
+
+                          ],
+    "powershell_ast":  "2/2 PASS",
+    "python_runtime":  "3.13/PySide6/Qt OFFSCREEN PASS",
+    "py_compile":  "3/3 PASS",
+    "staged_tests":  "27/27 PASS",
+    "file_replace_preflight":  "FORWARD_AND_ROLLBACK_PASS",
+    "postimages":  "ALL PASS",
+    "source_pins_post":  "21/21 PASS",
+    "journal_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_v2_installer\\C11E_E4C_HISTORICAL_REQUAL_V2_3_R2_20261113T072125Z_351b67d0\\TRANSACTION_JOURNAL.json",
+    "c11c_source_mutation":  false,
+    "e1_service_mutation":  false,
+    "gui_cli_entrypoint_mutation":  false,
+    "dispatch":  false,
+    "git_checks":  "SKIPPED",
+    "commits":  "OPERATOR_MANAGED",
+    "release_authority":  "NONE"
+}

@@ -1,0 +1,10 @@
+﻿{
+    "schema":  "C11E-E4C-DRILL-V2-REQUALIFICATION-RUNNER-FAILURE-V1",
+    "status":  "FAIL_CLOSED",
+    "request_id":  "E4C-CLI-COMPOSITION-V2-20261113T064622Z-c4d2534d",
+    "command":  "C:\\Users\\vinxe\\AppData\\Local\\Programs\\Python\\Python313\\python.exe \"-u\" \"C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\tools\\c11d\\d9\\REQUALIFY_C11E_E4C_DRILL_AV_FROM_EXISTING_EVIDENCE_V2.py\" \"--project-root\" \"C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\" \"--evidence-root\" \"C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\c11e\\E4C-CLI-SMOKE-20261112T091253Z-5a2e96b8\" \"--output-id\" \"E4C-CLI-COMPOSITION-V2-20261113T064622Z-c4d2534d\"",
+    "stdout":  "",
+    "stderr":  "{\"schema\": \"C11E-E4C-DRILL-V2-EXISTING-MEDIA-REQUALIFICATION-FAILURE-V1\", \"status\": \"FAIL_CLOSED_V2_REQUALIFICATION\", \"request_id\": \"E4C-CLI-COMPOSITION-V2-20261113T064622Z-c4d2534d\", \"error_type\": \"DrillVisualConsumerError\", \"error\": \"existing E1 shared service rejected the Drill intent: E1 output root appeared after preparation; overwrite is forbidden\", \"native_capture_reused\": true, \"godot_invoked\": false, \"c11c_launcher_invoked\": false, \"new_native_capture\": false, \"family_music_generation_invoked\": false, \"production_dispatch\": false, \"release_authority\": \"NONE\"}\r\n",
+    "exit_code":  2,
+    "release_authority":  "NONE"
+}
