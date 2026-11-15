@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-"""Fail-closed, sequential E4C pursuit tier-1..tier-5 qualification coordinator.
+"""Fail-closed E4C Pursuit coordinator: recover existing T1, execute T2..T5.
 
+The exact consumed V4 T1 output is re-audited and reused; it is never rerendered.
 This module only coordinates the existing E1 CLI facade and D-owned executor.
 It does not implement a Producer, binder, renderer, compositor, or music engine.
 """
@@ -10,8 +11,9 @@ import argparse
 import datetime as dt
 import hashlib
 import json
+import math
 import os
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 import re
 import subprocess
 import sys
@@ -37,6 +39,15 @@ CLI_REL = "c11c-suite/c11c-producer/c11e_production_cli.py"
 EXECUTOR_REL = "tools/c11d/d9/c11e_e4c_drill_execution.py"
 CONSUMER_REL = "tools/c11d/d9/c11e_e4c_drill_visual_composition_consumer.py"
 CONSUMER_TEST_REL = "tests/test_c11e_e4c_drill_visual_composition_consumer.py"
+PURSUIT_CANONICAL_REL = "definitions/visual_drill_pursuit_canonical.json"
+PURSUIT_CANONICAL_SHA256 = "dfe2bce9913df8ebe4f92d06eec5d22736338214e71b497dde3562a6927600bc"
+PRE_ROLL_SECONDS = 3.0
+END_CTA_SECONDS = 3.0
+RECOVERY_BATCH_ID = "E4C-PURSUIT-T1-5-20261115T140852Z-b3abbe94"
+RECOVERY_T1_REQUEST_ID = "E4C-PRS-T1-b3abbe94"
+RECOVERY_SOURCE_PIN_SET_SHA256 = "61c4fff86df70593f51e4b31810e83280d252cc89a0a93868f76a5a6312781ad"
+STYLE_GUIDE_V31_PATH = "docs/current/e/C11E_POWERSHELL_RUNNER_STYLE_GUIDE_20261115_V31.md"
+STYLE_GUIDE_V31_SHA256 = "e856e3d2385aab67b6fcfb4f6cc05e013b2792e02ae3058e97172a9fd72edbac"
 
 # Exact post-R6.3A source identity. Includes the amended D consumer and its test;
 # the other rows come from the accepted R6.3A package's 25-source-pin manifest.
@@ -59,6 +70,7 @@ SOURCE_PINS: dict[str, str] = {
     "profiles/difficulty/visual_drill_tracking.json": "6de8812bd46904e122ecdd0eae22fb2979bd75399c34779248c6569e833c921e",
     "profiles/presentation/c11c_visual_music_profiles.json": "b78706c5a9adbf1581d925f522b76cc3419983177de213734cc79996af5cbf58",
     "release/C11C_FREEZE_PACKAGE_MANIFEST.json": FROZEN_MANIFEST_SHA256,
+    PURSUIT_CANONICAL_REL: PURSUIT_CANONICAL_SHA256,
     EXECUTOR_REL: "b7cbf7bd97f76f4c2e339840fc694d3f5b0e50186ba2456e45ff00e585751abe",
     "tools/prototypes/c11c_common/C11CSafeAmbient.py": "c376fd44a3115f0d800213d95e28143363748e16c7b5800369fcadbf237fb02c",
     "tools/prototypes/c11c_common/generate_c11c_family_music.py": "41bb8f9842ac941ea86c838f272b11bd0642973b26e92defa006721a3d8cb84d",
@@ -142,10 +154,11 @@ def verify_pins(root: Path) -> dict[str, str]:
 
 
 def verify_postinstall_style_guide(root: Path) -> str:
-    # Keep V29 as an exact historical prerequisite and require V30's native-stderr correction.
+    # Historical prerequisites stay pinned; V31 is the current installed guide.
     for relative, expected, label in (
         (STYLE_GUIDE_V29_PATH, STYLE_GUIDE_V29_SHA256, "V29"),
         (STYLE_GUIDE_V30_PATH, STYLE_GUIDE_V30_SHA256, "V30"),
+        (STYLE_GUIDE_V31_PATH, STYLE_GUIDE_V31_SHA256, "V31"),
     ):
         path = root / Path(*relative.split("/"))
         if not path.is_file():
@@ -153,7 +166,95 @@ def verify_postinstall_style_guide(root: Path) -> str:
         digest = sha256_file(path)
         if digest != expected:
             raise BatchError(f"POSTINSTALL_STYLE_GUIDE_{label}_SHA_MISMATCH: {digest}")
-    return STYLE_GUIDE_V30_SHA256
+    return STYLE_GUIDE_V31_SHA256
+
+
+def pursuit_timeline_contract(root: Path) -> dict[str, Any]:
+    """Derive the Pursuit presentation timeline from the pinned native definition.
+
+    The pinned D visual consumer uses 3.0-second PRE_ROLL and END_CTA phases.
+    This function does not modify or feed renderer input; it validates the receipt.
+    """
+    path = root / Path(*PURSUIT_CANONICAL_REL.split("/"))
+    if not path.is_file():
+        raise BatchError(f"PURSUIT_CANONICAL_DEFINITION_MISSING: {path}")
+    digest = sha256_file(path)
+    if digest != PURSUIT_CANONICAL_SHA256:
+        raise BatchError(f"PURSUIT_CANONICAL_DEFINITION_SHA_MISMATCH: {digest}")
+    definition = read_json(path)
+    payload = definition.get("payload", {})
+    fps = payload.get("fps")
+    gameplay_frames = payload.get("frame_count")
+    gameplay_seconds = payload.get("duration")
+    if (isinstance(fps, bool) or not isinstance(fps, int) or fps <= 0
+            or isinstance(gameplay_frames, bool) or not isinstance(gameplay_frames, int) or gameplay_frames <= 0
+            or isinstance(gameplay_seconds, bool) or not isinstance(gameplay_seconds, (int, float))):
+        raise BatchError("PURSUIT_CANONICAL_TIMELINE_FIELDS_INVALID")
+    if not math.isclose(float(gameplay_frames) / fps, float(gameplay_seconds), rel_tol=0.0, abs_tol=0.001):
+        raise BatchError("PURSUIT_CANONICAL_FRAME_DURATION_INCONSISTENT")
+    pre_roll = int(round(PRE_ROLL_SECONDS * fps))
+    end_cta = int(round(END_CTA_SECONDS * fps))
+    total = pre_roll + gameplay_frames + end_cta
+    return {
+        "fps": fps,
+        "gameplay_frames": gameplay_frames,
+        "gameplay_duration_seconds": float(gameplay_seconds),
+        "pre_roll_frames": pre_roll,
+        "end_cta_frames": end_cta,
+        "total_frames": total,
+        "duration_seconds": total / fps,
+        "phase_counts": {"PRE_ROLL": pre_roll, "GAME": gameplay_frames, "END_CTA": end_cta},
+        "canonical_sha256": digest,
+    }
+
+
+def _normalized_pin_inventory(value: Any, label: str) -> list[dict[str, Any]]:
+    if not isinstance(value, list) or len(value) != 91:
+        raise BatchError(f"{label}_PIN_INVENTORY_CARDINALITY_FAIL")
+    normalized: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for index, entry in enumerate(value):
+        if not isinstance(entry, Mapping):
+            raise BatchError(f"{label}_PIN_ENTRY_NOT_OBJECT:{index}")
+        relative = entry.get("path")
+        size = entry.get("bytes")
+        digest = entry.get("sha256")
+        if not isinstance(relative, str) or not relative:
+            raise BatchError(f"{label}_PIN_PATH_INVALID:{index}")
+        relative = relative.replace("\\", "/")
+        normalized_path = PurePosixPath(relative)
+        if (normalized_path.is_absolute() or ".." in normalized_path.parts
+                or re.match(r"^[A-Za-z]:", relative) or "\x00" in relative):
+            raise BatchError(f"{label}_PIN_PATH_INVALID:{index}")
+        if relative in seen:
+            raise BatchError(f"{label}_PIN_PATH_DUPLICATE:{relative}")
+        seen.add(relative)
+        if isinstance(size, bool) or not isinstance(size, int) or size <= 0:
+            raise BatchError(f"{label}_PIN_SIZE_INVALID:{relative}")
+        if not isinstance(digest, str) or not re.fullmatch(r"[a-f0-9]{64}", digest):
+            raise BatchError(f"{label}_PIN_SHA_INVALID:{relative}")
+        normalized.append({"path": relative, "bytes": size, "sha256": digest})
+    return sorted(normalized, key=lambda row: row["path"])
+
+
+def verify_91_pin_snapshots(root: Path, receipt: Mapping[str, Any], selector: str) -> str:
+    if receipt.get("source_pin_count") != 91 or receipt.get("source_pins_pre_post_equal") is not True:
+        raise BatchError(f"{selector}_SOURCE_PIN_SUMMARY_FAIL")
+    pre = _normalized_pin_inventory(receipt.get("source_pins_pre_execution"), f"{selector}_PRE_EXECUTION")
+    mid = _normalized_pin_inventory(receipt.get("source_pins_immediately_pre_renderer"), f"{selector}_PRE_RENDERER")
+    post = _normalized_pin_inventory(receipt.get("source_pins_post_execution"), f"{selector}_POST_EXECUTION")
+    if not (pre == mid == post):
+        raise BatchError(f"{selector}_SOURCE_PIN_SNAPSHOT_DIVERGENCE")
+    for item in post:
+        path = root / Path(*item["path"].split("/"))
+        if not path.is_file():
+            raise BatchError(f"{selector}_SOURCE_PIN_FILE_MISSING:{item['path']}")
+        stat = path.stat()
+        if stat.st_size != item["bytes"]:
+            raise BatchError(f"{selector}_SOURCE_PIN_SIZE_MISMATCH:{item['path']}")
+        if sha256_file(path) != item["sha256"]:
+            raise BatchError(f"{selector}_SOURCE_PIN_SHA_MISMATCH:{item['path']}")
+    return hashlib.sha256(json.dumps(post, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")).hexdigest()
 
 
 def verify_environment(root: Path) -> dict[str, str]:
@@ -212,9 +313,11 @@ def validate_base(root: Path) -> dict[str, Any]:
     return request
 
 
-def verify_ffprobe_contract(final: Mapping[str, Any], label: str) -> None:
-    if abs(float(final.get("duration_seconds", -1)) - 27.0) > 0.001:
-        raise BatchError(f"{label}_DURATION_MISMATCH")
+def verify_ffprobe_contract(final: Mapping[str, Any], label: str, timeline: Mapping[str, Any]) -> None:
+    expected_frames = int(timeline["total_frames"])
+    expected_duration = float(timeline["duration_seconds"])
+    if abs(float(final.get("duration_seconds", -1)) - expected_duration) > 0.001:
+        raise BatchError(f"{label}_DURATION_MISMATCH: expected={expected_duration}")
     if abs(float(final.get("av_start_delta_seconds", 999)) - 0.0) > 0.001:
         raise BatchError(f"{label}_AV_START_DRIFT")
     probe = final.get("ffprobe", {})
@@ -225,13 +328,13 @@ def verify_ffprobe_contract(final: Mapping[str, Any], label: str) -> None:
         raise BatchError(f"{label}_FFPROBE_STREAM_CARDINALITY")
     expected_video = {
         "codec_name": "h264", "profile": "High", "width": 720, "height": 1280,
-        "pix_fmt": "yuv420p", "color_range": "tv", "avg_frame_rate": "30/1",
+        "pix_fmt": "yuv420p", "color_range": "tv", "avg_frame_rate": f"{timeline['fps']}/1",
     }
     for field, expected in expected_video.items():
         if video.get(field) != expected:
             raise BatchError(f"{label}_VIDEO_{field}_MISMATCH: {video.get(field)!r}")
-    if str(video.get("nb_read_frames")) != "810":
-        raise BatchError(f"{label}_VIDEO_FRAME_COUNT_MISMATCH")
+    if str(video.get("nb_read_frames")) != str(expected_frames):
+        raise BatchError(f"{label}_VIDEO_FRAME_COUNT_MISMATCH: expected={expected_frames}")
     expected_audio = {"codec_name": "aac", "profile": "LC", "sample_rate": "48000", "channels": 2, "channel_layout": "stereo"}
     for field, expected in expected_audio.items():
         if audio.get(field) != expected:
@@ -289,7 +392,6 @@ def validate_qualification(root: Path, request: Mapping[str, Any], summary_path:
         "ffmpeg_decode_encode_mux": True,
         "audio_generated": True,
         "source_pins_pre_post_equal": True,
-        "source_pin_count": 91,
     }
     for field, expected in checks.items():
         if receipt.get(field) != expected:
@@ -301,13 +403,20 @@ def validate_qualification(root: Path, request: Mapping[str, Any], summary_path:
         raise BatchError(f"{selector}_GUI_CLI_PARITY_FAIL")
     if receipt.get("e1_validation", {}).get("status") != "PASS_E1_PREPARATION_ONLY":
         raise BatchError(f"{selector}_E1_BOUNDARY_FAIL")
+    expected_timeline = pursuit_timeline_contract(root)
     timeline = receipt.get("native_timeline", {})
-    if timeline.get("fps") != 30 or timeline.get("total_frames") != 810 or abs(float(timeline.get("duration_seconds", -1)) - 27.0) > 0.001:
+    if (timeline.get("fps") != expected_timeline["fps"]
+            or timeline.get("total_frames") != expected_timeline["total_frames"]
+            or timeline.get("gameplay_frames") != expected_timeline["gameplay_frames"]
+            or timeline.get("pre_roll_frames") != expected_timeline["pre_roll_frames"]
+            or timeline.get("end_cta_frames") != expected_timeline["end_cta_frames"]
+            or abs(float(timeline.get("duration_seconds", -1)) - expected_timeline["duration_seconds"]) > 0.001):
         raise BatchError(f"{selector}_NATIVE_TIMELINE_MISMATCH")
     composition = receipt.get("d_composition", {})
-    if composition.get("frames_composed") != 810 or composition.get("frames_expected") != 810:
+    if (composition.get("frames_composed") != expected_timeline["total_frames"]
+            or composition.get("frames_expected") != expected_timeline["total_frames"]):
         raise BatchError(f"{selector}_D_COMPOSITION_FRAME_COUNT_MISMATCH")
-    if composition.get("phase_counts") != {"PRE_ROLL": 90, "GAME": 630, "END_CTA": 90}:
+    if composition.get("phase_counts") != expected_timeline["phase_counts"]:
         raise BatchError(f"{selector}_D_PHASE_CARDINALITY_MISMATCH")
     visible = set(receipt.get("d_editorial_visible_fields", []))
     if not {"title", "subtitle", "call_to_action"}.issubset(visible):
@@ -333,8 +442,9 @@ def validate_qualification(root: Path, request: Mapping[str, Any], summary_path:
         raise BatchError(f"{selector}_VIDEO_STREAM_SHA_RELATION_FAIL")
     if isolation.get("audio_stream_sha256_A") == isolation.get("audio_stream_sha256_C"):
         raise BatchError(f"{selector}_AUDIO_STREAM_SHA_RELATION_FAIL")
-    verify_ffprobe_contract(receipt.get("final_A", {}), f"{selector}_A")
-    verify_ffprobe_contract(receipt.get("final_C_changed_music", {}), f"{selector}_C")
+    verify_ffprobe_contract(receipt.get("final_A", {}), f"{selector}_A", expected_timeline)
+    verify_ffprobe_contract(receipt.get("final_C_changed_music", {}), f"{selector}_C", expected_timeline)
+    pin_snapshot_sha256 = verify_91_pin_snapshots(root, receipt, selector)
     for label, media in (("A", receipt.get("final_A", {})), ("C", receipt.get("final_C_changed_music", {}))):
         media_path = Path(str(media.get("path", "")))
         if not media_path.is_file() or sha256_file(media_path) != media.get("sha256"):
@@ -351,20 +461,93 @@ def validate_qualification(root: Path, request: Mapping[str, Any], summary_path:
         "final_C_sha256": receipt["final_C_changed_music"]["sha256"],
         "music_A_B_sha256": music_hashes[0],
         "music_C_sha256": music_hashes[2],
+        "source_pin_snapshot_sha256": pin_snapshot_sha256,
+        "native_total_frames": expected_timeline["total_frames"],
+        "native_duration_seconds": expected_timeline["duration_seconds"],
         "review_status": "PENDING_OPERATOR_VISUAL_AUDIO_REVIEW",
     }
 
 
 def batch_plan(batch_id: str) -> list[dict[str, Any]]:
-    if not re.fullmatch(r"E4C-PURSUIT-T1-5-[A-Za-z0-9._-]{8,64}", batch_id):
+    if not re.fullmatch(r"E4C-PURSUIT-T2-5-[A-Za-z0-9._-]{8,64}", batch_id):
         raise BatchError("BATCH_ID_INVALID")
     short = batch_id.rsplit("-", 1)[-1]
+    timeline = {"total_frames": 690}
     return [
         {"tier": tier, "selector": f"pursuit/tier-{tier}", "request_id": f"E4C-PRS-T{tier}-{short}",
          "gameplay_seed": 12345, "music_seed_a_b": 840001, "music_seed_c": "DERIVED_BY_EXISTING_EXECUTOR",
-         "family_music_profile": EXPECTED_PROFILE, "expected_frames": 810}
-        for tier in TIERS
+         "family_music_profile": EXPECTED_PROFILE, "expected_frames": timeline["total_frames"]}
+        for tier in (2, 3, 4, 5)
     ]
+
+
+def recover_failed_tier1(root: Path) -> dict[str, Any]:
+    """Audit the exact already-rendered T1 from the consumed V4 batch; never rerender it."""
+    evidence_root = root / "artifacts" / "tests" / "c11e" / "e4c_pursuit_tier_batch" / RECOVERY_BATCH_ID
+    required = {
+        "lock": evidence_root / "ATTEMPT_RESERVED.lock.json",
+        "authorization": evidence_root / "EXECUTION_AUTHORIZED_ONCE.json",
+        "progress": evidence_root / "BATCH_PROGRESS.json",
+        "failure": evidence_root / f"{RECOVERY_T1_REQUEST_ID}.BATCH_ROW_FAILURE.json",
+        "summary": evidence_root / f"{RECOVERY_T1_REQUEST_ID}.CLI_EXECUTION_RESULT.json",
+        "request": evidence_root / f"{RECOVERY_T1_REQUEST_ID}.request.json",
+    }
+    for label, path in required.items():
+        if not path.is_file():
+            raise BatchError(f"T1_RECOVERY_{label.upper()}_MISSING: {path}")
+    lock = read_json(required["lock"])
+    expected_ids = [f"E4C-PRS-T{tier}-b3abbe94" for tier in TIERS]
+    if (lock.get("schema") != "C11E-E4C-PURSUIT-TIER-BATCH-LOCK-V1"
+            or lock.get("status") != "ATTEMPT_RESERVED"
+            or lock.get("batch_id") != RECOVERY_BATCH_ID
+            or lock.get("request_ids") != expected_ids
+            or lock.get("source_pin_set_sha256") != RECOVERY_SOURCE_PIN_SET_SHA256
+            or lock.get("git_checks") != "SKIPPED"
+            or lock.get("commits") != "OPERATOR_MANAGED"):
+        raise BatchError("T1_RECOVERY_ORIGINAL_LOCK_MISMATCH")
+    authorization = read_json(required["authorization"])
+    if (authorization.get("schema") != "C11E-E4C-PURSUIT-TIER-BATCH-EXECUTION-AUTH-V1"
+            or authorization.get("status") != "AUTHORIZED_ONCE_BEFORE_FIRST_CHILD"
+            or authorization.get("batch_id") != RECOVERY_BATCH_ID
+            or authorization.get("request_ids") != expected_ids):
+        raise BatchError("T1_RECOVERY_ORIGINAL_AUTHORIZATION_MISMATCH")
+    progress = read_json(required["progress"])
+    if (progress.get("status") != "STOPPED_FAIL_CLOSED"
+            or progress.get("batch_id") != RECOVERY_BATCH_ID
+            or progress.get("completed_rows") != []
+            or progress.get("current_selector") != "pursuit/tier-1"
+            or progress.get("failed_selector") != "pursuit/tier-1"):
+        raise BatchError("T1_RECOVERY_ORIGINAL_PROGRESS_MISMATCH")
+    failure = read_json(required["failure"])
+    if (failure.get("status") != "POST_CHILD_AUDIT_FAIL_CLOSED"
+            or failure.get("error") != "BatchError: pursuit/tier-1_NATIVE_TIMELINE_MISMATCH"
+            or failure.get("process_exit_code") != 0
+            or failure.get("selector") != "pursuit/tier-1"
+            or failure.get("request_id") != RECOVERY_T1_REQUEST_ID):
+        raise BatchError("T1_RECOVERY_FAILURE_RECEIPT_MISMATCH")
+    request = read_json(required["request"])
+    if (request.get("request_id") != RECOVERY_T1_REQUEST_ID
+            or request.get("selection") != {"content_type": "visual_drills", "family_id": "pursuit", "variant_id": "tier-1"}
+            or request.get("seed") != 12345 or request.get("music_seed") != 840001):
+        raise BatchError("T1_RECOVERY_REQUEST_IDENTITY_MISMATCH")
+    result = validate_qualification(root, request, required["summary"], 1)
+    result.update({
+        "recovery_mode": "REUSED_EXISTING_T1_NO_RERENDER",
+        "original_batch_id": RECOVERY_BATCH_ID,
+        "original_failure_receipt": str(required["failure"]),
+        "original_authorization_marker": str(required["authorization"]),
+        "original_cli_summary_sha256": sha256_file(required["summary"]),
+        "request_sha256": sha256_file(required["request"]),
+        "renderer_invoked_by_recovery": False,
+    })
+    return result
+
+
+def _new_batch_evidence(root: Path, batch_id: str) -> Path:
+    evidence_root = root / "artifacts" / "tests" / "c11e" / "e4c_pursuit_tier_batch" / batch_id
+    if evidence_root.exists():
+        raise BatchError(f"BATCH_EVIDENCE_COLLISION: {evidence_root}")
+    return evidence_root
 
 
 def execute_batch(root: Path, python: Path, batch_id: str, timeout_seconds: int) -> dict[str, Any]:
@@ -372,6 +555,8 @@ def execute_batch(root: Path, python: Path, batch_id: str, timeout_seconds: int)
     actual_pins = verify_pins(root)
     environment = verify_environment(root)
     base = validate_base(root)
+    recovered_t1 = recover_failed_tier1(root)
+    timeline_contract = pursuit_timeline_contract(root)
     cli_path = root / Path(*CLI_REL.split("/"))
 
     for row in plan:
@@ -379,29 +564,43 @@ def execute_batch(root: Path, python: Path, batch_id: str, timeout_seconds: int)
         if product_root.exists():
             raise BatchError(f"OUTPUT_COLLISION: {product_root}")
 
-    evidence_root = root / "artifacts" / "tests" / "c11e" / "e4c_pursuit_tier_batch" / batch_id
-    if evidence_root.exists():
-        raise BatchError(f"BATCH_EVIDENCE_COLLISION: {evidence_root}")
+    evidence_root = _new_batch_evidence(root, batch_id)
     evidence_root.mkdir(parents=True, exist_ok=False)
     lock_path = evidence_root / "ATTEMPT_RESERVED.lock.json"
-    lock = {"schema": "C11E-E4C-PURSUIT-TIER-BATCH-LOCK-V1", "status": "ATTEMPT_RESERVED",
-            "batch_id": batch_id, "request_ids": [r["request_id"] for r in plan],
-            "source_pin_set_sha256": hashlib.sha256(json.dumps(actual_pins, sort_keys=True).encode()).hexdigest(),
-            "git_checks": "SKIPPED", "commits": "OPERATOR_MANAGED"}
-    write_json_exclusive(lock_path, lock)
+    all_request_ids = [RECOVERY_T1_REQUEST_ID] + [r["request_id"] for r in plan]
+    write_json_exclusive(lock_path, {
+        "schema": "C11E-E4C-PURSUIT-TIER-BATCH-LOCK-V2",
+        "status": "ATTEMPT_RESERVED",
+        "batch_id": batch_id,
+        "request_ids": all_request_ids,
+        "executed_request_ids": [r["request_id"] for r in plan],
+        "reused_request_ids": [RECOVERY_T1_REQUEST_ID],
+        "recovered_from_batch_id": RECOVERY_BATCH_ID,
+        "source_pin_set_sha256": hashlib.sha256(json.dumps(actual_pins, sort_keys=True).encode()).hexdigest(),
+        "git_checks": "SKIPPED", "commits": "OPERATOR_MANAGED",
+    })
     authorization_path = evidence_root / "EXECUTION_AUTHORIZED_ONCE.json"
-    write_json_exclusive(authorization_path, {"schema": "C11E-E4C-PURSUIT-TIER-BATCH-EXECUTION-AUTH-V1",
-        "status": "AUTHORIZED_ONCE_BEFORE_FIRST_CHILD", "batch_id": batch_id,
+    write_json_exclusive(authorization_path, {
+        "schema": "C11E-E4C-PURSUIT-TIER-BATCH-EXECUTION-AUTH-V2",
+        "status": "AUTHORIZED_ONCE_FOR_TIERS_2_TO_5_AFTER_T1_RECOVERY_AUDIT",
+        "batch_id": batch_id,
         "request_ids": [r["request_id"] for r in plan],
+        "reused_request_ids": [RECOVERY_T1_REQUEST_ID],
         "created_utc": dt.datetime.now(dt.timezone.utc).isoformat(),
-        "policy": "Any failure after this marker forbids retry with this batch ID; preserve outputs and use a newly reviewed continuation."})
+        "policy": "T1 is audited and reused from the exact consumed V4 attempt; only tiers 2-5 execute. Any failure consumes this BatchId permanently.",
+    })
+    write_json_exclusive(evidence_root / "T1_RECOVERY_AUDIT.json", recovered_t1)
 
-    batch_rows: list[dict[str, Any]] = []
+    batch_rows: list[dict[str, Any]] = [recovered_t1]
     progress_path = evidence_root / "BATCH_PROGRESS.json"
-    progress: dict[str, Any] = {"schema": "C11E-E4C-PURSUIT-TIER-BATCH-PROGRESS-V1",
-        "status": "RUNNING", "batch_id": batch_id, "expected": [r["selector"] for r in plan],
-        "completed_rows": [], "current_selector": None, "failed_selector": None,
-        "operator_review": "PENDING", "release_authority": "NONE"}
+    progress: dict[str, Any] = {
+        "schema": "C11E-E4C-PURSUIT-TIER-BATCH-PROGRESS-V2",
+        "status": "RUNNING", "batch_id": batch_id,
+        "expected": [f"pursuit/tier-{tier}" for tier in TIERS],
+        "completed_rows": batch_rows, "current_selector": None, "failed_selector": None,
+        "last_completed_selector": "pursuit/tier-1", "recovered_tier_1": True,
+        "operator_review": "PENDING", "release_authority": "NONE",
+    }
     write_json_exclusive(progress_path, progress)
     for row in plan:
         tier = row["tier"]
@@ -431,9 +630,10 @@ def execute_batch(root: Path, python: Path, batch_id: str, timeout_seconds: int)
                        "finished_utc": dt.datetime.now(dt.timezone.utc).isoformat(),
                        "stdout_log": str(stdout_path), "stderr_log": str(stderr_path),
                        "production_dispatch": False, "release_authority": "NONE"}
-            write_json_exclusive(evidence_root / f"{request_id}.BATCH_ROW_FAILURE.json", failure)
+            failure_path = evidence_root / f"{request_id}.BATCH_ROW_FAILURE.json"
+            write_json_exclusive(failure_path, failure)
             progress.update({"status": "STOPPED_FAIL_CLOSED", "current_selector": row["selector"],
-                             "failed_selector": row["selector"], "failure_receipt": str(evidence_root / f"{request_id}.BATCH_ROW_FAILURE.json")})
+                             "failed_selector": row["selector"], "failure_receipt": str(failure_path)})
             write_json_replace(progress_path, progress)
             raise BatchError(f"{row['selector']} timed out; preserved logs and partial outputs") from exc
         stdout_path.write_text(stdout, encoding="utf-8")
@@ -444,9 +644,10 @@ def execute_batch(root: Path, python: Path, batch_id: str, timeout_seconds: int)
                        "finished_utc": dt.datetime.now(dt.timezone.utc).isoformat(),
                        "stdout_log": str(stdout_path), "stderr_log": str(stderr_path),
                        "cli_summary_exists": summary_path.is_file(), "production_dispatch": False, "release_authority": "NONE"}
-            write_json_exclusive(evidence_root / f"{request_id}.BATCH_ROW_FAILURE.json", failure)
+            failure_path = evidence_root / f"{request_id}.BATCH_ROW_FAILURE.json"
+            write_json_exclusive(failure_path, failure)
             progress.update({"status": "STOPPED_FAIL_CLOSED", "current_selector": row["selector"],
-                             "failed_selector": row["selector"], "failure_receipt": str(evidence_root / f"{request_id}.BATCH_ROW_FAILURE.json")})
+                             "failed_selector": row["selector"], "failure_receipt": str(failure_path)})
             write_json_replace(progress_path, progress)
             raise BatchError(f"{row['selector']} child exit code={exit_code}; preserved evidence")
         if not summary_path.is_file():
@@ -465,7 +666,6 @@ def execute_batch(root: Path, python: Path, batch_id: str, timeout_seconds: int)
             row_result.update({"request_path": str(request_path), "request_sha256": sha256_file(request_path),
                                "cli_summary_path": str(summary_path), "cli_summary_sha256": sha256_file(summary_path),
                                "process_exit_code": exit_code, "stdout_log": str(stdout_path), "stderr_log": str(stderr_path)})
-            # Re-check before recording this selector as completed.
             if verify_pins(root) != actual_pins:
                 raise BatchError(f"SOURCE_PIN_DRIFT_AFTER_{row['selector']}")
             batch_rows.append(row_result)
@@ -490,13 +690,17 @@ def execute_batch(root: Path, python: Path, batch_id: str, timeout_seconds: int)
         write_json_replace(progress_path, progress)
 
     result = {
-        "schema": "C11E-E4C-PURSUIT-TIER-BATCH-RESULT-V1",
+        "schema": "C11E-E4C-PURSUIT-TIER-BATCH-RESULT-V2",
         "status": "PASS_TECHNICAL_PENDING_OPERATOR_A_V_REVIEW",
         "batch_id": batch_id,
-        "selectors_expected": [r["selector"] for r in plan],
-        "selectors_technical_pass": [r["selector"] for r in batch_rows],
-        "coverage": "5/5 pursuit tiers 1-5",
+        "selectors_expected": [f"pursuit/tier-{tier}" for tier in TIERS],
+        "selectors_technical_pass": [row["selector"] for row in batch_rows],
+        "coverage": "5/5 pursuit tiers 1-5 (tier-1 recovered; tiers 2-5 executed)",
         "rows": batch_rows,
+        "t1_recovery": {"status": "PASS_EXISTING_T1_REUSED_NO_RERENDER",
+                        "original_batch_id": RECOVERY_BATCH_ID,
+                        "qualification_receipt_sha256": recovered_t1["qualification_receipt_sha256"]},
+        "timeline_contract": timeline_contract,
         "environment": environment,
         "source_pin_count": len(actual_pins),
         "source_pins_pre_post_equal": True,
@@ -506,8 +710,7 @@ def execute_batch(root: Path, python: Path, batch_id: str, timeout_seconds: int)
         "governance": {"c11c_frozen_manifest_sha256": FROZEN_MANIFEST_SHA256, "c11c_source_mutation": False,
                        "production_dispatch": False, "release_authority": "NONE", "e1": "PREPARE_ONLY",
                        "family_adapter": "NOT_CONNECTED_E1", "git_checks": "SKIPPED", "commits": "OPERATOR_MANAGED"},
-        "evidence_root": str(evidence_root),
-        "lock": str(lock_path),
+        "evidence_root": str(evidence_root), "lock": str(lock_path),
         "execution_authorization": str(authorization_path),
         "completed_utc": dt.datetime.now(dt.timezone.utc).isoformat(),
     }
@@ -520,14 +723,13 @@ def execute_batch(root: Path, python: Path, batch_id: str, timeout_seconds: int)
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="E4C pursuit tier-1..tier-5 sequential qualification batch")
+    parser = argparse.ArgumentParser(description="E4C Pursuit tiers 1-5; audit/reuse existing T1 and execute tiers 2-5")
     parser.add_argument("--project-root", required=True)
     parser.add_argument("--python-exe", default=sys.executable)
     parser.add_argument("--batch-id", default=None)
-    parser.add_argument("--execute", action="store_true", help="Authorize and execute the five isolated A/V qualifications")
+    parser.add_argument("--execute", action="store_true", help="Execute isolated A/V qualification for tiers 2-5 after exact T1 recovery audit")
     parser.add_argument("--timeout-seconds", type=int, default=7200)
-    parser.add_argument("--require-v30-guide", action="store_true",
-                        help="Require the installed V29 and V30 PowerShell style guides before batch execution")
+    parser.add_argument("--require-v31-guide", action="store_true", help="Require V29, V30 and V31 PowerShell style guides")
     args = parser.parse_args(argv)
     root = Path(args.project_root).resolve()
     python = Path(args.python_exe).resolve()
@@ -537,24 +739,36 @@ def main(argv: list[str] | None = None) -> int:
         raise BatchError(f"PYTHON_EXE_MISSING: {python}")
     stamp = dt.datetime.now(dt.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     suffix = uuid.uuid4().hex[:8]
-    batch_id = args.batch_id or f"E4C-PURSUIT-T1-5-{stamp}-{suffix}"
+    batch_id = args.batch_id or f"E4C-PURSUIT-T2-5-{stamp}-{suffix}"
     plan = batch_plan(batch_id)
-    if args.require_v30_guide:
+    if args.require_v31_guide:
         guide_sha = verify_postinstall_style_guide(root)
-        print(f"POWERSHELL_STYLE_GUIDE_V30=PASS/{guide_sha}", file=sys.stderr)
+        print(f"POWERSHELL_STYLE_GUIDE_V31=PASS/{guide_sha}", file=sys.stderr)
+    pins = verify_pins(root)
+    environment = verify_environment(root)
+    validate_base(root)
+    timeline = pursuit_timeline_contract(root)
+    recovered_t1 = recover_failed_tier1(root)
+    _new_batch_evidence(root, batch_id)
+    for row in plan:
+        output = root / "artifacts" / "production" / "c11e" / row["request_id"]
+        if output.exists():
+            raise BatchError(f"OUTPUT_COLLISION: {output}")
     if not args.execute:
-        pins = verify_pins(root)
-        environment = verify_environment(root)
-        validate_base(root)
-        for row in plan:
-            output = root / "artifacts" / "production" / "c11e" / row["request_id"]
-            if output.exists():
-                raise BatchError(f"OUTPUT_COLLISION: {output}")
-        preview = {"status": "PASS_PREPARE_ONLY_NO_RENDER", "batch_id": batch_id,
-                   "selectors": plan, "source_pin_count": len(pins), "environment": environment,
-                   "base_cli_smoke": "PASS_REUSED_NO_RERUN", "renderer_invoked": False,
-                   "godot_invoked": False, "ffmpeg_invoked": False, "production_media_created": False,
-                   "production_dispatch": False, "release_authority": "NONE"}
+        preview = {
+            "status": "PASS_PREPARE_ONLY_NO_RENDER",
+            "batch_id": batch_id,
+            "selectors": ["pursuit/tier-1", "pursuit/tier-2", "pursuit/tier-3", "pursuit/tier-4", "pursuit/tier-5"],
+            "execution_selectors": [r["selector"] for r in plan],
+            "recovered_tier_1": {"status": "PASS_EXISTING_T1_REUSED_NO_RERENDER",
+                                  "request_id": RECOVERY_T1_REQUEST_ID,
+                                  "qualification_receipt_sha256": recovered_t1["qualification_receipt_sha256"]},
+            "timeline_contract": timeline,
+            "source_pin_count": len(pins), "environment": environment,
+            "base_cli_smoke": "PASS_REUSED_NO_RERUN",
+            "renderer_invoked": False, "godot_invoked": False, "ffmpeg_invoked": False,
+            "production_media_created": False, "production_dispatch": False, "release_authority": "NONE",
+        }
         print(json.dumps(preview, ensure_ascii=False, indent=2, sort_keys=True))
         return 0
     result = execute_batch(root, python, batch_id, args.timeout_seconds)

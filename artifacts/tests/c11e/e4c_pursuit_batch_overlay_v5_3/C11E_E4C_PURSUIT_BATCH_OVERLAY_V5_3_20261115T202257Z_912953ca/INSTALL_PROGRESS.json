@@ -1,0 +1,9 @@
+{
+    "schema":  "C11E-PURSUIT-V5_3-INSTALL-PROGRESS-V1",
+    "run_id":  "C11E_E4C_PURSUIT_BATCH_OVERLAY_V5_3_20261115T202257Z_912953ca",
+    "current_stage":  "COMPLETE",
+    "transaction_started":  true,
+    "committed_count":  20,
+    "operation_count":  20,
+    "state":  "PASS"
+}

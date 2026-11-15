@@ -72,16 +72,21 @@ $styleShaV30 = Get-Sha256 $styleGuideV30
 if ($styleShaV30 -ne '57d653890535849c7a1d55733c29b1f7fe574010a8cdb18b8d2fd86565b50c83') {
     throw "STYLE_GUIDE_V30_SHA_MISMATCH: $styleShaV30"
 }
+$styleGuideV31 = Join-Path $root 'docs\current\e\C11E_POWERSHELL_RUNNER_STYLE_GUIDE_20261115_V31.md'
+$styleShaV31 = Get-Sha256 $styleGuideV31
+if ($styleShaV31 -ne 'e856e3d2385aab67b6fcfb4f6cc05e013b2792e02ae3058e97172a9fd72edbac') {
+    throw "STYLE_GUIDE_V31_SHA_MISMATCH: $styleShaV31"
+}
 $driver = Join-Path $root 'tools\c11d\d9\c11e_e4c_pursuit_tier_batch.py'
 if (!(Test-Path -LiteralPath $driver -PathType Leaf)) { throw "PURSUIT_BATCH_DRIVER_MISSING: $driver" }
 $driverSha = Get-Sha256 $driver
-if ($driverSha -ne '7164a83c882116081cda720b37c47107e9145ad2b918b759470b06c5eb3d5522') { throw "PURSUIT_BATCH_DRIVER_SHA_MISMATCH: $driverSha" }
+if ($driverSha -ne '04dec31bc882c9d48ff0a47751a6dfb726b8160374eb552c04158dca9536b6ca') { throw "PURSUIT_BATCH_DRIVER_SHA_MISMATCH: $driverSha" }
 
 $tempRoot = Join-Path $env:TEMP ('C11E_E4C_PURSUIT_BATCH_RUNNER_' + [guid]::NewGuid().ToString('N'))
 New-Item -ItemType Directory -Path $tempRoot | Out-Null
 $stdoutPath = Join-Path $tempRoot 'batch.stdout.log'
 $stderrPath = Join-Path $tempRoot 'batch.stderr.log'
-$argsList = @($driver,'--project-root',$root,'--python-exe',$python,'--timeout-seconds',[string]$TimeoutSeconds,'--require-v30-guide')
+$argsList = @($driver,'--project-root',$root,'--python-exe',$python,'--timeout-seconds',[string]$TimeoutSeconds,'--require-v31-guide')
 if (![string]::IsNullOrWhiteSpace($BatchId)) { $argsList += @('--batch-id',$BatchId) }
 if ($Execute) { $argsList += '--execute' }
 $argumentLine = ($argsList | ForEach-Object { Quote-Win32Argument ([string]$_) }) -join ' '
@@ -98,9 +103,12 @@ Write-Host "STYLE_GUIDE_V27_SHA256=$styleShaV27"
 Write-Host "STYLE_GUIDE_V28_SHA256=$styleShaV28"
 Write-Host "STYLE_GUIDE_V29_SHA256=$styleShaV29"
 Write-Host "STYLE_GUIDE_V30_SHA256=$styleShaV30"
+Write-Host "STYLE_GUIDE_V31_SHA256=$styleShaV31"
 if ($exitCode -ne 0) { throw "E4C_PURSUIT_TIER_BATCH_FAILED: exit=$exitCode; logs=$tempRoot" }
 Write-Host 'PURSUIT_BATCH_RUNNER=PASS'
-if ($Execute) { Write-Host 'PURSUIT_BATCH_EXECUTION=COMPLETED_TECHNICAL_RECEIPTS_PENDING_OPERATOR_REVIEW' }
-else { Write-Host 'PURSUIT_BATCH_EXECUTION=NOT_STARTED_PREPARE_ONLY' }
+Write-Host 'PURSUIT_T1_RECOVERY=EXISTING_RECEIPT_AND_MEDIA_AUDITED_NO_RERENDER'
+Write-Host 'PURSUIT_T2_TO_T5=EXECUTION_SCOPE'
+if ($Execute) { Write-Host 'PURSUIT_BATCH_EXECUTION=TIERS_2_TO_5_COMPLETED_T1_REUSED_OPERATOR_REVIEW_PENDING' }
+else { Write-Host 'PURSUIT_BATCH_EXECUTION=NOT_STARTED_PREPARE_ONLY_T1_RECOVERY_AUDITED' }
 Write-Host 'PRODUCTION_DISPATCH=FALSE'
 Write-Host 'RELEASE_AUTHORITY=NONE'

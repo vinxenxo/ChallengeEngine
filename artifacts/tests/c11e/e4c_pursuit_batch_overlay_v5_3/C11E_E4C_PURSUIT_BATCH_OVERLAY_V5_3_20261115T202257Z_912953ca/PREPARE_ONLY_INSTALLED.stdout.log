@@ -1,0 +1,64 @@
+{
+  "base_cli_smoke": "PASS_REUSED_NO_RERUN",
+  "batch_id": "E4C-PURSUIT-T2-5-20261115T202307Z-f3d4ea80",
+  "environment": {
+    "pyside6": "6.11.2",
+    "python": "3.13.14"
+  },
+  "execution_selectors": [
+    "pursuit/tier-2",
+    "pursuit/tier-3",
+    "pursuit/tier-4",
+    "pursuit/tier-5"
+  ],
+  "ffmpeg_invoked": false,
+  "godot_invoked": false,
+  "production_dispatch": false,
+  "production_media_created": false,
+  "recovered_tier_1": {
+    "qualification_receipt_sha256": "57206b4560b917c7a7fe5e738c5afd5d900d293e01c99fcd554f0926acc6eee7",
+    "request_id": "E4C-PRS-T1-b3abbe94",
+    "status": "PASS_EXISTING_T1_REUSED_NO_RERENDER"
+  },
+  "release_authority": "NONE",
+  "renderer_invoked": false,
+  "selectors": [
+    "pursuit/tier-1",
+    "pursuit/tier-2",
+    "pursuit/tier-3",
+    "pursuit/tier-4",
+    "pursuit/tier-5"
+  ],
+  "source_pin_count": 35,
+  "status": "PASS_PREPARE_ONLY_NO_RENDER",
+  "timeline_contract": {
+    "canonical_sha256": "dfe2bce9913df8ebe4f92d06eec5d22736338214e71b497dde3562a6927600bc",
+    "duration_seconds": 23.0,
+    "end_cta_frames": 90,
+    "fps": 30,
+    "gameplay_duration_seconds": 17.0,
+    "gameplay_frames": 510,
+    "phase_counts": {
+      "END_CTA": 90,
+      "GAME": 510,
+      "PRE_ROLL": 90
+    },
+    "pre_roll_frames": 90,
+    "total_frames": 690
+  }
+}
+POWERSHELL_STYLE_GUIDE_V31=PASS/e856e3d2385aab67b6fcfb4f6cc05e013b2792e02ae3058e97172a9fd72edbac
+PYTHON_BATCH_EXIT_CODE=0
+WRAPPER_LOG_ROOT=C:\Users\vinxe\AppData\Local\Temp\C11E_E4C_PURSUIT_BATCH_RUNNER_de14a8a7e4704351bfe48443110490e7
+STYLE_GUIDE_V23_SHA256=1900b8a06f52156ff18790adb44ef82268c386e2633d2b31237ebc705208c3a5
+STYLE_GUIDE_V27_SHA256=93b83ec7c5a640235edc3d70e877088896babe9d6d3b1fc3ed224fe0b6b07f43
+STYLE_GUIDE_V28_SHA256=24d9e24ac09a7a8a58445838525a306fc3f3fb8bb31f9dfa5ac7265ed3b71239
+STYLE_GUIDE_V29_SHA256=76d9187f7d8c9b44ed940f18fd242f2205e6caf357c8b7dc19756fa1cf8a0c0a
+STYLE_GUIDE_V30_SHA256=57d653890535849c7a1d55733c29b1f7fe574010a8cdb18b8d2fd86565b50c83
+STYLE_GUIDE_V31_SHA256=e856e3d2385aab67b6fcfb4f6cc05e013b2792e02ae3058e97172a9fd72edbac
+PURSUIT_BATCH_RUNNER=PASS
+PURSUIT_T1_RECOVERY=EXISTING_RECEIPT_AND_MEDIA_AUDITED_NO_RERENDER
+PURSUIT_T2_TO_T5=EXECUTION_SCOPE
+PURSUIT_BATCH_EXECUTION=NOT_STARTED_PREPARE_ONLY_T1_RECOVERY_AUDITED
+PRODUCTION_DISPATCH=FALSE
+RELEASE_AUTHORITY=NONE

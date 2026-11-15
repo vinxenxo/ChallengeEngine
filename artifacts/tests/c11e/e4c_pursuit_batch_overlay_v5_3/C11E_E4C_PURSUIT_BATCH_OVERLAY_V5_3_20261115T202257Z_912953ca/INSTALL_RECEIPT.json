@@ -1,0 +1,61 @@
+{
+    "schema":  "C11E-PURSUIT-V5_3-INSTALL-RECEIPT-V1",
+    "status":  "PASS_PINNED_REPLACEMENTS_AND_ADD_ONLY_DOCS",
+    "run_id":  "C11E_E4C_PURSUIT_BATCH_OVERLAY_V5_3_20261115T202257Z_912953ca",
+    "package_zip_sha256":  "84aab1b7b37d23e47e5d1a086607dcb882d3008a43214c709129c004171c375e",
+    "package_manifest_sha256":  "dbc0d8ae6b6a208d8a5681a2b91e66f0d9c183fb0c86dd72e36d9a5f3725ca66",
+    "replacements":  "4/4",
+    "add_only_docs":  "16/16",
+    "backups":  "4/4",
+    "SOURCE_PIN_COUNT_EXPECTED":  35,
+    "source_pins_pre":  "35/35",
+    "source_pins_pretransaction":  "35/35",
+    "source_pins_post":  "35/35",
+    "frozen_c11c_manifest_sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "frozen_c11c_manifest_bytes":  796318,
+    "powershell_ast":  "PASS/4",
+    "atomic_helper_dot_source":  "PASS",
+    "atomic_json_writer":  "PASS",
+    "python_tests":  "test_child_process_waits_before_reading_logs_and_captures_exit (test_c11e_e4c_pursuit_runner_contract.PursuitRunnerContractTests.test_child_process_waits_before_reading_logs_and_captures_exit) ... ok\r\ntest_exact_pursuit_driver_pin_matches_staged_driver_bytes (test_c11e_e4c_pursuit_runner_contract.PursuitRunnerContractTests.test_exact_pursuit_driver_pin_matches_staged_driver_bytes) ... ok\r\ntest_exact_style_guides_v23_through_v31_remain_pinned (test_c11e_e4c_pursuit_runner_contract.PursuitRunnerContractTests.test_exact_style_guides_v23_through_v31_remain_pinned) ... ok\r\ntest_installer_binds_each_replacement_to_its_exact_payload (test_c11e_e4c_pursuit_runner_contract.PursuitRunnerContractTests.test_installer_binds_each_replacement_to_its_exact_payload) ... ok\r\ntest_installer_captures_native_python_streams_and_checks_v4_preimages (test_c11e_e4c_pursuit_runner_contract.PursuitRunnerContractTests.test_installer_captures_native_python_streams_and_checks_v4_preimages) ... ok\r\ntest_installer_enforces_35_pins_frozen_manifest_and_prepare_only (test_c11e_e4c_pursuit_runner_contract.PursuitRunnerContractTests.test_installer_enforces_35_pins_frozen_manifest_and_prepare_only) ... ok\r\ntest_installer_enforces_exact_staged_python_test_count (test_c11e_e4c_pursuit_runner_contract.PursuitRunnerContractTests.test_installer_enforces_exact_staged_python_test_count) ... ok\r\ntest_installer_finishes_and_persists_all_backups_before_transaction (test_c11e_e4c_pursuit_runner_contract.PursuitRunnerContractTests.test_installer_finishes_and_persists_all_backups_before_transaction) ... ok\r\ntest_installer_prevalidates_zip_member_paths_before_extraction (test_c11e_e4c_pursuit_runner_contract.PursuitRunnerContractTests.test_installer_prevalidates_zip_member_paths_before_extraction) ... ok\r\ntest_installer_rechecks_all_35_source_pins_at_transaction_boundary (test_c11e_e4c_pursuit_runner_contract.PursuitRunnerContractTests.test_installer_rechecks_all_35_source_pins_at_transaction_boundary) ... ok\r\ntest_installer_rechecks_each_destination_immediately_before_atomic_operation (test_c11e_e4c_pursuit_runner_contract.PursuitRunnerContractTests.test_installer_rechecks_each_destination_immediately_before_atomic_operation) ... ok\r\ntest_installer_requires_existing_destination_parent_directories (test_c11e_e4c_pursuit_runner_contract.PursuitRunnerContractTests.test_installer_requires_existing_destination_parent_directories) ... ok\r\ntest_installer_resolves_and_dotsources_atomic_helper_from_payload_layout (test_c11e_e4c_pursuit_runner_contract.PursuitRunnerContractTests.test_installer_resolves_and_dotsources_atomic_helper_from_payload_layout) ... ok\r\ntest_installer_scopes_rollback_to_committed_and_in_flight_operations (test_c11e_e4c_pursuit_runner_contract.PursuitRunnerContractTests.test_installer_scopes_rollback_to_committed_and_in_flight_operations) ... ok\r\ntest_installer_stages_canonical_fixture_for_test_import_and_project_definition (test_c11e_e4c_pursuit_runner_contract.PursuitRunnerContractTests.test_installer_stages_canonical_fixture_for_test_import_and_project_definition) ... ok\r\ntest_prepare_only_is_default_and_execute_is_explicit (test_c11e_e4c_pursuit_runner_contract.PursuitRunnerContractTests.test_prepare_only_is_default_and_execute_is_explicit) ... ok\r\ntest_runner_is_ascii_and_has_no_bom (test_c11e_e4c_pursuit_runner_contract.PursuitRunnerContractTests.test_runner_is_ascii_and_has_no_bom) ... ok\r\ntest_runner_self_parses_with_powershell_51_ast (test_c11e_e4c_pursuit_runner_contract.PursuitRunnerContractTests.test_runner_self_parses_with_powershell_51_ast) ... ok\r\ntest_v5_3_manifest_records_four_pinned_replacements_and_add_only_docs (test_c11e_e4c_pursuit_runner_contract.PursuitRunnerContractTests.test_v5_3_manifest_records_four_pinned_replacements_and_add_only_docs) ... ok\r\ntest_wrapper_recovers_t1_without_rerender_and_executes_only_t2_to_t5 (test_c11e_e4c_pursuit_runner_contract.PursuitRunnerContractTests.test_wrapper_recovers_t1_without_rerender_and_executes_only_t2_to_t5) ... ok\r\ntest_91_pin_snapshot_detects_physical_source_drift (test_c11e_e4c_pursuit_tier_batch.PursuitTierBatchTests.test_91_pin_snapshot_detects_physical_source_drift) ... ok\r\ntest_91_pin_snapshot_rejects_windows_and_posix_path_traversal (test_c11e_e4c_pursuit_tier_batch.PursuitTierBatchTests.test_91_pin_snapshot_rejects_windows_and_posix_path_traversal) ... ok\r\ntest_91_pin_snapshots_require_three_equal_physical_inventories (test_c11e_e4c_pursuit_tier_batch.PursuitTierBatchTests.test_91_pin_snapshots_require_three_equal_physical_inventories) ... ok\r\ntest_exact_failed_v4_t1_is_recovered_from_existing_receipt_without_rerender (test_c11e_e4c_pursuit_tier_batch.PursuitTierBatchTests.test_exact_failed_v4_t1_is_recovered_from_existing_receipt_without_rerender) ... ok\r\ntest_expected_source_and_canonical_pins_are_bound (test_c11e_e4c_pursuit_tier_batch.PursuitTierBatchTests.test_expected_source_and_canonical_pins_are_bound) ... ok\r\ntest_ffprobe_contract_accepts_23s_690_frame_h264_aac_profile (test_c11e_e4c_pursuit_tier_batch.PursuitTierBatchTests.test_ffprobe_contract_accepts_23s_690_frame_h264_aac_profile) ... ok\r\ntest_ffprobe_contract_rejects_tracking_810_frame_27s_fixture (test_c11e_e4c_pursuit_tier_batch.PursuitTierBatchTests.test_ffprobe_contract_rejects_tracking_810_frame_27s_fixture) ... ok\r\ntest_ffprobe_contract_rejects_wrong_pixel_format_and_av_drift (test_c11e_e4c_pursuit_tier_batch.PursuitTierBatchTests.test_ffprobe_contract_rejects_wrong_pixel_format_and_av_drift) ... ok\r\ntest_full_qualification_accepts_native_pursuit_690_frame_contract (test_c11e_e4c_pursuit_tier_batch.PursuitTierBatchTests.test_full_qualification_accepts_native_pursuit_690_frame_contract) ... ok\r\ntest_full_qualification_rejects_tracking_810_frame_assumption (test_c11e_e4c_pursuit_tier_batch.PursuitTierBatchTests.test_full_qualification_rejects_tracking_810_frame_assumption) ... ok\r\ntest_missing_source_pin_fails_closed (test_c11e_e4c_pursuit_tier_batch.PursuitTierBatchTests.test_missing_source_pin_fails_closed) ... ok\r\ntest_plan_is_exactly_four_executable_pursuit_rows_tier_2_to_5 (test_c11e_e4c_pursuit_tier_batch.PursuitTierBatchTests.test_plan_is_exactly_four_executable_pursuit_rows_tier_2_to_5) ... ok\r\ntest_plan_rejects_consumed_or_malformed_t1_batch_id (test_c11e_e4c_pursuit_tier_batch.PursuitTierBatchTests.test_plan_rejects_consumed_or_malformed_t1_batch_id) ... ok\r\ntest_pursuit_timeline_is_derived_from_native_definition_and_dynamic_game_frames (test_c11e_e4c_pursuit_tier_batch.PursuitTierBatchTests.test_pursuit_timeline_is_derived_from_native_definition_and_dynamic_game_frames) ... ok\r\ntest_recovery_rejects_changed_or_missing_one_shot_authorization (test_c11e_e4c_pursuit_tier_batch.PursuitTierBatchTests.test_recovery_rejects_changed_or_missing_one_shot_authorization) ... ok\r\ntest_request_does_not_mutate_base_template (test_c11e_e4c_pursuit_tier_batch.PursuitTierBatchTests.test_request_does_not_mutate_base_template) ... ok\r\ntest_request_is_selector_specific_and_seed_domains_are_preserved (test_c11e_e4c_pursuit_tier_batch.PursuitTierBatchTests.test_request_is_selector_specific_and_seed_domains_are_preserved) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 37 tests in 2.313s\r\n\r\nOK\r\n",
+    "atomic_io":  "PASS_7_OF_7",
+    "staged_fixture_copies":  "PASS_TESTS_FIXTURES_AND_DEFINITIONS",
+    "t1_recovery":  "PASS_EXISTING_T1_REUSED_NO_RERENDER",
+    "timeline":  "PURSUIT_690_FRAMES_23_SECONDS_90_510_90",
+    "prepare_only":  "PASS_PREPARE_ONLY_NO_RENDER",
+    "renderer_invoked":  false,
+    "godot_invoked":  false,
+    "ffmpeg_invoked":  false,
+    "production_media_created":  false,
+    "production_dispatch":  false,
+    "release_authority":  "NONE",
+    "journal":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_pursuit_batch_overlay_v5_3\\C11E_E4C_PURSUIT_BATCH_OVERLAY_V5_3_20261115T202257Z_912953ca\\INSTALL_TRANSACTION_JOURNAL.json",
+    "evidence_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_pursuit_batch_overlay_v5_3\\C11E_E4C_PURSUIT_BATCH_OVERLAY_V5_3_20261115T202257Z_912953ca",
+    "stage_root":  "C:\\Users\\vinxe\\AppData\\Local\\Temp\\C11E_E4C_PURSUIT_V5_3_STAGE_87ef5c0d82b14696907657d2919b3b03",
+    "operator_review":  "PENDING",
+    "backup_records":  [
+                           {
+                               "destination":  "tools/c11d/d9/c11e_e4c_pursuit_tier_batch.py",
+                               "backup_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_pursuit_batch_overlay_v5_3\\C11E_E4C_PURSUIT_BATCH_OVERLAY_V5_3_20261115T202257Z_912953ca\\BACKUPS\\01_c11e_e4c_pursuit_tier_batch.py",
+                               "sha256":  "7164a83c882116081cda720b37c47107e9145ad2b918b759470b06c5eb3d5522",
+                               "bytes":  34391
+                           },
+                           {
+                               "destination":  "tests/test_c11e_e4c_pursuit_tier_batch.py",
+                               "backup_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_pursuit_batch_overlay_v5_3\\C11E_E4C_PURSUIT_BATCH_OVERLAY_V5_3_20261115T202257Z_912953ca\\BACKUPS\\02_test_c11e_e4c_pursuit_tier_batch.py",
+                               "sha256":  "32a06a0438d7f237ba4b33c9eded7208d8e86dc05b9dbcd46c2880a547c593da",
+                               "bytes":  10909
+                           },
+                           {
+                               "destination":  "tools/c11d/d9/RUN_C11E_E4C_PURSUIT_TIERS_1_TO_5_V1.ps1",
+                               "backup_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_pursuit_batch_overlay_v5_3\\C11E_E4C_PURSUIT_BATCH_OVERLAY_V5_3_20261115T202257Z_912953ca\\BACKUPS\\03_RUN_C11E_E4C_PURSUIT_TIERS_1_TO_5_V1.ps1",
+                               "sha256":  "947b37c9b34ef66ff87b242c3b3adf1330b2bf2aa707a6d4caf4e7f5e06e21e1",
+                               "bytes":  5869
+                           },
+                           {
+                               "destination":  "tests/test_c11e_e4c_pursuit_runner_contract.py",
+                               "backup_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_pursuit_batch_overlay_v5_3\\C11E_E4C_PURSUIT_BATCH_OVERLAY_V5_3_20261115T202257Z_912953ca\\BACKUPS\\04_test_c11e_e4c_pursuit_runner_contract.py",
+                               "sha256":  "98b1e1c0b578dc60c741783c1840e5bd4654d99b445fa49c981348f60c269ed6",
+                               "bytes":  6838
+                           }
+                       ]
+}
