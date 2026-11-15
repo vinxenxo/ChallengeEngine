@@ -1,0 +1,16 @@
+{
+  "batch_id": "E4C-PURSUIT-T2-5-20261115T231337Z-3fc2161e",
+  "created_utc": "2026-11-15T23:13:37.538389+00:00",
+  "policy": "T1 is audited and reused from the exact consumed V4 attempt; only tiers 2-5 execute. Any failure consumes this BatchId permanently.",
+  "request_ids": [
+    "E4C-PRS-T2-3fc2161e",
+    "E4C-PRS-T3-3fc2161e",
+    "E4C-PRS-T4-3fc2161e",
+    "E4C-PRS-T5-3fc2161e"
+  ],
+  "reused_request_ids": [
+    "E4C-PRS-T1-b3abbe94"
+  ],
+  "schema": "C11E-E4C-PURSUIT-TIER-BATCH-EXECUTION-AUTH-V2",
+  "status": "AUTHORIZED_ONCE_FOR_TIERS_2_TO_5_AFTER_T1_RECOVERY_AUDIT"
+}

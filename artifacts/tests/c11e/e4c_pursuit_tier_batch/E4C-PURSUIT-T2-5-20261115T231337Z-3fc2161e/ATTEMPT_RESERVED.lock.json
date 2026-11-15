@@ -1,0 +1,25 @@
+{
+  "batch_id": "E4C-PURSUIT-T2-5-20261115T231337Z-3fc2161e",
+  "commits": "OPERATOR_MANAGED",
+  "executed_request_ids": [
+    "E4C-PRS-T2-3fc2161e",
+    "E4C-PRS-T3-3fc2161e",
+    "E4C-PRS-T4-3fc2161e",
+    "E4C-PRS-T5-3fc2161e"
+  ],
+  "git_checks": "SKIPPED",
+  "recovered_from_batch_id": "E4C-PURSUIT-T1-5-20261115T140852Z-b3abbe94",
+  "request_ids": [
+    "E4C-PRS-T1-b3abbe94",
+    "E4C-PRS-T2-3fc2161e",
+    "E4C-PRS-T3-3fc2161e",
+    "E4C-PRS-T4-3fc2161e",
+    "E4C-PRS-T5-3fc2161e"
+  ],
+  "reused_request_ids": [
+    "E4C-PRS-T1-b3abbe94"
+  ],
+  "schema": "C11E-E4C-PURSUIT-TIER-BATCH-LOCK-V2",
+  "source_pin_set_sha256": "02519810e42d855a93967e937a9420169e0422cd07123e4795df6f4299ac4fda",
+  "status": "ATTEMPT_RESERVED"
+}

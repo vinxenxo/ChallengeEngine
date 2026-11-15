@@ -1,0 +1,1 @@
+{"status": "PASS_E4C_DRILL_SINGLE_SELECTOR_A_V_QUALIFICATION", "request_id": "E4C-PRS-T4-3fc2161e", "selector": "pursuit/tier-4", "final_A_sha256": "0404d2c04416a1eeca5431823871461bb502d6c005fdb5d83b16b6ff7fa4a559", "video_bitstream_identical_A_C": true, "audio_bitstream_changed_A_C": true, "release_authority": "NONE"}

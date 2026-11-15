@@ -1,0 +1,21 @@
+{
+  "audio_bitstream_changed_A_C": true,
+  "composed_frames": 690,
+  "evidence_root": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\c11e\\E4C-PRS-T3-3fc2161e",
+  "family_music_profile": "ORGANIC_BLOOM",
+  "final_A": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\c11e\\E4C-PRS-T3-3fc2161e\\E4C-PRS-T3-3fc2161e_A_music_840001.mp4",
+  "final_A_sha256": "c575ec225a0c9c15f7c1ed3db31631328df9b8163860905aa3ffc0cbdc930866",
+  "final_C_changed_music": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\c11e\\E4C-PRS-T3-3fc2161e\\qualification\\E4C-PRS-T3-3fc2161e_C_changed_music_840002.mp4",
+  "gameplay_seed": 12345,
+  "music_seed_A_B": 840001,
+  "music_seed_C": 840002,
+  "production_dispatch": false,
+  "receipt": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\production\\c11e\\E4C-PRS-T3-3fc2161e\\E4C_DRILL_AV_QUALIFICATION_RECEIPT.json",
+  "release_authority": "NONE",
+  "renderer": "C11C_SOURCE_CAPTURE_AND_D_POSTCOMPOSITION_QUALIFICATION",
+  "request_id": "E4C-PRS-T3-3fc2161e",
+  "selector": "pursuit/tier-3",
+  "source_frames": 690,
+  "status": "PASS_E4C_DRILL_SINGLE_SELECTOR_A_V_QUALIFICATION",
+  "video_bitstream_identical_A_C": true
+}

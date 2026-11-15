@@ -1,0 +1,19 @@
+{
+    "schema":  "C11E-PURSUIT-V5_3-INSTALL-FAILURE-V1",
+    "status":  "FAIL_CLOSED_PRESERVE_EVIDENCE",
+    "run_id":  "C11E_E4C_PURSUIT_BATCH_OVERLAY_V5_3_20261115T214454Z_761831cd",
+    "stage":  "OPERATION_PREIMAGE_PREFLIGHT",
+    "error":  "V5_3_REPLACE_PREIMAGE_SHA_FAIL: tools/c11d/d9/c11e_e4c_pursuit_tier_batch.py",
+    "transaction_started":  false,
+    "committed_count":  0,
+    "operation_count":  20,
+    "rollback_status":  "NOT_REQUIRED",
+    "backup_records":  [
+
+                       ],
+    "package_zip_sha256":  "84aab1b7b37d23e47e5d1a086607dcb882d3008a43214c709129c004171c375e",
+    "package_manifest_sha256":  "dbc0d8ae6b6a208d8a5681a2b91e66f0d9c183fb0c86dd72e36d9a5f3725ca66",
+    "evidence_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_pursuit_batch_overlay_v5_3\\C11E_E4C_PURSUIT_BATCH_OVERLAY_V5_3_20261115T214454Z_761831cd",
+    "stage_root":  "C:\\Users\\vinxe\\AppData\\Local\\Temp\\C11E_E4C_PURSUIT_V5_3_STAGE_0c3b0760738e4e379bdf6a67149f86ad",
+    "recorded_utc":  "2026-11-15T21:45:03.4036680Z"
+}

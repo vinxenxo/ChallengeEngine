@@ -1,0 +1,49 @@
+{
+  "base_cli_smoke": "PASS_REUSED_NO_RERUN",
+  "batch_id": "E4C-PURSUIT-T2-5-20261115T214502Z-a361246f",
+  "environment": {
+    "pyside6": "6.11.2",
+    "python": "3.13.14"
+  },
+  "execution_selectors": [
+    "pursuit/tier-2",
+    "pursuit/tier-3",
+    "pursuit/tier-4",
+    "pursuit/tier-5"
+  ],
+  "ffmpeg_invoked": false,
+  "godot_invoked": false,
+  "production_dispatch": false,
+  "production_media_created": false,
+  "recovered_tier_1": {
+    "qualification_receipt_sha256": "57206b4560b917c7a7fe5e738c5afd5d900d293e01c99fcd554f0926acc6eee7",
+    "request_id": "E4C-PRS-T1-b3abbe94",
+    "status": "PASS_EXISTING_T1_REUSED_NO_RERENDER"
+  },
+  "release_authority": "NONE",
+  "renderer_invoked": false,
+  "selectors": [
+    "pursuit/tier-1",
+    "pursuit/tier-2",
+    "pursuit/tier-3",
+    "pursuit/tier-4",
+    "pursuit/tier-5"
+  ],
+  "source_pin_count": 35,
+  "status": "PASS_PREPARE_ONLY_NO_RENDER",
+  "timeline_contract": {
+    "canonical_sha256": "dfe2bce9913df8ebe4f92d06eec5d22736338214e71b497dde3562a6927600bc",
+    "duration_seconds": 23.0,
+    "end_cta_frames": 90,
+    "fps": 30,
+    "gameplay_duration_seconds": 17.0,
+    "gameplay_frames": 510,
+    "phase_counts": {
+      "END_CTA": 90,
+      "GAME": 510,
+      "PRE_ROLL": 90
+    },
+    "pre_roll_frames": 90,
+    "total_frames": 690
+  }
+}
