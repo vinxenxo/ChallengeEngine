@@ -1,0 +1,10 @@
+{
+    "schema":  "C11E-TRACKING-PREROLL-FIX-V2-TRANSACTION-JOURNAL-V1",
+    "run_id":  "C11E_E4C_TRACKING_PREROLL_FIX_V2_INSTALL_20261115T072231Z_3b891a30",
+    "package_id":  "C11E_E4C_TRACKING_PREROLL_BRIDGE_FIX_V2_1_20261115",
+    "package_manifest_sha256":  "49285fb1022a2b5caed82781b2b8fcd45216aaeb6377e1bf93339c4ae620a00f",
+    "status":  "RUNNING",
+    "operations":  [
+
+                   ]
+}

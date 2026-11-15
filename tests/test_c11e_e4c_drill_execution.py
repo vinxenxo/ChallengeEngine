@@ -125,15 +125,78 @@ class DrillExecutionHelpersTests(unittest.TestCase):
             validate_request(request)
 
     def test_visible_editorial_is_required_and_phase_scoped(self):
-        blank = {"text": {"visible_fields": {}, "phase_visibility": {"GAME": False, "PRE_ROLL": False, "END_CTA": False, "DONE": False}}}
+        blank = {"text": {
+            "visible_fields": {},
+            "phase_visibility": {"PRE_ROLL": False, "GAME": False, "END_CTA": False, "DONE": False},
+            "field_phase_visibility": {"title": [], "subtitle": [], "call_to_action": []},
+        }}
         with self.assertRaisesRegex(DrillExecutionError, "at least one non-empty"):
             require_visible_editorial(blank)
-        plan = {"text": {"visible_fields": {"title": "  Reto  ", "subtitle": " ", "call_to_action": "unknown"}, "phase_visibility": {"GAME": True, "PRE_ROLL": False, "END_CTA": False, "DONE": False}}}
+        plan = {"text": {
+            "visible_fields": {"title": "  Reto  ", "subtitle": " ", "call_to_action": "unknown"},
+            "phase_visibility": {"PRE_ROLL": True, "GAME": True, "END_CTA": False, "DONE": False},
+            "field_phase_visibility": {"title": ["PRE_ROLL", "GAME"], "subtitle": [], "call_to_action": []},
+        }}
         self.assertEqual(require_visible_editorial(plan), {"title": "Reto"})
 
-    def test_visible_editorial_rejects_wrong_phase_contract(self):
-        plan = {"text": {"visible_fields": {"title": "Reto"}, "phase_visibility": {"GAME": True, "PRE_ROLL": True, "END_CTA": False, "DONE": False}}}
-        with self.assertRaisesRegex(DrillExecutionError, "hidden during PRE_ROLL"):
+    def test_visible_editorial_accepts_r63a_title_bridge_with_game_only_supporting_fields(self):
+        plan = {"text": {
+            "visible_fields": {"title": "Reto", "subtitle": "Sigue el objetivo", "call_to_action": "Mantén la mirada"},
+            "phase_visibility": {"PRE_ROLL": True, "GAME": True, "END_CTA": False, "DONE": False},
+            "field_phase_visibility": {
+                "title": ["PRE_ROLL", "GAME"],
+                "subtitle": ["GAME"],
+                "call_to_action": ["GAME"],
+            },
+        }}
+        self.assertEqual(require_visible_editorial(plan), {
+            "title": "Reto", "subtitle": "Sigue el objetivo", "call_to_action": "Mantén la mirada"
+        })
+
+    def test_visible_editorial_allows_game_only_fields_without_family_title(self):
+        plan = {"text": {
+            "visible_fields": {"subtitle": "Sigue el objetivo"},
+            "phase_visibility": {"PRE_ROLL": False, "GAME": True, "END_CTA": False, "DONE": False},
+            "field_phase_visibility": {"title": [], "subtitle": ["GAME"], "call_to_action": []},
+        }}
+        self.assertEqual(require_visible_editorial(plan), {"subtitle": "Sigue el objetivo"})
+
+    def test_visible_editorial_rejects_title_without_preroll_visibility(self):
+        plan = {"text": {
+            "visible_fields": {"title": "Reto"},
+            "phase_visibility": {"PRE_ROLL": False, "GAME": True, "END_CTA": False, "DONE": False},
+            "field_phase_visibility": {"title": ["GAME"], "subtitle": [], "call_to_action": []},
+        }}
+        with self.assertRaisesRegex(DrillExecutionError, "phase_visibility must match"):
+            require_visible_editorial(plan)
+
+    def test_visible_editorial_rejects_subtitle_or_cta_in_preroll(self):
+        plan = {"text": {
+            "visible_fields": {"title": "Reto", "subtitle": "Subtítulo"},
+            "phase_visibility": {"PRE_ROLL": True, "GAME": True, "END_CTA": False, "DONE": False},
+            "field_phase_visibility": {
+                "title": ["PRE_ROLL", "GAME"], "subtitle": ["PRE_ROLL", "GAME"], "call_to_action": []
+            },
+        }}
+        with self.assertRaisesRegex(DrillExecutionError, "only the family title in PRE_ROLL"):
+            require_visible_editorial(plan)
+
+    def test_visible_editorial_rejects_non_hidden_end_phases(self):
+        plan = {"text": {
+            "visible_fields": {"title": "Reto"},
+            "phase_visibility": {"PRE_ROLL": True, "GAME": True, "END_CTA": True, "DONE": False},
+            "field_phase_visibility": {"title": ["PRE_ROLL", "GAME"], "subtitle": [], "call_to_action": []},
+        }}
+        with self.assertRaisesRegex(DrillExecutionError, "phase_visibility must match"):
+            require_visible_editorial(plan)
+
+    def test_visible_editorial_rejects_wrong_field_visibility_contract(self):
+        plan = {"text": {
+            "visible_fields": {"title": "Reto"},
+            "phase_visibility": {"PRE_ROLL": True, "GAME": True, "END_CTA": False, "DONE": False},
+            "field_phase_visibility": {"title": ["GAME"], "subtitle": [], "call_to_action": []},
+        }}
+        with self.assertRaisesRegex(DrillExecutionError, "only the family title in PRE_ROLL"):
             require_visible_editorial(plan)
 
     def test_source_pin_paths_fail_closed_before_manifest_access(self):

@@ -1,0 +1,121 @@
+[
+    {
+        "path":  "docs/current/e/C11D_E_BLOCKER_REMEDIATION_REGISTER_20261115_V70.md",
+        "operation":  "ADD_ONLY",
+        "status":  "ADDED_POSTIMAGE_VERIFIED",
+        "backup_path":  null,
+        "sha256":  "9cb4760308dcc5caa305128d89a5203cdf6d726414fcfb10854c18196ba441db"
+    },
+    {
+        "path":  "docs/current/e/C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261115_V96.md",
+        "operation":  "ADD_ONLY",
+        "status":  "ADDED_POSTIMAGE_VERIFIED",
+        "backup_path":  null,
+        "sha256":  "ddd05dad76cb933bf96b49a7651fea855e0b198062e6436e4f172242b44c98aa"
+    },
+    {
+        "path":  "docs/current/e/C11E_CURRENT_AUTHORITY_20261115_V153.md",
+        "operation":  "ADD_ONLY",
+        "status":  "ADDED_POSTIMAGE_VERIFIED",
+        "backup_path":  null,
+        "sha256":  "8c45b4e89370ed1719b0320699e00509d62f4ac507ac67f7966e237692cfc0d8"
+    },
+    {
+        "path":  "docs/current/e/C11E_CURRENT_DOC_INDEX_20261115_V115.md",
+        "operation":  "ADD_ONLY",
+        "status":  "ADDED_POSTIMAGE_VERIFIED",
+        "backup_path":  null,
+        "sha256":  "acdfcefc1133aadaf1f9bae5b466f5c89f7493cc367e6bc1c6474c811a5ac147"
+    },
+    {
+        "path":  "docs/current/e/C11E_E3_EXECUTION_BACKLOG_20261115_V124.md",
+        "operation":  "ADD_ONLY",
+        "status":  "ADDED_POSTIMAGE_VERIFIED",
+        "backup_path":  null,
+        "sha256":  "2fa0fe4bceae12ddd2abf299bfc3cb220b1235897710358f5f47f07f5766b95b"
+    },
+    {
+        "path":  "docs/current/e/C11E_E4C_DRILL_EXECUTION_PLAN_20261115_V41.md",
+        "operation":  "ADD_ONLY",
+        "status":  "ADDED_POSTIMAGE_VERIFIED",
+        "backup_path":  null,
+        "sha256":  "9857fab9e9ed47ea3ba073d8e786ebf8a3e9df34c8b243cc10c8e8c8a0286d99"
+    },
+    {
+        "path":  "docs/current/e/C11E_E4C_DRILL_VISUAL_CONSUMER_SPEC_20261115_V25.md",
+        "operation":  "ADD_ONLY",
+        "status":  "ADDED_POSTIMAGE_VERIFIED",
+        "backup_path":  null,
+        "sha256":  "533992b0de6fbc79d4ad2044db8ba62bffaecd1d38a15dfc3d6ad6807c6fe172"
+    },
+    {
+        "path":  "docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261115_V148.md",
+        "operation":  "ADD_ONLY",
+        "status":  "ADDED_POSTIMAGE_VERIFIED",
+        "backup_path":  null,
+        "sha256":  "a20a6cfd4c4d2d8594747b23a4dff12ca279adf89143938dcff5288c6b7eaf48"
+    },
+    {
+        "path":  "docs/current/e/C11E_INSTALLER_INCIDENT_REGISTER_20261115_V33.md",
+        "operation":  "ADD_ONLY",
+        "status":  "ADDED_POSTIMAGE_VERIFIED",
+        "backup_path":  null,
+        "sha256":  "66066fbdcc729ddf6ba5ed602398cf24512ace8a2ec4a3fc4d95087ae7231014"
+    },
+    {
+        "path":  "docs/current/e/C11E_POWERSHELL_RUNNER_STYLE_GUIDE_20261115_V24.md",
+        "operation":  "ADD_ONLY",
+        "status":  "ADDED_POSTIMAGE_VERIFIED",
+        "backup_path":  null,
+        "sha256":  "301ef3b1344e017f405ebf2829950d2a90b77b90a74c59d724083530225c1ec2"
+    },
+    {
+        "path":  "docs/history/c11e/C11E_E4C_TRACKING_TIERS_2_TO_5_BATCH_V1_20261115.md",
+        "operation":  "ADD_ONLY",
+        "status":  "ADDED_POSTIMAGE_VERIFIED",
+        "backup_path":  null,
+        "sha256":  "0911fa42aaaa177bb118a267d64e2768b7a0786348a36d4a0bbde2e4a855f65c"
+    },
+    {
+        "path":  "prompts/C11E_CONTINUATION_MASTER_PROMPT_20261115_V155.md",
+        "operation":  "ADD_ONLY",
+        "status":  "ADDED_POSTIMAGE_VERIFIED",
+        "backup_path":  null,
+        "sha256":  "61423b4ce89cd98d5cebc3d2f1b56fca8249806883b1f0b7f8a21f225e096dd8"
+    },
+    {
+        "path":  "prompts/C11E_FIRST_PROMPT_20261115_V79.md",
+        "operation":  "ADD_ONLY",
+        "status":  "ADDED_POSTIMAGE_VERIFIED",
+        "backup_path":  null,
+        "sha256":  "6335e2e262b956d8bce16c4188bf3112bf46e9ae3d0ada7885350e8abdb18259"
+    },
+    {
+        "path":  "prompts/C11E_NEXT_WINDOW_START_PROMPT_20261115_V155.md",
+        "operation":  "ADD_ONLY",
+        "status":  "ADDED_POSTIMAGE_VERIFIED",
+        "backup_path":  null,
+        "sha256":  "747f22d1b9504918e83d5fc30aebacb6cb8787a5cf82e77f24a097580675b94d"
+    },
+    {
+        "path":  "tests/test_c11e_e4c_tracking_tier_batch.py",
+        "operation":  "ADD_ONLY",
+        "status":  "ADDED_POSTIMAGE_VERIFIED",
+        "backup_path":  null,
+        "sha256":  "11293512f24f7ccb298be88957df4ac3e0433ec697caa0b8406a6778b40b76ed"
+    },
+    {
+        "path":  "tools/c11d/d9/RUN_C11E_E4C_TRACKING_TIERS_2_TO_5_V1.ps1",
+        "operation":  "ADD_ONLY",
+        "status":  "ADDED_POSTIMAGE_VERIFIED",
+        "backup_path":  null,
+        "sha256":  "29a39e3e8508fe5329542c37b3823c52cf73bcb688e6f75344bdbfc5334c95c7"
+    },
+    {
+        "path":  "tools/c11d/d9/c11e_e4c_tracking_tier_batch.py",
+        "operation":  "ADD_ONLY",
+        "status":  "ADDED_POSTIMAGE_VERIFIED",
+        "backup_path":  null,
+        "sha256":  "0a3cc7ef08f64eaf2b0681d8a51eb5462a81d777d56b1c260e110ccd3b50cc5d"
+    }
+]

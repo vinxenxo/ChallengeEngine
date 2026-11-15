@@ -1,0 +1,13 @@
+{
+  "cli_summary_exists": false,
+  "finished_utc": "2026-11-15T01:01:08.349682+00:00",
+  "process_exit_code": 2,
+  "production_dispatch": false,
+  "release_authority": "NONE",
+  "request_id": "E4C-TRK-T2-a78c6c24",
+  "selector": "tracking/tier-2",
+  "started_utc": "2026-11-15T01:01:03.432361+00:00",
+  "status": "CHILD_EXIT_FAIL_CLOSED",
+  "stderr_log": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_tracking_tier_batch\\E4C-TRACKING-T2-5-20261115T005529Z-a78c6c24\\E4C-TRK-T2-a78c6c24.CLI_STDERR.log",
+  "stdout_log": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_tracking_tier_batch\\E4C-TRACKING-T2-5-20261115T005529Z-a78c6c24\\E4C-TRK-T2-a78c6c24.CLI_STDOUT.log"
+}

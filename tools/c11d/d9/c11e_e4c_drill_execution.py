@@ -189,7 +189,7 @@ def validate_request(raw: Mapping[str, Any]) -> tuple[str, int, int, int, int]:
 
 
 def require_visible_editorial(plan: Mapping[str, Any]) -> dict[str, str]:
-    """Fail closed unless at least one real D-owned text field will render in GAME."""
+    """Validate R6.3A field-scoped visibility: family title in PRE_ROLL, all fields in GAME."""
     text_block = plan.get("text", {})
     fields = text_block.get("visible_fields", {}) if isinstance(text_block, Mapping) else {}
     if not isinstance(fields, Mapping):
@@ -204,11 +204,36 @@ def require_visible_editorial(plan: Mapping[str, Any]) -> dict[str, str]:
             "E4C requires at least one non-empty D editorial field (title, subtitle or call_to_action); "
             "personalization_enabled=true alone is not evidence of visible composition"
         )
-    if text_block.get("phase_visibility", {}).get("GAME") is not True:
-        raise DrillExecutionError("D composition plan does not declare editorial visible during GAME")
-    for phase in ("PRE_ROLL", "END_CTA", "DONE"):
-        if text_block.get("phase_visibility", {}).get(phase) is not False:
-            raise DrillExecutionError(f"D composition plan editorial must be hidden during {phase}")
+
+    phase_visibility = text_block.get("phase_visibility", {})
+    field_phase_visibility = text_block.get("field_phase_visibility", {})
+    if not isinstance(phase_visibility, Mapping):
+        raise DrillExecutionError("D composition plan phase_visibility must be an object")
+    if not isinstance(field_phase_visibility, Mapping):
+        raise DrillExecutionError("D composition plan field_phase_visibility must be an object")
+
+    # R6.3A is deliberately field-scoped: only the family title replaces the
+    # native countdown title during PRE_ROLL. Subtitle and CTA remain GAME-only.
+    has_title = "title" in visible
+    expected_phase_visibility = {
+        "PRE_ROLL": has_title,
+        "GAME": True,
+        "END_CTA": False,
+        "DONE": False,
+    }
+    if dict(phase_visibility) != expected_phase_visibility:
+        raise DrillExecutionError(
+            "D composition plan phase_visibility must match the R6.3A family-title contract"
+        )
+    expected_field_visibility = {
+        "title": ["PRE_ROLL", "GAME"] if has_title else [],
+        "subtitle": ["GAME"] if "subtitle" in visible else [],
+        "call_to_action": ["GAME"] if "call_to_action" in visible else [],
+    }
+    if dict(field_phase_visibility) != expected_field_visibility:
+        raise DrillExecutionError(
+            "D composition plan field_phase_visibility must keep only the family title in PRE_ROLL"
+        )
     return visible
 
 

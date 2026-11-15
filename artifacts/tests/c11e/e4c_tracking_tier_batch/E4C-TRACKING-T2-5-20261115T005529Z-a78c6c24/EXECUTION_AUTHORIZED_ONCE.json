@@ -1,0 +1,13 @@
+{
+  "batch_id": "E4C-TRACKING-T2-5-20261115T005529Z-a78c6c24",
+  "created_utc": "2026-11-15T01:01:03.425994+00:00",
+  "policy": "Any failure after this marker forbids retry with this batch ID; preserve outputs and use a newly reviewed continuation.",
+  "request_ids": [
+    "E4C-TRK-T2-a78c6c24",
+    "E4C-TRK-T3-a78c6c24",
+    "E4C-TRK-T4-a78c6c24",
+    "E4C-TRK-T5-a78c6c24"
+  ],
+  "schema": "C11E-E4C-TRACKING-TIER-BATCH-EXECUTION-AUTH-V1",
+  "status": "AUTHORIZED_ONCE_BEFORE_FIRST_CHILD"
+}

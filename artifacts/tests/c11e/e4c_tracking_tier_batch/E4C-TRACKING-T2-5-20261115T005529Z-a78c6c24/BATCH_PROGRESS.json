@@ -1,0 +1,17 @@
+{
+  "batch_id": "E4C-TRACKING-T2-5-20261115T005529Z-a78c6c24",
+  "completed_rows": [],
+  "current_selector": "tracking/tier-2",
+  "expected": [
+    "tracking/tier-2",
+    "tracking/tier-3",
+    "tracking/tier-4",
+    "tracking/tier-5"
+  ],
+  "failed_selector": "tracking/tier-2",
+  "failure_receipt": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_tracking_tier_batch\\E4C-TRACKING-T2-5-20261115T005529Z-a78c6c24\\E4C-TRK-T2-a78c6c24.BATCH_ROW_FAILURE.json",
+  "operator_review": "PENDING",
+  "release_authority": "NONE",
+  "schema": "C11E-E4C-TRACKING-TIER-BATCH-PROGRESS-V1",
+  "status": "STOPPED_FAIL_CLOSED"
+}

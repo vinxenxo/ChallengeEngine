@@ -1,0 +1,161 @@
+{
+    "schema":  "C11E-TRACKING-PREROLL-FIX-V3-TRANSACTION-JOURNAL-V1",
+    "run_id":  "C11E_E4C_TRACKING_PREROLL_FIX_V3_INSTALL_20261115T073428Z_4d3049a3",
+    "package_id":  "C11E_E4C_TRACKING_PREROLL_BRIDGE_FIX_V3_20261115",
+    "package_manifest_sha256":  "0da46f408fbaee2ec33cd14158c7e8e5a8b0b42ca4e6ab97c89b95dc5d1a2034",
+    "status":  "PASS_PINNED_REPLACEMENTS_AND_ADD_ONLY_DOCS",
+    "operations":  [
+                       {
+                           "operation":  "REPLACE",
+                           "path":  "tools/c11d/d9/c11e_e4c_drill_execution.py",
+                           "status":  "REPLACED_POSTIMAGE_VERIFIED",
+                           "preimage_sha256":  "51fe92c24506788918f896216055f2f1f21a7abf4ad9bf369c9ee63cbac5983a",
+                           "postimage_sha256":  "b7cbf7bd97f76f4c2e339840fc694d3f5b0e50186ba2456e45ff00e585751abe",
+                           "backup_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_tracking_preroll_bridge_fix_install\\C11E_E4C_TRACKING_PREROLL_FIX_V3_INSTALL_20261115T073428Z_4d3049a3\\backups\\tools\\c11d\\d9\\c11e_e4c_drill_execution.py"
+                       },
+                       {
+                           "operation":  "REPLACE",
+                           "path":  "tests/test_c11e_e4c_drill_execution.py",
+                           "status":  "REPLACED_POSTIMAGE_VERIFIED",
+                           "preimage_sha256":  "3e212913bbb457263db8d4015751eb31531fd2a788c602a8d6ee4bcf6e551552",
+                           "postimage_sha256":  "87cdbe370d41baee5c70767980350675ec8c089f356e8717ce72a327552ee8c6",
+                           "backup_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_tracking_preroll_bridge_fix_install\\C11E_E4C_TRACKING_PREROLL_FIX_V3_INSTALL_20261115T073428Z_4d3049a3\\backups\\tests\\test_c11e_e4c_drill_execution.py"
+                       },
+                       {
+                           "operation":  "REPLACE",
+                           "path":  "tools/c11d/d9/c11e_e4c_tracking_tier_batch.py",
+                           "status":  "REPLACED_POSTIMAGE_VERIFIED",
+                           "preimage_sha256":  "0a3cc7ef08f64eaf2b0681d8a51eb5462a81d777d56b1c260e110ccd3b50cc5d",
+                           "postimage_sha256":  "9b868c33a705257c8343c58033e2afb44b502992dbd04d73d72a1050cdde2820",
+                           "backup_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_tracking_preroll_bridge_fix_install\\C11E_E4C_TRACKING_PREROLL_FIX_V3_INSTALL_20261115T073428Z_4d3049a3\\backups\\tools\\c11d\\d9\\c11e_e4c_tracking_tier_batch.py"
+                       },
+                       {
+                           "operation":  "REPLACE",
+                           "path":  "tests/test_c11e_e4c_tracking_tier_batch.py",
+                           "status":  "REPLACED_POSTIMAGE_VERIFIED",
+                           "preimage_sha256":  "11293512f24f7ccb298be88957df4ac3e0433ec697caa0b8406a6778b40b76ed",
+                           "postimage_sha256":  "fa99dc47b46c5ddb82a99230bfb730a013b2c2fd6d28ba37803b4af688d7286f",
+                           "backup_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_tracking_preroll_bridge_fix_install\\C11E_E4C_TRACKING_PREROLL_FIX_V3_INSTALL_20261115T073428Z_4d3049a3\\backups\\tests\\test_c11e_e4c_tracking_tier_batch.py"
+                       },
+                       {
+                           "operation":  "REPLACE",
+                           "path":  "tools/c11d/d9/RUN_C11E_E4C_TRACKING_TIERS_2_TO_5_V1.ps1",
+                           "status":  "REPLACED_POSTIMAGE_VERIFIED",
+                           "preimage_sha256":  "29a39e3e8508fe5329542c37b3823c52cf73bcb688e6f75344bdbfc5334c95c7",
+                           "postimage_sha256":  "3e2d2c0245b809e4c007fc7a5e7a6d7c747a7f4abf9ee9697f9831c11e36c7e9",
+                           "backup_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_tracking_preroll_bridge_fix_install\\C11E_E4C_TRACKING_PREROLL_FIX_V3_INSTALL_20261115T073428Z_4d3049a3\\backups\\tools\\c11d\\d9\\RUN_C11E_E4C_TRACKING_TIERS_2_TO_5_V1.ps1"
+                       },
+                       {
+                           "operation":  "ADD",
+                           "path":  "docs/current/e/C11D_E_BLOCKER_REMEDIATION_REGISTER_20261115_V73.md",
+                           "status":  "ADDED_POSTIMAGE_VERIFIED",
+                           "preimage_sha256":  null,
+                           "postimage_sha256":  "b0f3ade9ad078c1ecd62a5a8faf6d89f551c3db90fe363b18a2022cb60223ce2",
+                           "backup_path":  null
+                       },
+                       {
+                           "operation":  "ADD",
+                           "path":  "docs/current/e/C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261115_V98.md",
+                           "status":  "ADDED_POSTIMAGE_VERIFIED",
+                           "preimage_sha256":  null,
+                           "postimage_sha256":  "048971a002c1cd6c3579d239a20823397091e3c9d165da86c8201a41c5ea6b99",
+                           "backup_path":  null
+                       },
+                       {
+                           "operation":  "ADD",
+                           "path":  "docs/current/e/C11E_CURRENT_AUTHORITY_20261115_V157.md",
+                           "status":  "ADDED_POSTIMAGE_VERIFIED",
+                           "preimage_sha256":  null,
+                           "postimage_sha256":  "bd0c60586a2baf35e1b966e723e8176c1d0fda66ed4667a15c71ba161a6503db",
+                           "backup_path":  null
+                       },
+                       {
+                           "operation":  "ADD",
+                           "path":  "docs/current/e/C11E_CURRENT_DOC_INDEX_20261115_V119.md",
+                           "status":  "ADDED_POSTIMAGE_VERIFIED",
+                           "preimage_sha256":  null,
+                           "postimage_sha256":  "6b87fd2d9e53443fd0f840a1b8e50712f9a651125da40deb58fe90fd114e7fdf",
+                           "backup_path":  null
+                       },
+                       {
+                           "operation":  "ADD",
+                           "path":  "docs/current/e/C11E_E3_EXECUTION_BACKLOG_20261115_V128.md",
+                           "status":  "ADDED_POSTIMAGE_VERIFIED",
+                           "preimage_sha256":  null,
+                           "postimage_sha256":  "590084a037642266cac77ead3bf642052c7c56975919ef3c31e82a8fd4d3801a",
+                           "backup_path":  null
+                       },
+                       {
+                           "operation":  "ADD",
+                           "path":  "docs/current/e/C11E_E4C_DRILL_EXECUTION_PLAN_20261115_V45.md",
+                           "status":  "ADDED_POSTIMAGE_VERIFIED",
+                           "preimage_sha256":  null,
+                           "postimage_sha256":  "259d2e0f643e1ba5ea3ae428687a2c13fe7807a90640c92630bb4bc0874f01b9",
+                           "backup_path":  null
+                       },
+                       {
+                           "operation":  "ADD",
+                           "path":  "docs/current/e/C11E_E4C_DRILL_VISUAL_CONSUMER_SPEC_20261115_V28.md",
+                           "status":  "ADDED_POSTIMAGE_VERIFIED",
+                           "preimage_sha256":  null,
+                           "postimage_sha256":  "a4cdaf54608be7913ef3ace16bf46a29b09a9996d97a127365b5faea789a72bb",
+                           "backup_path":  null
+                       },
+                       {
+                           "operation":  "ADD",
+                           "path":  "docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261115_V152.md",
+                           "status":  "ADDED_POSTIMAGE_VERIFIED",
+                           "preimage_sha256":  null,
+                           "postimage_sha256":  "875c6aec4f258a34efb8ba95834bf05806c9ee511035010e145016c0ff5f375d",
+                           "backup_path":  null
+                       },
+                       {
+                           "operation":  "ADD",
+                           "path":  "docs/current/e/C11E_INSTALLER_INCIDENT_REGISTER_20261115_V37.md",
+                           "status":  "ADDED_POSTIMAGE_VERIFIED",
+                           "preimage_sha256":  null,
+                           "postimage_sha256":  "a69730e8421a741dc366d77c10ade63f79f540b2e676fd23f9c06a99447af53a",
+                           "backup_path":  null
+                       },
+                       {
+                           "operation":  "ADD",
+                           "path":  "prompts/C11E_CONTINUATION_MASTER_PROMPT_20261115_V159.md",
+                           "status":  "ADDED_POSTIMAGE_VERIFIED",
+                           "preimage_sha256":  null,
+                           "postimage_sha256":  "89d7d1499ff70dfb63f7bc9603c7c4977a455290911f198bc7b5a28940a679d7",
+                           "backup_path":  null
+                       },
+                       {
+                           "operation":  "ADD",
+                           "path":  "prompts/C11E_FIRST_PROMPT_20261115_V83.md",
+                           "status":  "ADDED_POSTIMAGE_VERIFIED",
+                           "preimage_sha256":  null,
+                           "postimage_sha256":  "1ac921a0644f162ecfedeec1b9027fb58e04ba2fe0bc24dffb428d53c5940340",
+                           "backup_path":  null
+                       },
+                       {
+                           "operation":  "ADD",
+                           "path":  "prompts/C11E_NEXT_WINDOW_START_PROMPT_20261115_V159.md",
+                           "status":  "ADDED_POSTIMAGE_VERIFIED",
+                           "preimage_sha256":  null,
+                           "postimage_sha256":  "388cecfd367335d39489bacc4fdbc7e1f367a74e789876ab5787029b15929b8a",
+                           "backup_path":  null
+                       },
+                       {
+                           "operation":  "ADD",
+                           "path":  "docs/history/c11e/C11E_E4C_TRACKING_BATCH_PREROLL_TITLE_BRIDGE_RECONCILIATION_20261115_V3.md",
+                           "status":  "ADDED_POSTIMAGE_VERIFIED",
+                           "preimage_sha256":  null,
+                           "postimage_sha256":  "e35528d36ecd59c01510682cf989c9737433dfed4bf67a302b8b0c317f60c0c4",
+                           "backup_path":  null
+                       },
+                       {
+                           "operation":  "ADD",
+                           "path":  "docs/current/e/C11E_POWERSHELL_RUNNER_STYLE_GUIDE_20261115_V27.md",
+                           "status":  "ADDED_POSTIMAGE_VERIFIED",
+                           "preimage_sha256":  null,
+                           "postimage_sha256":  "93b83ec7c5a640235edc3d70e877088896babe9d6d3b1fc3ed224fe0b6b07f43",
+                           "backup_path":  null
+                       }
+                   ]
+}

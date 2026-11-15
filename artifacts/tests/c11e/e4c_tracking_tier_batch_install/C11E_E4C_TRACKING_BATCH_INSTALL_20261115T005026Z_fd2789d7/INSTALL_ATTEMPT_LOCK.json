@@ -1,0 +1,7 @@
+{
+    "schema":  "C11E-E4C-TRACKING-BATCH-INSTALL-LOCK-V1",
+    "status":  "ATTEMPT_RESERVED",
+    "run_id":  "C11E_E4C_TRACKING_BATCH_INSTALL_20261115T005026Z_fd2789d7",
+    "package_id":  "C11E_E4C_TRACKING_TIERS_2_TO_5_V1_20261115",
+    "transaction":  "ADD_ONLY"
+}
