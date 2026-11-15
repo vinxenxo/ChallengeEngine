@@ -75,8 +75,8 @@ class TrackingTierBatchTests(unittest.TestCase):
         self.assertEqual(batch.SOURCE_PINS[batch.EXECUTOR_REL], "b7cbf7bd97f76f4c2e339840fc694d3f5b0e50186ba2456e45ff00e585751abe")
         self.assertEqual(batch.SOURCE_PINS["release/C11C_FREEZE_PACKAGE_MANIFEST.json"], batch.FROZEN_MANIFEST_SHA256)
         self.assertEqual(batch.SOURCE_PINS[batch.STYLE_GUIDE_PATH], batch.STYLE_GUIDE_SHA256)
-        self.assertEqual(batch.STYLE_GUIDE_V26_PATH, "docs/current/e/C11E_POWERSHELL_RUNNER_STYLE_GUIDE_20261115_V26.md")
-        self.assertEqual(len(batch.STYLE_GUIDE_V26_SHA256), 64)
+        self.assertEqual(batch.STYLE_GUIDE_V27_PATH, "docs/current/e/C11E_POWERSHELL_RUNNER_STYLE_GUIDE_20261115_V27.md")
+        self.assertEqual(len(batch.STYLE_GUIDE_V27_SHA256), 64)
 
     def _final_fixture(self):
         streams = [

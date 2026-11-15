@@ -1,0 +1,1 @@
+{"status": "PASS_E4C_DRILL_SINGLE_SELECTOR_A_V_QUALIFICATION", "request_id": "E4C-TRK-T5-6239dd21", "selector": "tracking/tier-5", "final_A_sha256": "f2097c8380d75cf4af86e016b0b75100f7e24b6a350c7ff3d249ae3f39f33d72", "video_bitstream_identical_A_C": true, "audio_bitstream_changed_A_C": true, "release_authority": "NONE"}

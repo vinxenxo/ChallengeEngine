@@ -21,8 +21,8 @@ from typing import Any, Mapping
 FROZEN_MANIFEST_SHA256 = "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
 STYLE_GUIDE_PATH = "docs/current/e/C11E_POWERSHELL_RUNNER_STYLE_GUIDE_20261114_V23.md"
 STYLE_GUIDE_SHA256 = "1900b8a06f52156ff18790adb44ef82268c386e2633d2b31237ebc705208c3a5"
-STYLE_GUIDE_V26_PATH = "docs/current/e/C11E_POWERSHELL_RUNNER_STYLE_GUIDE_20261115_V26.md"
-STYLE_GUIDE_V26_SHA256 = "74ffaee6e4b6d1cf5fe070189aa049cc38182617c13e6cc73b0e1e07c7533c1b"
+STYLE_GUIDE_V27_PATH = "docs/current/e/C11E_POWERSHELL_RUNNER_STYLE_GUIDE_20261115_V27.md"
+STYLE_GUIDE_V27_SHA256 = "93b83ec7c5a640235edc3d70e877088896babe9d6d3b1fc3ed224fe0b6b07f43"
 BASE_REQUEST_REL = "artifacts/production/c11e/E4C-CLI-SMOKE-20261112T091253Z-5a2e96b8/request.json"
 BASE_RECEIPT_REL = "artifacts/production/c11e/E4C-CLI-SMOKE-20261112T091253Z-5a2e96b8/E4C_DRILL_AV_QUALIFICATION_RECEIPT.json"
 BASE_REQUEST_SHA256 = "886c21782ded4759585352f01615aecc0d6639628285c0293e53a59dc953000e"
@@ -131,12 +131,12 @@ def verify_pins(root: Path) -> dict[str, str]:
 
 
 def verify_postinstall_style_guide(root: Path) -> str:
-    path = root / Path(*STYLE_GUIDE_V26_PATH.split("/"))
+    path = root / Path(*STYLE_GUIDE_V27_PATH.split("/"))
     if not path.is_file():
-        raise BatchError(f"POSTINSTALL_STYLE_GUIDE_V26_MISSING: {path}")
+        raise BatchError(f"POSTINSTALL_STYLE_GUIDE_V27_MISSING: {path}")
     digest = sha256_file(path)
-    if digest != STYLE_GUIDE_V26_SHA256:
-        raise BatchError(f"POSTINSTALL_STYLE_GUIDE_V26_SHA_MISMATCH: {digest}")
+    if digest != STYLE_GUIDE_V27_SHA256:
+        raise BatchError(f"POSTINSTALL_STYLE_GUIDE_V27_SHA_MISMATCH: {digest}")
     return digest
 
 
@@ -498,8 +498,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--batch-id", default=None)
     parser.add_argument("--execute", action="store_true", help="Authorize and execute the four isolated A/V qualifications")
     parser.add_argument("--timeout-seconds", type=int, default=7200)
-    parser.add_argument("--require-v26-guide", action="store_true",
-                        help="Require the installed V24 PowerShell style guide before batch execution")
+    parser.add_argument("--require-v27-guide", action="store_true",
+                        help="Require the installed V27 PowerShell style guide before batch execution")
     args = parser.parse_args(argv)
     root = Path(args.project_root).resolve()
     python = Path(args.python_exe).resolve()
@@ -511,9 +511,9 @@ def main(argv: list[str] | None = None) -> int:
     suffix = uuid.uuid4().hex[:8]
     batch_id = args.batch_id or f"E4C-TRACKING-T2-5-{stamp}-{suffix}"
     plan = batch_plan(batch_id)
-    if args.require_v26_guide:
+    if args.require_v27_guide:
         guide_sha = verify_postinstall_style_guide(root)
-        print(f"POWERSHELL_STYLE_GUIDE_V26=PASS/{guide_sha}", file=sys.stderr)
+        print(f"POWERSHELL_STYLE_GUIDE_V27=PASS/{guide_sha}", file=sys.stderr)
     if not args.execute:
         pins = verify_pins(root)
         environment = verify_environment(root)

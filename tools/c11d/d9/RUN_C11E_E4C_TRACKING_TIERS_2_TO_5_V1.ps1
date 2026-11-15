@@ -47,36 +47,26 @@ $root = [System.IO.Path]::GetFullPath($ProjectRoot)
 $python = [System.IO.Path]::GetFullPath($PythonExe)
 if (!(Test-Path -LiteralPath $root -PathType Container)) { throw "PROJECT_ROOT_MISSING: $root" }
 if (!(Test-Path -LiteralPath $python -PathType Leaf)) { throw "PYTHON_EXE_MISSING: $python" }
-$styleGuide = Join-Path $root 'docs\current\e\C11E_POWERSHELL_RUNNER_STYLE_GUIDE_20261114_V23.md'
-$styleSha = Get-Sha256 $styleGuide
-if ($styleSha -ne '1900b8a06f52156ff18790adb44ef82268c386e2633d2b31237ebc705208c3a5') {
-    throw "STYLE_GUIDE_V23_SHA_MISMATCH: $styleSha"
+$styleGuideV23 = Join-Path $root 'docs\current\e\C11E_POWERSHELL_RUNNER_STYLE_GUIDE_20261114_V23.md'
+$styleShaV23 = Get-Sha256 $styleGuideV23
+if ($styleShaV23 -ne '1900b8a06f52156ff18790adb44ef82268c386e2633d2b31237ebc705208c3a5') {
+    throw "STYLE_GUIDE_V23_SHA_MISMATCH: $styleShaV23"
 }
-$styleGuideV24 = Join-Path $root 'docs\current\e\C11E_POWERSHELL_RUNNER_STYLE_GUIDE_20261115_V24.md'
-$styleShaV24 = Get-Sha256 $styleGuideV24
-if ($styleShaV24 -ne '301ef3b1344e017f405ebf2829950d2a90b77b90a74c59d724083530225c1ec2') {
-    throw "STYLE_GUIDE_V24_SHA_MISMATCH: $styleShaV24"
-}
-$styleGuideV25 = Join-Path $root 'docs\current\e\C11E_POWERSHELL_RUNNER_STYLE_GUIDE_20261115_V25.md'
-$styleShaV25 = Get-Sha256 $styleGuideV25
-if ($styleShaV25 -ne '28be41f57d0a07e2d22bdcffa5b0a019f2e99b9c6ef1bfb3a484c689989ac23c') {
-    throw "STYLE_GUIDE_V25_SHA_MISMATCH: $styleShaV25"
-}
-$styleGuideV26 = Join-Path $root 'docs\current\e\C11E_POWERSHELL_RUNNER_STYLE_GUIDE_20261115_V26.md'
-$styleShaV26 = Get-Sha256 $styleGuideV26
-if ($styleShaV26 -ne '74ffaee6e4b6d1cf5fe070189aa049cc38182617c13e6cc73b0e1e07c7533c1b') {
-    throw "STYLE_GUIDE_V26_SHA_MISMATCH: $styleShaV26"
+$styleGuideV27 = Join-Path $root 'docs\current\e\C11E_POWERSHELL_RUNNER_STYLE_GUIDE_20261115_V27.md'
+$styleShaV27 = Get-Sha256 $styleGuideV27
+if ($styleShaV27 -ne '93b83ec7c5a640235edc3d70e877088896babe9d6d3b1fc3ed224fe0b6b07f43') {
+    throw "STYLE_GUIDE_V27_SHA_MISMATCH: $styleShaV27"
 }
 $driver = Join-Path $root 'tools\c11d\d9\c11e_e4c_tracking_tier_batch.py'
 if (!(Test-Path -LiteralPath $driver -PathType Leaf)) { throw "BATCH_DRIVER_MISSING: $driver" }
 $driverSha = Get-Sha256 $driver
-if ($driverSha -ne 'a032f759baad9c339ce8c58ff47062694050264d86b1b31d51a699c07de2f946') { throw "BATCH_DRIVER_SHA_MISMATCH: $driverSha" }
+if ($driverSha -ne 'da1eaee79868ca1591246f5c31925d321bec23f092bde72534bc9879f858a7f1') { throw "BATCH_DRIVER_SHA_MISMATCH: $driverSha" }
 
 $tempRoot = Join-Path $env:TEMP ('C11E_E4C_TRACKING_BATCH_RUNNER_' + [guid]::NewGuid().ToString('N'))
 New-Item -ItemType Directory -Path $tempRoot | Out-Null
 $stdoutPath = Join-Path $tempRoot 'batch.stdout.log'
 $stderrPath = Join-Path $tempRoot 'batch.stderr.log'
-$argsList = @($driver,'--project-root',$root,'--python-exe',$python,'--timeout-seconds',[string]$TimeoutSeconds,'--require-v26-guide')
+$argsList = @($driver,'--project-root',$root,'--python-exe',$python,'--timeout-seconds',[string]$TimeoutSeconds,'--require-v27-guide')
 if (![string]::IsNullOrWhiteSpace($BatchId)) { $argsList += @('--batch-id',$BatchId) }
 if ($Execute) { $argsList += '--execute' }
 $argumentLine = ($argsList | ForEach-Object { Quote-Win32Argument ([string]$_) }) -join ' '
@@ -88,10 +78,8 @@ if (![string]::IsNullOrWhiteSpace($stdout)) { Write-Host $stdout.TrimEnd() }
 if (![string]::IsNullOrWhiteSpace($stderr)) { Write-Host $stderr.TrimEnd() }
 Write-Host "PYTHON_BATCH_EXIT_CODE=$exitCode"
 Write-Host "WRAPPER_LOG_ROOT=$tempRoot"
-Write-Host "STYLE_GUIDE_V23_SHA256=$styleSha"
-Write-Host "STYLE_GUIDE_V24_SHA256=$styleShaV24"
-Write-Host "STYLE_GUIDE_V25_SHA256=$styleShaV25"
-Write-Host "STYLE_GUIDE_V26_SHA256=$styleShaV26"
+Write-Host "STYLE_GUIDE_V23_SHA256=$styleShaV23"
+Write-Host "STYLE_GUIDE_V27_SHA256=$styleShaV27"
 if ($exitCode -ne 0) { throw "E4C_TRACKING_TIER_BATCH_FAILED: exit=$exitCode; logs=$tempRoot" }
 Write-Host 'BATCH_RUNNER=PASS'
 if ($Execute) { Write-Host 'BATCH_EXECUTION=COMPLETED_TECHNICAL_RECEIPTS_PENDING_OPERATOR_REVIEW' }

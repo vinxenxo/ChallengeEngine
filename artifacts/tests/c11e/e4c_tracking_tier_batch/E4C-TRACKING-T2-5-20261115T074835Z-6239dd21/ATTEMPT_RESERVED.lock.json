@@ -1,0 +1,14 @@
+{
+  "batch_id": "E4C-TRACKING-T2-5-20261115T074835Z-6239dd21",
+  "commits": "OPERATOR_MANAGED",
+  "git_checks": "SKIPPED",
+  "request_ids": [
+    "E4C-TRK-T2-6239dd21",
+    "E4C-TRK-T3-6239dd21",
+    "E4C-TRK-T4-6239dd21",
+    "E4C-TRK-T5-6239dd21"
+  ],
+  "schema": "C11E-E4C-TRACKING-TIER-BATCH-LOCK-V1",
+  "source_pin_set_sha256": "df825052de3697b6d78412d9cccd7a7c5147c746a59b0a75a91f4d48587c6c91",
+  "status": "ATTEMPT_RESERVED"
+}

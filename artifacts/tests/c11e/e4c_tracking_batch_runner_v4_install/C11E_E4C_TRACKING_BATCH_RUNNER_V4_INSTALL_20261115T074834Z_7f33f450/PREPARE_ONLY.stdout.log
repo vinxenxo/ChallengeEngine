@@ -1,0 +1,67 @@
+{
+  "base_cli_smoke": "PASS_REUSED_NO_RERUN",
+  "batch_id": "E4C-TRACKING-T2-5-20261115T074835Z-6239dd21",
+  "environment": {
+    "pyside6": "6.11.2",
+    "python": "3.13.14"
+  },
+  "ffmpeg_invoked": false,
+  "godot_invoked": false,
+  "production_dispatch": false,
+  "production_media_created": false,
+  "release_authority": "NONE",
+  "renderer_invoked": false,
+  "selectors": [
+    {
+      "expected_frames": 810,
+      "family_music_profile": "FLOWING_VECTOR",
+      "gameplay_seed": 12345,
+      "music_seed_a_b": 840001,
+      "music_seed_c": "DERIVED_BY_EXISTING_EXECUTOR",
+      "request_id": "E4C-TRK-T2-6239dd21",
+      "selector": "tracking/tier-2",
+      "tier": 2
+    },
+    {
+      "expected_frames": 810,
+      "family_music_profile": "FLOWING_VECTOR",
+      "gameplay_seed": 12345,
+      "music_seed_a_b": 840001,
+      "music_seed_c": "DERIVED_BY_EXISTING_EXECUTOR",
+      "request_id": "E4C-TRK-T3-6239dd21",
+      "selector": "tracking/tier-3",
+      "tier": 3
+    },
+    {
+      "expected_frames": 810,
+      "family_music_profile": "FLOWING_VECTOR",
+      "gameplay_seed": 12345,
+      "music_seed_a_b": 840001,
+      "music_seed_c": "DERIVED_BY_EXISTING_EXECUTOR",
+      "request_id": "E4C-TRK-T4-6239dd21",
+      "selector": "tracking/tier-4",
+      "tier": 4
+    },
+    {
+      "expected_frames": 810,
+      "family_music_profile": "FLOWING_VECTOR",
+      "gameplay_seed": 12345,
+      "music_seed_a_b": 840001,
+      "music_seed_c": "DERIVED_BY_EXISTING_EXECUTOR",
+      "request_id": "E4C-TRK-T5-6239dd21",
+      "selector": "tracking/tier-5",
+      "tier": 5
+    }
+  ],
+  "source_pin_count": 30,
+  "status": "PASS_PREPARE_ONLY_NO_RENDER"
+}
+POWERSHELL_STYLE_GUIDE_V27=PASS/93b83ec7c5a640235edc3d70e877088896babe9d6d3b1fc3ed224fe0b6b07f43
+PYTHON_BATCH_EXIT_CODE=0
+WRAPPER_LOG_ROOT=C:\Users\vinxe\AppData\Local\Temp\C11E_E4C_TRACKING_BATCH_RUNNER_a69e5f00197e4723b75dd2020208cd3a
+STYLE_GUIDE_V23_SHA256=1900b8a06f52156ff18790adb44ef82268c386e2633d2b31237ebc705208c3a5
+STYLE_GUIDE_V27_SHA256=93b83ec7c5a640235edc3d70e877088896babe9d6d3b1fc3ed224fe0b6b07f43
+BATCH_RUNNER=PASS
+BATCH_EXECUTION=NOT_STARTED_PREPARE_ONLY
+PRODUCTION_DISPATCH=FALSE
+RELEASE_AUTHORITY=NONE
