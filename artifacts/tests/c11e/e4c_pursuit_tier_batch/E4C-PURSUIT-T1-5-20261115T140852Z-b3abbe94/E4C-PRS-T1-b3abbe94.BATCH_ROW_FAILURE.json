@@ -1,0 +1,15 @@
+{
+  "cli_summary_path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_pursuit_tier_batch\\E4C-PURSUIT-T1-5-20261115T140852Z-b3abbe94\\E4C-PRS-T1-b3abbe94.CLI_EXECUTION_RESULT.json",
+  "error": "BatchError: pursuit/tier-1_NATIVE_TIMELINE_MISMATCH",
+  "finished_utc": "2026-11-15T18:24:22.034569+00:00",
+  "process_exit_code": 0,
+  "production_dispatch": false,
+  "release_authority": "NONE",
+  "request_id": "E4C-PRS-T1-b3abbe94",
+  "request_path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_pursuit_tier_batch\\E4C-PURSUIT-T1-5-20261115T140852Z-b3abbe94\\E4C-PRS-T1-b3abbe94.request.json",
+  "selector": "pursuit/tier-1",
+  "started_utc": "2026-11-15T18:20:39.643928+00:00",
+  "status": "POST_CHILD_AUDIT_FAIL_CLOSED",
+  "stderr_log": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_pursuit_tier_batch\\E4C-PURSUIT-T1-5-20261115T140852Z-b3abbe94\\E4C-PRS-T1-b3abbe94.CLI_STDERR.log",
+  "stdout_log": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_pursuit_tier_batch\\E4C-PURSUIT-T1-5-20261115T140852Z-b3abbe94\\E4C-PRS-T1-b3abbe94.CLI_STDOUT.log"
+}

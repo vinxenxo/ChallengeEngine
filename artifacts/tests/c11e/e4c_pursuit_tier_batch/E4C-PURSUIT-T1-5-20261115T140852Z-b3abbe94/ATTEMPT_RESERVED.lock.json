@@ -1,0 +1,15 @@
+{
+  "batch_id": "E4C-PURSUIT-T1-5-20261115T140852Z-b3abbe94",
+  "commits": "OPERATOR_MANAGED",
+  "git_checks": "SKIPPED",
+  "request_ids": [
+    "E4C-PRS-T1-b3abbe94",
+    "E4C-PRS-T2-b3abbe94",
+    "E4C-PRS-T3-b3abbe94",
+    "E4C-PRS-T4-b3abbe94",
+    "E4C-PRS-T5-b3abbe94"
+  ],
+  "schema": "C11E-E4C-PURSUIT-TIER-BATCH-LOCK-V1",
+  "source_pin_set_sha256": "61c4fff86df70593f51e4b31810e83280d252cc89a0a93868f76a5a6312781ad",
+  "status": "ATTEMPT_RESERVED"
+}

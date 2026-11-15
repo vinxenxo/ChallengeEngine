@@ -1,0 +1,10 @@
+{
+    "schema":  "C11E-PURSUIT-PREPARE-ONLY-RESUME-CLAIM-V1",
+    "run_id":  "C11E_E4C_PURSUIT_BATCH_OVERLAY_V4_RECOVERY_20261115T132700Z_e57a3443",
+    "claimed_utc":  "2026-11-15T14:08:51.2261223Z",
+    "purpose":  "ONE_SHOT_PREPARE_ONLY_AFTER_V4_POSTINSTALL_DOC_GATE_MISMATCH",
+    "execute_switch_passed":  false,
+    "renderer_authorized":  false,
+    "production_dispatch":  false,
+    "release_authority":  "NONE"
+}

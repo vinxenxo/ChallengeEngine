@@ -1,0 +1,14 @@
+{
+  "batch_id": "E4C-PURSUIT-T1-5-20261115T140852Z-b3abbe94",
+  "created_utc": "2026-11-15T18:20:39.635265+00:00",
+  "policy": "Any failure after this marker forbids retry with this batch ID; preserve outputs and use a newly reviewed continuation.",
+  "request_ids": [
+    "E4C-PRS-T1-b3abbe94",
+    "E4C-PRS-T2-b3abbe94",
+    "E4C-PRS-T3-b3abbe94",
+    "E4C-PRS-T4-b3abbe94",
+    "E4C-PRS-T5-b3abbe94"
+  ],
+  "schema": "C11E-E4C-PURSUIT-TIER-BATCH-EXECUTION-AUTH-V1",
+  "status": "AUTHORIZED_ONCE_BEFORE_FIRST_CHILD"
+}

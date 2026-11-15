@@ -1,0 +1,139 @@
+{
+    "schema":  "C11E-PURSUIT-V4-RECOVERY-TRANSACTION-JOURNAL-V1",
+    "run_id":  "C11E_E4C_PURSUIT_BATCH_OVERLAY_V4_RECOVERY_20261115T132700Z_e57a3443",
+    "prior_v2_run_id":  "C11E_E4C_PURSUIT_BATCH_OVERLAY_V2_20261115T130255Z_b5f15417",
+    "package_id":  "C11E_E4C_PURSUIT_BATCH_OVERLAY_V4_RECOVERY_20261115",
+    "package_zip_sha256":  "a09a17c52a45f4f678e54d52a379aad4ac877a64a94211f22b6eea0bcc215e12",
+    "package_manifest_sha256":  "92b5b16109eb733920d7a880bdb24a8a80daa20d3327e6d9a8b9a4e2d03c9413",
+    "prior_v2_package_sha256":  "b1ea9ad9f18f3078628d7dfc0fe0c58077dc387b93f467a35fedabd46fc47481",
+    "prior_v2_manifest_sha256":  "7c00decac39d89bf39fe662a6364bf3e3470f82fef7d7cbc4669dfb11324891a",
+    "status":  "TRANSACTION_IN_PROGRESS",
+    "started_utc":  "2026-11-15T13:27:11.6278345Z",
+    "operation_count":  17,
+    "committed_count":  17,
+    "operations":  [
+                       {
+                           "operation":  "REPLACE",
+                           "destination":  "tools/c11d/d9/RUN_C11E_E4C_PURSUIT_TIERS_1_TO_5_V1.ps1",
+                           "sha256":  "947b37c9b34ef66ff87b242c3b3adf1330b2bf2aa707a6d4caf4e7f5e06e21e1",
+                           "bytes":  5869,
+                           "status":  "REPLACED_POSTIMAGE_VERIFIED",
+                           "preimage_sha256":  "e31cd6d503426e9d6188363d35cdf426d3836fb91f120b16d835e5fe6045e009",
+                           "backup_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_pursuit_batch_overlay_recovery\\C11E_E4C_PURSUIT_BATCH_OVERLAY_V4_RECOVERY_20261115T132700Z_e57a3443\\backups\\01_RUN_C11E_E4C_PURSUIT_TIERS_1_TO_5_V1.ps1.preimage.bak"
+                       },
+                       {
+                           "operation":  "REPLACE",
+                           "destination":  "tests/test_c11e_e4c_pursuit_runner_contract.py",
+                           "sha256":  "98b1e1c0b578dc60c741783c1840e5bd4654d99b445fa49c981348f60c269ed6",
+                           "bytes":  6838,
+                           "status":  "REPLACED_POSTIMAGE_VERIFIED",
+                           "preimage_sha256":  "f7948339a64c9ce0d27b5fbc33a4fe519ad1480b541c844ba302daa27e3e4f56",
+                           "backup_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_pursuit_batch_overlay_recovery\\C11E_E4C_PURSUIT_BATCH_OVERLAY_V4_RECOVERY_20261115T132700Z_e57a3443\\backups\\02_test_c11e_e4c_pursuit_runner_contract.py.preimage.bak"
+                       },
+                       {
+                           "operation":  "ADD",
+                           "destination":  "docs/current/e/C11D_E_BLOCKER_REMEDIATION_REGISTER_20261115_V77.md",
+                           "sha256":  "310e148a8670bf1c4f8077f3b87fe52b84184688c9251e10dfa5b7bf14f8d02f",
+                           "bytes":  83695,
+                           "status":  "ADD_COMMITTED"
+                       },
+                       {
+                           "operation":  "ADD",
+                           "destination":  "docs/current/e/C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261115_V102.md",
+                           "sha256":  "2c4dc367c15d8cc29cf8020c18a58b4cd6bdac5d550695fc01fc4616b4dca7fa",
+                           "bytes":  83238,
+                           "status":  "ADD_COMMITTED"
+                       },
+                       {
+                           "operation":  "ADD",
+                           "destination":  "docs/current/e/C11E_CURRENT_AUTHORITY_20261115_V161.md",
+                           "sha256":  "72713800a15cd3ce611fa8990efe0be92e8b1b73b637e88b7fde5e477f63db28",
+                           "bytes":  113217,
+                           "status":  "ADD_COMMITTED"
+                       },
+                       {
+                           "operation":  "ADD",
+                           "destination":  "docs/current/e/C11E_CURRENT_DOC_INDEX_20261115_V123.md",
+                           "sha256":  "3d2c5a649f5501239ce12d4398f1c619997a737b0565c8c777589aa8423ade82",
+                           "bytes":  81458,
+                           "status":  "ADD_COMMITTED"
+                       },
+                       {
+                           "operation":  "ADD",
+                           "destination":  "docs/current/e/C11E_E3_EXECUTION_BACKLOG_20261115_V132.md",
+                           "sha256":  "6881c34fa647776b09ab5835026c900fb3cc4f724a9aabb97a2b52a4704c3435",
+                           "bytes":  83319,
+                           "status":  "ADD_COMMITTED"
+                       },
+                       {
+                           "operation":  "ADD",
+                           "destination":  "docs/current/e/C11E_E4C_DRILL_EXECUTION_PLAN_20261115_V49.md",
+                           "sha256":  "1635720a1f8f7d0ed3ec0d61fdafa58606c365d3a276fcc354ea14774f26d471",
+                           "bytes":  107164,
+                           "status":  "ADD_COMMITTED"
+                       },
+                       {
+                           "operation":  "ADD",
+                           "destination":  "docs/current/e/C11E_E4C_DRILL_VISUAL_CONSUMER_SPEC_20261115_V31.md",
+                           "sha256":  "29780f7d97ed4a27aa2251ac9d4926c67604afaceaacbe7bb90fe44cb32c3bbb",
+                           "bytes":  64240,
+                           "status":  "ADD_COMMITTED"
+                       },
+                       {
+                           "operation":  "ADD",
+                           "destination":  "docs/current/e/C11E_E4C_PURSUIT_BATCH_RECOVERY_RUNBOOK_20261115_V1.md",
+                           "sha256":  "4c06bc7d7f2f001ee54f0a92554affd04e1910878ad7aecf58fde1993d44bf0c",
+                           "bytes":  2818,
+                           "status":  "ADD_COMMITTED"
+                       },
+                       {
+                           "operation":  "ADD",
+                           "destination":  "docs/current/e/C11E_E4C_PURSUIT_V2_INSTALL_RECOVERY_20261115_V1.md",
+                           "sha256":  "73024b476c7e13dddbf2b3c0f8fc5b1286191790d8068c261021fc696f49e232",
+                           "bytes":  4024,
+                           "status":  "ADD_COMMITTED"
+                       },
+                       {
+                           "operation":  "ADD",
+                           "destination":  "docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261115_V156.md",
+                           "sha256":  "e5652c9c3c79f1a91b8fe72c8fd3d8a4d0a4fad018fcd77632aa855f25574606",
+                           "bytes":  83965,
+                           "status":  "ADD_COMMITTED"
+                       },
+                       {
+                           "operation":  "ADD",
+                           "destination":  "docs/current/e/C11E_INSTALLER_INCIDENT_REGISTER_20261115_V41.md",
+                           "sha256":  "bc986420ccee44265db381f7a40e59c1c21e9602ecb804c8262aa4b537ab1c74",
+                           "bytes":  100412,
+                           "status":  "ADD_COMMITTED"
+                       },
+                       {
+                           "operation":  "ADD",
+                           "destination":  "docs/current/e/C11E_POWERSHELL_RUNNER_STYLE_GUIDE_20261115_V31.md",
+                           "sha256":  "e856e3d2385aab67b6fcfb4f6cc05e013b2792e02ae3058e97172a9fd72edbac",
+                           "bytes":  52587,
+                           "status":  "ADD_COMMITTED"
+                       },
+                       {
+                           "operation":  "ADD",
+                           "destination":  "prompts/C11E_CONTINUATION_MASTER_PROMPT_20261115_V163.md",
+                           "sha256":  "6b29e9eefe20366e5f15a59eceb66b40fab4bd3d52318bf10634dc5781bf7288",
+                           "bytes":  70377,
+                           "status":  "ADD_COMMITTED"
+                       },
+                       {
+                           "operation":  "ADD",
+                           "destination":  "prompts/C11E_FIRST_PROMPT_20261115_V87.md",
+                           "sha256":  "57984b05fdbdc5850cce6aee6ef3e9a23ed37b7c2c12c1c7585d279e8ae0d55c",
+                           "bytes":  54257,
+                           "status":  "ADD_COMMITTED"
+                       },
+                       {
+                           "operation":  "ADD",
+                           "destination":  "prompts/C11E_NEXT_WINDOW_START_PROMPT_20261115_V163.md",
+                           "sha256":  "e8d4f87a0f5291018b1db719b629433e53dbe102964b8427212a0d201ad0de8a",
+                           "bytes":  56854,
+                           "status":  "ADD_COMMITTED"
+                       }
+                   ]
+}

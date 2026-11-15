@@ -1,0 +1,379 @@
+{
+    "schema":  "C11E-PURSUIT-V4-POSTINSTALL_RECOVERY_AUDIT-V1",
+    "status":  "PASS_V4_POSTIMAGES_AND_PREPARE_ONLY_RECOVERED",
+    "original_v4_run_id":  "C11E_E4C_PURSUIT_BATCH_OVERLAY_V4_RECOVERY_20261115T132700Z_e57a3443",
+    "original_failure":  "POSTINSTALL_SOURCE_PIN_RECHECK missing V40 style-guide filename; installed runner requires V30",
+    "v40_guide_path_required_by_v4_installer":  false,
+    "v30_guide_verified":  true,
+    "batch_id":  "E4C-PURSUIT-T1-5-20261115T140852Z-b3abbe94",
+    "v4_operations_verified":  "17/17",
+    "v4_postimages_verified":  "17/17",
+    "v4_real_backups_verified":  "2/2",
+    "v2_prior_additions_audited":  "19/19 (17 retained + 2 lineage-backed replacements)",
+    "source_pins_pre":  "34/34",
+    "source_pins_post":  "34/34",
+    "frozen_c11c_manifest_sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "frozen_c11c_manifest_bytes":  796318,
+    "style_guides":  [
+                         {
+                             "path":  "docs/current/e/C11E_POWERSHELL_RUNNER_STYLE_GUIDE_20261114_V23.md",
+                             "sha256":  "1900b8a06f52156ff18790adb44ef82268c386e2633d2b31237ebc705208c3a5",
+                             "status":  "PASS"
+                         },
+                         {
+                             "path":  "docs/current/e/C11E_POWERSHELL_RUNNER_STYLE_GUIDE_20261115_V27.md",
+                             "sha256":  "93b83ec7c5a640235edc3d70e877088896babe9d6d3b1fc3ed224fe0b6b07f43",
+                             "status":  "PASS"
+                         },
+                         {
+                             "path":  "docs/current/e/C11E_POWERSHELL_RUNNER_STYLE_GUIDE_20261115_V28.md",
+                             "sha256":  "24d9e24ac09a7a8a58445838525a306fc3f3fb8bb31f9dfa5ac7265ed3b71239",
+                             "status":  "PASS"
+                         },
+                         {
+                             "path":  "docs/current/e/C11E_POWERSHELL_RUNNER_STYLE_GUIDE_20261115_V29.md",
+                             "sha256":  "76d9187f7d8c9b44ed940f18fd242f2205e6caf357c8b7dc19756fa1cf8a0c0a",
+                             "status":  "PASS"
+                         },
+                         {
+                             "path":  "docs/current/e/C11E_POWERSHELL_RUNNER_STYLE_GUIDE_20261115_V30.md",
+                             "sha256":  "57d653890535849c7a1d55733c29b1f7fe574010a8cdb18b8d2fd86565b50c83",
+                             "status":  "PASS"
+                         },
+                         {
+                             "path":  "docs/current/e/C11E_POWERSHELL_RUNNER_STYLE_GUIDE_20261115_V31.md",
+                             "sha256":  "e856e3d2385aab67b6fcfb4f6cc05e013b2792e02ae3058e97172a9fd72edbac",
+                             "status":  "PASS"
+                         }
+                     ],
+    "source_pin_results":  [
+                               {
+                                   "path":  "artifacts/production/c11e/E4C-CLI-SMOKE-20261112T091253Z-5a2e96b8/E4C_DRILL_AV_QUALIFICATION_RECEIPT.json",
+                                   "sha256":  "57fe829b2ae83fc16a962710b8a1ef8e4635ebf8fd4326714ed24c69c4a0f903",
+                                   "status":  "PASS"
+                               },
+                               {
+                                   "path":  "artifacts/production/c11e/E4C-CLI-SMOKE-20261112T091253Z-5a2e96b8/request.json",
+                                   "sha256":  "886c21782ded4759585352f01615aecc0d6639628285c0293e53a59dc953000e",
+                                   "status":  "PASS"
+                               },
+                               {
+                                   "path":  "assets/fonts/Inter-Bold.otf",
+                                   "sha256":  "9fc6261e817d0b1b2bf1953d8799bb1c837d11aeebbf83ae352e7b4d6de6425d",
+                                   "status":  "PASS"
+                               },
+                               {
+                                   "path":  "assets/fonts/NotoSansMono-Regular.ttf",
+                                   "sha256":  "6b692c4b6d15ccf59f1c1fe8d11cb8a92f51960f3e9f1f523781755a3af7e29f",
+                                   "status":  "PASS"
+                               },
+                               {
+                                   "path":  "c11c-suite/c11c-producer/C11CVisualDrillProducerEnvelopeGenerator.gd",
+                                   "sha256":  "9e2a2f394db7efce6f646600d0bb8f4ee8488c87a184df1a0fb7f7cdcb9066e9",
+                                   "status":  "PASS"
+                               },
+                               {
+                                   "path":  "c11c-suite/c11c-producer/c11e_production_cli.py",
+                                   "sha256":  "3e530e535accc31455207d1e8e3253140c95b390348b4ee252ec8b5ee140869a",
+                                   "status":  "PASS"
+                               },
+                               {
+                                   "path":  "c11c-suite/c11c-producer/c11e_production_service.py",
+                                   "sha256":  "e5dbf9baa72d4c066ff8ba24006df954700d72a5b0f11f9f88aec653e84dce87",
+                                   "status":  "PASS"
+                               },
+                               {
+                                   "path":  "c11c-suite/c11c-producer/main.py",
+                                   "sha256":  "86eeca0c3fc37105c1202295db3f27e6dc249f4eafdcb48c5709cd2d76164393",
+                                   "status":  "PASS"
+                               },
+                               {
+                                   "path":  "c11c-suite/c11c-producer/run_visual_drill_production.ps1",
+                                   "sha256":  "ad6a7f0a6ce87804363810123f76ff0765b1582426cb2c8f69f6864ec3a0c808",
+                                   "status":  "PASS"
+                               },
+                               {
+                                   "path":  "core/presentation/C11CVisualEditorialLayer.gd",
+                                   "sha256":  "f8f718c067a4d7a088cc16f244cc40209e7183bec93e44d8cb66eb6dd404cf7d",
+                                   "status":  "PASS"
+                               },
+                               {
+                                   "path":  "core/presentation/C11CVisualTypography.gd",
+                                   "sha256":  "9ee823a28cef721a26f66436b5b168d92f5b9d1597ed6e4e3f518debb0910633",
+                                   "status":  "PASS"
+                               },
+                               {
+                                   "path":  "core/presentation/PresentationProfile.gd",
+                                   "sha256":  "187b1cf8ab96b9031785a0f36b0054a60383c97cb3d81906c7d9bbcd373bef24",
+                                   "status":  "PASS"
+                               },
+                               {
+                                   "path":  "core/presentation/rendering/VisualContentPlayer.gd",
+                                   "sha256":  "58d86d56ebd7507c9e800c83010103b9be12f1b5dca9356da61ca623e4cf0145",
+                                   "status":  "PASS"
+                               },
+                               {
+                                   "path":  "core/presentation/rendering/VisualContentPlayer.tscn",
+                                   "sha256":  "8c3005a68aa0e818b078b06ae31054524d523b95e396dc1676dce28374ff8b27",
+                                   "status":  "PASS"
+                               },
+                               {
+                                   "path":  "definitions/c11d/production/C11E_E4C_DRILL_EDITORIAL_FAMILY_TITLE_AMENDMENT_R1_20261114.json",
+                                   "sha256":  "1d0d5393368ca1e1ecb867059314e28463205fffc81e8af902909896e0ac7331",
+                                   "status":  "PASS"
+                               },
+                               {
+                                   "path":  "definitions/c11d/production/C11E_E4C_DRILL_PRESENTATION_TIMEBASE_PROPOSAL_SCHEMA_V1.json",
+                                   "sha256":  "c5cedcd749a6702dc47b1de0bd67c57721bb9a06cee5cb3709cdc1b17d8a6806",
+                                   "status":  "PASS"
+                               },
+                               {
+                                   "path":  "definitions/c11d/production/C11E_E4C_DRILL_PRESENTATION_TIMEBASE_PROPOSAL_V1.json",
+                                   "sha256":  "44ab3b0fa09a6f7d42cd8cf2f1122cada6cbffe16a7a6b53c2af5e88d5daddc8",
+                                   "status":  "PASS"
+                               },
+                               {
+                                   "path":  "docs/current/e/C11E_POWERSHELL_RUNNER_STYLE_GUIDE_20261114_V23.md",
+                                   "sha256":  "1900b8a06f52156ff18790adb44ef82268c386e2633d2b31237ebc705208c3a5",
+                                   "status":  "PASS"
+                               },
+                               {
+                                   "path":  "docs/current/e/C11E_POWERSHELL_RUNNER_STYLE_GUIDE_20261115_V27.md",
+                                   "sha256":  "93b83ec7c5a640235edc3d70e877088896babe9d6d3b1fc3ed224fe0b6b07f43",
+                                   "status":  "PASS"
+                               },
+                               {
+                                   "path":  "docs/current/e/C11E_POWERSHELL_RUNNER_STYLE_GUIDE_20261115_V28.md",
+                                   "sha256":  "24d9e24ac09a7a8a58445838525a306fc3f3fb8bb31f9dfa5ac7265ed3b71239",
+                                   "status":  "PASS"
+                               },
+                               {
+                                   "path":  "profiles/difficulty/visual_drill_peripheral_scan.json",
+                                   "sha256":  "7c52112bf9c106152d7fe03b646bde0f415881a04efb75560d731fa3f18fa73e",
+                                   "status":  "PASS"
+                               },
+                               {
+                                   "path":  "profiles/difficulty/visual_drill_pursuit.json",
+                                   "sha256":  "ab6a29af53bdb45fb6976bfdd558e3275c477eb7ad9afd61b9d01e36d43afb05",
+                                   "status":  "PASS"
+                               },
+                               {
+                                   "path":  "profiles/difficulty/visual_drill_saccade.json",
+                                   "sha256":  "6be50f582ef5ce11d36b72943750b88e72da67d858d67c3ac3d38d33c11ccf38",
+                                   "status":  "PASS"
+                               },
+                               {
+                                   "path":  "profiles/difficulty/visual_drill_tracking.json",
+                                   "sha256":  "6de8812bd46904e122ecdd0eae22fb2979bd75399c34779248c6569e833c921e",
+                                   "status":  "PASS"
+                               },
+                               {
+                                   "path":  "profiles/presentation/c11c_visual_music_profiles.json",
+                                   "sha256":  "b78706c5a9adbf1581d925f522b76cc3419983177de213734cc79996af5cbf58",
+                                   "status":  "PASS"
+                               },
+                               {
+                                   "path":  "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+                                   "sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+                                   "status":  "PASS"
+                               },
+                               {
+                                   "path":  "tests/test_c11e_e4c_drill_visual_composition_consumer.py",
+                                   "sha256":  "5da9ec59d0f6d716861e9a4cbcfc36db5e61f992c966a2294bb23ef2c344bafb",
+                                   "status":  "PASS"
+                               },
+                               {
+                                   "path":  "tools/c11d/d9/RUN_C11E_E4C_TRACKING_TIERS_2_TO_5_V1.ps1",
+                                   "sha256":  "23b6ee1bc8e99c34f1d5b56331459ff9137f95af6086dd38b3a9fc202c467de2",
+                                   "status":  "PASS"
+                               },
+                               {
+                                   "path":  "tools/c11d/d9/c11e_e4c_drill_execution.py",
+                                   "sha256":  "b7cbf7bd97f76f4c2e339840fc694d3f5b0e50186ba2456e45ff00e585751abe",
+                                   "status":  "PASS"
+                               },
+                               {
+                                   "path":  "tools/c11d/d9/c11e_e4c_drill_visual_composition_consumer.py",
+                                   "sha256":  "d5cd8e24c0cfdd83ec035b006c76468ed637d6babf5f0a9fcca8a93817ba1aa8",
+                                   "status":  "PASS"
+                               },
+                               {
+                                   "path":  "tools/c11d/d9/c11e_e4c_tracking_tier_batch.py",
+                                   "sha256":  "da1eaee79868ca1591246f5c31925d321bec23f092bde72534bc9879f858a7f1",
+                                   "status":  "PASS"
+                               },
+                               {
+                                   "path":  "tools/prototypes/c11c_common/C11CDrillPaletteBank.gd",
+                                   "sha256":  "757786a6bcc4e819fd43c1c41ea29e8b00dbe3b3f2f5c72fa19776a368b3c8ec",
+                                   "status":  "PASS"
+                               },
+                               {
+                                   "path":  "tools/prototypes/c11c_common/C11CSafeAmbient.py",
+                                   "sha256":  "c376fd44a3115f0d800213d95e28143363748e16c7b5800369fcadbf237fb02c",
+                                   "status":  "PASS"
+                               },
+                               {
+                                   "path":  "tools/prototypes/c11c_common/generate_c11c_family_music.py",
+                                   "sha256":  "41bb8f9842ac941ea86c838f272b11bd0642973b26e92defa006721a3d8cb84d",
+                                   "status":  "PASS"
+                               }
+                           ],
+    "postimage_results":  [
+                              {
+                                  "path":  "tools/c11d/d9/RUN_C11E_E4C_PURSUIT_TIERS_1_TO_5_V1.ps1",
+                                  "sha256":  "947b37c9b34ef66ff87b242c3b3adf1330b2bf2aa707a6d4caf4e7f5e06e21e1",
+                                  "bytes":  5869,
+                                  "operation":  "REPLACE",
+                                  "status":  "PASS"
+                              },
+                              {
+                                  "path":  "tests/test_c11e_e4c_pursuit_runner_contract.py",
+                                  "sha256":  "98b1e1c0b578dc60c741783c1840e5bd4654d99b445fa49c981348f60c269ed6",
+                                  "bytes":  6838,
+                                  "operation":  "REPLACE",
+                                  "status":  "PASS"
+                              },
+                              {
+                                  "path":  "docs/current/e/C11D_E_BLOCKER_REMEDIATION_REGISTER_20261115_V77.md",
+                                  "sha256":  "310e148a8670bf1c4f8077f3b87fe52b84184688c9251e10dfa5b7bf14f8d02f",
+                                  "bytes":  83695,
+                                  "operation":  "ADD",
+                                  "status":  "PASS"
+                              },
+                              {
+                                  "path":  "docs/current/e/C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261115_V102.md",
+                                  "sha256":  "2c4dc367c15d8cc29cf8020c18a58b4cd6bdac5d550695fc01fc4616b4dca7fa",
+                                  "bytes":  83238,
+                                  "operation":  "ADD",
+                                  "status":  "PASS"
+                              },
+                              {
+                                  "path":  "docs/current/e/C11E_CURRENT_AUTHORITY_20261115_V161.md",
+                                  "sha256":  "72713800a15cd3ce611fa8990efe0be92e8b1b73b637e88b7fde5e477f63db28",
+                                  "bytes":  113217,
+                                  "operation":  "ADD",
+                                  "status":  "PASS"
+                              },
+                              {
+                                  "path":  "docs/current/e/C11E_CURRENT_DOC_INDEX_20261115_V123.md",
+                                  "sha256":  "3d2c5a649f5501239ce12d4398f1c619997a737b0565c8c777589aa8423ade82",
+                                  "bytes":  81458,
+                                  "operation":  "ADD",
+                                  "status":  "PASS"
+                              },
+                              {
+                                  "path":  "docs/current/e/C11E_E3_EXECUTION_BACKLOG_20261115_V132.md",
+                                  "sha256":  "6881c34fa647776b09ab5835026c900fb3cc4f724a9aabb97a2b52a4704c3435",
+                                  "bytes":  83319,
+                                  "operation":  "ADD",
+                                  "status":  "PASS"
+                              },
+                              {
+                                  "path":  "docs/current/e/C11E_E4C_DRILL_EXECUTION_PLAN_20261115_V49.md",
+                                  "sha256":  "1635720a1f8f7d0ed3ec0d61fdafa58606c365d3a276fcc354ea14774f26d471",
+                                  "bytes":  107164,
+                                  "operation":  "ADD",
+                                  "status":  "PASS"
+                              },
+                              {
+                                  "path":  "docs/current/e/C11E_E4C_DRILL_VISUAL_CONSUMER_SPEC_20261115_V31.md",
+                                  "sha256":  "29780f7d97ed4a27aa2251ac9d4926c67604afaceaacbe7bb90fe44cb32c3bbb",
+                                  "bytes":  64240,
+                                  "operation":  "ADD",
+                                  "status":  "PASS"
+                              },
+                              {
+                                  "path":  "docs/current/e/C11E_E4C_PURSUIT_BATCH_RECOVERY_RUNBOOK_20261115_V1.md",
+                                  "sha256":  "4c06bc7d7f2f001ee54f0a92554affd04e1910878ad7aecf58fde1993d44bf0c",
+                                  "bytes":  2818,
+                                  "operation":  "ADD",
+                                  "status":  "PASS"
+                              },
+                              {
+                                  "path":  "docs/current/e/C11E_E4C_PURSUIT_V2_INSTALL_RECOVERY_20261115_V1.md",
+                                  "sha256":  "73024b476c7e13dddbf2b3c0f8fc5b1286191790d8068c261021fc696f49e232",
+                                  "bytes":  4024,
+                                  "operation":  "ADD",
+                                  "status":  "PASS"
+                              },
+                              {
+                                  "path":  "docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261115_V156.md",
+                                  "sha256":  "e5652c9c3c79f1a91b8fe72c8fd3d8a4d0a4fad018fcd77632aa855f25574606",
+                                  "bytes":  83965,
+                                  "operation":  "ADD",
+                                  "status":  "PASS"
+                              },
+                              {
+                                  "path":  "docs/current/e/C11E_INSTALLER_INCIDENT_REGISTER_20261115_V41.md",
+                                  "sha256":  "bc986420ccee44265db381f7a40e59c1c21e9602ecb804c8262aa4b537ab1c74",
+                                  "bytes":  100412,
+                                  "operation":  "ADD",
+                                  "status":  "PASS"
+                              },
+                              {
+                                  "path":  "docs/current/e/C11E_POWERSHELL_RUNNER_STYLE_GUIDE_20261115_V31.md",
+                                  "sha256":  "e856e3d2385aab67b6fcfb4f6cc05e013b2792e02ae3058e97172a9fd72edbac",
+                                  "bytes":  52587,
+                                  "operation":  "ADD",
+                                  "status":  "PASS"
+                              },
+                              {
+                                  "path":  "prompts/C11E_CONTINUATION_MASTER_PROMPT_20261115_V163.md",
+                                  "sha256":  "6b29e9eefe20366e5f15a59eceb66b40fab4bd3d52318bf10634dc5781bf7288",
+                                  "bytes":  70377,
+                                  "operation":  "ADD",
+                                  "status":  "PASS"
+                              },
+                              {
+                                  "path":  "prompts/C11E_FIRST_PROMPT_20261115_V87.md",
+                                  "sha256":  "57984b05fdbdc5850cce6aee6ef3e9a23ed37b7c2c12c1c7585d279e8ae0d55c",
+                                  "bytes":  54257,
+                                  "operation":  "ADD",
+                                  "status":  "PASS"
+                              },
+                              {
+                                  "path":  "prompts/C11E_NEXT_WINDOW_START_PROMPT_20261115_V163.md",
+                                  "sha256":  "e8d4f87a0f5291018b1db719b629433e53dbe102964b8427212a0d201ad0de8a",
+                                  "bytes":  56854,
+                                  "operation":  "ADD",
+                                  "status":  "PASS"
+                              }
+                          ],
+    "backup_results":  [
+                           {
+                               "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_pursuit_batch_overlay_recovery\\C11E_E4C_PURSUIT_BATCH_OVERLAY_V4_RECOVERY_20261115T132700Z_e57a3443\\backups\\01_RUN_C11E_E4C_PURSUIT_TIERS_1_TO_5_V1.ps1.preimage.bak",
+                               "sha256":  "e31cd6d503426e9d6188363d35cdf426d3836fb91f120b16d835e5fe6045e009",
+                               "preimage_sha256":  "e31cd6d503426e9d6188363d35cdf426d3836fb91f120b16d835e5fe6045e009",
+                               "status":  "PASS"
+                           },
+                           {
+                               "path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_pursuit_batch_overlay_recovery\\C11E_E4C_PURSUIT_BATCH_OVERLAY_V4_RECOVERY_20261115T132700Z_e57a3443\\backups\\02_test_c11e_e4c_pursuit_runner_contract.py.preimage.bak",
+                               "sha256":  "f7948339a64c9ce0d27b5fbc33a4fe519ad1480b541c844ba302daa27e3e4f56",
+                               "preimage_sha256":  "f7948339a64c9ce0d27b5fbc33a4fe519ad1480b541c844ba302daa27e3e4f56",
+                               "status":  "PASS"
+                           }
+                       ],
+    "python_tests":  "PASS_22_FROM_V4_EVIDENCE",
+    "powershell_ast":  "PASS_FROM_V4_PRETRANSACTION_AUDIT",
+    "atomic_io":  "PASS_6_OF_6_FROM_V4_EVIDENCE",
+    "prepare_only":  "PASS_PREPARE_ONLY_NO_RENDER",
+    "selectors":  [
+                      "pursuit/tier-1",
+                      "pursuit/tier-2",
+                      "pursuit/tier-3",
+                      "pursuit/tier-4",
+                      "pursuit/tier-5"
+                  ],
+    "renderer_invoked":  false,
+    "godot_invoked":  false,
+    "ffmpeg_invoked":  false,
+    "production_media_created":  false,
+    "production_dispatch":  false,
+    "release_authority":  "NONE",
+    "git_checks":  "SKIPPED",
+    "commits":  "OPERATOR_MANAGED",
+    "prepare_only_stdout":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_pursuit_batch_overlay_recovery\\C11E_E4C_PURSUIT_BATCH_OVERLAY_V4_RECOVERY_20261115T132700Z_e57a3443\\RESUMED_PREPARE_ONLY.stdout.log",
+    "prepare_only_stderr":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_pursuit_batch_overlay_recovery\\C11E_E4C_PURSUIT_BATCH_OVERLAY_V4_RECOVERY_20261115T132700Z_e57a3443\\RESUMED_PREPARE_ONLY.stderr.log",
+    "operator_review":  "PENDING_NOT_EXECUTED",
+    "completed_utc":  "2026-11-15T14:08:54.3895650Z"
+}

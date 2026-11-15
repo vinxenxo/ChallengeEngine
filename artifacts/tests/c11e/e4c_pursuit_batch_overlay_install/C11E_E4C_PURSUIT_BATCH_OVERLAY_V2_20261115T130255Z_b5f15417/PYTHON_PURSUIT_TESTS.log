@@ -1,0 +1,16 @@
+
+test_expected_post_r63a_consumer_and_test_are_pinned (__main__.PursuitTierBatchTests.test_expected_post_r63a_consumer_and_test_are_pinned) ... ok
+test_ffprobe_contract_accepts_expected_720p_aac_profile (__main__.PursuitTierBatchTests.test_ffprobe_contract_accepts_expected_720p_aac_profile) ... ok
+test_ffprobe_contract_rejects_av_drift (__main__.PursuitTierBatchTests.test_ffprobe_contract_rejects_av_drift) ... ok
+test_ffprobe_contract_rejects_wrong_pixel_format (__main__.PursuitTierBatchTests.test_ffprobe_contract_rejects_wrong_pixel_format) ... ok
+test_full_qualification_receipt_contract_is_bound_to_its_selector (__main__.PursuitTierBatchTests.test_full_qualification_receipt_contract_is_bound_to_its_selector) ... ok
+test_missing_source_pin_fails_closed (__main__.PursuitTierBatchTests.test_missing_source_pin_fails_closed) ... ok
+test_plan_is_exactly_five_pursuit_rows (__main__.PursuitTierBatchTests.test_plan_is_exactly_five_pursuit_rows) ... ok
+test_plan_rejects_unscoped_or_malformed_batch_id (__main__.PursuitTierBatchTests.test_plan_rejects_unscoped_or_malformed_batch_id) ... ok
+test_request_does_not_mutate_base_template (__main__.PursuitTierBatchTests.test_request_does_not_mutate_base_template) ... ok
+test_request_is_selector_specific_and_seed_domains_are_preserved (__main__.PursuitTierBatchTests.test_request_is_selector_specific_and_seed_domains_are_preserved) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.067s
+
+OK

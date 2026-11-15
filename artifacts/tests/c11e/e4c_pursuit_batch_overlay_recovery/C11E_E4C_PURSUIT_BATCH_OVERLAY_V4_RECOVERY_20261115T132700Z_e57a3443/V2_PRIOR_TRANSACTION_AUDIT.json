@@ -1,0 +1,272 @@
+{
+    "schema":  "C11E-PURSUIT-V2-PRIOR-TRANSACTION-RECOVERY-AUDIT-V1",
+    "status":  "PASS_V2_PRIOR_19_ADD_ONLY_POSTIMAGES_AND_34_SOURCE_PINS",
+    "prior_run_id":  "C11E_E4C_PURSUIT_BATCH_OVERLAY_V2_20261115T130255Z_b5f15417",
+    "prior_package_zip_sha256":  "b1ea9ad9f18f3078628d7dfc0fe0c58077dc387b93f467a35fedabd46fc47481",
+    "prior_package_manifest_sha256":  "7c00decac39d89bf39fe662a6364bf3e3470f82fef7d7cbc4669dfb11324891a",
+    "prior_transaction_status":  "TRANSACTION_IN_PROGRESS",
+    "prior_committed_count":  19,
+    "prior_operations":  [
+                             {
+                                 "destination":  "docs/current/e/C11D_E_BLOCKER_REMEDIATION_REGISTER_20261115_V76.md",
+                                 "sha256":  "50dd5c1df68e5c01398dfb13a436f3db06758fbf7364848700ac2af2f76a1691",
+                                 "bytes":  78233,
+                                 "journal_status":  "ADD_COMMITTED"
+                             },
+                             {
+                                 "destination":  "docs/current/e/C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261115_V101.md",
+                                 "sha256":  "2b37e1ebd7a75f8fc832b1a2503e80827b98967e3df741b661e82099d5372178",
+                                 "bytes":  77873,
+                                 "journal_status":  "ADD_COMMITTED"
+                             },
+                             {
+                                 "destination":  "docs/current/e/C11E_CURRENT_AUTHORITY_20261115_V160.md",
+                                 "sha256":  "64d3f124b5520fa58f64391a269e0f3a42143307394086eba072491d02f4c878",
+                                 "bytes":  107717,
+                                 "journal_status":  "ADD_COMMITTED"
+                             },
+                             {
+                                 "destination":  "docs/current/e/C11E_CURRENT_DOC_INDEX_20261115_V122.md",
+                                 "sha256":  "002f32ddc629ec815b01335d57b4ad615475fa25f11b3c3525ca272b3f8c289a",
+                                 "bytes":  76401,
+                                 "journal_status":  "ADD_COMMITTED"
+                             },
+                             {
+                                 "destination":  "docs/current/e/C11E_E3_EXECUTION_BACKLOG_20261115_V131.md",
+                                 "sha256":  "f23fa418ad7c2381fa83273d06a05ea118c4f458b91847c9407a04ce849c3b1c",
+                                 "bytes":  77982,
+                                 "journal_status":  "ADD_COMMITTED"
+                             },
+                             {
+                                 "destination":  "docs/current/e/C11E_E4C_DRILL_EXECUTION_PLAN_20261115_V48.md",
+                                 "sha256":  "aa7d1941b01f29e47075fbd44ce77440eb85e3b8b8ce44830aa170f576ce2685",
+                                 "bytes":  101681,
+                                 "journal_status":  "ADD_COMMITTED"
+                             },
+                             {
+                                 "destination":  "docs/current/e/C11E_E4C_DRILL_VISUAL_CONSUMER_SPEC_20261115_V30.md",
+                                 "sha256":  "b572344c811b2457e882ac1d62bd9b9f6235f074716789aef6781d1dca79bcbc",
+                                 "bytes":  59126,
+                                 "journal_status":  "ADD_COMMITTED"
+                             },
+                             {
+                                 "destination":  "docs/current/e/C11E_E4C_TRACKING_FAMILY_CLOSEOUT_20261115_V1.md",
+                                 "sha256":  "58f8f046e6936490e51f0470072bc10d7cf43ceca97ad2ef2fb9971463ed1308",
+                                 "bytes":  6662,
+                                 "journal_status":  "ADD_COMMITTED"
+                             },
+                             {
+                                 "destination":  "docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261115_V155.md",
+                                 "sha256":  "2f4380c9742d8ea0df6c04b9181d3b3ab16221c3957f82176bc972206526cb50",
+                                 "bytes":  78930,
+                                 "journal_status":  "ADD_COMMITTED"
+                             },
+                             {
+                                 "destination":  "docs/current/e/C11E_INSTALLER_INCIDENT_REGISTER_20261115_V40.md",
+                                 "sha256":  "46f9ea09f1390f04083daa687f631e71e9b80e78336a4fa32893a0b40b876353",
+                                 "bytes":  94685,
+                                 "journal_status":  "ADD_COMMITTED"
+                             },
+                             {
+                                 "destination":  "docs/current/e/C11E_POWERSHELL_RUNNER_STYLE_GUIDE_20261115_V29.md",
+                                 "sha256":  "76d9187f7d8c9b44ed940f18fd242f2205e6caf357c8b7dc19756fa1cf8a0c0a",
+                                 "bytes":  42949,
+                                 "journal_status":  "ADD_COMMITTED"
+                             },
+                             {
+                                 "destination":  "docs/current/e/C11E_POWERSHELL_RUNNER_STYLE_GUIDE_20261115_V30.md",
+                                 "sha256":  "57d653890535849c7a1d55733c29b1f7fe574010a8cdb18b8d2fd86565b50c83",
+                                 "bytes":  46230,
+                                 "journal_status":  "ADD_COMMITTED"
+                             },
+                             {
+                                 "destination":  "prompts/C11E_CONTINUATION_MASTER_PROMPT_20261115_V162.md",
+                                 "sha256":  "366f87f1b0400a8f3e6639035813ce845521a602f52a0a718ca42bc9caad7178",
+                                 "bytes":  63746,
+                                 "journal_status":  "ADD_COMMITTED"
+                             },
+                             {
+                                 "destination":  "prompts/C11E_FIRST_PROMPT_20261115_V86.md",
+                                 "sha256":  "606fe02c3c2a922673d0da6f1fd4e8eacd1560e918c140a109d402db07ae47c3",
+                                 "bytes":  49063,
+                                 "journal_status":  "ADD_COMMITTED"
+                             },
+                             {
+                                 "destination":  "prompts/C11E_NEXT_WINDOW_START_PROMPT_20261115_V162.md",
+                                 "sha256":  "8afe0ed985fb712234b0e3c5c9486050b60fa1fb50eb2edfb886b50b49ac7e9e",
+                                 "bytes":  51529,
+                                 "journal_status":  "ADD_COMMITTED"
+                             },
+                             {
+                                 "destination":  "tests/test_c11e_e4c_pursuit_runner_contract.py",
+                                 "sha256":  "f7948339a64c9ce0d27b5fbc33a4fe519ad1480b541c844ba302daa27e3e4f56",
+                                 "bytes":  3828,
+                                 "journal_status":  "ADD_COMMITTED"
+                             },
+                             {
+                                 "destination":  "tests/test_c11e_e4c_pursuit_tier_batch.py",
+                                 "sha256":  "32a06a0438d7f237ba4b33c9eded7208d8e86dc05b9dbcd46c2880a547c593da",
+                                 "bytes":  10909,
+                                 "journal_status":  "ADD_COMMITTED"
+                             },
+                             {
+                                 "destination":  "tools/c11d/d9/RUN_C11E_E4C_PURSUIT_TIERS_1_TO_5_V1.ps1",
+                                 "sha256":  "e31cd6d503426e9d6188363d35cdf426d3836fb91f120b16d835e5fe6045e009",
+                                 "bytes":  5869,
+                                 "journal_status":  "ADD_COMMITTED"
+                             },
+                             {
+                                 "destination":  "tools/c11d/d9/c11e_e4c_pursuit_tier_batch.py",
+                                 "sha256":  "7164a83c882116081cda720b37c47107e9145ad2b918b759470b06c5eb3d5522",
+                                 "bytes":  34391,
+                                 "journal_status":  "ADD_COMMITTED"
+                             }
+                         ],
+    "current_source_pins":  [
+                                {
+                                    "path":  "artifacts/production/c11e/E4C-CLI-SMOKE-20261112T091253Z-5a2e96b8/E4C_DRILL_AV_QUALIFICATION_RECEIPT.json",
+                                    "sha256":  "57fe829b2ae83fc16a962710b8a1ef8e4635ebf8fd4326714ed24c69c4a0f903"
+                                },
+                                {
+                                    "path":  "artifacts/production/c11e/E4C-CLI-SMOKE-20261112T091253Z-5a2e96b8/request.json",
+                                    "sha256":  "886c21782ded4759585352f01615aecc0d6639628285c0293e53a59dc953000e"
+                                },
+                                {
+                                    "path":  "assets/fonts/Inter-Bold.otf",
+                                    "sha256":  "9fc6261e817d0b1b2bf1953d8799bb1c837d11aeebbf83ae352e7b4d6de6425d"
+                                },
+                                {
+                                    "path":  "assets/fonts/NotoSansMono-Regular.ttf",
+                                    "sha256":  "6b692c4b6d15ccf59f1c1fe8d11cb8a92f51960f3e9f1f523781755a3af7e29f"
+                                },
+                                {
+                                    "path":  "c11c-suite/c11c-producer/C11CVisualDrillProducerEnvelopeGenerator.gd",
+                                    "sha256":  "9e2a2f394db7efce6f646600d0bb8f4ee8488c87a184df1a0fb7f7cdcb9066e9"
+                                },
+                                {
+                                    "path":  "c11c-suite/c11c-producer/c11e_production_cli.py",
+                                    "sha256":  "3e530e535accc31455207d1e8e3253140c95b390348b4ee252ec8b5ee140869a"
+                                },
+                                {
+                                    "path":  "c11c-suite/c11c-producer/c11e_production_service.py",
+                                    "sha256":  "e5dbf9baa72d4c066ff8ba24006df954700d72a5b0f11f9f88aec653e84dce87"
+                                },
+                                {
+                                    "path":  "c11c-suite/c11c-producer/main.py",
+                                    "sha256":  "86eeca0c3fc37105c1202295db3f27e6dc249f4eafdcb48c5709cd2d76164393"
+                                },
+                                {
+                                    "path":  "c11c-suite/c11c-producer/run_visual_drill_production.ps1",
+                                    "sha256":  "ad6a7f0a6ce87804363810123f76ff0765b1582426cb2c8f69f6864ec3a0c808"
+                                },
+                                {
+                                    "path":  "core/presentation/C11CVisualEditorialLayer.gd",
+                                    "sha256":  "f8f718c067a4d7a088cc16f244cc40209e7183bec93e44d8cb66eb6dd404cf7d"
+                                },
+                                {
+                                    "path":  "core/presentation/C11CVisualTypography.gd",
+                                    "sha256":  "9ee823a28cef721a26f66436b5b168d92f5b9d1597ed6e4e3f518debb0910633"
+                                },
+                                {
+                                    "path":  "core/presentation/PresentationProfile.gd",
+                                    "sha256":  "187b1cf8ab96b9031785a0f36b0054a60383c97cb3d81906c7d9bbcd373bef24"
+                                },
+                                {
+                                    "path":  "core/presentation/rendering/VisualContentPlayer.gd",
+                                    "sha256":  "58d86d56ebd7507c9e800c83010103b9be12f1b5dca9356da61ca623e4cf0145"
+                                },
+                                {
+                                    "path":  "core/presentation/rendering/VisualContentPlayer.tscn",
+                                    "sha256":  "8c3005a68aa0e818b078b06ae31054524d523b95e396dc1676dce28374ff8b27"
+                                },
+                                {
+                                    "path":  "definitions/c11d/production/C11E_E4C_DRILL_EDITORIAL_FAMILY_TITLE_AMENDMENT_R1_20261114.json",
+                                    "sha256":  "1d0d5393368ca1e1ecb867059314e28463205fffc81e8af902909896e0ac7331"
+                                },
+                                {
+                                    "path":  "definitions/c11d/production/C11E_E4C_DRILL_PRESENTATION_TIMEBASE_PROPOSAL_SCHEMA_V1.json",
+                                    "sha256":  "c5cedcd749a6702dc47b1de0bd67c57721bb9a06cee5cb3709cdc1b17d8a6806"
+                                },
+                                {
+                                    "path":  "definitions/c11d/production/C11E_E4C_DRILL_PRESENTATION_TIMEBASE_PROPOSAL_V1.json",
+                                    "sha256":  "44ab3b0fa09a6f7d42cd8cf2f1122cada6cbffe16a7a6b53c2af5e88d5daddc8"
+                                },
+                                {
+                                    "path":  "docs/current/e/C11E_POWERSHELL_RUNNER_STYLE_GUIDE_20261114_V23.md",
+                                    "sha256":  "1900b8a06f52156ff18790adb44ef82268c386e2633d2b31237ebc705208c3a5"
+                                },
+                                {
+                                    "path":  "docs/current/e/C11E_POWERSHELL_RUNNER_STYLE_GUIDE_20261115_V27.md",
+                                    "sha256":  "93b83ec7c5a640235edc3d70e877088896babe9d6d3b1fc3ed224fe0b6b07f43"
+                                },
+                                {
+                                    "path":  "docs/current/e/C11E_POWERSHELL_RUNNER_STYLE_GUIDE_20261115_V28.md",
+                                    "sha256":  "24d9e24ac09a7a8a58445838525a306fc3f3fb8bb31f9dfa5ac7265ed3b71239"
+                                },
+                                {
+                                    "path":  "profiles/difficulty/visual_drill_peripheral_scan.json",
+                                    "sha256":  "7c52112bf9c106152d7fe03b646bde0f415881a04efb75560d731fa3f18fa73e"
+                                },
+                                {
+                                    "path":  "profiles/difficulty/visual_drill_pursuit.json",
+                                    "sha256":  "ab6a29af53bdb45fb6976bfdd558e3275c477eb7ad9afd61b9d01e36d43afb05"
+                                },
+                                {
+                                    "path":  "profiles/difficulty/visual_drill_saccade.json",
+                                    "sha256":  "6be50f582ef5ce11d36b72943750b88e72da67d858d67c3ac3d38d33c11ccf38"
+                                },
+                                {
+                                    "path":  "profiles/difficulty/visual_drill_tracking.json",
+                                    "sha256":  "6de8812bd46904e122ecdd0eae22fb2979bd75399c34779248c6569e833c921e"
+                                },
+                                {
+                                    "path":  "profiles/presentation/c11c_visual_music_profiles.json",
+                                    "sha256":  "b78706c5a9adbf1581d925f522b76cc3419983177de213734cc79996af5cbf58"
+                                },
+                                {
+                                    "path":  "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+                                    "sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+                                },
+                                {
+                                    "path":  "tests/test_c11e_e4c_drill_visual_composition_consumer.py",
+                                    "sha256":  "5da9ec59d0f6d716861e9a4cbcfc36db5e61f992c966a2294bb23ef2c344bafb"
+                                },
+                                {
+                                    "path":  "tools/c11d/d9/RUN_C11E_E4C_TRACKING_TIERS_2_TO_5_V1.ps1",
+                                    "sha256":  "23b6ee1bc8e99c34f1d5b56331459ff9137f95af6086dd38b3a9fc202c467de2"
+                                },
+                                {
+                                    "path":  "tools/c11d/d9/c11e_e4c_drill_execution.py",
+                                    "sha256":  "b7cbf7bd97f76f4c2e339840fc694d3f5b0e50186ba2456e45ff00e585751abe"
+                                },
+                                {
+                                    "path":  "tools/c11d/d9/c11e_e4c_drill_visual_composition_consumer.py",
+                                    "sha256":  "d5cd8e24c0cfdd83ec035b006c76468ed637d6babf5f0a9fcca8a93817ba1aa8"
+                                },
+                                {
+                                    "path":  "tools/c11d/d9/c11e_e4c_tracking_tier_batch.py",
+                                    "sha256":  "da1eaee79868ca1591246f5c31925d321bec23f092bde72534bc9879f858a7f1"
+                                },
+                                {
+                                    "path":  "tools/prototypes/c11c_common/C11CDrillPaletteBank.gd",
+                                    "sha256":  "757786a6bcc4e819fd43c1c41ea29e8b00dbe3b3f2f5c72fa19776a368b3c8ec"
+                                },
+                                {
+                                    "path":  "tools/prototypes/c11c_common/C11CSafeAmbient.py",
+                                    "sha256":  "c376fd44a3115f0d800213d95e28143363748e16c7b5800369fcadbf237fb02c"
+                                },
+                                {
+                                    "path":  "tools/prototypes/c11c_common/generate_c11c_family_music.py",
+                                    "sha256":  "41bb8f9842ac941ea86c838f272b11bd0642973b26e92defa006721a3d8cb84d"
+                                }
+                            ],
+    "frozen_c11c_manifest_sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "frozen_c11c_manifest_bytes":  796318,
+    "v2_runner_preimage_sha256":  "e31cd6d503426e9d6188363d35cdf426d3836fb91f120b16d835e5fe6045e009",
+    "v2_runner_test_preimage_sha256":  "f7948339a64c9ce0d27b5fbc33a4fe519ad1480b541c844ba302daa27e3e4f56",
+    "package_tests":  "PASS_10_PURSUIT_AND_12_RUNNER_CONTRACT",
+    "powershell_ast":  "PASS_4_FILES",
+    "atomic_io":  "PASS_6_OF_6",
+    "production_dispatch":  false,
+    "release_authority":  "NONE"
+}

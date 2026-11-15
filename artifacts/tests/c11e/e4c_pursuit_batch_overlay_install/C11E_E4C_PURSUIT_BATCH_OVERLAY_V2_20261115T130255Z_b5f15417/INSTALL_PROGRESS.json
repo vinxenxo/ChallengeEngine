@@ -1,0 +1,13 @@
+{
+    "schema":  "C11E-PURSUIT-INSTALL-PROGRESS-V1",
+    "run_id":  "C11E_E4C_PURSUIT_BATCH_OVERLAY_V2_20261115T130255Z_b5f15417",
+    "package_zip_sha256":  "b1ea9ad9f18f3078628d7dfc0fe0c58077dc387b93f467a35fedabd46fc47481",
+    "package_manifest_sha256":  "7c00decac39d89bf39fe662a6364bf3e3470f82fef7d7cbc4669dfb11324891a",
+    "current_stage":  "POSTINSTALL_SOURCE_PIN_RECHECK",
+    "state":  "FAILED",
+    "transaction_started":  true,
+    "committed_count":  19,
+    "checkout_payload_mutation_attempted":  true,
+    "operation_count":  19,
+    "recorded_utc":  "2026-11-15T13:03:04.9474709Z"
+}

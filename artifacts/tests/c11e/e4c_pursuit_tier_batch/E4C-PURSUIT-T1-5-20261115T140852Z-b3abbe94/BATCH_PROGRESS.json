@@ -1,0 +1,18 @@
+{
+  "batch_id": "E4C-PURSUIT-T1-5-20261115T140852Z-b3abbe94",
+  "completed_rows": [],
+  "current_selector": "pursuit/tier-1",
+  "expected": [
+    "pursuit/tier-1",
+    "pursuit/tier-2",
+    "pursuit/tier-3",
+    "pursuit/tier-4",
+    "pursuit/tier-5"
+  ],
+  "failed_selector": "pursuit/tier-1",
+  "failure_receipt": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_pursuit_tier_batch\\E4C-PURSUIT-T1-5-20261115T140852Z-b3abbe94\\E4C-PRS-T1-b3abbe94.BATCH_ROW_FAILURE.json",
+  "operator_review": "PENDING",
+  "release_authority": "NONE",
+  "schema": "C11E-E4C-PURSUIT-TIER-BATCH-PROGRESS-V1",
+  "status": "STOPPED_FAIL_CLOSED"
+}

@@ -1,0 +1,14 @@
+
+test_child_process_waits_before_reading_logs_and_captures_exit (__main__.PursuitRunnerContractTests.test_child_process_waits_before_reading_logs_and_captures_exit) ... ok
+test_exact_pursuit_driver_and_style_guide_are_sha_pinned (__main__.PursuitRunnerContractTests.test_exact_pursuit_driver_and_style_guide_are_sha_pinned) ... ok
+test_installer_records_pretransaction_failure_durably (__main__.PursuitRunnerContractTests.test_installer_records_pretransaction_failure_durably) ... ok
+test_installer_uses_start_process_for_python_test_streams (__main__.PursuitRunnerContractTests.test_installer_uses_start_process_for_python_test_streams) ... ok
+test_prepare_only_is_default_and_execute_is_explicit (__main__.PursuitRunnerContractTests.test_prepare_only_is_default_and_execute_is_explicit) ... ok
+test_runner_is_ascii_and_has_no_bom (__main__.PursuitRunnerContractTests.test_runner_is_ascii_and_has_no_bom) ... ok
+test_runner_self_parses_with_powershell_51_ast (__main__.PursuitRunnerContractTests.test_runner_self_parses_with_powershell_51_ast) ... ok
+test_wrapper_stops_on_child_failure_and_leaves_dispatch_disabled (__main__.PursuitRunnerContractTests.test_wrapper_stops_on_child_failure_and_leaves_dispatch_disabled) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.007s
+
+OK
