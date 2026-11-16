@@ -1,0 +1,23 @@
+{
+  "batch_id": "E4C-SACCADE-T1-5-20261115T235737Z-57fdf44b",
+  "commits": "OPERATOR_MANAGED",
+  "executed_request_ids": [
+    "E4C-SAC-T1-57fdf44b",
+    "E4C-SAC-T2-57fdf44b",
+    "E4C-SAC-T3-57fdf44b",
+    "E4C-SAC-T4-57fdf44b",
+    "E4C-SAC-T5-57fdf44b"
+  ],
+  "git_checks": "SKIPPED",
+  "request_ids": [
+    "E4C-SAC-T1-57fdf44b",
+    "E4C-SAC-T2-57fdf44b",
+    "E4C-SAC-T3-57fdf44b",
+    "E4C-SAC-T4-57fdf44b",
+    "E4C-SAC-T5-57fdf44b"
+  ],
+  "reused_request_ids": [],
+  "schema": "C11E-E4C-SACCADE-TIER-BATCH-LOCK-V1",
+  "source_pin_set_sha256": "886f9f1416653a1344b88343c8ec62b78869bf079f168a12aae6fc560c84745d",
+  "status": "ATTEMPT_RESERVED"
+}

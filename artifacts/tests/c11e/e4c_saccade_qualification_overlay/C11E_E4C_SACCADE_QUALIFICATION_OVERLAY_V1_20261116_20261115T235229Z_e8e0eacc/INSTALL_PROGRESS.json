@@ -1,0 +1,9 @@
+{
+    "schema":  "C11E-SACCADE-V1-INSTALL-PROGRESS",
+    "run_id":  "C11E_E4C_SACCADE_QUALIFICATION_OVERLAY_V1_20261116_20261115T235229Z_e8e0eacc",
+    "current_stage":  "COMPLETE",
+    "transaction_started":  true,
+    "committed_count":  20,
+    "operation_count":  20,
+    "state":  "PASS"
+}

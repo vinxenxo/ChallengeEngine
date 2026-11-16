@@ -1,0 +1,11 @@
+{
+    "schema":  "C11E-PERIPHERAL-SCAN-POSTINSTALL-PREFLIGHT-FAILURE-V1",
+    "status":  "FAILED_BEFORE_BATCH_AUTHORIZATION",
+    "stage":  "ORIGINAL_V2_PACKAGE_IDENTITY",
+    "error":  "ORIGINAL_V2_MANIFEST_CONTRACT_FAIL",
+    "batch_authorization_started":  false,
+    "batch_id_consumed":  false,
+    "rerun_allowed":  "REQUIRES_AUDIT",
+    "evidence_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_peripheral_scan_postinstall_execution_v1\\C11E_E4C_PERIPHERAL_SCAN_POSTINSTALL_V1_20261116T111210Z_ca15936e",
+    "recorded_utc":  "2026-11-16T11:12:10.6601219Z"
+}

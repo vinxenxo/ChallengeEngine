@@ -1,0 +1,175 @@
+{
+    "schema":  "C11E-SACCADE-V1-INSTALL-JOURNAL",
+    "run_id":  "C11E_E4C_SACCADE_QUALIFICATION_OVERLAY_V1_20261116_20261115T235229Z_e8e0eacc",
+    "package_zip_sha256":  "6ca938bc5393df1d067e09823948eea4dfb473b2be473e659e92e9824dcf53f2",
+    "package_manifest_sha256":  "a6950144e175acdf37b2d69de23ee381a785365a06ace6f54ebf3d2384cc8aab",
+    "transaction_policy":  "ADD_ONLY",
+    "transaction_started":  true,
+    "status":  "PASS_COMMITTED_AND_AUDITED",
+    "operations":  [
+                       {
+                           "index":  1,
+                           "operation":  "ADD",
+                           "destination":  "docs/current/e/C11D_E_BLOCKER_REMEDIATION_REGISTER_20261116_V80.md",
+                           "sha256":  "6137b2b9bb066fe6191e655873d13de3959d2b9e6236e414d8b1429fb28a2b73",
+                           "bytes":  88900,
+                           "status":  "ADDED"
+                       },
+                       {
+                           "index":  2,
+                           "operation":  "ADD",
+                           "destination":  "docs/current/e/C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261116_V105.md",
+                           "sha256":  "ccb1bc80d6039f4cef88bb21e29eba0273518208f9f50c3ed70f4f2a6e91070e",
+                           "bytes":  89031,
+                           "status":  "ADDED"
+                       },
+                       {
+                           "index":  3,
+                           "operation":  "ADD",
+                           "destination":  "docs/current/e/C11E_CURRENT_AUTHORITY_20261116_V164.md",
+                           "sha256":  "0b1f3fde65f7142a3f4be43e323d55c439bcd47d1ff53bf681ff9cab56c9890f",
+                           "bytes":  120812,
+                           "status":  "ADDED"
+                       },
+                       {
+                           "index":  4,
+                           "operation":  "ADD",
+                           "destination":  "docs/current/e/C11E_CURRENT_DOC_INDEX_20261116_V126.md",
+                           "sha256":  "715e0f789eae18cb631d92f292a6cd505f6173cfa548b552a17cef949cef3418",
+                           "bytes":  86219,
+                           "status":  "ADDED"
+                       },
+                       {
+                           "index":  5,
+                           "operation":  "ADD",
+                           "destination":  "docs/current/e/C11E_E3_EXECUTION_BACKLOG_20261116_V135.md",
+                           "sha256":  "62bf8797c674ce6afbca5a2708ff5a1a7a587fb74dd62a91e0184354448008ed",
+                           "bytes":  88944,
+                           "status":  "ADDED"
+                       },
+                       {
+                           "index":  6,
+                           "operation":  "ADD",
+                           "destination":  "docs/current/e/C11E_E4C_DRILL_EXECUTION_PLAN_20261116_V52.md",
+                           "sha256":  "7a31d700b94f441af83ae653102d411658f8409f381d8866084e601afe8f736c",
+                           "bytes":  114079,
+                           "status":  "ADDED"
+                       },
+                       {
+                           "index":  7,
+                           "operation":  "ADD",
+                           "destination":  "docs/current/e/C11E_E4C_DRILL_VISUAL_CONSUMER_SPEC_20261116_V34.md",
+                           "sha256":  "d46922e7e3437e43aea0014ea0d9c9615b5bbc4ba00aced6936cbed288d37464",
+                           "bytes":  68744,
+                           "status":  "ADDED"
+                       },
+                       {
+                           "index":  8,
+                           "operation":  "ADD",
+                           "destination":  "docs/current/e/C11E_E4C_PURSUIT_FAMILY_CLOSEOUT_20261116_V1.md",
+                           "sha256":  "7f06694ea3980e34868027fb607fdf918c07f03b75e9ef82e8630a9d7814c534",
+                           "bytes":  2776,
+                           "status":  "ADDED"
+                       },
+                       {
+                           "index":  9,
+                           "operation":  "ADD",
+                           "destination":  "docs/current/e/C11E_E4C_SACCADE_FAMILY_QUALIFICATION_PLAN_20261116_V1.md",
+                           "sha256":  "566184ddc6034d5d1f68737e6b69fd4c08ade51028c39950c719a9b76b418a9a",
+                           "bytes":  4224,
+                           "status":  "ADDED"
+                       },
+                       {
+                           "index":  10,
+                           "operation":  "ADD",
+                           "destination":  "docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261116_V159.md",
+                           "sha256":  "ab10d0921745874033db7e4761cb2af322544f3a34e70ee3402618c52d61be68",
+                           "bytes":  88458,
+                           "status":  "ADDED"
+                       },
+                       {
+                           "index":  11,
+                           "operation":  "ADD",
+                           "destination":  "docs/current/e/C11E_INSTALLER_INCIDENT_REGISTER_20261116_V44.md",
+                           "sha256":  "c6d5c8e093694cc30f6dc4211ceaeab9380867dbe7554d19c5bbf728aff0c163",
+                           "bytes":  105983,
+                           "status":  "ADDED"
+                       },
+                       {
+                           "index":  12,
+                           "operation":  "ADD",
+                           "destination":  "docs/current/e/C11E_POWERSHELL_RUNNER_STYLE_GUIDE_20261116_V34.md",
+                           "sha256":  "1cb7880a73b3d429ba15d411228980c16c9168101155a283db21b6f966545d8c",
+                           "bytes":  61773,
+                           "status":  "ADDED"
+                       },
+                       {
+                           "index":  13,
+                           "operation":  "ADD",
+                           "destination":  "prompts/C11E_CONTINUATION_MASTER_PROMPT_20261116_V166.md",
+                           "sha256":  "e2280f880c20d8f7d63109b79f7d990722e45630a0536e02618a8956395e99f6",
+                           "bytes":  82001,
+                           "status":  "ADDED"
+                       },
+                       {
+                           "index":  14,
+                           "operation":  "ADD",
+                           "destination":  "prompts/C11E_FIRST_PROMPT_20261116_V90.md",
+                           "sha256":  "f223ae9904afebb3788d17438d1e46017ae6de1278d80579e338c5b0d88afd78",
+                           "bytes":  61339,
+                           "status":  "ADDED"
+                       },
+                       {
+                           "index":  15,
+                           "operation":  "ADD",
+                           "destination":  "prompts/C11E_NEXT_WINDOW_START_PROMPT_20261116_V166.md",
+                           "sha256":  "91e465abbcd9f0e250923372f9ff63b27a00dabbcb4c8a550d0942190f99791c",
+                           "bytes":  65730,
+                           "status":  "ADDED"
+                       },
+                       {
+                           "index":  16,
+                           "operation":  "ADD",
+                           "destination":  "tests/fixtures/visual_drill_saccade_canonical.json",
+                           "sha256":  "daba3fa558f6898a17107ab68894d15c58fa5b2127e8da7d7b11b203f4ddfaa1",
+                           "bytes":  1328,
+                           "status":  "ADDED"
+                       },
+                       {
+                           "index":  17,
+                           "operation":  "ADD",
+                           "destination":  "tests/test_c11e_e4c_saccade_runner_contract.py",
+                           "sha256":  "b48983c4c1590005a111b62b807ec83a76cf6990c2c05f887271aea963eb7529",
+                           "bytes":  6199,
+                           "status":  "ADDED"
+                       },
+                       {
+                           "index":  18,
+                           "operation":  "ADD",
+                           "destination":  "tests/test_c11e_e4c_saccade_tier_batch.py",
+                           "sha256":  "3626b3b42beaa3bad0be062f709595553c82da3d261f031d4304414e35bbc3ca",
+                           "bytes":  15546,
+                           "status":  "ADDED"
+                       },
+                       {
+                           "index":  19,
+                           "operation":  "ADD",
+                           "destination":  "tools/c11d/d9/RUN_C11E_E4C_SACCADE_TIERS_1_TO_5_V1.ps1",
+                           "sha256":  "ef12cb3187853fc43e1a2e496a3fa120627a117aea3f977caccc7f8500a1b053",
+                           "bytes":  5292,
+                           "status":  "ADDED"
+                       },
+                       {
+                           "index":  20,
+                           "operation":  "ADD",
+                           "destination":  "tools/c11d/d9/c11e_e4c_saccade_tier_batch.py",
+                           "sha256":  "48dacd836141927c73e9d18dea6d95fd936e4104a44c0af1dd93ced0dadb07a4",
+                           "bytes":  42923,
+                           "status":  "ADDED"
+                       }
+                   ],
+    "committed_count":  20,
+    "rollback_status":  "NOT_REQUIRED_ADD_ONLY",
+    "recorded_utc":  "2026-11-15T23:52:40.0535341Z",
+    "completed_utc":  "2026-11-15T23:52:45.0306447Z"
+}

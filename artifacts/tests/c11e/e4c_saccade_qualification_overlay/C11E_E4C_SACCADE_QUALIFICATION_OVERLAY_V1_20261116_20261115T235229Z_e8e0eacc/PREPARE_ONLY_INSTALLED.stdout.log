@@ -1,0 +1,111 @@
+{
+  "base_cli_smoke": "PASS_REUSED_AS_REQUEST_TEMPLATE_ONLY_NO_RERUN",
+  "batch_id": "E4C-SACCADE-T1-5-20261115T235243Z-f6d7d8d7",
+  "environment": {
+    "pyside6": "6.11.2",
+    "python": "3.13.14"
+  },
+  "execution_selectors": [
+    "saccade/tier-1",
+    "saccade/tier-2",
+    "saccade/tier-3",
+    "saccade/tier-4",
+    "saccade/tier-5"
+  ],
+  "family_music_profile": "CIRCUIT_PULSE",
+  "ffmpeg_invoked": false,
+  "godot_invoked": false,
+  "production_dispatch": false,
+  "production_media_created": false,
+  "release_authority": "NONE",
+  "renderer_invoked": false,
+  "row_plan": [
+    {
+      "expected_frames": 690,
+      "family_music_profile": "CIRCUIT_PULSE",
+      "gameplay_seed": 12345,
+      "music_seed_a_b": 840001,
+      "music_seed_c": "DERIVED_BY_EXISTING_EXECUTOR",
+      "request_id": "E4C-SAC-T1-f6d7d8d7",
+      "selector": "saccade/tier-1",
+      "tier": 1
+    },
+    {
+      "expected_frames": 690,
+      "family_music_profile": "CIRCUIT_PULSE",
+      "gameplay_seed": 12345,
+      "music_seed_a_b": 840001,
+      "music_seed_c": "DERIVED_BY_EXISTING_EXECUTOR",
+      "request_id": "E4C-SAC-T2-f6d7d8d7",
+      "selector": "saccade/tier-2",
+      "tier": 2
+    },
+    {
+      "expected_frames": 690,
+      "family_music_profile": "CIRCUIT_PULSE",
+      "gameplay_seed": 12345,
+      "music_seed_a_b": 840001,
+      "music_seed_c": "DERIVED_BY_EXISTING_EXECUTOR",
+      "request_id": "E4C-SAC-T3-f6d7d8d7",
+      "selector": "saccade/tier-3",
+      "tier": 3
+    },
+    {
+      "expected_frames": 690,
+      "family_music_profile": "CIRCUIT_PULSE",
+      "gameplay_seed": 12345,
+      "music_seed_a_b": 840001,
+      "music_seed_c": "DERIVED_BY_EXISTING_EXECUTOR",
+      "request_id": "E4C-SAC-T4-f6d7d8d7",
+      "selector": "saccade/tier-4",
+      "tier": 4
+    },
+    {
+      "expected_frames": 690,
+      "family_music_profile": "CIRCUIT_PULSE",
+      "gameplay_seed": 12345,
+      "music_seed_a_b": 840001,
+      "music_seed_c": "DERIVED_BY_EXISTING_EXECUTOR",
+      "request_id": "E4C-SAC-T5-f6d7d8d7",
+      "selector": "saccade/tier-5",
+      "tier": 5
+    }
+  ],
+  "selectors": [
+    "saccade/tier-1",
+    "saccade/tier-2",
+    "saccade/tier-3",
+    "saccade/tier-4",
+    "saccade/tier-5"
+  ],
+  "source_pin_count": 37,
+  "status": "PASS_PREPARE_ONLY_NO_RENDER",
+  "timeline_contract": {
+    "canonical_sha256": "daba3fa558f6898a17107ab68894d15c58fa5b2127e8da7d7b11b203f4ddfaa1",
+    "duration_seconds": 23.0,
+    "end_cta_frames": 90,
+    "fps": 30,
+    "gameplay_duration_seconds": 17.0,
+    "gameplay_frames": 510,
+    "phase_counts": {
+      "END_CTA": 90,
+      "GAME": 510,
+      "PRE_ROLL": 90
+    },
+    "pre_roll_frames": 90,
+    "total_frames": 690
+  }
+}
+POWERSHELL_STYLE_GUIDE_V34=PASS/1cb7880a73b3d429ba15d411228980c16c9168101155a283db21b6f966545d8c
+PYTHON_BATCH_EXIT_CODE=0
+WRAPPER_LOG_ROOT=C:\Users\vinxe\AppData\Local\Temp\C11E_E4C_SACCADE_BATCH_RUNNER_c77711ace0cf4261a5e775d591e599f9
+STYLE_GUIDE_V29_SHA256=76d9187f7d8c9b44ed940f18fd242f2205e6caf357c8b7dc19756fa1cf8a0c0a
+STYLE_GUIDE_V30_SHA256=57d653890535849c7a1d55733c29b1f7fe574010a8cdb18b8d2fd86565b50c83
+STYLE_GUIDE_V31_SHA256=e856e3d2385aab67b6fcfb4f6cc05e013b2792e02ae3058e97172a9fd72edbac
+STYLE_GUIDE_V33_SHA256=e37993b32a72144a6894c6e228b756ee4cf1b2892627929bbafbb01766662167
+STYLE_GUIDE_V34_SHA256=1cb7880a73b3d429ba15d411228980c16c9168101155a283db21b6f966545d8c
+SACCADE_BATCH_RUNNER=PASS
+SACCADE_T1_TO_T5=EXECUTION_SCOPE
+SACCADE_BATCH_EXECUTION=NOT_STARTED_PREPARE_ONLY
+PRODUCTION_DISPATCH=FALSE
+RELEASE_AUTHORITY=NONE

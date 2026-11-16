@@ -1,0 +1,1 @@
+{"status": "PASS_E4C_DRILL_SINGLE_SELECTOR_A_V_QUALIFICATION", "request_id": "E4C-SAC-T4-57fdf44b", "selector": "saccade/tier-4", "final_A_sha256": "232eb0fc8ca3cad4c5029d80bdf80264d72375179821f35aab81f9b77ffd0ffd", "video_bitstream_identical_A_C": true, "audio_bitstream_changed_A_C": true, "release_authority": "NONE"}

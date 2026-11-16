@@ -1,0 +1,15 @@
+{
+  "batch_id": "E4C-SACCADE-T1-5-20261115T235737Z-57fdf44b",
+  "created_utc": "2026-11-15T23:57:37.376322+00:00",
+  "policy": "All five Saccade tiers execute in this one-shot batch. Any failed child or post-child audit consumes this BatchId permanently; preserve evidence and do not retry it.",
+  "request_ids": [
+    "E4C-SAC-T1-57fdf44b",
+    "E4C-SAC-T2-57fdf44b",
+    "E4C-SAC-T3-57fdf44b",
+    "E4C-SAC-T4-57fdf44b",
+    "E4C-SAC-T5-57fdf44b"
+  ],
+  "reused_request_ids": [],
+  "schema": "C11E-E4C-SACCADE-TIER-BATCH-EXECUTION-AUTH-V1",
+  "status": "AUTHORIZED_ONCE_FOR_TIERS_1_TO_5"
+}
