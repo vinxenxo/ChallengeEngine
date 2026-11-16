@@ -1,0 +1,27 @@
+# C11-E Current Document Index — V172 (2026-11-16)
+
+## Current authority
+- `C11E_CURRENT_AUTHORITY_20261116_V176.md`
+- `C11E_GATES_ACCEPTANCE_MATRIX_20261116_V171.md`
+- `C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261116_V117.md`
+- `C11E_E3_EXECUTION_BACKLOG_20261116_V147.md`
+
+## E5 closeout
+- `C11E_E5_FULL_PHASE_CLOSEOUT_20261116_V1.md`
+- `C11E_E5_QT_GUI_RUNTIME_AUDIT_20261116_V1.md`
+- `D99_GUI_RUNTIME_AUDIT_RECEIPT_V1.json`
+
+## E6 Smoke18
+- `C11E_E6_SMOKE18_SCOPE_AND_EVIDENCE_AUDIT_20261116_V2.md`
+- `C11E_E6_SMOKE18_TEST_ONLY_AUTHORIZATION_PROPOSAL_20261116_V2.md`
+- Read-only runner: `tools/c11d/d9/c11e_e6_smoke18_readonly_audit_v1.py`
+- PowerShell wrapper: `tools/c11d/d9/RUN_C11E_E6_SMOKE18_READONLY_AUDIT_V1.ps1`
+
+## Continuity prompts
+- `docs/master-prompts/C11E_MASTER_HANDOVER_20261116_V3.md`
+- `prompts/C11E_CONTINUATION_MASTER_PROMPT_20261116_V178.md`
+- `prompts/C11E_NEXT_WINDOW_START_PROMPT_20261116_V178.md`
+- `prompts/C11E_FIRST_PROMPT_20261116_V102.md`
+
+## Governance
+C11-C frozen manifest SHA `e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953`; E1 PREPARE_ONLY; D4.8 BLOCKED; renderer OFF; dispatch/media false; release authority NONE. No Git checks; commits operator-managed; pins enforced.
