@@ -1,0 +1,72 @@
+{
+  "batch_id": "E5-XF-PREP-20261116T142423Z-D455AA63",
+  "boundary_preparations_match": true,
+  "cli": {
+    "exit_code": 0,
+    "intent_hash": "7bd2215d0a8f5729dd07cee067e39a6e7c0747e5c3940c15e50bf3b29b10247f",
+    "intent_sha256": "f11b8ebd17486396e0ccf5b2f4858fd010f1496be65859a9ff68bf7fa2882c10",
+    "result_sha256": "0cd480f7d9b7a700ab6e9d3055e11c8ab15cf3b24dd5e240a84a3f66af3a0a67",
+    "shape": {
+      "boundary_contract": "EXISTING_E4B_LOOP_FAMILY_STAGE_CONTRACT",
+      "delivery_profile": "REVIEW_720",
+      "family": "loop",
+      "family_adapter": "NOT_CONNECTED_E1",
+      "gameplay_seed": 100006,
+      "media_created": false,
+      "music_route": "PRESERVE_EXISTING_C11C_FAMILY_MUSIC_PATH",
+      "music_seed": 500006,
+      "probe": "B",
+      "profile_id": "ORGANIC_BLOOM",
+      "renderer_invoked": false,
+      "selector": {
+        "content_type": "visual_loops",
+        "difficulty_tier": null,
+        "family_id": "c11c_fractal_bloom_v1",
+        "subtype_id": "radial_bloom",
+        "variant_id": null,
+        "variant_scope_id": "visual-loop:c11c_fractal_bloom_v1/radial_bloom"
+      }
+    },
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_sha256": "6a703f63ec6ba7cd965117926e3b6ce8d9a13b15e40ceec17895f8459b8cb544",
+    "validation": "PASS_E1_PREPARATION_ONLY"
+  },
+  "family": "loop",
+  "gui": {
+    "intent_hash": "7bd2215d0a8f5729dd07cee067e39a6e7c0747e5c3940c15e50bf3b29b10247f",
+    "intent_sha256": "1bc71422c5d0407e3e9247c9a93d06adc60e0496c9605f79dab2675314c8acc5",
+    "shape": {
+      "boundary_contract": "EXISTING_E4B_LOOP_FAMILY_STAGE_CONTRACT",
+      "delivery_profile": "REVIEW_720",
+      "family": "loop",
+      "family_adapter": "NOT_CONNECTED_E1",
+      "gameplay_seed": 100006,
+      "media_created": false,
+      "music_route": "PRESERVE_EXISTING_C11C_FAMILY_MUSIC_PATH",
+      "music_seed": 500006,
+      "probe": "B",
+      "profile_id": "ORGANIC_BLOOM",
+      "renderer_invoked": false,
+      "selector": {
+        "content_type": "visual_loops",
+        "difficulty_tier": null,
+        "family_id": "c11c_fractal_bloom_v1",
+        "subtype_id": "radial_bloom",
+        "variant_id": null,
+        "variant_scope_id": "visual-loop:c11c_fractal_bloom_v1/radial_bloom"
+      }
+    },
+    "validation": "PASS_E1_PREPARATION_ONLY"
+  },
+  "intent_semantics_match": true,
+  "media_created": false,
+  "origin_bound_hashes_differ_as_expected": true,
+  "probe": "B",
+  "production_dispatch": false,
+  "release_authority": "NONE",
+  "renderer_invoked": false,
+  "request_id": "E5-D455AA63-LOOP-B",
+  "row": 6,
+  "schema": "C11E-E5-CROSS-FAMILY-PREPARE-ROW-RECEIPT-V1",
+  "status": "PASS_GUI_CLI_E1_PARITY"
+}

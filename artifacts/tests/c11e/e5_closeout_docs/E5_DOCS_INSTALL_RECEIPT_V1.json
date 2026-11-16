@@ -1,0 +1,103 @@
+{
+    "schema":  "C11E-E5-DOCS-INSTALL-RECEIPT-V1",
+    "status":  "PASS_ADD_ONLY_DOCUMENTATION_INSTALL",
+    "created_utc":  "2026-11-16T21:22:42.7292396Z",
+    "package_id":  "C11E_E5_CLOSEOUT_E6_SMOKE18_PLAN_V1_20261116",
+    "frozen_c11c_manifest_sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "git_checks":  "SKIPPED",
+    "commits":  "OPERATOR_MANAGED",
+    "source_file_pins":  "ENFORCED",
+    "files_expected":  14,
+    "files_applied":  14,
+    "files":  [
+                  {
+                      "relative_path":  "artifacts/tests/c11e/e5_cross_family_prepare_canary/D99_GUI_RUNTIME_AUDIT_RECEIPT_V1.json",
+                      "bytes":  36651,
+                      "sha256":  "8b5ea582952cb3235ee50a73335e7e67a03f821830285774e9f3eea19d0db24d",
+                      "status":  "ADD_ONLY_APPLIED_AND_VERIFIED"
+                  },
+                  {
+                      "relative_path":  "docs/current/e/C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261116_V116.md",
+                      "bytes":  3312,
+                      "sha256":  "3e04ce6323c6260f2899153855b9238b1eca386ca4520cbb3cd72d810d25f3ba",
+                      "status":  "ADD_ONLY_APPLIED_AND_VERIFIED"
+                  },
+                  {
+                      "relative_path":  "docs/current/e/C11E_CURRENT_AUTHORITY_20261116_V175.md",
+                      "bytes":  2910,
+                      "sha256":  "2ec87d22d373275d97ef7f84d1917c42041b3deb9a9cbd73b10a55bf3b5dff8c",
+                      "status":  "ADD_ONLY_APPLIED_AND_VERIFIED"
+                  },
+                  {
+                      "relative_path":  "docs/current/e/C11E_CURRENT_DOC_INDEX_20261116_V171.md",
+                      "bytes":  1431,
+                      "sha256":  "6840fd0fe3dcbbfd7b36bcd3668111530c65d828ff7703586c1d75076ccc215a",
+                      "status":  "ADD_ONLY_APPLIED_AND_VERIFIED"
+                  },
+                  {
+                      "relative_path":  "docs/current/e/C11E_E3_EXECUTION_BACKLOG_20261116_V146.md",
+                      "bytes":  2243,
+                      "sha256":  "32db857d4eb9ae63c4f070064b6431f2b484e6d797908727e34945fb60a93653",
+                      "status":  "ADD_ONLY_APPLIED_AND_VERIFIED"
+                  },
+                  {
+                      "relative_path":  "docs/current/e/C11E_E5_FULL_PHASE_CLOSEOUT_20261116_V1.md",
+                      "bytes":  6805,
+                      "sha256":  "c19b3b9994bd6d03ee5b00459b663262a9e1b4300ab70859e793e80577e3a9b1",
+                      "status":  "ADD_ONLY_APPLIED_AND_VERIFIED"
+                  },
+                  {
+                      "relative_path":  "docs/current/e/C11E_E5_QT_GUI_RUNTIME_AUDIT_20261116_V1.md",
+                      "bytes":  3305,
+                      "sha256":  "80d24af044975c2d9ccde74a00a017ffa2889356d1bcf8395666f6de89ea49d1",
+                      "status":  "ADD_ONLY_APPLIED_AND_VERIFIED"
+                  },
+                  {
+                      "relative_path":  "docs/current/e/C11E_E6_SMOKE18_SCOPE_PLAN_20261116_V1.md",
+                      "bytes":  6742,
+                      "sha256":  "30651efa7a79f3b322db244129ddccd4ddbb46e800e62ae3743af8805fd47f8e",
+                      "status":  "ADD_ONLY_APPLIED_AND_VERIFIED"
+                  },
+                  {
+                      "relative_path":  "docs/current/e/C11E_E6_SMOKE18_TEST_ONLY_AUTHORIZATION_PROPOSAL_20261116_V1.md",
+                      "bytes":  2598,
+                      "sha256":  "fa198d8bd20fe72f99c6593f51a5d17bc7d29441fbb6c62ba4eeecf1c7fc12e8",
+                      "status":  "ADD_ONLY_APPLIED_AND_VERIFIED"
+                  },
+                  {
+                      "relative_path":  "docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261116_V170.md",
+                      "bytes":  2445,
+                      "sha256":  "ec53cd188ac2453ed37698a258b1492606e9abebded0dcb590ccf26ecc691008",
+                      "status":  "ADD_ONLY_APPLIED_AND_VERIFIED"
+                  },
+                  {
+                      "relative_path":  "docs/master-prompts/C11E_MASTER_HANDOVER_20261116_V2.md",
+                      "bytes":  3354,
+                      "sha256":  "39bf9fce35f2eaa5ad02907eb46b609d815383abaede3f0e4318c473b9734834",
+                      "status":  "ADD_ONLY_APPLIED_AND_VERIFIED"
+                  },
+                  {
+                      "relative_path":  "prompts/C11E_CONTINUATION_MASTER_PROMPT_20261116_V177.md",
+                      "bytes":  4512,
+                      "sha256":  "9398f3478c6813b84a2ca56723f999adfa6ebda78a72deca19a40cc799e30e45",
+                      "status":  "ADD_ONLY_APPLIED_AND_VERIFIED"
+                  },
+                  {
+                      "relative_path":  "prompts/C11E_FIRST_PROMPT_20261116_V101.md",
+                      "bytes":  1785,
+                      "sha256":  "7c866181f979acfee6f5a652051c018e49eb9f5d7a1e3a5a0ea4ff8d7019dcc1",
+                      "status":  "ADD_ONLY_APPLIED_AND_VERIFIED"
+                  },
+                  {
+                      "relative_path":  "prompts/C11E_NEXT_WINDOW_START_PROMPT_20261116_V177.md",
+                      "bytes":  1949,
+                      "sha256":  "ec179418847fec57ae5db572617c33a9b5cfd7baddc2346ca45b5bd2c4bd5d78",
+                      "status":  "ADD_ONLY_APPLIED_AND_VERIFIED"
+                  }
+              ],
+    "c11c_source_mutation":  false,
+    "renderer_invoked":  false,
+    "media_created":  false,
+    "production_dispatch":  false,
+    "release_authority":  "NONE"
+}

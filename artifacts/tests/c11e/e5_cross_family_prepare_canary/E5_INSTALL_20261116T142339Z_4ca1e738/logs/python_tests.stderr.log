@@ -1,0 +1,24 @@
+test_01_contract_schema_and_phase_are_exact (__main__.E5CrossFamilyContractTests.test_01_contract_schema_and_phase_are_exact) ... ok
+test_02_three_family_cardinality_is_exact (__main__.E5CrossFamilyContractTests.test_02_three_family_cardinality_is_exact) ... ok
+test_03_static_source_pin_set_is_complete_and_unique (__main__.E5CrossFamilyContractTests.test_03_static_source_pin_set_is_complete_and_unique) ... ok
+test_04_frozen_c11c_manifest_identity_is_immutable (__main__.E5CrossFamilyContractTests.test_04_frozen_c11c_manifest_identity_is_immutable) ... ok
+test_05_style_guide_v36_is_pinned (__main__.E5CrossFamilyContractTests.test_05_style_guide_v36_is_pinned) ... ok
+test_06_family_music_profiles_are_distinct (__main__.E5CrossFamilyContractTests.test_06_family_music_profiles_are_distinct) ... ok
+test_07_challenge_selector_seed_and_timebase_are_pinned (__main__.E5CrossFamilyContractTests.test_07_challenge_selector_seed_and_timebase_are_pinned) ... ok
+test_08_loop_selector_seed_and_native_timebase_are_pinned (__main__.E5CrossFamilyContractTests.test_08_loop_selector_seed_and_native_timebase_are_pinned) ... ok
+test_09_drill_selector_seed_and_phase_timebase_are_pinned (__main__.E5CrossFamilyContractTests.test_09_drill_selector_seed_and_phase_timebase_are_pinned) ... ok
+test_10_a_and_b_requests_replay_semantics (__main__.E5CrossFamilyContractTests.test_10_a_and_b_requests_replay_semantics) ... ok
+test_11_c_changes_only_music_seed (__main__.E5CrossFamilyContractTests.test_11_c_changes_only_music_seed) ... ok
+test_12_d_changes_only_gameplay_seed (__main__.E5CrossFamilyContractTests.test_12_d_changes_only_gameplay_seed) ... ok
+test_13_prepare_only_governance_is_hard_locked (__main__.E5CrossFamilyContractTests.test_13_prepare_only_governance_is_hard_locked) ... ok
+test_14_identity_normalizer_strips_only_request_scoped_fields (__main__.E5CrossFamilyContractTests.test_14_identity_normalizer_strips_only_request_scoped_fields) ... ok
+test_15_path_guard_rejects_escape_and_accepts_contract_paths (__main__.E5CrossFamilyContractTests.test_15_path_guard_rejects_escape_and_accepts_contract_paths) ... ok
+test_16_write_json_once_is_non_overwriting (__main__.E5CrossFamilyContractTests.test_16_write_json_once_is_non_overwriting) ... ok
+test_17_shared_service_gui_cli_static_boundary_is_present (__main__.E5CrossFamilyContractTests.test_17_shared_service_gui_cli_static_boundary_is_present) ... ok
+test_18_full_bulk_canary_emits_24_origin_rows_and_12_pairs (__main__.E5CrossFamilyContractTests.test_18_full_bulk_canary_emits_24_origin_rows_and_12_pairs) ... E5_BATCH_ID_RESERVED=E5-XF-PREP-STAGED-INTEGRATION
+ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 32.806s
+
+OK

@@ -1,0 +1,62 @@
+{
+  "schema": "C11-D-D9.10-UNIVERSAL-GUI-CLI-ADAPTER-PARITY-V1",
+  "status": "PASS",
+  "content_type": "visual_loops",
+  "selection": {
+    "content_type": "visual_loops",
+    "family_id": "c11c_fractal_bloom_v1",
+    "subtype_id": "radial_bloom",
+    "variant_id": null,
+    "variant_scope_id": "visual-loop:c11c_fractal_bloom_v1/radial_bloom",
+    "difficulty_tier": null
+  },
+  "checks": {
+    "canonical_request_equal": true,
+    "request_hash_equal": true,
+    "editorial_hash_equal": true,
+    "plan_equal": true,
+    "plan_hash_equal": true,
+    "bridge_planning_record_equal": true,
+    "d_only_adapter_envelope_equal": true
+  },
+  "gui_request_hash": "7e8bc840e573b5676e0048c74b993534968a4a31858de3f7c47bee268e531428",
+  "cli_request_hash": "7e8bc840e573b5676e0048c74b993534968a4a31858de3f7c47bee268e531428",
+  "gui_plan_hash": "3bc26c7fd626128e7787cf2e2fe9a64b6f3c18603afb16c299b7382efa4c89d0",
+  "cli_plan_hash": "3bc26c7fd626128e7787cf2e2fe9a64b6f3c18603afb16c299b7382efa4c89d0",
+  "bridge_record_hash": "3fcaeca34c71ae153f814f1e01115955c9ac90551f3fbcf60fb60c2d6c7d867c",
+  "cli_bridge_record_hash": "3fcaeca34c71ae153f814f1e01115955c9ac90551f3fbcf60fb60c2d6c7d867c",
+  "d_only_adapter_envelope_hash": "e47786b2852bd951e418673f25a245b2386318c030804a39259925e80edc9087",
+  "cli_d_only_adapter_envelope_hash": "e47786b2852bd951e418673f25a245b2386318c030804a39259925e80edc9087",
+  "d_only_adapter_prepare_invoked": true,
+  "renderer_dispatch_invoked": false,
+  "renderer_input_emitted": false,
+  "renderer": false,
+  "production_execution": false,
+  "release_authority": "NONE",
+  "e1_shared_service": {
+    "schema": "C11-E-E1-GUI-CLI-SHARED-SERVICE-PARITY-V1",
+    "status": "PASS",
+    "checks": {
+      "semantic_intent_hash_equal": true,
+      "request_hash_equal": true,
+      "editorial_hash_equal": true,
+      "plan_hash_equal": true,
+      "selection_equal": true,
+      "editorial_equal": true,
+      "presentation_options_equal": true,
+      "seed_domains_equal": true,
+      "gui_origin_preserved": true,
+      "cli_origin_preserved": true,
+      "both_fail_closed": true,
+      "loop_boundary_preparation_equal": true,
+      "family_boundary_preparation_equal": true
+    },
+    "gui_intent_sha256": "f56fff217045bf5e5bb342800ee56a9db5134b4fbe2f611451e3369aa8557e08",
+    "cli_intent_sha256": "0b3cab1a4fda28f580bc7ea19cff8d7a3f8166a07ca5012634403d69141060b9",
+    "semantic_intent_hash": "80ab2dd68b7df571c6c99d3b76a87e246ac92e86580316734fe472c2f9b10512",
+    "renderer": false,
+    "production_execution": false,
+    "media_created": false,
+    "release_authority": "NONE"
+  }
+}

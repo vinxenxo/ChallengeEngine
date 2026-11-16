@@ -1,0 +1,689 @@
+{
+  "dynamic_pins": [
+    {
+      "bytes": 208,
+      "path": "assets/c6/car.svg",
+      "sha256": "93a6f78d9654f7917ab2287800858a937e9c68c458cc60bf417d6f2b98c1a96d"
+    },
+    {
+      "bytes": 127,
+      "path": "assets/c6/garage_background.svg",
+      "sha256": "c9d8acdae725ca7726fc8ad23a046e4aac4d9e454b45db40d2c770732b31ab1e"
+    },
+    {
+      "bytes": 192,
+      "path": "assets/c6/parking_target.svg",
+      "sha256": "ec2dcafd7dfc99ff501eb2d93b93906680a30c48cf0741807cbbdd915a18cfb3"
+    },
+    {
+      "bytes": 6640,
+      "path": "c11c-suite/c11c-producer/C11CVisualDrillProducerEnvelopeGenerator.gd",
+      "sha256": "9e2a2f394db7efce6f646600d0bb8f4ee8488c87a184df1a0fb7f7cdcb9066e9"
+    },
+    {
+      "bytes": 9183,
+      "path": "c11c-suite/c11c-producer/c11d_gui_request.py",
+      "sha256": "0e95109ffd3ba5655d28292309196349470ab7958a467f096543a2c98c22976e"
+    },
+    {
+      "bytes": 32714,
+      "path": "c11c-suite/c11c-producer/producer_schema.json",
+      "sha256": "564f11fb4fee9221910dc373550650172eda4f106d6dc25532cc43cb8e6314a0"
+    },
+    {
+      "bytes": 17066,
+      "path": "c11c-suite/c11c-producer/run_visual_drill_production.ps1",
+      "sha256": "ad6a7f0a6ce87804363810123f76ff0765b1582426cb2c8f69f6864ec3a0c808"
+    },
+    {
+      "bytes": 1543,
+      "path": "challenges/CHALLENGE_004.json",
+      "sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71"
+    },
+    {
+      "bytes": 1116,
+      "path": "core/authoring/VisualAuthoringAssemblyContext.gd",
+      "sha256": "c57fc199d7c3ef46b0fae0d7be8d70090c816979184c259908b0484138b1f896"
+    },
+    {
+      "bytes": 6049,
+      "path": "core/authoring/VisualAuthoringGenerator.gd",
+      "sha256": "abbe109b7ca625dce7a044bb6dc37582a6b6ee5156faa439c63c420a5758195e"
+    },
+    {
+      "bytes": 1254,
+      "path": "core/authoring/VisualAuthoringPolicyRegistry.gd",
+      "sha256": "f84a94566900aff055813f537892577c929caa1d11c76f7187faf33ca52de437"
+    },
+    {
+      "bytes": 460,
+      "path": "core/authoring/VisualAuthoringRegistry.gd",
+      "sha256": "f39ec38bfa39723c88bbcb067b8ea2d2052aa5ef2b8e66653431650518156af8"
+    },
+    {
+      "bytes": 1204,
+      "path": "core/authoring/VisualAuthoringRequest.gd",
+      "sha256": "02100b371603167964c20f127e984f8968e03af08016cc60cc820e0e2e37b0c1"
+    },
+    {
+      "bytes": 1671,
+      "path": "core/authoring/VisualAuthoringRequestValidator.gd",
+      "sha256": "85eb9ec5050a78133bacb54d34a4a5464f014a41feff3599e5a2f8e76a14a30c"
+    },
+    {
+      "bytes": 4540,
+      "path": "core/authoring/VisualDifficultyResolver.gd",
+      "sha256": "8f46acb2b54dba99de19db7290883a5849037afb336eb21c5f725f29ee4ecd8b"
+    },
+    {
+      "bytes": 19275,
+      "path": "core/authoring/VisualDrillSeedVariation.gd",
+      "sha256": "ecd07dca143886fac355c040b1bfcee3badb7dacbe4abd95ed340c4dcb8a3567"
+    },
+    {
+      "bytes": 2720,
+      "path": "core/authoring/adapters/VisualDrillAuthoringAdapter.gd",
+      "sha256": "d0b547b032101c592912cf4db25ba787a6aa4a6e7b4c01211397ea187502a263"
+    },
+    {
+      "bytes": 1785,
+      "path": "core/authoring/adapters/VisualLoopAuthoringAdapter.gd",
+      "sha256": "44682906d4c534f5ca7c56b2a0c3ce10babd73d13389e50c5f8511cd8dff6bcc"
+    },
+    {
+      "bytes": 786,
+      "path": "core/data/FrameSnapshot.gd",
+      "sha256": "61060d0937063400447cd5f2513265cb82d8e38017f5bd097c2870da03967180"
+    },
+    {
+      "bytes": 25891,
+      "path": "core/execution/ChallengeRuntimeBridge.gd",
+      "sha256": "c53f04df064b3697f8dd02cd779f8ef002a4e3e2d40fa0e01aa7d9b1a80a8191"
+    },
+    {
+      "bytes": 3721,
+      "path": "core/execution/ChallengeTimelineBuilder.gd",
+      "sha256": "35a47ad126a2e11577933a03b251f47732e580693e5c08e45d3b6af047c8c9af"
+    },
+    {
+      "bytes": 9007,
+      "path": "core/mechanics/parking/ParkingMechanicV2.gd",
+      "sha256": "c78dbc1adcc95ad4981f3c704c69630edc54c25473c479f10bb154efe6f105cd"
+    },
+    {
+      "bytes": 19047,
+      "path": "core/presentation/C11CVisualEditorialLayer.gd",
+      "sha256": "f8f718c067a4d7a088cc16f244cc40209e7183bec93e44d8cb66eb6dd404cf7d"
+    },
+    {
+      "bytes": 6954,
+      "path": "core/presentation/ChallengePresentationBinder.gd",
+      "sha256": "755ecfc9cc6e1ee51738938583217ab8a470c1a1f290bb107e91e19990d74b47"
+    },
+    {
+      "bytes": 1219,
+      "path": "core/presentation/CountdownPresentationLogic.gd",
+      "sha256": "b163ea114cc48af2dfd957ee92d00d524ea5b96b5966850f5ca8d6e5ec933379"
+    },
+    {
+      "bytes": 8837,
+      "path": "core/presentation/PresentationProfile.gd",
+      "sha256": "187b1cf8ab96b9031785a0f36b0054a60383c97cb3d81906c7d9bbcd373bef24"
+    },
+    {
+      "bytes": 8981,
+      "path": "core/presentation/PresentationUI.gd",
+      "sha256": "a55fea5a4525ea247144a4da88242f4ac602c3a014f7d02b50d032ce99224730"
+    },
+    {
+      "bytes": 1742,
+      "path": "core/presentation/SocialUIBinder.gd",
+      "sha256": "b15a062bf327d0c2bbc4ead0e877914f912528cc56e388df20dd84eb89863a3c"
+    },
+    {
+      "bytes": 2087,
+      "path": "core/presentation/UnifiedSocialFrame.gd",
+      "sha256": "d80c07103f56a2abfe34be60547285e61b0d03b50a5ed93c3c72d4241f6585ba"
+    },
+    {
+      "bytes": 11830,
+      "path": "core/presentation/VisualDrillPresentationBinder.gd",
+      "sha256": "cb6acc408252b8b794177d8f5923a3b151646eebdfd1efe9a30fdd6221de82c0"
+    },
+    {
+      "bytes": 1899,
+      "path": "core/presentation/VisualDrillPresentationPhaseLogic.gd",
+      "sha256": "6555d08ac3c0098b20a57e924b0c4ff2df006a23fa00a81b254fa5ebd5bb2494"
+    },
+    {
+      "bytes": 13876,
+      "path": "core/presentation/rendering/VisualContentPlayer.gd",
+      "sha256": "58d86d56ebd7507c9e800c83010103b9be12f1b5dca9356da61ca623e4cf0145"
+    },
+    {
+      "bytes": 3593,
+      "path": "core/simulation/SimulationResult.gd",
+      "sha256": "2e040003d1a1661f84f049d69dbfb0ab07537f9d837fa4484667041c5abac296"
+    },
+    {
+      "bytes": 2818,
+      "path": "definitions/c11d/music/C11D_CHALLENGE_8BIT_STYLE_PROFILE_V1.json",
+      "sha256": "0c877cbe6e1c288890da31fc4481a58e1051749b45a50b2290cbef5d1120d2de"
+    },
+    {
+      "bytes": 3313,
+      "path": "definitions/c11d/music/C11D_MUSIC_ENGINE_V5_SPEC_V1.json",
+      "sha256": "8970f4e93c878285b727697f3d269f5ee464b6029fe79eabc5fcbf4245e9dbf2"
+    },
+    {
+      "bytes": 12932,
+      "path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+      "sha256": "dabb458fc2215156ddb5ebea7e8ebec811098886ce2858733ba9fb13f6075ccb"
+    },
+    {
+      "bytes": 4990,
+      "path": "definitions/c11d/production/C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json",
+      "sha256": "5726310b48e9a85540d48b1e78784571ba04c3f900a5c09add35b49ce5575504"
+    },
+    {
+      "bytes": 3497,
+      "path": "definitions/c11d/production/C11D_RENDER_ADAPTER_BOUNDARY_D9_10_V1.json",
+      "sha256": "bcc9e96cb1acf3ce6c06b5f9ca894a9721aef2d5caeca4f5e4392baf5f4fb63d"
+    },
+    {
+      "bytes": 1761,
+      "path": "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json",
+      "sha256": "342a61338c80a2f1616e8e9f38986bd90f410257c0e321f99840380fb0fd804b"
+    },
+    {
+      "bytes": 5528,
+      "path": "definitions/c11d/production/C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_V1.json",
+      "sha256": "9e206704665ea85226ecc10854be9f679c32fe9ed7efb690a829f6e8456d43da"
+    },
+    {
+      "bytes": 4675,
+      "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_PREVIEW_V1.json",
+      "sha256": "67daa1f83ac151906059695bb4d87974819c2d16d3715b78b00657bfdac54f7a"
+    },
+    {
+      "bytes": 21540,
+      "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_SCHEMA_V1.json",
+      "sha256": "3c880a18d037bc6b7376c3007495b50e66daa3fd6d0eab6100b7298b3e9b03e0"
+    },
+    {
+      "bytes": 39082,
+      "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_SCHEMA_V2.json",
+      "sha256": "10f2371b66d453342f280b9d16b588874bc846777108b375ba9207530d83579f"
+    },
+    {
+      "bytes": 17947,
+      "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V2.json",
+      "sha256": "60530add02fee5bd4d70056e49bf20be87dc5dc0886dd07444e44c0b14bee981"
+    },
+    {
+      "bytes": 4308,
+      "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_INPUT_SCHEMA_V2.json",
+      "sha256": "ec9d38b07513bf0b8eeccfa6aa119d24f695eb4f59144c859e9122c7b8be561c"
+    },
+    {
+      "bytes": 8591,
+      "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1.json",
+      "sha256": "5702092bc1c88e4b333dd30cc150f0d383cd2006121037b0198905c75a3af795"
+    },
+    {
+      "bytes": 8376,
+      "path": "definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
+      "sha256": "609a4d183aac07c2cbe1abaf41444160fdd137217faffbead3aef618320d57dc"
+    },
+    {
+      "bytes": 9851,
+      "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_SCHEMA_V1.json",
+      "sha256": "df58d21292baab962acd0ae2d7f082ff2323ae15cc0b7b31a4b89f95188b2438"
+    },
+    {
+      "bytes": 10422,
+      "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_V1.json",
+      "sha256": "a657d5334548cde2bb524e161d472d5fea098163b6693c0ef73b280982f20b1c"
+    },
+    {
+      "bytes": 15810,
+      "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_SCHEMA_V1.json",
+      "sha256": "45b1df4af2861bd23641cdaca6e4a2b7e2872bcedd1e36b590b132fd09195ff0"
+    },
+    {
+      "bytes": 13006,
+      "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_V1.json",
+      "sha256": "a70c12fa6ba61e6502938190ddbdb06eb03bd0df3e4cd2f6311cd34446a8188c"
+    },
+    {
+      "bytes": 7457,
+      "path": "definitions/c11d/production/D_RENDERER_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_PROPOSAL_V1.json",
+      "sha256": "3dd4874e1b6506de6d9ddbe6ad1b567a284b94cc00ef1bac0d35d1731af05e23"
+    },
+    {
+      "bytes": 9507,
+      "path": "definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_V1.json",
+      "sha256": "41a62b0766db47cd99772f28642ef67766314f20f0f7891789d6b7497bbfee85"
+    },
+    {
+      "bytes": 9440,
+      "path": "definitions/c11d/production/D_RENDERER_UNIFIED_PRESENTATION_REGION_POLICY_PROPOSAL_V1.json",
+      "sha256": "101092bb32127bb8854a501a9215c0b6cf69581594383903716907d49719c01a"
+    },
+    {
+      "bytes": 7998,
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_DRILL_SELECTOR_AUTHORING_COVERAGE_SCHEMA_V1.json",
+      "sha256": "93d2162a078d7c8fa7fcd882cf4e4e6f3daccd77f03f4ba74e036ae367cb9cc7"
+    },
+    {
+      "bytes": 6526,
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_DRILL_SELECTOR_AUTHORING_COVERAGE_V1.json",
+      "sha256": "444496d3a1c1eda1f8bf722c68d9e6197acc006fd4462bd55ac58b4aecc8eb5a"
+    },
+    {
+      "bytes": 8329,
+      "path": "definitions/c11d/production/D_RENDERER_VISUAL_PAYLOAD_MATERIALIZATION_PREVIEW_V1.json",
+      "sha256": "53b6da626131c56f770172129e0cc1cd40947098228bfaa499a1e8e8e76ad411"
+    },
+    {
+      "bytes": 1943,
+      "path": "definitions/c11e/music/C11E_E3_2_D3_V5_E1_MUSIC_CONTRACT_V1.json",
+      "sha256": "12c59ce2a2135a49ce0d5968a29905a1e5890743507db1ee0039da1374efcfe8"
+    },
+    {
+      "bytes": 8862,
+      "path": "definitions/visual_drill_peripheral_scan_canonical.json",
+      "sha256": "aaf50f9223bad678df15589110dfcd6ff42dda89326a0a84bc5a5f51d133a904"
+    },
+    {
+      "bytes": 133532,
+      "path": "definitions/visual_drill_pursuit_canonical.json",
+      "sha256": "dfe2bce9913df8ebe4f92d06eec5d22736338214e71b497dde3562a6927600bc"
+    },
+    {
+      "bytes": 1328,
+      "path": "definitions/visual_drill_saccade_canonical.json",
+      "sha256": "daba3fa558f6898a17107ab68894d15c58fa5b2127e8da7d7b11b203f4ddfaa1"
+    },
+    {
+      "bytes": 1511,
+      "path": "definitions/visual_drill_tracking_canonical.json",
+      "sha256": "54d432c80f190f4ac5dcb8ef5b135e16f18c378da120f35723fd5be944719ec3"
+    },
+    {
+      "bytes": 591,
+      "path": "definitions/visual_loop_geometric_canonical.json",
+      "sha256": "648eb36225dd4c090457b4da3c9e8eca218c26c8f995cf02a39914cf3f860dcc"
+    },
+    {
+      "bytes": 3737,
+      "path": "docs/current/e/C11E_E4B_OPERATOR_POLICY_DECISION_RECORD_20261106_V1.json",
+      "sha256": "49efd5494f351f09d7597c4699e9c12e361b36884b6bfadacd822e6ff1480e04"
+    },
+    {
+      "bytes": 4770,
+      "path": "docs/current/e/C11E_E4C_A3_REVIEW_MANIFEST_LINEAGE_RECONCILIATION_20261110_V2.json",
+      "sha256": "aec0e387f167f4b821b7d94f06a67f78f498be939fe3cda857d20ce550819cac"
+    },
+    {
+      "bytes": 8591,
+      "path": "docs/history/c11e/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1_PRE_D98_LINEAGE_REFRESH_20261106.json",
+      "sha256": "2075da9c33c689861a68d3bd8fb19b7ed593c6e76010ab200880746aa6d1a470"
+    },
+    {
+      "bytes": 3158,
+      "path": "profiles/delivery/c11c_video_delivery_profiles.json",
+      "sha256": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3"
+    },
+    {
+      "bytes": 2426,
+      "path": "profiles/difficulty/visual_drill_peripheral_scan.json",
+      "sha256": "7c52112bf9c106152d7fe03b646bde0f415881a04efb75560d731fa3f18fa73e"
+    },
+    {
+      "bytes": 2121,
+      "path": "profiles/difficulty/visual_drill_pursuit.json",
+      "sha256": "ab6a29af53bdb45fb6976bfdd558e3275c477eb7ad9afd61b9d01e36d43afb05"
+    },
+    {
+      "bytes": 2295,
+      "path": "profiles/difficulty/visual_drill_saccade.json",
+      "sha256": "6be50f582ef5ce11d36b72943750b88e72da67d858d67c3ac3d38d33c11ccf38"
+    },
+    {
+      "bytes": 2658,
+      "path": "profiles/difficulty/visual_drill_tracking.json",
+      "sha256": "6de8812bd46904e122ecdd0eae22fb2979bd75399c34779248c6569e833c921e"
+    },
+    {
+      "bytes": 7038,
+      "path": "profiles/presentation/c11c_visual_music_profiles.json",
+      "sha256": "b78706c5a9adbf1581d925f522b76cc3419983177de213734cc79996af5cbf58"
+    },
+    {
+      "bytes": 796318,
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    {
+      "bytes": 5256,
+      "path": "tools/c11d/d3/c11d_music_engine_v5.py",
+      "sha256": "03ae7e2997796e0c67ca15c8886b1e5b290791a142b6631a572d1cba6eba4eb1"
+    },
+    {
+      "bytes": 19222,
+      "path": "tools/c11d/d9/audit_visual_drill_selector_authoring_coverage.gd",
+      "sha256": "9785284652e8c8adedea8423d54929a2e7386645e5dfded68bb4fdf7b26ae02b"
+    },
+    {
+      "bytes": 19331,
+      "path": "tools/c11d/d9/c11e_e4b_loop_family_stage_contract.py",
+      "sha256": "bfbfa0cc108f00b78003e5480c86af1ee5ca63772d24a7792f8cdb6953b6af5d"
+    },
+    {
+      "bytes": 15051,
+      "path": "tools/c11d/d9/d_render_adapter.py",
+      "sha256": "222742677cd498368429a3ec0dcdd922c44197bb5ada3638081138fb77c31bf1"
+    },
+    {
+      "bytes": 15400,
+      "path": "tools/c11d/d9/d_renderer_challenge_visual_payload_preview.py",
+      "sha256": "93f9ffbbc7ea92efa6098b59c221c1fb191aa7aae47a2e2c84a7fbe1fc1e786f"
+    },
+    {
+      "bytes": 86068,
+      "path": "tools/c11d/d9/d_renderer_dynamic_request_payload_binding.py",
+      "sha256": "bad418fcee9b219c4ccd3f3720b8d623737b9790968608ba3f605430c8bb149b"
+    },
+    {
+      "bytes": 26957,
+      "path": "tools/c11d/d9/d_renderer_request_scoped_payload_binding.py",
+      "sha256": "3b3ced5f51309fff791a166109baebd37511b354b1704ae2e59a0b9aa4e6df8b"
+    },
+    {
+      "bytes": 40250,
+      "path": "tools/c11d/d9/d_renderer_request_scoped_payload_materialization_binding.py",
+      "sha256": "244426e8f742e221f1fbb6885103135bd01d202cb6c8b641f877bd089e81ab9d"
+    },
+    {
+      "bytes": 22375,
+      "path": "tools/c11d/d9/d_renderer_visual_drill_selector_authoring_coverage.py",
+      "sha256": "a9058ee68de5da1de89ecd57b4fd28a9619c446829f34617c84585e50274eb5a"
+    },
+    {
+      "bytes": 11889,
+      "path": "tools/c11d/d9/d_renderer_visual_payload_materialization_preview.py",
+      "sha256": "cebe9b79c519675e61aa0d136ec08814e38eef91d3f55d19e9355929d677bfee"
+    },
+    {
+      "bytes": 10868,
+      "path": "tools/c11d/d9/editorial_render_bridge.py",
+      "sha256": "fe9d40052b0f4ff6f1c862c010ae7b3b13070b6ce935be6d62f9dcaec63a644a"
+    },
+    {
+      "bytes": 23596,
+      "path": "tools/c11d/d9/materialize_visual_drill_dynamic_request_payload_in_memory_v2.gd",
+      "sha256": "10c34da13748de3fd106144f66b410f144deb4422dd2871de38f64f8cd714ad0"
+    },
+    {
+      "bytes": 6780,
+      "path": "tools/c11d/d9/test_d_renderer_visual_drill_selector_authoring_coverage.py",
+      "sha256": "03ad131b39d7db0a286b00083c674a76f1dcaa8543c873503180fba2748e85e8"
+    },
+    {
+      "bytes": 27585,
+      "path": "tools/c11d/d9/universal_editorial_model.py",
+      "sha256": "dac95fb698b52f96432a517d8ec3196a397e5e6bd3c025300350dd55ddce3afd"
+    },
+    {
+      "bytes": 19692,
+      "path": "tools/c11d/d9/universal_producer.py",
+      "sha256": "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1"
+    },
+    {
+      "bytes": 16138,
+      "path": "tools/prototypes/c11c_common/C11CPaletteBank.gd",
+      "sha256": "6b64d99afb148b0dc5b0f8e27b50558e9b77df4d2fdff98d52495d81d53fdd14"
+    },
+    {
+      "bytes": 1739,
+      "path": "tools/prototypes/c11c_common/C11CSafeAmbient.py",
+      "sha256": "c376fd44a3115f0d800213d95e28143363748e16c7b5800369fcadbf237fb02c"
+    },
+    {
+      "bytes": 13703,
+      "path": "tools/prototypes/c11c_common/C11CVariationProfile.gd",
+      "sha256": "f7df994d8842183275bc331decd75762a153f3100248c7cc8b590e34c1347e2d"
+    },
+    {
+      "bytes": 1048,
+      "path": "tools/prototypes/c11c_common/C11CVisualLoopDuration.gd",
+      "sha256": "4ea0b0decbd3a22ade42023e819a74872f312b63facc1163dc73a7c656fdbaf8"
+    },
+    {
+      "bytes": 16382,
+      "path": "tools/prototypes/c11c_common/generate_c11c_family_music.py",
+      "sha256": "41bb8f9842ac941ea86c838f272b11bd0642973b26e92defa006721a3d8cb84d"
+    },
+    {
+      "bytes": 12922,
+      "path": "tools/prototypes/c11c_fractal_bloom_v1/run_prototype.ps1",
+      "sha256": "02e3721c92046f1f69119e5bbc6c69709dd0b97fad7191c08213ecc233930801"
+    },
+    {
+      "bytes": 10073,
+      "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWaves.gdshader",
+      "sha256": "737149389a37d92f1f6947de93d89903aa5429eda23b1c8b261cc1ce3d6e7154"
+    },
+    {
+      "bytes": 11359,
+      "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesPrototype.gd",
+      "sha256": "ab2560cbe7fa42c5cad3b143aa59d1f2a0dc047682f7667983c7c0a0f6dbb61c"
+    },
+    {
+      "bytes": 3918,
+      "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesRenderer.gd",
+      "sha256": "4cf42e5e464e9aec86d7dd38caca226c1c451543c17ea87197d9acf8e8659783"
+    },
+    {
+      "bytes": 1531,
+      "path": "tools/prototypes/c11c_geometric_waves_v1/definition.json",
+      "sha256": "4c4589ed6bbe5ee3c3c702d5a2fb9dac08682e6cc1820883ba5af1845642b4a1"
+    }
+  ],
+  "historical_evidence": [
+    {
+      "bytes": 7807,
+      "path": "artifacts/tests/c11e/e4a_audio_mux_review/RUN_20261104T013653Z-8469583E/e1_intent_A.json",
+      "role": "challenge",
+      "sha256": "47d592a1eb7f889ceb1c0c61509a4f45a33b8d8c77a90b62c880f4a56b732a63",
+      "sha256_actual": "47d592a1eb7f889ceb1c0c61509a4f45a33b8d8c77a90b62c880f4a56b732a63"
+    },
+    {
+      "bytes": 6662,
+      "path": "docs/current/e/C11E_E4C_TRACKING_FAMILY_CLOSEOUT_20261115_V1.md",
+      "role": "drill_closeout",
+      "sha256": "58f8f046e6936490e51f0470072bc10d7cf43ceca97ad2ef2fb9971463ed1308",
+      "sha256_actual": "58f8f046e6936490e51f0470072bc10d7cf43ceca97ad2ef2fb9971463ed1308"
+    },
+    {
+      "bytes": 1294,
+      "path": "artifacts/tests/c11e/e4c_tracking_tier_batch/E4C-TRACKING-T2-5-20261115T074835Z-6239dd21/E4C-TRK-T2-6239dd21.CLI_EXECUTION_RESULT.json",
+      "role": "drill_tier2_result",
+      "sha256": "fc6d8b5193ab5fa44df34c2b822292a159b698dcbca8a218e3902c975b0d0172",
+      "sha256_actual": "fc6d8b5193ab5fa44df34c2b822292a159b698dcbca8a218e3902c975b0d0172"
+    },
+    {
+      "bytes": 2249,
+      "path": "docs/current/e/C11E_E4B_R1V_ACTUAL_FRAME_INVENTORY_20261108_V9.md",
+      "role": "loop_frame_inventory",
+      "sha256": "d8a6c70ed4a0904d389037cde3987803af5b9bb3eb38b76833cabf1cd5d25d58",
+      "sha256_actual": "d8a6c70ed4a0904d389037cde3987803af5b9bb3eb38b76833cabf1cd5d25d58"
+    },
+    {
+      "bytes": 11604,
+      "path": "artifacts/tests/c11e/e4b_r1p/E4B_R1P_20261107_032743_5F75045C/receipts/06_E4B_R1P_20261107_032743_5F75045C_06.json",
+      "role": "loop_parameter",
+      "sha256": "ae2c4e61c8cac93af28872fe46037d178f15d6fb96c7e30ed2d90be9144c303c",
+      "sha256_actual": "ae2c4e61c8cac93af28872fe46037d178f15d6fb96c7e30ed2d90be9144c303c"
+    }
+  ],
+  "pre_post_equal": true,
+  "static_pins": [
+    {
+      "bytes": 7807,
+      "path": "artifacts/tests/c11e/e4a_audio_mux_review/RUN_20261104T013653Z-8469583E/e1_intent_A.json",
+      "sha256": "47d592a1eb7f889ceb1c0c61509a4f45a33b8d8c77a90b62c880f4a56b732a63"
+    },
+    {
+      "bytes": 11604,
+      "path": "artifacts/tests/c11e/e4b_r1p/E4B_R1P_20261107_032743_5F75045C/receipts/06_E4B_R1P_20261107_032743_5F75045C_06.json",
+      "sha256": "ae2c4e61c8cac93af28872fe46037d178f15d6fb96c7e30ed2d90be9144c303c"
+    },
+    {
+      "bytes": 1294,
+      "path": "artifacts/tests/c11e/e4c_tracking_tier_batch/E4C-TRACKING-T2-5-20261115T074835Z-6239dd21/E4C-TRK-T2-6239dd21.CLI_EXECUTION_RESULT.json",
+      "sha256": "fc6d8b5193ab5fa44df34c2b822292a159b698dcbca8a218e3902c975b0d0172"
+    },
+    {
+      "bytes": 9183,
+      "path": "c11c-suite/c11c-producer/c11d_gui_request.py",
+      "sha256": "0e95109ffd3ba5655d28292309196349470ab7958a467f096543a2c98c22976e"
+    },
+    {
+      "bytes": 4867,
+      "path": "c11c-suite/c11c-producer/c11e_production_cli.py",
+      "sha256": "3e530e535accc31455207d1e8e3253140c95b390348b4ee252ec8b5ee140869a"
+    },
+    {
+      "bytes": 86687,
+      "path": "c11c-suite/c11c-producer/c11e_production_service.py",
+      "sha256": "e5dbf9baa72d4c066ff8ba24006df954700d72a5b0f11f9f88aec653e84dce87"
+    },
+    {
+      "bytes": 125111,
+      "path": "c11c-suite/c11c-producer/main.py",
+      "sha256": "86eeca0c3fc37105c1202295db3f27e6dc249f4eafdcb48c5709cd2d76164393"
+    },
+    {
+      "bytes": 32714,
+      "path": "c11c-suite/c11c-producer/producer_schema.json",
+      "sha256": "564f11fb4fee9221910dc373550650172eda4f106d6dc25532cc43cb8e6314a0"
+    },
+    {
+      "bytes": 1543,
+      "path": "challenges/CHALLENGE_004.json",
+      "sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71"
+    },
+    {
+      "bytes": 2818,
+      "path": "definitions/c11d/music/C11D_CHALLENGE_8BIT_STYLE_PROFILE_V1.json",
+      "sha256": "0c877cbe6e1c288890da31fc4481a58e1051749b45a50b2290cbef5d1120d2de"
+    },
+    {
+      "bytes": 3313,
+      "path": "definitions/c11d/music/C11D_MUSIC_ENGINE_V5_SPEC_V1.json",
+      "sha256": "8970f4e93c878285b727697f3d269f5ee464b6029fe79eabc5fcbf4245e9dbf2"
+    },
+    {
+      "bytes": 12932,
+      "path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+      "sha256": "dabb458fc2215156ddb5ebea7e8ebec811098886ce2858733ba9fb13f6075ccb"
+    },
+    {
+      "bytes": 14940,
+      "path": "definitions/c11d/production/C11D_PRODUCTION_REQUEST_SCHEMA_V1.json",
+      "sha256": "82a889cf199c9dafdf95665c83be28da1affa83e1cbf4472d30e40969030dd5e"
+    },
+    {
+      "bytes": 1761,
+      "path": "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json",
+      "sha256": "342a61338c80a2f1616e8e9f38986bd90f410257c0e321f99840380fb0fd804b"
+    },
+    {
+      "bytes": 51335,
+      "path": "definitions/c11d/production/C11E_E4B_LOOP22_SELECTOR_MATRIX_V1.json",
+      "sha256": "eb0ce2fab5ee97c298e232685ec3452779fc1e1f4a8dcd1c9c994bff1a45a1a1"
+    },
+    {
+      "bytes": 1943,
+      "path": "definitions/c11e/music/C11E_E3_2_D3_V5_E1_MUSIC_CONTRACT_V1.json",
+      "sha256": "12c59ce2a2135a49ce0d5968a29905a1e5890743507db1ee0039da1374efcfe8"
+    },
+    {
+      "bytes": 1511,
+      "path": "definitions/visual_drill_tracking_canonical.json",
+      "sha256": "54d432c80f190f4ac5dcb8ef5b135e16f18c378da120f35723fd5be944719ec3"
+    },
+    {
+      "bytes": 2249,
+      "path": "docs/current/e/C11E_E4B_R1V_ACTUAL_FRAME_INVENTORY_20261108_V9.md",
+      "sha256": "d8a6c70ed4a0904d389037cde3987803af5b9bb3eb38b76833cabf1cd5d25d58"
+    },
+    {
+      "bytes": 6662,
+      "path": "docs/current/e/C11E_E4C_TRACKING_FAMILY_CLOSEOUT_20261115_V1.md",
+      "sha256": "58f8f046e6936490e51f0470072bc10d7cf43ceca97ad2ef2fb9971463ed1308"
+    },
+    {
+      "bytes": 65465,
+      "path": "docs/current/e/C11E_POWERSHELL_RUNNER_STYLE_GUIDE_20261116_V36.md",
+      "sha256": "4f3940d50b07ccd48e30f44dbc8653a9021791d20382dbccdb7ca0d93f98f337"
+    },
+    {
+      "bytes": 3158,
+      "path": "profiles/delivery/c11c_video_delivery_profiles.json",
+      "sha256": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3"
+    },
+    {
+      "bytes": 7038,
+      "path": "profiles/presentation/c11c_visual_music_profiles.json",
+      "sha256": "b78706c5a9adbf1581d925f522b76cc3419983177de213734cc79996af5cbf58"
+    },
+    {
+      "bytes": 796318,
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    {
+      "bytes": 5256,
+      "path": "tools/c11d/d3/c11d_music_engine_v5.py",
+      "sha256": "03ae7e2997796e0c67ca15c8886b1e5b290791a142b6631a572d1cba6eba4eb1"
+    },
+    {
+      "bytes": 19331,
+      "path": "tools/c11d/d9/c11e_e4b_loop_family_stage_contract.py",
+      "sha256": "bfbfa0cc108f00b78003e5480c86af1ee5ca63772d24a7792f8cdb6953b6af5d"
+    },
+    {
+      "bytes": 53851,
+      "path": "tools/c11d/d9/c11e_e4c_drill_execution.py",
+      "sha256": "b7cbf7bd97f76f4c2e339840fc694d3f5b0e50186ba2456e45ff00e585751abe"
+    },
+    {
+      "bytes": 15051,
+      "path": "tools/c11d/d9/d_render_adapter.py",
+      "sha256": "222742677cd498368429a3ec0dcdd922c44197bb5ada3638081138fb77c31bf1"
+    },
+    {
+      "bytes": 86068,
+      "path": "tools/c11d/d9/d_renderer_dynamic_request_payload_binding.py",
+      "sha256": "bad418fcee9b219c4ccd3f3720b8d623737b9790968608ba3f605430c8bb149b"
+    },
+    {
+      "bytes": 10868,
+      "path": "tools/c11d/d9/editorial_render_bridge.py",
+      "sha256": "fe9d40052b0f4ff6f1c862c010ae7b3b13070b6ce935be6d62f9dcaec63a644a"
+    },
+    {
+      "bytes": 27585,
+      "path": "tools/c11d/d9/universal_editorial_model.py",
+      "sha256": "dac95fb698b52f96432a517d8ec3196a397e5e6bd3c025300350dd55ddce3afd"
+    },
+    {
+      "bytes": 19692,
+      "path": "tools/c11d/d9/universal_producer.py",
+      "sha256": "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1"
+    }
+  ]
+}

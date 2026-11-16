@@ -1,0 +1,15 @@
+{
+  "schema": "C11E-E5-LOOP-C-PROGRESS-V1",
+  "run_id": "E5LC_20261116T203121Z_9C48A2",
+  "status": "FAIL_CLOSED_PARTIAL_EVIDENCE_RETAINED",
+  "completed_steps": [
+    "FAMILY_MUSIC_V4_C_GENERATED_AND_QA_PASS",
+    "SAME_SEED_MUSIC_REPEATABILITY_PASS",
+    "NATIVE_44100_PCM_DELIVERY_PASS"
+  ],
+  "started_utc": "2026-11-16T20:31:21.262191+00:00",
+  "production_dispatch": false,
+  "release_authority": "NONE",
+  "completed_utc": "2026-11-16T20:31:59.057977+00:00",
+  "failure": "NameError: name 'source_pre' is not defined"
+}

@@ -1,0 +1,72 @@
+{
+  "batch_id": "E5-XF-PREP-20261116T142423Z-D455AA63",
+  "boundary_preparations_match": true,
+  "cli": {
+    "exit_code": 0,
+    "intent_hash": "89eb070832a4f7c360077c5e7686ecb63e6cc56931bed90ae4bb8ef59ec39415",
+    "intent_sha256": "58bd16b0fbbf0288978c501489628c838b796f09d4d06c3863d4faefffbdc057",
+    "result_sha256": "915dbbe27182382b44f3e3502ae6bcde594b4f606fe53f45602f3fc63c59fef3",
+    "shape": {
+      "boundary_contract": "EXISTING_E4C_DRILL_V2_BINDER_AND_PHASE_CONTRACT",
+      "delivery_profile": "REVIEW_720",
+      "family": "drill",
+      "family_adapter": "NOT_CONNECTED_E1",
+      "gameplay_seed": 12345,
+      "media_created": false,
+      "music_route": "PRESERVE_EXISTING_C11C_FAMILY_MUSIC_PATH",
+      "music_seed": 840001,
+      "probe": "B",
+      "profile_id": "FLOWING_VECTOR",
+      "renderer_invoked": false,
+      "selector": {
+        "content_type": "visual_drills",
+        "difficulty_tier": 2,
+        "family_id": "tracking",
+        "subtype_id": null,
+        "variant_id": "tier-2",
+        "variant_scope_id": "visual-drill:tracking:tier-2"
+      }
+    },
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_sha256": "b4293f8ab47082d7a5121772a54f213d586a17fbec391d3dd1b6af55dddd4222",
+    "validation": "PASS_E1_PREPARATION_ONLY"
+  },
+  "family": "drill",
+  "gui": {
+    "intent_hash": "89eb070832a4f7c360077c5e7686ecb63e6cc56931bed90ae4bb8ef59ec39415",
+    "intent_sha256": "e9224e4380e9983908a62dd6413215f2ab25a7dd526addffdd45da4dce169ac4",
+    "shape": {
+      "boundary_contract": "EXISTING_E4C_DRILL_V2_BINDER_AND_PHASE_CONTRACT",
+      "delivery_profile": "REVIEW_720",
+      "family": "drill",
+      "family_adapter": "NOT_CONNECTED_E1",
+      "gameplay_seed": 12345,
+      "media_created": false,
+      "music_route": "PRESERVE_EXISTING_C11C_FAMILY_MUSIC_PATH",
+      "music_seed": 840001,
+      "probe": "B",
+      "profile_id": "FLOWING_VECTOR",
+      "renderer_invoked": false,
+      "selector": {
+        "content_type": "visual_drills",
+        "difficulty_tier": 2,
+        "family_id": "tracking",
+        "subtype_id": null,
+        "variant_id": "tier-2",
+        "variant_scope_id": "visual-drill:tracking:tier-2"
+      }
+    },
+    "validation": "PASS_E1_PREPARATION_ONLY"
+  },
+  "intent_semantics_match": true,
+  "media_created": false,
+  "origin_bound_hashes_differ_as_expected": true,
+  "probe": "B",
+  "production_dispatch": false,
+  "release_authority": "NONE",
+  "renderer_invoked": false,
+  "request_id": "E5-D455AA63-DRILL-B",
+  "row": 10,
+  "schema": "C11E-E5-CROSS-FAMILY-PREPARE-ROW-RECEIPT-V1",
+  "status": "PASS_GUI_CLI_E1_PARITY"
+}

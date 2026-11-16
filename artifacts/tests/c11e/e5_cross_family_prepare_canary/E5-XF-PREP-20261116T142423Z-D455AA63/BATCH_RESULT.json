@@ -1,0 +1,93 @@
+{
+  "actual_qt_gui_runtime": "NOT_RUN_OPERATOR_UI_SESSION_REQUIRED",
+  "av_media_gate": "BLOCKED_FAMILY_ADAPTER_NOT_CONNECTED_E1",
+  "batch_id": "E5-XF-PREP-20261116T142423Z-D455AA63",
+  "completed_probe_pairs": 12,
+  "completed_service_origin_rows": 24,
+  "created_utc": "2026-11-16T14:24:54Z",
+  "e1_family_adapter": "NOT_CONNECTED_E1",
+  "e5_overall": "OPEN_MEDIA_QUALIFICATION_REQUIRED",
+  "expected_service_origin_rows": 24,
+  "families": [
+    "challenge",
+    "loop",
+    "drill"
+  ],
+  "family_music_profiles": {
+    "challenge": "challenge_8bit_v1",
+    "drill": "FLOWING_VECTOR",
+    "loop": "ORGANIC_BLOOM"
+  },
+  "family_selectors": {
+    "challenge": "challenges/parking_v2/CHALLENGE_004",
+    "drill": "visual_drills/tracking/tier-2",
+    "loop": "visual_loops/c11c_fractal_bloom_v1/radial_bloom"
+  },
+  "family_timebase_contracts": {
+    "challenge": {
+      "accepted_delivery_reference": "450 frames / 15s at 30fps",
+      "canonical": "15s sum of 3+7+3+2 at 60fps",
+      "materialized": false
+    },
+    "drill": {
+      "canonical_gameplay": "630 frames / 21s at 30fps",
+      "materialized": false,
+      "native_phase_contract": "3s PRE_ROLL + 21s GAME + 3s END_CTA = 810 frames / 27s at 30fps"
+    },
+    "loop": {
+      "accepted_native_source_reference": "660 frames / 22s at 30fps",
+      "materialized": false
+    }
+  },
+  "ffmpeg_invoked": false,
+  "godot_invoked": false,
+  "gui_cli_service_semantic_parity": "PASS_12_OF_12",
+  "historical_evidence_pins": "PASS",
+  "media_outputs": 0,
+  "next_gate": "GOVERNED_E1_FAMILY_ADAPTER_CONNECTION_AND_SEPARATE_AV_CANARY_AUTHORIZATION",
+  "phase": "E5",
+  "production_dispatch": false,
+  "profile_non_leakage": "PASS_3_DISTINCT_PROFILE_BINDINGS",
+  "qualification_stage": "OPENING_CROSS_FAMILY_PREPARE_ONLY_CANARY",
+  "release_authority": "NONE",
+  "renderer_invoked": false,
+  "schema": "C11E-E5-CROSS-FAMILY-PREPARE-ONLY-BATCH-RESULT-V1",
+  "seed_and_replay_relations": [
+    {
+      "A_B_semantic_replay": "PASS",
+      "C_music_seed_only": "PASS",
+      "C_visual_stage_isolation": "NOT_MATERIALIZED_E1",
+      "D_gameplay_seed_only": "PASS",
+      "family": "challenge",
+      "media_comparison": "NOT_RUN_PREPARE_ONLY",
+      "profile_id": "challenge_8bit_v1",
+      "status": "PASS_SEED_DOMAIN_AND_REPLAY_RELATIONS"
+    },
+    {
+      "A_B_semantic_replay": "PASS",
+      "C_music_seed_only": "PASS",
+      "C_visual_stage_isolation": "PASS",
+      "D_gameplay_seed_only": "PASS",
+      "family": "loop",
+      "media_comparison": "NOT_RUN_PREPARE_ONLY",
+      "profile_id": "ORGANIC_BLOOM",
+      "status": "PASS_SEED_DOMAIN_AND_REPLAY_RELATIONS"
+    },
+    {
+      "A_B_semantic_replay": "PASS",
+      "C_music_seed_only": "PASS",
+      "C_visual_stage_isolation": "PASS",
+      "D_gameplay_seed_only": "PASS",
+      "family": "drill",
+      "media_comparison": "NOT_RUN_PREPARE_ONLY",
+      "profile_id": "FLOWING_VECTOR",
+      "status": "PASS_SEED_DOMAIN_AND_REPLAY_RELATIONS"
+    }
+  ],
+  "source_pin_counts": {
+    "dynamic_union": 98,
+    "static": 31
+  },
+  "source_pins_pre_post_equal": true,
+  "status": "PASS_E5_PREPARE_ONLY_CROSS_FAMILY"
+}

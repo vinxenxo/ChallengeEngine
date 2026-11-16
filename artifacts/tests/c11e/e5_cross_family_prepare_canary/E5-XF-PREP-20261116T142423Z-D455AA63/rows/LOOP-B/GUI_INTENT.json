@@ -1,0 +1,701 @@
+{
+  "d9_boundary_preparation": {
+    "bridge_planning_record": {
+      "audio_enabled": true,
+      "content_type": "visual_loops",
+      "contract_identity": {
+        "schema": "C11-D-D9.10-EDITORIAL-RENDER-BRIDGE-CONTRACT-V1",
+        "schema_version": "1.0",
+        "sha256": "55eedb88a76b491bae3fb1093f8dd03717b3c2a2464e130dc460da80d88cb3ed"
+      },
+      "contract_schema": "C11-D-D9.10-EDITORIAL-RENDER-BRIDGE-CONTRACT-V1",
+      "d4_8": "BLOCKED",
+      "delivery_profile_id": "REVIEW_720",
+      "editorial": {
+        "allowlist_source": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+        "destination_contract": "FUTURE_D_RENDERER_BINDER_NOT_DEFINED",
+        "fields": [
+          "call_to_action",
+          "language",
+          "subtitle",
+          "title"
+        ],
+        "values_hash": "bbe1077928e148c9070b939f7b1fa034d290a4e014a7b123b30b011dc9c55339"
+      },
+      "editorial_model_identity": {
+        "checkpoint": "D9.8",
+        "schema": "C11-D-D9-UNIVERSAL-EDITORIAL-MODEL-V1",
+        "schema_version": "1.0",
+        "sha256": "b1756152f8080f4794d11041531d66d15769393fe8f76fc67466f2cda201c271"
+      },
+      "field_mappings": {
+        "audio": {
+          "classification": "EXPLICIT_REQUEST_FLAG_ONLY",
+          "music_seed_domain": "MUSIC",
+          "source": "plan.audio_enabled"
+        },
+        "content_identity": {
+          "classification": "IDENTITY_ONLY",
+          "destination": "future_d_renderer_contract.content_identity",
+          "editable": false,
+          "source": "plan.selection"
+        },
+        "delivery_profile": {
+          "classification": "REGISTERED_PROFILE_REFERENCE_ONLY",
+          "destination": "future_d_renderer_contract.delivery_profile_id",
+          "source": "plan.resolved_delivery_profile_id"
+        },
+        "editorial": {
+          "allowlist_source": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+          "classification": "EDITORIAL_ALLOWLIST_ONLY",
+          "destination": "future_d_renderer_contract.editorial_bindings",
+          "must_not_override_simulation_or_telemetry": true,
+          "source": "plan.editorial"
+        },
+        "gameplay_seed": {
+          "cross_domain_sharing": "FORBIDDEN",
+          "derivation": false,
+          "domain": "GAMEPLAY",
+          "owner": "request.seed",
+          "source": "plan.seed"
+        },
+        "music_seed": {
+          "cross_domain_sharing": "FORBIDDEN",
+          "derivation": false,
+          "domain": "MUSIC",
+          "owner": "request.music_seed",
+          "source": "plan.music_seed"
+        },
+        "presentation_profile": {
+          "classification": "REGISTERED_PROFILE_REFERENCE_ONLY",
+          "destination": "future_d_renderer_contract.presentation_profile_id",
+          "source": "plan.presentation_profile_id"
+        },
+        "provenance": {
+          "classification": "IMMUTABLE_LINEAGE",
+          "sha256_required_for_future_media": true,
+          "sources": [
+            "result.request_hash",
+            "result.editorial_hash",
+            "result.plan_hash"
+          ]
+        },
+        "variation": {
+          "classification": "TECHNICAL_REQUEST_VALUE_NOT_EDITORIAL",
+          "runtime_derivation": false,
+          "source": "plan.variation_index"
+        }
+      },
+      "future_d_frozen_baseline_gates": [
+        "FUTURE_D_RENDERER_BASELINE_FROZEN_AND_IDENTIFIED",
+        "RENDER_ADAPTER_CONTRACT_VERSIONED_AND_HASHED",
+        "CONTENT_BINDER_COMPATIBILITY_MATRIX_PASS",
+        "D4_8_EXPLICIT_GOVERNANCE_AUTHORIZATION",
+        "GAMEPLAY_AND_MUSIC_SEED_ISOLATION_TESTS_PASS",
+        "EDITORIAL_ONLY_MUTATION_DETERMINISM_TESTS_PASS",
+        "RENDERER_AND_MEDIA_PROVENANCE_CHAIN_PASS",
+        "VISUAL_AND_AUDIO_QA_GATES_PASS",
+        "CATALOG_REPRODUCTION_AND_NEGATIVE_ACCEPTANCE_PASS"
+      ],
+      "governance": {
+        "automatic_seed_generation": false,
+        "cross_domain_seed_sharing": "FORBIDDEN",
+        "d4_8": "BLOCKED",
+        "master_seed": "NOT_ADOPTED",
+        "production_execution": false,
+        "release_authority": "NONE",
+        "renderer_activation": false,
+        "runtime_seed_derivation": false
+      },
+      "identity": {
+        "d4_plan_hash": null,
+        "d4_request_hash": null,
+        "editorial_hash": "c720175a4263eb3f43e3112e2e5a46e5417e707f50fdba31bd15dcd833c5ea88",
+        "plan_hash": "35785a942e118131ae1359a921179ef6e6540fa4180a5c27a4ec049bd6866785",
+        "request_hash": "130f1e25d095745e7f60467ab6b97796108fdc3154c2cfdabf1c64b9ea8d13e8"
+      },
+      "media_output_created": false,
+      "output_artifact_path": null,
+      "presentation_profile_id": "social_default_v1",
+      "production_execution": false,
+      "record_hash": "121ee0c59c684765ffec7128c09b5181307a9b98338db3e43af7d7f3ede520e7",
+      "release_authority": "NONE",
+      "renderer_activation": false,
+      "renderer_adapter_invoked": false,
+      "renderer_input_emitted": false,
+      "request_id": "E5-D455AA63-LOOP-B",
+      "route": {
+        "render_adapter_state": "NOT_DEFINED",
+        "required_d4_subplan_status": "NOT_APPLICABLE_NO_D4_LOOP_DRILL_CONTRACT",
+        "required_plan_kind": "UNIVERSAL_EDITORIAL_INTENT_PLAN_ONLY",
+        "route_id": "FUTURE_D_NATIVE_VISUAL_LOOP_ADAPTER_REQUIRED"
+      },
+      "schema": "C11-D-D9.10-EDITORIAL-RENDER-BRIDGE-PLAN-V1",
+      "schema_version": "1.0",
+      "seed_contract": {
+        "automatic_seed_generation": false,
+        "cross_domain_seed_sharing": "FORBIDDEN",
+        "gameplay_seed": 100006,
+        "gameplay_seed_domain": "GAMEPLAY",
+        "gameplay_seed_source": "canonical_plan.seed",
+        "music_seed": 500006,
+        "music_seed_domain": "MUSIC",
+        "music_seed_source": "canonical_plan.music_seed",
+        "runtime_seed_derivation": false
+      },
+      "selection": {
+        "content_type": "visual_loops",
+        "difficulty_tier": null,
+        "family_id": "c11c_fractal_bloom_v1",
+        "subtype_id": "radial_bloom",
+        "variant_id": null,
+        "variant_scope_id": "visual-loop:c11c_fractal_bloom_v1/radial_bloom"
+      },
+      "status": "PLANNING_ONLY_NOT_RENDERABLE",
+      "variation_index": 0
+    },
+    "d_only_adapter_envelope": {
+      "adapter_contract_identity": {
+        "schema": "C11-D-D9.10-RENDER-ADAPTER-BOUNDARY-CONTRACT-V1",
+        "schema_version": "1.0",
+        "sha256": "af3494d7fa100a75b95994f824bfe256c76fe7d9095e3905fa4d28647e3863df"
+      },
+      "adapter_execution": {
+        "adapter_prepare_enabled": true,
+        "mode": "PREPARE_ONLY",
+        "reason_not_dispatched": "D4.8_BLOCKED_AND_D_BASELINE_NOT_APPROVED",
+        "renderer_dispatch_invoked": false,
+        "scope": "C11-D_ONLY"
+      },
+      "binding_preview": {
+        "audio_enabled": true,
+        "delivery_profile_id": "REVIEW_720",
+        "derived_telemetry": "NOT_BOUND",
+        "editorial_allowlist_fields": [
+          "call_to_action",
+          "language",
+          "subtitle",
+          "title"
+        ],
+        "editorial_bindings": {
+          "call_to_action": "UNKNOWN",
+          "language": "UNKNOWN",
+          "subtitle": "UNKNOWN",
+          "title": "UNKNOWN"
+        },
+        "presentation_profile_id": "social_default_v1",
+        "seed_contract": {
+          "automatic_seed_generation": false,
+          "cross_domain_seed_sharing": "FORBIDDEN",
+          "gameplay_seed": 100006,
+          "gameplay_seed_domain": "GAMEPLAY",
+          "gameplay_seed_source": "canonical_request.seed",
+          "music_seed": 500006,
+          "music_seed_domain": "MUSIC",
+          "music_seed_source": "canonical_request.music_seed",
+          "runtime_seed_derivation": false
+        },
+        "simulation_truth": "NOT_BOUND",
+        "variation_index": 0
+      },
+      "bridge_contract_identity": {
+        "schema": "C11-D-D9.10-EDITORIAL-RENDER-BRIDGE-CONTRACT-V1",
+        "schema_version": "1.0",
+        "sha256": "55eedb88a76b491bae3fb1093f8dd03717b3c2a2464e130dc460da80d88cb3ed"
+      },
+      "c11c_source_mutation": false,
+      "content_identity": {
+        "content_type": "visual_loops",
+        "difficulty_tier": null,
+        "family_id": "c11c_fractal_bloom_v1",
+        "subtype_id": "radial_bloom",
+        "variant_id": null,
+        "variant_scope_id": "visual-loop:c11c_fractal_bloom_v1/radial_bloom"
+      },
+      "d4_8": "BLOCKED",
+      "d_only_adapter_prepare_invoked": true,
+      "editorial_model_identity": {
+        "checkpoint": "D9.8",
+        "schema": "C11-D-D9-UNIVERSAL-EDITORIAL-MODEL-V1",
+        "schema_version": "1.0",
+        "sha256": "b1756152f8080f4794d11041531d66d15769393fe8f76fc67466f2cda201c271"
+      },
+      "envelope_hash": "b77dece37efc095f780380fbc9e52ab47ba50691e9f6a77655bb9d43f013b059",
+      "media_output_created": false,
+      "output_artifact_path": null,
+      "policy_identity": null,
+      "production_execution": false,
+      "release_authority": "NONE",
+      "renderer_activation": false,
+      "renderer_dispatch_invoked": false,
+      "renderer_input_emitted": false,
+      "schema": "C11-D-D9.10-D-ONLY-RENDER-ADAPTER-ENVELOPE-V1",
+      "schema_version": "1.0",
+      "source_identity": {
+        "bridge_record_hash": "121ee0c59c684765ffec7128c09b5181307a9b98338db3e43af7d7f3ede520e7",
+        "editorial_hash": "c720175a4263eb3f43e3112e2e5a46e5417e707f50fdba31bd15dcd833c5ea88",
+        "plan_hash": "35785a942e118131ae1359a921179ef6e6540fa4180a5c27a4ec049bd6866785",
+        "request_hash": "130f1e25d095745e7f60467ab6b97796108fdc3154c2cfdabf1c64b9ea8d13e8",
+        "request_id": "E5-D455AA63-LOOP-B"
+      },
+      "status": "PREPARED_NOT_DISPATCHED_RENDERER_DISABLED"
+    },
+    "launcher_invoked": false,
+    "loop_family_stage_contract": {
+      "audio_delivery_envelope": {
+        "audio_asset_selected": false,
+        "audio_generated": false,
+        "audio_payload_materialized": false,
+        "bitrate_kbps": 192,
+        "channels": 2,
+        "codec": "aac",
+        "d3_v5_invoked": false,
+        "mixing_policy": "OUT_OF_SCOPE_NOT_DEFINED_NOT_APPLIED",
+        "music_asset_policy": "OUT_OF_SCOPE_NOT_SELECTED_NOT_EMITTED",
+        "music_seed_domain": "request.music_seed; RESERVED_FOR_FUTURE_APPROVED_EXISTING_FAMILY_MUSIC_ROUTE",
+        "mux_invoked": false,
+        "pcm_samples_emitted": false,
+        "profile": "aac_low",
+        "sample_rate_hz": 48000
+      },
+      "composition": {
+        "background_rgb_hex": "05070B",
+        "bottom_editorial_band": {
+          "height": 192,
+          "width": 720,
+          "x": 0,
+          "y": 1088
+        },
+        "canvas": {
+          "aspect_ratio": "9:16",
+          "height": 1280,
+          "width": 720
+        },
+        "delivery_fps": 30,
+        "delivery_profile_id": "REVIEW_720",
+        "frame_order": "IDENTITY_NO_RESAMPLING",
+        "materialized_payload_receipt_required": true,
+        "overflow_policy": "NO_TRUNCATION_NO_ELLIPSIS_FAIL_CLOSED_IF_FONT_COVERAGE_OR_LAYOUT_CAPACITY_IS_NOT_PROVEN",
+        "source_fps": "ACTUAL_C11C_PAYLOAD.fps",
+        "source_frame_count_source": "REQUEST_SCOPED_MATERIALIZED_C11C_PAYLOAD_ONLY",
+        "source_frame_transform": {
+          "aspect_ratio_preserved": true,
+          "cropping": false,
+          "mode": "UNIFORM_CONTAIN",
+          "nonuniform_stretch": false,
+          "scale_x": 0.7,
+          "scale_y": 0.7,
+          "source_frame_count_mutation": false,
+          "source_frame_index_mapping": "IDENTITY",
+          "source_frame_order_mutation": false,
+          "temporal_resampling": false,
+          "yuv420p_chroma_alignment": "EVEN_X_Y_WIDTH_HEIGHT"
+        },
+        "source_frame_viewport": {
+          "height": 896,
+          "width": 504,
+          "x": 108,
+          "y": 192
+        },
+        "source_frame_window": "[0, ACTUAL_C11C_PAYLOAD.frame_count)",
+        "text_blocks": {
+          "call_to_action": {
+            "font": "NotoSansMono-Regular",
+            "font_size_px": 15,
+            "height": 66,
+            "line_height_px": 22,
+            "max_chars_per_line_conservative": 71,
+            "max_lines": 3,
+            "padding_vertical_px": 0,
+            "region": "BOTTOM_BAND",
+            "width": 648,
+            "x": 36,
+            "y": 1151
+          },
+          "subtitle": {
+            "font": "Inter-Bold",
+            "font_size_px": 15,
+            "height": 92,
+            "line_height_px": 19,
+            "max_chars_per_line_conservative": 41,
+            "max_lines": 4,
+            "padding_vertical_px": 8,
+            "region": "TOP_BAND",
+            "width": 648,
+            "x": 36,
+            "y": 100
+          },
+          "title": {
+            "font": "Inter-Bold",
+            "font_size_px": 15,
+            "height": 92,
+            "line_height_px": 19,
+            "max_chars_per_line_conservative": 41,
+            "max_lines": 4,
+            "padding_vertical_px": 8,
+            "region": "TOP_BAND",
+            "width": 648,
+            "x": 36,
+            "y": 0
+          }
+        },
+        "top_editorial_band": {
+          "height": 192,
+          "width": 720,
+          "x": 0,
+          "y": 0
+        }
+      },
+      "content_identity": {
+        "content_type": "visual_loops",
+        "family_id": "c11c_fractal_bloom_v1",
+        "family_internal_id": "fractal",
+        "grammar_id": "radial_bloom"
+      },
+      "contract_sha256": "542d6f3360cf340241a9c2bcd730d88c1a9a6664bad604062e742b9eb27c0ce5",
+      "editorial": {
+        "activation": "UNCHANGED_FULL_FRAME_PASSTHROUGH",
+        "fields": [
+          {
+            "empty_or_unknown_rule": "SUPPRESS_FIELD_NO_WINDOW",
+            "field": "title",
+            "target_composition_band": "TOP_EDITORIAL_BAND",
+            "target_semantic_region": "HEADER",
+            "value": "UNKNOWN",
+            "value_sha256": "23759997b3c59884dc4c0ff5320d6301b0e7f63bf0f6483a7b54d7d43bc5ccd1",
+            "visibility_window": null,
+            "visible": false,
+            "window_rule": "FULL_CONTINUOUS_PAYLOAD_SPAN"
+          },
+          {
+            "empty_or_unknown_rule": "SUPPRESS_FIELD_NO_WINDOW",
+            "field": "subtitle",
+            "target_composition_band": "TOP_EDITORIAL_BAND",
+            "target_semantic_region": "HEADER",
+            "value": "UNKNOWN",
+            "value_sha256": "23759997b3c59884dc4c0ff5320d6301b0e7f63bf0f6483a7b54d7d43bc5ccd1",
+            "visibility_window": null,
+            "visible": false,
+            "window_rule": "FULL_CONTINUOUS_PAYLOAD_SPAN"
+          },
+          {
+            "empty_or_unknown_rule": "SUPPRESS_FIELD_NO_WINDOW",
+            "field": "call_to_action",
+            "target_composition_band": "BOTTOM_EDITORIAL_BAND",
+            "target_semantic_region": "FOOTER",
+            "value": "UNKNOWN",
+            "value_sha256": "23759997b3c59884dc4c0ff5320d6301b0e7f63bf0f6483a7b54d7d43bc5ccd1",
+            "visibility_window": null,
+            "visible": false,
+            "window_rule": "FULL_CONTINUOUS_PAYLOAD_SPAN"
+          }
+        ],
+        "language_metadata": "UNKNOWN",
+        "layout_measurement": "NOT_PROVEN_UNTIL_ISOLATED_GODOT_VISUAL_REVIEW",
+        "static_for_entire_source_sequence": true,
+        "values_preserved_exactly": true,
+        "visible_visual_field_count": 0
+      },
+      "family_visual_stage": {
+        "argument_vector": [
+          "-Seed",
+          "100006",
+          "-Grammar",
+          "radial_bloom",
+          "-NoSound",
+          "-OutputRoot",
+          "<FRESH_ISOLATED_TEST_ROOT>",
+          "-OutputTag",
+          "E5-D455AA63-LOOP-B"
+        ],
+        "audio_switch": "-NoSound",
+        "family_registry_semantic_inputs": [
+          "seed",
+          "visual_grammar"
+        ],
+        "frozen_c11c_music_profile_id": "ORGANIC_BLOOM",
+        "gameplay_seed": 100006,
+        "launcher_execution": false,
+        "launcher_path": "tools/prototypes/c11c_fractal_bloom_v1/run_prototype.ps1",
+        "music_seed": 500006,
+        "music_seed_passed_to_visual_launcher": false,
+        "reason_not_executed": "D4.8_BLOCKED_AND_NO_RENDERER_EXECUTION_AUTHORITY"
+      },
+      "governance": {
+        "c11c_source_mutation": false,
+        "d4_8": "BLOCKED",
+        "d9_10": "PREPARE_ONLY",
+        "family_stage_contract_created_in_memory": true,
+        "ffmpeg_invoked": false,
+        "godot_invoked": false,
+        "launcher_invoked": false,
+        "media_created": false,
+        "release_authority": "NONE",
+        "renderer_dispatch_invoked": false,
+        "renderer_native_input_emitted": false
+      },
+      "request_identity": {
+        "bridge_record_hash": "121ee0c59c684765ffec7128c09b5181307a9b98338db3e43af7d7f3ede520e7",
+        "d_only_adapter_envelope_hash": "b77dece37efc095f780380fbc9e52ab47ba50691e9f6a77655bb9d43f013b059",
+        "editorial_hash": "c720175a4263eb3f43e3112e2e5a46e5417e707f50fdba31bd15dcd833c5ea88",
+        "plan_hash": "35785a942e118131ae1359a921179ef6e6540fa4180a5c27a4ec049bd6866785",
+        "request_hash": "130f1e25d095745e7f60467ab6b97796108fdc3154c2cfdabf1c64b9ea8d13e8",
+        "request_id": "E5-D455AA63-LOOP-B"
+      },
+      "schema": "C11E-E4B-LOOP-FAMILY-STAGE-CONTRACT-V1",
+      "schema_version": "1.0",
+      "status": "FAMILY_BOUND_PREPARATION_NOT_DISPATCHABLE"
+    },
+    "media_created": false,
+    "preparation_sha256": "0fe92263c599918b152c1f3c687eb6f471ab6a9a1927673ae62639e60612ee70",
+    "release_authority": "NONE",
+    "renderer_dispatch_invoked": false,
+    "renderer_input_emitted": false,
+    "required_source_pin_paths": [
+      "definitions/c11d/production/C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json",
+      "definitions/c11d/production/C11D_RENDER_ADAPTER_BOUNDARY_D9_10_V1.json",
+      "definitions/c11d/production/C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_V1.json",
+      "definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
+      "definitions/c11d/production/D_RENDERER_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_PROPOSAL_V1.json",
+      "definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_V1.json",
+      "definitions/c11d/production/D_RENDERER_UNIFIED_PRESENTATION_REGION_POLICY_PROPOSAL_V1.json",
+      "docs/current/e/C11E_E4B_OPERATOR_POLICY_DECISION_RECORD_20261106_V1.json",
+      "profiles/presentation/c11c_visual_music_profiles.json",
+      "tools/c11d/d9/c11e_e4b_loop_family_stage_contract.py",
+      "tools/c11d/d9/d_render_adapter.py",
+      "tools/c11d/d9/editorial_render_bridge.py",
+      "tools/prototypes/c11c_fractal_bloom_v1/run_prototype.ps1"
+    ],
+    "schema": "C11E-E4B-SHARED-LOOP-BOUNDARY-PREPARATION-V1",
+    "status": "LOOP_FAMILY_STAGE_PREPARED_NOT_DISPATCHABLE"
+  },
+  "delivery": {
+    "audio_enabled": true,
+    "presentation_profile_id": "social_default_v1",
+    "requested_profile_id": "REVIEW_720",
+    "resolved_profile_id": "REVIEW_720"
+  },
+  "editorial": {
+    "call_to_action": "UNKNOWN",
+    "language": "UNKNOWN",
+    "subtitle": "UNKNOWN",
+    "title": "UNKNOWN"
+  },
+  "editorial_field_consumption": {
+    "call_to_action": {
+      "consumer_status": "NOT_CONSUMED_E1",
+      "required_gate": "E4",
+      "resolved": true
+    },
+    "language": {
+      "consumer_status": "NOT_CONSUMED_E1",
+      "required_gate": "E4",
+      "resolved": true
+    },
+    "subtitle": {
+      "consumer_status": "NOT_CONSUMED_E1",
+      "required_gate": "E4",
+      "resolved": true
+    },
+    "title": {
+      "consumer_status": "NOT_CONSUMED_E1",
+      "required_gate": "E4",
+      "resolved": true
+    }
+  },
+  "execution_boundary": {
+    "d4_8": "BLOCKED",
+    "dispatch_authorized": false,
+    "media_created": false,
+    "production_execution": false,
+    "release_authority": "NONE",
+    "renderer_activation": false,
+    "renderer_dispatch_invoked": false,
+    "renderer_input_emitted": false
+  },
+  "family_adapter": {
+    "adapter_id": "c11e_visual_loops_adapter",
+    "renderer_input_emitted": false,
+    "status": "NOT_CONNECTED_E1",
+    "target_gate": "E4"
+  },
+  "identity": {
+    "editorial_hash": "c720175a4263eb3f43e3112e2e5a46e5417e707f50fdba31bd15dcd833c5ea88",
+    "intent_hash": "7bd2215d0a8f5729dd07cee067e39a6e7c0747e5c3940c15e50bf3b29b10247f",
+    "plan_hash": "35785a942e118131ae1359a921179ef6e6540fa4180a5c27a4ec049bd6866785",
+    "request_hash": "130f1e25d095745e7f60467ab6b97796108fdc3154c2cfdabf1c64b9ea8d13e8"
+  },
+  "intent_sha256": "1bc71422c5d0407e3e9247c9a93d06adc60e0496c9605f79dab2675314c8acc5",
+  "music_contract": {
+    "audio_created": false,
+    "audio_enabled": true,
+    "contract_id": "C11E_E3_2_D3_V5_E1_MUSIC_CONTRACT_V1",
+    "contract_path": null,
+    "contract_sha256": null,
+    "contract_version": "1.0",
+    "dispatch_authorized": false,
+    "dispatchable": false,
+    "engine": null,
+    "engine_invoked": false,
+    "engine_request": null,
+    "ffmpeg_mux_invoked": false,
+    "music_seed": 500006,
+    "music_seed_field": "request.music_seed",
+    "release_authority": "NONE",
+    "renderer_invoked": false,
+    "route": "PRESERVE_EXISTING_C11C_FAMILY_MUSIC_PATH",
+    "status": "PROTECTED_FAMILY_NOT_REWIRED",
+    "style_profile": null,
+    "unresolved_engine_parameters": [],
+    "variation_index": 0
+  },
+  "output": {
+    "created": false,
+    "overwrite_policy": "DENY_EXISTING",
+    "planned_root": "artifacts/production/c11e/E5-D455AA63-LOOP-B",
+    "planned_root_exists": false
+  },
+  "request": {
+    "content_type": "visual_loops",
+    "mode": "PRODUCTION",
+    "request_id": "E5-D455AA63-LOOP-B",
+    "selection": {
+      "content_type": "visual_loops",
+      "difficulty_tier": null,
+      "family_id": "c11c_fractal_bloom_v1",
+      "subtype_id": "radial_bloom",
+      "variant_id": null,
+      "variant_scope_id": "visual-loop:c11c_fractal_bloom_v1/radial_bloom"
+    },
+    "variation_index": 0
+  },
+  "request_origin": "GUI",
+  "schema": "C11-E-PRODUCTION-INTENT-V1",
+  "schema_version": "1.2",
+  "seed_domains": {
+    "automatic_generation": false,
+    "cross_domain_sharing": "FORBIDDEN",
+    "gameplay": {
+      "field": "request.seed",
+      "value": 100006
+    },
+    "independent_domains": true,
+    "music": {
+      "field": "request.music_seed",
+      "value": 500006
+    },
+    "runtime_derivation": false
+  },
+  "service_version": "0.4.0-E4C",
+  "source_identity": {
+    "c11c_manifest": {
+      "bytes": 796318,
+      "disposition": "IMMUTABLE_REFERENCE_ONLY",
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    "source_pins": [
+      {
+        "bytes": 19692,
+        "path": "tools/c11d/d9/universal_producer.py",
+        "sha256": "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1"
+      },
+      {
+        "bytes": 27585,
+        "path": "tools/c11d/d9/universal_editorial_model.py",
+        "sha256": "dac95fb698b52f96432a517d8ec3196a397e5e6bd3c025300350dd55ddce3afd"
+      },
+      {
+        "bytes": 9183,
+        "path": "c11c-suite/c11c-producer/c11d_gui_request.py",
+        "sha256": "0e95109ffd3ba5655d28292309196349470ab7958a467f096543a2c98c22976e"
+      },
+      {
+        "bytes": 12932,
+        "path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+        "sha256": "dabb458fc2215156ddb5ebea7e8ebec811098886ce2858733ba9fb13f6075ccb"
+      },
+      {
+        "bytes": 1761,
+        "path": "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json",
+        "sha256": "342a61338c80a2f1616e8e9f38986bd90f410257c0e321f99840380fb0fd804b"
+      },
+      {
+        "bytes": 3158,
+        "path": "profiles/delivery/c11c_video_delivery_profiles.json",
+        "sha256": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3"
+      },
+      {
+        "bytes": 32714,
+        "path": "c11c-suite/c11c-producer/producer_schema.json",
+        "sha256": "564f11fb4fee9221910dc373550650172eda4f106d6dc25532cc43cb8e6314a0"
+      },
+      {
+        "bytes": 10868,
+        "path": "tools/c11d/d9/editorial_render_bridge.py",
+        "sha256": "fe9d40052b0f4ff6f1c862c010ae7b3b13070b6ce935be6d62f9dcaec63a644a"
+      },
+      {
+        "bytes": 15051,
+        "path": "tools/c11d/d9/d_render_adapter.py",
+        "sha256": "222742677cd498368429a3ec0dcdd922c44197bb5ada3638081138fb77c31bf1"
+      },
+      {
+        "bytes": 19331,
+        "path": "tools/c11d/d9/c11e_e4b_loop_family_stage_contract.py",
+        "sha256": "bfbfa0cc108f00b78003e5480c86af1ee5ca63772d24a7792f8cdb6953b6af5d"
+      },
+      {
+        "bytes": 4990,
+        "path": "definitions/c11d/production/C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json",
+        "sha256": "5726310b48e9a85540d48b1e78784571ba04c3f900a5c09add35b49ce5575504"
+      },
+      {
+        "bytes": 3497,
+        "path": "definitions/c11d/production/C11D_RENDER_ADAPTER_BOUNDARY_D9_10_V1.json",
+        "sha256": "bcc9e96cb1acf3ce6c06b5f9ca894a9721aef2d5caeca4f5e4392baf5f4fb63d"
+      },
+      {
+        "bytes": 7038,
+        "path": "profiles/presentation/c11c_visual_music_profiles.json",
+        "sha256": "b78706c5a9adbf1581d925f522b76cc3419983177de213734cc79996af5cbf58"
+      },
+      {
+        "bytes": 3737,
+        "path": "docs/current/e/C11E_E4B_OPERATOR_POLICY_DECISION_RECORD_20261106_V1.json",
+        "sha256": "49efd5494f351f09d7597c4699e9c12e361b36884b6bfadacd822e6ff1480e04"
+      },
+      {
+        "bytes": 12922,
+        "path": "tools/prototypes/c11c_fractal_bloom_v1/run_prototype.ps1",
+        "sha256": "02e3721c92046f1f69119e5bbc6c69709dd0b97fad7191c08213ecc233930801"
+      },
+      {
+        "bytes": 9440,
+        "path": "definitions/c11d/production/D_RENDERER_UNIFIED_PRESENTATION_REGION_POLICY_PROPOSAL_V1.json",
+        "sha256": "101092bb32127bb8854a501a9215c0b6cf69581594383903716907d49719c01a"
+      },
+      {
+        "bytes": 8376,
+        "path": "definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
+        "sha256": "609a4d183aac07c2cbe1abaf41444160fdd137217faffbead3aef618320d57dc"
+      },
+      {
+        "bytes": 5528,
+        "path": "definitions/c11d/production/C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_V1.json",
+        "sha256": "9e206704665ea85226ecc10854be9f679c32fe9ed7efb690a829f6e8456d43da"
+      },
+      {
+        "bytes": 9507,
+        "path": "definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_V1.json",
+        "sha256": "41a62b0766db47cd99772f28642ef67766314f20f0f7891789d6b7497bbfee85"
+      },
+      {
+        "bytes": 7457,
+        "path": "definitions/c11d/production/D_RENDERER_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_PROPOSAL_V1.json",
+        "sha256": "3dd4874e1b6506de6d9ddbe6ad1b567a284b94cc00ef1bac0d35d1731af05e23"
+      }
+    ]
+  },
+  "status": "PREPARED_E1_NOT_DISPATCHED"
+}

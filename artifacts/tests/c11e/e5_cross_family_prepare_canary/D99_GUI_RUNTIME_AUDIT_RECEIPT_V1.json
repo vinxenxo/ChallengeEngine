@@ -1,0 +1,880 @@
+{
+  "schema": "C11E-E5-D99-GUI-OPERATOR-EVIDENCE-AUDIT-V1",
+  "audit_status": "PASS_OPERATOR_VISIBLE_GUI_EVIDENCE_REVIEWED",
+  "audit_scope": "DOCUMENTARY_READ_ONLY_AUDIT_OF_OPERATOR_UPLOADED_D99_GUI_ZIP",
+  "audit_created_utc": "2026-11-16T21:16:18.999781+00:00",
+  "operator_attestation": "Operator reported all three tests were executed in the Producer without issue and approved continuation.",
+  "uploaded_evidence": {
+    "name": "D99-GUI.zip",
+    "bytes": 81171,
+    "sha256": "39938411032f9da8613a8cf994c33bd63086c7f7b6cf498932e17b7459c6ec2c",
+    "zip_entries": 48,
+    "crc": "PASS"
+  },
+  "source_comparison_snapshot": {
+    "name": "ChallengeEngineV01_STATELESS-nightly build.zip",
+    "bytes": 73124998,
+    "sha256": "6a3c4c6cae2d19faffe9fe22c86b940f4178d301c1591c4b7acae5d9e7180382",
+    "authority": "comparison snapshot only; active Windows checkout remains sole source authority"
+  },
+  "run_count": 3,
+  "source_pin_declarations": 123,
+  "unique_pinned_paths": 98,
+  "source_pin_comparison": {
+    "status": "PASS",
+    "matched": 98,
+    "missing": 0,
+    "mismatch": 0,
+    "items": [
+      {
+        "path": "assets/c6/car.svg",
+        "bytes": 208,
+        "sha256": "93a6f78d9654f7917ab2287800858a937e9c68c458cc60bf417d6f2b98c1a96d",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "assets/c6/garage_background.svg",
+        "bytes": 127,
+        "sha256": "c9d8acdae725ca7726fc8ad23a046e4aac4d9e454b45db40d2c770732b31ab1e",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "assets/c6/parking_target.svg",
+        "bytes": 192,
+        "sha256": "ec2dcafd7dfc99ff501eb2d93b93906680a30c48cf0741807cbbdd915a18cfb3",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "c11c-suite/c11c-producer/C11CVisualDrillProducerEnvelopeGenerator.gd",
+        "bytes": 6640,
+        "sha256": "9e2a2f394db7efce6f646600d0bb8f4ee8488c87a184df1a0fb7f7cdcb9066e9",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "c11c-suite/c11c-producer/c11d_gui_request.py",
+        "bytes": 9183,
+        "sha256": "0e95109ffd3ba5655d28292309196349470ab7958a467f096543a2c98c22976e",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "c11c-suite/c11c-producer/producer_schema.json",
+        "bytes": 32714,
+        "sha256": "564f11fb4fee9221910dc373550650172eda4f106d6dc25532cc43cb8e6314a0",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "c11c-suite/c11c-producer/run_visual_drill_production.ps1",
+        "bytes": 17066,
+        "sha256": "ad6a7f0a6ce87804363810123f76ff0765b1582426cb2c8f69f6864ec3a0c808",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "challenges/CHALLENGE_004.json",
+        "bytes": 1543,
+        "sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "core/authoring/VisualAuthoringAssemblyContext.gd",
+        "bytes": 1116,
+        "sha256": "c57fc199d7c3ef46b0fae0d7be8d70090c816979184c259908b0484138b1f896",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "core/authoring/VisualAuthoringGenerator.gd",
+        "bytes": 6049,
+        "sha256": "abbe109b7ca625dce7a044bb6dc37582a6b6ee5156faa439c63c420a5758195e",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "core/authoring/VisualAuthoringPolicyRegistry.gd",
+        "bytes": 1254,
+        "sha256": "f84a94566900aff055813f537892577c929caa1d11c76f7187faf33ca52de437",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "core/authoring/VisualAuthoringRegistry.gd",
+        "bytes": 460,
+        "sha256": "f39ec38bfa39723c88bbcb067b8ea2d2052aa5ef2b8e66653431650518156af8",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "core/authoring/VisualAuthoringRequest.gd",
+        "bytes": 1204,
+        "sha256": "02100b371603167964c20f127e984f8968e03af08016cc60cc820e0e2e37b0c1",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "core/authoring/VisualAuthoringRequestValidator.gd",
+        "bytes": 1671,
+        "sha256": "85eb9ec5050a78133bacb54d34a4a5464f014a41feff3599e5a2f8e76a14a30c",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "core/authoring/VisualDifficultyResolver.gd",
+        "bytes": 4540,
+        "sha256": "8f46acb2b54dba99de19db7290883a5849037afb336eb21c5f725f29ee4ecd8b",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "core/authoring/VisualDrillSeedVariation.gd",
+        "bytes": 19275,
+        "sha256": "ecd07dca143886fac355c040b1bfcee3badb7dacbe4abd95ed340c4dcb8a3567",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "core/authoring/adapters/VisualDrillAuthoringAdapter.gd",
+        "bytes": 2720,
+        "sha256": "d0b547b032101c592912cf4db25ba787a6aa4a6e7b4c01211397ea187502a263",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "core/authoring/adapters/VisualLoopAuthoringAdapter.gd",
+        "bytes": 1785,
+        "sha256": "44682906d4c534f5ca7c56b2a0c3ce10babd73d13389e50c5f8511cd8dff6bcc",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "core/data/FrameSnapshot.gd",
+        "bytes": 786,
+        "sha256": "61060d0937063400447cd5f2513265cb82d8e38017f5bd097c2870da03967180",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "core/execution/ChallengeRuntimeBridge.gd",
+        "bytes": 25891,
+        "sha256": "c53f04df064b3697f8dd02cd779f8ef002a4e3e2d40fa0e01aa7d9b1a80a8191",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "core/execution/ChallengeTimelineBuilder.gd",
+        "bytes": 3721,
+        "sha256": "35a47ad126a2e11577933a03b251f47732e580693e5c08e45d3b6af047c8c9af",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "core/mechanics/parking/ParkingMechanicV2.gd",
+        "bytes": 9007,
+        "sha256": "c78dbc1adcc95ad4981f3c704c69630edc54c25473c479f10bb154efe6f105cd",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "core/presentation/C11CVisualEditorialLayer.gd",
+        "bytes": 19047,
+        "sha256": "f8f718c067a4d7a088cc16f244cc40209e7183bec93e44d8cb66eb6dd404cf7d",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "core/presentation/ChallengePresentationBinder.gd",
+        "bytes": 6954,
+        "sha256": "755ecfc9cc6e1ee51738938583217ab8a470c1a1f290bb107e91e19990d74b47",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "core/presentation/CountdownPresentationLogic.gd",
+        "bytes": 1219,
+        "sha256": "b163ea114cc48af2dfd957ee92d00d524ea5b96b5966850f5ca8d6e5ec933379",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "core/presentation/PresentationProfile.gd",
+        "bytes": 8837,
+        "sha256": "187b1cf8ab96b9031785a0f36b0054a60383c97cb3d81906c7d9bbcd373bef24",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "core/presentation/PresentationUI.gd",
+        "bytes": 8981,
+        "sha256": "a55fea5a4525ea247144a4da88242f4ac602c3a014f7d02b50d032ce99224730",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "core/presentation/SocialUIBinder.gd",
+        "bytes": 1742,
+        "sha256": "b15a062bf327d0c2bbc4ead0e877914f912528cc56e388df20dd84eb89863a3c",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "core/presentation/UnifiedSocialFrame.gd",
+        "bytes": 2087,
+        "sha256": "d80c07103f56a2abfe34be60547285e61b0d03b50a5ed93c3c72d4241f6585ba",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "core/presentation/VisualDrillPresentationBinder.gd",
+        "bytes": 11830,
+        "sha256": "cb6acc408252b8b794177d8f5923a3b151646eebdfd1efe9a30fdd6221de82c0",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "core/presentation/VisualDrillPresentationPhaseLogic.gd",
+        "bytes": 1899,
+        "sha256": "6555d08ac3c0098b20a57e924b0c4ff2df006a23fa00a81b254fa5ebd5bb2494",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "core/presentation/rendering/VisualContentPlayer.gd",
+        "bytes": 13876,
+        "sha256": "58d86d56ebd7507c9e800c83010103b9be12f1b5dca9356da61ca623e4cf0145",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "core/simulation/SimulationResult.gd",
+        "bytes": 3593,
+        "sha256": "2e040003d1a1661f84f049d69dbfb0ab07537f9d837fa4484667041c5abac296",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "definitions/c11d/music/C11D_CHALLENGE_8BIT_STYLE_PROFILE_V1.json",
+        "bytes": 2818,
+        "sha256": "0c877cbe6e1c288890da31fc4481a58e1051749b45a50b2290cbef5d1120d2de",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "definitions/c11d/music/C11D_MUSIC_ENGINE_V5_SPEC_V1.json",
+        "bytes": 3313,
+        "sha256": "8970f4e93c878285b727697f3d269f5ee464b6029fe79eabc5fcbf4245e9dbf2",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+        "bytes": 12932,
+        "sha256": "dabb458fc2215156ddb5ebea7e8ebec811098886ce2858733ba9fb13f6075ccb",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "definitions/c11d/production/C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json",
+        "bytes": 4990,
+        "sha256": "5726310b48e9a85540d48b1e78784571ba04c3f900a5c09add35b49ce5575504",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "definitions/c11d/production/C11D_RENDER_ADAPTER_BOUNDARY_D9_10_V1.json",
+        "bytes": 3497,
+        "sha256": "bcc9e96cb1acf3ce6c06b5f9ca894a9721aef2d5caeca4f5e4392baf5f4fb63d",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json",
+        "bytes": 1761,
+        "sha256": "342a61338c80a2f1616e8e9f38986bd90f410257c0e321f99840380fb0fd804b",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "definitions/c11d/production/C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_V1.json",
+        "bytes": 5528,
+        "sha256": "9e206704665ea85226ecc10854be9f679c32fe9ed7efb690a829f6e8456d43da",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_CHALLENGE_VISUAL_PAYLOAD_PREVIEW_V1.json",
+        "bytes": 4675,
+        "sha256": "67daa1f83ac151906059695bb4d87974819c2d16d3715b78b00657bfdac54f7a",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_SCHEMA_V1.json",
+        "bytes": 21540,
+        "sha256": "3c880a18d037bc6b7376c3007495b50e66daa3fd6d0eab6100b7298b3e9b03e0",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_SCHEMA_V2.json",
+        "bytes": 39082,
+        "sha256": "10f2371b66d453342f280b9d16b588874bc846777108b375ba9207530d83579f",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V2.json",
+        "bytes": 17947,
+        "sha256": "60530add02fee5bd4d70056e49bf20be87dc5dc0886dd07444e44c0b14bee981",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_INPUT_SCHEMA_V2.json",
+        "bytes": 4308,
+        "sha256": "ec9d38b07513bf0b8eeccfa6aa119d24f695eb4f59144c859e9122c7b8be561c",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1.json",
+        "bytes": 8591,
+        "sha256": "5702092bc1c88e4b333dd30cc150f0d383cd2006121037b0198905c75a3af795",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
+        "bytes": 8376,
+        "sha256": "609a4d183aac07c2cbe1abaf41444160fdd137217faffbead3aef618320d57dc",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_SCHEMA_V1.json",
+        "bytes": 9851,
+        "sha256": "df58d21292baab962acd0ae2d7f082ff2323ae15cc0b7b31a4b89f95188b2438",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_BINDING_V1.json",
+        "bytes": 10422,
+        "sha256": "a657d5334548cde2bb524e161d472d5fea098163b6693c0ef73b280982f20b1c",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_SCHEMA_V1.json",
+        "bytes": 15810,
+        "sha256": "45b1df4af2861bd23641cdaca6e4a2b7e2872bcedd1e36b590b132fd09195ff0",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_REQUEST_SCOPED_PAYLOAD_MATERIALIZATION_BINDING_V1.json",
+        "bytes": 13006,
+        "sha256": "a70c12fa6ba61e6502938190ddbdb06eb03bd0df3e4cd2f6311cd34446a8188c",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_PROPOSAL_V1.json",
+        "bytes": 7457,
+        "sha256": "3dd4874e1b6506de6d9ddbe6ad1b567a284b94cc00ef1bac0d35d1731af05e23",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_V1.json",
+        "bytes": 9507,
+        "sha256": "41a62b0766db47cd99772f28642ef67766314f20f0f7891789d6b7497bbfee85",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_UNIFIED_PRESENTATION_REGION_POLICY_PROPOSAL_V1.json",
+        "bytes": 9440,
+        "sha256": "101092bb32127bb8854a501a9215c0b6cf69581594383903716907d49719c01a",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_VISUAL_DRILL_SELECTOR_AUTHORING_COVERAGE_SCHEMA_V1.json",
+        "bytes": 7998,
+        "sha256": "93d2162a078d7c8fa7fcd882cf4e4e6f3daccd77f03f4ba74e036ae367cb9cc7",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_VISUAL_DRILL_SELECTOR_AUTHORING_COVERAGE_V1.json",
+        "bytes": 6526,
+        "sha256": "444496d3a1c1eda1f8bf722c68d9e6197acc006fd4462bd55ac58b4aecc8eb5a",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "definitions/c11d/production/D_RENDERER_VISUAL_PAYLOAD_MATERIALIZATION_PREVIEW_V1.json",
+        "bytes": 8329,
+        "sha256": "53b6da626131c56f770172129e0cc1cd40947098228bfaa499a1e8e8e76ad411",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "definitions/c11e/music/C11E_E3_2_D3_V5_E1_MUSIC_CONTRACT_V1.json",
+        "bytes": 1943,
+        "sha256": "12c59ce2a2135a49ce0d5968a29905a1e5890743507db1ee0039da1374efcfe8",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "definitions/visual_drill_peripheral_scan_canonical.json",
+        "bytes": 8862,
+        "sha256": "aaf50f9223bad678df15589110dfcd6ff42dda89326a0a84bc5a5f51d133a904",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "definitions/visual_drill_pursuit_canonical.json",
+        "bytes": 133532,
+        "sha256": "dfe2bce9913df8ebe4f92d06eec5d22736338214e71b497dde3562a6927600bc",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "definitions/visual_drill_saccade_canonical.json",
+        "bytes": 1328,
+        "sha256": "daba3fa558f6898a17107ab68894d15c58fa5b2127e8da7d7b11b203f4ddfaa1",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "definitions/visual_drill_tracking_canonical.json",
+        "bytes": 1511,
+        "sha256": "54d432c80f190f4ac5dcb8ef5b135e16f18c378da120f35723fd5be944719ec3",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "definitions/visual_loop_geometric_canonical.json",
+        "bytes": 591,
+        "sha256": "648eb36225dd4c090457b4da3c9e8eca218c26c8f995cf02a39914cf3f860dcc",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "docs/current/e/C11E_E4B_OPERATOR_POLICY_DECISION_RECORD_20261106_V1.json",
+        "bytes": 3737,
+        "sha256": "49efd5494f351f09d7597c4699e9c12e361b36884b6bfadacd822e6ff1480e04",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "docs/current/e/C11E_E4C_A3_REVIEW_MANIFEST_LINEAGE_RECONCILIATION_20261110_V2.json",
+        "bytes": 4770,
+        "sha256": "aec0e387f167f4b821b7d94f06a67f78f498be939fe3cda857d20ce550819cac",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "docs/history/c11e/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1_PRE_D98_LINEAGE_REFRESH_20261106.json",
+        "bytes": 8591,
+        "sha256": "2075da9c33c689861a68d3bd8fb19b7ed593c6e76010ab200880746aa6d1a470",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "profiles/delivery/c11c_video_delivery_profiles.json",
+        "bytes": 3158,
+        "sha256": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "profiles/difficulty/visual_drill_peripheral_scan.json",
+        "bytes": 2426,
+        "sha256": "7c52112bf9c106152d7fe03b646bde0f415881a04efb75560d731fa3f18fa73e",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "profiles/difficulty/visual_drill_pursuit.json",
+        "bytes": 2121,
+        "sha256": "ab6a29af53bdb45fb6976bfdd558e3275c477eb7ad9afd61b9d01e36d43afb05",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "profiles/difficulty/visual_drill_saccade.json",
+        "bytes": 2295,
+        "sha256": "6be50f582ef5ce11d36b72943750b88e72da67d858d67c3ac3d38d33c11ccf38",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "profiles/difficulty/visual_drill_tracking.json",
+        "bytes": 2658,
+        "sha256": "6de8812bd46904e122ecdd0eae22fb2979bd75399c34779248c6569e833c921e",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "profiles/presentation/c11c_visual_music_profiles.json",
+        "bytes": 7038,
+        "sha256": "b78706c5a9adbf1581d925f522b76cc3419983177de213734cc79996af5cbf58",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+        "bytes": 796318,
+        "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "tools/c11d/d3/c11d_music_engine_v5.py",
+        "bytes": 5256,
+        "sha256": "03ae7e2997796e0c67ca15c8886b1e5b290791a142b6631a572d1cba6eba4eb1",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "tools/c11d/d9/audit_visual_drill_selector_authoring_coverage.gd",
+        "bytes": 19222,
+        "sha256": "9785284652e8c8adedea8423d54929a2e7386645e5dfded68bb4fdf7b26ae02b",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "tools/c11d/d9/c11e_e4b_loop_family_stage_contract.py",
+        "bytes": 19331,
+        "sha256": "bfbfa0cc108f00b78003e5480c86af1ee5ca63772d24a7792f8cdb6953b6af5d",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "tools/c11d/d9/d_render_adapter.py",
+        "bytes": 15051,
+        "sha256": "222742677cd498368429a3ec0dcdd922c44197bb5ada3638081138fb77c31bf1",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "tools/c11d/d9/d_renderer_challenge_visual_payload_preview.py",
+        "bytes": 15400,
+        "sha256": "93f9ffbbc7ea92efa6098b59c221c1fb191aa7aae47a2e2c84a7fbe1fc1e786f",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "tools/c11d/d9/d_renderer_dynamic_request_payload_binding.py",
+        "bytes": 86068,
+        "sha256": "bad418fcee9b219c4ccd3f3720b8d623737b9790968608ba3f605430c8bb149b",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "tools/c11d/d9/d_renderer_request_scoped_payload_binding.py",
+        "bytes": 26957,
+        "sha256": "3b3ced5f51309fff791a166109baebd37511b354b1704ae2e59a0b9aa4e6df8b",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "tools/c11d/d9/d_renderer_request_scoped_payload_materialization_binding.py",
+        "bytes": 40250,
+        "sha256": "244426e8f742e221f1fbb6885103135bd01d202cb6c8b641f877bd089e81ab9d",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "tools/c11d/d9/d_renderer_visual_drill_selector_authoring_coverage.py",
+        "bytes": 22375,
+        "sha256": "a9058ee68de5da1de89ecd57b4fd28a9619c446829f34617c84585e50274eb5a",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "tools/c11d/d9/d_renderer_visual_payload_materialization_preview.py",
+        "bytes": 11889,
+        "sha256": "cebe9b79c519675e61aa0d136ec08814e38eef91d3f55d19e9355929d677bfee",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "tools/c11d/d9/editorial_render_bridge.py",
+        "bytes": 10868,
+        "sha256": "fe9d40052b0f4ff6f1c862c010ae7b3b13070b6ce935be6d62f9dcaec63a644a",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "tools/c11d/d9/materialize_visual_drill_dynamic_request_payload_in_memory_v2.gd",
+        "bytes": 23596,
+        "sha256": "10c34da13748de3fd106144f66b410f144deb4422dd2871de38f64f8cd714ad0",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "tools/c11d/d9/test_d_renderer_visual_drill_selector_authoring_coverage.py",
+        "bytes": 6780,
+        "sha256": "03ad131b39d7db0a286b00083c674a76f1dcaa8543c873503180fba2748e85e8",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "tools/c11d/d9/universal_editorial_model.py",
+        "bytes": 27585,
+        "sha256": "dac95fb698b52f96432a517d8ec3196a397e5e6bd3c025300350dd55ddce3afd",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "tools/c11d/d9/universal_producer.py",
+        "bytes": 19692,
+        "sha256": "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "tools/prototypes/c11c_common/C11CPaletteBank.gd",
+        "bytes": 16138,
+        "sha256": "6b64d99afb148b0dc5b0f8e27b50558e9b77df4d2fdff98d52495d81d53fdd14",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "tools/prototypes/c11c_common/C11CSafeAmbient.py",
+        "bytes": 1739,
+        "sha256": "c376fd44a3115f0d800213d95e28143363748e16c7b5800369fcadbf237fb02c",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "tools/prototypes/c11c_common/C11CVariationProfile.gd",
+        "bytes": 13703,
+        "sha256": "f7df994d8842183275bc331decd75762a153f3100248c7cc8b590e34c1347e2d",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "tools/prototypes/c11c_common/C11CVisualLoopDuration.gd",
+        "bytes": 1048,
+        "sha256": "4ea0b0decbd3a22ade42023e819a74872f312b63facc1163dc73a7c656fdbaf8",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "tools/prototypes/c11c_common/generate_c11c_family_music.py",
+        "bytes": 16382,
+        "sha256": "41bb8f9842ac941ea86c838f272b11bd0642973b26e92defa006721a3d8cb84d",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "tools/prototypes/c11c_fractal_bloom_v1/run_prototype.ps1",
+        "bytes": 12922,
+        "sha256": "02e3721c92046f1f69119e5bbc6c69709dd0b97fad7191c08213ecc233930801",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWaves.gdshader",
+        "bytes": 10073,
+        "sha256": "737149389a37d92f1f6947de93d89903aa5429eda23b1c8b261cc1ce3d6e7154",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesPrototype.gd",
+        "bytes": 11359,
+        "sha256": "ab2560cbe7fa42c5cad3b143aa59d1f2a0dc047682f7667983c7c0a0f6dbb61c",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "tools/prototypes/c11c_geometric_waves_v1/GeometricWavesRenderer.gd",
+        "bytes": 3918,
+        "sha256": "4cf42e5e464e9aec86d7dd38caca226c1c451543c17ea87197d9acf8e8659783",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      },
+      {
+        "path": "tools/prototypes/c11c_geometric_waves_v1/definition.json",
+        "bytes": 1531,
+        "sha256": "4c4589ed6bbe5ee3c3c702d5a2fb9dac08682e6cc1820883ba5af1845642b4a1",
+        "status": "PASS_MATCHES_USER_NIGHTLY_SNAPSHOT"
+      }
+    ]
+  },
+  "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+  "runs": [
+    {
+      "run_id": "D99-GUI-1ACBE4022E0B",
+      "request_id": "D99-GUI-1ACBE4022E0B",
+      "content_type": "challenges",
+      "family_id": "parking_v2",
+      "variant_id": "CHALLENGE_004",
+      "subtype_id": null,
+      "difficulty_tier": null,
+      "mode": "REVIEW",
+      "gameplay_seed": 314159,
+      "music_seed": 840001,
+      "request_origin": "GUI",
+      "delivery_profile_id": "REVIEW_720",
+      "presentation_profile_id": "social_default_v1",
+      "variation_index": 0,
+      "audio_enabled": true,
+      "personalization_enabled": true,
+      "source_pin_declarations": 12,
+      "checks": {
+        "c11e_gui_cli_parity": "PASS",
+        "all_c11e_parity_checks": true,
+        "d9_gui_cli_parity": "PASS",
+        "all_d9_parity_checks": true,
+        "e1_shared_service": "PASS",
+        "e1_intent_receipt": "PASS_E1_PREPARATION_ONLY",
+        "producer_bridge": "PASS_BRIDGE_PLANNING_ONLY",
+        "lifecycle": "PASS_5_OF_5",
+        "family_adapter": "NOT_CONNECTED_E1_EXPECTED",
+        "renderer_dispatch_media": "ALL_FALSE",
+        "release_authority": "NONE"
+      },
+      "evidence_file_sha256": {
+        "request.json": "9ae1be38e4aa7f603c3b31b979ac7c1535c02319e820764400d38d3cfcf05800",
+        "c11e_production_intent.json": "5363f8c8335ddf0ec2b3334c1a95bfe144bf8dba698c7af9eddf52cdb755ac96",
+        "c11e_production_intent_receipt.json": "f37184ebf033418cc639e9f26068521fa0825381d1ec045a637ac384bdf9b997",
+        "c11e_gui_cli_parity.json": "5dac1df0538697cb85397ab9121218f564897c91172a9d0ae34ce67277c82b47",
+        "gui_cli_parity.json": "9399233217a8ef0ca6a45564bf521f5df3a60301afd254764f3408a63c29973e",
+        "producer_universal_receipt.json": "1110ff44e0cbd38f7582f257e02e8328a33ca1db3c4290699d0b26df9d714fc8",
+        "cross_suite_lifecycle_receipt.json": "20843419b87e87b2ea0a36d05678f6fe0804f65155d5e8bd9a74b83814f9871b"
+      },
+      "lifecycle_stage_statuses": [
+        "PASS_READ_ONLY_CONFIG_BINDINGS",
+        "PASS_CANONICAL_PLAN_ONLY",
+        "PASS_PLAN_ONLY_QA_CONTRACT",
+        "PASS_READ_ONLY_IDENTITY_PROJECTION",
+        "PASS_READ_ONLY_MAINTENANCE_AUDIT"
+      ],
+      "editorial_resolved_values": {
+        "title": "UNKNOWN",
+        "subtitle": "UNKNOWN",
+        "call_to_action": "UNKNOWN",
+        "language": "UNKNOWN",
+        "player_name": "UNKNOWN",
+        "challenge_label": "UNKNOWN"
+      },
+      "editorial_consumption": {
+        "title": {
+          "resolved": true,
+          "consumer_status": "NOT_CONSUMED_E1",
+          "required_gate": "E2"
+        },
+        "subtitle": {
+          "resolved": true,
+          "consumer_status": "NOT_CONSUMED_E1",
+          "required_gate": "E2"
+        },
+        "call_to_action": {
+          "resolved": true,
+          "consumer_status": "NOT_CONSUMED_E1",
+          "required_gate": "E2"
+        },
+        "language": {
+          "resolved": true,
+          "consumer_status": "NOT_CONSUMED_E1",
+          "required_gate": "E2"
+        },
+        "player_name": {
+          "resolved": true,
+          "consumer_status": "NOT_CONSUMED_E1",
+          "required_gate": "E2"
+        },
+        "challenge_label": {
+          "resolved": true,
+          "consumer_status": "NOT_CONSUMED_E1",
+          "required_gate": "E2"
+        }
+      }
+    },
+    {
+      "run_id": "D99-GUI-4EC49EA48191",
+      "request_id": "D99-GUI-4EC49EA48191",
+      "content_type": "visual_loops",
+      "family_id": "c11c_fractal_bloom_v1",
+      "variant_id": null,
+      "subtype_id": "radial_bloom",
+      "difficulty_tier": null,
+      "mode": "PRODUCTION",
+      "gameplay_seed": 100006,
+      "music_seed": 500006,
+      "request_origin": "GUI",
+      "delivery_profile_id": "REVIEW_720",
+      "presentation_profile_id": "social_default_v1",
+      "variation_index": 0,
+      "audio_enabled": true,
+      "personalization_enabled": true,
+      "source_pin_declarations": 20,
+      "checks": {
+        "c11e_gui_cli_parity": "PASS",
+        "all_c11e_parity_checks": true,
+        "d9_gui_cli_parity": "PASS",
+        "all_d9_parity_checks": true,
+        "e1_shared_service": "PASS",
+        "e1_intent_receipt": "PASS_E1_PREPARATION_ONLY",
+        "producer_bridge": "PASS_BRIDGE_PLANNING_ONLY",
+        "lifecycle": "PASS_5_OF_5",
+        "family_adapter": "NOT_CONNECTED_E1_EXPECTED",
+        "renderer_dispatch_media": "ALL_FALSE",
+        "release_authority": "NONE"
+      },
+      "evidence_file_sha256": {
+        "request.json": "06691029b953e1c2bc0a7ee3a76957e752ab94a90617a52122a88397645cdeb2",
+        "c11e_production_intent.json": "9c396d14d879c56bbce84d9b2db376a4d6bd3921c1846fdca0b2ef79a28a5b28",
+        "c11e_production_intent_receipt.json": "e75e2d2a6a8c11cfa42912556d3004ef223234c63f90197d3b3f05ea0fa9facc",
+        "c11e_gui_cli_parity.json": "a403aeb7ff9bcb1c3f7bd32aeee27081f2087c44ae93d4bf10a5c603968542bb",
+        "gui_cli_parity.json": "e4b4f80efda1abc3c4c9b894f5f07e425f7a83d7779754eab9836bc6c3e13402",
+        "producer_universal_receipt.json": "e5e1cae0754e168ef3fbc1b541dd6306b5198df085c6809325b3f41f3e5bdd58",
+        "cross_suite_lifecycle_receipt.json": "d735b035594b1b073186207b4603a555436f96a3f76068f219c64c9d863cb3c4"
+      },
+      "lifecycle_stage_statuses": [
+        "PASS_READ_ONLY_CONFIG_BINDINGS",
+        "PASS_CANONICAL_PLAN_ONLY",
+        "PASS_PLAN_ONLY_QA_CONTRACT",
+        "PASS_READ_ONLY_IDENTITY_PROJECTION",
+        "PASS_READ_ONLY_MAINTENANCE_AUDIT"
+      ],
+      "editorial_resolved_values": {
+        "title": "UNKNOWN",
+        "subtitle": "UNKNOWN",
+        "call_to_action": "UNKNOWN",
+        "language": "UNKNOWN"
+      },
+      "editorial_consumption": {
+        "title": {
+          "resolved": true,
+          "consumer_status": "NOT_CONSUMED_E1",
+          "required_gate": "E4"
+        },
+        "subtitle": {
+          "resolved": true,
+          "consumer_status": "NOT_CONSUMED_E1",
+          "required_gate": "E4"
+        },
+        "call_to_action": {
+          "resolved": true,
+          "consumer_status": "NOT_CONSUMED_E1",
+          "required_gate": "E4"
+        },
+        "language": {
+          "resolved": true,
+          "consumer_status": "NOT_CONSUMED_E1",
+          "required_gate": "E4"
+        }
+      }
+    },
+    {
+      "run_id": "D99-GUI-9914A29D780C",
+      "request_id": "D99-GUI-9914A29D780C",
+      "content_type": "visual_drills",
+      "family_id": "tracking",
+      "variant_id": "tier-2",
+      "subtype_id": null,
+      "difficulty_tier": null,
+      "mode": "PRODUCTION",
+      "gameplay_seed": 12345,
+      "music_seed": 840001,
+      "request_origin": "GUI",
+      "delivery_profile_id": "REVIEW_720",
+      "presentation_profile_id": "social_default_v1",
+      "variation_index": 0,
+      "audio_enabled": true,
+      "personalization_enabled": true,
+      "source_pin_declarations": 91,
+      "checks": {
+        "c11e_gui_cli_parity": "PASS",
+        "all_c11e_parity_checks": true,
+        "d9_gui_cli_parity": "PASS",
+        "all_d9_parity_checks": true,
+        "e1_shared_service": "PASS",
+        "e1_intent_receipt": "PASS_E1_PREPARATION_ONLY",
+        "producer_bridge": "PASS_BRIDGE_PLANNING_ONLY",
+        "lifecycle": "PASS_5_OF_5",
+        "family_adapter": "NOT_CONNECTED_E1_EXPECTED",
+        "renderer_dispatch_media": "ALL_FALSE",
+        "release_authority": "NONE"
+      },
+      "evidence_file_sha256": {
+        "request.json": "74d664f9afc33e1555e44158d2bf8e77fa9309c0bf6dec1c3177c085b946fa4d",
+        "c11e_production_intent.json": "bdd42ab942f24fb82ff179ffac14a74bb879375f150981fbcb7ae1ab39459d85",
+        "c11e_production_intent_receipt.json": "a50a2973db843fae566d87c0616e1ceb40bb1c5dd3d9e32da42604978da31ea6",
+        "c11e_gui_cli_parity.json": "6f40021a8ab2cc7f212ae917f2465f555cba68a99ebe5c944422d3a170047335",
+        "gui_cli_parity.json": "ad00b72e43b08b83ded11f0f8bd8ca84526a76652195520256076e5fe9e8f9fc",
+        "producer_universal_receipt.json": "9474949a6733c1a96a448739e4c5c953c6584d50b4c8b4d3f082d56607d0c084",
+        "cross_suite_lifecycle_receipt.json": "bce387ab56a1ee1aa5e145cb1c692cc5d1b39ce9d8d662d635d045cf9395049e"
+      },
+      "lifecycle_stage_statuses": [
+        "PASS_READ_ONLY_CONFIG_BINDINGS",
+        "PASS_CANONICAL_PLAN_ONLY",
+        "PASS_PLAN_ONLY_QA_CONTRACT",
+        "PASS_READ_ONLY_IDENTITY_PROJECTION",
+        "PASS_READ_ONLY_MAINTENANCE_AUDIT"
+      ],
+      "editorial_resolved_values": {
+        "title": "UNKNOWN",
+        "subtitle": "UNKNOWN",
+        "call_to_action": "UNKNOWN",
+        "language": "UNKNOWN"
+      },
+      "editorial_consumption": {
+        "title": {
+          "resolved": true,
+          "consumer_status": "NOT_CONSUMED_E1",
+          "required_gate": "E4"
+        },
+        "subtitle": {
+          "resolved": true,
+          "consumer_status": "NOT_CONSUMED_E1",
+          "required_gate": "E4"
+        },
+        "call_to_action": {
+          "resolved": true,
+          "consumer_status": "NOT_CONSUMED_E1",
+          "required_gate": "E4"
+        },
+        "language": {
+          "resolved": true,
+          "consumer_status": "NOT_CONSUMED_E1",
+          "required_gate": "E4"
+        }
+      }
+    }
+  ],
+  "governance": {
+    "E1": "PREPARE_ONLY",
+    "family_adapter": "NOT_CONNECTED_E1",
+    "renderer": "OFF",
+    "production_dispatch": false,
+    "production_media": false,
+    "release_authority": "NONE",
+    "git_checks": "SKIPPED",
+    "commits": "OPERATOR_MANAGED",
+    "source_file_pins": "ENFORCED"
+  },
+  "non_blocking_note": {
+    "field": "editorial.language",
+    "observed": "UNKNOWN in canonical resolved editorial for all three because blank editorial values normalize to UNKNOWN",
+    "source_rule": "tools/c11d/d9/universal_editorial_model.py::_normalize_value returns UNKNOWN for None or empty string",
+    "consumer_status": "NOT_CONSUMED_E1 for all cases",
+    "impact": "No effect on E1 semantic parity, selector, seed domains or plan-only status; do not reinterpret as language es acceptance. Future E6 tests that explicitly test language must bind es explicitly and pin it."
+  }
+}

@@ -1,0 +1,93 @@
+﻿{
+    "schema":  "C11E-E5-CLOSEOUT-DOCS-INSTALL-RECEIPT-V1",
+    "status":  "PASS_ADD_ONLY_DOCUMENTATION_INSTALL",
+    "run_id":  "E5_DOCS_20261116T205707Z_E06C131C",
+    "created_utc":  "2026-11-16T20:57:08.1827152Z",
+    "project_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+    "package_id":  "C11E_E5_CLOSEOUT_DOCS_V1_20261116",
+    "package_manifest_sha256":  "48a2b4480eb26c7bd8b4e6fd74beffbc7d1141efa0b7097f11d82f0b195c886e",
+    "frozen_c11c_manifest_sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "git_checks":  "SKIPPED",
+    "commits":  "OPERATOR_MANAGED",
+    "source_file_pins":  "ENFORCED",
+    "modified_code":  false,
+    "modified_c11c":  false,
+    "production_dispatch":  false,
+    "production_media":  false,
+    "release_authority":  "NONE",
+    "files_installed":  [
+                            {
+                                "path":  "docs/current/e/C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261116_V115.md",
+                                "bytes":  4323,
+                                "sha256":  "4b503d3ea887b401e91d16cad5002c4efd842a3dd5daaf06e227339a5a09c712",
+                                "status":  "ADD_ONLY_INSTALLED"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_CURRENT_AUTHORITY_20261116_V174.md",
+                                "bytes":  4776,
+                                "sha256":  "d7571ef0137a19e6190fa18b27421eda6666d6ae422a9f947dffcc47416f5f2f",
+                                "status":  "ADD_ONLY_INSTALLED"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_E3_EXECUTION_BACKLOG_20261116_V145.md",
+                                "bytes":  2708,
+                                "sha256":  "889a89b388ae283cb98e0163020efe66a8639884ceb73f00d0444bdbf5ab15e8",
+                                "status":  "ADD_ONLY_INSTALLED"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_E5_CROSS_FAMILY_AV_CLOSEOUT_20261116_V1.md",
+                                "bytes":  7653,
+                                "sha256":  "520515803ceb44bde830f99c6fa9b413015d0fecd4c36c60c845128054cbb760",
+                                "status":  "ADD_ONLY_INSTALLED"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_E5_CROSS_FAMILY_QUALIFICATION_PLAN_20261116_V4.md",
+                                "bytes":  5948,
+                                "sha256":  "26c022919e541fe046ba8fde5499715633f918588ef0ec7f2af415bba40450dd",
+                                "status":  "ADD_ONLY_INSTALLED"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_E5_EXECUTION_INCIDENT_REGISTER_20261116_V1.md",
+                                "bytes":  3280,
+                                "sha256":  "5b88a7f8032b59bb437cb329aa812ff41d21abf7490ab44e010d83499e9bb5c0",
+                                "status":  "ADD_ONLY_INSTALLED"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_E5_QT_GUI_RUNTIME_ACCEPTANCE_20261116_V1.md",
+                                "bytes":  7991,
+                                "sha256":  "4238bf1b0f8bc9a5e4c5b57248442609462753e1f10a7ac18ca63768b8e62af0",
+                                "status":  "ADD_ONLY_INSTALLED"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261116_V169.md",
+                                "bytes":  3585,
+                                "sha256":  "d1741aa1f88afdc04686a027e26f56f75d1b061e9c472088bc60ce94f04abfa8",
+                                "status":  "ADD_ONLY_INSTALLED"
+                            },
+                            {
+                                "path":  "docs/master-prompts/C11E_MASTER_HANDOVER_20261116_V1.md",
+                                "bytes":  4749,
+                                "sha256":  "da9b83c423189661d8f53b479397397220603020bccf13a880c580c68074638b",
+                                "status":  "ADD_ONLY_INSTALLED"
+                            },
+                            {
+                                "path":  "prompts/C11E_CONTINUATION_MASTER_PROMPT_20261116_V176.md",
+                                "bytes":  5872,
+                                "sha256":  "ddbf1010178dd2d5c5e19144ebb0ea3b0f8acdabb0ebbe017fe4954834ef01a4",
+                                "status":  "ADD_ONLY_INSTALLED"
+                            },
+                            {
+                                "path":  "prompts/C11E_FIRST_PROMPT_20261116_V100.md",
+                                "bytes":  2424,
+                                "sha256":  "ff460c787c60281febcda0e8e929db6742c887537b74b858123aa6842ca17198",
+                                "status":  "ADD_ONLY_INSTALLED"
+                            },
+                            {
+                                "path":  "prompts/C11E_NEXT_WINDOW_START_PROMPT_20261116_V176.md",
+                                "bytes":  2687,
+                                "sha256":  "45ac0881f6b1b9ceee4c591aaab61cf41a34aca72950b7fde6ef5479030b5579",
+                                "status":  "ADD_ONLY_INSTALLED"
+                            }
+                        ],
+    "files_installed_count":  12
+}

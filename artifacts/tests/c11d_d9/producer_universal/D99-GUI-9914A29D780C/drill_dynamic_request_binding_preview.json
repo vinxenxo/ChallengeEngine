@@ -1,0 +1,37 @@
+{
+  "schema": "C11E-E4C-DRILL-DYNAMIC-BINDING-PREVIEW-V1",
+  "status": "EXISTING_D9_V2_REQUEST_CHAIN_VALIDATED_NOT_GODOT_MATERIALIZED",
+  "contract_identity": {
+    "path": "definitions/c11d/production/D_RENDERER_DYNAMIC_REQUEST_PAYLOAD_BINDING_V2.json",
+    "schema": "C11-D-RENDERER-DYNAMIC-REQUEST-PAYLOAD-BINDING-CONTRACT-V2",
+    "schema_version": "2.0",
+    "sha256": "60530add02fee5bd4d70056e49bf20be87dc5dc0886dd07444e44c0b14bee981",
+    "lineage_count": 67
+  },
+  "input_preview": {
+    "schema": "C11-D-D9-DYNAMIC-REQUEST-PAYLOAD-INPUT-V2",
+    "schema_version": "2.0",
+    "request_id": "D99-GUI-9914A29D780C",
+    "request_hash": "0ee7f8d7c790535b473a204821933ede74d555853dc13bbcfdfb82c82b463fc7",
+    "selection": {
+      "content_type": "visual_drills",
+      "family_id": "tracking",
+      "subtype_id": null,
+      "variant_id": "tier-2"
+    },
+    "seed": 12345,
+    "music_seed": 840001,
+    "variation_index": 0,
+    "presentation_profile_id": "social_default_v1",
+    "delivery_profile_id": "REVIEW_720"
+  },
+  "request_scoped_source_binding_sha256": "e5cc27d81a685128f62a78083e56bc7c59a066cc3c075a26c75991fb26316be3",
+  "request_scoped_source_binding_status": "PREPARATION_ONLY_REQUEST_SCOPED_PAYLOAD_BINDING_REVIEW_NOT_RENDERER_INPUT",
+  "request_payload_manifest": "NOT_MATERIALIZED_BY_E1_REQUIRES_REAL_GODOT_V2_EXECUTION",
+  "runtime_repeat": "NOT_RUN_BY_E1",
+  "renderer_native_input_emitted": false,
+  "renderer_dispatch_invoked": false,
+  "media_created": false,
+  "release_authority": "NONE",
+  "preview_sha256": "3661a5e6d66a6ad96e37f5667f3f52a269827039d7408e2451d1aa55ffe0110f"
+}

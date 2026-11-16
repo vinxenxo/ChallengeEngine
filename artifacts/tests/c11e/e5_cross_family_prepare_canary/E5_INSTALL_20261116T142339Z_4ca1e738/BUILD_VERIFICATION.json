@@ -1,0 +1,34 @@
+{
+    "schema":  "C11E-E5-BUILD-VERIFICATION-V1",
+    "package_id":  "C11E_E5_CROSS_FAMILY_PREPARE_ONLY_OVERLAY_V2_20261116",
+    "package_zip_sha256":  "7ff40f3fc5f59c90ce8b9fffdb320d802dc9b577a3abb4398ca5eb6cce41283e",
+    "package_manifest_sha256":  "1c33d8bc41b53f8996752627bc56df81560122d81d70d20348176ab02fc24426",
+    "powershell":  {
+                       "version":  "5.1.26100.9818",
+                       "ast":  "PASS",
+                       "source_encoding":  "ASCII_BOM_FREE"
+                   },
+    "powershell_style_guide":  {
+                                   "path":  "docs/current/e/C11E_POWERSHELL_RUNNER_STYLE_GUIDE_20261116_V36.md",
+                                   "bytes":  65465,
+                                   "sha256":  "4f3940d50b07ccd48e30f44dbc8653a9021791d20382dbccdb7ca0d93f98f337",
+                                   "version":  "V36"
+                               },
+    "atomic_io_tests":  "7/7 PASS",
+    "python":  {
+                   "executable":  "C:\\Users\\vinxe\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+                   "version":  "3.13.14",
+                   "py_compile":  "2/2 PASS",
+                   "unittest":  "18/18 PASS",
+                   "staged_bulk_canary":  "PASS_E5_PREPARE_ONLY_CROSS_FAMILY"
+               },
+    "source_pins_pre":  31,
+    "source_pins_at_transaction_boundary":  31,
+    "historical_evidence_pins":  5,
+    "payload_files":  16,
+    "project_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+    "transaction_policy":  "ADD_ONLY_NO_OVERWRITE",
+    "git_checks":  "SKIPPED",
+    "commits":  "OPERATOR_MANAGED",
+    "release_authority":  "NONE"
+}

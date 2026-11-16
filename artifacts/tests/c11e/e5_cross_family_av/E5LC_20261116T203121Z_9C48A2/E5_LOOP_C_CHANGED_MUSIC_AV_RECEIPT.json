@@ -1,0 +1,10 @@
+{
+  "schema": "C11E-E5-LOOP-C-FAILURE-RECEIPT-V1",
+  "status": "FAIL_CLOSED_PARTIAL_EVIDENCE_RETAINED",
+  "run_id": "E5LC_20261116T203121Z_9C48A2",
+  "failure": "NameError: name 'source_pre' is not defined",
+  "progress_path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e5_cross_family_av\\E5LC_20261116T203121Z_9C48A2\\progress.json",
+  "production_dispatch": false,
+  "release_authority": "NONE",
+  "note": "No output is deleted or overwritten; inspect retained process logs before any new run."
+}

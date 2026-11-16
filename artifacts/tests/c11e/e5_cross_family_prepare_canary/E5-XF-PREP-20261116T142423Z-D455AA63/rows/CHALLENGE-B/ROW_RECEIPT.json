@@ -1,0 +1,72 @@
+{
+  "batch_id": "E5-XF-PREP-20261116T142423Z-D455AA63",
+  "boundary_preparations_match": true,
+  "cli": {
+    "exit_code": 0,
+    "intent_hash": "f0ec22c7df0b2a6de5a49eb5219beb63c0084fd3b7c42fe2d699c0b788e7288c",
+    "intent_sha256": "90b985bdb2f076bf910bee3d0add3b01adc2b064fb35c83a6f1548ff160aa10f",
+    "result_sha256": "0ba95b97907344f6e7352b577339bf34bc53170c5cc6a62ddeb62be8b6523851",
+    "shape": {
+      "boundary_contract": "CHALLENGE_D3_V5_PLANNING_BINDING_ONLY",
+      "delivery_profile": "REVIEW_720",
+      "family": "challenge",
+      "family_adapter": "NOT_CONNECTED_E1",
+      "gameplay_seed": 314159,
+      "media_created": false,
+      "music_route": "D3_V5_CHALLENGE_8BIT_PLANNING_BINDING_ONLY",
+      "music_seed": 840001,
+      "probe": "B",
+      "profile_id": "challenge_8bit_v1",
+      "renderer_invoked": false,
+      "selector": {
+        "content_type": "challenges",
+        "difficulty_tier": null,
+        "family_id": "parking_v2",
+        "subtype_id": null,
+        "variant_id": "CHALLENGE_004",
+        "variant_scope_id": "challenge:CHALLENGE_004"
+      }
+    },
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_sha256": "1ea7cd045e9554a40fc99db67d9e8d9defa1bd6b0af513ab7b4be81f790cf567",
+    "validation": "PASS_E1_PREPARATION_ONLY"
+  },
+  "family": "challenge",
+  "gui": {
+    "intent_hash": "f0ec22c7df0b2a6de5a49eb5219beb63c0084fd3b7c42fe2d699c0b788e7288c",
+    "intent_sha256": "93802e815aa84e93eb28b8dda9b0303263a9fa909a906f07932320d4fcee4372",
+    "shape": {
+      "boundary_contract": "CHALLENGE_D3_V5_PLANNING_BINDING_ONLY",
+      "delivery_profile": "REVIEW_720",
+      "family": "challenge",
+      "family_adapter": "NOT_CONNECTED_E1",
+      "gameplay_seed": 314159,
+      "media_created": false,
+      "music_route": "D3_V5_CHALLENGE_8BIT_PLANNING_BINDING_ONLY",
+      "music_seed": 840001,
+      "probe": "B",
+      "profile_id": "challenge_8bit_v1",
+      "renderer_invoked": false,
+      "selector": {
+        "content_type": "challenges",
+        "difficulty_tier": null,
+        "family_id": "parking_v2",
+        "subtype_id": null,
+        "variant_id": "CHALLENGE_004",
+        "variant_scope_id": "challenge:CHALLENGE_004"
+      }
+    },
+    "validation": "PASS_E1_PREPARATION_ONLY"
+  },
+  "intent_semantics_match": true,
+  "media_created": false,
+  "origin_bound_hashes_differ_as_expected": true,
+  "probe": "B",
+  "production_dispatch": false,
+  "release_authority": "NONE",
+  "renderer_invoked": false,
+  "request_id": "E5-D455AA63-CH-B",
+  "row": 2,
+  "schema": "C11E-E5-CROSS-FAMILY-PREPARE-ROW-RECEIPT-V1",
+  "status": "PASS_GUI_CLI_E1_PARITY"
+}

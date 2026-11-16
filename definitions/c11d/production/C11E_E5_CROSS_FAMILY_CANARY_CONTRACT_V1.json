@@ -1,0 +1,350 @@
+{
+  "execution_boundary": {
+    "d3_v5_invoked": false,
+    "family_adapter": "NOT_CONNECTED_E1",
+    "ffmpeg": false,
+    "godot": false,
+    "mode": "PREPARE_ONLY",
+    "production_dispatch": false,
+    "production_media": false,
+    "release_authority": "NONE",
+    "renderer": "OFF"
+  },
+  "expected_cardinality": {
+    "families": 3,
+    "origin_rows": 24,
+    "probes_per_family": 4,
+    "selector_probe_pairs": 12,
+    "service_origins": [
+      "GUI",
+      "CLI"
+    ]
+  },
+  "families": {
+    "challenge": {
+      "canonical": {
+        "path": "challenges/CHALLENGE_004.json",
+        "sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71"
+      },
+      "content_type": "challenges",
+      "label": "Challenge",
+      "mode": "REVIEW",
+      "music": {
+        "profile_id": "challenge_8bit_v1",
+        "route": "D3_V5_CHALLENGE_8BIT_PLANNING_BINDING_ONLY"
+      },
+      "seeds": {
+        "gameplay": 314159,
+        "gameplay_changed": 314160,
+        "music": 840001,
+        "music_changed": 840002
+      },
+      "selection": {
+        "content_type": "challenges",
+        "family_id": "parking_v2",
+        "variant_id": "CHALLENGE_004"
+      },
+      "timebase": {
+        "accepted_delivery_fps": 30,
+        "accepted_delivery_frames": 450,
+        "canonical_fps": 60,
+        "canonical_total_seconds": 15.0,
+        "delivery_seconds": 15.0,
+        "materialized_by_this_canary": false,
+        "phase_seconds": {
+          "cta": 2.0,
+          "game": 7.0,
+          "hook": 3.0,
+          "reveal": 3.0
+        }
+      }
+    },
+    "drill": {
+      "canonical": {
+        "path": "definitions/visual_drill_tracking_canonical.json",
+        "sha256": "54d432c80f190f4ac5dcb8ef5b135e16f18c378da120f35723fd5be944719ec3"
+      },
+      "content_type": "visual_drills",
+      "label": "Visual Drill",
+      "mode": "PRODUCTION",
+      "music": {
+        "profile_id": "FLOWING_VECTOR",
+        "route": "PRESERVE_EXISTING_C11C_FAMILY_MUSIC_V4"
+      },
+      "seeds": {
+        "gameplay": 12345,
+        "gameplay_changed": 12346,
+        "music": 840001,
+        "music_changed": 840002
+      },
+      "selection": {
+        "content_type": "visual_drills",
+        "family_id": "tracking",
+        "variant_id": "tier-2"
+      },
+      "timebase": {
+        "end_cta_seconds": 3.0,
+        "expected_total_frames": 810,
+        "expected_total_seconds": 27.0,
+        "materialized_by_this_canary": false,
+        "native_fps": 30,
+        "native_gameplay_frames": 630,
+        "native_gameplay_seconds": 21.0,
+        "pre_roll_seconds": 3.0
+      }
+    },
+    "loop": {
+      "canonical": {
+        "path": "c11c-suite/c11c-producer/producer_schema.json",
+        "sha256": "564f11fb4fee9221910dc373550650172eda4f106d6dc25532cc43cb8e6314a0"
+      },
+      "content_type": "visual_loops",
+      "label": "Visual Loop",
+      "mode": "PRODUCTION",
+      "music": {
+        "profile_id": "ORGANIC_BLOOM",
+        "route": "PRESERVE_EXISTING_C11C_FAMILY_MUSIC_PATH"
+      },
+      "seeds": {
+        "gameplay": 100006,
+        "gameplay_changed": 100007,
+        "music": 500006,
+        "music_changed": 500007
+      },
+      "selection": {
+        "content_type": "visual_loops",
+        "family_id": "c11c_fractal_bloom_v1",
+        "subtype_id": "radial_bloom"
+      },
+      "timebase": {
+        "evidence": "C11E_E4B_R1V_ACTUAL_FRAME_INVENTORY_V9",
+        "materialized_by_this_canary": false,
+        "native_fps": 30,
+        "native_frames": 660,
+        "native_seconds": 22.0
+      }
+    }
+  },
+  "frozen_c11c_manifest": {
+    "bytes": 796318,
+    "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+    "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+  },
+  "historical_evidence": {
+    "challenge": {
+      "path": "artifacts/tests/c11e/e4a_audio_mux_review/RUN_20261104T013653Z-8469583E/e1_intent_A.json",
+      "sha256": "47d592a1eb7f889ceb1c0c61509a4f45a33b8d8c77a90b62c880f4a56b732a63"
+    },
+    "drill_closeout": {
+      "path": "docs/current/e/C11E_E4C_TRACKING_FAMILY_CLOSEOUT_20261115_V1.md",
+      "sha256": "58f8f046e6936490e51f0470072bc10d7cf43ceca97ad2ef2fb9971463ed1308"
+    },
+    "drill_tier2_result": {
+      "path": "artifacts/tests/c11e/e4c_tracking_tier_batch/E4C-TRACKING-T2-5-20261115T074835Z-6239dd21/E4C-TRK-T2-6239dd21.CLI_EXECUTION_RESULT.json",
+      "sha256": "fc6d8b5193ab5fa44df34c2b822292a159b698dcbca8a218e3902c975b0d0172"
+    },
+    "loop_frame_inventory": {
+      "path": "docs/current/e/C11E_E4B_R1V_ACTUAL_FRAME_INVENTORY_20261108_V9.md",
+      "sha256": "d8a6c70ed4a0904d389037cde3987803af5b9bb3eb38b76833cabf1cd5d25d58"
+    },
+    "loop_parameter": {
+      "path": "artifacts/tests/c11e/e4b_r1p/E4B_R1P_20261107_032743_5F75045C/receipts/06_E4B_R1P_20261107_032743_5F75045C_06.json",
+      "sha256": "ae2c4e61c8cac93af28872fe46037d178f15d6fb96c7e30ed2d90be9144c303c"
+    }
+  },
+  "limitations": {
+    "e5_closure": "NOT_ELIGIBLE; this stage only passes the PREPARE_ONLY cross-family entry gate",
+    "gui_runtime": "NOT_EXECUTED; GUI-origin calls go directly through the same service and main.py GUI wiring is statically pinned",
+    "media": "NOT_CREATED; E1 service explicitly blocks all family adapters as NOT_CONNECTED_E1"
+  },
+  "package_id": "C11E_E5_CROSS_FAMILY_PREPARE_ONLY_OVERLAY_V2_20261116",
+  "phase": "E5",
+  "powershell_style_guide": {
+    "bytes": 65465,
+    "path": "docs/current/e/C11E_POWERSHELL_RUNNER_STYLE_GUIDE_20261116_V36.md",
+    "sha256": "4f3940d50b07ccd48e30f44dbc8653a9021791d20382dbccdb7ca0d93f98f337",
+    "version": "V36"
+  },
+  "probe_matrix": [
+    {
+      "change": "none",
+      "probe": "A",
+      "purpose": "baseline"
+    },
+    {
+      "change": "none",
+      "probe": "B",
+      "purpose": "exact replay"
+    },
+    {
+      "change": "music_seed_only",
+      "probe": "C",
+      "purpose": "music domain isolation"
+    },
+    {
+      "change": "gameplay_seed_only",
+      "probe": "D",
+      "purpose": "gameplay domain isolation"
+    }
+  ],
+  "qualification_stage": "OPENING_CROSS_FAMILY_PREPARE_ONLY_CANARY",
+  "schema": "C11E-E5-CROSS-FAMILY-PREPARE-CANARY-CONTRACT-V1",
+  "schema_version": "1.0",
+  "source_pins": [
+    {
+      "bytes": 86687,
+      "path": "c11c-suite/c11c-producer/c11e_production_service.py",
+      "sha256": "e5dbf9baa72d4c066ff8ba24006df954700d72a5b0f11f9f88aec653e84dce87"
+    },
+    {
+      "bytes": 4867,
+      "path": "c11c-suite/c11c-producer/c11e_production_cli.py",
+      "sha256": "3e530e535accc31455207d1e8e3253140c95b390348b4ee252ec8b5ee140869a"
+    },
+    {
+      "bytes": 125111,
+      "path": "c11c-suite/c11c-producer/main.py",
+      "sha256": "86eeca0c3fc37105c1202295db3f27e6dc249f4eafdcb48c5709cd2d76164393"
+    },
+    {
+      "bytes": 32714,
+      "path": "c11c-suite/c11c-producer/producer_schema.json",
+      "sha256": "564f11fb4fee9221910dc373550650172eda4f106d6dc25532cc43cb8e6314a0"
+    },
+    {
+      "bytes": 9183,
+      "path": "c11c-suite/c11c-producer/c11d_gui_request.py",
+      "sha256": "0e95109ffd3ba5655d28292309196349470ab7958a467f096543a2c98c22976e"
+    },
+    {
+      "bytes": 19692,
+      "path": "tools/c11d/d9/universal_producer.py",
+      "sha256": "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1"
+    },
+    {
+      "bytes": 27585,
+      "path": "tools/c11d/d9/universal_editorial_model.py",
+      "sha256": "dac95fb698b52f96432a517d8ec3196a397e5e6bd3c025300350dd55ddce3afd"
+    },
+    {
+      "bytes": 19331,
+      "path": "tools/c11d/d9/c11e_e4b_loop_family_stage_contract.py",
+      "sha256": "bfbfa0cc108f00b78003e5480c86af1ee5ca63772d24a7792f8cdb6953b6af5d"
+    },
+    {
+      "bytes": 10868,
+      "path": "tools/c11d/d9/editorial_render_bridge.py",
+      "sha256": "fe9d40052b0f4ff6f1c862c010ae7b3b13070b6ce935be6d62f9dcaec63a644a"
+    },
+    {
+      "bytes": 15051,
+      "path": "tools/c11d/d9/d_render_adapter.py",
+      "sha256": "222742677cd498368429a3ec0dcdd922c44197bb5ada3638081138fb77c31bf1"
+    },
+    {
+      "bytes": 86068,
+      "path": "tools/c11d/d9/d_renderer_dynamic_request_payload_binding.py",
+      "sha256": "bad418fcee9b219c4ccd3f3720b8d623737b9790968608ba3f605430c8bb149b"
+    },
+    {
+      "bytes": 53851,
+      "path": "tools/c11d/d9/c11e_e4c_drill_execution.py",
+      "sha256": "b7cbf7bd97f76f4c2e339840fc694d3f5b0e50186ba2456e45ff00e585751abe"
+    },
+    {
+      "bytes": 5256,
+      "path": "tools/c11d/d3/c11d_music_engine_v5.py",
+      "sha256": "03ae7e2997796e0c67ca15c8886b1e5b290791a142b6631a572d1cba6eba4eb1"
+    },
+    {
+      "bytes": 1761,
+      "path": "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json",
+      "sha256": "342a61338c80a2f1616e8e9f38986bd90f410257c0e321f99840380fb0fd804b"
+    },
+    {
+      "bytes": 14940,
+      "path": "definitions/c11d/production/C11D_PRODUCTION_REQUEST_SCHEMA_V1.json",
+      "sha256": "82a889cf199c9dafdf95665c83be28da1affa83e1cbf4472d30e40969030dd5e"
+    },
+    {
+      "bytes": 12932,
+      "path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+      "sha256": "dabb458fc2215156ddb5ebea7e8ebec811098886ce2858733ba9fb13f6075ccb"
+    },
+    {
+      "bytes": 3313,
+      "path": "definitions/c11d/music/C11D_MUSIC_ENGINE_V5_SPEC_V1.json",
+      "sha256": "8970f4e93c878285b727697f3d269f5ee464b6029fe79eabc5fcbf4245e9dbf2"
+    },
+    {
+      "bytes": 2818,
+      "path": "definitions/c11d/music/C11D_CHALLENGE_8BIT_STYLE_PROFILE_V1.json",
+      "sha256": "0c877cbe6e1c288890da31fc4481a58e1051749b45a50b2290cbef5d1120d2de"
+    },
+    {
+      "bytes": 1943,
+      "path": "definitions/c11e/music/C11E_E3_2_D3_V5_E1_MUSIC_CONTRACT_V1.json",
+      "sha256": "12c59ce2a2135a49ce0d5968a29905a1e5890743507db1ee0039da1374efcfe8"
+    },
+    {
+      "bytes": 3158,
+      "path": "profiles/delivery/c11c_video_delivery_profiles.json",
+      "sha256": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3"
+    },
+    {
+      "bytes": 7038,
+      "path": "profiles/presentation/c11c_visual_music_profiles.json",
+      "sha256": "b78706c5a9adbf1581d925f522b76cc3419983177de213734cc79996af5cbf58"
+    },
+    {
+      "bytes": 1543,
+      "path": "challenges/CHALLENGE_004.json",
+      "sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71"
+    },
+    {
+      "bytes": 51335,
+      "path": "definitions/c11d/production/C11E_E4B_LOOP22_SELECTOR_MATRIX_V1.json",
+      "sha256": "eb0ce2fab5ee97c298e232685ec3452779fc1e1f4a8dcd1c9c994bff1a45a1a1"
+    },
+    {
+      "bytes": 1511,
+      "path": "definitions/visual_drill_tracking_canonical.json",
+      "sha256": "54d432c80f190f4ac5dcb8ef5b135e16f18c378da120f35723fd5be944719ec3"
+    },
+    {
+      "bytes": 796318,
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    {
+      "bytes": 7807,
+      "path": "artifacts/tests/c11e/e4a_audio_mux_review/RUN_20261104T013653Z-8469583E/e1_intent_A.json",
+      "sha256": "47d592a1eb7f889ceb1c0c61509a4f45a33b8d8c77a90b62c880f4a56b732a63"
+    },
+    {
+      "bytes": 11604,
+      "path": "artifacts/tests/c11e/e4b_r1p/E4B_R1P_20261107_032743_5F75045C/receipts/06_E4B_R1P_20261107_032743_5F75045C_06.json",
+      "sha256": "ae2c4e61c8cac93af28872fe46037d178f15d6fb96c7e30ed2d90be9144c303c"
+    },
+    {
+      "bytes": 2249,
+      "path": "docs/current/e/C11E_E4B_R1V_ACTUAL_FRAME_INVENTORY_20261108_V9.md",
+      "sha256": "d8a6c70ed4a0904d389037cde3987803af5b9bb3eb38b76833cabf1cd5d25d58"
+    },
+    {
+      "bytes": 6662,
+      "path": "docs/current/e/C11E_E4C_TRACKING_FAMILY_CLOSEOUT_20261115_V1.md",
+      "sha256": "58f8f046e6936490e51f0470072bc10d7cf43ceca97ad2ef2fb9971463ed1308"
+    },
+    {
+      "bytes": 1294,
+      "path": "artifacts/tests/c11e/e4c_tracking_tier_batch/E4C-TRACKING-T2-5-20261115T074835Z-6239dd21/E4C-TRK-T2-6239dd21.CLI_EXECUTION_RESULT.json",
+      "sha256": "fc6d8b5193ab5fa44df34c2b822292a159b698dcbca8a218e3902c975b0d0172"
+    },
+    {
+      "bytes": 65465,
+      "path": "docs/current/e/C11E_POWERSHELL_RUNNER_STYLE_GUIDE_20261116_V36.md",
+      "sha256": "4f3940d50b07ccd48e30f44dbc8653a9021791d20382dbccdb7ca0d93f98f337"
+    }
+  ]
+}

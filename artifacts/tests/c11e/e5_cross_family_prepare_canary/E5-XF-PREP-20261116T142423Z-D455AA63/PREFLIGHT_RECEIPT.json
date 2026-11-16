@@ -1,0 +1,36 @@
+{
+  "batch_id": "E5-XF-PREP-20261116T142423Z-D455AA63",
+  "gui_static_wiring": {
+    "actual_qt_ui_invoked": false,
+    "checks": [
+      "def _run_d9_universal_plan(self)",
+      "prepare_c11e_production_intent(",
+      "request_origin=\"GUI\"",
+      "e1_intent"
+    ],
+    "path": "c11c-suite/c11c-producer/main.py",
+    "status": "PASS_GUI_STATIC_SERVICE_WIRING"
+  },
+  "media_created": false,
+  "output_roots_absent": [
+    "artifacts\\production\\c11e\\E5-D455AA63-CH-A",
+    "artifacts\\production\\c11e\\E5-D455AA63-CH-B",
+    "artifacts\\production\\c11e\\E5-D455AA63-CH-C",
+    "artifacts\\production\\c11e\\E5-D455AA63-CH-D",
+    "artifacts\\production\\c11e\\E5-D455AA63-LOOP-A",
+    "artifacts\\production\\c11e\\E5-D455AA63-LOOP-B",
+    "artifacts\\production\\c11e\\E5-D455AA63-LOOP-C",
+    "artifacts\\production\\c11e\\E5-D455AA63-LOOP-D",
+    "artifacts\\production\\c11e\\E5-D455AA63-DRILL-A",
+    "artifacts\\production\\c11e\\E5-D455AA63-DRILL-B",
+    "artifacts\\production\\c11e\\E5-D455AA63-DRILL-C",
+    "artifacts\\production\\c11e\\E5-D455AA63-DRILL-D"
+  ],
+  "preflight_pair_count": 24,
+  "production_dispatch": false,
+  "release_authority": "NONE",
+  "schema": "C11E-E5-CROSS-FAMILY-PREFLIGHT-RECEIPT-V1",
+  "source_pin_union_count": 98,
+  "status": "PASS_ALL_12_PROBE_REQUESTS_PREPARED_IN_MEMORY",
+  "unique_request_count": 12
+}

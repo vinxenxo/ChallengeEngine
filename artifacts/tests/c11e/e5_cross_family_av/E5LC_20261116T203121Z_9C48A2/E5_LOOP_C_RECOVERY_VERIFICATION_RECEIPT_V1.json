@@ -1,0 +1,278 @@
+{
+  "audio_stream_changed": true,
+  "created_utc": "2026-11-16T20:41:21.204577+00:00",
+  "e5_gate": {
+    "actual_qt_gui_runtime": "NOT_RUN_OPERATOR_UI_SESSION_REQUIRED",
+    "e1_family_adapter": "NOT_CONNECTED_E1",
+    "e5_overall": "OPEN_MEDIA_QUALIFICATION_AND_QT_GUI_RUNTIME_REQUIRED"
+  },
+  "e5_source_evidence_pin_union": {
+    "all_current_bytes_match": true,
+    "dynamic_pins": 98,
+    "historical_evidence_pins": 5,
+    "post_run_rechecked": 134,
+    "pre_post_receipt_inventory_equal": true,
+    "static_pins": 31,
+    "total": 134
+  },
+  "final_C_aac_stream_sha256": "f489291d4e6f3d23371f13207568b60e34c01802382b24c4837ec7adb5ea185c",
+  "final_C_h264_stream_sha256": "949cfb7cdcc6921fe2c0484cf960ce05030aaf6421e00e4c9407089bdc4e01e6",
+  "final_C_mp4_bytes": 15658936,
+  "final_C_mp4_path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e5_cross_family_av\\E5LC_20261116T203121Z_9C48A2\\loop_c\\delivery_av\\E5LC_20261116T203121Z_9C48A2_FRACTAL_BLOOM_C_music_500007.mp4",
+  "final_C_mp4_sha256": "2c14f825a1e00a19a9d27cffdffa854947dfb22da0c7fae089e3a0344a643c83",
+  "final_ffprobe_contract": {
+    "audio_bitrate": 192325,
+    "audio_channels": 2,
+    "audio_codec": "aac",
+    "audio_profile": "LC",
+    "audio_sample_rate_hz": 44100,
+    "av_end_delta_seconds": 0.0,
+    "av_start_delta_seconds": 0.0,
+    "color_range": "pc",
+    "duration_seconds": 22.0,
+    "frame_rate": "30/1",
+    "frames": 660,
+    "height": 1280,
+    "pix_fmt": "yuvj420p",
+    "video_codec": "h264",
+    "width": 720
+  },
+  "governance": {
+    "c11c_source_mutation": false,
+    "commits": "OPERATOR_MANAGED",
+    "existing_files_deleted_or_overwritten": false,
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "git_checks": "SKIPPED",
+    "godot_invoked": false,
+    "media_regenerated": false,
+    "new_batch_id_consumed": false,
+    "producer_gui_invoked": false,
+    "production_dispatch": false,
+    "production_release": false,
+    "release_authority": "NONE",
+    "renderer_invoked": false,
+    "source_file_pins": "ENFORCED"
+  },
+  "native_music_C": {
+    "channels": 2,
+    "duration_seconds": 22.0,
+    "pcm_sha256": "096532ce7096bc55e4e46a0b76708438b0f5ef3fd801ca8edb01a3fad8a52a39",
+    "peak_linear": 0.3499862666707358,
+    "rms_linear": 0.11068146542491783,
+    "sample_frames": 970200,
+    "sample_rate_hz": 44100,
+    "sample_width_bytes": 2,
+    "wav_bytes": 3880844,
+    "wav_sha256": "e08be105975b190408e3fa661276bdc862e663d52a64f848e1847791aed25cf3"
+  },
+  "native_music_C_repeat": {
+    "channels": 2,
+    "duration_seconds": 22.0,
+    "pcm_sha256": "096532ce7096bc55e4e46a0b76708438b0f5ef3fd801ca8edb01a3fad8a52a39",
+    "peak_linear": 0.3499862666707358,
+    "rms_linear": 0.11068146542491783,
+    "sample_frames": 970200,
+    "sample_rate_hz": 44100,
+    "sample_width_bytes": 2,
+    "wav_bytes": 3880844,
+    "wav_sha256": "e08be105975b190408e3fa661276bdc862e663d52a64f848e1847791aed25cf3"
+  },
+  "operator_review": {
+    "challenge": "PASS_PREVIOUSLY_REPORTED",
+    "visual_drill_tracking_tier_2": "PASS_PREVIOUSLY_REPORTED",
+    "visual_loop_A_B": "PASS_PREVIOUSLY_REPORTED",
+    "visual_loop_C_music_500007": "PENDING_OPERATOR_VISUAL_AND_AUDIO_REVIEW"
+  },
+  "original_failure": "NameError: name 'source_pre' is not defined",
+  "original_failure_cause": "V2 post-run pin verification referenced source_pre outside verify_prior_evidence local scope",
+  "recovery_scope": "VERIFY_EXISTING_RETAINED_MEDIA_ONLY_NO_REGENERATION_NO_REMUX",
+  "retained_files": {
+    "failure_receipt": {
+      "bytes": 550,
+      "path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e5_cross_family_av\\E5LC_20261116T203121Z_9C48A2\\E5_LOOP_C_CHANGED_MUSIC_AV_RECEIPT.json",
+      "sha256": "463cd3860f2e53a9a7a44db4b560c4caeb2f0ddef5fe80a4359a5eea0d1b3ada"
+    },
+    "native_wav": {
+      "bytes": 3880844,
+      "path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e5_cross_family_av\\E5LC_20261116T203121Z_9C48A2\\loop_c\\native_audio\\E5LC_20261116T203121Z_9C48A2_C_music_500007_native_44100.wav",
+      "sha256": "e08be105975b190408e3fa661276bdc862e663d52a64f848e1847791aed25cf3"
+    },
+    "output_mp4": {
+      "bytes": 15658936,
+      "path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e5_cross_family_av\\E5LC_20261116T203121Z_9C48A2\\loop_c\\delivery_av\\E5LC_20261116T203121Z_9C48A2_FRACTAL_BLOOM_C_music_500007.mp4",
+      "sha256": "2c14f825a1e00a19a9d27cffdffa854947dfb22da0c7fae089e3a0344a643c83"
+    },
+    "progress": {
+      "bytes": 542,
+      "path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e5_cross_family_av\\E5LC_20261116T203121Z_9C48A2\\progress.json",
+      "sha256": "df14f6e686b98ffe60ac906c03401cd7cdbad2b806b1fb03cc1d38194007d99b"
+    },
+    "repeat_wav": {
+      "bytes": 3880844,
+      "path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e5_cross_family_av\\E5LC_20261116T203121Z_9C48A2\\loop_c\\native_audio\\E5LC_20261116T203121Z_9C48A2_C_REPEAT_music_500007_native_44100.wav",
+      "sha256": "e08be105975b190408e3fa661276bdc862e663d52a64f848e1847791aed25cf3"
+    }
+  },
+  "reused_prior_evidence": {
+    "challenge": {
+      "evidence_status": "PASS_ISOLATED_E4A7_D_COMPOSITED_CHALLENGE_AV_TEST_ONLY",
+      "operator_av_review": "PASS_REPORTED_2026-11-06",
+      "operator_closeout_doc_sha256": "cb498f260f8f1ab5a1165b29ae5c372bb975c4563abbde49b022d140d000a831",
+      "receipt_path": "artifacts/tests/c11e/e4a_d_composited_av_review/RUN_20261106T070808Z-62F31F9C/C11E_E4A7_D_COMPOSITED_CHALLENGE_AV_RECEIPT.json",
+      "receipt_sha256": "102cf07a0b8920318c3ba211a3bd4374c3e080018486363d701f81e65613aaa0"
+    },
+    "e4c_global_closeout": {
+      "closeout_doc_sha256": "88f0a7e2c34dc16d490ace9192766eb6801119649ccc1b05210de894436a3183",
+      "peripheral_scan_t5_receipt_sha256": "5644ffa386c2d1388e7dd657cb566c796a87de93b22c28db84197dbb8ad3a224",
+      "status": "ACCEPTED_20_OF_20"
+    },
+    "e5_canary_source_pin_union": {
+      "dynamic_pins": 98,
+      "historical_evidence_pins": 5,
+      "pre_post_equal": true,
+      "static_pins": 31,
+      "total_verified": 134
+    },
+    "e5_prepare_canary": {
+      "actual_qt_gui_runtime": "NOT_RUN_OPERATOR_UI_SESSION_REQUIRED",
+      "av_media_gate": "BLOCKED_FAMILY_ADAPTER_NOT_CONNECTED_E1",
+      "batch_id": "E5-XF-PREP-20261116T142423Z-D455AA63",
+      "batch_result_sha256": "efd6679860c9ead92516da3eb2c39e6eb41ae0dc77396c0f082c29b4a81a8c3d",
+      "combined_execution_receipt_sha256": "8fb5dde145046f167e13109b8f8168e91ed0982e6baf2894b13dc9df28d39393",
+      "probe_pairs": 12,
+      "service_origin_rows": 24,
+      "status": "PASS_E5_PREPARE_ONLY_CROSS_FAMILY"
+    },
+    "verified_source_and_closeout_pins": [
+      {
+        "bytes": 796318,
+        "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+        "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+      },
+      {
+        "bytes": 1739,
+        "path": "tools/prototypes/c11c_common/C11CSafeAmbient.py",
+        "sha256": "c376fd44a3115f0d800213d95e28143363748e16c7b5800369fcadbf237fb02c"
+      },
+      {
+        "bytes": 16382,
+        "path": "tools/prototypes/c11c_common/generate_c11c_family_music.py",
+        "sha256": "41bb8f9842ac941ea86c838f272b11bd0642973b26e92defa006721a3d8cb84d"
+      },
+      {
+        "bytes": 7038,
+        "path": "profiles/presentation/c11c_visual_music_profiles.json",
+        "sha256": "b78706c5a9adbf1581d925f522b76cc3419983177de213734cc79996af5cbf58"
+      },
+      {
+        "bytes": 10555,
+        "path": "artifacts/tests/c11e/r1v_operator_human_review_closeout/R1V_HUMAN_REVIEW_CLOSEOUT_RECEIPT_V1.json",
+        "sha256": "a9e1de310ba1f52bab029a6fc6f926892264dd25cfa5edd8ec90aec460a2662a"
+      },
+      {
+        "bytes": 26095,
+        "path": "artifacts/tests/c11e/e4a_d_composited_av_review/RUN_20261106T070808Z-62F31F9C/C11E_E4A7_D_COMPOSITED_CHALLENGE_AV_RECEIPT.json",
+        "sha256": "102cf07a0b8920318c3ba211a3bd4374c3e080018486363d701f81e65613aaa0"
+      },
+      {
+        "bytes": 4727,
+        "path": "docs/current/e/C11E_E4A7_D_COMPOSITED_CHALLENGE_AV_PLAN_20261106_V3.md",
+        "sha256": "cb498f260f8f1ab5a1165b29ae5c372bb975c4563abbde49b022d140d000a831"
+      },
+      {
+        "bytes": 83131,
+        "path": "artifacts/production/c11e/E4C-TRK-T2-6239dd21/E4C_DRILL_AV_QUALIFICATION_RECEIPT.json",
+        "sha256": "f95e9b4e787f1b4f7db79b92428324f6de662ade55b260c7692d4440e2967ee7"
+      },
+      {
+        "bytes": 6662,
+        "path": "docs/current/e/C11E_E4C_TRACKING_FAMILY_CLOSEOUT_20261115_V1.md",
+        "sha256": "58f8f046e6936490e51f0470072bc10d7cf43ceca97ad2ef2fb9971463ed1308"
+      },
+      {
+        "bytes": 6170,
+        "path": "docs/current/e/C11E_E4C_PERIPHERAL_SCAN_FAMILY_CLOSEOUT_20261116_V1.md",
+        "sha256": "88f0a7e2c34dc16d490ace9192766eb6801119649ccc1b05210de894436a3183"
+      },
+      {
+        "bytes": 83256,
+        "path": "artifacts/production/c11e/E4C-PSC-T5-b342a227/E4C_DRILL_AV_QUALIFICATION_RECEIPT.json",
+        "sha256": "5644ffa386c2d1388e7dd657cb566c796a87de93b22c28db84197dbb8ad3a224"
+      },
+      {
+        "bytes": 3131,
+        "path": "artifacts/tests/c11e/e5_cross_family_prepare_canary/E5-XF-PREP-20261116T142423Z-D455AA63/BATCH_RESULT.json",
+        "sha256": "efd6679860c9ead92516da3eb2c39e6eb41ae0dc77396c0f082c29b4a81a8c3d"
+      },
+      {
+        "bytes": 2720,
+        "path": "artifacts/tests/c11e/e5_cross_family_prepare_canary/E5_INSTALL_20261116T142339Z_4ca1e738/COMBINED_EXECUTION_RECEIPT.json",
+        "sha256": "8fb5dde145046f167e13109b8f8168e91ed0982e6baf2894b13dc9df28d39393"
+      },
+      {
+        "bytes": 26719,
+        "path": "artifacts/tests/c11e/e5_cross_family_prepare_canary/E5-XF-PREP-20261116T142423Z-D455AA63/SOURCE_PINS_PRE.json",
+        "sha256": "f767fcfa38c4304bcf19494ef10e38088a7fdd8901b695ad38fc542f3f87ae15"
+      },
+      {
+        "bytes": 26745,
+        "path": "artifacts/tests/c11e/e5_cross_family_prepare_canary/E5-XF-PREP-20261116T142423Z-D455AA63/SOURCE_PINS_POST.json",
+        "sha256": "3d19b58894724c1a01cfc7612ec00ac3cc120c8421e50f7d467c5d3809fe2337"
+      },
+      {
+        "bytes": 602,
+        "path": "artifacts/tests/c11e/e5_cross_family_prepare_canary/E5-XF-PREP-20261116T142423Z-D455AA63/requests/LOOP-A.json",
+        "sha256": "1331c936c77985cd9ea326e16f9c8da0b6b8618439ec9173bf7cfbac7b21da72"
+      },
+      {
+        "bytes": 602,
+        "path": "artifacts/tests/c11e/e5_cross_family_prepare_canary/E5-XF-PREP-20261116T142423Z-D455AA63/requests/LOOP-B.json",
+        "sha256": "ba28c002c8e9ac1bf2ecaa3772bd53395c6c2516bb63bb3dbd8f70ddea4c2dda"
+      },
+      {
+        "bytes": 602,
+        "path": "artifacts/tests/c11e/e5_cross_family_prepare_canary/E5-XF-PREP-20261116T142423Z-D455AA63/requests/LOOP-C.json",
+        "sha256": "cf6cc74c589a2e6f102edbcd0b62e0989efa268e009b2b1526a1cc3fd76e3eb9"
+      },
+      {
+        "bytes": 602,
+        "path": "artifacts/tests/c11e/e5_cross_family_prepare_canary/E5-XF-PREP-20261116T142423Z-D455AA63/requests/LOOP-D.json",
+        "sha256": "a02699c3ecd2097bb7f5f826e37940e49d6a155121512cb65cf5dfbd06df87b3"
+      }
+    ],
+    "visual_drill": {
+      "audio_stream_changed_A_C": true,
+      "evidence_status": "PASS_E4C_DRILL_SINGLE_SELECTOR_A_V_QUALIFICATION",
+      "family": "tracking",
+      "gameplay_seed": 12345,
+      "music_seed_A_B": 840001,
+      "music_seed_C": 840002,
+      "operator_av_review": "PASS_T2_REPORTED_2026-11-15",
+      "receipt_sha256": "f95e9b4e787f1b4f7db79b92428324f6de662ade55b260c7692d4440e2967ee7",
+      "selector": "tier-2",
+      "video_stream_identical_A_C": true
+    },
+    "visual_loop_ab": {
+      "A_mp4_path": "artifacts/tests/c11e/r1v_av_five_family_qualification/Q5_040414_B6BE4D/delivery/fractal_bloom/A/Q5_040414_B6BE4D_FRACTAL_BLOOM_A_C11C_FAMILY_MUSIC_AV.mp4",
+      "A_mp4_sha256": "0c62d8b4c9da237e9a0b9349d588a7d6daab9989b56ef0d25464ca0f5cbc4013",
+      "B_mp4_path": "artifacts/tests/c11e/r1v_av_five_family_qualification/Q5_040414_B6BE4D/delivery/fractal_bloom/B/Q5_040414_B6BE4D_FRACTAL_BLOOM_B_C11C_FAMILY_MUSIC_AV.mp4",
+      "B_mp4_sha256": "0c62d8b4c9da237e9a0b9349d588a7d6daab9989b56ef0d25464ca0f5cbc4013",
+      "closeout_receipt_sha256": "a9e1de310ba1f52bab029a6fc6f926892264dd25cfa5edd8ec90aec460a2662a",
+      "evidence_status": "PASS_TEST_ONLY_OPERATOR_ACCEPTED",
+      "family_id": "c11c_fractal_bloom_v1",
+      "gameplay_seed": 100006,
+      "grammar_id": "radial_bloom",
+      "music_seed": 500006,
+      "operator_visual_audio_review": "PASS"
+    }
+  },
+  "run_id": "E5LC_20261116T203121Z_9C48A2",
+  "same_seed_native_music_repeatable": true,
+  "schema": "C11E-E5-LOOP-C-RECOVERY-VERIFICATION-RECEIPT-V1",
+  "source_A_aac_stream_sha256": "77e0e132701a363f5330d0504a824d8673b38cce646ab5155836c74742d72959",
+  "source_A_h264_stream_sha256": "949cfb7cdcc6921fe2c0484cf960ce05030aaf6421e00e4c9407089bdc4e01e6",
+  "source_A_mp4_path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\r1v_av_five_family_qualification\\Q5_040414_B6BE4D\\delivery\\fractal_bloom\\A\\Q5_040414_B6BE4D_FRACTAL_BLOOM_A_C11C_FAMILY_MUSIC_AV.mp4",
+  "source_A_mp4_sha256": "0c62d8b4c9da237e9a0b9349d588a7d6daab9989b56ef0d25464ca0f5cbc4013",
+  "status": "PASS_EXISTING_OUTPUT_VERIFIED_TEST_ONLY_OPERATOR_AV_REVIEW_REQUIRED",
+  "video_bitstream_identical": true
+}

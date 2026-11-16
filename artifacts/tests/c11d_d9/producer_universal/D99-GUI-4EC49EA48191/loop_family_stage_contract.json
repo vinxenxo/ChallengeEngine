@@ -1,0 +1,205 @@
+{
+  "schema": "C11E-E4B-LOOP-FAMILY-STAGE-CONTRACT-V1",
+  "schema_version": "1.0",
+  "status": "FAMILY_BOUND_PREPARATION_NOT_DISPATCHABLE",
+  "request_identity": {
+    "request_id": "D99-GUI-4EC49EA48191",
+    "request_hash": "7e8bc840e573b5676e0048c74b993534968a4a31858de3f7c47bee268e531428",
+    "plan_hash": "3bc26c7fd626128e7787cf2e2fe9a64b6f3c18603afb16c299b7382efa4c89d0",
+    "editorial_hash": "c720175a4263eb3f43e3112e2e5a46e5417e707f50fdba31bd15dcd833c5ea88",
+    "bridge_record_hash": "3fcaeca34c71ae153f814f1e01115955c9ac90551f3fbcf60fb60c2d6c7d867c",
+    "d_only_adapter_envelope_hash": "e47786b2852bd951e418673f25a245b2386318c030804a39259925e80edc9087"
+  },
+  "content_identity": {
+    "content_type": "visual_loops",
+    "family_id": "c11c_fractal_bloom_v1",
+    "family_internal_id": "fractal",
+    "grammar_id": "radial_bloom"
+  },
+  "family_visual_stage": {
+    "launcher_path": "tools/prototypes/c11c_fractal_bloom_v1/run_prototype.ps1",
+    "argument_vector": [
+      "-Seed",
+      "100006",
+      "-Grammar",
+      "radial_bloom",
+      "-NoSound",
+      "-OutputRoot",
+      "<FRESH_ISOLATED_TEST_ROOT>",
+      "-OutputTag",
+      "D99-GUI-4EC49EA48191"
+    ],
+    "audio_switch": "-NoSound",
+    "gameplay_seed": 100006,
+    "music_seed": 500006,
+    "music_seed_passed_to_visual_launcher": false,
+    "frozen_c11c_music_profile_id": "ORGANIC_BLOOM",
+    "family_registry_semantic_inputs": [
+      "seed",
+      "visual_grammar"
+    ],
+    "launcher_execution": false,
+    "reason_not_executed": "D4.8_BLOCKED_AND_NO_RENDERER_EXECUTION_AUTHORITY"
+  },
+  "editorial": {
+    "values_preserved_exactly": true,
+    "language_metadata": "UNKNOWN",
+    "fields": [
+      {
+        "field": "title",
+        "value": "UNKNOWN",
+        "value_sha256": "23759997b3c59884dc4c0ff5320d6301b0e7f63bf0f6483a7b54d7d43bc5ccd1",
+        "target_semantic_region": "HEADER",
+        "target_composition_band": "TOP_EDITORIAL_BAND",
+        "visible": false,
+        "visibility_window": null,
+        "window_rule": "FULL_CONTINUOUS_PAYLOAD_SPAN",
+        "empty_or_unknown_rule": "SUPPRESS_FIELD_NO_WINDOW"
+      },
+      {
+        "field": "subtitle",
+        "value": "UNKNOWN",
+        "value_sha256": "23759997b3c59884dc4c0ff5320d6301b0e7f63bf0f6483a7b54d7d43bc5ccd1",
+        "target_semantic_region": "HEADER",
+        "target_composition_band": "TOP_EDITORIAL_BAND",
+        "visible": false,
+        "visibility_window": null,
+        "window_rule": "FULL_CONTINUOUS_PAYLOAD_SPAN",
+        "empty_or_unknown_rule": "SUPPRESS_FIELD_NO_WINDOW"
+      },
+      {
+        "field": "call_to_action",
+        "value": "UNKNOWN",
+        "value_sha256": "23759997b3c59884dc4c0ff5320d6301b0e7f63bf0f6483a7b54d7d43bc5ccd1",
+        "target_semantic_region": "FOOTER",
+        "target_composition_band": "BOTTOM_EDITORIAL_BAND",
+        "visible": false,
+        "visibility_window": null,
+        "window_rule": "FULL_CONTINUOUS_PAYLOAD_SPAN",
+        "empty_or_unknown_rule": "SUPPRESS_FIELD_NO_WINDOW"
+      }
+    ],
+    "visible_visual_field_count": 0,
+    "activation": "UNCHANGED_FULL_FRAME_PASSTHROUGH",
+    "static_for_entire_source_sequence": true,
+    "layout_measurement": "NOT_PROVEN_UNTIL_ISOLATED_GODOT_VISUAL_REVIEW"
+  },
+  "composition": {
+    "delivery_profile_id": "REVIEW_720",
+    "canvas": {
+      "width": 720,
+      "height": 1280,
+      "aspect_ratio": "9:16"
+    },
+    "background_rgb_hex": "05070B",
+    "top_editorial_band": {
+      "x": 0,
+      "y": 0,
+      "width": 720,
+      "height": 192
+    },
+    "source_frame_viewport": {
+      "x": 108,
+      "y": 192,
+      "width": 504,
+      "height": 896
+    },
+    "bottom_editorial_band": {
+      "x": 0,
+      "y": 1088,
+      "width": 720,
+      "height": 192
+    },
+    "source_frame_transform": {
+      "mode": "UNIFORM_CONTAIN",
+      "scale_x": 0.7,
+      "scale_y": 0.7,
+      "aspect_ratio_preserved": true,
+      "cropping": false,
+      "nonuniform_stretch": false,
+      "temporal_resampling": false,
+      "source_frame_count_mutation": false,
+      "source_frame_order_mutation": false,
+      "source_frame_index_mapping": "IDENTITY",
+      "yuv420p_chroma_alignment": "EVEN_X_Y_WIDTH_HEIGHT"
+    },
+    "text_blocks": {
+      "title": {
+        "region": "TOP_BAND",
+        "x": 36,
+        "y": 0,
+        "width": 648,
+        "height": 92,
+        "font": "Inter-Bold",
+        "font_size_px": 15,
+        "line_height_px": 19,
+        "max_lines": 4,
+        "max_chars_per_line_conservative": 41,
+        "padding_vertical_px": 8
+      },
+      "subtitle": {
+        "region": "TOP_BAND",
+        "x": 36,
+        "y": 100,
+        "width": 648,
+        "height": 92,
+        "font": "Inter-Bold",
+        "font_size_px": 15,
+        "line_height_px": 19,
+        "max_lines": 4,
+        "max_chars_per_line_conservative": 41,
+        "padding_vertical_px": 8
+      },
+      "call_to_action": {
+        "region": "BOTTOM_BAND",
+        "x": 36,
+        "y": 1151,
+        "width": 648,
+        "height": 66,
+        "font": "NotoSansMono-Regular",
+        "font_size_px": 15,
+        "line_height_px": 22,
+        "max_lines": 3,
+        "max_chars_per_line_conservative": 71,
+        "padding_vertical_px": 0
+      }
+    },
+    "overflow_policy": "NO_TRUNCATION_NO_ELLIPSIS_FAIL_CLOSED_IF_FONT_COVERAGE_OR_LAYOUT_CAPACITY_IS_NOT_PROVEN",
+    "source_frame_count_source": "REQUEST_SCOPED_MATERIALIZED_C11C_PAYLOAD_ONLY",
+    "source_frame_window": "[0, ACTUAL_C11C_PAYLOAD.frame_count)",
+    "source_fps": "ACTUAL_C11C_PAYLOAD.fps",
+    "delivery_fps": 30,
+    "frame_order": "IDENTITY_NO_RESAMPLING",
+    "materialized_payload_receipt_required": true
+  },
+  "audio_delivery_envelope": {
+    "codec": "aac",
+    "profile": "aac_low",
+    "bitrate_kbps": 192,
+    "sample_rate_hz": 48000,
+    "channels": 2,
+    "music_asset_policy": "OUT_OF_SCOPE_NOT_SELECTED_NOT_EMITTED",
+    "mixing_policy": "OUT_OF_SCOPE_NOT_DEFINED_NOT_APPLIED",
+    "audio_asset_selected": false,
+    "audio_generated": false,
+    "pcm_samples_emitted": false,
+    "audio_payload_materialized": false,
+    "mux_invoked": false,
+    "music_seed_domain": "request.music_seed; RESERVED_FOR_FUTURE_APPROVED_EXISTING_FAMILY_MUSIC_ROUTE",
+    "d3_v5_invoked": false
+  },
+  "governance": {
+    "family_stage_contract_created_in_memory": true,
+    "renderer_native_input_emitted": false,
+    "renderer_dispatch_invoked": false,
+    "launcher_invoked": false,
+    "godot_invoked": false,
+    "ffmpeg_invoked": false,
+    "media_created": false,
+    "c11c_source_mutation": false,
+    "d4_8": "BLOCKED",
+    "d9_10": "PREPARE_ONLY",
+    "release_authority": "NONE"
+  },
+  "contract_sha256": "a956546d16df7756036f4f77ab373cb1b68da0dc2b008e30b197da13d8c5ffd9"
+}

@@ -1,0 +1,9 @@
+{
+  "authorization": "ONE_SHOT_PREPARE_ONLY_TEST_BATCH",
+  "batch_id": "E5-XF-PREP-20261116T142423Z-D455AA63",
+  "media_created": false,
+  "operator_approval_record": "CONVERSATION_APPROVAL_2026-11-16",
+  "production_dispatch": false,
+  "release_authority": "NONE",
+  "schema": "C11E-E5-PREPARE-ONLY-AUTHORIZATION-ONCE-V1"
+}

@@ -1,0 +1,11 @@
+{
+  "actual_qt_ui_invoked": false,
+  "checks": [
+    "def _run_d9_universal_plan(self)",
+    "prepare_c11e_production_intent(",
+    "request_origin=\"GUI\"",
+    "e1_intent"
+  ],
+  "path": "c11c-suite/c11c-producer/main.py",
+  "status": "PASS_GUI_STATIC_SERVICE_WIRING"
+}
