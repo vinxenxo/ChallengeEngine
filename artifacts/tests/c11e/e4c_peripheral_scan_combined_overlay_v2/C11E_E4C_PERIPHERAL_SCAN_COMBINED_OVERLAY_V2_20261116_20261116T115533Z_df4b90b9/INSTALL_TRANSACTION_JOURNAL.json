@@ -1,0 +1,184 @@
+{
+    "schema":  "C11E-PERIPHERAL-SCAN-V2-INSTALL-JOURNAL",
+    "run_id":  "C11E_E4C_PERIPHERAL_SCAN_COMBINED_OVERLAY_V2_20261116_20261116T115533Z_df4b90b9",
+    "package_zip_sha256":  "4a21188d104d95e2c23842cd08be345cd82eecaa0ab5da11be8469a1f3d88b7d",
+    "package_manifest_sha256":  "b2b6a9c54fd7277cd4a265f3be322a8f444afc1ae7c74139bbcf0ef1dfa3aa18",
+    "transaction_policy":  "ADD_ONLY",
+    "transaction_started":  true,
+    "status":  "PASS_INSTALL_COMMITTED_PREPARE_ONLY",
+    "operations":  [
+                       {
+                           "index":  1,
+                           "operation":  "ADD",
+                           "destination":  "tools/c11d/d9/c11e_e4c_peripheral_scan_tier_batch.py",
+                           "sha256":  "4ab6e3e6a0ab9c78054a46f11a0b937512eb7eba3eeba5c1a2776e139e8dd547",
+                           "bytes":  44063,
+                           "status":  "ADDED"
+                       },
+                       {
+                           "index":  2,
+                           "operation":  "ADD",
+                           "destination":  "tools/c11d/d9/RUN_C11E_E4C_PERIPHERAL_SCAN_TIERS_1_TO_5_V1.ps1",
+                           "sha256":  "c22c9f208f23994bed9555c77f34f185a05ea7293a6f5dddb3da93893cb1eb34",
+                           "bytes":  10285,
+                           "status":  "ADDED"
+                       },
+                       {
+                           "index":  3,
+                           "operation":  "ADD",
+                           "destination":  "tests/test_c11e_e4c_peripheral_scan_tier_batch.py",
+                           "sha256":  "24fdd1954b556a661e6cb1cde5980a9829df14e4e134ef0600173f8e915f735c",
+                           "bytes":  16468,
+                           "status":  "ADDED"
+                       },
+                       {
+                           "index":  4,
+                           "operation":  "ADD",
+                           "destination":  "tests/test_c11e_e4c_peripheral_scan_runner_contract.py",
+                           "sha256":  "26e3dbcf6a6099c5537615c8c883c5c61c72028c0c4e6cd6d2654de7ea214725",
+                           "bytes":  11158,
+                           "status":  "ADDED"
+                       },
+                       {
+                           "index":  5,
+                           "operation":  "ADD",
+                           "destination":  "tests/fixtures/visual_drill_peripheral_scan_canonical.json",
+                           "sha256":  "aaf50f9223bad678df15589110dfcd6ff42dda89326a0a84bc5a5f51d133a904",
+                           "bytes":  8862,
+                           "status":  "ADDED"
+                       },
+                       {
+                           "index":  6,
+                           "operation":  "ADD",
+                           "destination":  "docs/current/e/C11E_CURRENT_AUTHORITY_20261116_V170.md",
+                           "sha256":  "d0d9fe0c94b6571a89ce47fabc054536d3390631117e4c44c3e46b4384f8122b",
+                           "bytes":  4010,
+                           "status":  "ADDED"
+                       },
+                       {
+                           "index":  7,
+                           "operation":  "ADD",
+                           "destination":  "docs/current/e/C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261116_V111.md",
+                           "sha256":  "d6a47f145c13c6a4ce3228c4e7c8615c18391ffc95643cda3ff5c8557151ec4e",
+                           "bytes":  2760,
+                           "status":  "ADDED"
+                       },
+                       {
+                           "index":  8,
+                           "operation":  "ADD",
+                           "destination":  "docs/current/e/C11E_CURRENT_DOC_INDEX_20261116_V132.md",
+                           "sha256":  "ba46bb3444a4c98c46f9b1570690bc0468c2f4cc5645a6e07424fb5c48cf837c",
+                           "bytes":  1702,
+                           "status":  "ADDED"
+                       },
+                       {
+                           "index":  9,
+                           "operation":  "ADD",
+                           "destination":  "docs/current/e/C11E_E3_EXECUTION_BACKLOG_20261116_V141.md",
+                           "sha256":  "5a06925aed6c61d055884f74d5203410191db96d4729a56483a6cf3b279e2702",
+                           "bytes":  1750,
+                           "status":  "ADDED"
+                       },
+                       {
+                           "index":  10,
+                           "operation":  "ADD",
+                           "destination":  "docs/current/e/C11E_E4C_DRILL_EXECUTION_PLAN_20261116_V58.md",
+                           "sha256":  "221d8bbdcd28633e50b95f3ad528c34dfe751078b9ea88e696df9dd2e45fc102",
+                           "bytes":  1556,
+                           "status":  "ADDED"
+                       },
+                       {
+                           "index":  11,
+                           "operation":  "ADD",
+                           "destination":  "docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261116_V165.md",
+                           "sha256":  "5ed04d42e035e4f8a11c54143c2cde5d20002752d2d541f9047f27b961e48f50",
+                           "bytes":  1361,
+                           "status":  "ADDED"
+                       },
+                       {
+                           "index":  12,
+                           "operation":  "ADD",
+                           "destination":  "docs/current/e/C11D_E_BLOCKER_REMEDIATION_REGISTER_20261116_V86.md",
+                           "sha256":  "2ec3e5c7c31c9ceefecfe75b6f08e3c3dc3bea7a39eae1975eadf4b445f00501",
+                           "bytes":  991,
+                           "status":  "ADDED"
+                       },
+                       {
+                           "index":  13,
+                           "operation":  "ADD",
+                           "destination":  "docs/current/e/C11E_INSTALLER_INCIDENT_REGISTER_20261116_V50.md",
+                           "sha256":  "82d0102c2de473907b97889b2bf2b990e5ef80c9f7dc94d735ebe2a131ddb7db",
+                           "bytes":  1597,
+                           "status":  "ADDED"
+                       },
+                       {
+                           "index":  14,
+                           "operation":  "ADD",
+                           "destination":  "docs/current/e/C11E_POWERSHELL_RUNNER_STYLE_GUIDE_20261116_V35.md",
+                           "sha256":  "6680fabaabc8428cc33d0c0d38af6df443b6f0e2be8470362c1a144c5047ff8a",
+                           "bytes":  63771,
+                           "status":  "ADDED"
+                       },
+                       {
+                           "index":  15,
+                           "operation":  "ADD",
+                           "destination":  "docs/current/e/C11E_POWERSHELL_RUNNER_STYLE_GUIDE_20261116_V36.md",
+                           "sha256":  "4f3940d50b07ccd48e30f44dbc8653a9021791d20382dbccdb7ca0d93f98f337",
+                           "bytes":  65465,
+                           "status":  "ADDED"
+                       },
+                       {
+                           "index":  16,
+                           "operation":  "ADD",
+                           "destination":  "docs/current/e/C11E_E4C_SACCADE_FAMILY_CLOSEOUT_20261116_V5.md",
+                           "sha256":  "9a5ad358f0bf9afb6c24c8cebb076c51981bf15bf855373b0fa54637e937cb8c",
+                           "bytes":  2660,
+                           "status":  "ADDED"
+                       },
+                       {
+                           "index":  17,
+                           "operation":  "ADD",
+                           "destination":  "docs/current/e/C11E_E4C_PERIPHERAL_SCAN_QUALIFICATION_PLAN_20261116_V6.md",
+                           "sha256":  "9aaca5d04f192c0920c4a3962e039eba6d7f2665b9133656106bfcd8015d5fd9",
+                           "bytes":  2301,
+                           "status":  "ADDED"
+                       },
+                       {
+                           "index":  18,
+                           "operation":  "ADD",
+                           "destination":  "docs/current/e/C11E_E4C_COMBINED_OVERLAY_INSTALL_AND_BATCH_RUNBOOK_20261116_V6.md",
+                           "sha256":  "c68aaa1b05c72bc25f8de9a5fa230c48f4f755b9bf15c4092dac6515a10da4e4",
+                           "bytes":  3449,
+                           "status":  "ADDED"
+                       },
+                       {
+                           "index":  19,
+                           "operation":  "ADD",
+                           "destination":  "prompts/C11E_CONTINUATION_MASTER_PROMPT_20261116_V172.md",
+                           "sha256":  "4026ba06d45d2e89f235127ca8acd6542f6414a972bdc29e8fb32a3b2dcd06f6",
+                           "bytes":  3488,
+                           "status":  "ADDED"
+                       },
+                       {
+                           "index":  20,
+                           "operation":  "ADD",
+                           "destination":  "prompts/C11E_NEXT_WINDOW_START_PROMPT_20261116_V172.md",
+                           "sha256":  "b8a1400a8b749b155a51b2d9777a505529a1c9907b0a7988091ff9d287e2f747",
+                           "bytes":  1649,
+                           "status":  "ADDED"
+                       },
+                       {
+                           "index":  21,
+                           "operation":  "ADD",
+                           "destination":  "prompts/C11E_FIRST_PROMPT_20261116_V96.md",
+                           "sha256":  "5b30509ae383485d4b0a895f62f35d7caed70cc491b50c15b31dc7a0af5a80eb",
+                           "bytes":  1603,
+                           "status":  "ADDED"
+                       }
+                   ],
+    "committed_count":  21,
+    "rollback_status":  "NOT_REQUIRED_ADD_ONLY",
+    "recorded_utc":  "2026-11-16T11:55:44.3229214Z",
+    "completed_utc":  "2026-11-16T11:55:48.6772776Z",
+    "install_committed":  true
+}

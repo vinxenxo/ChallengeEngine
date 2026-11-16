@@ -1,0 +1,98 @@
+{
+  "base_cli_smoke": "PASS_REUSED_AS_REQUEST_TEMPLATE_ONLY_NO_RERUN",
+  "batch_id": "E4C-PERIPHERAL-SCAN-T1-5-20261116T115542Z-b6d4553b",
+  "environment": {
+    "pyside6": "6.11.2",
+    "python": "3.13.14"
+  },
+  "execution_selectors": [
+    "peripheral_scan/tier-1",
+    "peripheral_scan/tier-2",
+    "peripheral_scan/tier-3",
+    "peripheral_scan/tier-4",
+    "peripheral_scan/tier-5"
+  ],
+  "family_music_profile": "ORBITAL_RITUAL",
+  "ffmpeg_invoked": false,
+  "godot_invoked": false,
+  "production_dispatch": false,
+  "production_media_created": false,
+  "release_authority": "NONE",
+  "renderer_invoked": false,
+  "row_plan": [
+    {
+      "expected_frames": 690,
+      "family_music_profile": "ORBITAL_RITUAL",
+      "gameplay_seed": 12345,
+      "music_seed_a_b": 840001,
+      "music_seed_c": "DERIVED_BY_EXISTING_EXECUTOR",
+      "request_id": "E4C-PSC-T1-b6d4553b",
+      "selector": "peripheral_scan/tier-1",
+      "tier": 1
+    },
+    {
+      "expected_frames": 690,
+      "family_music_profile": "ORBITAL_RITUAL",
+      "gameplay_seed": 12345,
+      "music_seed_a_b": 840001,
+      "music_seed_c": "DERIVED_BY_EXISTING_EXECUTOR",
+      "request_id": "E4C-PSC-T2-b6d4553b",
+      "selector": "peripheral_scan/tier-2",
+      "tier": 2
+    },
+    {
+      "expected_frames": 690,
+      "family_music_profile": "ORBITAL_RITUAL",
+      "gameplay_seed": 12345,
+      "music_seed_a_b": 840001,
+      "music_seed_c": "DERIVED_BY_EXISTING_EXECUTOR",
+      "request_id": "E4C-PSC-T3-b6d4553b",
+      "selector": "peripheral_scan/tier-3",
+      "tier": 3
+    },
+    {
+      "expected_frames": 690,
+      "family_music_profile": "ORBITAL_RITUAL",
+      "gameplay_seed": 12345,
+      "music_seed_a_b": 840001,
+      "music_seed_c": "DERIVED_BY_EXISTING_EXECUTOR",
+      "request_id": "E4C-PSC-T4-b6d4553b",
+      "selector": "peripheral_scan/tier-4",
+      "tier": 4
+    },
+    {
+      "expected_frames": 690,
+      "family_music_profile": "ORBITAL_RITUAL",
+      "gameplay_seed": 12345,
+      "music_seed_a_b": 840001,
+      "music_seed_c": "DERIVED_BY_EXISTING_EXECUTOR",
+      "request_id": "E4C-PSC-T5-b6d4553b",
+      "selector": "peripheral_scan/tier-5",
+      "tier": 5
+    }
+  ],
+  "selectors": [
+    "peripheral_scan/tier-1",
+    "peripheral_scan/tier-2",
+    "peripheral_scan/tier-3",
+    "peripheral_scan/tier-4",
+    "peripheral_scan/tier-5"
+  ],
+  "source_pin_count": 38,
+  "status": "PASS_PREPARE_ONLY_NO_RENDER",
+  "timeline_contract": {
+    "canonical_sha256": "aaf50f9223bad678df15589110dfcd6ff42dda89326a0a84bc5a5f51d133a904",
+    "duration_seconds": 23.0,
+    "end_cta_frames": 90,
+    "fps": 30,
+    "gameplay_duration_seconds": 17.0,
+    "gameplay_frames": 510,
+    "phase_counts": {
+      "END_CTA": 90,
+      "GAME": 510,
+      "PRE_ROLL": 90
+    },
+    "pre_roll_frames": 90,
+    "total_frames": 690
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "batch_id": "E4C-PERIPHERAL-SCAN-T1-5-20261116T115549Z-b342a227",
+  "commits": "OPERATOR_MANAGED",
+  "executed_request_ids": [
+    "E4C-PSC-T1-b342a227",
+    "E4C-PSC-T2-b342a227",
+    "E4C-PSC-T3-b342a227",
+    "E4C-PSC-T4-b342a227",
+    "E4C-PSC-T5-b342a227"
+  ],
+  "git_checks": "SKIPPED",
+  "request_ids": [
+    "E4C-PSC-T1-b342a227",
+    "E4C-PSC-T2-b342a227",
+    "E4C-PSC-T3-b342a227",
+    "E4C-PSC-T4-b342a227",
+    "E4C-PSC-T5-b342a227"
+  ],
+  "reused_request_ids": [],
+  "schema": "C11E-E4C-PSC-TIER-BATCH-LOCK-V1",
+  "source_pin_set_sha256": "8e8b1dfaa11182e4be465ccefa21a849676fb274f100462f02e10c7405c8a884",
+  "status": "ATTEMPT_RESERVED"
+}

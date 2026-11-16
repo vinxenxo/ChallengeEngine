@@ -1,0 +1,46 @@
+{
+    "schema":  "C11E-PERIPHERAL-SCAN-BATCH-LAUNCH-RECEIPT-V1",
+    "status":  "PASS_TECHNICAL_PENDING_OPERATOR_A_V_REVIEW",
+    "batch_id":  "E4C-PERIPHERAL-SCAN-T1-5-20261116T115549Z-b342a227",
+    "coverage":  "5/5 peripheral_scan tiers 1-5 (all executed)",
+    "selectors_expected":  [
+                               "peripheral_scan/tier-1",
+                               "peripheral_scan/tier-2",
+                               "peripheral_scan/tier-3",
+                               "peripheral_scan/tier-4",
+                               "peripheral_scan/tier-5"
+                           ],
+    "selectors_technical_pass":  [
+                                     "peripheral_scan/tier-1",
+                                     "peripheral_scan/tier-2",
+                                     "peripheral_scan/tier-3",
+                                     "peripheral_scan/tier-4",
+                                     "peripheral_scan/tier-5"
+                                 ],
+    "source_pin_count":  38,
+    "family_music_profile":  "ORBITAL_RITUAL",
+    "source_pins_pre_post_equal":  true,
+    "timeline_contract":  {
+                              "canonical_sha256":  "aaf50f9223bad678df15589110dfcd6ff42dda89326a0a84bc5a5f51d133a904",
+                              "duration_seconds":  23.0,
+                              "end_cta_frames":  90,
+                              "fps":  30,
+                              "gameplay_duration_seconds":  17.0,
+                              "gameplay_frames":  510,
+                              "phase_counts":  {
+                                                   "END_CTA":  90,
+                                                   "GAME":  510,
+                                                   "PRE_ROLL":  90
+                                               },
+                              "pre_roll_frames":  90,
+                              "total_frames":  690
+                          },
+    "evidence_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_peripheral_scan_tier_batch\\E4C-PERIPHERAL-SCAN-T1-5-20261116T115549Z-b342a227",
+    "batch_result_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_peripheral_scan_tier_batch\\E4C-PERIPHERAL-SCAN-T1-5-20261116T115549Z-b342a227\\BATCH_RESULT.json",
+    "batch_result_sha256":  "1d3f691c0893dc19649025ea3350170facc1d28c19d0a81fe3fbf49a41fe1038",
+    "production_dispatch":  false,
+    "release_authority":  "NONE",
+    "operator_review":  "PENDING",
+    "runner_log_root":  "C:\\Users\\vinxe\\AppData\\Local\\Temp\\C11E_E4C_PERIPHERAL_SCAN_BATCH_RUNNER_1346719559f34687a88ff914b98c14ad",
+    "completed_utc":  "2026-11-16T12:12:20.4192454Z"
+}

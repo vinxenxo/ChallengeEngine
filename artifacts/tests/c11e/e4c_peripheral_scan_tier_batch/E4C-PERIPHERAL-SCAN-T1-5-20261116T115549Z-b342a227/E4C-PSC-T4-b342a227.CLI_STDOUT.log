@@ -1,0 +1,1 @@
+{"status": "PASS_E4C_DRILL_SINGLE_SELECTOR_A_V_QUALIFICATION", "request_id": "E4C-PSC-T4-b342a227", "selector": "peripheral_scan/tier-4", "final_A_sha256": "a0e90bf06f79fd1c2de13828aeeccd61fabc5d9cdaaa9cb04789107ba680d59c", "video_bitstream_identical_A_C": true, "audio_bitstream_changed_A_C": true, "release_authority": "NONE"}

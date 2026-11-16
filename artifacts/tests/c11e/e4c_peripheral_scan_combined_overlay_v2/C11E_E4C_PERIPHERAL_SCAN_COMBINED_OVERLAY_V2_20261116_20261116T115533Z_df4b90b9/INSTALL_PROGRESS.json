@@ -1,0 +1,10 @@
+{
+    "schema":  "C11E-PERIPHERAL-SCAN-COMBINED-V2-INSTALL-PROGRESS",
+    "run_id":  "C11E_E4C_PERIPHERAL_SCAN_COMBINED_OVERLAY_V2_20261116_20261116T115533Z_df4b90b9",
+    "current_stage":  "COMPLETE_BATCH_TECHNICAL",
+    "transaction_started":  false,
+    "committed_count":  21,
+    "operation_count":  21,
+    "state":  "PASS_TECHNICAL_PENDING_OPERATOR_A_V_REVIEW",
+    "batch_id":  "E4C-PERIPHERAL-SCAN-T1-5-20261116T115549Z-b342a227"
+}

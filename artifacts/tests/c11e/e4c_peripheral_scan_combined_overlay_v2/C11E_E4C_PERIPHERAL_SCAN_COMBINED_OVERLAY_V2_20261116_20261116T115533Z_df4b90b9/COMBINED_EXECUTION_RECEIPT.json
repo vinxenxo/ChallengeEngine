@@ -1,0 +1,56 @@
+{
+    "schema":  "C11E-E4C-PERIPHERAL-SCAN-COMBINED-EXECUTION-RECEIPT-V2",
+    "status":  "PASS_TECHNICAL_PENDING_OPERATOR_A_V_REVIEW",
+    "install_committed":  true,
+    "install_status":  "PASS_ADD_ONLY_INSTALL_AND_PREPARE_ONLY",
+    "package_zip_sha256":  "4a21188d104d95e2c23842cd08be345cd82eecaa0ab5da11be8469a1f3d88b7d",
+    "package_manifest_sha256":  "b2b6a9c54fd7277cd4a265f3be322a8f444afc1ae7c74139bbcf0ef1dfa3aa18",
+    "install_receipt_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_peripheral_scan_combined_overlay_v2\\C11E_E4C_PERIPHERAL_SCAN_COMBINED_OVERLAY_V2_20261116_20261116T115533Z_df4b90b9\\INSTALL_RECEIPT.json",
+    "install_receipt_sha256":  "f9c5006d701d23503c9d47244b38d4e8dde124953dcd08b44c04e258e9ba4efe",
+    "journal_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_peripheral_scan_combined_overlay_v2\\C11E_E4C_PERIPHERAL_SCAN_COMBINED_OVERLAY_V2_20261116_20261116T115533Z_df4b90b9\\INSTALL_TRANSACTION_JOURNAL.json",
+    "journal_sha256":  "b208deb64d02e0f9eba825c08282f12a930739e52bec15fe76d465703389dae2",
+    "batch_id":  "E4C-PERIPHERAL-SCAN-T1-5-20261116T115549Z-b342a227",
+    "selectors_expected":  [
+                               "peripheral_scan/tier-1",
+                               "peripheral_scan/tier-2",
+                               "peripheral_scan/tier-3",
+                               "peripheral_scan/tier-4",
+                               "peripheral_scan/tier-5"
+                           ],
+    "selectors_technical_pass":  [
+                                     "peripheral_scan/tier-1",
+                                     "peripheral_scan/tier-2",
+                                     "peripheral_scan/tier-3",
+                                     "peripheral_scan/tier-4",
+                                     "peripheral_scan/tier-5"
+                                 ],
+    "family_music_profile":  "ORBITAL_RITUAL",
+    "timeline_contract":  {
+                              "canonical_sha256":  "aaf50f9223bad678df15589110dfcd6ff42dda89326a0a84bc5a5f51d133a904",
+                              "duration_seconds":  23.0,
+                              "end_cta_frames":  90,
+                              "fps":  30,
+                              "gameplay_duration_seconds":  17.0,
+                              "gameplay_frames":  510,
+                              "phase_counts":  {
+                                                   "END_CTA":  90,
+                                                   "GAME":  510,
+                                                   "PRE_ROLL":  90
+                                               },
+                              "pre_roll_frames":  90,
+                              "total_frames":  690
+                          },
+    "source_pin_count":  38,
+    "source_pins_pre_post_equal":  true,
+    "batch_result_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_peripheral_scan_tier_batch\\E4C-PERIPHERAL-SCAN-T1-5-20261116T115549Z-b342a227\\BATCH_RESULT.json",
+    "batch_result_sha256":  "1d3f691c0893dc19649025ea3350170facc1d28c19d0a81fe3fbf49a41fe1038",
+    "batch_launch_receipt_path":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_peripheral_scan_combined_overlay_v2\\C11E_E4C_PERIPHERAL_SCAN_COMBINED_OVERLAY_V2_20261116_20261116T115533Z_df4b90b9\\BATCH_LAUNCH_RECEIPT.json",
+    "batch_launch_receipt_sha256":  "a8a7f68d32aaf2b36b9e031460a3a73970985edcc077cbf98e5003b9a826e6ed",
+    "evidence_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_peripheral_scan_combined_overlay_v2\\C11E_E4C_PERIPHERAL_SCAN_COMBINED_OVERLAY_V2_20261116_20261116T115533Z_df4b90b9",
+    "operator_review":  "PENDING",
+    "production_dispatch":  false,
+    "release_authority":  "NONE",
+    "git_checks":  "SKIPPED",
+    "commits":  "OPERATOR_MANAGED",
+    "completed_utc":  "2026-11-16T12:12:20.7247901Z"
+}

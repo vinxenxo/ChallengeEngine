@@ -1,0 +1,17 @@
+{
+    "schema":  "C11E-PERIPHERAL-SCAN-COMBINED-V2-INSTALL-FAILURE",
+    "status":  "FAIL_CLOSED_PRESERVE_EVIDENCE",
+    "install_committed":  false,
+    "run_id":  "C11E_E4C_PERIPHERAL_SCAN_COMBINED_OVERLAY_V2_20261116_20261116T114745Z_82ece2a0",
+    "stage":  "POWERSHELL_AST_PREFLIGHT_AND_ATOMIC_HELPER",
+    "error":  "Excepción al llamar a \"WriteAllText\" con los argumentos \"3\": \"No se puede encontrar una parte de la ruta de acceso \u0027C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_peripheral_scan_combined_overlay_v2\\C11E_E4C_PERIPHERAL_SCAN_COMBINED_OVERLAY_V2_20261116_20261116T114745Z_82ece2a0\\ATOMIC_JSON_WRITER_PREFLIGHT.json.b9419792f9c34da0b670e22bf956d51c.tmp\u0027.\"",
+    "transaction_started":  false,
+    "committed_count":  0,
+    "operation_count":  21,
+    "rollback_status":  "NOT_REQUIRED",
+    "package_zip_sha256":  "76f7ab88f4f444ea53ef0263a30cadfb48ec0cd3f971fb46c5ca2ec686a0c660",
+    "package_manifest_sha256":  "a2fcf637eeeda9133834ed16c67d53bc517f192599bfb7cfe4723a2859f01bc8",
+    "evidence_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4c_peripheral_scan_combined_overlay_v2\\C11E_E4C_PERIPHERAL_SCAN_COMBINED_OVERLAY_V2_20261116_20261116T114745Z_82ece2a0",
+    "stage_root":  "C:\\Users\\vinxe\\AppData\\Local\\Temp\\C11E_E4C_PERIPHERAL_SCAN_V2_STAGE_e9819a84dc1e4079811e8199cb2c4bd3",
+    "recorded_utc":  "2026-11-16T11:47:47.5194801Z"
+}
