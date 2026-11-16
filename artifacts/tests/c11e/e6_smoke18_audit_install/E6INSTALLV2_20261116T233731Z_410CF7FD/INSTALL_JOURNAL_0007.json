@@ -1,0 +1,7 @@
+{
+    "schema":  "C11E-E6-READONLY-AUDIT-INSTALL-JOURNAL-V2",
+    "run_id":  "E6INSTALLV2_20261116T233731Z_410CF7FD",
+    "status":  "PASS_ADD_ONLY_IDEMPOTENT_INSTALL",
+    "receipt_sha256":  "d9805513f21f6f8cc8fa5e774b8bee208bfbbe6a22320fe42ad268b3ab7a7a14",
+    "created_utc":  "2026-11-16T23:37:32.0474042Z"
+}

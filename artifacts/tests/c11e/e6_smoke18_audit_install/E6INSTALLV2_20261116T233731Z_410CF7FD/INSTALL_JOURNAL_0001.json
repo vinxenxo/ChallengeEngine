@@ -1,0 +1,223 @@
+{
+    "schema":  "C11E-E6-READONLY-AUDIT-INSTALL-JOURNAL-V2",
+    "run_id":  "E6INSTALLV2_20261116T233731Z_410CF7FD",
+    "status":  "PREFLIGHT_PASS_READY_TO_STAGE",
+    "created_utc":  "2026-11-16T23:37:31.7969109Z",
+    "project_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+    "payload_count":  29,
+    "add_count":  4,
+    "identical_count":  25,
+    "conflict_count":  0,
+    "frozen_c11c_manifest_sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "d4_8_r1v_policy_sha256":  "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+    "c11c_source_mutation":  false,
+    "renderer_invoked":  false,
+    "media_created":  false,
+    "production_dispatch":  false,
+    "release_authority":  "NONE",
+    "files":  [
+                  {
+                      "relative_path":  "docs/current/e/C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261116_V116.md",
+                      "state":  "SKIP_IDENTICAL",
+                      "bytes":  3312,
+                      "expected_sha256":  "3e04ce6323c6260f2899153855b9238b1eca386ca4520cbb3cd72d810d25f3ba",
+                      "existing_sha256":  "3e04ce6323c6260f2899153855b9238b1eca386ca4520cbb3cd72d810d25f3ba"
+                  },
+                  {
+                      "relative_path":  "docs/current/e/C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261116_V117.md",
+                      "state":  "SKIP_IDENTICAL",
+                      "bytes":  2509,
+                      "expected_sha256":  "04043b5dc7e4dff78ed87d888dc09af82beac865dd9aca1b6841e804e0443114",
+                      "existing_sha256":  "04043b5dc7e4dff78ed87d888dc09af82beac865dd9aca1b6841e804e0443114"
+                  },
+                  {
+                      "relative_path":  "docs/current/e/C11E_CURRENT_AUTHORITY_20261116_V175.md",
+                      "state":  "SKIP_IDENTICAL",
+                      "bytes":  2910,
+                      "expected_sha256":  "2ec87d22d373275d97ef7f84d1917c42041b3deb9a9cbd73b10a55bf3b5dff8c",
+                      "existing_sha256":  "2ec87d22d373275d97ef7f84d1917c42041b3deb9a9cbd73b10a55bf3b5dff8c"
+                  },
+                  {
+                      "relative_path":  "docs/current/e/C11E_CURRENT_AUTHORITY_20261116_V176.md",
+                      "state":  "SKIP_IDENTICAL",
+                      "bytes":  2163,
+                      "expected_sha256":  "120606d5d190e925531406c5b09d1a39b1facea267946dd708ca96e0029167b9",
+                      "existing_sha256":  "120606d5d190e925531406c5b09d1a39b1facea267946dd708ca96e0029167b9"
+                  },
+                  {
+                      "relative_path":  "docs/current/e/C11E_CURRENT_DOC_INDEX_20261116_V172.md",
+                      "state":  "SKIP_IDENTICAL",
+                      "bytes":  1225,
+                      "expected_sha256":  "3072f58014888396be2c9cece343cfc9ba28750659b916936c7c0055322ed5b1",
+                      "existing_sha256":  "3072f58014888396be2c9cece343cfc9ba28750659b916936c7c0055322ed5b1"
+                  },
+                  {
+                      "relative_path":  "docs/current/e/C11E_E3_EXECUTION_BACKLOG_20261116_V146.md",
+                      "state":  "SKIP_IDENTICAL",
+                      "bytes":  2243,
+                      "expected_sha256":  "32db857d4eb9ae63c4f070064b6431f2b484e6d797908727e34945fb60a93653",
+                      "existing_sha256":  "32db857d4eb9ae63c4f070064b6431f2b484e6d797908727e34945fb60a93653"
+                  },
+                  {
+                      "relative_path":  "docs/current/e/C11E_E3_EXECUTION_BACKLOG_20261116_V147.md",
+                      "state":  "SKIP_IDENTICAL",
+                      "bytes":  1602,
+                      "expected_sha256":  "8e270c3bc9ef68ee0cee2a0839c6cdb0db7c8bebfa30315ec7ce4244a899c599",
+                      "existing_sha256":  "8e270c3bc9ef68ee0cee2a0839c6cdb0db7c8bebfa30315ec7ce4244a899c599"
+                  },
+                  {
+                      "relative_path":  "docs/current/e/C11E_E5_FULL_PHASE_CLOSEOUT_20261116_V1.md",
+                      "state":  "SKIP_IDENTICAL",
+                      "bytes":  6805,
+                      "expected_sha256":  "c19b3b9994bd6d03ee5b00459b663262a9e1b4300ab70859e793e80577e3a9b1",
+                      "existing_sha256":  "c19b3b9994bd6d03ee5b00459b663262a9e1b4300ab70859e793e80577e3a9b1"
+                  },
+                  {
+                      "relative_path":  "docs/current/e/C11E_E6_SMOKE18_READONLY_AUDIT_RECOVERY_20261117_V1.md",
+                      "state":  "ADD",
+                      "bytes":  2879,
+                      "expected_sha256":  "c9e0e7f1ff8da59fd314568d4f25ad554467d906344198dc71cf836c73a5abfe",
+                      "existing_sha256":  null
+                  },
+                  {
+                      "relative_path":  "docs/current/e/C11E_E6_SMOKE18_SCOPE_AND_EVIDENCE_AUDIT_20261116_V2.md",
+                      "state":  "SKIP_IDENTICAL",
+                      "bytes":  6826,
+                      "expected_sha256":  "9473453f3287167bd962b8cfb0cc8e7e8f6a04914f57b513fa216ce15121a366",
+                      "existing_sha256":  "9473453f3287167bd962b8cfb0cc8e7e8f6a04914f57b513fa216ce15121a366"
+                  },
+                  {
+                      "relative_path":  "docs/current/e/C11E_E6_SMOKE18_SCOPE_PLAN_20261116_V1.md",
+                      "state":  "SKIP_IDENTICAL",
+                      "bytes":  6742,
+                      "expected_sha256":  "30651efa7a79f3b322db244129ddccd4ddbb46e800e62ae3743af8805fd47f8e",
+                      "existing_sha256":  "30651efa7a79f3b322db244129ddccd4ddbb46e800e62ae3743af8805fd47f8e"
+                  },
+                  {
+                      "relative_path":  "docs/current/e/C11E_E6_SMOKE18_TEST_ONLY_AUTHORIZATION_PROPOSAL_20261116_V1.md",
+                      "state":  "SKIP_IDENTICAL",
+                      "bytes":  2598,
+                      "expected_sha256":  "fa198d8bd20fe72f99c6593f51a5d17bc7d29441fbb6c62ba4eeecf1c7fc12e8",
+                      "existing_sha256":  "fa198d8bd20fe72f99c6593f51a5d17bc7d29441fbb6c62ba4eeecf1c7fc12e8"
+                  },
+                  {
+                      "relative_path":  "docs/current/e/C11E_E6_SMOKE18_TEST_ONLY_AUTHORIZATION_PROPOSAL_20261116_V2.md",
+                      "state":  "SKIP_IDENTICAL",
+                      "bytes":  2375,
+                      "expected_sha256":  "e29e1f46ce8d4fde12c9c57029df6f08110108e762ceceb16bbf137388956f65",
+                      "existing_sha256":  "e29e1f46ce8d4fde12c9c57029df6f08110108e762ceceb16bbf137388956f65"
+                  },
+                  {
+                      "relative_path":  "docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261116_V170.md",
+                      "state":  "SKIP_IDENTICAL",
+                      "bytes":  2445,
+                      "expected_sha256":  "ec53cd188ac2453ed37698a258b1492606e9abebded0dcb590ccf26ecc691008",
+                      "existing_sha256":  "ec53cd188ac2453ed37698a258b1492606e9abebded0dcb590ccf26ecc691008"
+                  },
+                  {
+                      "relative_path":  "docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261116_V171.md",
+                      "state":  "SKIP_IDENTICAL",
+                      "bytes":  1910,
+                      "expected_sha256":  "85f48774333fdc7564e3fa8d691dbfa4972c0a75a102b7f303f40bf869139b84",
+                      "existing_sha256":  "85f48774333fdc7564e3fa8d691dbfa4972c0a75a102b7f303f40bf869139b84"
+                  },
+                  {
+                      "relative_path":  "docs/master-prompts/C11E_MASTER_HANDOVER_20261116_V2.md",
+                      "state":  "SKIP_IDENTICAL",
+                      "bytes":  3354,
+                      "expected_sha256":  "39bf9fce35f2eaa5ad02907eb46b609d815383abaede3f0e4318c473b9734834",
+                      "existing_sha256":  "39bf9fce35f2eaa5ad02907eb46b609d815383abaede3f0e4318c473b9734834"
+                  },
+                  {
+                      "relative_path":  "docs/master-prompts/C11E_MASTER_HANDOVER_20261116_V3.md",
+                      "state":  "SKIP_IDENTICAL",
+                      "bytes":  2743,
+                      "expected_sha256":  "0552ffcde04be96929b52a658e9998814a817a0b83466e348f3d2674a0d3db8f",
+                      "existing_sha256":  "0552ffcde04be96929b52a658e9998814a817a0b83466e348f3d2674a0d3db8f"
+                  },
+                  {
+                      "relative_path":  "prompts/C11E_CONTINUATION_MASTER_PROMPT_20261116_V177.md",
+                      "state":  "SKIP_IDENTICAL",
+                      "bytes":  4512,
+                      "expected_sha256":  "9398f3478c6813b84a2ca56723f999adfa6ebda78a72deca19a40cc799e30e45",
+                      "existing_sha256":  "9398f3478c6813b84a2ca56723f999adfa6ebda78a72deca19a40cc799e30e45"
+                  },
+                  {
+                      "relative_path":  "prompts/C11E_CONTINUATION_MASTER_PROMPT_20261116_V178.md",
+                      "state":  "SKIP_IDENTICAL",
+                      "bytes":  2133,
+                      "expected_sha256":  "4b67a395f6ec637ca72504119024a9921726abafaa284cbfe39310dba2f6346f",
+                      "existing_sha256":  "4b67a395f6ec637ca72504119024a9921726abafaa284cbfe39310dba2f6346f"
+                  },
+                  {
+                      "relative_path":  "prompts/C11E_FIRST_PROMPT_20261116_V101.md",
+                      "state":  "SKIP_IDENTICAL",
+                      "bytes":  1785,
+                      "expected_sha256":  "7c866181f979acfee6f5a652051c018e49eb9f5d7a1e3a5a0ea4ff8d7019dcc1",
+                      "existing_sha256":  "7c866181f979acfee6f5a652051c018e49eb9f5d7a1e3a5a0ea4ff8d7019dcc1"
+                  },
+                  {
+                      "relative_path":  "prompts/C11E_FIRST_PROMPT_20261116_V102.md",
+                      "state":  "SKIP_IDENTICAL",
+                      "bytes":  1212,
+                      "expected_sha256":  "e41374f9a0c4142b4df3f3b443a8dc26e5c3a13e1b4d6f9b7eb5ba6f5e469366",
+                      "existing_sha256":  "e41374f9a0c4142b4df3f3b443a8dc26e5c3a13e1b4d6f9b7eb5ba6f5e469366"
+                  },
+                  {
+                      "relative_path":  "prompts/C11E_NEXT_WINDOW_START_PROMPT_20261116_V177.md",
+                      "state":  "SKIP_IDENTICAL",
+                      "bytes":  1949,
+                      "expected_sha256":  "ec179418847fec57ae5db572617c33a9b5cfd7baddc2346ca45b5bd2c4bd5d78",
+                      "existing_sha256":  "ec179418847fec57ae5db572617c33a9b5cfd7baddc2346ca45b5bd2c4bd5d78"
+                  },
+                  {
+                      "relative_path":  "prompts/C11E_NEXT_WINDOW_START_PROMPT_20261116_V178.md",
+                      "state":  "SKIP_IDENTICAL",
+                      "bytes":  1326,
+                      "expected_sha256":  "3ede9d93f66540b16d84f8c6c28ae13475de677f9aef44e444641f04adbebe6d",
+                      "existing_sha256":  "3ede9d93f66540b16d84f8c6c28ae13475de677f9aef44e444641f04adbebe6d"
+                  },
+                  {
+                      "relative_path":  "tools/c11d/d9/RUN_C11E_E6_SMOKE18_READONLY_AUDIT_V1.ps1",
+                      "state":  "SKIP_IDENTICAL",
+                      "bytes":  1636,
+                      "expected_sha256":  "741916357e36070d88fc3d4e2fd8f12f6630c197acf3aef656b845a4427188a6",
+                      "existing_sha256":  "741916357e36070d88fc3d4e2fd8f12f6630c197acf3aef656b845a4427188a6"
+                  },
+                  {
+                      "relative_path":  "tools/c11d/d9/RUN_C11E_E6_SMOKE18_READONLY_AUDIT_V2.ps1",
+                      "state":  "ADD",
+                      "bytes":  3488,
+                      "expected_sha256":  "b8a8d44a7f66a5539114d161821925c74790646370cb31a4c84c402747df5a05",
+                      "existing_sha256":  null
+                  },
+                  {
+                      "relative_path":  "tools/c11d/d9/c11e_e6_smoke18_readonly_audit_v1.py",
+                      "state":  "SKIP_IDENTICAL",
+                      "bytes":  29752,
+                      "expected_sha256":  "b3f6834cd36d4483b9acf40dd83ecc7951823a69b96c38cc75224f48088c9f75",
+                      "existing_sha256":  "b3f6834cd36d4483b9acf40dd83ecc7951823a69b96c38cc75224f48088c9f75"
+                  },
+                  {
+                      "relative_path":  "tools/c11d/d9/c11e_e6_smoke18_readonly_audit_v2.py",
+                      "state":  "ADD",
+                      "bytes":  33086,
+                      "expected_sha256":  "21b2a309e4f8a619508e2a44f45b1b62d81783e0ec46a2db95d9725cd1248cad",
+                      "existing_sha256":  null
+                  },
+                  {
+                      "relative_path":  "tools/c11d/d9/test_c11e_e6_smoke18_readonly_audit_v1.py",
+                      "state":  "SKIP_IDENTICAL",
+                      "bytes":  2915,
+                      "expected_sha256":  "87eed4d1eabd1b4f48818d5b31db5739d9c064fe0ca92c9f91892a40355e2595",
+                      "existing_sha256":  "87eed4d1eabd1b4f48818d5b31db5739d9c064fe0ca92c9f91892a40355e2595"
+                  },
+                  {
+                      "relative_path":  "tools/c11d/d9/test_c11e_e6_smoke18_readonly_audit_v2.py",
+                      "state":  "ADD",
+                      "bytes":  5165,
+                      "expected_sha256":  "cd43e8c746ff57b22fd71d770fd4627bdd2dfbcb104369166a93bd8770b9f1b4",
+                      "existing_sha256":  null
+                  }
+              ]
+}

@@ -1,0 +1,14 @@
+{
+    "schema":  "C11E-E6-READONLY-AUDIT-INSTALL-JOURNAL-V3",
+    "run_id":  "E6INSTALLV3_20261116T235044Z_BA84A4A5",
+    "status":  "PREFLIGHT_PASS_READY_TO_STAGE",
+    "payload_count":  6,
+    "add_count":  6,
+    "identical_count":  0,
+    "conflict_count":  0,
+    "frozen_c11c_manifest_sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "d4_8_policy_sha256":  "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+    "v2_audit_sha256":  "21b2a309e4f8a619508e2a44f45b1b62d81783e0ec46a2db95d9725cd1248cad",
+    "v2_test_sha256":  "cd43e8c746ff57b22fd71d770fd4627bdd2dfbcb104369166a93bd8770b9f1b4",
+    "created_utc":  "2026-11-16T23:50:44.6573237Z"
+}

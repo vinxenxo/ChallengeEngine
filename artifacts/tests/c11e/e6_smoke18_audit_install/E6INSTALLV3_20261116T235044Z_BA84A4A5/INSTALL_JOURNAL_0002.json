@@ -1,0 +1,7 @@
+{
+    "schema":  "C11E-E6-READONLY-AUDIT-INSTALL-JOURNAL-V3",
+    "run_id":  "E6INSTALLV3_20261116T235044Z_BA84A4A5",
+    "status":  "ALL_MISSING_PAYLOADS_STAGED_AND_VERIFIED",
+    "staged_count":  6,
+    "created_utc":  "2026-11-16T23:50:44.7694107Z"
+}

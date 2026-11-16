@@ -1,0 +1,692 @@
+{
+  "schema": "C11E-E6-SMOKE18-READONLY-AUDIT-RECEIPT-V1",
+  "status": "PASS_AUDIT_READ_ONLY_EVIDENCE_RECONCILED_EXECUTION_HELD",
+  "run_id": "E6AUDIT_20261116T233701Z_7CEB185B",
+  "created_utc": "2026-11-16T23:37:01.629527+00:00",
+  "project_root": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+  "scope": "READ_ONLY_SELECTOR_SOURCE_EVIDENCE_AUDIT_NO_MEDIA_NO_RESERVATION",
+  "source_pins": {
+    "expected": 50,
+    "passed": 50,
+    "failed": 0,
+    "rows": [
+      {
+        "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+        "status": "PASS",
+        "expected_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+        "actual_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+        "bytes": 796318
+      },
+      {
+        "path": "definitions/c11d/production/C11E_D4_8_R1V_QUALIFICATION_ONLY_POLICY_V2.json",
+        "status": "PASS",
+        "expected_sha256": "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+        "actual_sha256": "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+        "bytes": 12996
+      },
+      {
+        "path": "definitions/c11d/production/C11E_E4B_LOOP22_SELECTOR_MATRIX_V1.json",
+        "status": "PASS",
+        "expected_sha256": "eb0ce2fab5ee97c298e232685ec3452779fc1e1f4a8dcd1c9c994bff1a45a1a1",
+        "actual_sha256": "eb0ce2fab5ee97c298e232685ec3452779fc1e1f4a8dcd1c9c994bff1a45a1a1",
+        "bytes": 51335
+      },
+      {
+        "path": "profiles/presentation/c11c_visual_music_profiles.json",
+        "status": "PASS",
+        "expected_sha256": "b78706c5a9adbf1581d925f522b76cc3419983177de213734cc79996af5cbf58",
+        "actual_sha256": "b78706c5a9adbf1581d925f522b76cc3419983177de213734cc79996af5cbf58",
+        "bytes": 7038
+      },
+      {
+        "path": "challenges/CHALLENGE_001.json",
+        "status": "PASS",
+        "expected_sha256": "ec8925fa5b4ab996a791c8cf7f5b139470774720f57880c5b01b2d0aa5b57bea",
+        "actual_sha256": "ec8925fa5b4ab996a791c8cf7f5b139470774720f57880c5b01b2d0aa5b57bea",
+        "bytes": 1085
+      },
+      {
+        "path": "challenges/CHALLENGE_002.json",
+        "status": "PASS",
+        "expected_sha256": "db5d70a28c460e986e785c6787447529372ac5ea3b5a7ff0507667decbe2a160",
+        "actual_sha256": "db5d70a28c460e986e785c6787447529372ac5ea3b5a7ff0507667decbe2a160",
+        "bytes": 1218
+      },
+      {
+        "path": "challenges/CHALLENGE_003.json",
+        "status": "PASS",
+        "expected_sha256": "38cb0166482c5ba4862deef8ab75dad4a6e1524590b6850312bab5238f078419",
+        "actual_sha256": "38cb0166482c5ba4862deef8ab75dad4a6e1524590b6850312bab5238f078419",
+        "bytes": 1132
+      },
+      {
+        "path": "challenges/CHALLENGE_004.json",
+        "status": "PASS",
+        "expected_sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71",
+        "actual_sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71",
+        "bytes": 1543
+      },
+      {
+        "path": "challenges/CHALLENGE_005.json",
+        "status": "PASS",
+        "expected_sha256": "e173736fcbb0e340cd250be1111fa9d38489934d55cc0e0c93835c66f9596e30",
+        "actual_sha256": "e173736fcbb0e340cd250be1111fa9d38489934d55cc0e0c93835c66f9596e30",
+        "bytes": 917
+      },
+      {
+        "path": "challenges/CHALLENGE_006.json",
+        "status": "PASS",
+        "expected_sha256": "2d7d7397cbb0a2109f300859a5d7c0830ded0553522a5120f61750f5bc0b5694",
+        "actual_sha256": "2d7d7397cbb0a2109f300859a5d7c0830ded0553522a5120f61750f5bc0b5694",
+        "bytes": 1097
+      },
+      {
+        "path": "challenges/CHALLENGE_007.json",
+        "status": "PASS",
+        "expected_sha256": "269f9588e5a6b7d253e2e944440cc41dc3a9db8967775ffa819edebe729a3a61",
+        "actual_sha256": "269f9588e5a6b7d253e2e944440cc41dc3a9db8967775ffa819edebe729a3a61",
+        "bytes": 1388
+      },
+      {
+        "path": "definitions/visual_loop_fractal_canonical.json",
+        "status": "PASS",
+        "expected_sha256": "80eb24280db77a6dc8e3b6477b84370ec574d6e8f1728e6c69c59707b9868d15",
+        "actual_sha256": "80eb24280db77a6dc8e3b6477b84370ec574d6e8f1728e6c69c59707b9868d15",
+        "bytes": 962
+      },
+      {
+        "path": "definitions/visual_loop_geometric_canonical.json",
+        "status": "PASS",
+        "expected_sha256": "648eb36225dd4c090457b4da3c9e8eca218c26c8f995cf02a39914cf3f860dcc",
+        "actual_sha256": "648eb36225dd4c090457b4da3c9e8eca218c26c8f995cf02a39914cf3f860dcc",
+        "bytes": 591
+      },
+      {
+        "path": "definitions/visual_loop_kaleidoscope_canonical.json",
+        "status": "PASS",
+        "expected_sha256": "a32152d4ee04bedf6308a718d3160ddf65c1808d13fa1e05087e5488cd81378f",
+        "actual_sha256": "a32152d4ee04bedf6308a718d3160ddf65c1808d13fa1e05087e5488cd81378f",
+        "bytes": 597
+      },
+      {
+        "path": "definitions/visual_loop_particle_flow_canonical.json",
+        "status": "PASS",
+        "expected_sha256": "2a5293512d83cb1b7783a21dcaeda809331a1f34647e8872c3849aa52effacfd",
+        "actual_sha256": "2a5293512d83cb1b7783a21dcaeda809331a1f34647e8872c3849aa52effacfd",
+        "bytes": 599
+      },
+      {
+        "path": "definitions/visual_loop_vector_field_canonical.json",
+        "status": "PASS",
+        "expected_sha256": "bb8cbe569e62e8554479b2900fa9c8aebe5a30000b9abfcadcd13e65e56d3482",
+        "actual_sha256": "bb8cbe569e62e8554479b2900fa9c8aebe5a30000b9abfcadcd13e65e56d3482",
+        "bytes": 597
+      },
+      {
+        "path": "definitions/visual_drill_tracking_canonical.json",
+        "status": "PASS",
+        "expected_sha256": "54d432c80f190f4ac5dcb8ef5b135e16f18c378da120f35723fd5be944719ec3",
+        "actual_sha256": "54d432c80f190f4ac5dcb8ef5b135e16f18c378da120f35723fd5be944719ec3",
+        "bytes": 1511
+      },
+      {
+        "path": "definitions/visual_drill_pursuit_canonical.json",
+        "status": "PASS",
+        "expected_sha256": "dfe2bce9913df8ebe4f92d06eec5d22736338214e71b497dde3562a6927600bc",
+        "actual_sha256": "dfe2bce9913df8ebe4f92d06eec5d22736338214e71b497dde3562a6927600bc",
+        "bytes": 133532
+      },
+      {
+        "path": "definitions/visual_drill_saccade_canonical.json",
+        "status": "PASS",
+        "expected_sha256": "daba3fa558f6898a17107ab68894d15c58fa5b2127e8da7d7b11b203f4ddfaa1",
+        "actual_sha256": "daba3fa558f6898a17107ab68894d15c58fa5b2127e8da7d7b11b203f4ddfaa1",
+        "bytes": 1328
+      },
+      {
+        "path": "definitions/visual_drill_peripheral_scan_canonical.json",
+        "status": "PASS",
+        "expected_sha256": "aaf50f9223bad678df15589110dfcd6ff42dda89326a0a84bc5a5f51d133a904",
+        "actual_sha256": "aaf50f9223bad678df15589110dfcd6ff42dda89326a0a84bc5a5f51d133a904",
+        "bytes": 8862
+      },
+      {
+        "path": "tools/c11d/d9/c11e_e4a_challenge_av_review.py",
+        "status": "PASS",
+        "expected_sha256": "a31083dcad457b2621610ae68d180a9797cdeb12537a300150e53ec880ee06de",
+        "actual_sha256": "a31083dcad457b2621610ae68d180a9797cdeb12537a300150e53ec880ee06de",
+        "bytes": 30235
+      },
+      {
+        "path": "tools/c11d/d9/c11e_e4a6_challenge_live_editorial_envelope.py",
+        "status": "PASS",
+        "expected_sha256": "9ea0219f681a912760de3bcdf2469f8a3812a7afe7fb3f5ac569664f354ac18e",
+        "actual_sha256": "9ea0219f681a912760de3bcdf2469f8a3812a7afe7fb3f5ac569664f354ac18e",
+        "bytes": 14855
+      },
+      {
+        "path": "tools/c11d/d9/C11EChallengeLiveEditorialConsumer.gd",
+        "status": "PASS",
+        "expected_sha256": "eba81fff4c24ca75033c8f963665df1961136046c41fee0e88681fe55a631203",
+        "actual_sha256": "eba81fff4c24ca75033c8f963665df1961136046c41fee0e88681fe55a631203",
+        "bytes": 26367
+      },
+      {
+        "path": "c11c-suite/c11c-producer/c11e_e3_audio_pipeline.py",
+        "status": "PASS",
+        "expected_sha256": "46b087683a3dcb460601c925373b84e390999d44d73141328285e6c8a633ba5d",
+        "actual_sha256": "46b087683a3dcb460601c925373b84e390999d44d73141328285e6c8a633ba5d",
+        "bytes": 39483
+      },
+      {
+        "path": "c11c-suite/c11c-producer/c11e_e3_audio_pilot.py",
+        "status": "PASS",
+        "expected_sha256": "06abd7a9f8c99382366f3720b93601e4e76b80861b4f54ce554acab11571209f",
+        "actual_sha256": "06abd7a9f8c99382366f3720b93601e4e76b80861b4f54ce554acab11571209f",
+        "bytes": 2079
+      },
+      {
+        "path": "tools/c11d/d9/c11e_e4b_loop22_av_qualification_v2.py",
+        "status": "PASS",
+        "expected_sha256": "9da24610922bb0c0a8694da743ae383386e86e3926d592b550b6ba6f5b1787c9",
+        "actual_sha256": "9da24610922bb0c0a8694da743ae383386e86e3926d592b550b6ba6f5b1787c9",
+        "bytes": 39047
+      },
+      {
+        "path": "tools/c11d/d9/c11e_e4b_loop22_av_support_v1.py",
+        "status": "PASS",
+        "expected_sha256": "4f79a33f063dc22e350fc707f82b572ed1007bb14d36b0c6d49b6fd511a0e6e1",
+        "actual_sha256": "4f79a33f063dc22e350fc707f82b572ed1007bb14d36b0c6d49b6fd511a0e6e1",
+        "bytes": 21146
+      },
+      {
+        "path": "tools/c11d/d9/c11e_r1v_five_family_qualification.py",
+        "status": "PASS",
+        "expected_sha256": "9d1baba14ca8cf96e3f2f466cedc104ec4b9cf1b94ef4b11690abe7a6de9e019",
+        "actual_sha256": "9d1baba14ca8cf96e3f2f466cedc104ec4b9cf1b94ef4b11690abe7a6de9e019",
+        "bytes": 89479
+      },
+      {
+        "path": "tools/c11d/d9/c11e_e4c_drill_execution.py",
+        "status": "PASS",
+        "expected_sha256": "b7cbf7bd97f76f4c2e339840fc694d3f5b0e50186ba2456e45ff00e585751abe",
+        "actual_sha256": "b7cbf7bd97f76f4c2e339840fc694d3f5b0e50186ba2456e45ff00e585751abe",
+        "bytes": 53851
+      },
+      {
+        "path": "tools/c11d/d9/c11e_e4c_drill_visual_composition_consumer.py",
+        "status": "PASS",
+        "expected_sha256": "d5cd8e24c0cfdd83ec035b006c76468ed637d6babf5f0a9fcca8a93817ba1aa8",
+        "actual_sha256": "d5cd8e24c0cfdd83ec035b006c76468ed637d6babf5f0a9fcca8a93817ba1aa8",
+        "bytes": 79200
+      },
+      {
+        "path": "docs/history/c11e/C11E_E4B_LOOP22_OPERATOR_ACCEPTANCE_CLOSEOUT_20261109_V2.md",
+        "status": "PASS",
+        "expected_sha256": "f9a09d34d04ea4bd92eb70cf3668b9da093542f8a94c0a391861805f841d1dd3",
+        "actual_sha256": "f9a09d34d04ea4bd92eb70cf3668b9da093542f8a94c0a391861805f841d1dd3",
+        "bytes": 1042
+      },
+      {
+        "path": "docs/history/c11e/C11E_R1V_AV_QUALIFICATION_CLOSEOUT_20261109_V2.md",
+        "status": "PASS",
+        "expected_sha256": "e86525d3ddacb572c106e49191388cc3afb65549007b8d713613f370fdb6e65b",
+        "actual_sha256": "e86525d3ddacb572c106e49191388cc3afb65549007b8d713613f370fdb6e65b",
+        "bytes": 3605
+      },
+      {
+        "path": "artifacts/tests/c11e/r1v_operator_human_review_closeout/R1V_HUMAN_REVIEW_CLOSEOUT_RECEIPT_V1.json",
+        "status": "PASS",
+        "expected_sha256": "a9e1de310ba1f52bab029a6fc6f926892264dd25cfa5edd8ec90aec460a2662a",
+        "actual_sha256": "a9e1de310ba1f52bab029a6fc6f926892264dd25cfa5edd8ec90aec460a2662a",
+        "bytes": 10555
+      },
+      {
+        "path": "artifacts/tests/c11e/r1v_av_five_family_qualification/Q5_040414_B6BE4D/r1v_av_report.json",
+        "status": "PASS",
+        "expected_sha256": "85de2645621acd6f8183508e0da9b5466b8a00cf9d2cb340a170f7d2803285ba",
+        "actual_sha256": "85de2645621acd6f8183508e0da9b5466b8a00cf9d2cb340a170f7d2803285ba",
+        "bytes": 209864
+      },
+      {
+        "path": "artifacts/tests/c11e/r1v_geometric_av_reuse_qualification/GEOAVR2_224356_841F9B/GEO_AV_REUSE_MUX_REPORT_V1.json",
+        "status": "PASS",
+        "expected_sha256": "15712f3187237f118df05c0c013558c65b2a2f7d342a0e765da8307e7a7ff037",
+        "actual_sha256": "15712f3187237f118df05c0c013558c65b2a2f7d342a0e765da8307e7a7ff037",
+        "bytes": 166456
+      },
+      {
+        "path": "artifacts/tests/c11e/e4b_loop22_av/L22_191801_27ABF3/loop22_av_report.json",
+        "status": "PASS",
+        "expected_sha256": "d8f7050f952b7248b24763abde20ce52bf812c3934738f14670a0a3dc0c72068",
+        "actual_sha256": "d8f7050f952b7248b24763abde20ce52bf812c3934738f14670a0a3dc0c72068",
+        "bytes": 992067
+      },
+      {
+        "path": "artifacts/tests/c11e/e4b_loop22_av/L22_191801_27ABF3/loop22_av_process_receipt.json",
+        "status": "PASS",
+        "expected_sha256": "37ee99f8ab30eb445c9ca462471152b6fadc850471b8a27f7c59f30714ec2f5d",
+        "actual_sha256": "37ee99f8ab30eb445c9ca462471152b6fadc850471b8a27f7c59f30714ec2f5d",
+        "bytes": 3374
+      },
+      {
+        "path": "artifacts/tests/c11e/e4b_loop22_av/L22_191801_27ABF3/loop22_run_manifest.json",
+        "status": "PASS",
+        "expected_sha256": "170b869b604eae0fdecf770c395e379554ae4ee05bbe579a560180a725fe396f",
+        "actual_sha256": "170b869b604eae0fdecf770c395e379554ae4ee05bbe579a560180a725fe396f",
+        "bytes": 17907
+      },
+      {
+        "path": "artifacts/tests/c11e/e4a_d_composited_av_review/RUN_20261106T070808Z-62F31F9C/C11E_E4A7_D_COMPOSITED_CHALLENGE_AV_RECEIPT.json",
+        "status": "PASS",
+        "expected_sha256": "102cf07a0b8920318c3ba211a3bd4374c3e080018486363d701f81e65613aaa0",
+        "actual_sha256": "102cf07a0b8920318c3ba211a3bd4374c3e080018486363d701f81e65613aaa0",
+        "bytes": 26095
+      },
+      {
+        "path": "artifacts/tests/c11e/e4a_d_composited_av_review/RUN_20261106T070808Z-62F31F9C/C11E_E4A7_D_COMPOSITED_CHALLENGE_AV_REPORT.json",
+        "status": "PASS",
+        "expected_sha256": "efb0f1a9245d3fce15bf48041c8972e90f6874d308fa99340afb5c731f94403a",
+        "actual_sha256": "efb0f1a9245d3fce15bf48041c8972e90f6874d308fa99340afb5c731f94403a",
+        "bytes": 8477
+      },
+      {
+        "path": "docs/current/e/C11E_E4A7_D_COMPOSITED_CHALLENGE_AV_PLAN_20261106_V3.md",
+        "status": "PASS",
+        "expected_sha256": "cb498f260f8f1ab5a1165b29ae5c372bb975c4563abbde49b022d140d000a831",
+        "actual_sha256": "cb498f260f8f1ab5a1165b29ae5c372bb975c4563abbde49b022d140d000a831",
+        "bytes": 4727
+      },
+      {
+        "path": "docs/current/e/C11E_E4C_PURSUIT_FAMILY_CLOSEOUT_20261116_V1.md",
+        "status": "PASS",
+        "expected_sha256": "7f06694ea3980e34868027fb607fdf918c07f03b75e9ef82e8630a9d7814c534",
+        "actual_sha256": "7f06694ea3980e34868027fb607fdf918c07f03b75e9ef82e8630a9d7814c534",
+        "bytes": 2776
+      },
+      {
+        "path": "docs/current/e/C11E_E4C_SACCADE_FAMILY_CLOSEOUT_20261116_V5.md",
+        "status": "PASS",
+        "expected_sha256": "9a5ad358f0bf9afb6c24c8cebb076c51981bf15bf855373b0fa54637e937cb8c",
+        "actual_sha256": "9a5ad358f0bf9afb6c24c8cebb076c51981bf15bf855373b0fa54637e937cb8c",
+        "bytes": 2660
+      },
+      {
+        "path": "artifacts/production/c11e/E4C-TRK-T2-6239dd21/E4C_DRILL_AV_QUALIFICATION_RECEIPT.json",
+        "status": "PASS",
+        "expected_sha256": "f95e9b4e787f1b4f7db79b92428324f6de662ade55b260c7692d4440e2967ee7",
+        "actual_sha256": "f95e9b4e787f1b4f7db79b92428324f6de662ade55b260c7692d4440e2967ee7",
+        "bytes": 83131
+      },
+      {
+        "path": "artifacts/production/c11e/E4C-PRS-T1-b3abbe94/E4C_DRILL_AV_QUALIFICATION_RECEIPT.json",
+        "status": "PASS",
+        "expected_sha256": "57206b4560b917c7a7fe5e738c5afd5d900d293e01c99fcd554f0926acc6eee7",
+        "actual_sha256": "57206b4560b917c7a7fe5e738c5afd5d900d293e01c99fcd554f0926acc6eee7",
+        "bytes": 83156
+      },
+      {
+        "path": "artifacts/production/c11e/E4C-SAC-T1-57fdf44b/E4C_DRILL_AV_QUALIFICATION_RECEIPT.json",
+        "status": "PASS",
+        "expected_sha256": "930ba103153fbca0226a0b7abd1226b46dfd3c2e523204e83e6cb39f1282e606",
+        "actual_sha256": "930ba103153fbca0226a0b7abd1226b46dfd3c2e523204e83e6cb39f1282e606",
+        "bytes": 83133
+      },
+      {
+        "path": "artifacts/production/c11e/E4C-PSC-T1-b342a227/E4C_DRILL_AV_QUALIFICATION_RECEIPT.json",
+        "status": "PASS",
+        "expected_sha256": "eb290666163df0e89daac9c683a95a39c38d536c5da735def15cd3a19964083b",
+        "actual_sha256": "eb290666163df0e89daac9c683a95a39c38d536c5da735def15cd3a19964083b",
+        "bytes": 83256
+      },
+      {
+        "path": "artifacts/production/c11e/E4C-TRK-T5-6239dd21/E4C_DRILL_AV_QUALIFICATION_RECEIPT.json",
+        "status": "PASS",
+        "expected_sha256": "6e55dc3fd4fc13745347cc641d29103fbfb7fa90dee932910f920703690c3c61",
+        "actual_sha256": "6e55dc3fd4fc13745347cc641d29103fbfb7fa90dee932910f920703690c3c61",
+        "bytes": 83132
+      },
+      {
+        "path": "artifacts/production/c11e/E4C-PSC-T5-b342a227/E4C_DRILL_AV_QUALIFICATION_RECEIPT.json",
+        "status": "PASS",
+        "expected_sha256": "5644ffa386c2d1388e7dd657cb566c796a87de93b22c28db84197dbb8ad3a224",
+        "actual_sha256": "5644ffa386c2d1388e7dd657cb566c796a87de93b22c28db84197dbb8ad3a224",
+        "bytes": 83256
+      },
+      {
+        "path": "docs/current/e/C11E_E4C_PERIPHERAL_SCAN_FAMILY_CLOSEOUT_20261116_V1.md",
+        "status": "PASS",
+        "expected_sha256": "88f0a7e2c34dc16d490ace9192766eb6801119649ccc1b05210de894436a3183",
+        "actual_sha256": "88f0a7e2c34dc16d490ace9192766eb6801119649ccc1b05210de894436a3183",
+        "bytes": 6170
+      }
+    ]
+  },
+  "baseline_document_pins": {
+    "expected": 11,
+    "passed": 11,
+    "failed": 0,
+    "rows": [
+      {
+        "path": "docs/current/e/C11E_CURRENT_AUTHORITY_20261116_V175.md",
+        "status": "PASS",
+        "expected_sha256": "2ec87d22d373275d97ef7f84d1917c42041b3deb9a9cbd73b10a55bf3b5dff8c",
+        "actual_sha256": "2ec87d22d373275d97ef7f84d1917c42041b3deb9a9cbd73b10a55bf3b5dff8c",
+        "bytes": 2910
+      },
+      {
+        "path": "docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261116_V170.md",
+        "status": "PASS",
+        "expected_sha256": "ec53cd188ac2453ed37698a258b1492606e9abebded0dcb590ccf26ecc691008",
+        "actual_sha256": "ec53cd188ac2453ed37698a258b1492606e9abebded0dcb590ccf26ecc691008",
+        "bytes": 2445
+      },
+      {
+        "path": "docs/current/e/C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261116_V116.md",
+        "status": "PASS",
+        "expected_sha256": "3e04ce6323c6260f2899153855b9238b1eca386ca4520cbb3cd72d810d25f3ba",
+        "actual_sha256": "3e04ce6323c6260f2899153855b9238b1eca386ca4520cbb3cd72d810d25f3ba",
+        "bytes": 3312
+      },
+      {
+        "path": "docs/current/e/C11E_E3_EXECUTION_BACKLOG_20261116_V146.md",
+        "status": "PASS",
+        "expected_sha256": "32db857d4eb9ae63c4f070064b6431f2b484e6d797908727e34945fb60a93653",
+        "actual_sha256": "32db857d4eb9ae63c4f070064b6431f2b484e6d797908727e34945fb60a93653",
+        "bytes": 2243
+      },
+      {
+        "path": "docs/current/e/C11E_E5_FULL_PHASE_CLOSEOUT_20261116_V1.md",
+        "status": "PASS",
+        "expected_sha256": "c19b3b9994bd6d03ee5b00459b663262a9e1b4300ab70859e793e80577e3a9b1",
+        "actual_sha256": "c19b3b9994bd6d03ee5b00459b663262a9e1b4300ab70859e793e80577e3a9b1",
+        "bytes": 6805
+      },
+      {
+        "path": "docs/current/e/C11E_E6_SMOKE18_SCOPE_PLAN_20261116_V1.md",
+        "status": "PASS",
+        "expected_sha256": "30651efa7a79f3b322db244129ddccd4ddbb46e800e62ae3743af8805fd47f8e",
+        "actual_sha256": "30651efa7a79f3b322db244129ddccd4ddbb46e800e62ae3743af8805fd47f8e",
+        "bytes": 6742
+      },
+      {
+        "path": "docs/current/e/C11E_E6_SMOKE18_TEST_ONLY_AUTHORIZATION_PROPOSAL_20261116_V1.md",
+        "status": "PASS",
+        "expected_sha256": "fa198d8bd20fe72f99c6593f51a5d17bc7d29441fbb6c62ba4eeecf1c7fc12e8",
+        "actual_sha256": "fa198d8bd20fe72f99c6593f51a5d17bc7d29441fbb6c62ba4eeecf1c7fc12e8",
+        "bytes": 2598
+      },
+      {
+        "path": "docs/master-prompts/C11E_MASTER_HANDOVER_20261116_V2.md",
+        "status": "PASS",
+        "expected_sha256": "39bf9fce35f2eaa5ad02907eb46b609d815383abaede3f0e4318c473b9734834",
+        "actual_sha256": "39bf9fce35f2eaa5ad02907eb46b609d815383abaede3f0e4318c473b9734834",
+        "bytes": 3354
+      },
+      {
+        "path": "prompts/C11E_CONTINUATION_MASTER_PROMPT_20261116_V177.md",
+        "status": "PASS",
+        "expected_sha256": "9398f3478c6813b84a2ca56723f999adfa6ebda78a72deca19a40cc799e30e45",
+        "actual_sha256": "9398f3478c6813b84a2ca56723f999adfa6ebda78a72deca19a40cc799e30e45",
+        "bytes": 4512
+      },
+      {
+        "path": "prompts/C11E_NEXT_WINDOW_START_PROMPT_20261116_V177.md",
+        "status": "PASS",
+        "expected_sha256": "ec179418847fec57ae5db572617c33a9b5cfd7baddc2346ca45b5bd2c4bd5d78",
+        "actual_sha256": "ec179418847fec57ae5db572617c33a9b5cfd7baddc2346ca45b5bd2c4bd5d78",
+        "bytes": 1949
+      },
+      {
+        "path": "prompts/C11E_FIRST_PROMPT_20261116_V101.md",
+        "status": "PASS",
+        "expected_sha256": "7c866181f979acfee6f5a652051c018e49eb9f5d7a1e3a5a0ea4ff8d7019dcc1",
+        "actual_sha256": "7c866181f979acfee6f5a652051c018e49eb9f5d7a1e3a5a0ea4ff8d7019dcc1",
+        "bytes": 1785
+      }
+    ]
+  },
+  "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+  "d4_8_policy": {
+    "status": "PINNED_R1V_ONLY_E6_PROHIBITED",
+    "valid": true,
+    "policy_id": "C11E_D4_8_R1V_QUALIFICATION_ONLY_POLICY_V2",
+    "launcher_invocations": 10,
+    "selector_count": 5,
+    "smoke18_forbidden": true,
+    "d3_forbidden": true,
+    "audio_forbidden": true,
+    "ffmpeg_mux_forbidden": true
+  },
+  "prior_evidence": {
+    "r1v": {
+      "status": "PASS_HUMAN_CLOSEOUT_10_OF_10",
+      "valid": true,
+      "technical_slots": 10,
+      "visual_pass": 10,
+      "audio_pass": 10,
+      "five_loop_candidate_pairs_present": true,
+      "geometric_replacement_pass": true,
+      "historical_original_report_status": "FAIL_R1V_AV_FIVE_FAMILY_QUALIFICATION_STOPPED_FAIL_CLOSED",
+      "historical_failure_preserved": true,
+      "geometric_replacement_documented": true,
+      "receipt_sha256": "a9e1de310ba1f52bab029a6fc6f926892264dd25cfa5edd8ec90aec460a2662a",
+      "technical_report_sha256": "85de2645621acd6f8183508e0da9b5466b8a00cf9d2cb340a170f7d2803285ba",
+      "geometric_replacement_report_sha256": "15712f3187237f118df05c0c013558c65b2a2f7d342a0e765da8307e7a7ff037"
+    },
+    "loop22": {
+      "status": "PASS_HUMAN_CLOSEOUT_44_OF_44",
+      "valid": true,
+      "technical_outputs": 44,
+      "launcher_jobs": 44,
+      "ab_pairs": 22,
+      "interference_plane_matrix_match": true,
+      "interference_plane_A_B_jobs_match": true,
+      "operator_human_acceptance": "PASS",
+      "report_sha256": "d8f7050f952b7248b24763abde20ce52bf812c3934738f14670a0a3dc0c72068",
+      "process_receipt_sha256": "37ee99f8ab30eb445c9ca462471152b6fadc850471b8a27f7c59f30714ec2f5d",
+      "run_manifest_sha256": "170b869b604eae0fdecf770c395e379554ae4ee05bbe579a560180a725fe396f"
+    },
+    "challenge": {
+      "candidate_pool_count": 7,
+      "candidate_pool": [
+        {
+          "challenge_id": "CHALLENGE_001",
+          "mechanic": "key",
+          "gameplay_seed": 193847,
+          "fps": 60,
+          "declared_duration_seconds": 9.0,
+          "source_path": "challenges/CHALLENGE_001.json"
+        },
+        {
+          "challenge_id": "CHALLENGE_002",
+          "mechanic": "parking",
+          "gameplay_seed": 987654,
+          "fps": 60,
+          "declared_duration_seconds": 10.0,
+          "source_path": "challenges/CHALLENGE_002.json"
+        },
+        {
+          "challenge_id": "CHALLENGE_003",
+          "mechanic": "pilot",
+          "gameplay_seed": 314159,
+          "fps": 60,
+          "declared_duration_seconds": 12.0,
+          "source_path": "challenges/CHALLENGE_003.json"
+        },
+        {
+          "challenge_id": "CHALLENGE_004",
+          "mechanic": "parking_v2",
+          "gameplay_seed": 314159,
+          "fps": 60,
+          "declared_duration_seconds": 15.0,
+          "source_path": "challenges/CHALLENGE_004.json"
+        },
+        {
+          "challenge_id": "CHALLENGE_005",
+          "mechanic": "hit_v1",
+          "gameplay_seed": 998877,
+          "fps": 60,
+          "declared_duration_seconds": 7.0,
+          "source_path": "challenges/CHALLENGE_005.json"
+        },
+        {
+          "challenge_id": "CHALLENGE_006",
+          "mechanic": "catch_v1",
+          "gameplay_seed": 884422,
+          "fps": 60,
+          "declared_duration_seconds": 9.0,
+          "source_path": "challenges/CHALLENGE_006.json"
+        },
+        {
+          "challenge_id": "CHALLENGE_007",
+          "mechanic": "find_v1",
+          "gameplay_seed": 7770001,
+          "fps": 60,
+          "declared_duration_seconds": 10.0,
+          "source_path": "challenges/CHALLENGE_007.json"
+        }
+      ],
+      "accepted_av_selector": "CHALLENGE_004",
+      "accepted_av_receipt_sha256": "102cf07a0b8920318c3ba211a3bd4374c3e080018486363d701f81e65613aaa0",
+      "six_selector_matrix_frozen": false,
+      "music_seed_authority_for_other_candidates": "NOT_PRESENT_IN_E4A7_ACCEPTANCE_RECEIPT_OR_CHALLENGE_CANONICAL_DEFINITIONS",
+      "multi_selector_d_owned_av_executor": "NOT_PROVEN_BY_CURRENT_E4A7_SCOPE",
+      "status": "ONE_ACCEPTED_SELECTOR_ONLY_6_OF_7_POOL_UNRESOLVED"
+    },
+    "drill": {
+      "status": "PASS_PRIOR_E4C_EVIDENCE_6_OF_6",
+      "valid": true,
+      "accepted_receipts": 6,
+      "global_e4c_closeout_20_of_20": true,
+      "rows": [
+        {
+          "family": "tracking",
+          "selector": "tier-2",
+          "path": "artifacts/production/c11e/E4C-TRK-T2-6239dd21/E4C_DRILL_AV_QUALIFICATION_RECEIPT.json",
+          "sha256": "f95e9b4e787f1b4f7db79b92428324f6de662ade55b260c7692d4440e2967ee7",
+          "status": "PASS",
+          "gameplay_seed": 12345,
+          "music_seed_A_B": 840001,
+          "music_seed_C": 840002,
+          "family_music_profile": "FLOWING_VECTOR",
+          "audio_generated": true,
+          "operator_closeout_reference": "E4C 20/20 family closeouts"
+        },
+        {
+          "family": "pursuit",
+          "selector": "tier-1",
+          "path": "artifacts/production/c11e/E4C-PRS-T1-b3abbe94/E4C_DRILL_AV_QUALIFICATION_RECEIPT.json",
+          "sha256": "57206b4560b917c7a7fe5e738c5afd5d900d293e01c99fcd554f0926acc6eee7",
+          "status": "PASS",
+          "gameplay_seed": 12345,
+          "music_seed_A_B": 840001,
+          "music_seed_C": 840002,
+          "family_music_profile": "ORGANIC_BLOOM",
+          "audio_generated": true,
+          "operator_closeout_reference": "E4C 20/20 family closeouts"
+        },
+        {
+          "family": "saccade",
+          "selector": "tier-1",
+          "path": "artifacts/production/c11e/E4C-SAC-T1-57fdf44b/E4C_DRILL_AV_QUALIFICATION_RECEIPT.json",
+          "sha256": "930ba103153fbca0226a0b7abd1226b46dfd3c2e523204e83e6cb39f1282e606",
+          "status": "PASS",
+          "gameplay_seed": 12345,
+          "music_seed_A_B": 840001,
+          "music_seed_C": 840002,
+          "family_music_profile": "CIRCUIT_PULSE",
+          "audio_generated": true,
+          "operator_closeout_reference": "E4C 20/20 family closeouts"
+        },
+        {
+          "family": "peripheral_scan",
+          "selector": "tier-1",
+          "path": "artifacts/production/c11e/E4C-PSC-T1-b342a227/E4C_DRILL_AV_QUALIFICATION_RECEIPT.json",
+          "sha256": "eb290666163df0e89daac9c683a95a39c38d536c5da735def15cd3a19964083b",
+          "status": "PASS",
+          "gameplay_seed": 12345,
+          "music_seed_A_B": 840001,
+          "music_seed_C": 840002,
+          "family_music_profile": "ORBITAL_RITUAL",
+          "audio_generated": true,
+          "operator_closeout_reference": "E4C 20/20 family closeouts"
+        },
+        {
+          "family": "tracking",
+          "selector": "tier-5",
+          "path": "artifacts/production/c11e/E4C-TRK-T5-6239dd21/E4C_DRILL_AV_QUALIFICATION_RECEIPT.json",
+          "sha256": "6e55dc3fd4fc13745347cc641d29103fbfb7fa90dee932910f920703690c3c61",
+          "status": "PASS",
+          "gameplay_seed": 12345,
+          "music_seed_A_B": 840001,
+          "music_seed_C": 840002,
+          "family_music_profile": "FLOWING_VECTOR",
+          "audio_generated": true,
+          "operator_closeout_reference": "E4C 20/20 family closeouts"
+        },
+        {
+          "family": "peripheral_scan",
+          "selector": "tier-5",
+          "path": "artifacts/production/c11e/E4C-PSC-T5-b342a227/E4C_DRILL_AV_QUALIFICATION_RECEIPT.json",
+          "sha256": "5644ffa386c2d1388e7dd657cb566c796a87de93b22c28db84197dbb8ad3a224",
+          "status": "PASS",
+          "gameplay_seed": 12345,
+          "music_seed_A_B": 840001,
+          "music_seed_C": 840002,
+          "family_music_profile": "ORBITAL_RITUAL",
+          "audio_generated": true,
+          "operator_closeout_reference": "E4C 20/20 family closeouts"
+        }
+      ],
+      "reuse_requires_explicit_E6_contract": true
+    }
+  },
+  "candidate_reuse_summary": {
+    "visual_loop_candidates": 6,
+    "visual_loop_prior_human_accepted": 6,
+    "visual_drill_candidates": 6,
+    "visual_drill_prior_technical_receipts": 6,
+    "challenge_candidate_pool": 7,
+    "challenge_prior_av_accepted": 1,
+    "loop_and_drill_prior_reuse": 12,
+    "challenge_CH004_additional_reuse_if_selected": 1,
+    "total_potential_reuse_if_CH004_is_selected": 13,
+    "challenge_additional_av_cases_required_if_CH004_is_selected": 5
+  },
+  "e6_matrix": {
+    "target_scenarios": 18,
+    "per_family": 6,
+    "challenge": "NOT_FROZEN",
+    "visual_loop": "PROPOSED_6_CANDIDATES_REUSE_SUBJECT_TO_E6_CONTRACT",
+    "visual_drill": "PROPOSED_6_CANDIDATES_REUSE_SUBJECT_TO_E6_CONTRACT",
+    "frozen": false
+  },
+  "execution": {
+    "e6_test_only_authorized": false,
+    "media_invoked": false,
+    "renderer_invoked": false,
+    "godot_invoked": false,
+    "ffmpeg_invoked": false,
+    "ffprobe_invoked": false,
+    "audio_generated": false,
+    "mux_invoked": false,
+    "production_dispatch": false,
+    "release_authority": "NONE",
+    "new_batch_id_consumed": false,
+    "e6_output_root_preexisting": false
+  },
+  "blockers": [
+    "CHALLENGE_SIX_SELECTOR_SET_NOT_FROZEN_FROM_SEVEN_CANDIDATES",
+    "CHALLENGE_MUSIC_SEED_DOMAIN_NOT_AUTHORIZED_FOR_FIVE_ADDITIONAL_SELECTORS",
+    "CHALLENGE_MULTI_SELECTOR_D_OWNED_AV_EXECUTOR_NOT_PROVEN",
+    "SEPARATE_E6_TEST_ONLY_AUTHORIZATION_REQUIRED_D4_8_V2_PROHIBITS_SMOKE18_AUDIO_AND_MUX"
+  ],
+  "next_required_work": [
+    "Resolve and pin the six Challenge selectors; CHALLENGE_008/009 remain excluded.",
+    "Define the Challenge request.music_seed values and duration/timebase mapping without changing gameplay seeds.",
+    "Prove a single family-owned Challenge D composition/A/V route for the selected six selectors; do not add a parallel renderer or alter C11-C.",
+    "Freeze an exact 18-row E6 manifest with reuse rules for accepted Loop/Drill evidence.",
+    "Publish separate E6 TEST_ONLY authorization and obtain explicit operator/governance approval before any media invocation."
+  ]
+}

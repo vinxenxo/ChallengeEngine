@@ -1,0 +1,63 @@
+{
+    "schema":  "C11E-E6-READONLY-AUDIT-INSTALL-RECEIPT-V3",
+    "status":  "PASS_ADD_ONLY_IDEMPOTENT_INSTALL",
+    "run_id":  "E6INSTALLV3_20261116T235044Z_BA84A4A5",
+    "created_utc":  "2026-11-16T23:50:44.8697436Z",
+    "package_id":  "C11E_E6_SMOKE18_READONLY_AUDIT_OVERLAY_V3_20261117",
+    "package_manifest_sha256":  "1063f240cb08b52419f9471669ac555ba40fcc79dc8fc3d4cf6603d966aa3875",
+    "files_expected":  6,
+    "files_added":  6,
+    "files_skipped_identical":  0,
+    "files_final_verified":  6,
+    "files":  [
+                  {
+                      "relative_path":  "docs/current/e/C11E_E6_SMOKE18_READONLY_AUDIT_RECOVERY_20261117_V2.md",
+                      "status":  "POSTIMAGE_VERIFIED",
+                      "bytes":  2802,
+                      "sha256":  "2409f123aef7cd3c15f8151d3dced0b5ddbe29cb519c04de4b3744dfaca190fa"
+                  },
+                  {
+                      "relative_path":  "docs/master-prompts/C11E_MASTER_HANDOVER_20261117_V4.md",
+                      "status":  "POSTIMAGE_VERIFIED",
+                      "bytes":  3155,
+                      "sha256":  "4e76d142eca7f0f468380ecaa39cfceb10c2f2984e006e136f77a61255608463"
+                  },
+                  {
+                      "relative_path":  "prompts/C11E_CONTINUATION_MASTER_PROMPT_20261117_V179.md",
+                      "status":  "POSTIMAGE_VERIFIED",
+                      "bytes":  2552,
+                      "sha256":  "2c7ebfa1d6c3ae394357b921fab21286800f31610bf49b707a4b8ed43eed91fe"
+                  },
+                  {
+                      "relative_path":  "prompts/C11E_FIRST_PROMPT_20261117_V103.md",
+                      "status":  "POSTIMAGE_VERIFIED",
+                      "bytes":  1285,
+                      "sha256":  "9e91e19fadd5f2455a81dda8fd6e00fd27490d7819d080555c1721dbf4f4f08b"
+                  },
+                  {
+                      "relative_path":  "prompts/C11E_NEXT_WINDOW_START_PROMPT_20261117_V179.md",
+                      "status":  "POSTIMAGE_VERIFIED",
+                      "bytes":  1327,
+                      "sha256":  "6c5e3a7d862786fdbcbcb90f9112bbd9122bc76ae8023d07278d2fd9b61835df"
+                  },
+                  {
+                      "relative_path":  "tools/c11d/d9/RUN_C11E_E6_SMOKE18_READONLY_AUDIT_V3.ps1",
+                      "status":  "POSTIMAGE_VERIFIED",
+                      "bytes":  3932,
+                      "sha256":  "c8f7200a7385d018c663d64d55860ee9fcb502e2b1f01ef42727d221a5bba990"
+                  }
+              ],
+    "frozen_c11c_manifest_sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "d4_8_r1v_policy_sha256":  "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+    "v2_audit_module_sha256":  "21b2a309e4f8a619508e2a44f45b1b62d81783e0ec46a2db95d9725cd1248cad",
+    "v2_test_module_sha256":  "cd43e8c746ff57b22fd71d770fd4627bdd2dfbcb104369166a93bd8770b9f1b4",
+    "c11c_source_mutation":  false,
+    "renderer_invoked":  false,
+    "media_created":  false,
+    "production_dispatch":  false,
+    "release_authority":  "NONE",
+    "git_checks":  "SKIPPED",
+    "commits":  "OPERATOR_MANAGED",
+    "source_file_pins":  "ENFORCED",
+    "reentrant_recovery_enabled":  true
+}

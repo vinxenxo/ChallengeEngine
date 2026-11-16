@@ -1,0 +1,8 @@
+{
+    "schema":  "C11E-E6-READONLY-AUDIT-INSTALL-JOURNAL-V2",
+    "run_id":  "E6INSTALLV2_20261116T233731Z_410CF7FD",
+    "status":  "INSTALL_PROGRESS_CHECKPOINT",
+    "applied_count":  1,
+    "last_applied":  "docs/current/e/C11E_E6_SMOKE18_READONLY_AUDIT_RECOVERY_20261117_V1.md",
+    "created_utc":  "2026-11-16T23:37:31.8875465Z"
+}
