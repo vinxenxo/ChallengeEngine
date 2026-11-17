@@ -1,0 +1,28 @@
+﻿{
+    "schema":  "C11E-E6-REUSE-EVIDENCE-HYDRATION-INSTALL-RECEIPT-V1",
+    "run_id":  "E6HYDRATEINSTALL_20261117T220106Z_62A23315",
+    "status":  "PASS_ADD_ONLY_E6_REUSE_EVIDENCE_HYDRATION_INSTALL",
+    "package_manifest_sha256":  "4b10acd5386cdce5eca57b9c8b7db005480fa0d52e6887d2c831010d7e3c607f",
+    "accepted_d9_source_pin_count":  33,
+    "source_pins_pre_post":  "33/33",
+    "files":  [
+                  {
+                      "path":  "tools/c11d/d9/c11e_e6_reuse_evidence_hydration_v1.py",
+                      "sha256":  "0794e5cdd13aa3a9b7e610b4ac293b5ffccacf77a1bfc13d67cefd74d1eaf492",
+                      "disposition":  "ADD"
+                  },
+                  {
+                      "path":  "tools/c11d/d9/test_c11e_e6_reuse_evidence_hydration_v1.py",
+                      "sha256":  "97d6a678e38269e9183108a8b71b6d7f1a32ddde81778185faf5fd437b64e855",
+                      "disposition":  "ADD"
+                  },
+                  {
+                      "path":  "tools/c11d/d9/RUN_C11E_E6_REUSE_EVIDENCE_HYDRATION_V1.ps1",
+                      "sha256":  "96e4223dfe430457e86231e24f7bb3805424d51259b92826716d7900b71c3d54",
+                      "disposition":  "ADD"
+                  }
+              ],
+    "git_checks":  "SKIPPED",
+    "commits":  "OPERATOR_MANAGED",
+    "source_file_pins":  "ENFORCED"
+}

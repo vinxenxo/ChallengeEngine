@@ -1,0 +1,75 @@
+﻿{
+    "schema":  "C11E-E6-REUSE-EVIDENCE-HYDRATION-INSTALL-RECEIPT-V2",
+    "run_id":  "E6HYDRATEV2INSTALL_20261117T222808Z_AF50158A",
+    "status":  "PASS_ADD_ONLY_E6_REUSE_EVIDENCE_HYDRATION_V2_INSTALL",
+    "package_manifest_sha256":  "669e4ed6f86707eefc0b190c8f78e01e2881fdbb6600548a1f2dc59594b68689",
+    "accepted_d9_source_pin_count":  33,
+    "d9_source_pins_pre_post":  "33/33",
+    "v1_audit_report_sha256":  "61cbbb657bf98acd297529f416a1c65951843e6c9b798635e7c2d4c0a302fe30",
+    "payload_count":  12,
+    "files":  [
+                  {
+                      "path":  "tools\\c11d\\d9\\c11e_e6_reuse_evidence_hydration_v2.py",
+                      "sha256":  "d9445cc6d7dd99cb6528a4956efec11b37db56ccfee2afc9f58697c7debb5aa7",
+                      "disposition":  "ADD"
+                  },
+                  {
+                      "path":  "tools\\c11d\\d9\\test_c11e_e6_reuse_evidence_hydration_v2.py",
+                      "sha256":  "43912aeca6982279828e376758439f886fe0f84140f49193e3e31320ef4c3486",
+                      "disposition":  "ADD"
+                  },
+                  {
+                      "path":  "tools\\c11d\\d9\\RUN_C11E_E6_REUSE_EVIDENCE_HYDRATION_V2.ps1",
+                      "sha256":  "6903878d55551f94905250f67dcc3f01b298a541364f52a046675235b79fa853",
+                      "disposition":  "ADD"
+                  },
+                  {
+                      "path":  "docs\\current\\e\\C11E_E6_REUSE_EVIDENCE_HYDRATION_CLOSEOUT_20261117_V1.md",
+                      "sha256":  "e0a188e31808a1dd47efc7981e4490972fa0508e12c100b40dc72dbc9a75b338",
+                      "disposition":  "ADD"
+                  },
+                  {
+                      "path":  "docs\\current\\e\\C11E_E6_SOURCE_PIN_DRIFT_ADJUDICATION_20261117_V1.md",
+                      "sha256":  "77dc00ee05f9e1e02b7a3e8db7ab6d9f7147d98d79f1586ddb9bbc6acff8339b",
+                      "disposition":  "ADD"
+                  },
+                  {
+                      "path":  "docs\\current\\e\\C11E_E6_REUSE_EVIDENCE_HYDRATION_NEXT_ACTION_REGISTER_20261117_V1.json",
+                      "sha256":  "fb0dbacd1ddbb0b2dfe235e09c065b4e672c5f9a8f0c6578a80a19b35a19cdf7",
+                      "disposition":  "ADD"
+                  },
+                  {
+                      "path":  "docs\\current\\e\\C11E_E6_REUSE_EVIDENCE_HYDRATION_CHANGELOG_20261117_V1.md",
+                      "sha256":  "a68055f9dd964870dc600ec0ab35d3836712f2e410863c16efe3243867c1a58d",
+                      "disposition":  "ADD"
+                  },
+                  {
+                      "path":  "docs\\current\\e\\C11E_E6_REUSE_EVIDENCE_HYDRATION_PLAN_V2_20261117.md",
+                      "sha256":  "66511a8b6e8bbf2847a8e55652e25d22f3ba841c170b15cf3553c0d36cfa2589",
+                      "disposition":  "ADD"
+                  },
+                  {
+                      "path":  "docs\\master-prompts\\C11E_MASTER_HANDOVER_20261117_V3.md",
+                      "sha256":  "e01886a0f3f0a7b90704aaf844411d81c731b27d8c7f04e467c962f57890261b",
+                      "disposition":  "ADD"
+                  },
+                  {
+                      "path":  "prompts\\C11E_CONTINUATION_MASTER_PROMPT_20261117_V3.md",
+                      "sha256":  "8599950372dbbb880b2ed7e2e4abcb82456755b2d19ccb0f1bc54ac7bbe38770",
+                      "disposition":  "ADD"
+                  },
+                  {
+                      "path":  "prompts\\C11E_NEXT_WINDOW_START_PROMPT_20261117_V3.md",
+                      "sha256":  "8101b127e0bf0117659838d3ac4c4646adb4f3fc893487adab50a074594360fd",
+                      "disposition":  "ADD"
+                  },
+                  {
+                      "path":  "prompts\\C11E_FIRST_PROMPT_20261117_V3.md",
+                      "sha256":  "76c2d933030341d0f271c8c689386ed6cc928f88ddb7d1663578c55e015d3d38",
+                      "disposition":  "ADD"
+                  }
+              ],
+    "git_checks":  "SKIPPED",
+    "commits":  "OPERATOR_MANAGED",
+    "source_file_pins":  "ENFORCED"
+}

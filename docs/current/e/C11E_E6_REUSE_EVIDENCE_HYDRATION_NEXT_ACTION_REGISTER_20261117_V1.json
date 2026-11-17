@@ -1,0 +1,90 @@
+{
+  "schema": "C11E-E6-REUSE-EVIDENCE-HYDRATION-NEXT-ACTION-REGISTER-V1",
+  "date": "2026-11-17",
+  "current_phase": "E6_REUSE_EVIDENCE_HYDRATION_V2_REAUDIT_PREPARED",
+  "latest_completed": {
+    "d9_prepare_only_v2": {
+      "status": "PASS_D9_PREPARE_ONLY_18_INTENTS_18_ENVELOPES_LINKED_EXECUTION_HELD",
+      "run_id": "E6D9PREP_20261117T202442Z_BCCD3C39",
+      "manifest_sha256": "11cbf8fd1c2862d0004dbfd28bd27c78cf882a7db725d571484617862af35c18",
+      "receipt_sha256": "53f01752de6928044707cb08dda04e3f2ab5f87f9f177daac70737ea039b4f88"
+    },
+    "hydration_v1": {
+      "status": "BLOCKED_E6_REUSE_EVIDENCE_INCOMPLETE",
+      "run_id": "E6HYDRATE_20261117T210711Z_C7D200D2",
+      "report_sha256": "61cbbb657bf98acd297529f416a1c65951843e6c9b798635e7c2d4c0a302fe30",
+      "checks": 1803,
+      "passed": 1748,
+      "failed": 55,
+      "failure_breakdown": {
+        "absolute_project_root_path_normalization": 43,
+        "external_runtime_executable_path_validation": 10,
+        "historical_source_pin_divergence": 2
+      }
+    }
+  },
+  "next_actions": [
+    {
+      "id": "E6-HYDRATE-V2",
+      "priority": 1,
+      "action": "Install and run the V2 read-only evidence hydrator once",
+      "expected": "34 focused tests pass; every path/hash pair is re-evaluated; report and SHA sidecar emitted",
+      "completion_rule": "Report created with status and failure categories inspected; a blocked report is not converted to PASS"
+    },
+    {
+      "id": "E6-CH004-PIN-DRIFT",
+      "priority": 2,
+      "action": "Recover and adjudicate exact historical source preimages for D9 universal editorial model and E1 production service",
+      "expected": "Exact old SHA/bytes recovered and read-only diff accepted, or CHALLENGE_004 explicitly removed from E6 reuse eligibility",
+      "completion_rule": "Both drift records have a source-backed disposition; no old receipt/pin is rewritten"
+    },
+    {
+      "id": "E6-LOOP-DRILL-REUSE-LEDGER",
+      "priority": 3,
+      "action": "Freeze Loop and Drill reuse rows only from V2 rehashed receipt/output evidence",
+      "expected": "Six Loop candidates and six Drill candidates linked to exact nested receipt/media hashes and source lineage",
+      "completion_rule": "No missing/ambiguous path, hash, timebase, audio or operator review predicate"
+    },
+    {
+      "id": "E6-CHALLENGE-ROUTE",
+      "priority": 4,
+      "action": "Complete read-only six-selector Challenge route and request-field audit",
+      "expected": "Existing D9 coordinator seam, selector mappings, launch route, Challenge Movie Maker dependency, E4A6/E4A7 scope, E3 route, tempo/duration nulls reported exactly",
+      "completion_rule": "No selector-specific hardcoding or unresolved dependency hidden by D9 envelope linkage"
+    },
+    {
+      "id": "E6-SMOKE18-MATRIX-FREEZE",
+      "priority": 5,
+      "action": "Freeze exactly 18 top-level scenario groups and all evidence-reuse predicates",
+      "expected": "Six Challenge, six Loop, six Drill; six Challenge scenarios each have A/B/C probes (18 probes total)",
+      "completion_rule": "All 18 scenario rows carry exact selector, seeds, family route, evidence lineage, hashes, and human acceptance obligations"
+    },
+    {
+      "id": "E6-GOVERNANCE-RESOLUTION",
+      "priority": 6,
+      "action": "Resolve D4.8 prohibition through separate governance without modifying pinned D4.8 V2",
+      "expected": "Explicit successor policy or formal authority decision listing permitted test-only process boundaries",
+      "completion_rule": "The D4.8 conflict is formally resolved; general continuation approval is insufficient"
+    },
+    {
+      "id": "E6-TEST-ONLY-AUTHORIZATION",
+      "priority": 7,
+      "action": "Prepare a separately pinned E6 TEST_ONLY authorization proposal only after all prerequisites pass",
+      "expected": "Exact executable paths/versions/hashes, arguments, process counts, fresh output roots, one-shot ID, stop-on-first-failure, visual/audio acceptance steps",
+      "completion_rule": "Explicit operator/governance approval obtained before any Godot/audio/FFmpeg/FFprobe/media invocation"
+    }
+  ],
+  "invariants": {
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "d4_8_r1v_v2_sha256": "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+    "d4_8": "BLOCKED",
+    "e1": "PREPARE_ONLY",
+    "renderer": "OFF",
+    "production_dispatch": false,
+    "production_media": false,
+    "release_authority": "NONE",
+    "git_checks": "SKIPPED",
+    "commits": "OPERATOR_MANAGED",
+    "source_file_pins": "ENFORCED"
+  }
+}
