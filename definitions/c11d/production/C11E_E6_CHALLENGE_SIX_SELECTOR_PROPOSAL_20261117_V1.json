@@ -1,0 +1,71 @@
+{
+  "schema": "C11E-E6-CHALLENGE-SIX-SELECTOR-PROPOSAL-V1",
+  "status": "WORKING_SELECTION_PLAN_ONLY_NOT_MEDIA_AUTHORIZATION",
+  "date": "2026-11-17",
+  "candidate_pool": [
+    "CHALLENGE_001",
+    "CHALLENGE_002",
+    "CHALLENGE_003",
+    "CHALLENGE_004",
+    "CHALLENGE_005",
+    "CHALLENGE_006",
+    "CHALLENGE_007"
+  ],
+  "selected_ids": [
+    "CHALLENGE_001",
+    "CHALLENGE_002",
+    "CHALLENGE_004",
+    "CHALLENGE_005",
+    "CHALLENGE_006",
+    "CHALLENGE_007"
+  ],
+  "excluded": {
+    "CHALLENGE_003": "Explicit RNG isolation pilot; duplicates CHALLENGE_004 gameplay seed 314159"
+  },
+  "held_outside_candidate_pool": [
+    "CHALLENGE_008",
+    "CHALLENGE_009"
+  ],
+  "selection_rule": [
+    "Keep the only Challenge selector with accepted E4A.7 audiovisual evidence: CHALLENGE_004.",
+    "Choose six distinct mechanics and six distinct canonical gameplay seeds.",
+    "Exclude CHALLENGE_003 from this smoke sample because it is an explicit RNG-isolation pilot and shares gameplay seed 314159 with CHALLENGE_004.",
+    "Do not admit CHALLENGE_008/009 until their 11-second versus 12-second timing discrepancy is resolved by authority."
+  ],
+  "rows": [
+    {"challenge_id":"CHALLENGE_001","mechanic":"key","gameplay_seed":193847,"source_fps":60,"phase_sum_seconds":9,"source_frames":540,"review_fps_proposal":30,"review_frames_proposal":270,"canonical_sha256":"ec8925fa5b4ab996a791c8cf7f5b139470774720f57880c5b01b2d0aa5b57bea"},
+    {"challenge_id":"CHALLENGE_002","mechanic":"parking","gameplay_seed":987654,"source_fps":60,"phase_sum_seconds":10,"source_frames":600,"review_fps_proposal":30,"review_frames_proposal":300,"canonical_sha256":"db5d70a28c460e986e785c6787447529372ac5ea3b5a7ff0507667decbe2a160"},
+    {"challenge_id":"CHALLENGE_004","mechanic":"parking_v2","gameplay_seed":314159,"source_fps":60,"phase_sum_seconds":15,"source_frames":900,"review_fps_proposal":30,"review_frames_proposal":450,"canonical_sha256":"6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71","accepted_e4a7_anchor":true},
+    {"challenge_id":"CHALLENGE_005","mechanic":"hit_v1","gameplay_seed":998877,"source_fps":60,"phase_sum_seconds":7,"source_frames":420,"review_fps_proposal":30,"review_frames_proposal":210,"canonical_sha256":"e173736fcbb0e340cd250be1111fa9d38489934d55cc0e0c93835c66f9596e30"},
+    {"challenge_id":"CHALLENGE_006","mechanic":"catch_v1","gameplay_seed":884422,"source_fps":60,"phase_sum_seconds":9,"source_frames":540,"review_fps_proposal":30,"review_frames_proposal":270,"canonical_sha256":"2d7d7397cbb0a2109f300859a5d7c0830ded0553522a5120f61750f5bc0b5694"},
+    {"challenge_id":"CHALLENGE_007","mechanic":"find_v1","gameplay_seed":7770001,"source_fps":60,"phase_sum_seconds":10,"source_frames":600,"review_fps_proposal":30,"review_frames_proposal":300,"canonical_sha256":"269f9588e5a6b7d253e2e944440cc41dc3a9db8967775ffa819edebe729a3a61"}
+  ],
+  "music_test_fixture_proposal": {
+    "status": "PROPOSED_E6_TEST_ONLY_NOT_PRODUCT_DEFAULT",
+    "family_profile_id": "challenge_8bit_v1",
+    "family_profile_version": "1.0",
+    "tempo_bpm": 104,
+    "tempo_source": "D9.2 historical fixed pilot fixture; also used by accepted CHALLENGE_004 E4A.7 fixture",
+    "variation_index": 0,
+    "music_seed_A_B": 840001,
+    "music_seed_C": 840002,
+    "duration_source": "Each selector's canonical phase sum under producer_schema.challenge_timing_policy",
+    "e1_tempo_bpm": null,
+    "e1_duration_seconds": null,
+    "requires_separate_e6_test_only_governance_approval": true
+  },
+  "planning_output": {
+    "e1_intents": 18,
+    "d_envelopes": 18,
+    "rows_per_selector": ["A", "B_REPEAT", "C_CHANGED_MUSIC_SEED"],
+    "godot_invocation": false,
+    "ffmpeg_invocation": false,
+    "ffprobe_invocation": false,
+    "audio_generated": false,
+    "mux_invoked": false,
+    "media_created": false,
+    "batch_id_consumed": false,
+    "production_dispatch": false,
+    "release_authority": "NONE"
+  }
+}

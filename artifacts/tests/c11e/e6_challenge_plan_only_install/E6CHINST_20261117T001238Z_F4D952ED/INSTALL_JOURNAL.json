@@ -1,0 +1,13 @@
+﻿{
+    "schema":  "C11E-E6-CHALLENGE-PLAN-ONLY-INSTALL-JOURNAL-V1",
+    "run_id":  "E6CHINST_20261117T001238Z_F4D952ED",
+    "started_utc":  "2026-11-17T00:12:38.1476858Z",
+    "package_id":  "C11E_E6_CHALLENGE_PLAN_ONLY_V1",
+    "c11c_frozen_manifest_sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "d4_8_policy_sha256":  "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+    "e6_v2_audit_receipt_sha256":  "054ed52aefe45cc4d986c4621adbbdb6ca7cf36dc1c4a12cbd76238de86e21fd",
+    "operations":  [
+
+                   ],
+    "status":  "PREFLIGHT_PASS_APPLY_PENDING"
+}

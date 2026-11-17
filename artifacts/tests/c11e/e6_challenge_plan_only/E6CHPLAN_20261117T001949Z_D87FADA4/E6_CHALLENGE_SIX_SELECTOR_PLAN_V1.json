@@ -1,0 +1,304 @@
+{
+  "execution": {
+    "audio_generated": false,
+    "e6_test_only_authorized": false,
+    "ffmpeg_invoked": false,
+    "ffprobe_invoked": false,
+    "godot_invoked": false,
+    "media_created": false,
+    "mux_invoked": false,
+    "new_batch_id_consumed": false,
+    "production_dispatch": false,
+    "release_authority": "NONE",
+    "renderer_invoked": false
+  },
+  "music_test_fixture_proposal": {
+    "audio_duration_per_scenario": {
+      "CHALLENGE_001": 9.0,
+      "CHALLENGE_002": 10.0,
+      "CHALLENGE_004": 15.0,
+      "CHALLENGE_005": 7.0,
+      "CHALLENGE_006": 9.0,
+      "CHALLENGE_007": 10.0
+    },
+    "duration_source": "canonical Challenge phase sum under producer_schema.challenge_timing_policy; not an E1 default",
+    "e1_contract_remains_unresolved": [
+      "tempo_bpm",
+      "duration_seconds"
+    ],
+    "family_profile_id": "challenge_8bit_v1",
+    "family_profile_version": "1.0",
+    "music_seed_A_B": 840001,
+    "music_seed_C": 840002,
+    "status": "PROPOSED_E6_TEST_ONLY_NOT_PRODUCT_DEFAULT",
+    "tempo_bpm": 104,
+    "tempo_source": "D9.2 historical fixed pilot fixture, reused by E4A.7 CHALLENGE_004; not a product default",
+    "variation_index": 0
+  },
+  "receipt_sha256": "8fcd63fcfd04df9446f20c5ea8dd1646f169051403f2ee04a356997cd3dd257e",
+  "remaining_blockers": [
+    "MULTI_SELECTOR_GODOT_RUNTIME_NOT_PROVEN_FOR_SIX_CHALLENGE_TIMELINES",
+    "FAMILY_OWNED_CHALLENGE_AV_EXECUTOR_NOT_PROVEN",
+    "MUSIC_FIXTURE_PROPOSAL_REQUIRES_SEPARATE_E6_TEST_ONLY_GOVERNANCE_AUTHORIZATION",
+    "D4_8_R1V_V2_PROHIBITS_SMOKE18_D3_AUDIO_AND_FFMPEG_MUX"
+  ],
+  "run_id": "E6CHPLAN_20261117T001949Z_D87FADA4",
+  "schema": "C11E-E6-CHALLENGE-SIX-SELECTOR-PLAN-V1",
+  "selected_ids": [
+    "CHALLENGE_001",
+    "CHALLENGE_002",
+    "CHALLENGE_004",
+    "CHALLENGE_005",
+    "CHALLENGE_006",
+    "CHALLENGE_007"
+  ],
+  "selected_rows": [
+    {
+      "canonical_source": "challenges/CHALLENGE_001.json",
+      "canonical_source_sha256": "ec8925fa5b4ab996a791c8cf7f5b139470774720f57880c5b01b2d0aa5b57bea",
+      "challenge_id": "CHALLENGE_001",
+      "family_id": "key",
+      "gameplay_seed": 193847,
+      "mechanic": "key",
+      "phase_ranges": [
+        {
+          "duration_seconds": 0.0,
+          "end_frame": 0,
+          "phase": "HOOK",
+          "start_frame": 0
+        },
+        {
+          "duration_seconds": 7.0,
+          "end_frame": 420,
+          "phase": "GAME",
+          "start_frame": 0
+        },
+        {
+          "duration_seconds": 0.0,
+          "end_frame": 420,
+          "phase": "REVEAL",
+          "start_frame": 420
+        },
+        {
+          "duration_seconds": 2.0,
+          "end_frame": 540,
+          "phase": "CTA",
+          "start_frame": 420
+        }
+      ],
+      "phase_sum_seconds": 9.0,
+      "proposed_review_fps": 30,
+      "proposed_review_frames": 270,
+      "selection_disposition": "SELECTED",
+      "source_fps": 60,
+      "source_frames": 540,
+      "video_profile_label": "test_master_11s"
+    },
+    {
+      "canonical_source": "challenges/CHALLENGE_002.json",
+      "canonical_source_sha256": "db5d70a28c460e986e785c6787447529372ac5ea3b5a7ff0507667decbe2a160",
+      "challenge_id": "CHALLENGE_002",
+      "family_id": "parking",
+      "gameplay_seed": 987654,
+      "mechanic": "parking",
+      "phase_ranges": [
+        {
+          "duration_seconds": 3.0,
+          "end_frame": 180,
+          "phase": "HOOK",
+          "start_frame": 0
+        },
+        {
+          "duration_seconds": 7.0,
+          "end_frame": 600,
+          "phase": "GAME",
+          "start_frame": 180
+        },
+        {
+          "duration_seconds": 0.0,
+          "end_frame": 600,
+          "phase": "REVEAL",
+          "start_frame": 600
+        },
+        {
+          "duration_seconds": 0.0,
+          "end_frame": 600,
+          "phase": "CTA",
+          "start_frame": 600
+        }
+      ],
+      "phase_sum_seconds": 10.0,
+      "proposed_review_fps": 30,
+      "proposed_review_frames": 300,
+      "selection_disposition": "SELECTED",
+      "source_fps": 60,
+      "source_frames": 600,
+      "video_profile_label": "test_master_11s"
+    },
+    {
+      "canonical_source": "challenges/CHALLENGE_004.json",
+      "canonical_source_sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71",
+      "challenge_id": "CHALLENGE_004",
+      "family_id": "parking_v2",
+      "gameplay_seed": 314159,
+      "mechanic": "parking_v2",
+      "phase_ranges": [
+        {
+          "duration_seconds": 3.0,
+          "end_frame": 180,
+          "phase": "HOOK",
+          "start_frame": 0
+        },
+        {
+          "duration_seconds": 7.0,
+          "end_frame": 600,
+          "phase": "GAME",
+          "start_frame": 180
+        },
+        {
+          "duration_seconds": 3.0,
+          "end_frame": 780,
+          "phase": "REVEAL",
+          "start_frame": 600
+        },
+        {
+          "duration_seconds": 2.0,
+          "end_frame": 900,
+          "phase": "CTA",
+          "start_frame": 780
+        }
+      ],
+      "phase_sum_seconds": 15.0,
+      "proposed_review_fps": 30,
+      "proposed_review_frames": 450,
+      "selection_disposition": "SELECTED",
+      "source_fps": 60,
+      "source_frames": 900,
+      "video_profile_label": "test_master_11s"
+    },
+    {
+      "canonical_source": "challenges/CHALLENGE_005.json",
+      "canonical_source_sha256": "e173736fcbb0e340cd250be1111fa9d38489934d55cc0e0c93835c66f9596e30",
+      "challenge_id": "CHALLENGE_005",
+      "family_id": "hit_v1",
+      "gameplay_seed": 998877,
+      "mechanic": "hit_v1",
+      "phase_ranges": [
+        {
+          "duration_seconds": 0.0,
+          "end_frame": 0,
+          "phase": "HOOK",
+          "start_frame": 0
+        },
+        {
+          "duration_seconds": 7.0,
+          "end_frame": 420,
+          "phase": "GAME",
+          "start_frame": 0
+        },
+        {
+          "duration_seconds": 0.0,
+          "end_frame": 420,
+          "phase": "REVEAL",
+          "start_frame": 420
+        },
+        {
+          "duration_seconds": 0.0,
+          "end_frame": 420,
+          "phase": "CTA",
+          "start_frame": 420
+        }
+      ],
+      "phase_sum_seconds": 7.0,
+      "proposed_review_fps": 30,
+      "proposed_review_frames": 210,
+      "selection_disposition": "SELECTED",
+      "source_fps": 60,
+      "source_frames": 420,
+      "video_profile_label": null
+    },
+    {
+      "canonical_source": "challenges/CHALLENGE_006.json",
+      "canonical_source_sha256": "2d7d7397cbb0a2109f300859a5d7c0830ded0553522a5120f61750f5bc0b5694",
+      "challenge_id": "CHALLENGE_006",
+      "family_id": "catch_v1",
+      "gameplay_seed": 884422,
+      "mechanic": "catch_v1",
+      "phase_ranges": [
+        {
+          "duration_seconds": 0.0,
+          "end_frame": 0,
+          "phase": "HOOK",
+          "start_frame": 0
+        },
+        {
+          "duration_seconds": 7.0,
+          "end_frame": 420,
+          "phase": "GAME",
+          "start_frame": 0
+        },
+        {
+          "duration_seconds": 0.0,
+          "end_frame": 420,
+          "phase": "REVEAL",
+          "start_frame": 420
+        },
+        {
+          "duration_seconds": 2.0,
+          "end_frame": 540,
+          "phase": "CTA",
+          "start_frame": 420
+        }
+      ],
+      "phase_sum_seconds": 9.0,
+      "proposed_review_fps": 30,
+      "proposed_review_frames": 270,
+      "selection_disposition": "SELECTED",
+      "source_fps": 60,
+      "source_frames": 540,
+      "video_profile_label": null
+    },
+    {
+      "canonical_source": "challenges/CHALLENGE_007.json",
+      "canonical_source_sha256": "269f9588e5a6b7d253e2e944440cc41dc3a9db8967775ffa819edebe729a3a61",
+      "challenge_id": "CHALLENGE_007",
+      "family_id": "find_v1",
+      "gameplay_seed": 7770001,
+      "mechanic": "find_v1",
+      "phase_ranges": [
+        {
+          "duration_seconds": 3.0,
+          "end_frame": 180,
+          "phase": "HOOK",
+          "start_frame": 0
+        },
+        {
+          "duration_seconds": 7.0,
+          "end_frame": 600,
+          "phase": "GAME",
+          "start_frame": 180
+        },
+        {
+          "duration_seconds": 0.0,
+          "end_frame": 600,
+          "phase": "REVEAL",
+          "start_frame": 600
+        },
+        {
+          "duration_seconds": 0.0,
+          "end_frame": 600,
+          "phase": "CTA",
+          "start_frame": 600
+        }
+      ],
+      "phase_sum_seconds": 10.0,
+      "proposed_review_fps": 30,
+      "proposed_review_frames": 300,
+      "selection_disposition": "SELECTED",
+      "source_fps": 60,
+      "source_frames": 600,
+      "video_profile_label": null
+    }
+  ],
+  "status": "PREPARED_PLAN_ONLY_NOT_FROZEN_FOR_MEDIA"
+}

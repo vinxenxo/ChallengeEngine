@@ -1,0 +1,69 @@
+﻿{
+    "schema":  "C11E-E6-CHALLENGE-PLAN-ONLY-RECOVERY-JOURNAL-V2",
+    "run_id":  "E6CHREC2_20261117T001937Z_659245DC",
+    "package_id":  "C11E_E6_CHALLENGE_PLAN_ONLY_RECOVERY_V2",
+    "source_package_id":  "C11E_E6_CHALLENGE_PLAN_ONLY_V1",
+    "started_utc":  "2026-11-17T00:19:37.1751657Z",
+    "preflight":  [
+                      {
+                          "path":  "tools/c11d/d9/c11e_e6_challenge_plan_only_v1.py",
+                          "source":  "C:\\Users\\vinxe\\AppData\\Local\\Temp\\C11E_E6_CHPLAN_RECOVERY_V2_20261117_011936\\payload\\tools\\c11d\\d9\\c11e_e6_challenge_plan_only_v1.py",
+                          "destination":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\tools\\c11d\\d9\\c11e_e6_challenge_plan_only_v1.py",
+                          "sha256":  "a81ac55ec6ff5f0222c744c9e23f0f140141ca63e35a41df22e3d87c92fe3e64",
+                          "bytes":  35903,
+                          "action":  "SKIP_IDENTICAL"
+                      },
+                      {
+                          "path":  "tools/c11d/d9/test_c11e_e6_challenge_plan_only_v1.py",
+                          "source":  "C:\\Users\\vinxe\\AppData\\Local\\Temp\\C11E_E6_CHPLAN_RECOVERY_V2_20261117_011936\\payload\\tools\\c11d\\d9\\test_c11e_e6_challenge_plan_only_v1.py",
+                          "destination":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\tools\\c11d\\d9\\test_c11e_e6_challenge_plan_only_v1.py",
+                          "sha256":  "a0bc94acfe5c932bae4516b4822ef94ec5c6ee70d16d16d473ad75fc808dd2e8",
+                          "bytes":  5555,
+                          "action":  "SKIP_IDENTICAL"
+                      },
+                      {
+                          "path":  "tools/c11d/d9/RUN_C11E_E6_CHALLENGE_PLAN_ONLY_V1.ps1",
+                          "source":  "C:\\Users\\vinxe\\AppData\\Local\\Temp\\C11E_E6_CHPLAN_RECOVERY_V2_20261117_011936\\payload\\tools\\c11d\\d9\\RUN_C11E_E6_CHALLENGE_PLAN_ONLY_V1.ps1",
+                          "destination":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\tools\\c11d\\d9\\RUN_C11E_E6_CHALLENGE_PLAN_ONLY_V1.ps1",
+                          "sha256":  "866a3e584356c8a01f5d00a1dbe7df537ceb4d0e0f81512b5d3e393bb04d5c45",
+                          "bytes":  2919,
+                          "action":  "SKIP_IDENTICAL"
+                      },
+                      {
+                          "path":  "docs/current/e/C11E_E6_CHALLENGE_SELECTION_AND_FIXTURE_PROPOSAL_20261117_V1.md",
+                          "source":  "C:\\Users\\vinxe\\AppData\\Local\\Temp\\C11E_E6_CHPLAN_RECOVERY_V2_20261117_011936\\payload\\docs\\current\\e\\C11E_E6_CHALLENGE_SELECTION_AND_FIXTURE_PROPOSAL_20261117_V1.md",
+                          "destination":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\current\\e\\C11E_E6_CHALLENGE_SELECTION_AND_FIXTURE_PROPOSAL_20261117_V1.md",
+                          "sha256":  "3168c8cbf394bb43e27025edc9a45099222839035452e46da322bb3448237e80",
+                          "bytes":  4699,
+                          "action":  "SKIP_IDENTICAL"
+                      },
+                      {
+                          "path":  "docs/current/e/C11E_E6_CHALLENGE_EXECUTOR_GAP_AUDIT_20261117_V1.md",
+                          "source":  "C:\\Users\\vinxe\\AppData\\Local\\Temp\\C11E_E6_CHPLAN_RECOVERY_V2_20261117_011936\\payload\\docs\\current\\e\\C11E_E6_CHALLENGE_EXECUTOR_GAP_AUDIT_20261117_V1.md",
+                          "destination":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\current\\e\\C11E_E6_CHALLENGE_EXECUTOR_GAP_AUDIT_20261117_V1.md",
+                          "sha256":  "27cf71b5111ffc7e90fc0be17f7befbd621c49f66e2e15fce4b5567828ef3f0c",
+                          "bytes":  5164,
+                          "action":  "SKIP_IDENTICAL"
+                      },
+                      {
+                          "path":  "docs/current/e/C11E_E6_CHALLENGE_PLAN_ONLY_CHECKPOINT_20261117_V1.md",
+                          "source":  "C:\\Users\\vinxe\\AppData\\Local\\Temp\\C11E_E6_CHPLAN_RECOVERY_V2_20261117_011936\\payload\\docs\\current\\e\\C11E_E6_CHALLENGE_PLAN_ONLY_CHECKPOINT_20261117_V1.md",
+                          "destination":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\docs\\current\\e\\C11E_E6_CHALLENGE_PLAN_ONLY_CHECKPOINT_20261117_V1.md",
+                          "sha256":  "6ed851f315bce1384161de235c8425d9cea60b40da09a209ead6876508a97838",
+                          "bytes":  3451,
+                          "action":  "SKIP_IDENTICAL"
+                      },
+                      {
+                          "path":  "definitions/c11d/production/C11E_E6_CHALLENGE_SIX_SELECTOR_PROPOSAL_20261117_V1.json",
+                          "source":  "C:\\Users\\vinxe\\AppData\\Local\\Temp\\C11E_E6_CHPLAN_RECOVERY_V2_20261117_011936\\payload\\definitions\\c11d\\production\\C11E_E6_CHALLENGE_SIX_SELECTOR_PROPOSAL_20261117_V1.json",
+                          "destination":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\definitions\\c11d\\production\\C11E_E6_CHALLENGE_SIX_SELECTOR_PROPOSAL_20261117_V1.json",
+                          "sha256":  "8c2696f62ae76eb2d1bee22a52dbea0656bb466233b5004497b74e73953144ef",
+                          "bytes":  3925,
+                          "action":  "SKIP_IDENTICAL"
+                      }
+                  ],
+    "status":  "PREFLIGHT_PASS_APPLY_PENDING",
+    "c11c_frozen_manifest_sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "d4_8_policy_sha256":  "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+    "e6_v2_audit_receipt_sha256":  "054ed52aefe45cc4d986c4621adbbdb6ca7cf36dc1c4a12cbd76238de86e21fd"
+}
