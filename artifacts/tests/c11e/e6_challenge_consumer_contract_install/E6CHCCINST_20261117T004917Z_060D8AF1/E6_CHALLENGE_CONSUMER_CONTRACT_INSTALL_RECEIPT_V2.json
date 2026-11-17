@@ -1,0 +1,33 @@
+{
+    "schema":  "C11E-E6-CHALLENGE-CONSUMER-CONTRACT-INSTALL-RECEIPT-V2",
+    "run_id":  "E6CHCCINST_20261117T004917Z_060D8AF1",
+    "status":  "FAIL_ADD_ONLY_INSTALL",
+    "package_id":  "C11E_E6_CHALLENGE_CONSUMER_CONTRACT_PREFLIGHT_V2",
+    "payloads_expected":  13,
+    "payloads_added":  0,
+    "payloads_identical_skipped":  0,
+    "postimages_verified":  0,
+    "added":  [
+
+              ],
+    "identical_skipped":  [
+
+                          ],
+    "failures":  [
+                     {
+                         "path":  "INSTALLER",
+                         "error":  "ADD_ONLY_DESTINATION_CONFLICT:docs/master-prompts/C11E_MASTER_HANDOVER_20261117_V4.md:4e76d142eca7f0f468380ecaa39cfceb10c2f2984e006e136f77a61255608463"
+                     }
+                 ],
+    "c11c_frozen_manifest_sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "d4_8_policy_sha256":  "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+    "source_pins_expected":  24,
+    "source_pins_status":  "PASS",
+    "c11c_source_mutation":  false,
+    "renderer_invoked":  false,
+    "media_created":  false,
+    "production_dispatch":  false,
+    "release_authority":  "NONE",
+    "git_checks":  "SKIPPED",
+    "commits":  "OPERATOR_MANAGED"
+}

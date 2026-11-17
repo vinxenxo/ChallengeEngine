@@ -1,0 +1,37 @@
+{
+    "schema":  "C11E-E6-CHALLENGE-CONSUMER-CONTRACT-INSTALL-RECEIPT-V3",
+    "run_id":  "E6CHCCINSTV3_20261117T005636Z_4E2B14F2",
+    "status":  "PASS_ADD_ONLY_IDEMPOTENT_INSTALL",
+    "failure_stage":  "NONE",
+    "package_id":  "C11E_E6_CHALLENGE_CONSUMER_CONTRACT_PREFLIGHT_V3_RUNTIME_ONLY",
+    "payloads_expected":  3,
+    "payloads_classified":  3,
+    "payloads_added":  3,
+    "payloads_identical_skipped":  0,
+    "postimages_verified":  3,
+    "added":  [
+                  "tools/c11d/d9/RUN_C11E_E6_CHALLENGE_CONSUMER_CONTRACT_V1.ps1",
+                  "tools/c11d/d9/c11e_e6_challenge_consumer_contract_v1.py",
+                  "tools/c11d/d9/test_c11e_e6_challenge_consumer_contract_v1.py"
+              ],
+    "identical_skipped":  [
+
+                          ],
+    "failures":  [
+
+                 ],
+    "c11c_frozen_manifest_sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "d4_8_policy_sha256":  "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+    "source_pins_expected":  24,
+    "source_pins_checked":  24,
+    "source_pins_status":  "PASS",
+    "payload_preflight_status":  "PASS",
+    "journal_created":  true,
+    "c11c_source_mutation":  false,
+    "renderer_invoked":  false,
+    "media_created":  false,
+    "production_dispatch":  false,
+    "release_authority":  "NONE",
+    "git_checks":  "SKIPPED",
+    "commits":  "OPERATOR_MANAGED"
+}

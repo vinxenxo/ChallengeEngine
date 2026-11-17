@@ -1,0 +1,430 @@
+{
+  "blockers": [
+    "STATIC_PREFLIGHT_DOES_NOT_PROVE_GODOT_RUNTIME_FOR_SIX_CHALLENGE_TIMELINES",
+    "FAMILY_OWNED_MULTI_SELECTOR_CHALLENGE_AV_EXECUTOR_NOT_PROVEN",
+    "MUSIC_FIXTURE_840001_840002_104BPM_REMAINS_PROPOSAL_ONLY;TEMPO_AND_DURATION_UNRESOLVED",
+    "D4_8_R1V_V2_UNCHANGED_AND_PROHIBITS_SMOKE18_AUDIO_AND_FFMPEG_MUX"
+  ],
+  "consumer_static_contract": {
+    "adapter_challenge_only_option_contract": true,
+    "consumer_dynamic_challenge_identity": true,
+    "consumer_exact_six_field_contract": true,
+    "consumer_native_timebase_and_phase_contract": true,
+    "generator_existing_optional_envelope_path": true,
+    "generator_native_bind_then_d_apply_four_phases": true,
+    "godot_runtime": "NOT_RUN_NOT_PROVEN",
+    "legacy_e3_audio_scope": "CHALLENGE_001_ONLY",
+    "legacy_e4a6_scope": "CHALLENGE_004_ONLY",
+    "legacy_e4a7_scope": "CHALLENGE_004_ONLY"
+  },
+  "created_utc": "2026-11-17T00:56:38+00:00",
+  "d_envelopes": {
+    "expected": 18,
+    "passed": 18
+  },
+  "e1_intents": {
+    "expected": 18,
+    "passed": 18
+  },
+  "execution": {
+    "audio_generated": false,
+    "ffmpeg_invoked": false,
+    "ffprobe_invoked": false,
+    "godot_invoked": false,
+    "media_created": false,
+    "mux_invoked": false,
+    "new_batch_id_consumed": false,
+    "production_dispatch": false,
+    "release_authority": "NONE",
+    "renderer_invoked": false
+  },
+  "executor_scope": {
+    "e3_audio_pipeline": "CHALLENGE_001_ONLY",
+    "e4a6_envelope_builder": "CHALLENGE_004_ONLY",
+    "e4a7_av_worker": "CHALLENGE_004_ONLY",
+    "family_owned_multi_selector_av_executor": "NOT_PROVEN",
+    "generic_d_presentation_adapter": "CHALLENGE_ONLY_OPTION_CONTRACT_STATICALLY_VERIFIED",
+    "generic_gdscript_consumer": "DYNAMIC_CHALLENGE_IDENTITY_STATICALLY_VERIFIED",
+    "godot_runtime": "NOT_RUN"
+  },
+  "failures": [],
+  "music_fixture": {
+    "music_seed_a_b": 840001,
+    "music_seed_c": 840002,
+    "status": "PROPOSAL_ONLY_NOT_PRODUCT_DEFAULT_NOT_AUTHORIZED",
+    "tempo_bpm": 104,
+    "unresolved_engine_parameters": [
+      "tempo_bpm",
+      "duration_seconds"
+    ]
+  },
+  "negative_control_tests": "see focused unittest results",
+  "plan_json_sha256": "ef86fe532cd6c92c3c2dc9937a65d149dc699fcd6c0295382a135413f04af6ae",
+  "plan_receipt_sha256": "8fcd63fcfd04df9446f20c5ea8dd1646f169051403f2ee04a356997cd3dd257e",
+  "plan_run_id": "E6CHPLAN_20261117T001949Z_D87FADA4",
+  "predecessor_e6_audit_receipt_sha256": "054ed52aefe45cc4d986c4621adbbdb6ca7cf36dc1c4a12cbd76238de86e21fd",
+  "project_root": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+  "recovery_receipt_sha256": "bee886f606a57c3e5f7fce5cd9b3a7f289f868338830f32b930d5f0bd28ddf62",
+  "run_id": "E6CHCONTRACT_20261117T005638Z_B3412977",
+  "schema": "C11E-E6-CHALLENGE-CONSUMER-CONTRACT-PREFLIGHT-RECEIPT-V1",
+  "schema_version": "1.0",
+  "selected_ids": [
+    "CHALLENGE_001",
+    "CHALLENGE_002",
+    "CHALLENGE_004",
+    "CHALLENGE_005",
+    "CHALLENGE_006",
+    "CHALLENGE_007"
+  ],
+  "selected_rows": [
+    {
+      "challenge_id": "CHALLENGE_001",
+      "envelope_sha256": "05b05727c6ea5e78197f32d2a550b299d2f0c6db7456d20d0265575fb5f7b506",
+      "gameplay_seed": 193847,
+      "intent_sha256": "f845c046e11394ae1388582bc03d8a9c92e9e77a4c3f259a779eaaedda4ab825",
+      "music_seed": 840001,
+      "source_fps": 60,
+      "source_frames": 540,
+      "status": "PASS_STATIC_CONTRACT",
+      "variant": "A"
+    },
+    {
+      "challenge_id": "CHALLENGE_001",
+      "envelope_sha256": "006b72b280bd1f5535d16340d2cfa20b73b37af2dca4a177dbe4d3d291689a82",
+      "gameplay_seed": 193847,
+      "intent_sha256": "525d2d86b839ce9da10334e121f3b0f6ae5a745bde4c0d066f34721f5ac0b733",
+      "music_seed": 840001,
+      "source_fps": 60,
+      "source_frames": 540,
+      "status": "PASS_STATIC_CONTRACT",
+      "variant": "B_REPEAT"
+    },
+    {
+      "challenge_id": "CHALLENGE_001",
+      "envelope_sha256": "84db9e6f0bc8d96cc41cc8cffbdedf3f5b5c8308757c048886f43053a8768cbe",
+      "gameplay_seed": 193847,
+      "intent_sha256": "f829b901a89624d5ffabf8e6b49c2acd1cdb2686fe7c8a146de5ad979111dc33",
+      "music_seed": 840002,
+      "source_fps": 60,
+      "source_frames": 540,
+      "status": "PASS_STATIC_CONTRACT",
+      "variant": "C_CHANGED_MUSIC_SEED"
+    },
+    {
+      "challenge_id": "CHALLENGE_002",
+      "envelope_sha256": "db7941ba0f2fba63ec499e768df2e1df7afc04fbcca744286b1f36cfade86261",
+      "gameplay_seed": 987654,
+      "intent_sha256": "98d4dc3a7c90f9196e7b82ecf734604e6606be15fcfac14dbf8198c06abaa7da",
+      "music_seed": 840001,
+      "source_fps": 60,
+      "source_frames": 600,
+      "status": "PASS_STATIC_CONTRACT",
+      "variant": "A"
+    },
+    {
+      "challenge_id": "CHALLENGE_002",
+      "envelope_sha256": "4f09fa4f4de4aa6f4951e7bc59484b9d053acdcfc97b74928f7708b1ea783336",
+      "gameplay_seed": 987654,
+      "intent_sha256": "8ecff39bceb3f7079b06d76aeee3b9960bff2ffb74389687a04be679eb76461d",
+      "music_seed": 840001,
+      "source_fps": 60,
+      "source_frames": 600,
+      "status": "PASS_STATIC_CONTRACT",
+      "variant": "B_REPEAT"
+    },
+    {
+      "challenge_id": "CHALLENGE_002",
+      "envelope_sha256": "9221408153ddc83c479cdeb98fdb17b4e356ec4d3ebec8c014fbf6575c7e9ee1",
+      "gameplay_seed": 987654,
+      "intent_sha256": "98faefa61df6c29b5450966d5637f37bc5eda529cd4f35443a8322f209d794dc",
+      "music_seed": 840002,
+      "source_fps": 60,
+      "source_frames": 600,
+      "status": "PASS_STATIC_CONTRACT",
+      "variant": "C_CHANGED_MUSIC_SEED"
+    },
+    {
+      "challenge_id": "CHALLENGE_004",
+      "envelope_sha256": "1bdd69e5d502c991a0df791183ba31808fa3cd118754651a9e619c1ed15edc87",
+      "gameplay_seed": 314159,
+      "intent_sha256": "f3cb41d435ac472dc0baa019ba75c583c5af7fd49406636dada2f289c2cd0972",
+      "music_seed": 840001,
+      "source_fps": 60,
+      "source_frames": 900,
+      "status": "PASS_STATIC_CONTRACT",
+      "variant": "A"
+    },
+    {
+      "challenge_id": "CHALLENGE_004",
+      "envelope_sha256": "d3acf4b6f3300ad4967200bbc89ae606501b1ef932f48dcbb1f0b88e2674deae",
+      "gameplay_seed": 314159,
+      "intent_sha256": "8b3f238d1a474a7f44c3f46274ddd51c79b978bb3a1edb3e3ccc3448461bfcf0",
+      "music_seed": 840001,
+      "source_fps": 60,
+      "source_frames": 900,
+      "status": "PASS_STATIC_CONTRACT",
+      "variant": "B_REPEAT"
+    },
+    {
+      "challenge_id": "CHALLENGE_004",
+      "envelope_sha256": "c556d73e8e50bb30cd72c7cbe2a1c37b4a8a4af67e2af63f548abf08affb2700",
+      "gameplay_seed": 314159,
+      "intent_sha256": "56a6c1f10bcac7345c8a66df9cfb2dc324d9d515604953e83697e5fcac747de2",
+      "music_seed": 840002,
+      "source_fps": 60,
+      "source_frames": 900,
+      "status": "PASS_STATIC_CONTRACT",
+      "variant": "C_CHANGED_MUSIC_SEED"
+    },
+    {
+      "challenge_id": "CHALLENGE_005",
+      "envelope_sha256": "0378ff82e6dafdd8bfec1955b2fc1b9681d29044e7ec026d1770d1192ad5a753",
+      "gameplay_seed": 998877,
+      "intent_sha256": "ccfcd691cfd1a81e68e86fbb75f07db7a037f3472d691d31ce8250d35551286a",
+      "music_seed": 840001,
+      "source_fps": 60,
+      "source_frames": 420,
+      "status": "PASS_STATIC_CONTRACT",
+      "variant": "A"
+    },
+    {
+      "challenge_id": "CHALLENGE_005",
+      "envelope_sha256": "bf997b59adff8af5127df3e3950d4f995a011f228031f425fc94ddf9fbb70920",
+      "gameplay_seed": 998877,
+      "intent_sha256": "9ce9b4b47a000c8c6f0e02af77b213365d359e19b20405d041031e6f5734b58a",
+      "music_seed": 840001,
+      "source_fps": 60,
+      "source_frames": 420,
+      "status": "PASS_STATIC_CONTRACT",
+      "variant": "B_REPEAT"
+    },
+    {
+      "challenge_id": "CHALLENGE_005",
+      "envelope_sha256": "399ba3488fd8b0e8d61fbd606e8c232962099604f068860e475fe9713c1dd2e4",
+      "gameplay_seed": 998877,
+      "intent_sha256": "da8ecadfdb5ac7dab64661febc71cc989ba691501483cdba11684d7480dbccd2",
+      "music_seed": 840002,
+      "source_fps": 60,
+      "source_frames": 420,
+      "status": "PASS_STATIC_CONTRACT",
+      "variant": "C_CHANGED_MUSIC_SEED"
+    },
+    {
+      "challenge_id": "CHALLENGE_006",
+      "envelope_sha256": "ef1781573d4f6a6737ffb6ae3c0c4da724ae821c1043ff29c9dc89071acd53da",
+      "gameplay_seed": 884422,
+      "intent_sha256": "4cf4c051211291b4594d8cd728ed1ad7783b38bd44818e09109e0b68b2ce0bf4",
+      "music_seed": 840001,
+      "source_fps": 60,
+      "source_frames": 540,
+      "status": "PASS_STATIC_CONTRACT",
+      "variant": "A"
+    },
+    {
+      "challenge_id": "CHALLENGE_006",
+      "envelope_sha256": "094be05578415368da3f1afd6be0c7bcbd041802ee15134db628d658df4bfd2f",
+      "gameplay_seed": 884422,
+      "intent_sha256": "6e6c2d55a5e8c634ab240a885247c215af79838648471fd9796c556154b1356c",
+      "music_seed": 840001,
+      "source_fps": 60,
+      "source_frames": 540,
+      "status": "PASS_STATIC_CONTRACT",
+      "variant": "B_REPEAT"
+    },
+    {
+      "challenge_id": "CHALLENGE_006",
+      "envelope_sha256": "a4d54e56689a08e6ad43ad3b7a33a938a4ddabe4c7ea0ead40cb8b81f04297fa",
+      "gameplay_seed": 884422,
+      "intent_sha256": "407a95efc5aacb476f04100211f89066c114af5f3596b02de391d43c68f68504",
+      "music_seed": 840002,
+      "source_fps": 60,
+      "source_frames": 540,
+      "status": "PASS_STATIC_CONTRACT",
+      "variant": "C_CHANGED_MUSIC_SEED"
+    },
+    {
+      "challenge_id": "CHALLENGE_007",
+      "envelope_sha256": "3d53eeda801c60c13e42967f8aa3a7b3914e2e7a5c8056e48b94cdd3c1e447b4",
+      "gameplay_seed": 7770001,
+      "intent_sha256": "f653166a6f43949edcd8e00e60bfe39910359e62c122d3b45d63b4786f82d01c",
+      "music_seed": 840001,
+      "source_fps": 60,
+      "source_frames": 600,
+      "status": "PASS_STATIC_CONTRACT",
+      "variant": "A"
+    },
+    {
+      "challenge_id": "CHALLENGE_007",
+      "envelope_sha256": "0d0591fb226db01b80aac95572084535e1f9ec0426813204a51dcd0c6a0457d7",
+      "gameplay_seed": 7770001,
+      "intent_sha256": "834b17956951d60c9410983e9f6c1e4cb46ac4f3d9357955e5d98032d3a97b34",
+      "music_seed": 840001,
+      "source_fps": 60,
+      "source_frames": 600,
+      "status": "PASS_STATIC_CONTRACT",
+      "variant": "B_REPEAT"
+    },
+    {
+      "challenge_id": "CHALLENGE_007",
+      "envelope_sha256": "450850d0585475c83aa383cc4ac39cd4c9c80e98272de217ec3287c34c8e75fc",
+      "gameplay_seed": 7770001,
+      "intent_sha256": "2a2d88b0ab6ed14c3a82cfc1a806198356f6d47099994e7f41d1ac372fcefde6",
+      "music_seed": 840002,
+      "source_fps": 60,
+      "source_frames": 600,
+      "status": "PASS_STATIC_CONTRACT",
+      "variant": "C_CHANGED_MUSIC_SEED"
+    }
+  ],
+  "source_pins": {
+    "expected": 24,
+    "passed": 24,
+    "rows": [
+      {
+        "actual_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+        "expected_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+        "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+        "status": "PASS"
+      },
+      {
+        "actual_sha256": "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+        "expected_sha256": "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+        "path": "definitions/c11d/production/C11E_D4_8_R1V_QUALIFICATION_ONLY_POLICY_V2.json",
+        "status": "PASS"
+      },
+      {
+        "actual_sha256": "054ed52aefe45cc4d986c4621adbbdb6ca7cf36dc1c4a12cbd76238de86e21fd",
+        "expected_sha256": "054ed52aefe45cc4d986c4621adbbdb6ca7cf36dc1c4a12cbd76238de86e21fd",
+        "path": "artifacts/tests/c11e/e6_smoke18_audit/E6AUDITV2_20261116T235057Z_B7FA0492/E6_SMOKE18_READONLY_AUDIT_RECEIPT_V2.json",
+        "status": "PASS"
+      },
+      {
+        "actual_sha256": "764629384896a255cf992da89fa427c19f60f9b2e623b81ad17d909674b466b5",
+        "expected_sha256": "764629384896a255cf992da89fa427c19f60f9b2e623b81ad17d909674b466b5",
+        "path": "definitions/c11d/production/C11E_E4A_CHALLENGE_EDITORIAL_PRESENTATION_POLICY_APPROVAL_V1.json",
+        "status": "PASS"
+      },
+      {
+        "actual_sha256": "3a8e7bfc13a369acaf9d5abe9583f3e93e0990a3b1262b8a839e81ee873c6461",
+        "expected_sha256": "3a8e7bfc13a369acaf9d5abe9583f3e93e0990a3b1262b8a839e81ee873c6461",
+        "path": "docs/current/d/D1.5_PLATFORM_LAYOUT_TEMPLATE_CONTRACT.md",
+        "status": "PASS"
+      },
+      {
+        "actual_sha256": "eba81fff4c24ca75033c8f963665df1961136046c41fee0e88681fe55a631203",
+        "expected_sha256": "eba81fff4c24ca75033c8f963665df1961136046c41fee0e88681fe55a631203",
+        "path": "tools/c11d/d9/C11EChallengeLiveEditorialConsumer.gd",
+        "status": "PASS"
+      },
+      {
+        "actual_sha256": "9ea0219f681a912760de3bcdf2469f8a3812a7afe7fb3f5ac569664f354ac18e",
+        "expected_sha256": "9ea0219f681a912760de3bcdf2469f8a3812a7afe7fb3f5ac569664f354ac18e",
+        "path": "tools/c11d/d9/c11e_e4a6_challenge_live_editorial_envelope.py",
+        "status": "PASS"
+      },
+      {
+        "actual_sha256": "a31083dcad457b2621610ae68d180a9797cdeb12537a300150e53ec880ee06de",
+        "expected_sha256": "a31083dcad457b2621610ae68d180a9797cdeb12537a300150e53ec880ee06de",
+        "path": "tools/c11d/d9/c11e_e4a_challenge_av_review.py",
+        "status": "PASS"
+      },
+      {
+        "actual_sha256": "46b087683a3dcb460601c925373b84e390999d44d73141328285e6c8a633ba5d",
+        "expected_sha256": "46b087683a3dcb460601c925373b84e390999d44d73141328285e6c8a633ba5d",
+        "path": "c11c-suite/c11c-producer/c11e_e3_audio_pipeline.py",
+        "status": "PASS"
+      },
+      {
+        "actual_sha256": "564f11fb4fee9221910dc373550650172eda4f106d6dc25532cc43cb8e6314a0",
+        "expected_sha256": "564f11fb4fee9221910dc373550650172eda4f106d6dc25532cc43cb8e6314a0",
+        "path": "c11c-suite/c11c-producer/producer_schema.json",
+        "status": "PASS"
+      },
+      {
+        "actual_sha256": "e5dbf9baa72d4c066ff8ba24006df954700d72a5b0f11f9f88aec653e84dce87",
+        "expected_sha256": "e5dbf9baa72d4c066ff8ba24006df954700d72a5b0f11f9f88aec653e84dce87",
+        "path": "c11c-suite/c11c-producer/c11e_production_service.py",
+        "status": "PASS"
+      },
+      {
+        "actual_sha256": "102cf07a0b8920318c3ba211a3bd4374c3e080018486363d701f81e65613aaa0",
+        "expected_sha256": "102cf07a0b8920318c3ba211a3bd4374c3e080018486363d701f81e65613aaa0",
+        "path": "artifacts/tests/c11e/e4a_d_composited_av_review/RUN_20261106T070808Z-62F31F9C/C11E_E4A7_D_COMPOSITED_CHALLENGE_AV_RECEIPT.json",
+        "status": "PASS"
+      },
+      {
+        "actual_sha256": "d42782e8f5bb94ff0ede653a1c4624dc91541cc8203abf136b09a8fc288a7d82",
+        "expected_sha256": "d42782e8f5bb94ff0ede653a1c4624dc91541cc8203abf136b09a8fc288a7d82",
+        "path": "GeneradorMaestro.gd",
+        "status": "PASS"
+      },
+      {
+        "actual_sha256": "ec8925fa5b4ab996a791c8cf7f5b139470774720f57880c5b01b2d0aa5b57bea",
+        "expected_sha256": "ec8925fa5b4ab996a791c8cf7f5b139470774720f57880c5b01b2d0aa5b57bea",
+        "path": "challenges/CHALLENGE_001.json",
+        "status": "PASS"
+      },
+      {
+        "actual_sha256": "db5d70a28c460e986e785c6787447529372ac5ea3b5a7ff0507667decbe2a160",
+        "expected_sha256": "db5d70a28c460e986e785c6787447529372ac5ea3b5a7ff0507667decbe2a160",
+        "path": "challenges/CHALLENGE_002.json",
+        "status": "PASS"
+      },
+      {
+        "actual_sha256": "38cb0166482c5ba4862deef8ab75dad4a6e1524590b6850312bab5238f078419",
+        "expected_sha256": "38cb0166482c5ba4862deef8ab75dad4a6e1524590b6850312bab5238f078419",
+        "path": "challenges/CHALLENGE_003.json",
+        "status": "PASS"
+      },
+      {
+        "actual_sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71",
+        "expected_sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71",
+        "path": "challenges/CHALLENGE_004.json",
+        "status": "PASS"
+      },
+      {
+        "actual_sha256": "e173736fcbb0e340cd250be1111fa9d38489934d55cc0e0c93835c66f9596e30",
+        "expected_sha256": "e173736fcbb0e340cd250be1111fa9d38489934d55cc0e0c93835c66f9596e30",
+        "path": "challenges/CHALLENGE_005.json",
+        "status": "PASS"
+      },
+      {
+        "actual_sha256": "2d7d7397cbb0a2109f300859a5d7c0830ded0553522a5120f61750f5bc0b5694",
+        "expected_sha256": "2d7d7397cbb0a2109f300859a5d7c0830ded0553522a5120f61750f5bc0b5694",
+        "path": "challenges/CHALLENGE_006.json",
+        "status": "PASS"
+      },
+      {
+        "actual_sha256": "269f9588e5a6b7d253e2e944440cc41dc3a9db8967775ffa819edebe729a3a61",
+        "expected_sha256": "269f9588e5a6b7d253e2e944440cc41dc3a9db8967775ffa819edebe729a3a61",
+        "path": "challenges/CHALLENGE_007.json",
+        "status": "PASS"
+      },
+      {
+        "actual_sha256": "d17568882eb63ba2eb48649cb9cd46edafe122d72c0c5ed29275e79b8d6d5846",
+        "expected_sha256": "d17568882eb63ba2eb48649cb9cd46edafe122d72c0c5ed29275e79b8d6d5846",
+        "path": "tools/c11d/d9/c11e_challenge_editorial_presentation_adapter.gd",
+        "status": "PASS"
+      },
+      {
+        "actual_sha256": "a81ac55ec6ff5f0222c744c9e23f0f140141ca63e35a41df22e3d87c92fe3e64",
+        "expected_sha256": "a81ac55ec6ff5f0222c744c9e23f0f140141ca63e35a41df22e3d87c92fe3e64",
+        "path": "tools/c11d/d9/c11e_e6_challenge_plan_only_v1.py",
+        "status": "PASS"
+      },
+      {
+        "actual_sha256": "a0bc94acfe5c932bae4516b4822ef94ec5c6ee70d16d16d473ad75fc808dd2e8",
+        "expected_sha256": "a0bc94acfe5c932bae4516b4822ef94ec5c6ee70d16d16d473ad75fc808dd2e8",
+        "path": "tools/c11d/d9/test_c11e_e6_challenge_plan_only_v1.py",
+        "status": "PASS"
+      },
+      {
+        "actual_sha256": "866a3e584356c8a01f5d00a1dbe7df537ceb4d0e0f81512b5d3e393bb04d5c45",
+        "expected_sha256": "866a3e584356c8a01f5d00a1dbe7df537ceb4d0e0f81512b5d3e393bb04d5c45",
+        "path": "tools/c11d/d9/RUN_C11E_E6_CHALLENGE_PLAN_ONLY_V1.ps1",
+        "status": "PASS"
+      }
+    ]
+  },
+  "status": "PASS_STATIC_CONSUMER_CONTRACT_18_OF_18_EXECUTION_HELD"
+}
