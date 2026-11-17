@@ -1,0 +1,368 @@
+{
+    "schema":  "C11E-E6-RUNTIME-DEPENDENCY-PIN-ACCEPTANCE-RECEIPT-V1",
+    "run_id":  "E6DEPPINACCEPT_20261117T141326Z_C980FF81",
+    "status":  "PASS_E6_STATIC_ROUTE_DEPENDENCY_PIN_BASELINE_ACCEPTED",
+    "created_utc":  "2026-11-17T14:13:26.9938254Z",
+    "project_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+    "package_manifest_sha256":  "09410e344d0a8b043f5fae11bc838fe3e37872d1fe4ed62f1b1477af258226af",
+    "protected_evidence":  {
+                               "route_audit_run_id":  "E6ROUTEAUDIT_20261117T125614Z_54A34DBA",
+                               "route_audit_receipt_sha256":  "8deb1c23022ecde3f0b66e7ff07778172adecbd6e6a7f6ec045f6698657b4190",
+                               "dependency_audit_run_id":  "E6DEPPINAUDIT_20261117T130110Z_A1CCE574",
+                               "dependency_audit_receipt_sha256":  "bff36af655abba65aa7ddb2e59c108c57593b6ca19aad586aafe7077b7428f3d",
+                               "candidate_manifest_sha256":  "6f607d0a59202a23673905ea69542c07d1f43b2cf405e379b30257bba281483a",
+                               "handover_install_run_id":  "E6HANDOVERINSTALL_20261117T140558Z_FA4BA49C",
+                               "handover_install_receipt_sha256":  "a232a5df421725c9fd710f06f6d2d0e837490e848c4cf06a62e9257bfd29b02d",
+                               "frozen_c11c_manifest_sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+                               "d4_8_r1v_v2_sha256":  "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07"
+                           },
+    "counts":  {
+                   "prior_accepted_pins":  24,
+                   "newly_accepted_static_dependency_pins":  9,
+                   "total_source_pins_verified":  33,
+                   "payload_files_expected":  9,
+                   "payload_files_added":  9,
+                   "payload_files_already_identical":  0
+               },
+    "source_pin_verification":  [
+                                    {
+                                        "path":  "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+                                        "bytes":  796318,
+                                        "sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+                                        "role":  "FROZEN_C11C_MANIFEST",
+                                        "pin_scope":  "PRIOR_ACCEPTED_E6_CONTRACT_PIN",
+                                        "status":  "PASS"
+                                    },
+                                    {
+                                        "path":  "definitions/c11d/production/C11E_D4_8_R1V_QUALIFICATION_ONLY_POLICY_V2.json",
+                                        "bytes":  12996,
+                                        "sha256":  "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+                                        "role":  "FROZEN_D4_8_POLICY",
+                                        "pin_scope":  "PRIOR_ACCEPTED_E6_CONTRACT_PIN",
+                                        "status":  "PASS"
+                                    },
+                                    {
+                                        "path":  "artifacts/tests/c11e/e6_smoke18_audit/E6AUDITV2_20261116T235057Z_B7FA0492/E6_SMOKE18_READONLY_AUDIT_RECEIPT_V2.json",
+                                        "bytes":  31417,
+                                        "sha256":  "054ed52aefe45cc4d986c4621adbbdb6ca7cf36dc1c4a12cbd76238de86e21fd",
+                                        "role":  "ACCEPTED_E6_AUDIT_EVIDENCE",
+                                        "pin_scope":  "PRIOR_ACCEPTED_E6_CONTRACT_PIN",
+                                        "status":  "PASS"
+                                    },
+                                    {
+                                        "path":  "definitions/c11d/production/C11E_E4A_CHALLENGE_EDITORIAL_PRESENTATION_POLICY_APPROVAL_V1.json",
+                                        "bytes":  4200,
+                                        "sha256":  "764629384896a255cf992da89fa427c19f60f9b2e623b81ad17d909674b466b5",
+                                        "role":  "E4A_POLICY",
+                                        "pin_scope":  "PRIOR_ACCEPTED_E6_CONTRACT_PIN",
+                                        "status":  "PASS"
+                                    },
+                                    {
+                                        "path":  "docs/current/d/D1.5_PLATFORM_LAYOUT_TEMPLATE_CONTRACT.md",
+                                        "bytes":  2907,
+                                        "sha256":  "3a8e7bfc13a369acaf9d5abe9583f3e93e0990a3b1262b8a839e81ee873c6461",
+                                        "role":  "LAYOUT_CONTRACT",
+                                        "pin_scope":  "PRIOR_ACCEPTED_E6_CONTRACT_PIN",
+                                        "status":  "PASS"
+                                    },
+                                    {
+                                        "path":  "tools/c11d/d9/C11EChallengeLiveEditorialConsumer.gd",
+                                        "bytes":  26367,
+                                        "sha256":  "eba81fff4c24ca75033c8f963665df1961136046c41fee0e88681fe55a631203",
+                                        "role":  "EXISTING_GENERIC_CHALLENGE_CONSUMER",
+                                        "pin_scope":  "PRIOR_ACCEPTED_E6_CONTRACT_PIN",
+                                        "status":  "PASS"
+                                    },
+                                    {
+                                        "path":  "tools/c11d/d9/c11e_e4a6_challenge_live_editorial_envelope.py",
+                                        "bytes":  14855,
+                                        "sha256":  "9ea0219f681a912760de3bcdf2469f8a3812a7afe7fb3f5ac569664f354ac18e",
+                                        "role":  "E4A6_ENVELOPE_BUILDER",
+                                        "pin_scope":  "PRIOR_ACCEPTED_E6_CONTRACT_PIN",
+                                        "status":  "PASS"
+                                    },
+                                    {
+                                        "path":  "tools/c11d/d9/c11e_e4a_challenge_av_review.py",
+                                        "bytes":  30235,
+                                        "sha256":  "a31083dcad457b2621610ae68d180a9797cdeb12537a300150e53ec880ee06de",
+                                        "role":  "E4A7_AV_REVIEW_WORKER",
+                                        "pin_scope":  "PRIOR_ACCEPTED_E6_CONTRACT_PIN",
+                                        "status":  "PASS"
+                                    },
+                                    {
+                                        "path":  "c11c-suite/c11c-producer/c11e_e3_audio_pipeline.py",
+                                        "bytes":  39483,
+                                        "sha256":  "46b087683a3dcb460601c925373b84e390999d44d73141328285e6c8a633ba5d",
+                                        "role":  "E3_AUDIO_PIPELINE_REFERENCE",
+                                        "pin_scope":  "PRIOR_ACCEPTED_E6_CONTRACT_PIN",
+                                        "status":  "PASS"
+                                    },
+                                    {
+                                        "path":  "c11c-suite/c11c-producer/producer_schema.json",
+                                        "bytes":  32714,
+                                        "sha256":  "564f11fb4fee9221910dc373550650172eda4f106d6dc25532cc43cb8e6314a0",
+                                        "role":  "PRODUCER_SCHEMA_REFERENCE",
+                                        "pin_scope":  "PRIOR_ACCEPTED_E6_CONTRACT_PIN",
+                                        "status":  "PASS"
+                                    },
+                                    {
+                                        "path":  "c11c-suite/c11c-producer/c11e_production_service.py",
+                                        "bytes":  86687,
+                                        "sha256":  "e5dbf9baa72d4c066ff8ba24006df954700d72a5b0f11f9f88aec653e84dce87",
+                                        "role":  "EXISTING_SHARED_SERVICE",
+                                        "pin_scope":  "PRIOR_ACCEPTED_E6_CONTRACT_PIN",
+                                        "status":  "PASS"
+                                    },
+                                    {
+                                        "path":  "artifacts/tests/c11e/e4a_d_composited_av_review/RUN_20261106T070808Z-62F31F9C/C11E_E4A7_D_COMPOSITED_CHALLENGE_AV_RECEIPT.json",
+                                        "bytes":  26095,
+                                        "sha256":  "102cf07a0b8920318c3ba211a3bd4374c3e080018486363d701f81e65613aaa0",
+                                        "role":  "ACCEPTED_E4A7_AV_EVIDENCE",
+                                        "pin_scope":  "PRIOR_ACCEPTED_E6_CONTRACT_PIN",
+                                        "status":  "PASS"
+                                    },
+                                    {
+                                        "path":  "GeneradorMaestro.gd",
+                                        "bytes":  39767,
+                                        "sha256":  "d42782e8f5bb94ff0ede653a1c4624dc91541cc8203abf136b09a8fc288a7d82",
+                                        "role":  "EXISTING_SINGLE_RENDERER_ENTRY",
+                                        "pin_scope":  "PRIOR_ACCEPTED_E6_CONTRACT_PIN",
+                                        "status":  "PASS"
+                                    },
+                                    {
+                                        "path":  "challenges/CHALLENGE_001.json",
+                                        "bytes":  1085,
+                                        "sha256":  "ec8925fa5b4ab996a791c8cf7f5b139470774720f57880c5b01b2d0aa5b57bea",
+                                        "role":  "SELECTED_CHALLENGE_DEFINITION",
+                                        "pin_scope":  "PRIOR_ACCEPTED_E6_CONTRACT_PIN",
+                                        "status":  "PASS"
+                                    },
+                                    {
+                                        "path":  "challenges/CHALLENGE_002.json",
+                                        "bytes":  1218,
+                                        "sha256":  "db5d70a28c460e986e785c6787447529372ac5ea3b5a7ff0507667decbe2a160",
+                                        "role":  "SELECTED_CHALLENGE_DEFINITION",
+                                        "pin_scope":  "PRIOR_ACCEPTED_E6_CONTRACT_PIN",
+                                        "status":  "PASS"
+                                    },
+                                    {
+                                        "path":  "challenges/CHALLENGE_003.json",
+                                        "bytes":  1132,
+                                        "sha256":  "38cb0166482c5ba4862deef8ab75dad4a6e1524590b6850312bab5238f078419",
+                                        "role":  "EXISTING_EXCLUDED_CHALLENGE_REFERENCE",
+                                        "pin_scope":  "PRIOR_ACCEPTED_E6_CONTRACT_PIN",
+                                        "status":  "PASS"
+                                    },
+                                    {
+                                        "path":  "challenges/CHALLENGE_004.json",
+                                        "bytes":  1543,
+                                        "sha256":  "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71",
+                                        "role":  "SELECTED_CHALLENGE_DEFINITION",
+                                        "pin_scope":  "PRIOR_ACCEPTED_E6_CONTRACT_PIN",
+                                        "status":  "PASS"
+                                    },
+                                    {
+                                        "path":  "challenges/CHALLENGE_005.json",
+                                        "bytes":  917,
+                                        "sha256":  "e173736fcbb0e340cd250be1111fa9d38489934d55cc0e0c93835c66f9596e30",
+                                        "role":  "SELECTED_CHALLENGE_DEFINITION",
+                                        "pin_scope":  "PRIOR_ACCEPTED_E6_CONTRACT_PIN",
+                                        "status":  "PASS"
+                                    },
+                                    {
+                                        "path":  "challenges/CHALLENGE_006.json",
+                                        "bytes":  1097,
+                                        "sha256":  "2d7d7397cbb0a2109f300859a5d7c0830ded0553522a5120f61750f5bc0b5694",
+                                        "role":  "SELECTED_CHALLENGE_DEFINITION",
+                                        "pin_scope":  "PRIOR_ACCEPTED_E6_CONTRACT_PIN",
+                                        "status":  "PASS"
+                                    },
+                                    {
+                                        "path":  "challenges/CHALLENGE_007.json",
+                                        "bytes":  1388,
+                                        "sha256":  "269f9588e5a6b7d253e2e944440cc41dc3a9db8967775ffa819edebe729a3a61",
+                                        "role":  "SELECTED_CHALLENGE_DEFINITION",
+                                        "pin_scope":  "PRIOR_ACCEPTED_E6_CONTRACT_PIN",
+                                        "status":  "PASS"
+                                    },
+                                    {
+                                        "path":  "tools/c11d/d9/c11e_challenge_editorial_presentation_adapter.gd",
+                                        "bytes":  14167,
+                                        "sha256":  "d17568882eb63ba2eb48649cb9cd46edafe122d72c0c5ed29275e79b8d6d5846",
+                                        "role":  "EXISTING_CHALLENGE_ADAPTER",
+                                        "pin_scope":  "PRIOR_ACCEPTED_E6_CONTRACT_PIN",
+                                        "status":  "PASS"
+                                    },
+                                    {
+                                        "path":  "tools/c11d/d9/c11e_e6_challenge_plan_only_v1.py",
+                                        "bytes":  35903,
+                                        "sha256":  "a81ac55ec6ff5f0222c744c9e23f0f140141ca63e35a41df22e3d87c92fe3e64",
+                                        "role":  "E6_PLAN_ONLY_TOOL",
+                                        "pin_scope":  "PRIOR_ACCEPTED_E6_CONTRACT_PIN",
+                                        "status":  "PASS"
+                                    },
+                                    {
+                                        "path":  "tools/c11d/d9/test_c11e_e6_challenge_plan_only_v1.py",
+                                        "bytes":  5555,
+                                        "sha256":  "a0bc94acfe5c932bae4516b4822ef94ec5c6ee70d16d16d473ad75fc808dd2e8",
+                                        "role":  "E6_PLAN_ONLY_TESTS",
+                                        "pin_scope":  "PRIOR_ACCEPTED_E6_CONTRACT_PIN",
+                                        "status":  "PASS"
+                                    },
+                                    {
+                                        "path":  "tools/c11d/d9/RUN_C11E_E6_CHALLENGE_PLAN_ONLY_V1.ps1",
+                                        "bytes":  2919,
+                                        "sha256":  "866a3e584356c8a01f5d00a1dbe7df537ceb4d0e0f81512b5d3e393bb04d5c45",
+                                        "role":  "E6_PLAN_ONLY_RUNNER",
+                                        "pin_scope":  "PRIOR_ACCEPTED_E6_CONTRACT_PIN",
+                                        "status":  "PASS"
+                                    },
+                                    {
+                                        "path":  "project.godot",
+                                        "bytes":  868,
+                                        "sha256":  "d20b0f275c58a34881420705bb1990564d719427c550478c434345ced72805d3",
+                                        "role":  "PROJECT_SETTINGS_AND_MAIN_SCENE_BINDING",
+                                        "pin_scope":  "E6_STATIC_CHALLENGE_ROUTE_DEPENDENCY",
+                                        "status":  "PASS"
+                                    },
+                                    {
+                                        "path":  "Main.tscn",
+                                        "bytes":  1086,
+                                        "sha256":  "5271714b9a5c31aeda1d7347347f1429ca37a48c081e59e6ec42383626731de7",
+                                        "role":  "EXISTING_MAIN_SCENE",
+                                        "pin_scope":  "E6_STATIC_CHALLENGE_ROUTE_DEPENDENCY",
+                                        "status":  "PASS"
+                                    },
+                                    {
+                                        "path":  "core/authoring/ChallengeMigrationAdapter.gd",
+                                        "bytes":  8977,
+                                        "sha256":  "79099cbb5fea9d9c5c519370b1c56d72c8394db14e9adf5b0bb744410e507c13",
+                                        "role":  "CHALLENGE_VIDEO_TIMEBASE_MIGRATION",
+                                        "pin_scope":  "E6_STATIC_CHALLENGE_ROUTE_DEPENDENCY",
+                                        "status":  "PASS"
+                                    },
+                                    {
+                                        "path":  "core/execution/ChallengeTimelineBuilder.gd",
+                                        "bytes":  3721,
+                                        "sha256":  "35a47ad126a2e11577933a03b251f47732e580693e5c08e45d3b6af047c8c9af",
+                                        "role":  "CANONICAL_TIMELINE_BUILDER",
+                                        "pin_scope":  "E6_STATIC_CHALLENGE_ROUTE_DEPENDENCY",
+                                        "status":  "PASS"
+                                    },
+                                    {
+                                        "path":  "core/authoring/ChallengeTimeLiine.gd",
+                                        "bytes":  1501,
+                                        "sha256":  "a0276e86ac27389f4abd0d5cd9b998e97a32162de44e2f917d7158255892ce71",
+                                        "role":  "PHASE_DURATION_ARITHMETIC",
+                                        "pin_scope":  "E6_STATIC_CHALLENGE_ROUTE_DEPENDENCY",
+                                        "status":  "PASS"
+                                    },
+                                    {
+                                        "path":  "core/authoring/TemporalCore.gd",
+                                        "bytes":  851,
+                                        "sha256":  "f076e9090c3d13be63b7ccda91a5861576a4d32eb673380a95272b3b3fa27966",
+                                        "role":  "DURATION_TO_FRAME_ROUNDING",
+                                        "pin_scope":  "E6_STATIC_CHALLENGE_ROUTE_DEPENDENCY",
+                                        "status":  "PASS"
+                                    },
+                                    {
+                                        "path":  "core/validation/ChallengeDefinitionValidator.gd",
+                                        "bytes":  4906,
+                                        "sha256":  "d7c1c50f505853ebef376b75ac8ef675a4bab24d6733c96bc14a00db0d3904c4",
+                                        "role":  "CHALLENGE_DEFINITION_VALIDATION",
+                                        "pin_scope":  "E6_STATIC_CHALLENGE_ROUTE_DEPENDENCY",
+                                        "status":  "PASS"
+                                    },
+                                    {
+                                        "path":  "core/presentation/PresentationProfile.gd",
+                                        "bytes":  8837,
+                                        "sha256":  "187b1cf8ab96b9031785a0f36b0054a60383c97cb3d81906c7d9bbcd373bef24",
+                                        "role":  "PRESENTATION_PROFILE_RUNTIME_DEPENDENCY",
+                                        "pin_scope":  "E6_STATIC_CHALLENGE_ROUTE_DEPENDENCY",
+                                        "status":  "PASS"
+                                    },
+                                    {
+                                        "path":  "core/validation/PresentationProfileValidator.gd",
+                                        "bytes":  4517,
+                                        "sha256":  "486191d276b4dbc62acc1ff43121ddb5eca8a74e0f22e270b5c429694f83ad49",
+                                        "role":  "PRESENTATION_PROFILE_VALIDATION",
+                                        "pin_scope":  "E6_STATIC_CHALLENGE_ROUTE_DEPENDENCY",
+                                        "status":  "PASS"
+                                    }
+                                ],
+    "payload_files":  [
+                          {
+                              "path":  "docs/current/e/C11E_E6_D9_PREPARE_ONLY_IMPLEMENTATION_GATE_20261117_V1.md",
+                              "bytes":  3410,
+                              "sha256":  "4d5e4cc5b9764865a4887770a4512e5935b000e6fa1a6e7ae5caa8a1811ca2de",
+                              "disposition":  "ADD_ONLY"
+                          },
+                          {
+                              "path":  "docs/current/e/C11E_E6_EVIDENCE_REUSE_STATUS_20261117_V2.md",
+                              "bytes":  2113,
+                              "sha256":  "7e1d3439f3102f2ef92847ce6cc3bf86a5c7b6497712f19f55218c736ba4ac3a",
+                              "disposition":  "ADD_ONLY"
+                          },
+                          {
+                              "path":  "docs/current/e/C11E_E6_PIN_ACCEPTANCE_CHANGELOG_20261117_V1.md",
+                              "bytes":  686,
+                              "sha256":  "209d10cbbf2979d7f36607033747ae2076182f8bd9229f2f56df90bc1d0dd65d",
+                              "disposition":  "ADD_ONLY"
+                          },
+                          {
+                              "path":  "docs/current/e/C11E_E6_RUNTIME_DEPENDENCY_PIN_ACCEPTANCE_20261117_V1.md",
+                              "bytes":  4071,
+                              "sha256":  "aaf427a6ec9c14ce5cd939a08ffa6607c0879ee5b20c211c653fde570cbf7248",
+                              "disposition":  "ADD_ONLY"
+                          },
+                          {
+                              "path":  "docs/current/e/C11E_E6_RUNTIME_ROUTE_DEPENDENCY_PIN_SET_20261117_V1.json",
+                              "bytes":  13275,
+                              "sha256":  "42819b071eb30aedce509da9438c7f09040179d0abbe23389fc1d3f3497fe9af",
+                              "disposition":  "ADD_ONLY"
+                          },
+                          {
+                              "path":  "docs/master-prompts/C11E_MASTER_HANDOVER_20261117_V2.md",
+                              "bytes":  2460,
+                              "sha256":  "ce4fd59655f0fb8ee9c65f13b20d6d18713a8820f75643f23a0d64a2d07ec3a3",
+                              "disposition":  "ADD_ONLY"
+                          },
+                          {
+                              "path":  "prompts/C11E_CONTINUATION_MASTER_PROMPT_20261117_V2.md",
+                              "bytes":  1978,
+                              "sha256":  "aeb2a2b7b6fc6c9511a2b17020d87633d35d56841bdee051c5d7a5ee9687f472",
+                              "disposition":  "ADD_ONLY"
+                          },
+                          {
+                              "path":  "prompts/C11E_FIRST_PROMPT_20261117_V2.md",
+                              "bytes":  931,
+                              "sha256":  "8d9d79384e978420fcb7cb7638c25e3049ce838bed8c528138d9c5e214311779",
+                              "disposition":  "ADD_ONLY"
+                          },
+                          {
+                              "path":  "prompts/C11E_NEXT_WINDOW_START_PROMPT_20261117_V2.md",
+                              "bytes":  1161,
+                              "sha256":  "4dc8cbed4f6e95b10ec2bf94ee906130e4369f8ebce114c525db3e98d99014fc",
+                              "disposition":  "ADD_ONLY"
+                          }
+                      ],
+    "governance":  {
+                       "nine_new_pins":  "ACCEPTED_FOR_E6_STATIC_ROUTE_DEPENDENCY_SCOPE_ONLY",
+                       "runtime_authorized":  false,
+                       "godot_invoked":  false,
+                       "ffmpeg_invoked":  false,
+                       "ffprobe_invoked":  false,
+                       "audio_generated":  false,
+                       "mux_invoked":  false,
+                       "media_created":  false,
+                       "new_batch_id_consumed":  false,
+                       "production_dispatch":  false,
+                       "e1":  "PREPARE_ONLY",
+                       "d4_8":  "BLOCKED_UNCHANGED",
+                       "renderer":  "OFF",
+                       "release_authority":  "NONE",
+                       "git_checks":  "SKIPPED",
+                       "commits":  "OPERATOR_MANAGED",
+                       "source_file_pins":  "ENFORCED"
+                   }
+}

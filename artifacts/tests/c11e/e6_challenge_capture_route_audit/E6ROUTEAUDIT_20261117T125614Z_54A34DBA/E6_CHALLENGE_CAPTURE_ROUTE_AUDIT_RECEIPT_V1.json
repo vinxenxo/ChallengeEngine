@@ -1,0 +1,923 @@
+{
+  "blockers": [
+    "E4A6_ENVELOPE_BUILDER_IS_CHALLENGE_004_ONLY",
+    "E4A7_AUDIO_MUX_REVIEW_WORKER_IS_CHALLENGE_004_ONLY",
+    "E3_D3_V5_PIPELINE_IS_CHALLENGE_001_ONLY",
+    "CHALLENGE_E6_D9_MOVIE_MAKER_ORCHESTRATOR_NOT_FOUND",
+    "D4_8_R1V_V2_STILL_FORBIDS_SMOKE18_D3_AUDIO_PCM_AND_FFMPEG_MUX",
+    "E6_TEST_ONLY_GOVERNANCE_AUTHORIZATION_NOT_PRESENT",
+    "E1_TEMPO_BPM_AND_DURATION_SECONDS_REMAIN_UNRESOLVED"
+  ],
+  "counts": {
+    "contract_source_pins_expected": 24,
+    "contract_source_pins_passed": 24,
+    "selected_challenge_definitions_expected": 6,
+    "selected_challenge_definitions_passed": 6,
+    "static_route_checks_expected": 18,
+    "static_route_checks_passed": 18
+  },
+  "created_utc": "2026-11-17T12:56:14.492714+00:00",
+  "execution": {
+    "audio_generated": false,
+    "commits": "OPERATOR_MANAGED",
+    "ffmpeg_invoked": false,
+    "ffprobe_invoked": false,
+    "git_checks": "SKIPPED",
+    "godot_invoked": false,
+    "media_created": false,
+    "mux_invoked": false,
+    "new_batch_id_consumed": false,
+    "production_dispatch": false,
+    "release_authority": "NONE",
+    "renderer": "OFF",
+    "source_file_pins_enforced": true,
+    "source_files_written": false
+  },
+  "findings": [
+    {
+      "expected_sha256": "e22abc1fc1779f60dd48abf4cdbf7960b7a3a02b2ef9bc0a7e975053f5effce8",
+      "id": "CONSUMER_CONTRACT_RECEIPT",
+      "path": "artifacts/tests/c11e/e6_challenge_consumer_contract/E6CHCONTRACT_20261117T005638Z_B3412977/E6_CHALLENGE_CONSUMER_CONTRACT_PREFLIGHT_RECEIPT_V1.json",
+      "sha256": "e22abc1fc1779f60dd48abf4cdbf7960b7a3a02b2ef9bc0a7e975053f5effce8",
+      "status": "PASS"
+    },
+    {
+      "expected": 24,
+      "id": "CONSUMER_CONTRACT_SOURCE_PINS",
+      "passed": 24,
+      "rows": [
+        {
+          "actual_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+          "bytes": 796318,
+          "expected_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+          "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+          "receipt_status": "PASS",
+          "status": "PASS"
+        },
+        {
+          "actual_sha256": "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+          "bytes": 12996,
+          "expected_sha256": "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+          "path": "definitions/c11d/production/C11E_D4_8_R1V_QUALIFICATION_ONLY_POLICY_V2.json",
+          "receipt_status": "PASS",
+          "status": "PASS"
+        },
+        {
+          "actual_sha256": "054ed52aefe45cc4d986c4621adbbdb6ca7cf36dc1c4a12cbd76238de86e21fd",
+          "bytes": 31417,
+          "expected_sha256": "054ed52aefe45cc4d986c4621adbbdb6ca7cf36dc1c4a12cbd76238de86e21fd",
+          "path": "artifacts/tests/c11e/e6_smoke18_audit/E6AUDITV2_20261116T235057Z_B7FA0492/E6_SMOKE18_READONLY_AUDIT_RECEIPT_V2.json",
+          "receipt_status": "PASS",
+          "status": "PASS"
+        },
+        {
+          "actual_sha256": "764629384896a255cf992da89fa427c19f60f9b2e623b81ad17d909674b466b5",
+          "bytes": 4200,
+          "expected_sha256": "764629384896a255cf992da89fa427c19f60f9b2e623b81ad17d909674b466b5",
+          "path": "definitions/c11d/production/C11E_E4A_CHALLENGE_EDITORIAL_PRESENTATION_POLICY_APPROVAL_V1.json",
+          "receipt_status": "PASS",
+          "status": "PASS"
+        },
+        {
+          "actual_sha256": "3a8e7bfc13a369acaf9d5abe9583f3e93e0990a3b1262b8a839e81ee873c6461",
+          "bytes": 2907,
+          "expected_sha256": "3a8e7bfc13a369acaf9d5abe9583f3e93e0990a3b1262b8a839e81ee873c6461",
+          "path": "docs/current/d/D1.5_PLATFORM_LAYOUT_TEMPLATE_CONTRACT.md",
+          "receipt_status": "PASS",
+          "status": "PASS"
+        },
+        {
+          "actual_sha256": "eba81fff4c24ca75033c8f963665df1961136046c41fee0e88681fe55a631203",
+          "bytes": 26367,
+          "expected_sha256": "eba81fff4c24ca75033c8f963665df1961136046c41fee0e88681fe55a631203",
+          "path": "tools/c11d/d9/C11EChallengeLiveEditorialConsumer.gd",
+          "receipt_status": "PASS",
+          "status": "PASS"
+        },
+        {
+          "actual_sha256": "9ea0219f681a912760de3bcdf2469f8a3812a7afe7fb3f5ac569664f354ac18e",
+          "bytes": 14855,
+          "expected_sha256": "9ea0219f681a912760de3bcdf2469f8a3812a7afe7fb3f5ac569664f354ac18e",
+          "path": "tools/c11d/d9/c11e_e4a6_challenge_live_editorial_envelope.py",
+          "receipt_status": "PASS",
+          "status": "PASS"
+        },
+        {
+          "actual_sha256": "a31083dcad457b2621610ae68d180a9797cdeb12537a300150e53ec880ee06de",
+          "bytes": 30235,
+          "expected_sha256": "a31083dcad457b2621610ae68d180a9797cdeb12537a300150e53ec880ee06de",
+          "path": "tools/c11d/d9/c11e_e4a_challenge_av_review.py",
+          "receipt_status": "PASS",
+          "status": "PASS"
+        },
+        {
+          "actual_sha256": "46b087683a3dcb460601c925373b84e390999d44d73141328285e6c8a633ba5d",
+          "bytes": 39483,
+          "expected_sha256": "46b087683a3dcb460601c925373b84e390999d44d73141328285e6c8a633ba5d",
+          "path": "c11c-suite/c11c-producer/c11e_e3_audio_pipeline.py",
+          "receipt_status": "PASS",
+          "status": "PASS"
+        },
+        {
+          "actual_sha256": "564f11fb4fee9221910dc373550650172eda4f106d6dc25532cc43cb8e6314a0",
+          "bytes": 32714,
+          "expected_sha256": "564f11fb4fee9221910dc373550650172eda4f106d6dc25532cc43cb8e6314a0",
+          "path": "c11c-suite/c11c-producer/producer_schema.json",
+          "receipt_status": "PASS",
+          "status": "PASS"
+        },
+        {
+          "actual_sha256": "e5dbf9baa72d4c066ff8ba24006df954700d72a5b0f11f9f88aec653e84dce87",
+          "bytes": 86687,
+          "expected_sha256": "e5dbf9baa72d4c066ff8ba24006df954700d72a5b0f11f9f88aec653e84dce87",
+          "path": "c11c-suite/c11c-producer/c11e_production_service.py",
+          "receipt_status": "PASS",
+          "status": "PASS"
+        },
+        {
+          "actual_sha256": "102cf07a0b8920318c3ba211a3bd4374c3e080018486363d701f81e65613aaa0",
+          "bytes": 26095,
+          "expected_sha256": "102cf07a0b8920318c3ba211a3bd4374c3e080018486363d701f81e65613aaa0",
+          "path": "artifacts/tests/c11e/e4a_d_composited_av_review/RUN_20261106T070808Z-62F31F9C/C11E_E4A7_D_COMPOSITED_CHALLENGE_AV_RECEIPT.json",
+          "receipt_status": "PASS",
+          "status": "PASS"
+        },
+        {
+          "actual_sha256": "d42782e8f5bb94ff0ede653a1c4624dc91541cc8203abf136b09a8fc288a7d82",
+          "bytes": 39767,
+          "expected_sha256": "d42782e8f5bb94ff0ede653a1c4624dc91541cc8203abf136b09a8fc288a7d82",
+          "path": "GeneradorMaestro.gd",
+          "receipt_status": "PASS",
+          "status": "PASS"
+        },
+        {
+          "actual_sha256": "ec8925fa5b4ab996a791c8cf7f5b139470774720f57880c5b01b2d0aa5b57bea",
+          "bytes": 1085,
+          "expected_sha256": "ec8925fa5b4ab996a791c8cf7f5b139470774720f57880c5b01b2d0aa5b57bea",
+          "path": "challenges/CHALLENGE_001.json",
+          "receipt_status": "PASS",
+          "status": "PASS"
+        },
+        {
+          "actual_sha256": "db5d70a28c460e986e785c6787447529372ac5ea3b5a7ff0507667decbe2a160",
+          "bytes": 1218,
+          "expected_sha256": "db5d70a28c460e986e785c6787447529372ac5ea3b5a7ff0507667decbe2a160",
+          "path": "challenges/CHALLENGE_002.json",
+          "receipt_status": "PASS",
+          "status": "PASS"
+        },
+        {
+          "actual_sha256": "38cb0166482c5ba4862deef8ab75dad4a6e1524590b6850312bab5238f078419",
+          "bytes": 1132,
+          "expected_sha256": "38cb0166482c5ba4862deef8ab75dad4a6e1524590b6850312bab5238f078419",
+          "path": "challenges/CHALLENGE_003.json",
+          "receipt_status": "PASS",
+          "status": "PASS"
+        },
+        {
+          "actual_sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71",
+          "bytes": 1543,
+          "expected_sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71",
+          "path": "challenges/CHALLENGE_004.json",
+          "receipt_status": "PASS",
+          "status": "PASS"
+        },
+        {
+          "actual_sha256": "e173736fcbb0e340cd250be1111fa9d38489934d55cc0e0c93835c66f9596e30",
+          "bytes": 917,
+          "expected_sha256": "e173736fcbb0e340cd250be1111fa9d38489934d55cc0e0c93835c66f9596e30",
+          "path": "challenges/CHALLENGE_005.json",
+          "receipt_status": "PASS",
+          "status": "PASS"
+        },
+        {
+          "actual_sha256": "2d7d7397cbb0a2109f300859a5d7c0830ded0553522a5120f61750f5bc0b5694",
+          "bytes": 1097,
+          "expected_sha256": "2d7d7397cbb0a2109f300859a5d7c0830ded0553522a5120f61750f5bc0b5694",
+          "path": "challenges/CHALLENGE_006.json",
+          "receipt_status": "PASS",
+          "status": "PASS"
+        },
+        {
+          "actual_sha256": "269f9588e5a6b7d253e2e944440cc41dc3a9db8967775ffa819edebe729a3a61",
+          "bytes": 1388,
+          "expected_sha256": "269f9588e5a6b7d253e2e944440cc41dc3a9db8967775ffa819edebe729a3a61",
+          "path": "challenges/CHALLENGE_007.json",
+          "receipt_status": "PASS",
+          "status": "PASS"
+        },
+        {
+          "actual_sha256": "d17568882eb63ba2eb48649cb9cd46edafe122d72c0c5ed29275e79b8d6d5846",
+          "bytes": 14167,
+          "expected_sha256": "d17568882eb63ba2eb48649cb9cd46edafe122d72c0c5ed29275e79b8d6d5846",
+          "path": "tools/c11d/d9/c11e_challenge_editorial_presentation_adapter.gd",
+          "receipt_status": "PASS",
+          "status": "PASS"
+        },
+        {
+          "actual_sha256": "a81ac55ec6ff5f0222c744c9e23f0f140141ca63e35a41df22e3d87c92fe3e64",
+          "bytes": 35903,
+          "expected_sha256": "a81ac55ec6ff5f0222c744c9e23f0f140141ca63e35a41df22e3d87c92fe3e64",
+          "path": "tools/c11d/d9/c11e_e6_challenge_plan_only_v1.py",
+          "receipt_status": "PASS",
+          "status": "PASS"
+        },
+        {
+          "actual_sha256": "a0bc94acfe5c932bae4516b4822ef94ec5c6ee70d16d16d473ad75fc808dd2e8",
+          "bytes": 5555,
+          "expected_sha256": "a0bc94acfe5c932bae4516b4822ef94ec5c6ee70d16d16d473ad75fc808dd2e8",
+          "path": "tools/c11d/d9/test_c11e_e6_challenge_plan_only_v1.py",
+          "receipt_status": "PASS",
+          "status": "PASS"
+        },
+        {
+          "actual_sha256": "866a3e584356c8a01f5d00a1dbe7df537ceb4d0e0f81512b5d3e393bb04d5c45",
+          "bytes": 2919,
+          "expected_sha256": "866a3e584356c8a01f5d00a1dbe7df537ceb4d0e0f81512b5d3e393bb04d5c45",
+          "path": "tools/c11d/d9/RUN_C11E_E6_CHALLENGE_PLAN_ONLY_V1.ps1",
+          "receipt_status": "PASS",
+          "status": "PASS"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "actual_sha256": "8fcd63fcfd04df9446f20c5ea8dd1646f169051403f2ee04a356997cd3dd257e",
+      "bytes": 48066,
+      "expected_sha256": "8fcd63fcfd04df9446f20c5ea8dd1646f169051403f2ee04a356997cd3dd257e",
+      "id": "CHALLENGE_PLAN_RECEIPT",
+      "path": "artifacts/tests/c11e/e6_challenge_plan_only/E6CHPLAN_20261117T001949Z_D87FADA4/E6_CHALLENGE_PLAN_ONLY_RECEIPT_V1.json",
+      "status": "PASS"
+    },
+    {
+      "actual_sha256": "ef86fe532cd6c92c3c2dc9937a65d149dc699fcd6c0295382a135413f04af6ae",
+      "bytes": 8997,
+      "expected_sha256": "ef86fe532cd6c92c3c2dc9937a65d149dc699fcd6c0295382a135413f04af6ae",
+      "id": "CHALLENGE_PLAN_JSON",
+      "path": "artifacts/tests/c11e/e6_challenge_plan_only/E6CHPLAN_20261117T001949Z_D87FADA4/E6_CHALLENGE_SIX_SELECTOR_PLAN_V1.json",
+      "status": "PASS"
+    },
+    {
+      "actual_sha256": "bee886f606a57c3e5f7fce5cd9b3a7f289f868338830f32b930d5f0bd28ddf62",
+      "bytes": 3418,
+      "expected_sha256": "bee886f606a57c3e5f7fce5cd9b3a7f289f868338830f32b930d5f0bd28ddf62",
+      "id": "CHALLENGE_PLAN_RECOVERY_RECEIPT",
+      "path": "artifacts/tests/c11e/e6_challenge_plan_only_install/E6CHREC2_20261117T001937Z_659245DC/E6_CHALLENGE_PLAN_ONLY_RECOVERY_RECEIPT_V2.json",
+      "status": "PASS"
+    },
+    {
+      "expected": 6,
+      "id": "SIX_CANONICAL_CHALLENGE_DEFINITIONS",
+      "passed": 6,
+      "rows": [
+        {
+          "assets": [
+            {
+              "exists": true,
+              "key": "background_path",
+              "res_path": "res://assets/c6/garage_background.svg"
+            },
+            {
+              "exists": true,
+              "key": "target_path",
+              "res_path": "res://assets/c6/lock.svg"
+            },
+            {
+              "exists": true,
+              "key": "object_path",
+              "res_path": "res://assets/c6/key.svg"
+            }
+          ],
+          "assets_status": "PASS",
+          "challenge_id": "CHALLENGE_001",
+          "challenge_id_matches_filename": true,
+          "expected_gameplay_seed": 193847,
+          "expected_sha256": "ec8925fa5b4ab996a791c8cf7f5b139470774720f57880c5b01b2d0aa5b57bea",
+          "gameplay_seed": 193847,
+          "gameplay_seed_status": "PASS",
+          "path": "challenges/CHALLENGE_001.json",
+          "plan_source_hash_matches": true,
+          "plan_timebase_matches": true,
+          "sha256": "ec8925fa5b4ab996a791c8cf7f5b139470774720f57880c5b01b2d0aa5b57bea",
+          "source_pin_status": "PASS",
+          "status": "PASS",
+          "timeline": {
+            "duration_seconds": 9.0,
+            "fps": 60,
+            "phases": [
+              {
+                "duration_seconds": 0.0,
+                "end_frame": 0,
+                "frames": 0,
+                "phase": "HOOK",
+                "start_frame": 0
+              },
+              {
+                "duration_seconds": 7.0,
+                "end_frame": 420,
+                "frames": 420,
+                "phase": "GAME",
+                "start_frame": 0
+              },
+              {
+                "duration_seconds": 0.0,
+                "end_frame": 420,
+                "frames": 0,
+                "phase": "REVEAL",
+                "start_frame": 420
+              },
+              {
+                "duration_seconds": 2.0,
+                "end_frame": 540,
+                "frames": 120,
+                "phase": "CTA",
+                "start_frame": 420
+              }
+            ],
+            "source_frames": 540
+          },
+          "timeline_status": "PASS"
+        },
+        {
+          "assets": [
+            {
+              "exists": true,
+              "key": "background_path",
+              "res_path": "res://assets/c6/garage_background.svg"
+            },
+            {
+              "exists": true,
+              "key": "target_path",
+              "res_path": "res://assets/c6/parking_target.svg"
+            },
+            {
+              "exists": true,
+              "key": "object_path",
+              "res_path": "res://assets/c6/car.svg"
+            }
+          ],
+          "assets_status": "PASS",
+          "challenge_id": "CHALLENGE_002",
+          "challenge_id_matches_filename": true,
+          "expected_gameplay_seed": 987654,
+          "expected_sha256": "db5d70a28c460e986e785c6787447529372ac5ea3b5a7ff0507667decbe2a160",
+          "gameplay_seed": 987654,
+          "gameplay_seed_status": "PASS",
+          "path": "challenges/CHALLENGE_002.json",
+          "plan_source_hash_matches": true,
+          "plan_timebase_matches": true,
+          "sha256": "db5d70a28c460e986e785c6787447529372ac5ea3b5a7ff0507667decbe2a160",
+          "source_pin_status": "PASS",
+          "status": "PASS",
+          "timeline": {
+            "duration_seconds": 10.0,
+            "fps": 60,
+            "phases": [
+              {
+                "duration_seconds": 3.0,
+                "end_frame": 180,
+                "frames": 180,
+                "phase": "HOOK",
+                "start_frame": 0
+              },
+              {
+                "duration_seconds": 7.0,
+                "end_frame": 600,
+                "frames": 420,
+                "phase": "GAME",
+                "start_frame": 180
+              },
+              {
+                "duration_seconds": 0.0,
+                "end_frame": 600,
+                "frames": 0,
+                "phase": "REVEAL",
+                "start_frame": 600
+              },
+              {
+                "duration_seconds": 0.0,
+                "end_frame": 600,
+                "frames": 0,
+                "phase": "CTA",
+                "start_frame": 600
+              }
+            ],
+            "source_frames": 600
+          },
+          "timeline_status": "PASS"
+        },
+        {
+          "assets": [
+            {
+              "exists": true,
+              "key": "background_path",
+              "res_path": "res://assets/c6/garage_background.svg"
+            },
+            {
+              "exists": true,
+              "key": "target_path",
+              "res_path": "res://assets/c6/parking_target.svg"
+            },
+            {
+              "exists": true,
+              "key": "object_path",
+              "res_path": "res://assets/c6/car.svg"
+            }
+          ],
+          "assets_status": "PASS",
+          "challenge_id": "CHALLENGE_004",
+          "challenge_id_matches_filename": true,
+          "expected_gameplay_seed": 314159,
+          "expected_sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71",
+          "gameplay_seed": 314159,
+          "gameplay_seed_status": "PASS",
+          "path": "challenges/CHALLENGE_004.json",
+          "plan_source_hash_matches": true,
+          "plan_timebase_matches": true,
+          "sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71",
+          "source_pin_status": "PASS",
+          "status": "PASS",
+          "timeline": {
+            "duration_seconds": 15.0,
+            "fps": 60,
+            "phases": [
+              {
+                "duration_seconds": 3.0,
+                "end_frame": 180,
+                "frames": 180,
+                "phase": "HOOK",
+                "start_frame": 0
+              },
+              {
+                "duration_seconds": 7.0,
+                "end_frame": 600,
+                "frames": 420,
+                "phase": "GAME",
+                "start_frame": 180
+              },
+              {
+                "duration_seconds": 3.0,
+                "end_frame": 780,
+                "frames": 180,
+                "phase": "REVEAL",
+                "start_frame": 600
+              },
+              {
+                "duration_seconds": 2.0,
+                "end_frame": 900,
+                "frames": 120,
+                "phase": "CTA",
+                "start_frame": 780
+              }
+            ],
+            "source_frames": 900
+          },
+          "timeline_status": "PASS"
+        },
+        {
+          "assets": [
+            {
+              "exists": true,
+              "key": "background_path",
+              "res_path": "res://assets/c6/garage_background.svg"
+            },
+            {
+              "exists": true,
+              "key": "target_path",
+              "res_path": "res://assets/c6/target.svg"
+            },
+            {
+              "exists": true,
+              "key": "object_path",
+              "res_path": "res://assets/c6/projectile.svg"
+            }
+          ],
+          "assets_status": "PASS",
+          "challenge_id": "CHALLENGE_005",
+          "challenge_id_matches_filename": true,
+          "expected_gameplay_seed": 998877,
+          "expected_sha256": "e173736fcbb0e340cd250be1111fa9d38489934d55cc0e0c93835c66f9596e30",
+          "gameplay_seed": 998877,
+          "gameplay_seed_status": "PASS",
+          "path": "challenges/CHALLENGE_005.json",
+          "plan_source_hash_matches": true,
+          "plan_timebase_matches": true,
+          "sha256": "e173736fcbb0e340cd250be1111fa9d38489934d55cc0e0c93835c66f9596e30",
+          "source_pin_status": "PASS",
+          "status": "PASS",
+          "timeline": {
+            "duration_seconds": 7.0,
+            "fps": 60,
+            "phases": [
+              {
+                "duration_seconds": 0.0,
+                "end_frame": 0,
+                "frames": 0,
+                "phase": "HOOK",
+                "start_frame": 0
+              },
+              {
+                "duration_seconds": 7.0,
+                "end_frame": 420,
+                "frames": 420,
+                "phase": "GAME",
+                "start_frame": 0
+              },
+              {
+                "duration_seconds": 0.0,
+                "end_frame": 420,
+                "frames": 0,
+                "phase": "REVEAL",
+                "start_frame": 420
+              },
+              {
+                "duration_seconds": 0.0,
+                "end_frame": 420,
+                "frames": 0,
+                "phase": "CTA",
+                "start_frame": 420
+              }
+            ],
+            "source_frames": 420
+          },
+          "timeline_status": "PASS"
+        },
+        {
+          "assets": [
+            {
+              "exists": true,
+              "key": "background_path",
+              "res_path": "res://assets/c6/garage_background.svg"
+            },
+            {
+              "exists": true,
+              "key": "target_path",
+              "res_path": "res://assets/c6/target.svg"
+            },
+            {
+              "exists": true,
+              "key": "object_path",
+              "res_path": "res://assets/c6/catcher.svg"
+            }
+          ],
+          "assets_status": "PASS",
+          "challenge_id": "CHALLENGE_006",
+          "challenge_id_matches_filename": true,
+          "expected_gameplay_seed": 884422,
+          "expected_sha256": "2d7d7397cbb0a2109f300859a5d7c0830ded0553522a5120f61750f5bc0b5694",
+          "gameplay_seed": 884422,
+          "gameplay_seed_status": "PASS",
+          "path": "challenges/CHALLENGE_006.json",
+          "plan_source_hash_matches": true,
+          "plan_timebase_matches": true,
+          "sha256": "2d7d7397cbb0a2109f300859a5d7c0830ded0553522a5120f61750f5bc0b5694",
+          "source_pin_status": "PASS",
+          "status": "PASS",
+          "timeline": {
+            "duration_seconds": 9.0,
+            "fps": 60,
+            "phases": [
+              {
+                "duration_seconds": 0.0,
+                "end_frame": 0,
+                "frames": 0,
+                "phase": "HOOK",
+                "start_frame": 0
+              },
+              {
+                "duration_seconds": 7.0,
+                "end_frame": 420,
+                "frames": 420,
+                "phase": "GAME",
+                "start_frame": 0
+              },
+              {
+                "duration_seconds": 0.0,
+                "end_frame": 420,
+                "frames": 0,
+                "phase": "REVEAL",
+                "start_frame": 420
+              },
+              {
+                "duration_seconds": 2.0,
+                "end_frame": 540,
+                "frames": 120,
+                "phase": "CTA",
+                "start_frame": 420
+              }
+            ],
+            "source_frames": 540
+          },
+          "timeline_status": "PASS"
+        },
+        {
+          "assets": [
+            {
+              "exists": true,
+              "key": "background_path",
+              "res_path": "res://assets/c6/garage_background.svg"
+            },
+            {
+              "exists": true,
+              "key": "target_path",
+              "res_path": "res://assets/c6/target.svg"
+            },
+            {
+              "exists": true,
+              "key": "object_path",
+              "res_path": "res://assets/c6/scanner.svg"
+            }
+          ],
+          "assets_status": "PASS",
+          "challenge_id": "CHALLENGE_007",
+          "challenge_id_matches_filename": true,
+          "expected_gameplay_seed": 7770001,
+          "expected_sha256": "269f9588e5a6b7d253e2e944440cc41dc3a9db8967775ffa819edebe729a3a61",
+          "gameplay_seed": 7770001,
+          "gameplay_seed_status": "PASS",
+          "path": "challenges/CHALLENGE_007.json",
+          "plan_source_hash_matches": true,
+          "plan_timebase_matches": true,
+          "sha256": "269f9588e5a6b7d253e2e944440cc41dc3a9db8967775ffa819edebe729a3a61",
+          "source_pin_status": "PASS",
+          "status": "PASS",
+          "timeline": {
+            "duration_seconds": 10.0,
+            "fps": 60,
+            "phases": [
+              {
+                "duration_seconds": 3.0,
+                "end_frame": 180,
+                "frames": 180,
+                "phase": "HOOK",
+                "start_frame": 0
+              },
+              {
+                "duration_seconds": 7.0,
+                "end_frame": 600,
+                "frames": 420,
+                "phase": "GAME",
+                "start_frame": 180
+              },
+              {
+                "duration_seconds": 0.0,
+                "end_frame": 600,
+                "frames": 0,
+                "phase": "REVEAL",
+                "start_frame": 600
+              },
+              {
+                "duration_seconds": 0.0,
+                "end_frame": 600,
+                "frames": 0,
+                "phase": "CTA",
+                "start_frame": 600
+              }
+            ],
+            "source_frames": 600
+          },
+          "timeline_status": "PASS"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "checks": [
+        {
+          "check": "project_main_scene_is_main_tscn",
+          "status": "PASS"
+        },
+        {
+          "check": "project_native_viewport_540x960",
+          "status": "PASS"
+        },
+        {
+          "check": "main_scene_uses_generador_maestro",
+          "status": "PASS"
+        },
+        {
+          "check": "main_scene_uses_unified_social_frame",
+          "status": "PASS"
+        },
+        {
+          "check": "generator_reads_config_argument",
+          "status": "PASS"
+        },
+        {
+          "check": "generator_reads_optional_d_envelope_argument",
+          "status": "PASS"
+        },
+        {
+          "check": "generator_configures_existing_generic_consumer",
+          "status": "PASS"
+        },
+        {
+          "check": "generator_applies_d_after_native_bind_in_four_phases",
+          "status": "PASS"
+        },
+        {
+          "check": "migration_copies_inline_video_timebase",
+          "status": "PASS"
+        },
+        {
+          "check": "timeline_builder_consumes_canonical_inline_video",
+          "status": "PASS"
+        },
+        {
+          "check": "timeline_sums_four_phases",
+          "status": "PASS"
+        },
+        {
+          "check": "temporal_core_rounds_duration_to_frames",
+          "status": "PASS"
+        },
+        {
+          "check": "validator_requires_challenge_id_mechanic_generation_video_assets",
+          "status": "PASS"
+        },
+        {
+          "check": "consumer_checks_dynamic_challenge_identity",
+          "status": "PASS"
+        },
+        {
+          "check": "consumer_checks_timeline_timebase_and_phase_ranges",
+          "status": "PASS"
+        },
+        {
+          "check": "consumer_applies_after_native_bind",
+          "status": "PASS"
+        },
+        {
+          "check": "consumer_does_not_hardcode_challenge_004",
+          "status": "PASS"
+        },
+        {
+          "check": "adapter_is_challenge_scoped_not_selector_locked",
+          "status": "PASS"
+        }
+      ],
+      "expected": 18,
+      "id": "STATIC_EXISTING_CHALLENGE_CAPTURE_ROUTE",
+      "passed": 18,
+      "status": "PASS"
+    },
+    {
+      "id": "ADDITIONAL_RUNTIME_ROUTE_DEPENDENCY_FINGERPRINTS",
+      "rows": [
+        {
+          "bytes": 868,
+          "observed_sha256": "d20b0f275c58a34881420705bb1990564d719427c550478c434345ced72805d3",
+          "path": "project.godot",
+          "status": "OBSERVED_UNPINNED"
+        },
+        {
+          "bytes": 1086,
+          "observed_sha256": "5271714b9a5c31aeda1d7347347f1429ca37a48c081e59e6ec42383626731de7",
+          "path": "Main.tscn",
+          "status": "OBSERVED_UNPINNED"
+        },
+        {
+          "bytes": 8977,
+          "observed_sha256": "79099cbb5fea9d9c5c519370b1c56d72c8394db14e9adf5b0bb744410e507c13",
+          "path": "core/authoring/ChallengeMigrationAdapter.gd",
+          "status": "OBSERVED_UNPINNED"
+        },
+        {
+          "bytes": 3721,
+          "observed_sha256": "35a47ad126a2e11577933a03b251f47732e580693e5c08e45d3b6af047c8c9af",
+          "path": "core/execution/ChallengeTimelineBuilder.gd",
+          "status": "OBSERVED_UNPINNED"
+        },
+        {
+          "bytes": 1501,
+          "observed_sha256": "a0276e86ac27389f4abd0d5cd9b998e97a32162de44e2f917d7158255892ce71",
+          "path": "core/authoring/ChallengeTimeLiine.gd",
+          "status": "OBSERVED_UNPINNED"
+        },
+        {
+          "bytes": 851,
+          "observed_sha256": "f076e9090c3d13be63b7ccda91a5861576a4d32eb673380a95272b3b3fa27966",
+          "path": "core/authoring/TemporalCore.gd",
+          "status": "OBSERVED_UNPINNED"
+        },
+        {
+          "bytes": 4906,
+          "observed_sha256": "d7c1c50f505853ebef376b75ac8ef675a4bab24d6733c96bc14a00db0d3904c4",
+          "path": "core/validation/ChallengeDefinitionValidator.gd",
+          "status": "OBSERVED_UNPINNED"
+        },
+        {
+          "bytes": 8837,
+          "observed_sha256": "187b1cf8ab96b9031785a0f36b0054a60383c97cb3d81906c7d9bbcd373bef24",
+          "path": "core/presentation/PresentationProfile.gd",
+          "status": "OBSERVED_UNPINNED"
+        },
+        {
+          "bytes": 4517,
+          "observed_sha256": "486191d276b4dbc62acc1ff43121ddb5eca8a74e0f22e270b5c429694f83ad49",
+          "path": "core/validation/PresentationProfileValidator.gd",
+          "status": "OBSERVED_UNPINNED"
+        }
+      ],
+      "status": "RECORDED_NOT_ACCEPTED_SOURCE_PINS"
+    },
+    {
+      "checks": [
+        {
+          "check": "e4a6_builder_pins_challenge_004_definition",
+          "status": "PASS"
+        },
+        {
+          "check": "e4a6_builder_uses_challenge_004_intent_identity",
+          "status": "PASS"
+        },
+        {
+          "check": "e4a6_builder_pins_legacy_challenge_004_seeds",
+          "status": "PASS"
+        },
+        {
+          "check": "e4a7_av_worker_isolated_challenge_004",
+          "status": "PASS"
+        },
+        {
+          "check": "e3_audio_pipeline_is_challenge_001_only",
+          "status": "PASS"
+        }
+      ],
+      "expected": 5,
+      "id": "EXISTING_ENVELOPE_AND_AUDIO_EXECUTOR_SCOPE",
+      "passed": 5,
+      "status": "PASS"
+    },
+    {
+      "all_active_script_hits": 12,
+      "c11c_challenge_reference_runners": [
+        {
+          "classification": "C11C_EXISTING_CHALLENGE_LAUNCHER_REFERENCE_ONLY",
+          "contains_c11e_envelope_argument": false,
+          "contains_config_argument": true,
+          "observed_sha256": "c3fed414912f50efed1687e258c48c5e85c08989a473ed12c38dc9784db171d5",
+          "path": "tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1",
+          "scene_argument_observed": "Main.tscn"
+        }
+      ],
+      "challenge_e6_d9_runner_status": "NOT_FOUND",
+      "d9_movie_maker_candidates": [],
+      "e2_bounded_runners": [
+        {
+          "classification": "C11E_E2_CH001_BOUNDED_NOT_E6",
+          "contains_c11e_envelope_argument": false,
+          "contains_config_argument": true,
+          "observed_sha256": "158325324626085ebf319f68906ca8778f9a08eb39c6e8441da146c12ee4f953",
+          "path": "tools/c11e/e2/run_c11e_e2_ch001_ab.ps1",
+          "scene_argument_observed": "tools/c11e/e2/C11EChallenge001E2.tscn"
+        }
+      ],
+      "id": "MOVIE_MAKER_LAUNCHER_INVENTORY"
+    },
+    {
+      "d4_8_policy_sha256": "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+      "id": "PLAN_GOVERNANCE_AND_MUSIC_FIXTURE_BOUNDARY",
+      "media_authorized": false,
+      "music_fixture_status": "PROPOSED_E6_TEST_ONLY_NOT_PRODUCT_DEFAULT",
+      "status": "PASS",
+      "unresolved_engine_parameters": [
+        "tempo_bpm",
+        "duration_seconds"
+      ]
+    },
+    {
+      "id": "CHALLENGE_004_REUSE_CANDIDATE",
+      "new_challenge_source_captures_if_reuse_accepted": 5,
+      "receipt_path": "artifacts/tests/c11e/e4a_d_composited_av_review/RUN_20261106T070808Z-62F31F9C/C11E_E4A7_D_COMPOSITED_CHALLENGE_AV_RECEIPT.json",
+      "receipt_sha256": "102cf07a0b8920318c3ba211a3bd4374c3e080018486363d701f81e65613aaa0",
+      "reuse_disposition": "CANDIDATE_REQUIRES_E6_LEDGER_ACCEPTANCE",
+      "status": "PASS_PINNED"
+    }
+  ],
+  "next_design_boundary": {
+    "authorization": "No Movie Maker, D3 V5, FFmpeg or FFprobe invocation until separate governance approval explicitly resolves D4.8 conflict",
+    "existing_consumer": "C11EChallengeLiveEditorialConsumer.gd; selector-generic Challenge identity and timeline validation",
+    "existing_single_renderer": "GeneradorMaestro.gd + Main.tscn; keep unchanged",
+    "missing_increment": "One D9-owned PREPARE_ONLY multi-selector orchestration seam; no new Producer/binder/renderer/module",
+    "per_selector_a_b_c_video_policy": "One immutable D-composited video source per selected Challenge, shared across A/B/C audio seed comparisons; no duplicate gameplay captures for music-only seed changes",
+    "per_selector_capture_inputs": [
+      "canonical challenge JSON path",
+      "exact per-selector E1/D envelope",
+      "native source FPS",
+      "native source frame count",
+      "unique evidence path"
+    ]
+  },
+  "project_root": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+  "run_id": "E6ROUTEAUDIT_20261117T125614Z_54A34DBA",
+  "schema": "C11E-E6-CHALLENGE-CAPTURE-ROUTE-AUDIT-RECEIPT-V1",
+  "schema_version": "1.0",
+  "scope": "READ_ONLY_SOURCE_AND_EVIDENCE_AUDIT_NO_GODOT_NO_FFMPEG_NO_AUDIO_NO_MEDIA",
+  "status": "PASS_STATIC_ROUTE_AUDIT_EXECUTION_HELD",
+  "warnings": [
+    "Main scene, project settings, migration, timeline builder and timeline arithmetic dependencies are fingerprinted here but are not part of the prior 24 accepted E6 source pins; pin them before authorizing runtime.",
+    "The E2 Movie Maker runner is CHALLENGE_001/E2-specific (different scene and title sidecar); it is not a multi-selector E6 runner.",
+    "The existing C11-C bulk Challenge Movie Maker launcher is recorded as a reference only; do not modify or treat it as D9 E6 authorization."
+  ]
+}

@@ -1,0 +1,261 @@
+{
+    "schema":  "C11E-E6-CONTINUITY-AUTHORITY-HANDOVER-INSTALL-RECEIPT-V1",
+    "run_id":  "E6HANDOVERINSTALL_20261117T140558Z_FA4BA49C",
+    "status":  "PASS_ADD_ONLY_DOCUMENTATION_INSTALL",
+    "created_utc":  "2026-11-17T14:05:58.1348061Z",
+    "project_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+    "package_manifest_sha256":  "1385bfb5539c071932738f2371062568283a0cbcf8123f9107cc5a8e56fad349",
+    "installer_sha256":  "3cb762c1ba4958293c4f69301a55a712353527d7cd3eaa2feebd3d9c3f1c532d",
+    "protected_preconditions":  {
+                                    "frozen_c11c_manifest_sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+                                    "d4_8_r1v_v2_sha256":  "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+                                    "route_audit_run_id":  "E6ROUTEAUDIT_20261117T125614Z_54A34DBA",
+                                    "route_audit_receipt_sha256":  "8deb1c23022ecde3f0b66e7ff07778172adecbd6e6a7f6ec045f6698657b4190",
+                                    "dependency_audit_run_id":  "E6DEPPINAUDIT_20261117T130110Z_A1CCE574",
+                                    "dependency_audit_receipt_sha256":  "bff36af655abba65aa7ddb2e59c108c57593b6ca19aad586aafe7077b7428f3d",
+                                    "dependency_candidate_manifest_sha256":  "6f607d0a59202a23673905ea69542c07d1f43b2cf405e379b30257bba281483a"
+                                },
+    "counts":  {
+                   "source_pins_rehashed":  33,
+                   "previous_accepted_pins":  24,
+                   "new_candidate_pins":  9,
+                   "payload_files_expected":  8,
+                   "payload_files_added":  8,
+                   "payload_files_already_identical":  0
+               },
+    "payload_files":  [
+                          {
+                              "path":  "docs\\current\\e\\C11E_E6_READINESS_AND_RENDER_ADMISSION_20261117_V1.md",
+                              "bytes":  11484,
+                              "sha256":  "381da8a7967b4e69e0986ee5da147f342e1ba505708c428607a1db446cd6abee",
+                              "disposition":  "ADD_ONLY"
+                          },
+                          {
+                              "path":  "docs\\current\\e\\C11E_E6_EVIDENCE_REUSE_REGISTER_20261117_V1.md",
+                              "bytes":  3562,
+                              "sha256":  "39b3b366397ad6a44fc507cb9d8b3278c23d0467bd48b6cc20240043dc42ff57",
+                              "disposition":  "ADD_ONLY"
+                          },
+                          {
+                              "path":  "docs\\current\\e\\C11E_E6_NEXT_ACTION_REGISTER_20261117_V1.json",
+                              "bytes":  5560,
+                              "sha256":  "e12c7f42a726f2f93b53720333df5702fd21065d43c06518faacf78e3397b6a8",
+                              "disposition":  "ADD_ONLY"
+                          },
+                          {
+                              "path":  "docs\\current\\e\\C11E_E6_CONTINUITY_OVERLAY_CHANGELOG_20261117_V1.md",
+                              "bytes":  1488,
+                              "sha256":  "783412bc13192a1c1c98b544d29cfdf1198e0bc4518221ffda924c205a52132e",
+                              "disposition":  "ADD_ONLY"
+                          },
+                          {
+                              "path":  "docs\\master-prompts\\C11E_MASTER_HANDOVER_20261117_V1.md",
+                              "bytes":  3260,
+                              "sha256":  "c1f898a3555490a842dd07f870a2e1e4a85e1080303bcf6babcbc5d01f203006",
+                              "disposition":  "ADD_ONLY"
+                          },
+                          {
+                              "path":  "prompts\\C11E_CONTINUATION_MASTER_PROMPT_20261117_V1.md",
+                              "bytes":  3597,
+                              "sha256":  "a7509b0a698ca203fae5a9923408555cd5a5602812d5e08b9d6f5009832c535c",
+                              "disposition":  "ADD_ONLY"
+                          },
+                          {
+                              "path":  "prompts\\C11E_NEXT_WINDOW_START_PROMPT_20261117_V1.md",
+                              "bytes":  1657,
+                              "sha256":  "5e979ae1bc12b2951c4e6109bb73c0517b009293731ef7757b21495b4660e2d8",
+                              "disposition":  "ADD_ONLY"
+                          },
+                          {
+                              "path":  "prompts\\C11E_FIRST_PROMPT_20261117_V1.md",
+                              "bytes":  1570,
+                              "sha256":  "45b8894d1d19c02c73d99942f9950323272349880a6e759c858dcd2d97ce57b2",
+                              "disposition":  "ADD_ONLY"
+                          }
+                      ],
+    "source_pin_verification":  [
+                                    {
+                                        "Path":  "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+                                        "Sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+                                        "Status":  "PASS"
+                                    },
+                                    {
+                                        "Path":  "definitions/c11d/production/C11E_D4_8_R1V_QUALIFICATION_ONLY_POLICY_V2.json",
+                                        "Sha256":  "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+                                        "Status":  "PASS"
+                                    },
+                                    {
+                                        "Path":  "artifacts/tests/c11e/e6_smoke18_audit/E6AUDITV2_20261116T235057Z_B7FA0492/E6_SMOKE18_READONLY_AUDIT_RECEIPT_V2.json",
+                                        "Sha256":  "054ed52aefe45cc4d986c4621adbbdb6ca7cf36dc1c4a12cbd76238de86e21fd",
+                                        "Status":  "PASS"
+                                    },
+                                    {
+                                        "Path":  "definitions/c11d/production/C11E_E4A_CHALLENGE_EDITORIAL_PRESENTATION_POLICY_APPROVAL_V1.json",
+                                        "Sha256":  "764629384896a255cf992da89fa427c19f60f9b2e623b81ad17d909674b466b5",
+                                        "Status":  "PASS"
+                                    },
+                                    {
+                                        "Path":  "docs/current/d/D1.5_PLATFORM_LAYOUT_TEMPLATE_CONTRACT.md",
+                                        "Sha256":  "3a8e7bfc13a369acaf9d5abe9583f3e93e0990a3b1262b8a839e81ee873c6461",
+                                        "Status":  "PASS"
+                                    },
+                                    {
+                                        "Path":  "tools/c11d/d9/C11EChallengeLiveEditorialConsumer.gd",
+                                        "Sha256":  "eba81fff4c24ca75033c8f963665df1961136046c41fee0e88681fe55a631203",
+                                        "Status":  "PASS"
+                                    },
+                                    {
+                                        "Path":  "tools/c11d/d9/c11e_e4a6_challenge_live_editorial_envelope.py",
+                                        "Sha256":  "9ea0219f681a912760de3bcdf2469f8a3812a7afe7fb3f5ac569664f354ac18e",
+                                        "Status":  "PASS"
+                                    },
+                                    {
+                                        "Path":  "tools/c11d/d9/c11e_e4a_challenge_av_review.py",
+                                        "Sha256":  "a31083dcad457b2621610ae68d180a9797cdeb12537a300150e53ec880ee06de",
+                                        "Status":  "PASS"
+                                    },
+                                    {
+                                        "Path":  "c11c-suite/c11c-producer/c11e_e3_audio_pipeline.py",
+                                        "Sha256":  "46b087683a3dcb460601c925373b84e390999d44d73141328285e6c8a633ba5d",
+                                        "Status":  "PASS"
+                                    },
+                                    {
+                                        "Path":  "c11c-suite/c11c-producer/producer_schema.json",
+                                        "Sha256":  "564f11fb4fee9221910dc373550650172eda4f106d6dc25532cc43cb8e6314a0",
+                                        "Status":  "PASS"
+                                    },
+                                    {
+                                        "Path":  "c11c-suite/c11c-producer/c11e_production_service.py",
+                                        "Sha256":  "e5dbf9baa72d4c066ff8ba24006df954700d72a5b0f11f9f88aec653e84dce87",
+                                        "Status":  "PASS"
+                                    },
+                                    {
+                                        "Path":  "artifacts/tests/c11e/e4a_d_composited_av_review/RUN_20261106T070808Z-62F31F9C/C11E_E4A7_D_COMPOSITED_CHALLENGE_AV_RECEIPT.json",
+                                        "Sha256":  "102cf07a0b8920318c3ba211a3bd4374c3e080018486363d701f81e65613aaa0",
+                                        "Status":  "PASS"
+                                    },
+                                    {
+                                        "Path":  "GeneradorMaestro.gd",
+                                        "Sha256":  "d42782e8f5bb94ff0ede653a1c4624dc91541cc8203abf136b09a8fc288a7d82",
+                                        "Status":  "PASS"
+                                    },
+                                    {
+                                        "Path":  "challenges/CHALLENGE_001.json",
+                                        "Sha256":  "ec8925fa5b4ab996a791c8cf7f5b139470774720f57880c5b01b2d0aa5b57bea",
+                                        "Status":  "PASS"
+                                    },
+                                    {
+                                        "Path":  "challenges/CHALLENGE_002.json",
+                                        "Sha256":  "db5d70a28c460e986e785c6787447529372ac5ea3b5a7ff0507667decbe2a160",
+                                        "Status":  "PASS"
+                                    },
+                                    {
+                                        "Path":  "challenges/CHALLENGE_003.json",
+                                        "Sha256":  "38cb0166482c5ba4862deef8ab75dad4a6e1524590b6850312bab5238f078419",
+                                        "Status":  "PASS"
+                                    },
+                                    {
+                                        "Path":  "challenges/CHALLENGE_004.json",
+                                        "Sha256":  "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71",
+                                        "Status":  "PASS"
+                                    },
+                                    {
+                                        "Path":  "challenges/CHALLENGE_005.json",
+                                        "Sha256":  "e173736fcbb0e340cd250be1111fa9d38489934d55cc0e0c93835c66f9596e30",
+                                        "Status":  "PASS"
+                                    },
+                                    {
+                                        "Path":  "challenges/CHALLENGE_006.json",
+                                        "Sha256":  "2d7d7397cbb0a2109f300859a5d7c0830ded0553522a5120f61750f5bc0b5694",
+                                        "Status":  "PASS"
+                                    },
+                                    {
+                                        "Path":  "challenges/CHALLENGE_007.json",
+                                        "Sha256":  "269f9588e5a6b7d253e2e944440cc41dc3a9db8967775ffa819edebe729a3a61",
+                                        "Status":  "PASS"
+                                    },
+                                    {
+                                        "Path":  "tools/c11d/d9/c11e_challenge_editorial_presentation_adapter.gd",
+                                        "Sha256":  "d17568882eb63ba2eb48649cb9cd46edafe122d72c0c5ed29275e79b8d6d5846",
+                                        "Status":  "PASS"
+                                    },
+                                    {
+                                        "Path":  "tools/c11d/d9/c11e_e6_challenge_plan_only_v1.py",
+                                        "Sha256":  "a81ac55ec6ff5f0222c744c9e23f0f140141ca63e35a41df22e3d87c92fe3e64",
+                                        "Status":  "PASS"
+                                    },
+                                    {
+                                        "Path":  "tools/c11d/d9/test_c11e_e6_challenge_plan_only_v1.py",
+                                        "Sha256":  "a0bc94acfe5c932bae4516b4822ef94ec5c6ee70d16d16d473ad75fc808dd2e8",
+                                        "Status":  "PASS"
+                                    },
+                                    {
+                                        "Path":  "tools/c11d/d9/RUN_C11E_E6_CHALLENGE_PLAN_ONLY_V1.ps1",
+                                        "Sha256":  "866a3e584356c8a01f5d00a1dbe7df537ceb4d0e0f81512b5d3e393bb04d5c45",
+                                        "Status":  "PASS"
+                                    },
+                                    {
+                                        "Path":  "project.godot",
+                                        "Sha256":  "d20b0f275c58a34881420705bb1990564d719427c550478c434345ced72805d3",
+                                        "Status":  "PASS"
+                                    },
+                                    {
+                                        "Path":  "Main.tscn",
+                                        "Sha256":  "5271714b9a5c31aeda1d7347347f1429ca37a48c081e59e6ec42383626731de7",
+                                        "Status":  "PASS"
+                                    },
+                                    {
+                                        "Path":  "core/authoring/ChallengeMigrationAdapter.gd",
+                                        "Sha256":  "79099cbb5fea9d9c5c519370b1c56d72c8394db14e9adf5b0bb744410e507c13",
+                                        "Status":  "PASS"
+                                    },
+                                    {
+                                        "Path":  "core/execution/ChallengeTimelineBuilder.gd",
+                                        "Sha256":  "35a47ad126a2e11577933a03b251f47732e580693e5c08e45d3b6af047c8c9af",
+                                        "Status":  "PASS"
+                                    },
+                                    {
+                                        "Path":  "core/authoring/ChallengeTimeLiine.gd",
+                                        "Sha256":  "a0276e86ac27389f4abd0d5cd9b998e97a32162de44e2f917d7158255892ce71",
+                                        "Status":  "PASS"
+                                    },
+                                    {
+                                        "Path":  "core/authoring/TemporalCore.gd",
+                                        "Sha256":  "f076e9090c3d13be63b7ccda91a5861576a4d32eb673380a95272b3b3fa27966",
+                                        "Status":  "PASS"
+                                    },
+                                    {
+                                        "Path":  "core/validation/ChallengeDefinitionValidator.gd",
+                                        "Sha256":  "d7c1c50f505853ebef376b75ac8ef675a4bab24d6733c96bc14a00db0d3904c4",
+                                        "Status":  "PASS"
+                                    },
+                                    {
+                                        "Path":  "core/presentation/PresentationProfile.gd",
+                                        "Sha256":  "187b1cf8ab96b9031785a0f36b0054a60383c97cb3d81906c7d9bbcd373bef24",
+                                        "Status":  "PASS"
+                                    },
+                                    {
+                                        "Path":  "core/validation/PresentationProfileValidator.gd",
+                                        "Sha256":  "486191d276b4dbc62acc1ff43121ddb5eca8a74e0f22e270b5c429694f83ad49",
+                                        "Status":  "PASS"
+                                    }
+                                ],
+    "governance":  {
+                       "nine_new_pins":  "CANDIDATE_ONLY_NOT_ACCEPTED",
+                       "e1":  "PREPARE_ONLY",
+                       "d4_8":  "BLOCKED_UNCHANGED",
+                       "renderer":  "OFF",
+                       "godot_invoked":  false,
+                       "ffmpeg_invoked":  false,
+                       "ffprobe_invoked":  false,
+                       "audio_generated":  false,
+                       "mux_invoked":  false,
+                       "media_created":  false,
+                       "new_batch_id_consumed":  false,
+                       "production_dispatch":  false,
+                       "release_authority":  "NONE",
+                       "git_checks":  "SKIPPED",
+                       "commits":  "OPERATOR_MANAGED",
+                       "source_file_pins":  "ENFORCED"
+                   }
+}

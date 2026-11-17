@@ -1,0 +1,86 @@
+{
+  "acceptance": "NOT_GRANTED_BY_THIS_AUDIT",
+  "base_evidence": {
+    "prior_accepted_source_pin_count": 24,
+    "receipt_sha256": "8deb1c23022ecde3f0b66e7ff07778172adecbd6e6a7f6ec045f6698657b4190",
+    "run_id": "E6ROUTEAUDIT_20261117T125614Z_54A34DBA"
+  },
+  "candidate_dependency_pin_count": 9,
+  "constraints": {
+    "c11c_modified": false,
+    "d4_8_modified": false,
+    "godot_authorized": false,
+    "media_authorized": false,
+    "release_authority": "NONE",
+    "runtime_authorized": false,
+    "source_manifests_modified": false
+  },
+  "pins": [
+    {
+      "bytes": 868,
+      "path": "project.godot",
+      "role": "PROJECT_SETTINGS_AND_MAIN_SCENE_BINDING",
+      "sha256": "d20b0f275c58a34881420705bb1990564d719427c550478c434345ced72805d3",
+      "verification_status": "PASS"
+    },
+    {
+      "bytes": 1086,
+      "path": "Main.tscn",
+      "role": "EXISTING_MAIN_SCENE",
+      "sha256": "5271714b9a5c31aeda1d7347347f1429ca37a48c081e59e6ec42383626731de7",
+      "verification_status": "PASS"
+    },
+    {
+      "bytes": 8977,
+      "path": "core/authoring/ChallengeMigrationAdapter.gd",
+      "role": "CHALLENGE_VIDEO_TIMEBASE_MIGRATION",
+      "sha256": "79099cbb5fea9d9c5c519370b1c56d72c8394db14e9adf5b0bb744410e507c13",
+      "verification_status": "PASS"
+    },
+    {
+      "bytes": 3721,
+      "path": "core/execution/ChallengeTimelineBuilder.gd",
+      "role": "CANONICAL_TIMELINE_BUILDER",
+      "sha256": "35a47ad126a2e11577933a03b251f47732e580693e5c08e45d3b6af047c8c9af",
+      "verification_status": "PASS"
+    },
+    {
+      "bytes": 1501,
+      "path": "core/authoring/ChallengeTimeLiine.gd",
+      "role": "PHASE_DURATION_ARITHMETIC",
+      "sha256": "a0276e86ac27389f4abd0d5cd9b998e97a32162de44e2f917d7158255892ce71",
+      "verification_status": "PASS"
+    },
+    {
+      "bytes": 851,
+      "path": "core/authoring/TemporalCore.gd",
+      "role": "DURATION_TO_FRAME_ROUNDING",
+      "sha256": "f076e9090c3d13be63b7ccda91a5861576a4d32eb673380a95272b3b3fa27966",
+      "verification_status": "PASS"
+    },
+    {
+      "bytes": 4906,
+      "path": "core/validation/ChallengeDefinitionValidator.gd",
+      "role": "CHALLENGE_DEFINITION_VALIDATION",
+      "sha256": "d7c1c50f505853ebef376b75ac8ef675a4bab24d6733c96bc14a00db0d3904c4",
+      "verification_status": "PASS"
+    },
+    {
+      "bytes": 8837,
+      "path": "core/presentation/PresentationProfile.gd",
+      "role": "PRESENTATION_PROFILE_RUNTIME_DEPENDENCY",
+      "sha256": "187b1cf8ab96b9031785a0f36b0054a60383c97cb3d81906c7d9bbcd373bef24",
+      "verification_status": "PASS"
+    },
+    {
+      "bytes": 4517,
+      "path": "core/validation/PresentationProfileValidator.gd",
+      "role": "PRESENTATION_PROFILE_VALIDATION",
+      "sha256": "486191d276b4dbc62acc1ff43121ddb5eca8a74e0f22e270b5c429694f83ad49",
+      "verification_status": "PASS"
+    }
+  ],
+  "run_id": "E6DEPPINAUDIT_20261117T130110Z_A1CCE574",
+  "schema": "C11E_E6_RUNTIME_ROUTE_DEPENDENCY_PIN_CANDIDATE_V1",
+  "status": "CANDIDATE_ONLY_NOT_ACCEPTED"
+}
