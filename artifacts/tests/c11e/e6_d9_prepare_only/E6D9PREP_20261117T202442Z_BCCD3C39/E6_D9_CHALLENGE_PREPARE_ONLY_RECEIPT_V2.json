@@ -1,0 +1,34 @@
+{
+  "consumer_contract_receipt_sha256": "e22abc1fc1779f60dd48abf4cdbf7960b7a3a02b2ef9bc0a7e975053f5effce8",
+  "created_utc": "2026-11-17T20:24:42.998043+00:00",
+  "execution": {
+    "audio_generated": false,
+    "e6_test_only_authorized": false,
+    "ffmpeg_invoked": false,
+    "ffprobe_invoked": false,
+    "godot_invoked": false,
+    "media_created": false,
+    "mux_invoked": false,
+    "new_batch_id_consumed": false,
+    "production_dispatch": false,
+    "release_authority": "NONE",
+    "renderer_invoked": false
+  },
+  "linked_artifacts": {
+    "d_envelopes": 18,
+    "e1_intents": 18,
+    "total": 36
+  },
+  "linked_d_envelopes": 18,
+  "linked_e1_intents": 18,
+  "linked_probe_count": 18,
+  "manifest_name": "E6_D9_CHALLENGE_PREPARE_ONLY_MANIFEST_V2.json",
+  "manifest_sha256": "11cbf8fd1c2862d0004dbfd28bd27c78cf882a7db725d571484617862af35c18",
+  "plan_json_sha256": "ef86fe532cd6c92c3c2dc9937a65d149dc699fcd6c0295382a135413f04af6ae",
+  "plan_only_receipt_sha256": "8fcd63fcfd04df9446f20c5ea8dd1646f169051403f2ee04a356997cd3dd257e",
+  "plan_only_run_id": "E6CHPLAN_20261117T001949Z_D87FADA4",
+  "run_id": "E6D9PREP_20261117T202442Z_BCCD3C39",
+  "schema": "C11E-E6-D9-CHALLENGE-PREPARE-ONLY-RECEIPT-V2",
+  "source_pin_count": 33,
+  "status": "PASS_D9_PREPARE_ONLY_18_INTENTS_18_ENVELOPES_LINKED_EXECUTION_HELD"
+}

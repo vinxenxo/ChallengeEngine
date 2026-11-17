@@ -1,0 +1,29 @@
+{
+    "schema":  "C11E-E6-D9-PREPARE-ONLY-INSTALL-RECEIPT-V1",
+    "run_id":  "E6D9INSTALL_20261117T200513Z_21002D50",
+    "status":  "PASS_ADD_ONLY_D9_PREPARE_ONLY_INSTALL",
+    "created_utc":  "2026-11-17T20:05:13.9823961Z",
+    "package_manifest_sha256":  "bca3464104538b8e02c3093a10f4da9362c8774f9b96368d58d8eab8a2f6b0ad",
+    "accepted_source_pin_count":  33,
+    "files":  [
+                  {
+                      "path":  "tools\\c11d\\d9\\c11e_e6_d9_prepare_only_coordinator_v1.py",
+                      "sha256":  "a43355fd0814417c52b7e876e443c7eabc709fd3c27be5a6489e7a08857f3630",
+                      "disposition":  "ADD_ONLY"
+                  },
+                  {
+                      "path":  "tools\\c11d\\d9\\test_c11e_e6_d9_prepare_only_coordinator_v1.py",
+                      "sha256":  "c9595076741c3d4dd0df88a47de4e9fe5eebd43b42938e5595698abe7bd32cc8",
+                      "disposition":  "ADD_ONLY"
+                  },
+                  {
+                      "path":  "tools\\c11d\\d9\\RUN_C11E_E6_D9_PREPARE_ONLY_V1.ps1",
+                      "sha256":  "7248f6f7cab308695f290df9a9f89d62065d83ee07b83c6f7a8c4b75f19c9e61",
+                      "disposition":  "ADD_ONLY"
+                  }
+              ],
+    "rollback_on_failure":  "ONLY_FILES_ADDED_BY_THIS_INSTALLER",
+    "git_checks":  "SKIPPED",
+    "commits":  "OPERATOR_MANAGED",
+    "source_file_pins":  "ENFORCED"
+}
