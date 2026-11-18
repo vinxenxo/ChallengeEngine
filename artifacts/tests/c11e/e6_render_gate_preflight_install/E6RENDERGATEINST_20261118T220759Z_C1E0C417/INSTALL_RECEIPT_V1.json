@@ -1,0 +1,94 @@
+{
+    "schema":  "C11E-E6-RENDER-GATE-PREFLIGHT-INSTALL-RECEIPT-V1",
+    "run_id":  "E6RENDERGATEINST_20261118T220759Z_C1E0C417",
+    "created_utc":  "2026-11-18T22:07:59.1608565Z",
+    "status":  "PASS_ADD_ONLY_E6_RENDER_GATE_PREFLIGHT_INSTALL",
+    "package_manifest_sha256":  "33387b9b11c0cec9bf7df36dc3fe769677b5e54c7cea30fa8ef18269ea56d292",
+    "expected_files":  12,
+    "added":  12,
+    "identical_skipped":  0,
+    "files":  [
+                  {
+                      "path":  "README_C11E_E6_RENDER_GATE_PREFLIGHT_V1.md",
+                      "bytes":  4085,
+                      "sha256":  "136bb0c8d2ea4ee5737e39a23593d92323515cd813a4d84327f0dfeeb01fba6f",
+                      "disposition":  "ADDED_POSTIMAGE_VERIFIED"
+                  },
+                  {
+                      "path":  "definitions/c11e/test_only/C11E_E6_RENDER_GATE_PREFLIGHT_INPUTS_V1.json",
+                      "bytes":  11033,
+                      "sha256":  "9fce11bb6c8f56729aa941d16ffe10035381e3726389eafc4152fe42f3e34cea",
+                      "disposition":  "ADDED_POSTIMAGE_VERIFIED"
+                  },
+                  {
+                      "path":  "definitions/c11e/test_only/C11E_E6_SMOKE18_SUCCESSOR_POLICY_DRAFT_V2.json",
+                      "bytes":  5559,
+                      "sha256":  "86620daa1fe87b946da5c27a2a1b228d566bc341709371f537b112d5f8100ec0",
+                      "disposition":  "ADDED_POSTIMAGE_VERIFIED"
+                  },
+                  {
+                      "path":  "docs/current/e/C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261118_V121.md",
+                      "bytes":  2444,
+                      "sha256":  "968bc822fd893cf904d757157e374196a119693f7b9209e813f618bcc480ee73",
+                      "disposition":  "ADDED_POSTIMAGE_VERIFIED"
+                  },
+                  {
+                      "path":  "docs/current/e/C11E_E6_RENDER_GATE_PREFLIGHT_20261118_V1.md",
+                      "bytes":  1577,
+                      "sha256":  "459039a09fa116a0acb00469117923e85b7c5b1cbe786b16d7f1c80aec38a71f",
+                      "disposition":  "ADDED_POSTIMAGE_VERIFIED"
+                  },
+                  {
+                      "path":  "docs/master-prompts/C11E_MASTER_HANDOVER_20261118_V15.md",
+                      "bytes":  2018,
+                      "sha256":  "ff2fa4335dec1a585d61a64e5e3a044df5369b4dd44a28d26c3ba74d31ac7050",
+                      "disposition":  "ADDED_POSTIMAGE_VERIFIED"
+                  },
+                  {
+                      "path":  "prompts/C11E_CONTINUATION_MASTER_PROMPT_20261118_V185.md",
+                      "bytes":  1401,
+                      "sha256":  "87c7628bfb3cc9164652c53fff1af8d33c4ceb9969962a216591886a4155eee2",
+                      "disposition":  "ADDED_POSTIMAGE_VERIFIED"
+                  },
+                  {
+                      "path":  "prompts/C11E_FIRST_PROMPT_20261118_E6_RENDER_GATE_PREFLIGHT_V1.md",
+                      "bytes":  368,
+                      "sha256":  "16e314d5c10112b9bb214642aa8dcf84b7aaeb5180602f8cbcf4af9602982836",
+                      "disposition":  "ADDED_POSTIMAGE_VERIFIED"
+                  },
+                  {
+                      "path":  "prompts/C11E_NEXT_WINDOW_START_PROMPT_20261118_V186.md",
+                      "bytes":  539,
+                      "sha256":  "3d72929fb561668f7453849ed5e4ab9a98d96953fd4dea6c3125e23fed01baba",
+                      "disposition":  "ADDED_POSTIMAGE_VERIFIED"
+                  },
+                  {
+                      "path":  "tests/test_c11e_e6_render_gate_preflight_v1.py",
+                      "bytes":  10261,
+                      "sha256":  "8717aea6170c8578718d82bea754961f859ac4f57e8c4c061b8144a490edd9bb",
+                      "disposition":  "ADDED_POSTIMAGE_VERIFIED"
+                  },
+                  {
+                      "path":  "tools/c11d/d9/RUN_C11E_E6_RENDER_GATE_PREFLIGHT_V1.ps1",
+                      "bytes":  2880,
+                      "sha256":  "95bb323eadea2a7ae70ad5dc375dd92bf0e3c23c63290cec126b56076a83eda4",
+                      "disposition":  "ADDED_POSTIMAGE_VERIFIED"
+                  },
+                  {
+                      "path":  "tools/c11d/d9/c11e_e6_render_gate_preflight_v1.py",
+                      "bytes":  7596,
+                      "sha256":  "7377a4b52dd7ab44fa71d415dd405ec7da89e038aec75183f18c6dffef891696",
+                      "disposition":  "ADDED_POSTIMAGE_VERIFIED"
+                  }
+              ],
+    "protected_anchors":  "PASS/2",
+    "governance":  {
+                       "git_checks":  "SKIPPED",
+                       "renderer":  "OFF",
+                       "source_file_pins":  "ENFORCED",
+                       "release_authority":  "NONE",
+                       "commits":  "OPERATOR_MANAGED",
+                       "d4_8":  "BLOCKED",
+                       "e6_test_only_authorized":  false
+                   }
+}

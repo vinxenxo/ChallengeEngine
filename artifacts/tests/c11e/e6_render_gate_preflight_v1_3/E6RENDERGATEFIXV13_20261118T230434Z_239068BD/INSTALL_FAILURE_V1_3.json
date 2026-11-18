@@ -1,0 +1,21 @@
+{
+    "schema":  "C11E-E6-RENDER-GATE-PREFLIGHT-V1_3-INSTALL-FAILURE",
+    "run_id":  "E6RENDERGATEFIXV13_20261118T230434Z_239068BD",
+    "created_utc":  "2026-11-18T23:04:35.1894278Z",
+    "status":  "FAILED_CLOSED",
+    "failed_stage":  "PACKAGE_PREFLIGHT",
+    "error":  "ADD_ONLY_COLLISION_FAIL_CLOSED:docs/current/e/C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261118_V118.md",
+    "source_write_attempted":  false,
+    "journal":  [
+
+                ],
+    "governance":  {
+                       "git_checks":  "SKIPPED",
+                       "renderer":  "OFF",
+                       "source_file_pins":  "ENFORCED",
+                       "release_authority":  "NONE",
+                       "commits":  "OPERATOR_MANAGED",
+                       "d4_8":  "BLOCKED",
+                       "e6_test_only_authorized":  false
+                   }
+}

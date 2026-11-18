@@ -1,0 +1,148 @@
+{
+  "schema": "C11E-E6-SMOKE18-SUCCESSOR-POLICY-SCOPE-V1",
+  "schema_version": "1.0",
+  "policy_id": "C11E_E6_SMOKE18_SUCCESSOR_POLICY_SCOPE_V1",
+  "created_date": "2026-11-18",
+  "status": "OPERATOR_SCOPE_APPROVED_NOT_EXECUTION_AUTHORIZED",
+  "authority": {
+    "active_checkout": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+    "checkout_is_sole_source_authority": true,
+    "nightly_snapshot_is_comparison_evidence_only": true,
+    "git_checks": "SKIPPED",
+    "commits": "OPERATOR_MANAGED",
+    "source_file_pins": "ENFORCED",
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "d4_8_r1v_v2_sha256": "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07"
+  },
+  "operator_approved_scope": {
+    "approval_date": "2026-11-18",
+    "smoke18_scope_approved": true,
+    "rows_total": 18,
+    "rows_per_family": 6,
+    "families": {
+      "challenge": 6,
+      "visual_loop": 6,
+      "visual_drill": 6
+    },
+    "challenge_subruns": {
+      "count": 18,
+      "variants": [
+        "A",
+        "B_REPEAT",
+        "C_CHANGED_MUSIC_SEED"
+      ],
+      "nested_under_challenge_rows": true,
+      "additional_top_level_rows": false
+    },
+    "approval_meaning": "APPROVAL_TO_PREPARE_BOUNDED_SUCCESSOR_POLICY_AND_READINESS_WORK_ONLY",
+    "not_approved": [
+      "MEDIA_EXECUTION",
+      "PRODUCTION_RENDERER_ACTIVATION",
+      "PRODUCTION_DISPATCH",
+      "RELEASE",
+      "PROMOTION"
+    ]
+  },
+  "music_fixture": {
+    "operator_approved_test_fixture": true,
+    "authority": "TEST_FIXTURE_ONLY_NOT_PRODUCT_CONTRACT_NOT_PRODUCT_DEFAULT",
+    "challenge_only": {
+      "profile_id": "challenge_8bit_v1",
+      "profile_version": "1.0",
+      "tempo_bpm": 104,
+      "A_music_seed": 840001,
+      "B_music_seed": 840001,
+      "C_music_seed": 840002,
+      "seed_field": "request.music_seed",
+      "variation_index": 0,
+      "duration_rule": "RUN_SCOPED_DURATION_DERIVED_FROM_EACH_CANONICAL_CHALLENGE_TIMEBASE_AND_CONFIRMED_BY_FFPROBE",
+      "e1_tempo_bpm": "MUST_REMAIN_NULL_UNLESS_SEPARATELY_CONTRACTED",
+      "e1_duration_seconds": "MUST_REMAIN_NULL_UNLESS_SEPARATELY_CONTRACTED"
+    },
+    "visual_loop": "KEEP_EXISTING_C11C_FAMILY_MUSIC_AND_FAMILY_PROFILE; NO_CHALLENGE_D3_V5_SUBSTITUTION",
+    "visual_drill": "KEEP_EXISTING_C11C_FAMILY_MUSIC_AND_FAMILY_PROFILE; NO_CHALLENGE_D3_V5_SUBSTITUTION"
+  },
+  "smoke18_scenario_contract": {
+    "top_level_rows": 18,
+    "challenge_rows": 6,
+    "loop_rows": 6,
+    "drill_rows": 6,
+    "challenge_selectors_proposed": [
+      "CHALLENGE_001",
+      "CHALLENGE_002",
+      "CHALLENGE_004",
+      "CHALLENGE_005",
+      "CHALLENGE_006",
+      "CHALLENGE_007"
+    ],
+    "challenge_exclusions": {
+      "CHALLENGE_003": "Excluded from this sample because current draft duplicates CH004 gameplay seed 314159; must remain explicit in frozen row manifest.",
+      "CHALLENGE_008": "Held: declared 11 seconds conflicts with 12-second phase sum.",
+      "CHALLENGE_009": "Held: declared 11 seconds conflicts with 12-second phase sum."
+    },
+    "rows_are_selector_scenarios_not_probe_subruns": true
+  },
+  "evidence_disposition": {
+    "reuse_candidates_total": 13,
+    "e6_accepted_scenarios": 0,
+    "matrix_frozen": false,
+    "challenge": {
+      "reuse_candidate": "CHALLENGE_004",
+      "fresh_av_required": [
+        "CHALLENGE_001",
+        "CHALLENGE_002",
+        "CHALLENGE_005",
+        "CHALLENGE_006",
+        "CHALLENGE_007"
+      ]
+    },
+    "visual_loop": {
+      "six_c11c_source_and_family_audio_candidates": true,
+      "d_composition_reuse_eligible": false,
+      "d_composition_required_for_each_row": true,
+      "reason": "E4B shared-service review says no D-only pixel consumer accepted; Option C boundary remains PREPARE_ONLY; actual compositor not implemented."
+    },
+    "visual_drill": {
+      "six_e4c_d_composited_av_reuse_candidates": true,
+      "reuse_requires_exact_e6_predicate_revalidation": true
+    },
+    "candidate_count_is_not_acceptance": true
+  },
+  "editorial_test_fixture": {
+    "required_to_test_actual_visual_consumption": true,
+    "status": "PROPOSED_VALUES_REQUIRE_OPERATOR_APPROVAL",
+    "locale": "es",
+    "proposed_values": {
+      "title": "E6 PRUEBA",
+      "subtitle": "VALIDACIÓN DE MAQUETACIÓN",
+      "call_to_action": "CONTINUAR"
+    },
+    "scope": "RUN_SCOPED_SYNTHETIC_TEST_DATA_ONLY; NEVER WRITE TO PRODUCT_DEFAULTS_OR_CANONICAL_DEFINITIONS",
+    "challenge_player_name": "MUST_REMAIN_BLOCKED_OR_UNKNOWN",
+    "challenge_label": "MUST_REMAIN_BLOCKED_OR_UNKNOWN"
+  },
+  "execution_authority": {
+    "successor_policy_finalized": false,
+    "e6_test_only_authorized": false,
+    "renderer_activation": false,
+    "godot_invocation": false,
+    "ffmpeg_invocation": false,
+    "ffprobe_invocation": false,
+    "audio_generation": false,
+    "mux": false,
+    "media_creation": false,
+    "production_dispatch": false,
+    "batch_id_reserved": false,
+    "release_authority": "NONE",
+    "required_before_execution": [
+      "LIVE_CHECKOUT_SOURCE_PIN_AUDIT_PASS",
+      "LOOP_D_OWNED_VISUAL_COMPOSITOR_IMPLEMENTED_AND_PIXEL_TESTED",
+      "CHALLENGE_EDITORIAL_FIXTURE_POPULATED_IN_NEW_PLAN_ONLY_MANIFEST_AND_VISUAL_CONSUMPTION_PROVEN",
+      "DRILL_REUSE_E6_PREDICATES_ACCEPTED",
+      "FROZEN_18_ROW_SMOKE18_MANIFEST_WITH_ALL_EXACT_REUSE_AND_OUTPUT_HASH_PREDICATES",
+      "PINNED_TOOLCHAIN_PATH_VERSION_SHA256_AND_EXACT_ARGV",
+      "D4_8_SUCCESSOR_CLAUSE_LEVEL_RECONCILIATION_AND_FORMAL_POLICY_APPROVAL",
+      "SEPARATE_OPERATOR_E6_TEST_ONLY_EXECUTION_AUTHORIZATION"
+    ]
+  }
+}

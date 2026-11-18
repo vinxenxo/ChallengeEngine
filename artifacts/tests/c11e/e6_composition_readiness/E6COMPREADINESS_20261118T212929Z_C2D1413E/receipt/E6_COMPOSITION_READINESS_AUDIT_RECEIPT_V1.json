@@ -1,0 +1,387 @@
+{
+  "schema": "C11E-E6-COMPOSITION-READINESS-AUDIT-RECEIPT-V1",
+  "schema_version": "1.0",
+  "created_utc": "2026-11-18T21:29:30Z",
+  "project_root": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+  "status": "BLOCKED_SOURCE_OR_EVIDENCE_RECONCILIATION",
+  "audit_scope": "READ_ONLY_SOURCE_AND_EVIDENCE_RECONCILIATION_ONLY",
+  "source_pin_summary": {
+    "expected": 17,
+    "passed": 16,
+    "failed": 1,
+    "rows": [
+      {
+        "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+        "expected_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+        "expected_bytes": 796318,
+        "status": "PASS",
+        "actual_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+        "actual_bytes": 796318
+      },
+      {
+        "path": "definitions/c11d/production/C11E_D4_8_R1V_QUALIFICATION_ONLY_POLICY_V2.json",
+        "expected_sha256": "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+        "expected_bytes": 12996,
+        "status": "PASS",
+        "actual_sha256": "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+        "actual_bytes": 12996
+      },
+      {
+        "path": "definitions/c11d/production/C11E_OPTION_C_D_POSTCOMPOSITION_BOUNDARY_V1.json",
+        "expected_sha256": "795be1da157dd07fd4992d3ec6d7cf091a015eed72d16d86df13085db296098b",
+        "expected_bytes": 3576,
+        "status": "PASS",
+        "actual_sha256": "795be1da157dd07fd4992d3ec6d7cf091a015eed72d16d86df13085db296098b",
+        "actual_bytes": 3576
+      },
+      {
+        "path": "definitions/c11d/production/C11E_OPTION_C_D_POSTCOMPOSITION_DECISION_V1.json",
+        "expected_sha256": "22cec26baecfb6018a814750cc781143f5fa13f897d3dce708f6e9e074f669ac",
+        "expected_bytes": 2342,
+        "status": "PASS",
+        "actual_sha256": "22cec26baecfb6018a814750cc781143f5fa13f897d3dce708f6e9e074f669ac",
+        "actual_bytes": 2342
+      },
+      {
+        "path": "tools/c11d/d9/editorial_render_bridge.py",
+        "expected_sha256": "fe9d40052b0f4ff6f1c862c010ae7b3b13070b6ce935be6d62f9dcaec63a644a",
+        "expected_bytes": 10868,
+        "status": "PASS",
+        "actual_sha256": "fe9d40052b0f4ff6f1c862c010ae7b3b13070b6ce935be6d62f9dcaec63a644a",
+        "actual_bytes": 10868
+      },
+      {
+        "path": "tools/c11d/d9/d_render_adapter.py",
+        "expected_sha256": "222742677cd498368429a3ec0dcdd922c44197bb5ada3638081138fb77c31bf1",
+        "expected_bytes": 15051,
+        "status": "PASS",
+        "actual_sha256": "222742677cd498368429a3ec0dcdd922c44197bb5ada3638081138fb77c31bf1",
+        "actual_bytes": 15051
+      },
+      {
+        "path": "tools/c11d/d9/c11e_e4b_loop_family_stage_contract.py",
+        "expected_sha256": "bfbfa0cc108f00b78003e5480c86af1ee5ca63772d24a7792f8cdb6953b6af5d",
+        "expected_bytes": 19331,
+        "status": "PASS",
+        "actual_sha256": "bfbfa0cc108f00b78003e5480c86af1ee5ca63772d24a7792f8cdb6953b6af5d",
+        "actual_bytes": 19331
+      },
+      {
+        "path": "tools/c11d/d9/d_renderer_dynamic_request_payload_binding.py",
+        "expected_sha256": "bad418fcee9b219c4ccd3f3720b8d623737b9790968608ba3f605430c8bb149b",
+        "expected_bytes": 86068,
+        "status": "PASS",
+        "actual_sha256": "bad418fcee9b219c4ccd3f3720b8d623737b9790968608ba3f605430c8bb149b",
+        "actual_bytes": 86068
+      },
+      {
+        "path": "tools/c11d/d9/C11EChallengeLiveEditorialConsumer.gd",
+        "expected_sha256": "eba81fff3d0f7c4b5d6b5eeb55c5e14a4d25b44c040c4cc6d2d59b6c9a631203",
+        "expected_bytes": 26367,
+        "status": "MISMATCH",
+        "actual_sha256": "eba81fff4c24ca75033c8f963665df1961136046c41fee0e88681fe55a631203",
+        "actual_bytes": 26367
+      },
+      {
+        "path": "tools/c11d/d9/c11e_challenge_editorial_presentation_adapter.gd",
+        "expected_sha256": "d17568882eb63ba2eb48649cb9cd46edafe122d72c0c5ed29275e79b8d6d5846",
+        "expected_bytes": 14167,
+        "status": "PASS",
+        "actual_sha256": "d17568882eb63ba2eb48649cb9cd46edafe122d72c0c5ed29275e79b8d6d5846",
+        "actual_bytes": 14167
+      },
+      {
+        "path": "tools/c11d/d9/c11e_e4c_drill_visual_composition_consumer.py",
+        "expected_sha256": "d5cd8e24c0cfdd83ec035b006c76468ed637d6babf5f0a9fcca8a93817ba1aa8",
+        "expected_bytes": 79200,
+        "status": "PASS",
+        "actual_sha256": "d5cd8e24c0cfdd83ec035b006c76468ed637d6babf5f0a9fcca8a93817ba1aa8",
+        "actual_bytes": 79200
+      },
+      {
+        "path": "tools/c11d/d9/test_c11e_e4c_drill_visual_composition_consumer.py",
+        "expected_sha256": "aedeb5754d94fdbaad134a653f57ca07466c845dcef081c8774668245455a7a0",
+        "expected_bytes": 21441,
+        "status": "PASS",
+        "actual_sha256": "aedeb5754d94fdbaad134a653f57ca07466c845dcef081c8774668245455a7a0",
+        "actual_bytes": 21441
+      },
+      {
+        "path": "docs/current/e/C11E_E4B_LOOP_SHARED_SERVICE_INTEGRATION_REVIEW_20261107_V3.md",
+        "expected_sha256": "ed17c190bf12e2d109938de4d9061be6f78b2cd3e82628795fac309e612574eb",
+        "expected_bytes": 1893,
+        "status": "PASS",
+        "actual_sha256": "ed17c190bf12e2d109938de4d9061be6f78b2cd3e82628795fac309e612574eb",
+        "actual_bytes": 1893
+      },
+      {
+        "path": "docs/current/e/C11E_OPTION_C_CONSUMER_AND_E4A6_BASELINE_REMEDIATION_20261107_V6.md",
+        "expected_sha256": "515273555b306bd7b3f483ae3fd50aaa4b2ae5f1f706b369b0948c98abaf41c9",
+        "expected_bytes": 864,
+        "status": "PASS",
+        "actual_sha256": "515273555b306bd7b3f483ae3fd50aaa4b2ae5f1f706b369b0948c98abaf41c9",
+        "actual_bytes": 864
+      },
+      {
+        "path": "docs/current/d/D_RENDERER_VISUAL_LOOP_COMPOSITE_PAYLOAD_INTEGRATION_CHECKPOINT_V1.md",
+        "expected_sha256": "11db1b9f8c905168b9f5095a8bbeb4e9ef6db9d2cac350228ccb3c46fd918168",
+        "expected_bytes": 5081,
+        "status": "PASS",
+        "actual_sha256": "11db1b9f8c905168b9f5095a8bbeb4e9ef6db9d2cac350228ccb3c46fd918168",
+        "actual_bytes": 5081
+      },
+      {
+        "path": "docs/current/d/D_RENDERER_CANDIDATE_IO_GAP_AUDIT_CHECKPOINT_V1.md",
+        "expected_sha256": "319b9bbd809ecef5f24f941f80bcd0a316b9cdb93928d714f919ca4d03a6e1cb",
+        "expected_bytes": 15163,
+        "status": "PASS",
+        "actual_sha256": "319b9bbd809ecef5f24f941f80bcd0a316b9cdb93928d714f919ca4d03a6e1cb",
+        "actual_bytes": 15163
+      },
+      {
+        "path": "docs/current/e/C11E_E5_FULL_PHASE_CLOSEOUT_20261116_V1.md",
+        "expected_sha256": "c19b3b9994bd6d03ee5b00459b663262a9e1b4300ab70859e793e80577e3a9b1",
+        "expected_bytes": 6805,
+        "status": "PASS",
+        "actual_sha256": "c19b3b9994bd6d03ee5b00459b663262a9e1b4300ab70859e793e80577e3a9b1",
+        "actual_bytes": 6805
+      }
+    ]
+  },
+  "protected_baselines": {
+    "c11c_manifest": {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "expected_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+      "expected_bytes": 796318,
+      "status": "PASS",
+      "actual_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+      "actual_bytes": 796318
+    },
+    "d4_8_r1v_v2": {
+      "path": "definitions/c11d/production/C11E_D4_8_R1V_QUALIFICATION_ONLY_POLICY_V2.json",
+      "expected_sha256": "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+      "expected_bytes": 12996,
+      "status": "PASS",
+      "actual_sha256": "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+      "actual_bytes": 12996
+    }
+  },
+  "challenge_prepare_only": {
+    "receipt": {
+      "path": "artifacts/tests/c11e/e6_challenge_prepare_only_orchestrator/E6CHPREP_20261118T202841Z_37C6AE0E/E6_CHALLENGE_PREPARE_ONLY_ORCHESTRATOR_RECEIPT_V1.json",
+      "expected_sha256": "b54a884f1574d22fa65ea198d279d9ba84bb3967adc87885213f7659a1b1c944",
+      "expected_bytes": 63629,
+      "status": "PASS",
+      "actual_sha256": "b54a884f1574d22fa65ea198d279d9ba84bb3967adc87885213f7659a1b1c944",
+      "actual_bytes": 63629
+    },
+    "receipt_sidecar": {
+      "path": "artifacts/tests/c11e/e6_challenge_prepare_only_orchestrator/E6CHPREP_20261118T202841Z_37C6AE0E/E6_CHALLENGE_PREPARE_ONLY_ORCHESTRATOR_RECEIPT_V1.json.sha256",
+      "expected_sha256": "b54a884f1574d22fa65ea198d279d9ba84bb3967adc87885213f7659a1b1c944",
+      "expected_filename": "E6_CHALLENGE_PREPARE_ONLY_ORCHESTRATOR_RECEIPT_V1.json",
+      "status": "PASS",
+      "actual_text": "b54a884f1574d22fa65ea198d279d9ba84bb3967adc87885213f7659a1b1c944 E6_CHALLENGE_PREPARE_ONLY_ORCHESTRATOR_RECEIPT_V1.json"
+    },
+    "input_manifest": {
+      "path": "definitions/c11d/production/C11E_E6_CHALLENGE_PREPARE_ONLY_INPUT_MANIFEST_V1.json",
+      "expected_sha256": "4607831a94ecbb64b2f1cfb6ef3a7480e3f7315e8aee588a3ef9a93f97ce8878",
+      "expected_bytes": 8245,
+      "status": "PASS",
+      "actual_sha256": "4607831a94ecbb64b2f1cfb6ef3a7480e3f7315e8aee588a3ef9a93f97ce8878",
+      "actual_bytes": 8245
+    },
+    "reuse_requalification_receipt": {
+      "path": "artifacts/tests/c11e/e6_smoke18_reuse_requalification/E6SMK18REQUAL_20261118T141200Z_BA5AC046/E6_SMOKE18_REUSE_REQUALIFICATION_RECEIPT_V1.json",
+      "expected_sha256": "4d63b8caec7a975cc0362ee9d7a5924f5ab8371e8e8e1457e1d60956bf65ce33",
+      "expected_bytes": null,
+      "status": "PASS",
+      "actual_sha256": "4d63b8caec7a975cc0362ee9d7a5924f5ab8371e8e8e1457e1d60956bf65ce33",
+      "actual_bytes": 11024
+    },
+    "reuse_requalification_sidecar": {
+      "path": "artifacts/tests/c11e/e6_smoke18_reuse_requalification/E6SMK18REQUAL_20261118T141200Z_BA5AC046/E6_SMOKE18_REUSE_REQUALIFICATION_RECEIPT_V1.json.sha256",
+      "expected_sha256": "4d63b8caec7a975cc0362ee9d7a5924f5ab8371e8e8e1457e1d60956bf65ce33",
+      "expected_filename": "E6_SMOKE18_REUSE_REQUALIFICATION_RECEIPT_V1.json",
+      "status": "PASS",
+      "actual_text": "4d63b8caec7a975cc0362ee9d7a5924f5ab8371e8e8e1457e1d60956bf65ce33 E6_SMOKE18_REUSE_REQUALIFICATION_RECEIPT_V1.json"
+    },
+    "written_evidence_files": {
+      "expected": 36,
+      "actual": 36,
+      "passed": 36,
+      "failed": []
+    },
+    "counts": {
+      "challenge_probe_subruns": 18,
+      "challenge_scenario_groups": 6,
+      "d_envelopes": 18,
+      "e1_intents": 18,
+      "smoke18_top_level_scenarios": 6
+    },
+    "status_valid": "PASS_PREPARE_ONLY_18_E1_INTENTS_18_D_ENVELOPES_EXECUTION_HELD",
+    "execution_boundary": {
+      "audio_generated": false,
+      "batch_id_consumed": false,
+      "e6_test_only_authorized": false,
+      "ffmpeg_invoked": false,
+      "ffprobe_invoked": false,
+      "godot_invoked": false,
+      "media_created": false,
+      "mode": "PREPARE_ONLY",
+      "mux_invoked": false,
+      "production_dispatch": false,
+      "release_authority": "NONE",
+      "renderer_invoked": false,
+      "runtime_commands_emitted": false
+    },
+    "governance": {
+      "commits": "OPERATOR_MANAGED",
+      "d4_8": "BLOCKED",
+      "d4_8_overridden": false,
+      "e1": "PREPARE_ONLY",
+      "e6_accepted_scenarios": 0,
+      "e6_matrix_frozen": false,
+      "git_checks": "SKIPPED",
+      "production_dispatch": false,
+      "production_media": false,
+      "release_authority": "NONE",
+      "renderer": "OFF",
+      "source_file_pins": "ENFORCED"
+    },
+    "input_manifest_status": "DRAFT_PLAN_ONLY_NOT_FROZEN_NOT_EXECUTION_AUTHORITY",
+    "personalization_enabled": false,
+    "music_fixture_authority_at_plan_time": "PROPOSAL_ONLY_NOT_AUTHORIZED",
+    "input_manifest_evidence_copy": {
+      "path": "artifacts/tests/c11e/e6_challenge_prepare_only_orchestrator/E6CHPREP_20261118T202841Z_37C6AE0E/INPUT_MANIFEST_PINNED_V1.json",
+      "expected_sha256": "4607831a94ecbb64b2f1cfb6ef3a7480e3f7315e8aee588a3ef9a93f97ce8878",
+      "expected_bytes": 8245,
+      "status": "PASS",
+      "actual_sha256": "4607831a94ecbb64b2f1cfb6ef3a7480e3f7315e8aee588a3ef9a93f97ce8878",
+      "actual_bytes": 8245
+    },
+    "input_manifest_evidence_copy_sidecar": {
+      "path": "artifacts/tests/c11e/e6_challenge_prepare_only_orchestrator/E6CHPREP_20261118T202841Z_37C6AE0E/INPUT_MANIFEST_PINNED_V1.json.sha256",
+      "expected_sha256": "4607831a94ecbb64b2f1cfb6ef3a7480e3f7315e8aee588a3ef9a93f97ce8878",
+      "expected_filename": "INPUT_MANIFEST_PINNED_V1.json",
+      "status": "PASS",
+      "actual_text": "4607831a94ecbb64b2f1cfb6ef3a7480e3f7315e8aee588a3ef9a93f97ce8878 INPUT_MANIFEST_PINNED_V1.json"
+    }
+  },
+  "challenge_editorial_fixture": {
+    "intent_count": 18,
+    "unknown_common_fields": 54,
+    "populated_common_fields": 0,
+    "required_common_fields": 54
+  },
+  "loop_d_composition": {
+    "source_pin": {
+      "path": "tools/c11d/d9/c11e_e4b_loop_family_stage_contract.py",
+      "expected_sha256": "bfbfa0cc108f00b78003e5480c86af1ee5ca63772d24a7792f8cdb6953b6af5d",
+      "expected_bytes": 19331,
+      "status": "PASS",
+      "actual_sha256": "bfbfa0cc108f00b78003e5480c86af1ee5ca63772d24a7792f8cdb6953b6af5d",
+      "actual_bytes": 19331
+    },
+    "boundary": {
+      "status": "PREPARE_ONLY_NOT_DISPATCHABLE",
+      "d_composition_owner": "C11D_ONLY",
+      "emits": "SEPARATE_D_OWNED_VIDEO_ARTIFACT_ONLY_AFTER_ALL_GATES_APPROVE",
+      "proposal_status": "PROPOSED_NOT_APPROVED_NOT_RENDERER_INPUT",
+      "executable_geometry_approved": false,
+      "hard_locks": {
+        "renderer_dispatch_invoked": false,
+        "compositor_invoked": false,
+        "ffmpeg_invoked": false,
+        "ffprobe_invoked": false,
+        "launcher_invoked": false,
+        "godot_invoked": false,
+        "audio_or_d3_invoked": false,
+        "mux_invoked": false,
+        "media_created": false,
+        "c11c_source_mutation": false,
+        "d4_8": "BLOCKED",
+        "d9_10": "PREPARE_ONLY",
+        "d9_14": "BLOCKED",
+        "d9_16": "BLOCKED",
+        "d9_17": "BLOCKED_NO_GO",
+        "d10": "BLOCKED_FOR_PROMOTION",
+        "release_authority": "NONE"
+      }
+    },
+    "disposition": "PREPARE_ONLY_ONLY_NO_D_PIXEL_CONSUMER_ACCEPTED_FROM_E4B_SCOPE",
+    "fresh_d_composition_required_for_six_smoke18_loop_rows": true
+  },
+  "drill_d_composition": {
+    "source_pin": {
+      "path": "tools/c11d/d9/c11e_e4c_drill_visual_composition_consumer.py",
+      "expected_sha256": "d5cd8e24c0cfdd83ec035b006c76468ed637d6babf5f0a9fcca8a93817ba1aa8",
+      "expected_bytes": 79200,
+      "status": "PASS",
+      "actual_sha256": "d5cd8e24c0cfdd83ec035b006c76468ed637d6babf5f0a9fcca8a93817ba1aa8",
+      "actual_bytes": 79200
+    },
+    "disposition": "SIX_E4C_AV_REUSE_CANDIDATES_REQUIRING_E6_ROW_PREDICATE_REQUALIFICATION"
+  },
+  "reuse_requalification": {
+    "path": "artifacts/tests/c11e/e6_smoke18_reuse_requalification/E6SMK18REQUAL_20261118T141200Z_BA5AC046/E6_SMOKE18_REUSE_REQUALIFICATION_RECEIPT_V1.json",
+    "expected_sha256": "4d63b8caec7a975cc0362ee9d7a5924f5ab8371e8e8e1457e1d60956bf65ce33",
+    "expected_bytes": null,
+    "status": "PASS",
+    "actual_sha256": "4d63b8caec7a975cc0362ee9d7a5924f5ab8371e8e8e1457e1d60956bf65ce33",
+    "actual_bytes": 11024
+  },
+  "music_fixture": {
+    "operator_approved_test_only": true,
+    "challenge_fixture": {
+      "profile_id": "challenge_8bit_v1",
+      "profile_version": "1.0",
+      "tempo_bpm": 104,
+      "A_music_seed": 840001,
+      "B_music_seed": 840001,
+      "C_music_seed": 840002,
+      "seed_field": "request.music_seed",
+      "variation_index": 0,
+      "duration_rule": "RUN_SCOPED_DURATION_DERIVED_FROM_EACH_CANONICAL_CHALLENGE_TIMEBASE_AND_CONFIRMED_BY_FFPROBE",
+      "e1_tempo_bpm": "MUST_REMAIN_NULL_UNLESS_SEPARATELY_CONTRACTED",
+      "e1_duration_seconds": "MUST_REMAIN_NULL_UNLESS_SEPARATELY_CONTRACTED"
+    },
+    "plan_time_status": "PROPOSAL_ONLY_NOT_AUTHORIZED",
+    "reprepare_required": true
+  },
+  "governance": {
+    "operator_scope_approved": true,
+    "successor_policy_finalized": false,
+    "e6_test_only_authorized": false,
+    "d4_8": "BLOCKED",
+    "renderer": "OFF",
+    "production_dispatch": false,
+    "media_created": false,
+    "release_authority": "NONE",
+    "batch_id_reserved": false
+  },
+  "blockers": [
+    "LIVE_CHECKOUT_SOURCE_PIN_DIVERGENCE",
+    "LOOP_D_POSTCOMPOSITOR_NOT_IMPLEMENTED_OR_NOT_ADMITTED",
+    "CHALLENGE_EDITORIAL_FIXTURE_MISSING_FROM_PREPARE_ONLY_INTENTS",
+    "13_REUSE_CANDIDATES_REMAIN_NOT_E6_ACCEPTANCE",
+    "D4_8_SUCCESSOR_POLICY_AND_SEPARATE_E6_TEST_ONLY_EXECUTION_AUTHORIZATION_NOT_ISSUED",
+    "GLOBAL_D_RENDERER_IO_BASELINE_NOT_YET_ADMISSIBLE; LAST_PINNED_CHECKPOINT_REMAINS_0_OF_10_COMPLETE",
+    "SPANISH_EDITORIAL_FIXTURE_VALUES_REQUIRE_OPERATOR_APPROVAL"
+  ],
+  "execution": {
+    "godot_invoked": false,
+    "ffmpeg_invoked": false,
+    "ffprobe_invoked": false,
+    "audio_generated": false,
+    "mux_invoked": false,
+    "media_created": false,
+    "renderer_invoked": false,
+    "dispatch_invoked": false,
+    "batch_id_consumed": false
+  },
+  "limitations": [
+    "The audit validates exact hashes and recorded evidence only; it does not independently replay the original media QA or human review.",
+    "The nightly comparison archive is not a source authority; all pins are evaluated against the active checkout.",
+    "A successful audit means the gaps are precisely diagnosed, not that Smoke18 is render-ready or accepted."
+  ]
+}

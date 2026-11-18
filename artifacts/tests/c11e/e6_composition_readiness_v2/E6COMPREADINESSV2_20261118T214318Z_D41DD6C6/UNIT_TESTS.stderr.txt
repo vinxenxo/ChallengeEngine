@@ -1,0 +1,17 @@
+test_drill_is_candidate_reuse_not_accepted (test_c11e_e6_composition_readiness_audit_v2.CompositionReadinessV2Tests.test_drill_is_candidate_reuse_not_accepted) ... ok
+test_loop_needs_six_new_d_compositions (test_c11e_e6_composition_readiness_audit_v2.CompositionReadinessV2Tests.test_loop_needs_six_new_d_compositions) ... ok
+test_music_fixture_is_approved_test_only (test_c11e_e6_composition_readiness_audit_v2.CompositionReadinessV2Tests.test_music_fixture_is_approved_test_only) ... ok
+test_no_renderer_or_batch_authority_in_scope (test_c11e_e6_composition_readiness_audit_v2.CompositionReadinessV2Tests.test_no_renderer_or_batch_authority_in_scope) ... ok
+test_old_challenge_plan_remains_unmodified_and_reprepare_required (test_c11e_e6_composition_readiness_audit_v2.CompositionReadinessV2Tests.test_old_challenge_plan_remains_unmodified_and_reprepare_required) ... ok
+test_pin_adjudication_function_requires_both_exact_receipts (test_c11e_e6_composition_readiness_audit_v2.CompositionReadinessV2Tests.test_pin_adjudication_function_requires_both_exact_receipts) ... ok
+test_prior_pin_adjudication_is_exact (test_c11e_e6_composition_readiness_audit_v2.CompositionReadinessV2Tests.test_prior_pin_adjudication_is_exact) ... ok
+test_scope_exactly_18_rows_and_abc_nested (test_c11e_e6_composition_readiness_audit_v2.CompositionReadinessV2Tests.test_scope_exactly_18_rows_and_abc_nested) ... ok
+test_spanish_editorial_fixture_remains_pending (test_c11e_e6_composition_readiness_audit_v2.CompositionReadinessV2Tests.test_spanish_editorial_fixture_remains_pending) ... ok
+test_successor_policy_is_draft_and_no_execution (test_c11e_e6_composition_readiness_audit_v2.CompositionReadinessV2Tests.test_successor_policy_is_draft_and_no_execution) ... ok
+test_v2_pin_corrects_only_known_bad_literal (test_c11e_e6_composition_readiness_audit_v2.CompositionReadinessV2Tests.test_v2_pin_corrects_only_known_bad_literal) ... ok
+test_v2_pin_list_has_unique_paths_and_17_files (test_c11e_e6_composition_readiness_audit_v2.CompositionReadinessV2Tests.test_v2_pin_list_has_unique_paths_and_17_files) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.098s
+
+OK

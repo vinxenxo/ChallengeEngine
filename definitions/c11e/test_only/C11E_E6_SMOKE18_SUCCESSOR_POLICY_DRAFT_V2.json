@@ -1,0 +1,125 @@
+{
+  "schema": "C11E-E6-SMOKE18-TEST-ONLY-SUCCESSOR-POLICY-DRAFT-V2",
+  "schema_version": "1.0",
+  "policy_id": "C11E_E6_SMOKE18_SUCCESSOR_POLICY_DRAFT_V2",
+  "created_date": "2026-11-18",
+  "status": "DRAFT_PREPARED_NOT_APPROVED_NOT_EXECUTION_AUTHORIZED",
+  "supersedes_for_scope_only": {
+    "policy_id": "C11E_D4_8_R1V_QUALIFICATION_ONLY_POLICY_V2",
+    "sha256": "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+    "original": "IMMUTABLE_BLOCKED_UNCHANGED"
+  },
+  "purpose": "Propose a narrowly bounded E6 Smoke18 TEST_ONLY lane without changing C11-C or rewriting D4.8. This draft is not an execution authorization.",
+  "scope": {
+    "top_level_scenarios": 18,
+    "challenge": 6,
+    "visual_loop": 6,
+    "visual_drill": 6,
+    "challenge_nested_subruns": 18,
+    "editorial_targets": 30,
+    "editorial_fixture_sha256": "a63aeb9b97be29c716d6ab8a1f303ef66843a5eb9fb4f972a4ac6cd89f0a78aa",
+    "editorial_fixture_status": "OPERATOR_ACCEPTED_TEST_ONLY_FIXTURE_PREPARE_ONLY_RUNTIME_READBACK_NOT_PROVEN"
+  },
+  "approved_test_only_fixtures": {
+    "challenge_music": {
+      "profile_id": "challenge_8bit_v1",
+      "A_seed": 840001,
+      "B_seed": 840001,
+      "C_seed": 840002,
+      "tempo_bpm": 104,
+      "variation_index": 0,
+      "duration": "derive from each canonical Challenge timeline and verify with pinned FFprobe",
+      "e1_tempo_bpm": "MUST_REMAIN_NULL",
+      "e1_duration_seconds": "MUST_REMAIN_NULL",
+      "status": "OPERATOR_APPROVED_TEST_ONLY"
+    },
+    "family_editorial": {
+      "status": "OPERATOR_APPROVED_TEST_ONLY_FIXTURE_ONLY",
+      "challenge": {
+        "title": "E6 · DESAFÍO EN PRUEBA",
+        "subtitle": "RITMO Y PRECISIÓN EN PRUEBA",
+        "call_to_action": "PROBAR DESAFÍO"
+      },
+      "visual_loop": {
+        "title": "E6 · BUCLE EN PRUEBA",
+        "subtitle": "SECUENCIA VISUAL EN PRUEBA",
+        "call_to_action": "REPETIR BUCLE"
+      },
+      "visual_drill": {
+        "title": "E6 · DRILL EN PRUEBA",
+        "subtitle": "CONTROL DE SERIES EN PRUEBA",
+        "call_to_action": "INICIAR SERIE"
+      }
+    }
+  },
+  "evidence_and_entry_conditions": {
+    "reuse_candidates_total": 13,
+    "e6_accepted_scenarios": 0,
+    "challenge004_reuse": "UNRESOLVED_UNTIL_HISTORICAL_D9_MODEL_PREIMAGE_SEMANTIC_REVIEW_PASSES",
+    "five_fresh_challenge_av_rows_required": 5,
+    "six_loop_rows": "D_PIXEL_CONSUMER_MUST_BE_IMPLEMENTED_AND_ADMITTED",
+    "six_drill_rows": "E6_EDITORIAL_READBACK_AND_ROW_PREDICATES_REQUIRED",
+    "challenge_editorial_readback_targets": 18,
+    "loop_editorial_readback_targets": 6,
+    "drill_editorial_readback_targets": 6
+  },
+  "loop_design_decisions": {
+    "A1": "REQUIRES_CURRENT_HASH_DECISION_RECORD_RECONCILIATION",
+    "A3": "REQUIRES_CURRENT_HASH_DECISION_RECORD_RECONCILIATION",
+    "outer_composition": "REQUIRES_CURRENT_HASH_DECISION_RECORD_RECONCILIATION",
+    "no_geometry_or_renderer_input_is_admitted_by_this_draft": true
+  },
+  "toolchain": {
+    "godot": {
+      "path": "C:\\Users\\vinxe\\AppData\\Local\\Microsoft\\WinGet\\Packages\\GodotEngine.GodotEngine.Mono_Microsoft.Winget.Source_8wekyb3d8bbwe\\Godot_v4.7.1-stable_mono_win64\\godot.exe",
+      "sha256": "8ec33ba6a6a953226170cda2a56a58810f6617261a71d6bd6d6ba7cce5e7b79d",
+      "version_observed": "4.7.1-stable-mono"
+    },
+    "ffmpeg": {
+      "path": "C:\\Users\\vinxe\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-9.0-full_build\\bin\\ffmpeg.exe",
+      "sha256": "05f4251bce9293c2ab492cb17ca7724a0ffd0d06c881ba2ee83b82a89c2fc740",
+      "version_observed": "9.0-full_build"
+    },
+    "ffprobe": {
+      "path": "C:\\Users\\vinxe\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-9.0-full_build\\bin\\ffprobe.exe",
+      "sha256": "51e0780cd881f83749b029ed716cbb841c2eac6289f418050f2f2961b158896b",
+      "version_observed": "9.0-full_build"
+    },
+    "python": {
+      "path": "C:\\Users\\vinxe\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+      "sha256": "ef8f51028ac5329641985112f8efb1c2d4c47c86b8011ddf7e6fae21e2b4e5a1",
+      "version_observed": "3.13.14"
+    },
+    "powershell": {
+      "path": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "sha256": "d8f182560210d43baaf767d482ad1dc1207372522e91413b9d5e515a875e552d",
+      "version_observed": "5.1.26100.9818"
+    },
+    "status": "OBSERVED_IN_PRIOR_ACCEPTED_PROCESS_RECEIPT_REQUIRES_LIVE_HASH_RECHECK_NO_EXECUTION"
+  },
+  "authorization_gates": [
+    "current active-checkout pins and predecessor receipt hashes PASS",
+    "CH004 historical source drift adjudicated",
+    "Challenge and Drill editorial runtime readback PASS",
+    "Loop Option C policy current-hash decisions reconciled and D pixel consumer accepted for all six rows",
+    "13 reuse candidates individually accepted or explicitly retained as fresh work",
+    "exact 18-row manifest frozen",
+    "toolchain executable hashes revalidated",
+    "exact executable argv and process counts enumerated",
+    "D4.8 conflict review clause-by-clause with explicit governance approval",
+    "separate explicit operator E6 TEST_ONLY execution authorization"
+  ],
+  "explicit_non_authorizations": {
+    "godot": false,
+    "ffmpeg": false,
+    "ffprobe": false,
+    "audio_generation": false,
+    "mux": false,
+    "media_creation": false,
+    "renderer_activation": false,
+    "production_dispatch": false,
+    "batch_id_reserved": false,
+    "release_authority": "NONE",
+    "promotion": false
+  }
+}

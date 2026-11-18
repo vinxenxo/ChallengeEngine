@@ -1,0 +1,267 @@
+{
+  "schema": "C11E-E6-RENDER-GATE-PREFLIGHT-INPUTS-V1",
+  "schema_version": "1.0",
+  "package_id": "C11E_E6_RENDER_GATE_PREFLIGHT_V1_20261118",
+  "predecessor_status": {
+    "composition_readiness": "PASS_AUDIT_ONLY_GAPS_IDENTIFIED_EXECUTION_HELD",
+    "family_editorial": "PASS_PREPARE_ONLY_18_ROWS_30_TARGETS_RUNTIME_CONSUMPTION_NOT_PROVEN",
+    "challenge_prepare_only": "PASS_PREPARE_ONLY_18_E1_INTENTS_18_D_ENVELOPES_EXECUTION_HELD",
+    "reuse_requalification": "PASS_REUSE_EVIDENCE_LINKAGE_REQUALIFIED_NOT_E6_ACCEPTANCE",
+    "reuse_hydration_v2": "BLOCKED_E6_REUSE_EVIDENCE_INCOMPLETE"
+  },
+  "project_source_pins": [
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    },
+    {
+      "path": "definitions/c11d/production/C11E_D4_8_R1V_QUALIFICATION_ONLY_POLICY_V2.json",
+      "sha256": "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07"
+    },
+    {
+      "path": "definitions/c11d/production/C11E_OPTION_C_D_POSTCOMPOSITION_BOUNDARY_V1.json",
+      "sha256": "795be1da157dd07fd4992d3ec6d7cf091a015eed72d16d86df13085db296098b"
+    },
+    {
+      "path": "definitions/c11d/production/C11E_OPTION_C_D_POSTCOMPOSITION_DECISION_V1.json",
+      "sha256": "22cec26baecfb6018a814750cc781143f5fa13f897d3dce708f6e9e074f669ac"
+    },
+    {
+      "path": "tools/c11d/d9/editorial_render_bridge.py",
+      "sha256": "fe9d40052b0f4ff6f1c862c010ae7b3b13070b6ce935be6d62f9dcaec63a644a"
+    },
+    {
+      "path": "tools/c11d/d9/d_render_adapter.py",
+      "sha256": "222742677cd498368429a3ec0dcdd922c44197bb5ada3638081138fb77c31bf1"
+    },
+    {
+      "path": "tools/c11d/d9/c11e_e4b_loop_family_stage_contract.py",
+      "sha256": "bfbfa0cc108f00b78003e5480c86af1ee5ca63772d24a7792f8cdb6953b6af5d"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_dynamic_request_payload_binding.py",
+      "sha256": "bad418fcee9b219c4ccd3f3720b8d623737b9790968608ba3f605430c8bb149b"
+    },
+    {
+      "path": "tools/c11d/d9/C11EChallengeLiveEditorialConsumer.gd",
+      "sha256": "eba81fff4c24ca75033c8f963665df1961136046c41fee0e88681fe55a631203"
+    },
+    {
+      "path": "tools/c11d/d9/c11e_challenge_editorial_presentation_adapter.gd",
+      "sha256": "d17568882eb63ba2eb48649cb9cd46edafe122d72c0c5ed29275e79b8d6d5846"
+    },
+    {
+      "path": "tools/c11d/d9/c11e_e4c_drill_visual_composition_consumer.py",
+      "sha256": "d5cd8e24c0cfdd83ec035b006c76468ed637d6babf5f0a9fcca8a93817ba1aa8"
+    },
+    {
+      "path": "tools/c11d/d9/test_c11e_e4c_drill_visual_composition_consumer.py",
+      "sha256": "aedeb5754d94fdbaad134a653f57ca07466c845dcef081c8774668245455a7a0"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_UNIFIED_PRESENTATION_REGION_POLICY_PROPOSAL_V1.json",
+      "sha256": "101092bb32127bb8854a501a9215c0b6cf69581594383903716907d49719c01a"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
+      "sha256": "609a4d183aac07c2cbe1abaf41444160fdd137217faffbead3aef618320d57dc"
+    },
+    {
+      "path": "definitions/c11d/production/C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_V1.json",
+      "sha256": "9e206704665ea85226ecc10854be9f679c32fe9ed7efb690a829f6e8456d43da"
+    },
+    {
+      "path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+      "sha256": "dabb458fc2215156ddb5ebea7e8ebec811098886ce2858733ba9fb13f6075ccb"
+    },
+    {
+      "path": "tools/c11d/d9/universal_editorial_model.py",
+      "sha256": "dac95fb698b52f96432a517d8ec3196a397e5e6bd3c025300350dd55ddce3afd"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/c11e_production_service.py",
+      "sha256": "e5dbf9baa72d4c066ff8ba24006df954700d72a5b0f11f9f88aec653e84dce87"
+    },
+    {
+      "path": "docs/current/d/D1.5_PLATFORM_LAYOUT_TEMPLATE_CONTRACT.md",
+      "sha256": "3a8e7bfc13a369acaf9d5abe9583f3e93e0990a3b1262b8a839e81ee873c6461"
+    },
+    {
+      "path": "definitions/c11e/test_only/C11E_E6_SMOKE18_FAMILY_EDITORIAL_FIXTURE_V1.json",
+      "sha256": "a63aeb9b97be29c716d6ab8a1f303ef66843a5eb9fb4f972a4ac6cd89f0a78aa"
+    }
+  ],
+  "receipt_pins": [
+    {
+      "id": "composition_readiness_v2",
+      "path": "artifacts/tests/c11e/e6_composition_readiness_v2/E6COMPREADINESSV2_20261118T214318Z_D41DD6C6/receipt/E6_COMPOSITION_READINESS_AUDIT_RECEIPT_V2.json",
+      "sha256": "5470ee637b559977f266f1ed8131dbb1729bc9ef2225cddd58414efe3187035f"
+    },
+    {
+      "id": "challenge_prepare_only",
+      "path": "artifacts/tests/c11e/e6_challenge_prepare_only_orchestrator/E6CHPREP_20261118T202841Z_37C6AE0E/E6_CHALLENGE_PREPARE_ONLY_ORCHESTRATOR_RECEIPT_V1.json",
+      "sha256": "b54a884f1574d22fa65ea198d279d9ba84bb3967adc87885213f7659a1b1c944"
+    },
+    {
+      "id": "reuse_requalification",
+      "path": "artifacts/tests/c11e/e6_smoke18_reuse_requalification/E6SMK18REQUAL_20261118T141200Z_BA5AC046/E6_SMOKE18_REUSE_REQUALIFICATION_RECEIPT_V1.json",
+      "sha256": "4d63b8caec7a975cc0362ee9d7a5924f5ab8371e8e8e1457e1d60956bf65ce33"
+    },
+    {
+      "id": "family_editorial_install",
+      "path": "artifacts/tests/c11e/e6_smoke18_family_editorial_fixture_install/E6FAMEDINST_20261118T215556Z_117B3A24/INSTALL_RECEIPT_V1.json",
+      "sha256": "eab2d21e0501a92b4c04dde9a3e8bf41da4b20391580c6a78520b0fcdcd0e3a2"
+    },
+    {
+      "id": "family_editorial_audit",
+      "path": "artifacts/tests/c11e/e6_smoke18_family_editorial_fixture/E6FAMEDITORIAL_20261118T215606Z_36DB17BC/E6_SMOKE18_FAMILY_EDITORIAL_FIXTURE_AUDIT_RECEIPT_V1.json",
+      "sha256": "819b953246702e0e70104bb11e00279e225f83a0a8652e123d7532a27c39fe64"
+    },
+    {
+      "id": "family_editorial_plan",
+      "path": "artifacts/tests/c11e/e6_smoke18_family_editorial_fixture/E6FAMEDITORIAL_20261118T215606Z_36DB17BC/E6_SMOKE18_FAMILY_EDITORIAL_FIXTURE_PLAN_V1.json",
+      "sha256": "9ea1508c631a06d82dcedcd02c03c2481849a3b5d82a25aa70cce8077562c5ca"
+    },
+    {
+      "id": "d9_33_pin_reconciliation",
+      "path": "artifacts/tests/c11e/e6_d9_dependency_pin_reconciliation/E6D9PINREC_20261118T090219Z_97FFB0DD/E6D9PINREC_20261118T090219Z_97FFB0DD_REPORT_V1.json",
+      "sha256": "fa54b47826f58acc823d45a8771a2dc12827d34d46d9586a34b8f6813a9e0603"
+    },
+    {
+      "id": "reuse_hydration_v2",
+      "path": "artifacts/tests/c11e/e6_reuse_evidence_hydration_v2/E6HYDRATE_20261118T073344Z_1A9D7C52/E6HYDRATE_20261118T073344Z_1A9D7C52_REPORT_V2.json",
+      "sha256": "11f0eeba941f4740759132b3ba984eecf80c68a69aad27fe605a81a4ff8f5a77"
+    }
+  ],
+  "external_runtime_tools": [
+    {
+      "id": "godot",
+      "path": "C:\\Users\\vinxe\\AppData\\Local\\Microsoft\\WinGet\\Packages\\GodotEngine.GodotEngine.Mono_Microsoft.Winget.Source_8wekyb3d8bbwe\\Godot_v4.7.1-stable_mono_win64\\godot.exe",
+      "sha256": "8ec33ba6a6a953226170cda2a56a58810f6617261a71d6bd6d6ba7cce5e7b79d",
+      "bytes": 179589128,
+      "observed_version": "4.7.1-stable-mono",
+      "execution_allowed": false
+    },
+    {
+      "id": "ffmpeg",
+      "path": "C:\\Users\\vinxe\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-9.0-full_build\\bin\\ffmpeg.exe",
+      "sha256": "05f4251bce9293c2ab492cb17ca7724a0ffd0d06c881ba2ee83b82a89c2fc740",
+      "bytes": 222248960,
+      "observed_version": "9.0-full_build",
+      "execution_allowed": false
+    },
+    {
+      "id": "ffprobe",
+      "path": "C:\\Users\\vinxe\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-9.0-full_build\\bin\\ffprobe.exe",
+      "sha256": "51e0780cd881f83749b029ed716cbb841c2eac6289f418050f2f2961b158896b",
+      "bytes": 222044160,
+      "observed_version": "9.0-full_build",
+      "execution_allowed": false
+    },
+    {
+      "id": "python",
+      "path": "C:\\Users\\vinxe\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+      "sha256": "ef8f51028ac5329641985112f8efb1c2d4c47c86b8011ddf7e6fae21e2b4e5a1",
+      "bytes": 105696,
+      "observed_version": "3.13.14",
+      "execution_allowed": false
+    },
+    {
+      "id": "powershell",
+      "path": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "sha256": "d8f182560210d43baaf767d482ad1dc1207372522e91413b9d5e515a875e552d",
+      "bytes": 495616,
+      "observed_version": "5.1.26100.9818",
+      "execution_allowed": false
+    }
+  ],
+  "scope": {
+    "smoke18_top_level": 18,
+    "challenge": 6,
+    "visual_loop": 6,
+    "visual_drill": 6,
+    "challenge_nested_subruns": 18,
+    "editorial_targets": 30,
+    "challenge_editorial_targets": 18,
+    "loop_editorial_targets": 6,
+    "drill_editorial_targets": 6
+  },
+  "known_open_gates": [
+    {
+      "id": "CH004_HISTORICAL_D9_EDITORIAL_SOURCE_DRIFT",
+      "status": "UNRESOLVED_NO_AUTO_WAIVER",
+      "expected_old_sha256": "5c575be1942ba0613d66579d14db5cf9d7786e7062dfb001bd7be8a2e9c18ae5",
+      "observed_current_sha256": "dac95fb698b52f96432a517d8ec3196a397e5e6bd3c025300350dd55ddce3afd"
+    },
+    {
+      "id": "CHALLENGE_FIVE_FRESH_AV_ROWS",
+      "status": "REQUIRED_NOT_YET_EXECUTED",
+      "count": 5
+    },
+    {
+      "id": "LOOP_D_PIXEL_CONSUMER",
+      "status": "NOT_IMPLEMENTED_OR_NOT_ADMITTED",
+      "count": 6
+    },
+    {
+      "id": "DRILL_E6_EDITORIAL_READBACK",
+      "status": "NOT_PROVEN",
+      "count": 6
+    },
+    {
+      "id": "CHALLENGE_E6_EDITORIAL_READBACK",
+      "status": "NOT_PROVEN",
+      "count": 18
+    },
+    {
+      "id": "LOOP_A1_A3_AND_OUTER_COMPOSITION_DECISION",
+      "status": "HISTORICAL_DECISION_EVIDENCE_REQUIRES_CURRENT_CHECKOUT_RECONCILIATION",
+      "proposal_hashes": [
+        "101092bb32127bb8854a501a9215c0b6cf69581594383903716907d49719c01a",
+        "609a4d183aac07c2cbe1abaf41444160fdd137217faffbead3aef618320d57dc",
+        "9e206704665ea85226ecc10854be9f679c32fe9ed7efb690a829f6e8456d43da"
+      ]
+    },
+    {
+      "id": "GLOBAL_D_RENDERER_IO_BASELINE",
+      "status": "0_OF_10_COMPLETE_6_PARTIAL_4_BLOCKED"
+    },
+    {
+      "id": "D4_8_SUCCESSOR_POLICY",
+      "status": "DRAFT_ONLY_NOT_APPROVED"
+    },
+    {
+      "id": "E6_TEST_ONLY_EXECUTION_AUTHORIZATION",
+      "status": "NOT_ISSUED"
+    }
+  ],
+  "governance": {
+    "c11c_manifest_immutable": true,
+    "d4_8_immutable": true,
+    "d4_8": "BLOCKED",
+    "e1": "PREPARE_ONLY",
+    "renderer": "OFF",
+    "production_dispatch": false,
+    "production_media": false,
+    "release_authority": "NONE",
+    "e6_accepted_scenarios": 0,
+    "matrix_frozen": false,
+    "e6_test_only_authorized": false,
+    "batch_id_reserved": false,
+    "git_checks": "SKIPPED",
+    "commits": "OPERATOR_MANAGED",
+    "source_file_pins": "ENFORCED"
+  },
+  "execution_prohibition": {
+    "godot_invoked": false,
+    "ffmpeg_invoked": false,
+    "ffprobe_invoked": false,
+    "audio_generated": false,
+    "mux_invoked": false,
+    "media_created": false,
+    "renderer_invoked": false,
+    "dispatch_invoked": false,
+    "batch_id_consumed": false
+  },
+  "output_root_relative": "artifacts/tests/c11e/e6_render_gate_preflight"
+}

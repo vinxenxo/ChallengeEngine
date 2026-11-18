@@ -1,0 +1,102 @@
+{
+  "schema": "C11E-E6-SMOKE18-SUCCESSOR-POLICY-DRAFT-V1",
+  "schema_version": "1.0",
+  "policy_id": "C11E_E6_SMOKE18_SUCCESSOR_POLICY_DRAFT_V1",
+  "created_date": "2026-11-18",
+  "status": "DRAFT_PREPARED_NOT_APPROVED_NOT_EXECUTION_AUTHORIZED",
+  "proposed_successor_to": {
+    "policy_id": "C11E_D4_8_R1V_QUALIFICATION_ONLY_POLICY_V2",
+    "sha256": "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+    "mutation": "PROHIBITED; ORIGINAL REMAINS IMMUTABLE AND BLOCKED FOR SMOKE18"
+  },
+  "scope": {
+    "top_level_scenarios": 18,
+    "challenge": 6,
+    "visual_loop": 6,
+    "visual_drill": 6,
+    "challenge_nested_subruns": 18,
+    "challenge_subrun_labels": [
+      "A",
+      "B_REPEAT",
+      "C_CHANGED_MUSIC_SEED"
+    ],
+    "excluded_from_top_level_count": true,
+    "challenge_selectors_proposed": [
+      "CHALLENGE_001",
+      "CHALLENGE_002",
+      "CHALLENGE_004",
+      "CHALLENGE_005",
+      "CHALLENGE_006",
+      "CHALLENGE_007"
+    ],
+    "challenge_003": "Excluded from current sample because proposed gameplay seed duplicates CH004; exact rationale must remain in frozen manifest.",
+    "challenge_008_009": "Held; declared 11 seconds conflicts with 12-second canonical phase sum."
+  },
+  "proposed_test_only_execution_envelope": {
+    "godot": "REQUIRED_FOR_D_PIXEL_COMPOSITION; exact executable/version/hash/argv NOT YET PINNED",
+    "ffmpeg": "REQUIRED_FOR_FINAL_AUDIO_VIDEO_ASSEMBLY_IF_SEPARATE_MUX_IS_USED; exact executable/version/hash/argv NOT YET PINNED",
+    "ffprobe": "REQUIRED_FOR_READ_ONLY_STREAM/TIMEBASE/DRIFT_VALIDATION; exact executable/version/hash/argv NOT YET PINNED",
+    "challenge_audio": "D3 V5 only under separately pinned E6 TEST_ONLY authorization; fixture scope only",
+    "loop_audio": "Existing C11-C Visual Loop family music/profile; no Challenge D3 substitution",
+    "drill_audio": "Existing C11-C Visual Drill family music/profile; no Challenge D3 substitution",
+    "batch_id": "One fresh E6 TEST_ONLY identity only after final approval; no reservation now",
+    "output_root": "Fresh isolated test-only root; exact path/cardinality to be pinned before approval",
+    "stop_condition": "Stop on first failed source pin, subprocess, QA predicate, hash, frame count, stream, A/B determinism, audio isolation, or human acceptance check."
+  },
+  "evidence_rules": {
+    "13_reuse_candidates_are_not_accepted": true,
+    "challenge004_reuse_only_after_exact_row_predicates": true,
+    "five_fresh_challenge_av_rows_required": true,
+    "six_loop_d_composites_required": true,
+    "six_drill_rows_require_exact_reuse_predicate_requalification": true,
+    "preserve_all_original_receipts_and_media": true,
+    "never_mutate_c11c_or_original_d4_8": true
+  },
+  "operator_approved_fixture": {
+    "challenge_music": {
+      "approved_test_only": true,
+      "profile_id": "challenge_8bit_v1",
+      "A_seed": 840001,
+      "B_seed": 840001,
+      "C_seed": 840002,
+      "tempo_bpm": 104,
+      "variation_index": 0,
+      "duration": "derive from each canonical Challenge timebase; verify with FFprobe",
+      "e1_tempo_bpm": "remain null",
+      "e1_duration_seconds": "remain null"
+    },
+    "editorial_text": {
+      "approved": false,
+      "status": "PENDING_OPERATOR_DECISION",
+      "proposed": {
+        "title": "E6 PRUEBA",
+        "subtitle": "VALIDACIÓN DE MAQUETACIÓN",
+        "call_to_action": "CONTINUAR"
+      }
+    }
+  },
+  "prerequisites_before_final_authorization": [
+    "Corrected V2 source pin audit PASS against active checkout and prior 33-pin adjudication receipt.",
+    "Challenge new plan-only manifest with approved run-scoped editorial fixture and 18 A/B/C intents/envelopes; do not rewrite V1 evidence.",
+    "Loop A.1/A.3/E4B composition policy decisions verified at exact current SHA values; implement/test D-only Option C consumer at existing boundary.",
+    "D-owned Loop pixel compositor test-only acceptance for all six Smoke18 rows; preserve source frame identity/order/timebase.",
+    "Drill and CH004 row-level E6 reuse predicates and exact artifact hashes revalidated.",
+    "Freeze exact 18-row manifest and per-row input/output/media hash predicates.",
+    "Pin Godot, FFmpeg, FFprobe, Python, PowerShell, exact argv, process counts, timeouts, fresh roots, cardinalities and cleanup/stop rules.",
+    "Complete clause-by-clause D4.8 successor review and obtain explicit approval of the final successor policy.",
+    "Obtain a separate explicit operator E6 TEST_ONLY execution authorization."
+  ],
+  "explicit_non_authorizations": {
+    "godot": false,
+    "ffmpeg": false,
+    "ffprobe": false,
+    "audio_generation": false,
+    "mux": false,
+    "media_creation": false,
+    "renderer_activation": false,
+    "production_dispatch": false,
+    "batch_id_reserved": false,
+    "release_authority": "NONE",
+    "promotion": false
+  }
+}

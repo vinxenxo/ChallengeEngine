@@ -1,0 +1,111 @@
+{
+  "schema": "C11E-E6-COMPOSITION-READINESS-SOURCE-PINS-V1",
+  "schema_version": "1.0",
+  "baseline_snapshot": "ChallengeEngineV01_STATELESS-LATEST-18112026.zip",
+  "baseline_snapshot_sha256": "b9a372038b3143e8049b0d8cb362fb52e1c367f3b9cc6ffa1670e01786b6d6ef",
+  "baseline_snapshot_role": "COMPARISON_EVIDENCE_ONLY_ACTIVE_CHECKOUT_MUST_BE_REHASHED",
+  "pins": [
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "bytes": 796318,
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+      "role": "IMMUTABLE_BASELINE"
+    },
+    {
+      "path": "definitions/c11d/production/C11E_D4_8_R1V_QUALIFICATION_ONLY_POLICY_V2.json",
+      "bytes": 12996,
+      "sha256": "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+      "role": "PROTECTED_GOVERNANCE"
+    },
+    {
+      "path": "definitions/c11d/production/C11E_OPTION_C_D_POSTCOMPOSITION_BOUNDARY_V1.json",
+      "bytes": 3576,
+      "sha256": "795be1da157dd07fd4992d3ec6d7cf091a015eed72d16d86df13085db296098b",
+      "role": "LOOP_D_BOUNDARY"
+    },
+    {
+      "path": "definitions/c11d/production/C11E_OPTION_C_D_POSTCOMPOSITION_DECISION_V1.json",
+      "bytes": 2342,
+      "sha256": "22cec26baecfb6018a814750cc781143f5fa13f897d3dce708f6e9e074f669ac",
+      "role": "LOOP_D_ARCHITECTURE_DECISION"
+    },
+    {
+      "path": "tools/c11d/d9/editorial_render_bridge.py",
+      "bytes": 10868,
+      "sha256": "fe9d40052b0f4ff6f1c862c010ae7b3b13070b6ce935be6d62f9dcaec63a644a",
+      "role": "D9_10_PLAN_ONLY_BRIDGE"
+    },
+    {
+      "path": "tools/c11d/d9/d_render_adapter.py",
+      "bytes": 15051,
+      "sha256": "222742677cd498368429a3ec0dcdd922c44197bb5ada3638081138fb77c31bf1",
+      "role": "D9_10_PLAN_ONLY_ADAPTER"
+    },
+    {
+      "path": "tools/c11d/d9/c11e_e4b_loop_family_stage_contract.py",
+      "bytes": 19331,
+      "sha256": "bfbfa0cc108f00b78003e5480c86af1ee5ca63772d24a7792f8cdb6953b6af5d",
+      "role": "LOOP_PREPARE_ONLY_STAGE"
+    },
+    {
+      "path": "tools/c11d/d9/d_renderer_dynamic_request_payload_binding.py",
+      "bytes": 86068,
+      "sha256": "bad418fcee9b219c4ccd3f3720b8d623737b9790968608ba3f605430c8bb149b",
+      "role": "SINGLE_SELECTOR_IN_MEMORY_LOOP_COMPOSITE"
+    },
+    {
+      "path": "tools/c11d/d9/C11EChallengeLiveEditorialConsumer.gd",
+      "bytes": 26367,
+      "sha256": "eba81fff3d0f7c4b5d6b5eeb55c5e14a4d25b44c040c4cc6d2d59b6c9a631203",
+      "role": "CHALLENGE_D_CONSUMER"
+    },
+    {
+      "path": "tools/c11d/d9/c11e_challenge_editorial_presentation_adapter.gd",
+      "bytes": 14167,
+      "sha256": "d17568882eb63ba2eb48649cb9cd46edafe122d72c0c5ed29275e79b8d6d5846",
+      "role": "CHALLENGE_D_ADAPTER"
+    },
+    {
+      "path": "tools/c11d/d9/c11e_e4c_drill_visual_composition_consumer.py",
+      "bytes": 79200,
+      "sha256": "d5cd8e24c0cfdd83ec035b006c76468ed637d6babf5f0a9fcca8a93817ba1aa8",
+      "role": "DRILL_D_COMPOSITION_CONSUMER"
+    },
+    {
+      "path": "tools/c11d/d9/test_c11e_e4c_drill_visual_composition_consumer.py",
+      "bytes": 21441,
+      "sha256": "aedeb5754d94fdbaad134a653f57ca07466c845dcef081c8774668245455a7a0",
+      "role": "DRILL_D_CONSUMER_TESTS"
+    },
+    {
+      "path": "docs/current/e/C11E_E4B_LOOP_SHARED_SERVICE_INTEGRATION_REVIEW_20261107_V3.md",
+      "bytes": 1893,
+      "sha256": "ed17c190bf12e2d109938de4d9061be6f78b2cd3e82628795fac309e612574eb",
+      "role": "LOOP_ACCEPTANCE_SCOPE"
+    },
+    {
+      "path": "docs/current/e/C11E_OPTION_C_CONSUMER_AND_E4A6_BASELINE_REMEDIATION_20261107_V6.md",
+      "bytes": 864,
+      "sha256": "515273555b306bd7b3f483ae3fd50aaa4b2ae5f1f706b369b0948c98abaf41c9",
+      "role": "LOOP_D_COMPOSITOR_STATUS"
+    },
+    {
+      "path": "docs/current/d/D_RENDERER_VISUAL_LOOP_COMPOSITE_PAYLOAD_INTEGRATION_CHECKPOINT_V1.md",
+      "bytes": 5081,
+      "sha256": "11db1b9f8c905168b9f5095a8bbeb4e9ef6db9d2cac350228ccb3c46fd918168",
+      "role": "SINGLE_SELECTOR_IN_MEMORY_LIMITATION"
+    },
+    {
+      "path": "docs/current/d/D_RENDERER_CANDIDATE_IO_GAP_AUDIT_CHECKPOINT_V1.md",
+      "bytes": 15163,
+      "sha256": "319b9bbd809ecef5f24f941f80bcd0a316b9cdb93928d714f919ca4d03a6e1cb",
+      "role": "LAST_LOCATED_GLOBAL_IO_CHECKPOINT"
+    },
+    {
+      "path": "docs/current/e/C11E_E5_FULL_PHASE_CLOSEOUT_20261116_V1.md",
+      "bytes": 6805,
+      "sha256": "c19b3b9994bd6d03ee5b00459b663262a9e1b4300ab70859e793e80577e3a9b1",
+      "role": "E5_ACCEPTANCE"
+    }
+  ]
+}

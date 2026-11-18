@@ -1,0 +1,274 @@
+{
+  "schema": "C11E-E6-SMOKE18-FAMILY-EDITORIAL-FIXTURE-V1",
+  "schema_version": "1.0",
+  "fixture_id": "C11E_E6_SMOKE18_FAMILY_EDITORIAL_FIXTURE_V1",
+  "created_date": "2026-11-18",
+  "status": "OPERATOR_SCOPE_APPROVED_TEST_ONLY_COPY_CANDIDATES_PREPARE_ONLY",
+  "approval_context": {
+    "operator_approved_scope": true,
+    "approval_source": "Operator instruction in conversation dated 2026-11-18: use non-default editorial text for every Smoke18 family and pass it through all family tests.",
+    "approval_is_not_media_execution_authority": true,
+    "copy_authorship": "Assistant-authored synthetic Spanish test copy, deliberately marked E6 and family-specific.",
+    "visual_copy_acceptance": "PENDING_OPERATOR_REVIEW_OF_ACTUAL_CONSUMED_OUTPUTS"
+  },
+  "intent": {
+    "top_level_smoke18_rows": 18,
+    "rows_per_family": 6,
+    "families": [
+      "challenge",
+      "visual_loop",
+      "visual_drill"
+    ],
+    "editorial_fields": [
+      "title",
+      "subtitle",
+      "call_to_action"
+    ],
+    "assignment_rule": "The same family-specific fixture triplet is assigned to every top-level row in that family. Challenge applies the triplet independently to A, B_REPEAT and C_CHANGED_MUSIC_SEED sub-probes.",
+    "expected_top_level_rows": 18,
+    "expected_editorial_targets": 30,
+    "challenge_probe_targets_are_nested_not_additional_smoke18_rows": true
+  },
+  "fixture_scope": {
+    "locale": "es",
+    "data_classification": "SYNTHETIC_TEST_ONLY",
+    "product_defaults_mutated": false,
+    "canonical_definitions_mutated": false,
+    "e1_request_defaults_mutated": false,
+    "e1_personalization_enabled": false,
+    "challenge_player_name": "MUST_REMAIN_UNKNOWN_OR_BLOCKED",
+    "challenge_label": "MUST_REMAIN_UNKNOWN_OR_BLOCKED",
+    "default_distinctness": "E6 sentinel and family-specific strings make these explicit test candidates; the runtime consumer must still compare actual consumed values against the active family default before claiming NON_DEFAULT_VISUAL_CONSUMPTION_PASS."
+  },
+  "family_fixtures": {
+    "challenge": {
+      "fixture_id": "E6_EDITORIAL_CHALLENGE_V1",
+      "title": "E6 · DESAFÍO EN PRUEBA",
+      "subtitle": "RITMO Y PRECISIÓN EN PRUEBA",
+      "call_to_action": "PROBAR DESAFÍO",
+      "consumer_route": "tools/c11d/d9/C11EChallengeLiveEditorialConsumer.gd",
+      "consumer_status": "SOURCE_PINNED_BY_E6_COMPOSITION_READINESS_V2; RUNTIME_EDITORIAL_READBACK_NOT_YET_PROVEN"
+    },
+    "visual_loop": {
+      "fixture_id": "E6_EDITORIAL_LOOP_V1",
+      "title": "E6 · BUCLE EN PRUEBA",
+      "subtitle": "SECUENCIA VISUAL EN PRUEBA",
+      "call_to_action": "REPETIR BUCLE",
+      "consumer_route": "C11D_OPTION_C_LOOP_POSTCOMPOSITOR",
+      "consumer_status": "NOT_IMPLEMENTED_OR_NOT_ADMITTED; NO_D_PIXEL_CONSUMER_ACCEPTED"
+    },
+    "visual_drill": {
+      "fixture_id": "E6_EDITORIAL_DRILL_V1",
+      "title": "E6 · DRILL EN PRUEBA",
+      "subtitle": "CONTROL DE SERIES EN PRUEBA",
+      "call_to_action": "INICIAR SERIE",
+      "consumer_route": "tools/c11d/d9/c11e_e4c_drill_visual_composition_consumer.py",
+      "consumer_status": "E4C_CONSUMER_PINNED; E6_EDITORIAL_READBACK_NOT_YET_PROVEN"
+    }
+  },
+  "rows": [
+    {
+      "scenario_id": "E6-CH-001",
+      "family": "challenge",
+      "selector": "CHALLENGE_001",
+      "probe_targets": [
+        "A",
+        "B_REPEAT",
+        "C_CHANGED_MUSIC_SEED"
+      ]
+    },
+    {
+      "scenario_id": "E6-CH-002",
+      "family": "challenge",
+      "selector": "CHALLENGE_002",
+      "probe_targets": [
+        "A",
+        "B_REPEAT",
+        "C_CHANGED_MUSIC_SEED"
+      ]
+    },
+    {
+      "scenario_id": "E6-CH-004",
+      "family": "challenge",
+      "selector": "CHALLENGE_004",
+      "probe_targets": [
+        "A",
+        "B_REPEAT",
+        "C_CHANGED_MUSIC_SEED"
+      ]
+    },
+    {
+      "scenario_id": "E6-CH-005",
+      "family": "challenge",
+      "selector": "CHALLENGE_005",
+      "probe_targets": [
+        "A",
+        "B_REPEAT",
+        "C_CHANGED_MUSIC_SEED"
+      ]
+    },
+    {
+      "scenario_id": "E6-CH-006",
+      "family": "challenge",
+      "selector": "CHALLENGE_006",
+      "probe_targets": [
+        "A",
+        "B_REPEAT",
+        "C_CHANGED_MUSIC_SEED"
+      ]
+    },
+    {
+      "scenario_id": "E6-CH-007",
+      "family": "challenge",
+      "selector": "CHALLENGE_007",
+      "probe_targets": [
+        "A",
+        "B_REPEAT",
+        "C_CHANGED_MUSIC_SEED"
+      ]
+    },
+    {
+      "scenario_id": "E6-LOOP-001",
+      "family": "visual_loop",
+      "family_id": "fractal_bloom",
+      "grammar_id": "radial_bloom",
+      "probe_targets": [
+        "SCENARIO"
+      ]
+    },
+    {
+      "scenario_id": "E6-LOOP-002",
+      "family": "visual_loop",
+      "family_id": "geometric_waves",
+      "grammar_id": "harmonic_membrane",
+      "probe_targets": [
+        "SCENARIO"
+      ]
+    },
+    {
+      "scenario_id": "E6-LOOP-003",
+      "family": "visual_loop",
+      "family_id": "invisible_forces",
+      "grammar_id": "dipole_field",
+      "probe_targets": [
+        "SCENARIO"
+      ]
+    },
+    {
+      "scenario_id": "E6-LOOP-004",
+      "family": "visual_loop",
+      "family_id": "living_particles",
+      "grammar_id": "swarm",
+      "probe_targets": [
+        "SCENARIO"
+      ]
+    },
+    {
+      "scenario_id": "E6-LOOP-005",
+      "family": "visual_loop",
+      "family_id": "sacred_symmetry",
+      "grammar_id": "astrolabe",
+      "probe_targets": [
+        "SCENARIO"
+      ]
+    },
+    {
+      "scenario_id": "E6-LOOP-006",
+      "family": "visual_loop",
+      "family_id": "geometric_waves",
+      "grammar_id": "interference_plane",
+      "probe_targets": [
+        "SCENARIO"
+      ]
+    },
+    {
+      "scenario_id": "E6-DRILL-001",
+      "family": "visual_drill",
+      "selector": "tracking",
+      "tier": "tier-2",
+      "probe_targets": [
+        "SCENARIO"
+      ]
+    },
+    {
+      "scenario_id": "E6-DRILL-002",
+      "family": "visual_drill",
+      "selector": "pursuit",
+      "tier": "tier-1",
+      "probe_targets": [
+        "SCENARIO"
+      ]
+    },
+    {
+      "scenario_id": "E6-DRILL-003",
+      "family": "visual_drill",
+      "selector": "saccade",
+      "tier": "tier-1",
+      "probe_targets": [
+        "SCENARIO"
+      ]
+    },
+    {
+      "scenario_id": "E6-DRILL-004",
+      "family": "visual_drill",
+      "selector": "peripheral_scan",
+      "tier": "tier-1",
+      "probe_targets": [
+        "SCENARIO"
+      ]
+    },
+    {
+      "scenario_id": "E6-DRILL-005",
+      "family": "visual_drill",
+      "selector": "tracking",
+      "tier": "tier-5",
+      "probe_targets": [
+        "SCENARIO"
+      ]
+    },
+    {
+      "scenario_id": "E6-DRILL-006",
+      "family": "visual_drill",
+      "selector": "peripheral_scan",
+      "tier": "tier-5",
+      "probe_targets": [
+        "SCENARIO"
+      ]
+    }
+  ],
+  "challenge_probe_contract": {
+    "variants": [
+      "A",
+      "B_REPEAT",
+      "C_CHANGED_MUSIC_SEED"
+    ],
+    "same_editorial_triplet_for_all_three": true,
+    "same_gameplay_identity_across_A_B_C": true,
+    "music_seed_isolation_is_unchanged": true,
+    "editorial_fixture_must_not_change_gameplay_or_music_inputs": true,
+    "existing_challenge_prepare_only_receipt_sha256": "b54a884f1574d22fa65ea198d279d9ba84bb3967adc87885213f7659a1b1c944"
+  },
+  "evidence_links": {
+    "composition_readiness_v2_run_id": "E6COMPREADINESSV2_20261118T214318Z_D41DD6C6",
+    "composition_readiness_v2_receipt_sha256": "5470ee637b559977f266f1ed8131dbb1729bc9ef2225cddd58414efe3187035f",
+    "challenge_prepare_only_run_id": "E6CHPREP_20261118T202841Z_37C6AE0E",
+    "reuse_requalification_run_id": "E6SMK18REQUAL_20261118T141200Z_BA5AC046"
+  },
+  "execution_boundary": {
+    "mode": "PREPARE_ONLY",
+    "plan_generation_only": true,
+    "godot_invoked": false,
+    "ffmpeg_invoked": false,
+    "ffprobe_invoked": false,
+    "audio_generated": false,
+    "mux_invoked": false,
+    "media_created": false,
+    "renderer_invoked": false,
+    "dispatch_invoked": false,
+    "batch_id_consumed": false,
+    "e6_test_only_authorized": false,
+    "d4_8": "BLOCKED",
+    "renderer": "OFF",
+    "release_authority": "NONE"
+  }
+}

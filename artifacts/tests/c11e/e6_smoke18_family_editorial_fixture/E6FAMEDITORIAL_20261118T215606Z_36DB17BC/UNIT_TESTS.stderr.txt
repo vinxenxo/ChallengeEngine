@@ -1,0 +1,39 @@
+test_01_schema (test_c11e_e6_smoke18_family_editorial_fixture_v1.FamilyEditorialFixtureTests.test_01_schema) ... ok
+test_02_fixture_test_only (test_c11e_e6_smoke18_family_editorial_fixture_v1.FamilyEditorialFixtureTests.test_02_fixture_test_only) ... ok
+test_03_defaults_not_mutated (test_c11e_e6_smoke18_family_editorial_fixture_v1.FamilyEditorialFixtureTests.test_03_defaults_not_mutated) ... ok
+test_04_three_families (test_c11e_e6_smoke18_family_editorial_fixture_v1.FamilyEditorialFixtureTests.test_04_three_families) ... ok
+test_05_each_family_has_three_fields (test_c11e_e6_smoke18_family_editorial_fixture_v1.FamilyEditorialFixtureTests.test_05_each_family_has_three_fields) ... ok
+test_06_copy_has_e6_marker (test_c11e_e6_smoke18_family_editorial_fixture_v1.FamilyEditorialFixtureTests.test_06_copy_has_e6_marker) ... ok
+test_07_titles_differ (test_c11e_e6_smoke18_family_editorial_fixture_v1.FamilyEditorialFixtureTests.test_07_titles_differ) ... ok
+test_08_subtitles_differ (test_c11e_e6_smoke18_family_editorial_fixture_v1.FamilyEditorialFixtureTests.test_08_subtitles_differ) ... ok
+test_09_ctas_differ (test_c11e_e6_smoke18_family_editorial_fixture_v1.FamilyEditorialFixtureTests.test_09_ctas_differ) ... ok
+test_10_row_count (test_c11e_e6_smoke18_family_editorial_fixture_v1.FamilyEditorialFixtureTests.test_10_row_count) ... ok
+test_11_challenge_rows_six (test_c11e_e6_smoke18_family_editorial_fixture_v1.FamilyEditorialFixtureTests.test_11_challenge_rows_six) ... ok
+test_12_loop_rows_six (test_c11e_e6_smoke18_family_editorial_fixture_v1.FamilyEditorialFixtureTests.test_12_loop_rows_six) ... ok
+test_13_drill_rows_six (test_c11e_e6_smoke18_family_editorial_fixture_v1.FamilyEditorialFixtureTests.test_13_drill_rows_six) ... ok
+test_14_challenge_selectors_exact (test_c11e_e6_smoke18_family_editorial_fixture_v1.FamilyEditorialFixtureTests.test_14_challenge_selectors_exact) ... ok
+test_15_challenge_three_nested_probes (test_c11e_e6_smoke18_family_editorial_fixture_v1.FamilyEditorialFixtureTests.test_15_challenge_three_nested_probes) ... ok
+test_16_loop_six_identified (test_c11e_e6_smoke18_family_editorial_fixture_v1.FamilyEditorialFixtureTests.test_16_loop_six_identified) ... ok
+test_17_drill_six_identified (test_c11e_e6_smoke18_family_editorial_fixture_v1.FamilyEditorialFixtureTests.test_17_drill_six_identified) ... ok
+test_18_target_count_30 (test_c11e_e6_smoke18_family_editorial_fixture_v1.FamilyEditorialFixtureTests.test_18_target_count_30) ... ok
+test_19_family_target_counts (test_c11e_e6_smoke18_family_editorial_fixture_v1.FamilyEditorialFixtureTests.test_19_family_target_counts) ... ok
+test_20_challenge_player_blocked (test_c11e_e6_smoke18_family_editorial_fixture_v1.FamilyEditorialFixtureTests.test_20_challenge_player_blocked) ... ok
+test_21_challenge_label_blocked (test_c11e_e6_smoke18_family_editorial_fixture_v1.FamilyEditorialFixtureTests.test_21_challenge_label_blocked) ... ok
+test_22_e1_personalization_off (test_c11e_e6_smoke18_family_editorial_fixture_v1.FamilyEditorialFixtureTests.test_22_e1_personalization_off) ... ok
+test_23_music_not_changed (test_c11e_e6_smoke18_family_editorial_fixture_v1.FamilyEditorialFixtureTests.test_23_music_not_changed) ... ok
+test_24_gameplay_identity_unchanged (test_c11e_e6_smoke18_family_editorial_fixture_v1.FamilyEditorialFixtureTests.test_24_gameplay_identity_unchanged) ... ok
+test_25_prepare_only (test_c11e_e6_smoke18_family_editorial_fixture_v1.FamilyEditorialFixtureTests.test_25_prepare_only) ... ok
+test_26_media_not_authorized (test_c11e_e6_smoke18_family_editorial_fixture_v1.FamilyEditorialFixtureTests.test_26_media_not_authorized) ... ok
+test_27_release_none (test_c11e_e6_smoke18_family_editorial_fixture_v1.FamilyEditorialFixtureTests.test_27_release_none) ... ok
+test_28_d4_8_blocked (test_c11e_e6_smoke18_family_editorial_fixture_v1.FamilyEditorialFixtureTests.test_28_d4_8_blocked) ... ok
+test_29_plan_generation_counts (test_c11e_e6_smoke18_family_editorial_fixture_v1.FamilyEditorialFixtureTests.test_29_plan_generation_counts) ... ok
+test_30_plan_family_counts (test_c11e_e6_smoke18_family_editorial_fixture_v1.FamilyEditorialFixtureTests.test_30_plan_family_counts) ... ok
+test_31_challenge_same_text_all_probes (test_c11e_e6_smoke18_family_editorial_fixture_v1.FamilyEditorialFixtureTests.test_31_challenge_same_text_all_probes) ... ok
+test_32_loop_single_scenario_target (test_c11e_e6_smoke18_family_editorial_fixture_v1.FamilyEditorialFixtureTests.test_32_loop_single_scenario_target) ... ok
+test_33_drill_single_scenario_target (test_c11e_e6_smoke18_family_editorial_fixture_v1.FamilyEditorialFixtureTests.test_33_drill_single_scenario_target) ... ok
+test_34_plan_does_not_claim_runtime_consumption (test_c11e_e6_smoke18_family_editorial_fixture_v1.FamilyEditorialFixtureTests.test_34_plan_does_not_claim_runtime_consumption) ... ok
+
+----------------------------------------------------------------------
+Ran 34 tests in 0.002s
+
+OK

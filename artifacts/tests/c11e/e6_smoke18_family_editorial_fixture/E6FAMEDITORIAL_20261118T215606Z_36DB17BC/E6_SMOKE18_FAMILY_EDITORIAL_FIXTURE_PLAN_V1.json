@@ -1,0 +1,769 @@
+{
+  "schema": "C11E-E6-SMOKE18-FAMILY-EDITORIAL-FIXTURE-PLAN-V1",
+  "schema_version": "1.0",
+  "status": "PASS_PREPARE_ONLY_18_ROWS_30_TARGETS_RUNTIME_CONSUMPTION_NOT_PROVEN",
+  "created_utc": "2026-11-18T21:56:07.286196Z",
+  "fixture_id": "C11E_E6_SMOKE18_FAMILY_EDITORIAL_FIXTURE_V1",
+  "fixture_sha256": "a63aeb9b97be29c716d6ab8a1f303ef66843a5eb9fb4f972a4ac6cd89f0a78aa",
+  "top_level_rows_expected": 18,
+  "top_level_rows_actual": 18,
+  "editorial_targets_expected": 30,
+  "editorial_targets_actual": 30,
+  "family_counts": {
+    "challenge": 6,
+    "visual_loop": 6,
+    "visual_drill": 6
+  },
+  "family_target_counts": {
+    "challenge": 18,
+    "visual_loop": 6,
+    "visual_drill": 6
+  },
+  "rows": [
+    {
+      "scenario_id": "E6-CH-001",
+      "family": "challenge",
+      "selector": "CHALLENGE_001",
+      "probe_targets": [
+        "A",
+        "B_REPEAT",
+        "C_CHANGED_MUSIC_SEED"
+      ],
+      "fixture_id": "E6_EDITORIAL_CHALLENGE_V1",
+      "consumer_route": "tools/c11d/d9/C11EChallengeLiveEditorialConsumer.gd",
+      "consumer_status": "SOURCE_PINNED_BY_E6_COMPOSITION_READINESS_V2; RUNTIME_EDITORIAL_READBACK_NOT_YET_PROVEN",
+      "editorial": {
+        "title": "E6 · DESAFÍO EN PRUEBA",
+        "subtitle": "RITMO Y PRECISIÓN EN PRUEBA",
+        "call_to_action": "PROBAR DESAFÍO"
+      },
+      "targets": [
+        {
+          "target_id": "E6-CH-001::A",
+          "variant": "A",
+          "fixture_id": "E6_EDITORIAL_CHALLENGE_V1",
+          "editorial": {
+            "title": "E6 · DESAFÍO EN PRUEBA",
+            "subtitle": "RITMO Y PRECISIÓN EN PRUEBA",
+            "call_to_action": "PROBAR DESAFÍO"
+          },
+          "target_status": "PREPARE_ONLY_BINDING_RECORD_NOT_RUNTIME_CONSUMPTION_PROOF"
+        },
+        {
+          "target_id": "E6-CH-001::B_REPEAT",
+          "variant": "B_REPEAT",
+          "fixture_id": "E6_EDITORIAL_CHALLENGE_V1",
+          "editorial": {
+            "title": "E6 · DESAFÍO EN PRUEBA",
+            "subtitle": "RITMO Y PRECISIÓN EN PRUEBA",
+            "call_to_action": "PROBAR DESAFÍO"
+          },
+          "target_status": "PREPARE_ONLY_BINDING_RECORD_NOT_RUNTIME_CONSUMPTION_PROOF"
+        },
+        {
+          "target_id": "E6-CH-001::C_CHANGED_MUSIC_SEED",
+          "variant": "C_CHANGED_MUSIC_SEED",
+          "fixture_id": "E6_EDITORIAL_CHALLENGE_V1",
+          "editorial": {
+            "title": "E6 · DESAFÍO EN PRUEBA",
+            "subtitle": "RITMO Y PRECISIÓN EN PRUEBA",
+            "call_to_action": "PROBAR DESAFÍO"
+          },
+          "target_status": "PREPARE_ONLY_BINDING_RECORD_NOT_RUNTIME_CONSUMPTION_PROOF"
+        }
+      ]
+    },
+    {
+      "scenario_id": "E6-CH-002",
+      "family": "challenge",
+      "selector": "CHALLENGE_002",
+      "probe_targets": [
+        "A",
+        "B_REPEAT",
+        "C_CHANGED_MUSIC_SEED"
+      ],
+      "fixture_id": "E6_EDITORIAL_CHALLENGE_V1",
+      "consumer_route": "tools/c11d/d9/C11EChallengeLiveEditorialConsumer.gd",
+      "consumer_status": "SOURCE_PINNED_BY_E6_COMPOSITION_READINESS_V2; RUNTIME_EDITORIAL_READBACK_NOT_YET_PROVEN",
+      "editorial": {
+        "title": "E6 · DESAFÍO EN PRUEBA",
+        "subtitle": "RITMO Y PRECISIÓN EN PRUEBA",
+        "call_to_action": "PROBAR DESAFÍO"
+      },
+      "targets": [
+        {
+          "target_id": "E6-CH-002::A",
+          "variant": "A",
+          "fixture_id": "E6_EDITORIAL_CHALLENGE_V1",
+          "editorial": {
+            "title": "E6 · DESAFÍO EN PRUEBA",
+            "subtitle": "RITMO Y PRECISIÓN EN PRUEBA",
+            "call_to_action": "PROBAR DESAFÍO"
+          },
+          "target_status": "PREPARE_ONLY_BINDING_RECORD_NOT_RUNTIME_CONSUMPTION_PROOF"
+        },
+        {
+          "target_id": "E6-CH-002::B_REPEAT",
+          "variant": "B_REPEAT",
+          "fixture_id": "E6_EDITORIAL_CHALLENGE_V1",
+          "editorial": {
+            "title": "E6 · DESAFÍO EN PRUEBA",
+            "subtitle": "RITMO Y PRECISIÓN EN PRUEBA",
+            "call_to_action": "PROBAR DESAFÍO"
+          },
+          "target_status": "PREPARE_ONLY_BINDING_RECORD_NOT_RUNTIME_CONSUMPTION_PROOF"
+        },
+        {
+          "target_id": "E6-CH-002::C_CHANGED_MUSIC_SEED",
+          "variant": "C_CHANGED_MUSIC_SEED",
+          "fixture_id": "E6_EDITORIAL_CHALLENGE_V1",
+          "editorial": {
+            "title": "E6 · DESAFÍO EN PRUEBA",
+            "subtitle": "RITMO Y PRECISIÓN EN PRUEBA",
+            "call_to_action": "PROBAR DESAFÍO"
+          },
+          "target_status": "PREPARE_ONLY_BINDING_RECORD_NOT_RUNTIME_CONSUMPTION_PROOF"
+        }
+      ]
+    },
+    {
+      "scenario_id": "E6-CH-004",
+      "family": "challenge",
+      "selector": "CHALLENGE_004",
+      "probe_targets": [
+        "A",
+        "B_REPEAT",
+        "C_CHANGED_MUSIC_SEED"
+      ],
+      "fixture_id": "E6_EDITORIAL_CHALLENGE_V1",
+      "consumer_route": "tools/c11d/d9/C11EChallengeLiveEditorialConsumer.gd",
+      "consumer_status": "SOURCE_PINNED_BY_E6_COMPOSITION_READINESS_V2; RUNTIME_EDITORIAL_READBACK_NOT_YET_PROVEN",
+      "editorial": {
+        "title": "E6 · DESAFÍO EN PRUEBA",
+        "subtitle": "RITMO Y PRECISIÓN EN PRUEBA",
+        "call_to_action": "PROBAR DESAFÍO"
+      },
+      "targets": [
+        {
+          "target_id": "E6-CH-004::A",
+          "variant": "A",
+          "fixture_id": "E6_EDITORIAL_CHALLENGE_V1",
+          "editorial": {
+            "title": "E6 · DESAFÍO EN PRUEBA",
+            "subtitle": "RITMO Y PRECISIÓN EN PRUEBA",
+            "call_to_action": "PROBAR DESAFÍO"
+          },
+          "target_status": "PREPARE_ONLY_BINDING_RECORD_NOT_RUNTIME_CONSUMPTION_PROOF"
+        },
+        {
+          "target_id": "E6-CH-004::B_REPEAT",
+          "variant": "B_REPEAT",
+          "fixture_id": "E6_EDITORIAL_CHALLENGE_V1",
+          "editorial": {
+            "title": "E6 · DESAFÍO EN PRUEBA",
+            "subtitle": "RITMO Y PRECISIÓN EN PRUEBA",
+            "call_to_action": "PROBAR DESAFÍO"
+          },
+          "target_status": "PREPARE_ONLY_BINDING_RECORD_NOT_RUNTIME_CONSUMPTION_PROOF"
+        },
+        {
+          "target_id": "E6-CH-004::C_CHANGED_MUSIC_SEED",
+          "variant": "C_CHANGED_MUSIC_SEED",
+          "fixture_id": "E6_EDITORIAL_CHALLENGE_V1",
+          "editorial": {
+            "title": "E6 · DESAFÍO EN PRUEBA",
+            "subtitle": "RITMO Y PRECISIÓN EN PRUEBA",
+            "call_to_action": "PROBAR DESAFÍO"
+          },
+          "target_status": "PREPARE_ONLY_BINDING_RECORD_NOT_RUNTIME_CONSUMPTION_PROOF"
+        }
+      ]
+    },
+    {
+      "scenario_id": "E6-CH-005",
+      "family": "challenge",
+      "selector": "CHALLENGE_005",
+      "probe_targets": [
+        "A",
+        "B_REPEAT",
+        "C_CHANGED_MUSIC_SEED"
+      ],
+      "fixture_id": "E6_EDITORIAL_CHALLENGE_V1",
+      "consumer_route": "tools/c11d/d9/C11EChallengeLiveEditorialConsumer.gd",
+      "consumer_status": "SOURCE_PINNED_BY_E6_COMPOSITION_READINESS_V2; RUNTIME_EDITORIAL_READBACK_NOT_YET_PROVEN",
+      "editorial": {
+        "title": "E6 · DESAFÍO EN PRUEBA",
+        "subtitle": "RITMO Y PRECISIÓN EN PRUEBA",
+        "call_to_action": "PROBAR DESAFÍO"
+      },
+      "targets": [
+        {
+          "target_id": "E6-CH-005::A",
+          "variant": "A",
+          "fixture_id": "E6_EDITORIAL_CHALLENGE_V1",
+          "editorial": {
+            "title": "E6 · DESAFÍO EN PRUEBA",
+            "subtitle": "RITMO Y PRECISIÓN EN PRUEBA",
+            "call_to_action": "PROBAR DESAFÍO"
+          },
+          "target_status": "PREPARE_ONLY_BINDING_RECORD_NOT_RUNTIME_CONSUMPTION_PROOF"
+        },
+        {
+          "target_id": "E6-CH-005::B_REPEAT",
+          "variant": "B_REPEAT",
+          "fixture_id": "E6_EDITORIAL_CHALLENGE_V1",
+          "editorial": {
+            "title": "E6 · DESAFÍO EN PRUEBA",
+            "subtitle": "RITMO Y PRECISIÓN EN PRUEBA",
+            "call_to_action": "PROBAR DESAFÍO"
+          },
+          "target_status": "PREPARE_ONLY_BINDING_RECORD_NOT_RUNTIME_CONSUMPTION_PROOF"
+        },
+        {
+          "target_id": "E6-CH-005::C_CHANGED_MUSIC_SEED",
+          "variant": "C_CHANGED_MUSIC_SEED",
+          "fixture_id": "E6_EDITORIAL_CHALLENGE_V1",
+          "editorial": {
+            "title": "E6 · DESAFÍO EN PRUEBA",
+            "subtitle": "RITMO Y PRECISIÓN EN PRUEBA",
+            "call_to_action": "PROBAR DESAFÍO"
+          },
+          "target_status": "PREPARE_ONLY_BINDING_RECORD_NOT_RUNTIME_CONSUMPTION_PROOF"
+        }
+      ]
+    },
+    {
+      "scenario_id": "E6-CH-006",
+      "family": "challenge",
+      "selector": "CHALLENGE_006",
+      "probe_targets": [
+        "A",
+        "B_REPEAT",
+        "C_CHANGED_MUSIC_SEED"
+      ],
+      "fixture_id": "E6_EDITORIAL_CHALLENGE_V1",
+      "consumer_route": "tools/c11d/d9/C11EChallengeLiveEditorialConsumer.gd",
+      "consumer_status": "SOURCE_PINNED_BY_E6_COMPOSITION_READINESS_V2; RUNTIME_EDITORIAL_READBACK_NOT_YET_PROVEN",
+      "editorial": {
+        "title": "E6 · DESAFÍO EN PRUEBA",
+        "subtitle": "RITMO Y PRECISIÓN EN PRUEBA",
+        "call_to_action": "PROBAR DESAFÍO"
+      },
+      "targets": [
+        {
+          "target_id": "E6-CH-006::A",
+          "variant": "A",
+          "fixture_id": "E6_EDITORIAL_CHALLENGE_V1",
+          "editorial": {
+            "title": "E6 · DESAFÍO EN PRUEBA",
+            "subtitle": "RITMO Y PRECISIÓN EN PRUEBA",
+            "call_to_action": "PROBAR DESAFÍO"
+          },
+          "target_status": "PREPARE_ONLY_BINDING_RECORD_NOT_RUNTIME_CONSUMPTION_PROOF"
+        },
+        {
+          "target_id": "E6-CH-006::B_REPEAT",
+          "variant": "B_REPEAT",
+          "fixture_id": "E6_EDITORIAL_CHALLENGE_V1",
+          "editorial": {
+            "title": "E6 · DESAFÍO EN PRUEBA",
+            "subtitle": "RITMO Y PRECISIÓN EN PRUEBA",
+            "call_to_action": "PROBAR DESAFÍO"
+          },
+          "target_status": "PREPARE_ONLY_BINDING_RECORD_NOT_RUNTIME_CONSUMPTION_PROOF"
+        },
+        {
+          "target_id": "E6-CH-006::C_CHANGED_MUSIC_SEED",
+          "variant": "C_CHANGED_MUSIC_SEED",
+          "fixture_id": "E6_EDITORIAL_CHALLENGE_V1",
+          "editorial": {
+            "title": "E6 · DESAFÍO EN PRUEBA",
+            "subtitle": "RITMO Y PRECISIÓN EN PRUEBA",
+            "call_to_action": "PROBAR DESAFÍO"
+          },
+          "target_status": "PREPARE_ONLY_BINDING_RECORD_NOT_RUNTIME_CONSUMPTION_PROOF"
+        }
+      ]
+    },
+    {
+      "scenario_id": "E6-CH-007",
+      "family": "challenge",
+      "selector": "CHALLENGE_007",
+      "probe_targets": [
+        "A",
+        "B_REPEAT",
+        "C_CHANGED_MUSIC_SEED"
+      ],
+      "fixture_id": "E6_EDITORIAL_CHALLENGE_V1",
+      "consumer_route": "tools/c11d/d9/C11EChallengeLiveEditorialConsumer.gd",
+      "consumer_status": "SOURCE_PINNED_BY_E6_COMPOSITION_READINESS_V2; RUNTIME_EDITORIAL_READBACK_NOT_YET_PROVEN",
+      "editorial": {
+        "title": "E6 · DESAFÍO EN PRUEBA",
+        "subtitle": "RITMO Y PRECISIÓN EN PRUEBA",
+        "call_to_action": "PROBAR DESAFÍO"
+      },
+      "targets": [
+        {
+          "target_id": "E6-CH-007::A",
+          "variant": "A",
+          "fixture_id": "E6_EDITORIAL_CHALLENGE_V1",
+          "editorial": {
+            "title": "E6 · DESAFÍO EN PRUEBA",
+            "subtitle": "RITMO Y PRECISIÓN EN PRUEBA",
+            "call_to_action": "PROBAR DESAFÍO"
+          },
+          "target_status": "PREPARE_ONLY_BINDING_RECORD_NOT_RUNTIME_CONSUMPTION_PROOF"
+        },
+        {
+          "target_id": "E6-CH-007::B_REPEAT",
+          "variant": "B_REPEAT",
+          "fixture_id": "E6_EDITORIAL_CHALLENGE_V1",
+          "editorial": {
+            "title": "E6 · DESAFÍO EN PRUEBA",
+            "subtitle": "RITMO Y PRECISIÓN EN PRUEBA",
+            "call_to_action": "PROBAR DESAFÍO"
+          },
+          "target_status": "PREPARE_ONLY_BINDING_RECORD_NOT_RUNTIME_CONSUMPTION_PROOF"
+        },
+        {
+          "target_id": "E6-CH-007::C_CHANGED_MUSIC_SEED",
+          "variant": "C_CHANGED_MUSIC_SEED",
+          "fixture_id": "E6_EDITORIAL_CHALLENGE_V1",
+          "editorial": {
+            "title": "E6 · DESAFÍO EN PRUEBA",
+            "subtitle": "RITMO Y PRECISIÓN EN PRUEBA",
+            "call_to_action": "PROBAR DESAFÍO"
+          },
+          "target_status": "PREPARE_ONLY_BINDING_RECORD_NOT_RUNTIME_CONSUMPTION_PROOF"
+        }
+      ]
+    },
+    {
+      "scenario_id": "E6-LOOP-001",
+      "family": "visual_loop",
+      "family_id": "fractal_bloom",
+      "grammar_id": "radial_bloom",
+      "probe_targets": [
+        "SCENARIO"
+      ],
+      "fixture_id": "E6_EDITORIAL_LOOP_V1",
+      "consumer_route": "C11D_OPTION_C_LOOP_POSTCOMPOSITOR",
+      "consumer_status": "NOT_IMPLEMENTED_OR_NOT_ADMITTED; NO_D_PIXEL_CONSUMER_ACCEPTED",
+      "editorial": {
+        "title": "E6 · BUCLE EN PRUEBA",
+        "subtitle": "SECUENCIA VISUAL EN PRUEBA",
+        "call_to_action": "REPETIR BUCLE"
+      },
+      "targets": [
+        {
+          "target_id": "E6-LOOP-001::SCENARIO",
+          "variant": "SCENARIO",
+          "fixture_id": "E6_EDITORIAL_LOOP_V1",
+          "editorial": {
+            "title": "E6 · BUCLE EN PRUEBA",
+            "subtitle": "SECUENCIA VISUAL EN PRUEBA",
+            "call_to_action": "REPETIR BUCLE"
+          },
+          "target_status": "PREPARE_ONLY_BINDING_RECORD_NOT_RUNTIME_CONSUMPTION_PROOF"
+        }
+      ]
+    },
+    {
+      "scenario_id": "E6-LOOP-002",
+      "family": "visual_loop",
+      "family_id": "geometric_waves",
+      "grammar_id": "harmonic_membrane",
+      "probe_targets": [
+        "SCENARIO"
+      ],
+      "fixture_id": "E6_EDITORIAL_LOOP_V1",
+      "consumer_route": "C11D_OPTION_C_LOOP_POSTCOMPOSITOR",
+      "consumer_status": "NOT_IMPLEMENTED_OR_NOT_ADMITTED; NO_D_PIXEL_CONSUMER_ACCEPTED",
+      "editorial": {
+        "title": "E6 · BUCLE EN PRUEBA",
+        "subtitle": "SECUENCIA VISUAL EN PRUEBA",
+        "call_to_action": "REPETIR BUCLE"
+      },
+      "targets": [
+        {
+          "target_id": "E6-LOOP-002::SCENARIO",
+          "variant": "SCENARIO",
+          "fixture_id": "E6_EDITORIAL_LOOP_V1",
+          "editorial": {
+            "title": "E6 · BUCLE EN PRUEBA",
+            "subtitle": "SECUENCIA VISUAL EN PRUEBA",
+            "call_to_action": "REPETIR BUCLE"
+          },
+          "target_status": "PREPARE_ONLY_BINDING_RECORD_NOT_RUNTIME_CONSUMPTION_PROOF"
+        }
+      ]
+    },
+    {
+      "scenario_id": "E6-LOOP-003",
+      "family": "visual_loop",
+      "family_id": "invisible_forces",
+      "grammar_id": "dipole_field",
+      "probe_targets": [
+        "SCENARIO"
+      ],
+      "fixture_id": "E6_EDITORIAL_LOOP_V1",
+      "consumer_route": "C11D_OPTION_C_LOOP_POSTCOMPOSITOR",
+      "consumer_status": "NOT_IMPLEMENTED_OR_NOT_ADMITTED; NO_D_PIXEL_CONSUMER_ACCEPTED",
+      "editorial": {
+        "title": "E6 · BUCLE EN PRUEBA",
+        "subtitle": "SECUENCIA VISUAL EN PRUEBA",
+        "call_to_action": "REPETIR BUCLE"
+      },
+      "targets": [
+        {
+          "target_id": "E6-LOOP-003::SCENARIO",
+          "variant": "SCENARIO",
+          "fixture_id": "E6_EDITORIAL_LOOP_V1",
+          "editorial": {
+            "title": "E6 · BUCLE EN PRUEBA",
+            "subtitle": "SECUENCIA VISUAL EN PRUEBA",
+            "call_to_action": "REPETIR BUCLE"
+          },
+          "target_status": "PREPARE_ONLY_BINDING_RECORD_NOT_RUNTIME_CONSUMPTION_PROOF"
+        }
+      ]
+    },
+    {
+      "scenario_id": "E6-LOOP-004",
+      "family": "visual_loop",
+      "family_id": "living_particles",
+      "grammar_id": "swarm",
+      "probe_targets": [
+        "SCENARIO"
+      ],
+      "fixture_id": "E6_EDITORIAL_LOOP_V1",
+      "consumer_route": "C11D_OPTION_C_LOOP_POSTCOMPOSITOR",
+      "consumer_status": "NOT_IMPLEMENTED_OR_NOT_ADMITTED; NO_D_PIXEL_CONSUMER_ACCEPTED",
+      "editorial": {
+        "title": "E6 · BUCLE EN PRUEBA",
+        "subtitle": "SECUENCIA VISUAL EN PRUEBA",
+        "call_to_action": "REPETIR BUCLE"
+      },
+      "targets": [
+        {
+          "target_id": "E6-LOOP-004::SCENARIO",
+          "variant": "SCENARIO",
+          "fixture_id": "E6_EDITORIAL_LOOP_V1",
+          "editorial": {
+            "title": "E6 · BUCLE EN PRUEBA",
+            "subtitle": "SECUENCIA VISUAL EN PRUEBA",
+            "call_to_action": "REPETIR BUCLE"
+          },
+          "target_status": "PREPARE_ONLY_BINDING_RECORD_NOT_RUNTIME_CONSUMPTION_PROOF"
+        }
+      ]
+    },
+    {
+      "scenario_id": "E6-LOOP-005",
+      "family": "visual_loop",
+      "family_id": "sacred_symmetry",
+      "grammar_id": "astrolabe",
+      "probe_targets": [
+        "SCENARIO"
+      ],
+      "fixture_id": "E6_EDITORIAL_LOOP_V1",
+      "consumer_route": "C11D_OPTION_C_LOOP_POSTCOMPOSITOR",
+      "consumer_status": "NOT_IMPLEMENTED_OR_NOT_ADMITTED; NO_D_PIXEL_CONSUMER_ACCEPTED",
+      "editorial": {
+        "title": "E6 · BUCLE EN PRUEBA",
+        "subtitle": "SECUENCIA VISUAL EN PRUEBA",
+        "call_to_action": "REPETIR BUCLE"
+      },
+      "targets": [
+        {
+          "target_id": "E6-LOOP-005::SCENARIO",
+          "variant": "SCENARIO",
+          "fixture_id": "E6_EDITORIAL_LOOP_V1",
+          "editorial": {
+            "title": "E6 · BUCLE EN PRUEBA",
+            "subtitle": "SECUENCIA VISUAL EN PRUEBA",
+            "call_to_action": "REPETIR BUCLE"
+          },
+          "target_status": "PREPARE_ONLY_BINDING_RECORD_NOT_RUNTIME_CONSUMPTION_PROOF"
+        }
+      ]
+    },
+    {
+      "scenario_id": "E6-LOOP-006",
+      "family": "visual_loop",
+      "family_id": "geometric_waves",
+      "grammar_id": "interference_plane",
+      "probe_targets": [
+        "SCENARIO"
+      ],
+      "fixture_id": "E6_EDITORIAL_LOOP_V1",
+      "consumer_route": "C11D_OPTION_C_LOOP_POSTCOMPOSITOR",
+      "consumer_status": "NOT_IMPLEMENTED_OR_NOT_ADMITTED; NO_D_PIXEL_CONSUMER_ACCEPTED",
+      "editorial": {
+        "title": "E6 · BUCLE EN PRUEBA",
+        "subtitle": "SECUENCIA VISUAL EN PRUEBA",
+        "call_to_action": "REPETIR BUCLE"
+      },
+      "targets": [
+        {
+          "target_id": "E6-LOOP-006::SCENARIO",
+          "variant": "SCENARIO",
+          "fixture_id": "E6_EDITORIAL_LOOP_V1",
+          "editorial": {
+            "title": "E6 · BUCLE EN PRUEBA",
+            "subtitle": "SECUENCIA VISUAL EN PRUEBA",
+            "call_to_action": "REPETIR BUCLE"
+          },
+          "target_status": "PREPARE_ONLY_BINDING_RECORD_NOT_RUNTIME_CONSUMPTION_PROOF"
+        }
+      ]
+    },
+    {
+      "scenario_id": "E6-DRILL-001",
+      "family": "visual_drill",
+      "selector": "tracking",
+      "tier": "tier-2",
+      "probe_targets": [
+        "SCENARIO"
+      ],
+      "fixture_id": "E6_EDITORIAL_DRILL_V1",
+      "consumer_route": "tools/c11d/d9/c11e_e4c_drill_visual_composition_consumer.py",
+      "consumer_status": "E4C_CONSUMER_PINNED; E6_EDITORIAL_READBACK_NOT_YET_PROVEN",
+      "editorial": {
+        "title": "E6 · DRILL EN PRUEBA",
+        "subtitle": "CONTROL DE SERIES EN PRUEBA",
+        "call_to_action": "INICIAR SERIE"
+      },
+      "targets": [
+        {
+          "target_id": "E6-DRILL-001::SCENARIO",
+          "variant": "SCENARIO",
+          "fixture_id": "E6_EDITORIAL_DRILL_V1",
+          "editorial": {
+            "title": "E6 · DRILL EN PRUEBA",
+            "subtitle": "CONTROL DE SERIES EN PRUEBA",
+            "call_to_action": "INICIAR SERIE"
+          },
+          "target_status": "PREPARE_ONLY_BINDING_RECORD_NOT_RUNTIME_CONSUMPTION_PROOF"
+        }
+      ]
+    },
+    {
+      "scenario_id": "E6-DRILL-002",
+      "family": "visual_drill",
+      "selector": "pursuit",
+      "tier": "tier-1",
+      "probe_targets": [
+        "SCENARIO"
+      ],
+      "fixture_id": "E6_EDITORIAL_DRILL_V1",
+      "consumer_route": "tools/c11d/d9/c11e_e4c_drill_visual_composition_consumer.py",
+      "consumer_status": "E4C_CONSUMER_PINNED; E6_EDITORIAL_READBACK_NOT_YET_PROVEN",
+      "editorial": {
+        "title": "E6 · DRILL EN PRUEBA",
+        "subtitle": "CONTROL DE SERIES EN PRUEBA",
+        "call_to_action": "INICIAR SERIE"
+      },
+      "targets": [
+        {
+          "target_id": "E6-DRILL-002::SCENARIO",
+          "variant": "SCENARIO",
+          "fixture_id": "E6_EDITORIAL_DRILL_V1",
+          "editorial": {
+            "title": "E6 · DRILL EN PRUEBA",
+            "subtitle": "CONTROL DE SERIES EN PRUEBA",
+            "call_to_action": "INICIAR SERIE"
+          },
+          "target_status": "PREPARE_ONLY_BINDING_RECORD_NOT_RUNTIME_CONSUMPTION_PROOF"
+        }
+      ]
+    },
+    {
+      "scenario_id": "E6-DRILL-003",
+      "family": "visual_drill",
+      "selector": "saccade",
+      "tier": "tier-1",
+      "probe_targets": [
+        "SCENARIO"
+      ],
+      "fixture_id": "E6_EDITORIAL_DRILL_V1",
+      "consumer_route": "tools/c11d/d9/c11e_e4c_drill_visual_composition_consumer.py",
+      "consumer_status": "E4C_CONSUMER_PINNED; E6_EDITORIAL_READBACK_NOT_YET_PROVEN",
+      "editorial": {
+        "title": "E6 · DRILL EN PRUEBA",
+        "subtitle": "CONTROL DE SERIES EN PRUEBA",
+        "call_to_action": "INICIAR SERIE"
+      },
+      "targets": [
+        {
+          "target_id": "E6-DRILL-003::SCENARIO",
+          "variant": "SCENARIO",
+          "fixture_id": "E6_EDITORIAL_DRILL_V1",
+          "editorial": {
+            "title": "E6 · DRILL EN PRUEBA",
+            "subtitle": "CONTROL DE SERIES EN PRUEBA",
+            "call_to_action": "INICIAR SERIE"
+          },
+          "target_status": "PREPARE_ONLY_BINDING_RECORD_NOT_RUNTIME_CONSUMPTION_PROOF"
+        }
+      ]
+    },
+    {
+      "scenario_id": "E6-DRILL-004",
+      "family": "visual_drill",
+      "selector": "peripheral_scan",
+      "tier": "tier-1",
+      "probe_targets": [
+        "SCENARIO"
+      ],
+      "fixture_id": "E6_EDITORIAL_DRILL_V1",
+      "consumer_route": "tools/c11d/d9/c11e_e4c_drill_visual_composition_consumer.py",
+      "consumer_status": "E4C_CONSUMER_PINNED; E6_EDITORIAL_READBACK_NOT_YET_PROVEN",
+      "editorial": {
+        "title": "E6 · DRILL EN PRUEBA",
+        "subtitle": "CONTROL DE SERIES EN PRUEBA",
+        "call_to_action": "INICIAR SERIE"
+      },
+      "targets": [
+        {
+          "target_id": "E6-DRILL-004::SCENARIO",
+          "variant": "SCENARIO",
+          "fixture_id": "E6_EDITORIAL_DRILL_V1",
+          "editorial": {
+            "title": "E6 · DRILL EN PRUEBA",
+            "subtitle": "CONTROL DE SERIES EN PRUEBA",
+            "call_to_action": "INICIAR SERIE"
+          },
+          "target_status": "PREPARE_ONLY_BINDING_RECORD_NOT_RUNTIME_CONSUMPTION_PROOF"
+        }
+      ]
+    },
+    {
+      "scenario_id": "E6-DRILL-005",
+      "family": "visual_drill",
+      "selector": "tracking",
+      "tier": "tier-5",
+      "probe_targets": [
+        "SCENARIO"
+      ],
+      "fixture_id": "E6_EDITORIAL_DRILL_V1",
+      "consumer_route": "tools/c11d/d9/c11e_e4c_drill_visual_composition_consumer.py",
+      "consumer_status": "E4C_CONSUMER_PINNED; E6_EDITORIAL_READBACK_NOT_YET_PROVEN",
+      "editorial": {
+        "title": "E6 · DRILL EN PRUEBA",
+        "subtitle": "CONTROL DE SERIES EN PRUEBA",
+        "call_to_action": "INICIAR SERIE"
+      },
+      "targets": [
+        {
+          "target_id": "E6-DRILL-005::SCENARIO",
+          "variant": "SCENARIO",
+          "fixture_id": "E6_EDITORIAL_DRILL_V1",
+          "editorial": {
+            "title": "E6 · DRILL EN PRUEBA",
+            "subtitle": "CONTROL DE SERIES EN PRUEBA",
+            "call_to_action": "INICIAR SERIE"
+          },
+          "target_status": "PREPARE_ONLY_BINDING_RECORD_NOT_RUNTIME_CONSUMPTION_PROOF"
+        }
+      ]
+    },
+    {
+      "scenario_id": "E6-DRILL-006",
+      "family": "visual_drill",
+      "selector": "peripheral_scan",
+      "tier": "tier-5",
+      "probe_targets": [
+        "SCENARIO"
+      ],
+      "fixture_id": "E6_EDITORIAL_DRILL_V1",
+      "consumer_route": "tools/c11d/d9/c11e_e4c_drill_visual_composition_consumer.py",
+      "consumer_status": "E4C_CONSUMER_PINNED; E6_EDITORIAL_READBACK_NOT_YET_PROVEN",
+      "editorial": {
+        "title": "E6 · DRILL EN PRUEBA",
+        "subtitle": "CONTROL DE SERIES EN PRUEBA",
+        "call_to_action": "INICIAR SERIE"
+      },
+      "targets": [
+        {
+          "target_id": "E6-DRILL-006::SCENARIO",
+          "variant": "SCENARIO",
+          "fixture_id": "E6_EDITORIAL_DRILL_V1",
+          "editorial": {
+            "title": "E6 · DRILL EN PRUEBA",
+            "subtitle": "CONTROL DE SERIES EN PRUEBA",
+            "call_to_action": "INICIAR SERIE"
+          },
+          "target_status": "PREPARE_ONLY_BINDING_RECORD_NOT_RUNTIME_CONSUMPTION_PROOF"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "fixture": {
+      "path": "definitions/c11e/test_only/C11E_E6_SMOKE18_FAMILY_EDITORIAL_FIXTURE_V1.json",
+      "sha256": "a63aeb9b97be29c716d6ab8a1f303ef66843a5eb9fb4f972a4ac6cd89f0a78aa",
+      "bytes": 8128,
+      "status": "PASS"
+    },
+    "composition_readiness_v2": {
+      "path": "artifacts/tests/c11e/e6_composition_readiness_v2/E6COMPREADINESSV2_20261118T214318Z_D41DD6C6/receipt/E6_COMPOSITION_READINESS_AUDIT_RECEIPT_V2.json",
+      "sha256": "5470ee637b559977f266f1ed8131dbb1729bc9ef2225cddd58414efe3187035f",
+      "bytes": 18662,
+      "status": "PASS"
+    },
+    "challenge_prepare_only_receipt": {
+      "path": "artifacts/tests/c11e/e6_challenge_prepare_only_orchestrator/E6CHPREP_20261118T202841Z_37C6AE0E/E6_CHALLENGE_PREPARE_ONLY_ORCHESTRATOR_RECEIPT_V1.json",
+      "sha256": "b54a884f1574d22fa65ea198d279d9ba84bb3967adc87885213f7659a1b1c944",
+      "bytes": 63629,
+      "status": "PASS"
+    },
+    "challenge_input_manifest": {
+      "path": "definitions/c11d/production/C11E_E6_CHALLENGE_PREPARE_ONLY_INPUT_MANIFEST_V1.json",
+      "sha256": "4607831a94ecbb64b2f1cfb6ef3a7480e3f7315e8aee588a3ef9a93f97ce8878",
+      "bytes": 8245,
+      "status": "PASS"
+    },
+    "reuse_requalification_receipt": {
+      "path": "artifacts/tests/c11e/e6_smoke18_reuse_requalification/E6SMK18REQUAL_20261118T141200Z_BA5AC046/E6_SMOKE18_REUSE_REQUALIFICATION_RECEIPT_V1.json",
+      "sha256": "4d63b8caec7a975cc0362ee9d7a5924f5ab8371e8e8e1457e1d60956bf65ce33",
+      "bytes": 11024,
+      "status": "PASS"
+    },
+    "c11c_manifest": {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+      "bytes": 796318,
+      "status": "PASS"
+    },
+    "d4_8_policy": {
+      "path": "definitions/c11d/production/C11E_D4_8_R1V_QUALIFICATION_ONLY_POLICY_V2.json",
+      "sha256": "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+      "bytes": 12996,
+      "status": "PASS"
+    }
+  },
+  "default_distinctness": "E6-marked synthetic copy is deliberately authored as test copy; runtime comparison against each family default is still required.",
+  "runtime_consumption": {
+    "challenge": "NOT_PROVEN; must read the text through the pinned Challenge consumer and verify final composed pixels / exact text readback.",
+    "visual_loop": "BLOCKED; no admitted D pixel consumer / postcompositor at V2 audit.",
+    "visual_drill": "NOT_PROVEN; E4C consumer exists, but this plan has not invoked it or validated E6 fixture readback."
+  },
+  "execution_boundary": {
+    "mode": "PREPARE_ONLY",
+    "plan_generation_only": true,
+    "godot_invoked": false,
+    "ffmpeg_invoked": false,
+    "ffprobe_invoked": false,
+    "audio_generated": false,
+    "mux_invoked": false,
+    "media_created": false,
+    "renderer_invoked": false,
+    "dispatch_invoked": false,
+    "batch_id_consumed": false,
+    "e6_test_only_authorized": false,
+    "d4_8": "BLOCKED",
+    "renderer": "OFF",
+    "release_authority": "NONE"
+  }
+}

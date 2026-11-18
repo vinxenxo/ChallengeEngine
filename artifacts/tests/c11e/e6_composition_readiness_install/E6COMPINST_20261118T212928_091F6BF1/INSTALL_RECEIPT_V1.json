@@ -1,0 +1,118 @@
+﻿{
+    "schema":  "C11E-E6-COMPOSITION-READINESS-INSTALL-RECEIPT-V1",
+    "schema_version":  "1.0",
+    "run_id":  "E6COMPINST_20261118T212928_091F6BF1",
+    "status":  "PASS_ADD_ONLY_E6_COMPOSITION_READINESS_INSTALL",
+    "project_root":  "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+    "package_manifest_sha256":  "1ad3dc46a997280917915e202f4d92c52da7d3fe35ca3517b4c10d6e0506604d",
+    "payload_expected":  14,
+    "payload_added":  14,
+    "payload_identical":  0,
+    "files":  [
+                  {
+                      "path":  "definitions/c11e/test_only/C11E_E6_COMPOSITION_READINESS_SOURCE_PINS_V1.json",
+                      "disposition":  "ADDED_POSTIMAGE_VERIFIED",
+                      "bytes":  4438,
+                      "sha256":  "d09275e275f4997a9b7e211c0c6c8156299fdc669a13fd10c19adead481cfbb4"
+                  },
+                  {
+                      "path":  "definitions/c11e/test_only/C11E_E6_OPERATOR_SCOPE_APPROVAL_RECORD_V1.json",
+                      "disposition":  "ADDED_POSTIMAGE_VERIFIED",
+                      "bytes":  1781,
+                      "sha256":  "27384689eee3e32bd1f57307b307e222fd8c9e285901bda4b05ce74c30b8ab5d"
+                  },
+                  {
+                      "path":  "definitions/c11e/test_only/C11E_E6_SMOKE18_SUCCESSOR_POLICY_SCOPE_V1.json",
+                      "disposition":  "ADDED_POSTIMAGE_VERIFIED",
+                      "bytes":  5582,
+                      "sha256":  "10083eb7363701d2cb3f23eaa1812d7991e3bfc955dabd32439d1943c4a65840"
+                  },
+                  {
+                      "path":  "docs/current/e/C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261118_V118.md",
+                      "disposition":  "ADDED_POSTIMAGE_VERIFIED",
+                      "bytes":  4406,
+                      "sha256":  "ec2bb768a60c61ad5ec1898c1697f034b3b9b5f578d9babe8066e1f42e2fe5c4"
+                  },
+                  {
+                      "path":  "docs/current/e/C11E_E4B_LOOP_D_COMPOSITION_E6_PREREQUISITE_20261118_V1.md",
+                      "disposition":  "ADDED_POSTIMAGE_VERIFIED",
+                      "bytes":  4154,
+                      "sha256":  "357ac83f261564c19fd4153a8f3e23d82caa5915f00dc7d41d089f4c93157ff7"
+                  },
+                  {
+                      "path":  "docs/current/e/C11E_E6_HISTORICAL_CONFLICT_MATRIX_20261118_V2.md",
+                      "disposition":  "ADDED_POSTIMAGE_VERIFIED",
+                      "bytes":  7744,
+                      "sha256":  "d081544cdc50f48a8f82218147adf925c7b52cd70578fa4edac506a7792aba9d"
+                  },
+                  {
+                      "path":  "docs/current/e/C11E_E6_SUCCESSOR_SCOPE_AND_COMPOSITION_READINESS_20261118_V1.md",
+                      "disposition":  "ADDED_POSTIMAGE_VERIFIED",
+                      "bytes":  7715,
+                      "sha256":  "66f804da6c99040caa86a1d1149f01cd54b700eb61ef4820c5ea2b57ab201523"
+                  },
+                  {
+                      "path":  "docs/master-prompts/C11E_MASTER_HANDOVER_20261118_V12.md",
+                      "disposition":  "ADDED_POSTIMAGE_VERIFIED",
+                      "bytes":  6064,
+                      "sha256":  "0b428a10f5c2268e9833e719c01d418432410451375f86e28e53b4bf3b51f6fb"
+                  },
+                  {
+                      "path":  "prompts/C11E_CONTINUATION_MASTER_PROMPT_20261118_V182.md",
+                      "disposition":  "ADDED_POSTIMAGE_VERIFIED",
+                      "bytes":  3721,
+                      "sha256":  "a2c3b45b66342ec469056b6c98a0a248dab33f486171823dac31c61634650586"
+                  },
+                  {
+                      "path":  "prompts/C11E_FIRST_PROMPT_20261118_E6_COMPOSITION_READINESS_V1.md",
+                      "disposition":  "ADDED_POSTIMAGE_VERIFIED",
+                      "bytes":  2538,
+                      "sha256":  "d50f6e4b8b4790a4a47762e66c4dd7cb1eb9b0d6b2256cb8299c70282f0c3700"
+                  },
+                  {
+                      "path":  "prompts/C11E_NEXT_WINDOW_START_PROMPT_20261118_V181.md",
+                      "disposition":  "ADDED_POSTIMAGE_VERIFIED",
+                      "bytes":  2707,
+                      "sha256":  "b851fbf664782b33bdd0860bcc9132e7724ddb1666412fd1dfeced770d622944"
+                  },
+                  {
+                      "path":  "tests/test_c11e_e6_composition_readiness_audit_v1.py",
+                      "disposition":  "ADDED_POSTIMAGE_VERIFIED",
+                      "bytes":  4542,
+                      "sha256":  "30796143121d740fcc8dba64b3d30b667caebf8ee3d4dc1b0c852c01a44616a3"
+                  },
+                  {
+                      "path":  "tools/c11d/d9/RUN_C11E_E6_COMPOSITION_READINESS_AUDIT_V1.ps1",
+                      "disposition":  "ADDED_POSTIMAGE_VERIFIED",
+                      "bytes":  2721,
+                      "sha256":  "0d74e236570fc5d0fecafa462754b8df48d4c23affc3219b085bdedb0c666dc3"
+                  },
+                  {
+                      "path":  "tools/c11d/d9/c11e_e6_composition_readiness_audit_v1.py",
+                      "disposition":  "ADDED_POSTIMAGE_VERIFIED",
+                      "bytes":  15245,
+                      "sha256":  "ae65ae890b2af2277684a6698320629eb9d83174a1d03f31deb53e9b642e1e0b"
+                  }
+              ],
+    "protected_preconditions_post":  [
+                                         {
+                                             "path":  "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+                                             "sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+                                             "status":  "PASS"
+                                         },
+                                         {
+                                             "path":  "definitions/c11d/production/C11E_D4_8_R1V_QUALIFICATION_ONLY_POLICY_V2.json",
+                                             "sha256":  "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+                                             "status":  "PASS"
+                                         }
+                                     ],
+    "governance":  {
+                       "git_checks":  "SKIPPED",
+                       "commits":  "OPERATOR_MANAGED",
+                       "source_file_pins":  "ENFORCED",
+                       "d4_8":  "BLOCKED",
+                       "e6_test_only_authorized":  false,
+                       "renderer":  "OFF",
+                       "release_authority":  "NONE"
+                   }
+}

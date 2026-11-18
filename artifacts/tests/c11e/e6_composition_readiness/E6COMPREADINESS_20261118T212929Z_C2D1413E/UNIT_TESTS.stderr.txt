@@ -1,0 +1,15 @@
+test_challenge_abcs_are_nested (test_c11e_e6_composition_readiness_audit_v1.CompositionReadinessTests.test_challenge_abcs_are_nested) ... ok
+test_drill_reuse_is_only_candidate (test_c11e_e6_composition_readiness_audit_v1.CompositionReadinessTests.test_drill_reuse_is_only_candidate) ... ok
+test_editorial_test_fixture_not_implicitly_approved (test_c11e_e6_composition_readiness_audit_v1.CompositionReadinessTests.test_editorial_test_fixture_not_implicitly_approved) ... ok
+test_loop_is_not_misrepresented_as_d_compositor_pass (test_c11e_e6_composition_readiness_audit_v1.CompositionReadinessTests.test_loop_is_not_misrepresented_as_d_compositor_pass) ... ok
+test_music_fixture_is_test_only (test_c11e_e6_composition_readiness_audit_v1.CompositionReadinessTests.test_music_fixture_is_test_only) ... ok
+test_no_execution_authority (test_c11e_e6_composition_readiness_audit_v1.CompositionReadinessTests.test_no_execution_authority) ... ok
+test_pin_document_has_unique_paths (test_c11e_e6_composition_readiness_audit_v1.CompositionReadinessTests.test_pin_document_has_unique_paths) ... ok
+test_policy_preserves_d4_8_and_c11c_locks (test_c11e_e6_composition_readiness_audit_v1.CompositionReadinessTests.test_policy_preserves_d4_8_and_c11c_locks) ... ok
+test_scope_approval_explicitly_excludes_render (test_c11e_e6_composition_readiness_audit_v1.CompositionReadinessTests.test_scope_approval_explicitly_excludes_render) ... ok
+test_scope_is_exactly_18_rows (test_c11e_e6_composition_readiness_audit_v1.CompositionReadinessTests.test_scope_is_exactly_18_rows) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.017s
+
+OK

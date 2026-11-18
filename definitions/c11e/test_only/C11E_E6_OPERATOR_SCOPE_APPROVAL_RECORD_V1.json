@@ -1,0 +1,44 @@
+{
+  "schema": "C11E-E6-OPERATOR-SCOPE-APPROVAL-RECORD-V1",
+  "schema_version": "1.0",
+  "record_id": "C11E_E6_OPERATOR_SCOPE_APPROVAL_RECORD_V1",
+  "recorded_date": "2026-11-18",
+  "source": "OPERATOR_EXPLICIT_REPLY_IN_CONVERSATION",
+  "decisions": [
+    {
+      "decision": "APPROVED",
+      "subject": "18 top-level Smoke18 rows: 6 Challenge + 6 Loop + 6 Drill; Challenge A/B/C are nested subruns (18 additional subruns, not extra rows).",
+      "scope_effect": "FIXES_SMOKE18_SCOPE_FOR_SUCCESSOR_POLICY"
+    },
+    {
+      "decision": "APPROVED_TO_PREPARE",
+      "subject": "Prepare a separate D4.8 successor governance policy for bounded Smoke18; keep existing D4.8 R1V V2 unchanged.",
+      "scope_effect": "AUTHORIZE_POLICY_PREPARATION_ONLY_NOT_MEDIA_EXECUTION"
+    },
+    {
+      "decision": "APPROVED_TEST_FIXTURE_ONLY",
+      "subject": "Challenge music fixture uses challenge_8bit_v1, A/B 840001, C 840002, historical 104 BPM; per-selector duration remains run-scoped and canonical-timebase-derived.",
+      "scope_effect": "TEST_FIXTURE_ONLY_NOT_PRODUCT_CONTRACT_OR_DEFAULT"
+    }
+  ],
+  "explicit_non_authorizations": {
+    "godot": false,
+    "ffmpeg": false,
+    "ffprobe": false,
+    "d3_audio_generation": false,
+    "mux": false,
+    "media_creation": false,
+    "renderer_activation": false,
+    "production_dispatch": false,
+    "batch_id_reservation": false,
+    "release": false,
+    "promotion": false,
+    "d4_8_r1v_v2_mutation": false,
+    "c11c_mutation": false
+  },
+  "pending_operator_decision": {
+    "id": "E6_EDITORIAL_FIXTURE_ES_V1",
+    "subject": "Use the synthetic Spanish run-scoped editorial values E6 PRUEBA / VALIDACIÓN DE MAQUETACIÓN / CONTINUAR for title/subtitle/call_to_action in future E6 visual tests.",
+    "status": "PENDING"
+  }
+}

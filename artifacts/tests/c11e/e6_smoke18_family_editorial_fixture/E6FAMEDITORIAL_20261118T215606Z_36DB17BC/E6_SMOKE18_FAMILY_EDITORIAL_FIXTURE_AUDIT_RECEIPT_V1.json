@@ -1,0 +1,125 @@
+{
+  "schema": "C11E-E6-SMOKE18-FAMILY-EDITORIAL-FIXTURE-AUDIT-RECEIPT-V1",
+  "schema_version": "1.0",
+  "status": "PASS_PREPARE_ONLY_18_ROWS_30_TARGETS_RUNTIME_CONSUMPTION_NOT_PROVEN",
+  "audit_scope": "READ_ONLY_SOURCE_RECONCILIATION_AND_TEST_ONLY_FIXTURE_PLAN_GENERATION",
+  "created_utc": "2026-11-18T21:56:07.307508Z",
+  "fixture_id": "C11E_E6_SMOKE18_FAMILY_EDITORIAL_FIXTURE_V1",
+  "fixture_sha256": "a63aeb9b97be29c716d6ab8a1f303ef66843a5eb9fb4f972a4ac6cd89f0a78aa",
+  "top_level_rows": 18,
+  "challenge_rows": 6,
+  "visual_loop_rows": 6,
+  "visual_drill_rows": 6,
+  "editorial_targets": 30,
+  "challenge_targets": 18,
+  "visual_loop_targets": 6,
+  "visual_drill_targets": 6,
+  "family_copy": {
+    "challenge": {
+      "fixture_id": "E6_EDITORIAL_CHALLENGE_V1",
+      "title": "E6 · DESAFÍO EN PRUEBA",
+      "subtitle": "RITMO Y PRECISIÓN EN PRUEBA",
+      "call_to_action": "PROBAR DESAFÍO",
+      "consumer_route": "tools/c11d/d9/C11EChallengeLiveEditorialConsumer.gd",
+      "consumer_status": "SOURCE_PINNED_BY_E6_COMPOSITION_READINESS_V2; RUNTIME_EDITORIAL_READBACK_NOT_YET_PROVEN"
+    },
+    "visual_loop": {
+      "fixture_id": "E6_EDITORIAL_LOOP_V1",
+      "title": "E6 · BUCLE EN PRUEBA",
+      "subtitle": "SECUENCIA VISUAL EN PRUEBA",
+      "call_to_action": "REPETIR BUCLE",
+      "consumer_route": "C11D_OPTION_C_LOOP_POSTCOMPOSITOR",
+      "consumer_status": "NOT_IMPLEMENTED_OR_NOT_ADMITTED; NO_D_PIXEL_CONSUMER_ACCEPTED"
+    },
+    "visual_drill": {
+      "fixture_id": "E6_EDITORIAL_DRILL_V1",
+      "title": "E6 · DRILL EN PRUEBA",
+      "subtitle": "CONTROL DE SERIES EN PRUEBA",
+      "call_to_action": "INICIAR SERIE",
+      "consumer_route": "tools/c11d/d9/c11e_e4c_drill_visual_composition_consumer.py",
+      "consumer_status": "E4C_CONSUMER_PINNED; E6_EDITORIAL_READBACK_NOT_YET_PROVEN"
+    }
+  },
+  "plan": {
+    "path": "E6_SMOKE18_FAMILY_EDITORIAL_FIXTURE_PLAN_V1.json",
+    "sha256": "9ea1508c631a06d82dcedcd02c03c2481849a3b5d82a25aa70cce8077562c5ca",
+    "sidecar": "E6_SMOKE18_FAMILY_EDITORIAL_FIXTURE_PLAN_V1.json.sha256"
+  },
+  "provenance": {
+    "fixture": {
+      "path": "definitions/c11e/test_only/C11E_E6_SMOKE18_FAMILY_EDITORIAL_FIXTURE_V1.json",
+      "sha256": "a63aeb9b97be29c716d6ab8a1f303ef66843a5eb9fb4f972a4ac6cd89f0a78aa",
+      "bytes": 8128,
+      "status": "PASS"
+    },
+    "composition_readiness_v2": {
+      "path": "artifacts/tests/c11e/e6_composition_readiness_v2/E6COMPREADINESSV2_20261118T214318Z_D41DD6C6/receipt/E6_COMPOSITION_READINESS_AUDIT_RECEIPT_V2.json",
+      "sha256": "5470ee637b559977f266f1ed8131dbb1729bc9ef2225cddd58414efe3187035f",
+      "bytes": 18662,
+      "status": "PASS"
+    },
+    "challenge_prepare_only_receipt": {
+      "path": "artifacts/tests/c11e/e6_challenge_prepare_only_orchestrator/E6CHPREP_20261118T202841Z_37C6AE0E/E6_CHALLENGE_PREPARE_ONLY_ORCHESTRATOR_RECEIPT_V1.json",
+      "sha256": "b54a884f1574d22fa65ea198d279d9ba84bb3967adc87885213f7659a1b1c944",
+      "bytes": 63629,
+      "status": "PASS"
+    },
+    "challenge_input_manifest": {
+      "path": "definitions/c11d/production/C11E_E6_CHALLENGE_PREPARE_ONLY_INPUT_MANIFEST_V1.json",
+      "sha256": "4607831a94ecbb64b2f1cfb6ef3a7480e3f7315e8aee588a3ef9a93f97ce8878",
+      "bytes": 8245,
+      "status": "PASS"
+    },
+    "reuse_requalification_receipt": {
+      "path": "artifacts/tests/c11e/e6_smoke18_reuse_requalification/E6SMK18REQUAL_20261118T141200Z_BA5AC046/E6_SMOKE18_REUSE_REQUALIFICATION_RECEIPT_V1.json",
+      "sha256": "4d63b8caec7a975cc0362ee9d7a5924f5ab8371e8e8e1457e1d60956bf65ce33",
+      "bytes": 11024,
+      "status": "PASS"
+    },
+    "c11c_manifest": {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+      "bytes": 796318,
+      "status": "PASS"
+    },
+    "d4_8_policy": {
+      "path": "definitions/c11d/production/C11E_D4_8_R1V_QUALIFICATION_ONLY_POLICY_V2.json",
+      "sha256": "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+      "bytes": 12996,
+      "status": "PASS"
+    }
+  },
+  "runtime_consumption": {
+    "challenge": "NOT_PROVEN; must read the text through the pinned Challenge consumer and verify final composed pixels / exact text readback.",
+    "visual_loop": "BLOCKED; no admitted D pixel consumer / postcompositor at V2 audit.",
+    "visual_drill": "NOT_PROVEN; E4C consumer exists, but this plan has not invoked it or validated E6 fixture readback."
+  },
+  "execution": {
+    "godot_invoked": false,
+    "ffmpeg_invoked": false,
+    "ffprobe_invoked": false,
+    "audio_generated": false,
+    "mux_invoked": false,
+    "media_created": false,
+    "renderer_invoked": false,
+    "dispatch_invoked": false,
+    "batch_id_consumed": false
+  },
+  "governance": {
+    "e6_accepted_scenarios": 0,
+    "matrix_frozen": false,
+    "d4_8": "BLOCKED",
+    "e6_test_only_authorized": false,
+    "renderer": "OFF",
+    "production_dispatch": false,
+    "release_authority": "NONE",
+    "git_checks": "SKIPPED",
+    "commits": "OPERATOR_MANAGED",
+    "source_file_pins": "ENFORCED"
+  },
+  "limitations": [
+    "This is a fixture mapping/coverage plan, not a visual render or consumer readback.",
+    "Loop remains blocked pending implementation/admission of the D-owned pixel consumer.",
+    "The E6 marker makes copy visibly synthetic; compare against active family defaults during actual consumer readback."
+  ]
+}
