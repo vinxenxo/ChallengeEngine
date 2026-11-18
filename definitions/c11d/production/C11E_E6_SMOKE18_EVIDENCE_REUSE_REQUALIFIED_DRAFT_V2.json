@@ -1,0 +1,1278 @@
+{
+  "schema": "C11E-E6-SMOKE18-EVIDENCE-REUSE-REQUALIFICATION-DRAFT-V2",
+  "schema_version": "2.0",
+  "date": "2026-11-18",
+  "status": "REQUALIFICATION_CANDIDATE_LEDGER_PREPARED_NOT_FROZEN_NOT_E6_ACCEPTED",
+  "authority": {
+    "active_checkout": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+    "checkout_is_sole_source_authority": true,
+    "zip_snapshots_are_evidence_only": true,
+    "git_checks": "SKIPPED",
+    "commits": "OPERATOR_MANAGED",
+    "source_file_pins": "ENFORCED",
+    "frozen_c11c_manifest_path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "frozen_c11c_manifest_bytes": 796318,
+    "d4_8_policy_path": "definitions/c11d/production/C11E_D4_8_R1V_QUALIFICATION_ONLY_POLICY_V2.json",
+    "d4_8_r1v_v2_sha256": "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07"
+  },
+  "summary": {
+    "smoke18_top_level_scenarios": 18,
+    "scenarios_per_family": 6,
+    "challenge": 6,
+    "visual_loop": 6,
+    "visual_drill": 6,
+    "reuse_candidates_total": 13,
+    "challenge004_reuse_candidate": 1,
+    "r1v_loop_reuse_candidates": 5,
+    "loop22_reuse_candidates": 1,
+    "drill_reuse_candidates": 6,
+    "fresh_challenge_av_required": 5,
+    "reuse_evidence_linkage_status": "13_CANDIDATES_HAVE_RECONCILED_EVIDENCE_LINKS; FINAL_E6_ACCEPTANCE_NOT_GRANTED",
+    "e6_accepted_scenarios": 0,
+    "e6_matrix_frozen": false,
+    "e6_media_authorized": false
+  },
+  "evidence_lineage": {
+    "upstream_smoke18_matrix": {
+      "artifact": "C11E_E6_CHALLENGE_MULTISELECTOR_MATRIX_DRAFT_V1.json",
+      "library_source_sha256": "3e21e7262579719e68b07e37b942189d0be42ca029f23287d938917aaa919cc2",
+      "status": "DRAFT_PLAN_ONLY_18_SCENARIOS_18_CHALLENGE_PROBES_NOT_FROZEN"
+    },
+    "upstream_reuse_ledger": {
+      "artifact": "C11E_E6_SMOKE18_EVIDENCE_REUSE_LEDGER_DRAFT_V1.json",
+      "library_source_sha256": "2d5de0c53c57621ce94864629ccc14da23e61d5b927421add37cca7cd7964610",
+      "status": "SUPERSEDED_BY_THIS_REQUALIFICATION_DRAFT_NOT_OVERWRITTEN"
+    },
+    "hydration_v2": {
+      "run_id": "E6HYDRATE_20261118T073344Z_1A9D7C52",
+      "path": "artifacts/tests/c11e/e6_reuse_evidence_hydration_v2/E6HYDRATE_20261118T073344Z_1A9D7C52/E6HYDRATE_20261118T073344Z_1A9D7C52_REPORT_V2.json",
+      "sha256": "11f0eeba941f4740759132b3ba984eecf80c68a69aad27fe605a81a4ff8f5a77",
+      "bytes": 880211,
+      "reported_checks": 1803,
+      "reported_passed": 1801,
+      "reported_failed": 2,
+      "failure_categories": {
+        "historical_source_pin_divergence": 2,
+        "other_failures": 0
+      },
+      "drill_receipts_passed": 6,
+      "drill_nested_file_checks_passed": 1680,
+      "challenge004_nested_file_checks_passed": 34,
+      "r1v_loop_slots_passed": 5,
+      "sidecar_path": "artifacts/tests/c11e/e6_reuse_evidence_hydration_v2/E6HYDRATE_20261118T073344Z_1A9D7C52/E6HYDRATE_20261118T073344Z_1A9D7C52_REPORT_V2.json.sha256"
+    },
+    "ch004_semantic_review_v4": {
+      "run_id": "E6CH004SEM_20261118T113817Z_462AEF1F",
+      "path": "artifacts/tests/c11e/e6_ch004_semantic_noninterference/E6CH004SEM_20261118T113817Z_462AEF1F/E6CH004SEM_20261118T113817Z_462AEF1F_REPORT_V3.json",
+      "sha256": "ded460447cf69f9360d5761627b0ae6a191a6c687043d8ae2ba4eeeeb01a105a",
+      "sidecar_path": "artifacts/tests/c11e/e6_ch004_semantic_noninterference/E6CH004SEM_20261118T113817Z_462AEF1F/E6CH004SEM_20261118T113817Z_462AEF1F_REPORT_V3.json.sha256",
+      "status": "PASS_CH004_SEMANTIC_NONINTERFERENCE_CONFIRMED_REQUIRES_E6_LEDGER_REQUALIFICATION",
+      "checks_passed": 7,
+      "blockers": 0,
+      "challenge_resolver_parity": "6/6",
+      "reuse_disposition": "ELIGIBLE_FOR_E6_LEDGER_REQUALIFICATION_NOT_ACCEPTED"
+    },
+    "d9_pin_reconciliation_v2": {
+      "run_id": "E6D9PINREC_20261118T094345Z_2B9358D1",
+      "receipt_sha256": "0e2c977f1122d9cfc69da255d8fa539720a23f00cdc2f4c030d48bd01019a59a",
+      "accepted_source_pins": "33/33",
+      "route_dependencies": "9/9",
+      "fixed_evidence_pins": "13/13",
+      "observed_ch004_hashes": "2/2"
+    },
+    "e6_plan_only": {
+      "run_id": "E6CAPPLAN_20261118T082416Z_68342FCD",
+      "manifest_path": "artifacts/tests/c11e/e6_d9_capture_orchestration_prepare_only/E6CAPPLAN_20261118T082416Z_68342FCD/E6_D9_CAPTURE_ORCHESTRATION_PREPARE_ONLY_MANIFEST_V1.json",
+      "manifest_sha256": "144470d16a222a1f01f0b7a9edec699af18d18bac614f7db938021e1acc0db2d",
+      "receipt_path": "artifacts/tests/c11e/e6_d9_capture_orchestration_prepare_only/E6CAPPLAN_20261118T082416Z_68342FCD/E6_D9_CAPTURE_ORCHESTRATION_PREPARE_ONLY_RECEIPT_V1.json",
+      "receipt_sha256": "2233fcda43861d7c2bf1d933f1270b84976d315b6f2439bb46d1d2e237653b74",
+      "status": "PASS_D9_MULTISELECTOR_CAPTURE_GROUP_PLAN_READY_EXECUTION_HELD",
+      "scope": "6_CHALLENGE_GROUPS_18_E1_INTENTS_18_D_ENVELOPES_PLAN_ONLY"
+    },
+    "consumer_contract": {
+      "run_id": "E6CHCONTRACT_20261117T005638Z_B3412977",
+      "receipt_sha256": "e22abc1fc1779f60dd48abf4cdbf7960b7a3a02b2ef9bc0a7e975053f5effce8",
+      "status": "PASS_3_OF_3_PAYLOADS_24_OF_24_PINS_36_OF_36_TESTS_18_OF_18_E1_INTENTS_18_OF_18_D_ENVELOPES"
+    },
+    "smoke18_readonly_audit": {
+      "run_id": "E6AUDITV2_20261116T235057Z_B7FA0492",
+      "receipt_path": "artifacts/tests/c11e/e6_smoke18_audit/E6AUDITV2_20261116T235057Z_B7FA0492/E6_SMOKE18_READONLY_AUDIT_RECEIPT_V2.json",
+      "receipt_sha256": "054ed52aefe45cc4d986c4621adbbdb6ca7cf36dc1c4a12cbd76238de86e21fd",
+      "status": "PASS_AUDIT_READ_ONLY_EVIDENCE_RECONCILED_EXECUTION_HELD"
+    },
+    "e5_closeout": {
+      "path": "docs/current/e/C11E_E5_CROSS_FAMILY_AV_CLOSEOUT_20261116_V1.md",
+      "sha256": "520515803ceb44bde830f99c6fa9b413015d0fecd4c36c60c845128054cbb760",
+      "status": "PASS_CLOSED_TEST_ONLY_OPERATOR_A_V_ACCEPTED"
+    }
+  },
+  "challenge_selection": {
+    "selectors": [
+      "CHALLENGE_001",
+      "CHALLENGE_002",
+      "CHALLENGE_004",
+      "CHALLENGE_005",
+      "CHALLENGE_006",
+      "CHALLENGE_007"
+    ],
+    "fresh_av_required": [
+      "CHALLENGE_001",
+      "CHALLENGE_002",
+      "CHALLENGE_005",
+      "CHALLENGE_006",
+      "CHALLENGE_007"
+    ],
+    "reuse_anchor": "CHALLENGE_004",
+    "probe_variants": [
+      "A",
+      "B_REPEAT",
+      "C_CHANGED_MUSIC_SEED"
+    ],
+    "probe_rows_per_top_level_scenario": 3,
+    "probe_rows_are_subruns_not_additional_smoke18_scenarios": true,
+    "music_seeds_840001_840002": "PROPOSAL_ONLY_NOT_AUTHORIZED"
+  },
+  "reuse_requalification": {
+    "status": "EVIDENCE_LINKAGE_RECONCILED_CANDIDATE_ONLY_NOT_E6_ACCEPTANCE",
+    "reconciled_candidate_count": 13,
+    "candidate_groups": {
+      "challenge004": 1,
+      "r1v_loop": 5,
+      "loop22": 1,
+      "drill": 6
+    },
+    "hydration_v2_interpretation": {
+      "raw_report_status": "BLOCKED_E6_REUSE_EVIDENCE_INCOMPLETE",
+      "checks": 1803,
+      "passed": 1801,
+      "failed": 2,
+      "only_failure_category": "historical_source_pin_divergence",
+      "adjudication": "CH004_V4_SEMANTIC_NONINTERFERENCE_PASS_AND_D9_PIN_RECONCILIATION_V2_ACCEPTED; HISTORICAL PREIMAGES NOT RESTORED; REPORT NOT MUTATED"
+    },
+    "r1v_loop_pairs": [
+      {
+        "selector": "radial_bloom",
+        "A_sha256": "0c62d8b4c9da237e9a0b9349d588a7d6daab9989b56ef0d25464ca0f5cbc4013",
+        "B_sha256": "0c62d8b4c9da237e9a0b9349d588a7d6daab9989b56ef0d25464ca0f5cbc4013",
+        "pair_identity": "PASS_IN_HYDRATION_V2"
+      },
+      {
+        "selector": "harmonic_membrane",
+        "A_sha256": "a3c5d820fbed7be5392f1b5514b4bbc8437c0de50d2c0e22b63204ea4233a0ce",
+        "B_sha256": "a3c5d820fbed7be5392f1b5514b4bbc8437c0de50d2c0e22b63204ea4233a0ce",
+        "pair_identity": "PASS_IN_HYDRATION_V2"
+      },
+      {
+        "selector": "dipole_field",
+        "A_sha256": "9f5148fc225ca4a22ce5418f3aba0c0743399fc26dce60d2046f1460b046c953",
+        "B_sha256": "9f5148fc225ca4a22ce5418f3aba0c0743399fc26dce60d2046f1460b046c953",
+        "pair_identity": "PASS_IN_HYDRATION_V2"
+      },
+      {
+        "selector": "swarm",
+        "A_sha256": "8af26e9feecaab9b971de5fbe43d1faa14c6d4abe49b4f1f54a1e42dcb912da1",
+        "B_sha256": "8af26e9feecaab9b971de5fbe43d1faa14c6d4abe49b4f1f54a1e42dcb912da1",
+        "pair_identity": "PASS_IN_HYDRATION_V2"
+      },
+      {
+        "selector": "astrolabe",
+        "A_sha256": "75d36cda260791d1f45919ce237fe9df42734e49320aba754dd92e309781f934",
+        "B_sha256": "75d36cda260791d1f45919ce237fe9df42734e49320aba754dd92e309781f934",
+        "pair_identity": "PASS_IN_HYDRATION_V2"
+      }
+    ],
+    "loop22_interference_plane": {
+      "A_path": "artifacts/tests/c11e/e4b_loop22_av/L22_191801_27ABF3/delivery_av/geometric/A/L22_191801_27ABF3_R02_A_AV_720.mp4",
+      "B_path": "artifacts/tests/c11e/e4b_loop22_av/L22_191801_27ABF3/delivery_av/geometric/B/L22_191801_27ABF3_R02_B_AV_720.mp4",
+      "A_sha256": "a2fdb135a201a5ce9f91c19b51c65be53ab0d0aaeced6829633958195d7f0131",
+      "B_sha256": "a2fdb135a201a5ce9f91c19b51c65be53ab0d0aaeced6829633958195d7f0131",
+      "A_bytes": 10500987,
+      "B_bytes": 10500987,
+      "verification": "OPERATOR_SUPPLIED_ACTIVE_CHECKOUT_GETFILEHASH_OUTPUT_PASS_CURRENT_TURN"
+    },
+    "drill_receipts": [
+      {
+        "scenario_id": "E6-DR-01",
+        "path": "artifacts/production/c11e/E4C-TRK-T2-6239dd21/E4C_DRILL_AV_QUALIFICATION_RECEIPT.json",
+        "sha256": "f95e9b4e787f1b4f7db79b92428324f6de662ade55b260c7692d4440e2967ee7",
+        "receipt_and_nested_refs": "PASS_IN_HYDRATION_V2"
+      },
+      {
+        "scenario_id": "E6-DR-02",
+        "path": "artifacts/production/c11e/E4C-PRS-T1-b3abbe94/E4C_DRILL_AV_QUALIFICATION_RECEIPT.json",
+        "sha256": "57206b4560b917c7a7fe5e738c5afd5d900d293e01c99fcd554f0926acc6eee7",
+        "receipt_and_nested_refs": "PASS_IN_HYDRATION_V2"
+      },
+      {
+        "scenario_id": "E6-DR-03",
+        "path": "artifacts/production/c11e/E4C-SAC-T1-57fdf44b/E4C_DRILL_AV_QUALIFICATION_RECEIPT.json",
+        "sha256": "930ba103153fbca0226a0b7abd1226b46dfd3c2e523204e83e6cb39f1282e606",
+        "receipt_and_nested_refs": "PASS_IN_HYDRATION_V2"
+      },
+      {
+        "scenario_id": "E6-DR-04",
+        "path": "artifacts/production/c11e/E4C-PSC-T1-b342a227/E4C_DRILL_AV_QUALIFICATION_RECEIPT.json",
+        "sha256": "eb290666163df0e89daac9c683a95a39c38d536c5da735def15cd3a19964083b",
+        "receipt_and_nested_refs": "PASS_IN_HYDRATION_V2"
+      },
+      {
+        "scenario_id": "E6-DR-05",
+        "path": "artifacts/production/c11e/E4C-TRK-T5-6239dd21/E4C_DRILL_AV_QUALIFICATION_RECEIPT.json",
+        "sha256": "6e55dc3fd4fc13745347cc641d29103fbfb7fa90dee932910f920703690c3c61",
+        "receipt_and_nested_refs": "PASS_IN_HYDRATION_V2"
+      },
+      {
+        "scenario_id": "E6-DR-06",
+        "path": "artifacts/production/c11e/E4C-PSC-T5-b342a227/E4C_DRILL_AV_QUALIFICATION_RECEIPT.json",
+        "sha256": "5644ffa386c2d1388e7dd657cb566c796a87de93b22c28db84197dbb8ad3a224",
+        "receipt_and_nested_refs": "PASS_IN_HYDRATION_V2"
+      }
+    ],
+    "candidate_not_acceptance_rule": "Each reuse row remains NOT_E6_ACCEPTED until exact E6 family predicates, per-output evidence, source pins and the linked operator acceptance are checked against the frozen E6 contract. This draft does not freeze the matrix."
+  },
+  "open_gates": [
+    {
+      "id": "GATE-CHALLENGE-NEW-AV",
+      "status": "OPEN",
+      "detail": "Five new Challenge scenarios require six-selector runtime/D-composited/A-V qualification after separate explicit authorization."
+    },
+    {
+      "id": "GATE-MUSIC-FIXTURE",
+      "status": "OPEN",
+      "detail": "Challenge music seeds 840001/840002 and 104 BPM remain proposal-only; E1 tempo_bpm and duration_seconds remain null."
+    },
+    {
+      "id": "GATE-TECHNICAL-FAMILY-PROFILES",
+      "status": "OPEN",
+      "detail": "Validate family-specific frame/timebase, codec/profile, pixel format/range, audio stream, loudness/non-silence, samples and A/V drift. Do not impose Challenge yuv420p-TV profile on Loop22 yuvj420p-full-range H.264 stream-copy evidence."
+    },
+    {
+      "id": "GATE-LOOP-AND-DRILL-E6-ACCEPTANCE",
+      "status": "OPEN",
+      "detail": "Hydrated/reconciled predecessor references do not alone prove every E6 family-specific technical and operator predicate."
+    },
+    {
+      "id": "GATE-D4-8-CONFLICT",
+      "status": "BLOCKED",
+      "detail": "D4.8 R1V V2 remains pinned and BLOCKED for Smoke18/media. Separate governance resolution is mandatory; this ledger cannot override it."
+    },
+    {
+      "id": "GATE-EXECUTABLE-ALLOWLIST",
+      "status": "OPEN",
+      "detail": "Exact future executable paths, versions, binary hashes, arguments, counts, output roots and stop-on-first-failure rules are not frozen."
+    },
+    {
+      "id": "GATE-CH008-009",
+      "status": "HELD",
+      "detail": "CHALLENGE_008/009 remain excluded until the 11-second declaration versus 12-second phase-sum issue has a separate decision."
+    }
+  ],
+  "governance": {
+    "e1": "PREPARE_ONLY",
+    "family_adapter": "NOT_CONNECTED_E1",
+    "d4_8": "BLOCKED_PINNED_R1V_ONLY",
+    "renderer": "OFF",
+    "production_dispatch": false,
+    "production_media": false,
+    "godot_invoked": false,
+    "ffmpeg_invoked": false,
+    "ffprobe_invoked": false,
+    "audio_generated": false,
+    "mux_invoked": false,
+    "new_batch_id_consumed": false,
+    "release_authority": "NONE",
+    "c11c_source_mutation": false,
+    "c11c_frozen_manifest_mutated": false,
+    "e6_media_authorized": false,
+    "e6_matrix_frozen": false,
+    "d4_8_conflict_resolution": "NOT_RECORDED; THIS LEDGER IS NOT AN OVERRIDE"
+  },
+  "smoke18_scenarios": [
+    {
+      "scenario_id": "E6-CH-001",
+      "family": "challenge",
+      "selector": "CHALLENGE_001",
+      "mechanic": "key",
+      "canonical_definition": "challenges/CHALLENGE_001.json",
+      "canonical_definition_sha256": "ec8925fa5b4ab996a791c8cf7f5b139470774720f57880c5b01b2d0aa5b57bea",
+      "gameplay_seed": 193847,
+      "source_timebase": {
+        "fps": 60,
+        "frames": 540,
+        "duration_seconds": 9
+      },
+      "review_timebase_proposal": {
+        "fps": 30,
+        "frames": 270,
+        "duration_seconds": 9,
+        "status": "DERIVED_PROPOSAL_REQUIRES_RUNTIME_FFPROBE_CONFIRMATION"
+      },
+      "e6_scenario_status": "PROPOSED_NOT_FROZEN",
+      "av_evidence_disposition": "FRESH_CHALLENGE_AV_REQUIRED",
+      "execution_probes": [
+        {
+          "variant": "A",
+          "gameplay_seed": 193847,
+          "music_seed": 840001,
+          "music_seed_status": "PROPOSAL_ONLY_NOT_AUTHORIZED",
+          "e1_intent_sha256": "f845c046e11394ae1388582bc03d8a9c92e9e77a4c3f259a779eaaedda4ab825",
+          "d_envelope_sha256": "05b05727c6ea5e78197f32d2a550b299d2f0c6db7456d20d0265575fb5f7b506",
+          "static_status": "PASS_STATIC_CONTRACT",
+          "source_fps": 60,
+          "source_frames": 540
+        },
+        {
+          "variant": "B_REPEAT",
+          "gameplay_seed": 193847,
+          "music_seed": 840001,
+          "music_seed_status": "PROPOSAL_ONLY_NOT_AUTHORIZED",
+          "e1_intent_sha256": "525d2d86b839ce9da10334e121f3b0f6ae5a745bde4c0d066f34721f5ac0b733",
+          "d_envelope_sha256": "006b72b280bd1f5535d16340d2cfa20b73b37af2dca4a177dbe4d3d291689a82",
+          "static_status": "PASS_STATIC_CONTRACT",
+          "source_fps": 60,
+          "source_frames": 540
+        },
+        {
+          "variant": "C_CHANGED_MUSIC_SEED",
+          "gameplay_seed": 193847,
+          "music_seed": 840002,
+          "music_seed_status": "PROPOSAL_ONLY_NOT_AUTHORIZED",
+          "e1_intent_sha256": "f829b901a89624d5ffabf8e6b49c2acd1cdb2686fe7c8a146de5ad979111dc33",
+          "d_envelope_sha256": "84db9e6f0bc8d96cc41cc8cffbdedf3f5b5c8308757c048886f43053a8768cbe",
+          "static_status": "PASS_STATIC_CONTRACT",
+          "source_fps": 60,
+          "source_frames": 540
+        }
+      ],
+      "reuse_candidate": false,
+      "notes": "New D-composited source and A/B/C A/V qualification required after separate authorization.",
+      "ledger_reuse_disposition": "FRESH_CHALLENGE_AV_REQUIRED_AFTER_SEPARATE_AUTHORIZATION",
+      "reuse_evidence": null
+    },
+    {
+      "scenario_id": "E6-CH-002",
+      "family": "challenge",
+      "selector": "CHALLENGE_002",
+      "mechanic": "parking",
+      "canonical_definition": "challenges/CHALLENGE_002.json",
+      "canonical_definition_sha256": "db5d70a28c460e986e785c6787447529372ac5ea3b5a7ff0507667decbe2a160",
+      "gameplay_seed": 987654,
+      "source_timebase": {
+        "fps": 60,
+        "frames": 600,
+        "duration_seconds": 10
+      },
+      "review_timebase_proposal": {
+        "fps": 30,
+        "frames": 300,
+        "duration_seconds": 10,
+        "status": "DERIVED_PROPOSAL_REQUIRES_RUNTIME_FFPROBE_CONFIRMATION"
+      },
+      "e6_scenario_status": "PROPOSED_NOT_FROZEN",
+      "av_evidence_disposition": "FRESH_CHALLENGE_AV_REQUIRED",
+      "execution_probes": [
+        {
+          "variant": "A",
+          "gameplay_seed": 987654,
+          "music_seed": 840001,
+          "music_seed_status": "PROPOSAL_ONLY_NOT_AUTHORIZED",
+          "e1_intent_sha256": "98d4dc3a7c90f9196e7b82ecf734604e6606be15fcfac14dbf8198c06abaa7da",
+          "d_envelope_sha256": "db7941ba0f2fba63ec499e768df2e1df7afc04fbcca744286b1f36cfade86261",
+          "static_status": "PASS_STATIC_CONTRACT",
+          "source_fps": 60,
+          "source_frames": 600
+        },
+        {
+          "variant": "B_REPEAT",
+          "gameplay_seed": 987654,
+          "music_seed": 840001,
+          "music_seed_status": "PROPOSAL_ONLY_NOT_AUTHORIZED",
+          "e1_intent_sha256": "8ecff39bceb3f7079b06d76aeee3b9960bff2ffb74389687a04be679eb76461d",
+          "d_envelope_sha256": "4f09fa4f4de4aa6f4951e7bc59484b9d053acdcfc97b74928f7708b1ea783336",
+          "static_status": "PASS_STATIC_CONTRACT",
+          "source_fps": 60,
+          "source_frames": 600
+        },
+        {
+          "variant": "C_CHANGED_MUSIC_SEED",
+          "gameplay_seed": 987654,
+          "music_seed": 840002,
+          "music_seed_status": "PROPOSAL_ONLY_NOT_AUTHORIZED",
+          "e1_intent_sha256": "98faefa61df6c29b5450966d5637f37bc5eda529cd4f35443a8322f209d794dc",
+          "d_envelope_sha256": "9221408153ddc83c479cdeb98fdb17b4e356ec4d3ebec8c014fbf6575c7e9ee1",
+          "static_status": "PASS_STATIC_CONTRACT",
+          "source_fps": 60,
+          "source_frames": 600
+        }
+      ],
+      "reuse_candidate": false,
+      "notes": "New D-composited source and A/B/C A/V qualification required after separate authorization.",
+      "ledger_reuse_disposition": "FRESH_CHALLENGE_AV_REQUIRED_AFTER_SEPARATE_AUTHORIZATION",
+      "reuse_evidence": null
+    },
+    {
+      "scenario_id": "E6-CH-004",
+      "family": "challenge",
+      "selector": "CHALLENGE_004",
+      "mechanic": "parking_v2",
+      "canonical_definition": "challenges/CHALLENGE_004.json",
+      "canonical_definition_sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71",
+      "gameplay_seed": 314159,
+      "source_timebase": {
+        "fps": 60,
+        "frames": 900,
+        "duration_seconds": 15
+      },
+      "review_timebase_proposal": {
+        "fps": 30,
+        "frames": 450,
+        "duration_seconds": 15,
+        "status": "DERIVED_PROPOSAL_REQUIRES_RUNTIME_FFPROBE_CONFIRMATION"
+      },
+      "e6_scenario_status": "PROPOSED_NOT_FROZEN",
+      "av_evidence_disposition": "REUSE_CHALLENGE_004_ANCHOR",
+      "execution_probes": [
+        {
+          "variant": "A",
+          "gameplay_seed": 314159,
+          "music_seed": 840001,
+          "music_seed_status": "PROPOSAL_ONLY_NOT_AUTHORIZED",
+          "e1_intent_sha256": "f3cb41d435ac472dc0baa019ba75c583c5af7fd49406636dada2f289c2cd0972",
+          "d_envelope_sha256": "1bdd69e5d502c991a0df791183ba31808fa3cd118754651a9e619c1ed15edc87",
+          "static_status": "PASS_STATIC_CONTRACT",
+          "source_fps": 60,
+          "source_frames": 900
+        },
+        {
+          "variant": "B_REPEAT",
+          "gameplay_seed": 314159,
+          "music_seed": 840001,
+          "music_seed_status": "PROPOSAL_ONLY_NOT_AUTHORIZED",
+          "e1_intent_sha256": "8b3f238d1a474a7f44c3f46274ddd51c79b978bb3a1edb3e3ccc3448461bfcf0",
+          "d_envelope_sha256": "d3acf4b6f3300ad4967200bbc89ae606501b1ef932f48dcbb1f0b88e2674deae",
+          "static_status": "PASS_STATIC_CONTRACT",
+          "source_fps": 60,
+          "source_frames": 900
+        },
+        {
+          "variant": "C_CHANGED_MUSIC_SEED",
+          "gameplay_seed": 314159,
+          "music_seed": 840002,
+          "music_seed_status": "PROPOSAL_ONLY_NOT_AUTHORIZED",
+          "e1_intent_sha256": "56a6c1f10bcac7345c8a66df9cfb2dc324d9d515604953e83697e5fcac747de2",
+          "d_envelope_sha256": "c556d73e8e50bb30cd72c7cbe2a1c37b4a8a4af67e2af63f548abf08affb2700",
+          "static_status": "PASS_STATIC_CONTRACT",
+          "source_fps": 60,
+          "source_frames": 900
+        }
+      ],
+      "reuse_candidate": true,
+      "notes": "Accepted E4A.7 anchor candidate; do not regenerate unless frozen E6 predicates reject reuse.",
+      "ledger_reuse_disposition": "ELIGIBLE_FOR_E6_LEDGER_REQUALIFICATION_NOT_ACCEPTED",
+      "reuse_evidence": {
+        "reuse_source": "E4A.7_CHALLENGE_004",
+        "e4a7_receipt_path": "artifacts/tests/c11e/e4a_d_composited_av_review/RUN_20261106T070808Z-62F31F9C/C11E_E4A7_D_COMPOSITED_CHALLENGE_AV_RECEIPT.json",
+        "e4a7_receipt_sha256": "102cf07a0b8920318c3ba211a3bd4374c3e080018486363d701f81e65613aaa0",
+        "e4a6_recovery_receipt_sha256": "3279011fa16479d4901c5b271463707a437ce7458d306c1667ab222cb1603980",
+        "d_composited_silent_review_video_path": "artifacts/tests/c11e/e4a6_reserved_bands_black/RECOVERY_V1_2/CHALLENGE_004_D_BLACK_BANDS_720x1280_30FPS_SILENT.mp4",
+        "d_composited_silent_review_video_sha256": "841b03531301c7e70c0e09ce3e9f536241d2072a87792e099ed7a955bef8c52f",
+        "hydration_v2": {
+          "run_id": "E6HYDRATE_20261118T073344Z_1A9D7C52",
+          "path": "artifacts/tests/c11e/e6_reuse_evidence_hydration_v2/E6HYDRATE_20261118T073344Z_1A9D7C52/E6HYDRATE_20261118T073344Z_1A9D7C52_REPORT_V2.json",
+          "sha256": "11f0eeba941f4740759132b3ba984eecf80c68a69aad27fe605a81a4ff8f5a77",
+          "bytes": 880211,
+          "reported_checks": 1803,
+          "reported_passed": 1801,
+          "reported_failed": 2,
+          "failure_categories": {
+            "historical_source_pin_divergence": 2,
+            "other_failures": 0
+          },
+          "drill_receipts_passed": 6,
+          "drill_nested_file_checks_passed": 1680,
+          "challenge004_nested_file_checks_passed": 34,
+          "r1v_loop_slots_passed": 5,
+          "sidecar_path": "artifacts/tests/c11e/e6_reuse_evidence_hydration_v2/E6HYDRATE_20261118T073344Z_1A9D7C52/E6HYDRATE_20261118T073344Z_1A9D7C52_REPORT_V2.json.sha256"
+        },
+        "semantic_review_v4": {
+          "run_id": "E6CH004SEM_20261118T113817Z_462AEF1F",
+          "path": "artifacts/tests/c11e/e6_ch004_semantic_noninterference/E6CH004SEM_20261118T113817Z_462AEF1F/E6CH004SEM_20261118T113817Z_462AEF1F_REPORT_V3.json",
+          "sha256": "ded460447cf69f9360d5761627b0ae6a191a6c687043d8ae2ba4eeeeb01a105a",
+          "sidecar_path": "artifacts/tests/c11e/e6_ch004_semantic_noninterference/E6CH004SEM_20261118T113817Z_462AEF1F/E6CH004SEM_20261118T113817Z_462AEF1F_REPORT_V3.json.sha256",
+          "status": "PASS_CH004_SEMANTIC_NONINTERFERENCE_CONFIRMED_REQUIRES_E6_LEDGER_REQUALIFICATION",
+          "checks_passed": 7,
+          "blockers": 0,
+          "challenge_resolver_parity": "6/6",
+          "reuse_disposition": "ELIGIBLE_FOR_E6_LEDGER_REQUALIFICATION_NOT_ACCEPTED"
+        },
+        "d9_pin_reconciliation_v2": {
+          "run_id": "E6D9PINREC_20261118T094345Z_2B9358D1",
+          "receipt_sha256": "0e2c977f1122d9cfc69da255d8fa539720a23f00cdc2f4c030d48bd01019a59a",
+          "accepted_source_pins": "33/33",
+          "route_dependencies": "9/9",
+          "fixed_evidence_pins": "13/13",
+          "observed_ch004_hashes": "2/2"
+        },
+        "source_pin_adjudication": [
+          {
+            "path": "tools/c11d/d9/universal_editorial_model.py",
+            "historical_sha256": "5c575be1942ba0613d66579d14db5cf9d7786e7062dfb001bd7be8a2e9c18ae5",
+            "current_sha256": "dac95fb698b52f96432a517d8ec3196a397e5e6bd3c025300350dd55ddce3afd",
+            "semantic_disposition": "EXACT_HISTORICAL_VS_CURRENT_PREIMAGE_REVIEWED_V4"
+          },
+          {
+            "path": "c11c-suite/c11c-producer/c11e_production_service.py",
+            "historical_sha256": "348997e575d985fe153a4f433f089c5f205be5d4d8f3853baf07be917a134951",
+            "current_sha256": "e5dbf9baa72d4c066ff8ba24006df954700d72a5b0f11f9f88aec653e84dce87",
+            "semantic_disposition": "EXACT_HISTORICAL_VS_CURRENT_PREIMAGE_REVIEWED_V4"
+          }
+        ],
+        "nested_reference_checks": "34/34_PASS_IN_HYDRATION_V2",
+        "operator_a_v_acceptance": {
+          "closeout_path": "docs/current/e/C11E_E5_CROSS_FAMILY_AV_CLOSEOUT_20261116_V1.md",
+          "sha256": "520515803ceb44bde830f99c6fa9b413015d0fecd4c36c60c845128054cbb760",
+          "status": "PASS_TEST_ONLY_OPERATOR_A_V_ACCEPTED"
+        },
+        "e6_acceptance": "NOT_GRANTED"
+      }
+    },
+    {
+      "scenario_id": "E6-CH-005",
+      "family": "challenge",
+      "selector": "CHALLENGE_005",
+      "mechanic": "hit_v1",
+      "canonical_definition": "challenges/CHALLENGE_005.json",
+      "canonical_definition_sha256": "e173736fcbb0e340cd250be1111fa9d38489934d55cc0e0c93835c66f9596e30",
+      "gameplay_seed": 998877,
+      "source_timebase": {
+        "fps": 60,
+        "frames": 420,
+        "duration_seconds": 7
+      },
+      "review_timebase_proposal": {
+        "fps": 30,
+        "frames": 210,
+        "duration_seconds": 7,
+        "status": "DERIVED_PROPOSAL_REQUIRES_RUNTIME_FFPROBE_CONFIRMATION"
+      },
+      "e6_scenario_status": "PROPOSED_NOT_FROZEN",
+      "av_evidence_disposition": "FRESH_CHALLENGE_AV_REQUIRED",
+      "execution_probes": [
+        {
+          "variant": "A",
+          "gameplay_seed": 998877,
+          "music_seed": 840001,
+          "music_seed_status": "PROPOSAL_ONLY_NOT_AUTHORIZED",
+          "e1_intent_sha256": "ccfcd691cfd1a81e68e86fbb75f07db7a037f3472d691d31ce8250d35551286a",
+          "d_envelope_sha256": "0378ff82e6dafdd8bfec1955b2fc1b9681d29044e7ec026d1770d1192ad5a753",
+          "static_status": "PASS_STATIC_CONTRACT",
+          "source_fps": 60,
+          "source_frames": 420
+        },
+        {
+          "variant": "B_REPEAT",
+          "gameplay_seed": 998877,
+          "music_seed": 840001,
+          "music_seed_status": "PROPOSAL_ONLY_NOT_AUTHORIZED",
+          "e1_intent_sha256": "9ce9b4b47a000c8c6f0e02af77b213365d359e19b20405d041031e6f5734b58a",
+          "d_envelope_sha256": "bf997b59adff8af5127df3e3950d4f995a011f228031f425fc94ddf9fbb70920",
+          "static_status": "PASS_STATIC_CONTRACT",
+          "source_fps": 60,
+          "source_frames": 420
+        },
+        {
+          "variant": "C_CHANGED_MUSIC_SEED",
+          "gameplay_seed": 998877,
+          "music_seed": 840002,
+          "music_seed_status": "PROPOSAL_ONLY_NOT_AUTHORIZED",
+          "e1_intent_sha256": "da8ecadfdb5ac7dab64661febc71cc989ba691501483cdba11684d7480dbccd2",
+          "d_envelope_sha256": "399ba3488fd8b0e8d61fbd606e8c232962099604f068860e475fe9713c1dd2e4",
+          "static_status": "PASS_STATIC_CONTRACT",
+          "source_fps": 60,
+          "source_frames": 420
+        }
+      ],
+      "reuse_candidate": false,
+      "notes": "New D-composited source and A/B/C A/V qualification required after separate authorization.",
+      "ledger_reuse_disposition": "FRESH_CHALLENGE_AV_REQUIRED_AFTER_SEPARATE_AUTHORIZATION",
+      "reuse_evidence": null
+    },
+    {
+      "scenario_id": "E6-CH-006",
+      "family": "challenge",
+      "selector": "CHALLENGE_006",
+      "mechanic": "catch_v1",
+      "canonical_definition": "challenges/CHALLENGE_006.json",
+      "canonical_definition_sha256": "2d7d7397cbb0a2109f300859a5d7c0830ded0553522a5120f61750f5bc0b5694",
+      "gameplay_seed": 884422,
+      "source_timebase": {
+        "fps": 60,
+        "frames": 540,
+        "duration_seconds": 9
+      },
+      "review_timebase_proposal": {
+        "fps": 30,
+        "frames": 270,
+        "duration_seconds": 9,
+        "status": "DERIVED_PROPOSAL_REQUIRES_RUNTIME_FFPROBE_CONFIRMATION"
+      },
+      "e6_scenario_status": "PROPOSED_NOT_FROZEN",
+      "av_evidence_disposition": "FRESH_CHALLENGE_AV_REQUIRED",
+      "execution_probes": [
+        {
+          "variant": "A",
+          "gameplay_seed": 884422,
+          "music_seed": 840001,
+          "music_seed_status": "PROPOSAL_ONLY_NOT_AUTHORIZED",
+          "e1_intent_sha256": "4cf4c051211291b4594d8cd728ed1ad7783b38bd44818e09109e0b68b2ce0bf4",
+          "d_envelope_sha256": "ef1781573d4f6a6737ffb6ae3c0c4da724ae821c1043ff29c9dc89071acd53da",
+          "static_status": "PASS_STATIC_CONTRACT",
+          "source_fps": 60,
+          "source_frames": 540
+        },
+        {
+          "variant": "B_REPEAT",
+          "gameplay_seed": 884422,
+          "music_seed": 840001,
+          "music_seed_status": "PROPOSAL_ONLY_NOT_AUTHORIZED",
+          "e1_intent_sha256": "6e6c2d55a5e8c634ab240a885247c215af79838648471fd9796c556154b1356c",
+          "d_envelope_sha256": "094be05578415368da3f1afd6be0c7bcbd041802ee15134db628d658df4bfd2f",
+          "static_status": "PASS_STATIC_CONTRACT",
+          "source_fps": 60,
+          "source_frames": 540
+        },
+        {
+          "variant": "C_CHANGED_MUSIC_SEED",
+          "gameplay_seed": 884422,
+          "music_seed": 840002,
+          "music_seed_status": "PROPOSAL_ONLY_NOT_AUTHORIZED",
+          "e1_intent_sha256": "407a95efc5aacb476f04100211f89066c114af5f3596b02de391d43c68f68504",
+          "d_envelope_sha256": "a4d54e56689a08e6ad43ad3b7a33a938a4ddabe4c7ea0ead40cb8b81f04297fa",
+          "static_status": "PASS_STATIC_CONTRACT",
+          "source_fps": 60,
+          "source_frames": 540
+        }
+      ],
+      "reuse_candidate": false,
+      "notes": "New D-composited source and A/B/C A/V qualification required after separate authorization.",
+      "ledger_reuse_disposition": "FRESH_CHALLENGE_AV_REQUIRED_AFTER_SEPARATE_AUTHORIZATION",
+      "reuse_evidence": null
+    },
+    {
+      "scenario_id": "E6-CH-007",
+      "family": "challenge",
+      "selector": "CHALLENGE_007",
+      "mechanic": "find_v1",
+      "canonical_definition": "challenges/CHALLENGE_007.json",
+      "canonical_definition_sha256": "269f9588e5a6b7d253e2e944440cc41dc3a9db8967775ffa819edebe729a3a61",
+      "gameplay_seed": 7770001,
+      "source_timebase": {
+        "fps": 60,
+        "frames": 600,
+        "duration_seconds": 10
+      },
+      "review_timebase_proposal": {
+        "fps": 30,
+        "frames": 300,
+        "duration_seconds": 10,
+        "status": "DERIVED_PROPOSAL_REQUIRES_RUNTIME_FFPROBE_CONFIRMATION"
+      },
+      "e6_scenario_status": "PROPOSED_NOT_FROZEN",
+      "av_evidence_disposition": "FRESH_CHALLENGE_AV_REQUIRED",
+      "execution_probes": [
+        {
+          "variant": "A",
+          "gameplay_seed": 7770001,
+          "music_seed": 840001,
+          "music_seed_status": "PROPOSAL_ONLY_NOT_AUTHORIZED",
+          "e1_intent_sha256": "f653166a6f43949edcd8e00e60bfe39910359e62c122d3b45d63b4786f82d01c",
+          "d_envelope_sha256": "3d53eeda801c60c13e42967f8aa3a7b3914e2e7a5c8056e48b94cdd3c1e447b4",
+          "static_status": "PASS_STATIC_CONTRACT",
+          "source_fps": 60,
+          "source_frames": 600
+        },
+        {
+          "variant": "B_REPEAT",
+          "gameplay_seed": 7770001,
+          "music_seed": 840001,
+          "music_seed_status": "PROPOSAL_ONLY_NOT_AUTHORIZED",
+          "e1_intent_sha256": "834b17956951d60c9410983e9f6c1e4cb46ac4f3d9357955e5d98032d3a97b34",
+          "d_envelope_sha256": "0d0591fb226db01b80aac95572084535e1f9ec0426813204a51dcd0c6a0457d7",
+          "static_status": "PASS_STATIC_CONTRACT",
+          "source_fps": 60,
+          "source_frames": 600
+        },
+        {
+          "variant": "C_CHANGED_MUSIC_SEED",
+          "gameplay_seed": 7770001,
+          "music_seed": 840002,
+          "music_seed_status": "PROPOSAL_ONLY_NOT_AUTHORIZED",
+          "e1_intent_sha256": "2a2d88b0ab6ed14c3a82cfc1a806198356f6d47099994e7f41d1ac372fcefde6",
+          "d_envelope_sha256": "450850d0585475c83aa383cc4ac39cd4c9c80e98272de217ec3287c34c8e75fc",
+          "static_status": "PASS_STATIC_CONTRACT",
+          "source_fps": 60,
+          "source_frames": 600
+        }
+      ],
+      "reuse_candidate": false,
+      "notes": "New D-composited source and A/B/C A/V qualification required after separate authorization.",
+      "ledger_reuse_disposition": "FRESH_CHALLENGE_AV_REQUIRED_AFTER_SEPARATE_AUTHORIZATION",
+      "reuse_evidence": null
+    },
+    {
+      "scenario_id": "E6-LP-01",
+      "family": "visual_loop",
+      "family_id": "c11c_fractal_bloom_v1",
+      "selector": "radial_bloom",
+      "gameplay_seed": 100006,
+      "music_seed": 500006,
+      "timebase": {
+        "fps": 30,
+        "duration_seconds": 22,
+        "frames": 660
+      },
+      "music_route": "PRESERVE_EXISTING_C11C_FAMILY_NATIVE_MUSIC",
+      "music_profile_id": null,
+      "music_profile_resolution": "MUST_BE_READ_FROM_PINNED_PRIOR_RECEIPT_OR_CANONICAL_PROFILE; DO_NOT_INFER",
+      "reuse_source": "R1V",
+      "reuse_status": "CANDIDATE_PRIOR_HUMAN_ACCEPTED_AV_REUSE_NOT_YET_E6_ACCEPTED",
+      "shared_evidence_refs": [
+        {
+          "kind": "R1V_OPERATOR_CLOSEOUT",
+          "sha256": "a9e1de310ba1f52bab029a6fc6f926892264dd25cfa5edd8ec90aec460a2662a"
+        },
+        {
+          "kind": "R1V_TECHNICAL_REPORT",
+          "sha256": "85de2645621acd6f8183508e0da9b5466b8a00cf9d2cb340a170f7d2803285ba"
+        }
+      ],
+      "per_output_media_hashes_resolved": true,
+      "per_row_receipt_path_and_sha256_resolved": true,
+      "reuse_predicates": [
+        "exact selector and grammar identity match",
+        "accepted A/B visual/audio outputs for this selector are linked by exact receipt and media SHA-256",
+        "source pins pre/post equal and frozen C11-C manifest unchanged",
+        "video timebase, profile, pixel format, range, duration and frame count meet E6 predicates",
+        "audio codec/rate/layout/non-silence and A/V drift meet E6 predicates",
+        "operator visual/editorial/layout and audio acceptance is linked to these exact outputs"
+      ],
+      "verified_media_outputs": {
+        "A": {
+          "sha256": "0c62d8b4c9da237e9a0b9349d588a7d6daab9989b56ef0d25464ca0f5cbc4013",
+          "resolution": "R1V_HYDRATION_V2_NESTED_MEDIA_HASH_CHECK_PASS"
+        },
+        "B": {
+          "sha256": "0c62d8b4c9da237e9a0b9349d588a7d6daab9989b56ef0d25464ca0f5cbc4013",
+          "resolution": "R1V_HYDRATION_V2_NESTED_MEDIA_HASH_CHECK_PASS"
+        }
+      },
+      "rehydration_disposition": "A_B_MEDIA_HASHES_RECONCILED_FROM_PINNED_HYDRATION_V2_REPORT",
+      "technical_profile_observation": {
+        "profile_resolution": "MUST_USE_SELECTOR_SPECIFIC_PINNED_R1V_REPORT_FIELDS",
+        "e6_profile_acceptance": "PENDING_FAMILY_SPECIFIC_ACCEPTANCE"
+      },
+      "e6_acceptance": "NOT_GRANTED"
+    },
+    {
+      "scenario_id": "E6-LP-02",
+      "family": "visual_loop",
+      "family_id": "c11c_geometric_waves_v1",
+      "selector": "harmonic_membrane",
+      "gameplay_seed": 100001,
+      "music_seed": 500001,
+      "timebase": {
+        "fps": 30,
+        "duration_seconds": 23,
+        "frames": 690
+      },
+      "music_route": "PRESERVE_EXISTING_C11C_FAMILY_NATIVE_MUSIC",
+      "music_profile_id": null,
+      "music_profile_resolution": "MUST_BE_READ_FROM_PINNED_PRIOR_RECEIPT_OR_CANONICAL_PROFILE; DO_NOT_INFER",
+      "reuse_source": "R1V_GEOAVR2_REPLACEMENT",
+      "reuse_status": "CANDIDATE_PRIOR_HUMAN_ACCEPTED_AV_REUSE_NOT_YET_E6_ACCEPTED",
+      "shared_evidence_refs": [
+        {
+          "kind": "R1V_OPERATOR_CLOSEOUT",
+          "sha256": "a9e1de310ba1f52bab029a6fc6f926892264dd25cfa5edd8ec90aec460a2662a"
+        },
+        {
+          "kind": "R1V_TECHNICAL_REPORT",
+          "sha256": "85de2645621acd6f8183508e0da9b5466b8a00cf9d2cb340a170f7d2803285ba"
+        },
+        {
+          "kind": "GEOAVR2_REPLACEMENT_REPORT",
+          "sha256": "15712f3187237f118df05c0c013558c65b2a2f7d342a0e765da8307e7a7ff037"
+        }
+      ],
+      "per_output_media_hashes_resolved": true,
+      "per_row_receipt_path_and_sha256_resolved": true,
+      "reuse_predicates": [
+        "exact selector and grammar identity match",
+        "accepted A/B visual/audio outputs for this selector are linked by exact receipt and media SHA-256",
+        "source pins pre/post equal and frozen C11-C manifest unchanged",
+        "video timebase, profile, pixel format, range, duration and frame count meet E6 predicates",
+        "audio codec/rate/layout/non-silence and A/V drift meet E6 predicates",
+        "operator visual/editorial/layout and audio acceptance is linked to these exact outputs"
+      ],
+      "verified_media_outputs": {
+        "A": {
+          "sha256": "a3c5d820fbed7be5392f1b5514b4bbc8437c0de50d2c0e22b63204ea4233a0ce",
+          "resolution": "R1V_HYDRATION_V2_NESTED_MEDIA_HASH_CHECK_PASS"
+        },
+        "B": {
+          "sha256": "a3c5d820fbed7be5392f1b5514b4bbc8437c0de50d2c0e22b63204ea4233a0ce",
+          "resolution": "R1V_HYDRATION_V2_NESTED_MEDIA_HASH_CHECK_PASS"
+        }
+      },
+      "rehydration_disposition": "A_B_MEDIA_HASHES_RECONCILED_FROM_PINNED_HYDRATION_V2_REPORT",
+      "technical_profile_observation": {
+        "profile_resolution": "MUST_USE_SELECTOR_SPECIFIC_PINNED_R1V_REPORT_FIELDS",
+        "e6_profile_acceptance": "PENDING_FAMILY_SPECIFIC_ACCEPTANCE"
+      },
+      "e6_acceptance": "NOT_GRANTED"
+    },
+    {
+      "scenario_id": "E6-LP-03",
+      "family": "visual_loop",
+      "family_id": "c11c_invisible_forces_v1",
+      "selector": "dipole_field",
+      "gameplay_seed": 100021,
+      "music_seed": 500021,
+      "timebase": {
+        "fps": 30,
+        "duration_seconds": 22,
+        "frames": 660
+      },
+      "music_route": "PRESERVE_EXISTING_C11C_FAMILY_NATIVE_MUSIC",
+      "music_profile_id": null,
+      "music_profile_resolution": "MUST_BE_READ_FROM_PINNED_PRIOR_RECEIPT_OR_CANONICAL_PROFILE; DO_NOT_INFER",
+      "reuse_source": "R1V",
+      "reuse_status": "CANDIDATE_PRIOR_HUMAN_ACCEPTED_AV_REUSE_NOT_YET_E6_ACCEPTED",
+      "shared_evidence_refs": [
+        {
+          "kind": "R1V_OPERATOR_CLOSEOUT",
+          "sha256": "a9e1de310ba1f52bab029a6fc6f926892264dd25cfa5edd8ec90aec460a2662a"
+        },
+        {
+          "kind": "R1V_TECHNICAL_REPORT",
+          "sha256": "85de2645621acd6f8183508e0da9b5466b8a00cf9d2cb340a170f7d2803285ba"
+        }
+      ],
+      "per_output_media_hashes_resolved": true,
+      "per_row_receipt_path_and_sha256_resolved": true,
+      "reuse_predicates": [
+        "exact selector and grammar identity match",
+        "accepted A/B visual/audio outputs for this selector are linked by exact receipt and media SHA-256",
+        "source pins pre/post equal and frozen C11-C manifest unchanged",
+        "video timebase, profile, pixel format, range, duration and frame count meet E6 predicates",
+        "audio codec/rate/layout/non-silence and A/V drift meet E6 predicates",
+        "operator visual/editorial/layout and audio acceptance is linked to these exact outputs"
+      ],
+      "verified_media_outputs": {
+        "A": {
+          "sha256": "9f5148fc225ca4a22ce5418f3aba0c0743399fc26dce60d2046f1460b046c953",
+          "resolution": "R1V_HYDRATION_V2_NESTED_MEDIA_HASH_CHECK_PASS"
+        },
+        "B": {
+          "sha256": "9f5148fc225ca4a22ce5418f3aba0c0743399fc26dce60d2046f1460b046c953",
+          "resolution": "R1V_HYDRATION_V2_NESTED_MEDIA_HASH_CHECK_PASS"
+        }
+      },
+      "rehydration_disposition": "A_B_MEDIA_HASHES_RECONCILED_FROM_PINNED_HYDRATION_V2_REPORT",
+      "technical_profile_observation": {
+        "profile_resolution": "MUST_USE_SELECTOR_SPECIFIC_PINNED_R1V_REPORT_FIELDS",
+        "e6_profile_acceptance": "PENDING_FAMILY_SPECIFIC_ACCEPTANCE"
+      },
+      "e6_acceptance": "NOT_GRANTED"
+    },
+    {
+      "scenario_id": "E6-LP-04",
+      "family": "visual_loop",
+      "family_id": "c11c_living_particles_v1",
+      "selector": "swarm",
+      "gameplay_seed": 100016,
+      "music_seed": 500016,
+      "timebase": {
+        "fps": 30,
+        "duration_seconds": 20,
+        "frames": 600
+      },
+      "music_route": "PRESERVE_EXISTING_C11C_FAMILY_NATIVE_MUSIC",
+      "music_profile_id": null,
+      "music_profile_resolution": "MUST_BE_READ_FROM_PINNED_PRIOR_RECEIPT_OR_CANONICAL_PROFILE; DO_NOT_INFER",
+      "reuse_source": "R1V",
+      "reuse_status": "CANDIDATE_PRIOR_HUMAN_ACCEPTED_AV_REUSE_NOT_YET_E6_ACCEPTED",
+      "shared_evidence_refs": [
+        {
+          "kind": "R1V_OPERATOR_CLOSEOUT",
+          "sha256": "a9e1de310ba1f52bab029a6fc6f926892264dd25cfa5edd8ec90aec460a2662a"
+        },
+        {
+          "kind": "R1V_TECHNICAL_REPORT",
+          "sha256": "85de2645621acd6f8183508e0da9b5466b8a00cf9d2cb340a170f7d2803285ba"
+        }
+      ],
+      "per_output_media_hashes_resolved": true,
+      "per_row_receipt_path_and_sha256_resolved": true,
+      "reuse_predicates": [
+        "exact selector and grammar identity match",
+        "accepted A/B visual/audio outputs for this selector are linked by exact receipt and media SHA-256",
+        "source pins pre/post equal and frozen C11-C manifest unchanged",
+        "video timebase, profile, pixel format, range, duration and frame count meet E6 predicates",
+        "audio codec/rate/layout/non-silence and A/V drift meet E6 predicates",
+        "operator visual/editorial/layout and audio acceptance is linked to these exact outputs"
+      ],
+      "verified_media_outputs": {
+        "A": {
+          "sha256": "8af26e9feecaab9b971de5fbe43d1faa14c6d4abe49b4f1f54a1e42dcb912da1",
+          "resolution": "R1V_HYDRATION_V2_NESTED_MEDIA_HASH_CHECK_PASS"
+        },
+        "B": {
+          "sha256": "8af26e9feecaab9b971de5fbe43d1faa14c6d4abe49b4f1f54a1e42dcb912da1",
+          "resolution": "R1V_HYDRATION_V2_NESTED_MEDIA_HASH_CHECK_PASS"
+        }
+      },
+      "rehydration_disposition": "A_B_MEDIA_HASHES_RECONCILED_FROM_PINNED_HYDRATION_V2_REPORT",
+      "technical_profile_observation": {
+        "profile_resolution": "MUST_USE_SELECTOR_SPECIFIC_PINNED_R1V_REPORT_FIELDS",
+        "e6_profile_acceptance": "PENDING_FAMILY_SPECIFIC_ACCEPTANCE"
+      },
+      "e6_acceptance": "NOT_GRANTED"
+    },
+    {
+      "scenario_id": "E6-LP-05",
+      "family": "visual_loop",
+      "family_id": "c11c_sacred_symmetry_v1",
+      "selector": "astrolabe",
+      "gameplay_seed": 100011,
+      "music_seed": 500011,
+      "timebase": {
+        "fps": 30,
+        "duration_seconds": 23,
+        "frames": 690
+      },
+      "music_route": "PRESERVE_EXISTING_C11C_FAMILY_NATIVE_MUSIC",
+      "music_profile_id": null,
+      "music_profile_resolution": "MUST_BE_READ_FROM_PINNED_PRIOR_RECEIPT_OR_CANONICAL_PROFILE; DO_NOT_INFER",
+      "reuse_source": "R1V",
+      "reuse_status": "CANDIDATE_PRIOR_HUMAN_ACCEPTED_AV_REUSE_NOT_YET_E6_ACCEPTED",
+      "shared_evidence_refs": [
+        {
+          "kind": "R1V_OPERATOR_CLOSEOUT",
+          "sha256": "a9e1de310ba1f52bab029a6fc6f926892264dd25cfa5edd8ec90aec460a2662a"
+        },
+        {
+          "kind": "R1V_TECHNICAL_REPORT",
+          "sha256": "85de2645621acd6f8183508e0da9b5466b8a00cf9d2cb340a170f7d2803285ba"
+        }
+      ],
+      "per_output_media_hashes_resolved": true,
+      "per_row_receipt_path_and_sha256_resolved": true,
+      "reuse_predicates": [
+        "exact selector and grammar identity match",
+        "accepted A/B visual/audio outputs for this selector are linked by exact receipt and media SHA-256",
+        "source pins pre/post equal and frozen C11-C manifest unchanged",
+        "video timebase, profile, pixel format, range, duration and frame count meet E6 predicates",
+        "audio codec/rate/layout/non-silence and A/V drift meet E6 predicates",
+        "operator visual/editorial/layout and audio acceptance is linked to these exact outputs"
+      ],
+      "verified_media_outputs": {
+        "A": {
+          "sha256": "75d36cda260791d1f45919ce237fe9df42734e49320aba754dd92e309781f934",
+          "resolution": "R1V_HYDRATION_V2_NESTED_MEDIA_HASH_CHECK_PASS"
+        },
+        "B": {
+          "sha256": "75d36cda260791d1f45919ce237fe9df42734e49320aba754dd92e309781f934",
+          "resolution": "R1V_HYDRATION_V2_NESTED_MEDIA_HASH_CHECK_PASS"
+        }
+      },
+      "rehydration_disposition": "A_B_MEDIA_HASHES_RECONCILED_FROM_PINNED_HYDRATION_V2_REPORT",
+      "technical_profile_observation": {
+        "profile_resolution": "MUST_USE_SELECTOR_SPECIFIC_PINNED_R1V_REPORT_FIELDS",
+        "e6_profile_acceptance": "PENDING_FAMILY_SPECIFIC_ACCEPTANCE"
+      },
+      "e6_acceptance": "NOT_GRANTED"
+    },
+    {
+      "scenario_id": "E6-LP-06",
+      "family": "visual_loop",
+      "family_id": "c11c_geometric_waves_v1",
+      "selector": "interference_plane",
+      "gameplay_seed": 100002,
+      "music_seed": 500002,
+      "timebase": {
+        "fps": 30,
+        "duration_seconds": 23,
+        "frames": 690
+      },
+      "music_route": "PRESERVE_EXISTING_C11C_FAMILY_NATIVE_MUSIC",
+      "music_profile_id": null,
+      "music_profile_resolution": "MUST_BE_READ_FROM_PINNED_PRIOR_RECEIPT_OR_CANONICAL_PROFILE; DO_NOT_INFER",
+      "reuse_source": "LOOP22",
+      "reuse_status": "CANDIDATE_PRIOR_HUMAN_ACCEPTED_AV_REUSE_NOT_YET_E6_ACCEPTED",
+      "shared_evidence_refs": [
+        {
+          "kind": "LOOP22_HUMAN_CLOSEOUT_REPORT",
+          "sha256": "d8f7050f952b7248b24763abde20ce52bf812c3934738f14670a0a3dc0c72068"
+        },
+        {
+          "kind": "LOOP22_PROCESS_RECEIPT",
+          "sha256": "37ee99f8ab30eb445c9ca462471152b6fadc850471b8a27f7c59f30714ec2f5d"
+        },
+        {
+          "kind": "LOOP22_RUN_MANIFEST",
+          "sha256": "170b869b604eae0fdecf770c395e379554ae4ee05bbe579a560180a725fe396f"
+        }
+      ],
+      "per_output_media_hashes_resolved": true,
+      "per_row_receipt_path_and_sha256_resolved": true,
+      "reuse_predicates": [
+        "exact selector and grammar identity match",
+        "accepted A/B visual/audio outputs for this selector are linked by exact receipt and media SHA-256",
+        "source pins pre/post equal and frozen C11-C manifest unchanged",
+        "video timebase, profile, pixel format, range, duration and frame count meet E6 predicates",
+        "audio codec/rate/layout/non-silence and A/V drift meet E6 predicates",
+        "operator visual/editorial/layout and audio acceptance is linked to these exact outputs"
+      ],
+      "verified_media_outputs": {
+        "A": {
+          "path": "artifacts/tests/c11e/e4b_loop22_av/L22_191801_27ABF3/delivery_av/geometric/A/L22_191801_27ABF3_R02_A_AV_720.mp4",
+          "sha256": "a2fdb135a201a5ce9f91c19b51c65be53ab0d0aaeced6829633958195d7f0131",
+          "bytes": 10500987,
+          "verification": "OPERATOR_CONSOLE_GETHASH_CURRENT_TURN_PASS"
+        },
+        "B": {
+          "path": "artifacts/tests/c11e/e4b_loop22_av/L22_191801_27ABF3/delivery_av/geometric/B/L22_191801_27ABF3_R02_B_AV_720.mp4",
+          "sha256": "a2fdb135a201a5ce9f91c19b51c65be53ab0d0aaeced6829633958195d7f0131",
+          "bytes": 10500987,
+          "verification": "OPERATOR_CONSOLE_GETHASH_CURRENT_TURN_PASS"
+        }
+      },
+      "rehydration_disposition": "MEDIA_BYTES_REHASHED_PASS",
+      "technical_profile_observation": {
+        "width": 720,
+        "height": 1280,
+        "fps": 30,
+        "duration_seconds": 23,
+        "frames": 690,
+        "video_codec": "h264",
+        "video_profile": "High",
+        "pixel_format": "yuvj420p",
+        "color_range": "pc",
+        "audio_codec": "aac",
+        "audio_profile": "LC",
+        "audio_sample_rate_hz": 48000,
+        "audio_channels": 2,
+        "technical_source": "PINNED_LOOP22_FFPROBE_REPORT_NOT_A_NEW_FFPROBE_INVOCATION",
+        "e6_profile_acceptance": "PENDING_FAMILY_SPECIFIC_ACCEPTANCE_DO_NOT_NORMALIZE"
+      },
+      "e6_acceptance": "NOT_GRANTED"
+    },
+    {
+      "scenario_id": "E6-DR-01",
+      "family": "visual_drill",
+      "family_id": "tracking",
+      "selector": "tier-2",
+      "gameplay_seed": 12345,
+      "music_seed_A_B": 840001,
+      "music_seed_C": 840002,
+      "family_music_profile": "FLOWING_VECTOR",
+      "e4c_receipt_path": "artifacts/production/c11e/E4C-TRK-T2-6239dd21/E4C_DRILL_AV_QUALIFICATION_RECEIPT.json",
+      "e4c_receipt_sha256": "f95e9b4e787f1b4f7db79b92428324f6de662ade55b260c7692d4440e2967ee7",
+      "prior_receipt_status": "PASS",
+      "reuse_status": "CANDIDATE_PRIOR_E4C_AV_REUSE_NOT_YET_E6_ACCEPTED",
+      "operator_closeout_reference": "E4C 20/20 family closeouts",
+      "audio_generated_in_e4c": true,
+      "per_output_media_hashes_resolved": true,
+      "reuse_predicates": [
+        "receipt file SHA-256 equals the listed receipt SHA-256",
+        "every referenced media output exists and matches its nested SHA-256",
+        "exact family/selector/gameplay/music identity match",
+        "E4C global 20/20 closeout and operator A/V approval remain valid",
+        "video/audio technical predicates match the E6 matrix contract",
+        "no relevant source-pin drift since accepted E4C qualification"
+      ],
+      "rehydration_disposition": "RECEIPT_AND_NESTED_MEDIA_HASHES_PASS_IN_HYDRATION_V2",
+      "nested_media_reverification": {
+        "aggregate_nested_file_checks": 1680,
+        "aggregate_status": "PASS",
+        "audit_run_id": "E6HYDRATE_20261118T073344Z_1A9D7C52",
+        "audit_report_sha256": "11f0eeba941f4740759132b3ba984eecf80c68a69aad27fe605a81a4ff8f5a77",
+        "per_scenario_nested_count": "NOT_RESTATED_HERE; DO_NOT_INFER_FROM_AGGREGATE"
+      },
+      "e6_acceptance": "NOT_GRANTED"
+    },
+    {
+      "scenario_id": "E6-DR-02",
+      "family": "visual_drill",
+      "family_id": "pursuit",
+      "selector": "tier-1",
+      "gameplay_seed": 12345,
+      "music_seed_A_B": 840001,
+      "music_seed_C": 840002,
+      "family_music_profile": "ORGANIC_BLOOM",
+      "e4c_receipt_path": "artifacts/production/c11e/E4C-PRS-T1-b3abbe94/E4C_DRILL_AV_QUALIFICATION_RECEIPT.json",
+      "e4c_receipt_sha256": "57206b4560b917c7a7fe5e738c5afd5d900d293e01c99fcd554f0926acc6eee7",
+      "prior_receipt_status": "PASS",
+      "reuse_status": "CANDIDATE_PRIOR_E4C_AV_REUSE_NOT_YET_E6_ACCEPTED",
+      "operator_closeout_reference": "E4C 20/20 family closeouts",
+      "audio_generated_in_e4c": true,
+      "per_output_media_hashes_resolved": true,
+      "reuse_predicates": [
+        "receipt file SHA-256 equals the listed receipt SHA-256",
+        "every referenced media output exists and matches its nested SHA-256",
+        "exact family/selector/gameplay/music identity match",
+        "E4C global 20/20 closeout and operator A/V approval remain valid",
+        "video/audio technical predicates match the E6 matrix contract",
+        "no relevant source-pin drift since accepted E4C qualification"
+      ],
+      "rehydration_disposition": "RECEIPT_AND_NESTED_MEDIA_HASHES_PASS_IN_HYDRATION_V2",
+      "nested_media_reverification": {
+        "aggregate_nested_file_checks": 1680,
+        "aggregate_status": "PASS",
+        "audit_run_id": "E6HYDRATE_20261118T073344Z_1A9D7C52",
+        "audit_report_sha256": "11f0eeba941f4740759132b3ba984eecf80c68a69aad27fe605a81a4ff8f5a77",
+        "per_scenario_nested_count": "NOT_RESTATED_HERE; DO_NOT_INFER_FROM_AGGREGATE"
+      },
+      "e6_acceptance": "NOT_GRANTED"
+    },
+    {
+      "scenario_id": "E6-DR-03",
+      "family": "visual_drill",
+      "family_id": "saccade",
+      "selector": "tier-1",
+      "gameplay_seed": 12345,
+      "music_seed_A_B": 840001,
+      "music_seed_C": 840002,
+      "family_music_profile": "CIRCUIT_PULSE",
+      "e4c_receipt_path": "artifacts/production/c11e/E4C-SAC-T1-57fdf44b/E4C_DRILL_AV_QUALIFICATION_RECEIPT.json",
+      "e4c_receipt_sha256": "930ba103153fbca0226a0b7abd1226b46dfd3c2e523204e83e6cb39f1282e606",
+      "prior_receipt_status": "PASS",
+      "reuse_status": "CANDIDATE_PRIOR_E4C_AV_REUSE_NOT_YET_E6_ACCEPTED",
+      "operator_closeout_reference": "E4C 20/20 family closeouts",
+      "audio_generated_in_e4c": true,
+      "per_output_media_hashes_resolved": true,
+      "reuse_predicates": [
+        "receipt file SHA-256 equals the listed receipt SHA-256",
+        "every referenced media output exists and matches its nested SHA-256",
+        "exact family/selector/gameplay/music identity match",
+        "E4C global 20/20 closeout and operator A/V approval remain valid",
+        "video/audio technical predicates match the E6 matrix contract",
+        "no relevant source-pin drift since accepted E4C qualification"
+      ],
+      "rehydration_disposition": "RECEIPT_AND_NESTED_MEDIA_HASHES_PASS_IN_HYDRATION_V2",
+      "nested_media_reverification": {
+        "aggregate_nested_file_checks": 1680,
+        "aggregate_status": "PASS",
+        "audit_run_id": "E6HYDRATE_20261118T073344Z_1A9D7C52",
+        "audit_report_sha256": "11f0eeba941f4740759132b3ba984eecf80c68a69aad27fe605a81a4ff8f5a77",
+        "per_scenario_nested_count": "NOT_RESTATED_HERE; DO_NOT_INFER_FROM_AGGREGATE"
+      },
+      "e6_acceptance": "NOT_GRANTED"
+    },
+    {
+      "scenario_id": "E6-DR-04",
+      "family": "visual_drill",
+      "family_id": "peripheral_scan",
+      "selector": "tier-1",
+      "gameplay_seed": 12345,
+      "music_seed_A_B": 840001,
+      "music_seed_C": 840002,
+      "family_music_profile": "ORBITAL_RITUAL",
+      "e4c_receipt_path": "artifacts/production/c11e/E4C-PSC-T1-b342a227/E4C_DRILL_AV_QUALIFICATION_RECEIPT.json",
+      "e4c_receipt_sha256": "eb290666163df0e89daac9c683a95a39c38d536c5da735def15cd3a19964083b",
+      "prior_receipt_status": "PASS",
+      "reuse_status": "CANDIDATE_PRIOR_E4C_AV_REUSE_NOT_YET_E6_ACCEPTED",
+      "operator_closeout_reference": "E4C 20/20 family closeouts",
+      "audio_generated_in_e4c": true,
+      "per_output_media_hashes_resolved": true,
+      "reuse_predicates": [
+        "receipt file SHA-256 equals the listed receipt SHA-256",
+        "every referenced media output exists and matches its nested SHA-256",
+        "exact family/selector/gameplay/music identity match",
+        "E4C global 20/20 closeout and operator A/V approval remain valid",
+        "video/audio technical predicates match the E6 matrix contract",
+        "no relevant source-pin drift since accepted E4C qualification"
+      ],
+      "rehydration_disposition": "RECEIPT_AND_NESTED_MEDIA_HASHES_PASS_IN_HYDRATION_V2",
+      "nested_media_reverification": {
+        "aggregate_nested_file_checks": 1680,
+        "aggregate_status": "PASS",
+        "audit_run_id": "E6HYDRATE_20261118T073344Z_1A9D7C52",
+        "audit_report_sha256": "11f0eeba941f4740759132b3ba984eecf80c68a69aad27fe605a81a4ff8f5a77",
+        "per_scenario_nested_count": "NOT_RESTATED_HERE; DO_NOT_INFER_FROM_AGGREGATE"
+      },
+      "e6_acceptance": "NOT_GRANTED"
+    },
+    {
+      "scenario_id": "E6-DR-05",
+      "family": "visual_drill",
+      "family_id": "tracking",
+      "selector": "tier-5",
+      "gameplay_seed": 12345,
+      "music_seed_A_B": 840001,
+      "music_seed_C": 840002,
+      "family_music_profile": "FLOWING_VECTOR",
+      "e4c_receipt_path": "artifacts/production/c11e/E4C-TRK-T5-6239dd21/E4C_DRILL_AV_QUALIFICATION_RECEIPT.json",
+      "e4c_receipt_sha256": "6e55dc3fd4fc13745347cc641d29103fbfb7fa90dee932910f920703690c3c61",
+      "prior_receipt_status": "PASS",
+      "reuse_status": "CANDIDATE_PRIOR_E4C_AV_REUSE_NOT_YET_E6_ACCEPTED",
+      "operator_closeout_reference": "E4C 20/20 family closeouts",
+      "audio_generated_in_e4c": true,
+      "per_output_media_hashes_resolved": true,
+      "reuse_predicates": [
+        "receipt file SHA-256 equals the listed receipt SHA-256",
+        "every referenced media output exists and matches its nested SHA-256",
+        "exact family/selector/gameplay/music identity match",
+        "E4C global 20/20 closeout and operator A/V approval remain valid",
+        "video/audio technical predicates match the E6 matrix contract",
+        "no relevant source-pin drift since accepted E4C qualification"
+      ],
+      "rehydration_disposition": "RECEIPT_AND_NESTED_MEDIA_HASHES_PASS_IN_HYDRATION_V2",
+      "nested_media_reverification": {
+        "aggregate_nested_file_checks": 1680,
+        "aggregate_status": "PASS",
+        "audit_run_id": "E6HYDRATE_20261118T073344Z_1A9D7C52",
+        "audit_report_sha256": "11f0eeba941f4740759132b3ba984eecf80c68a69aad27fe605a81a4ff8f5a77",
+        "per_scenario_nested_count": "NOT_RESTATED_HERE; DO_NOT_INFER_FROM_AGGREGATE"
+      },
+      "e6_acceptance": "NOT_GRANTED"
+    },
+    {
+      "scenario_id": "E6-DR-06",
+      "family": "visual_drill",
+      "family_id": "peripheral_scan",
+      "selector": "tier-5",
+      "gameplay_seed": 12345,
+      "music_seed_A_B": 840001,
+      "music_seed_C": 840002,
+      "family_music_profile": "ORBITAL_RITUAL",
+      "e4c_receipt_path": "artifacts/production/c11e/E4C-PSC-T5-b342a227/E4C_DRILL_AV_QUALIFICATION_RECEIPT.json",
+      "e4c_receipt_sha256": "5644ffa386c2d1388e7dd657cb566c796a87de93b22c28db84197dbb8ad3a224",
+      "prior_receipt_status": "PASS",
+      "reuse_status": "CANDIDATE_PRIOR_E4C_AV_REUSE_NOT_YET_E6_ACCEPTED",
+      "operator_closeout_reference": "E4C 20/20 family closeouts",
+      "audio_generated_in_e4c": true,
+      "per_output_media_hashes_resolved": true,
+      "reuse_predicates": [
+        "receipt file SHA-256 equals the listed receipt SHA-256",
+        "every referenced media output exists and matches its nested SHA-256",
+        "exact family/selector/gameplay/music identity match",
+        "E4C global 20/20 closeout and operator A/V approval remain valid",
+        "video/audio technical predicates match the E6 matrix contract",
+        "no relevant source-pin drift since accepted E4C qualification"
+      ],
+      "rehydration_disposition": "RECEIPT_AND_NESTED_MEDIA_HASHES_PASS_IN_HYDRATION_V2",
+      "nested_media_reverification": {
+        "aggregate_nested_file_checks": 1680,
+        "aggregate_status": "PASS",
+        "audit_run_id": "E6HYDRATE_20261118T073344Z_1A9D7C52",
+        "audit_report_sha256": "11f0eeba941f4740759132b3ba984eecf80c68a69aad27fe605a81a4ff8f5a77",
+        "per_scenario_nested_count": "NOT_RESTATED_HERE; DO_NOT_INFER_FROM_AGGREGATE"
+      },
+      "e6_acceptance": "NOT_GRANTED"
+    }
+  ],
+  "freeze_rule": "This is a requalification draft. No scenario is E6 accepted until the E6 matrix is frozen, exact per-row receipt bytes and nested media hashes are pinned, family-specific technical predicates are satisfied, current source pins are verified, operator acceptance is linked, and separate E6 TEST_ONLY authorization plus explicit D4.8 conflict resolution are recorded. Never regenerate accepted E4 outputs to complete the ledger."
+}
