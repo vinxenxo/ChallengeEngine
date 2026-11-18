@@ -1,0 +1,28 @@
+{
+  "created_utc": "2026-11-18T08:24:16.380170+00:00",
+  "execution": {
+    "audio_generated": false,
+    "batch_id_consumed": false,
+    "ffmpeg_invoked": false,
+    "ffprobe_invoked": false,
+    "godot_invoked": false,
+    "media_created": false,
+    "mux_invoked": false,
+    "processes_started": false,
+    "production_dispatch": false,
+    "release_authority": "NONE",
+    "runtime_commands_emitted": false
+  },
+  "historical_ch004_reuse": "DISALLOWED_PENDING_ADJUDICATION",
+  "linked_d_envelopes": 18,
+  "linked_e1_intents": 18,
+  "logical_visual_source_captures": 6,
+  "manifest_name": "E6_D9_CAPTURE_ORCHESTRATION_PREPARE_ONLY_MANIFEST_V1.json",
+  "manifest_sha256": "144470d16a222a1f01f0b7a9edec699af18d18bac614f7db938021e1acc0db2d",
+  "run_id": "E6CAPPLAN_20261118T082416Z_68342FCD",
+  "schema": "C11E-E6-D9-CAPTURE-ORCHESTRATION-PREPARE-ONLY-RECEIPT-V1",
+  "schema_version": "1.0",
+  "selected_challenge_groups": 6,
+  "shared_abc_video_source_policy": true,
+  "status": "PASS_D9_MULTISELECTOR_CAPTURE_GROUP_PLAN_READY_EXECUTION_HELD"
+}

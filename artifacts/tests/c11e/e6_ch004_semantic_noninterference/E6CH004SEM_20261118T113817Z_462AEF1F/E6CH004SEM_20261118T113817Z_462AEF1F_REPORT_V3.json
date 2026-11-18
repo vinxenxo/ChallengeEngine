@@ -1,0 +1,711 @@
+{
+  "audio_generated": false,
+  "automatic_e6_acceptance": false,
+  "batch_id_consumed": false,
+  "blockers": [],
+  "ch004_a_v_evidence_recreated": false,
+  "ch004_reuse_disposition": "ELIGIBLE_FOR_E6_LEDGER_REQUALIFICATION_NOT_ACCEPTED",
+  "checks": [
+    "V1_ADJUDICATION_AND_DIFF=PASS",
+    "ACTIVE_RECONCILIATION=PASS",
+    "E4A7_E4A6_E4B_LINEAGE_AND_GOVERNANCE=PASS",
+    "THREE_HISTORICAL_PREIMAGES_AND_CURRENT_FILES=3/3_PASS",
+    "D98_MODEL_JSON_SCOPE=PASS",
+    "D98_CHALLENGE_RESOLVER_AND_EDITORIAL_PARITY=6/6_PASS",
+    "E1_CHALLENGE_PREIMAGE_REPRODUCTION_AND_CURRENT_PARITY=PASS"
+  ],
+  "commits": "OPERATOR_MANAGED",
+  "created_utc": "2026-11-18T11:38:23.279230+00:00",
+  "d4_8_overridden": false,
+  "dispatch": false,
+  "e6_ledger_requalification_required": true,
+  "evidence": {
+    "challenge_resolver_parity": {
+      "count": "6/6",
+      "rows": [
+        {
+          "challenge_id": "CHALLENGE_001",
+          "current_d4_path": "CURRENT_D4_CHALLENGE_PATH",
+          "editorial_values": "PASS",
+          "selection": "PASS",
+          "status": "PASS"
+        },
+        {
+          "challenge_id": "CHALLENGE_002",
+          "current_d4_path": "CURRENT_D4_CHALLENGE_PATH",
+          "editorial_values": "PASS",
+          "selection": "PASS",
+          "status": "PASS"
+        },
+        {
+          "challenge_id": "CHALLENGE_004",
+          "current_d4_path": "CURRENT_D4_CHALLENGE_PATH",
+          "editorial_values": "PASS",
+          "selection": "PASS",
+          "status": "PASS"
+        },
+        {
+          "challenge_id": "CHALLENGE_005",
+          "current_d4_path": "CURRENT_D4_CHALLENGE_PATH",
+          "editorial_values": "PASS",
+          "selection": "PASS",
+          "status": "PASS"
+        },
+        {
+          "challenge_id": "CHALLENGE_006",
+          "current_d4_path": "CURRENT_D4_CHALLENGE_PATH",
+          "editorial_values": "PASS",
+          "selection": "PASS",
+          "status": "PASS"
+        },
+        {
+          "challenge_id": "CHALLENGE_007",
+          "current_d4_path": "CURRENT_D4_CHALLENGE_PATH",
+          "editorial_values": "PASS",
+          "selection": "PASS",
+          "status": "PASS"
+        }
+      ],
+      "status": "PASS"
+    },
+    "e1_service_challenge_parity": {
+      "canonical_identity_fields_equal": [
+        "request_hash",
+        "editorial_hash",
+        "plan_hash"
+      ],
+      "current_validation": {
+        "intent_sha256": "559ed4038bd75cf78f4ac16dc9c5379d7a0a2fa679108e5bdc848aacdaf5ae71",
+        "media_created": false,
+        "renderer": false,
+        "source_pin_count": 12,
+        "status": "PASS_E1_PREPARATION_ONLY",
+        "valid": true
+      },
+      "dispatch_authorized": false,
+      "historical_e1_intent_reproduced": true,
+      "historical_validation": {
+        "intent_sha256": "b0c2b2935d155c6cdb4020bce9a686dcfc710fd979b81d7ebbdb4c227347a0cf",
+        "media_created": false,
+        "renderer": false,
+        "source_pin_count": 12,
+        "status": "PASS_E1_PREPARATION_ONLY",
+        "valid": true
+      },
+      "media_created": false,
+      "renderer_input_emitted": false,
+      "same_semantic_intent_projection": true,
+      "service_version_transition": [
+        "0.2.0-E3.2",
+        "0.4.0-E4C"
+      ],
+      "source_identity_reconciliation": {
+        "only_expected_historical_paths_changed": {
+          "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json": {
+            "current_bytes": 12932,
+            "current_sha256": "dabb458fc2215156ddb5ebea7e8ebec811098886ce2858733ba9fb13f6075ccb",
+            "historical_bytes": 12692,
+            "historical_sha256": "50655c82521a353f1db6920f4d099cad92452ae369251f9fbde45cbaee4e8c53",
+            "status": "KNOWN_POST_E4A7_SOURCE_EVOLUTION"
+          },
+          "tools/c11d/d9/universal_editorial_model.py": {
+            "current_bytes": 27585,
+            "current_sha256": "dac95fb698b52f96432a517d8ec3196a397e5e6bd3c025300350dd55ddce3afd",
+            "historical_bytes": 26574,
+            "historical_sha256": "5c575be1942ba0613d66579d14db5cf9d7786e7062dfb001bd7be8a2e9c18ae5",
+            "status": "KNOWN_POST_E4A7_SOURCE_EVOLUTION"
+          }
+        },
+        "other_source_identity_metadata_identical": true,
+        "source_pin_paths_identical": true
+      },
+      "status": "PASS_E1_CHALLENGE_PREPARATION_PARITY"
+    },
+    "governance_and_e4b": {
+      "backup_receipt_bindings": {
+        "backup_receipt_bindings": [
+          {
+            "backup_sha256": "5c575be1942ba0613d66579d14db5cf9d7786e7062dfb001bd7be8a2e9c18ae5",
+            "backup_slot": "05.bak",
+            "e4b_postimage_sha256": "dac95fb698b52f96432a517d8ec3196a397e5e6bd3c025300350dd55ddce3afd",
+            "source_path": "tools/c11d/d9/universal_editorial_model.py",
+            "status": "PASS_RECEIPT_BOUND"
+          },
+          {
+            "backup_sha256": "348997e575d985fe153a4f433f089c5f205be5d4d8f3853baf07be917a134951",
+            "backup_slot": "01.bak",
+            "e4b_postimage_sha256": "08ab5a278de8ebb55795a57391c83a27207ce01920704c419b8e28be25ddcf65",
+            "source_path": "c11c-suite/c11c-producer/c11e_production_service.py",
+            "status": "PASS_RECEIPT_BOUND"
+          },
+          {
+            "backup_sha256": "50655c82521a353f1db6920f4d099cad92452ae369251f9fbde45cbaee4e8c53",
+            "backup_slot": "04.bak",
+            "e4b_postimage_sha256": "dabb458fc2215156ddb5ebea7e8ebec811098886ce2858733ba9fb13f6075ccb",
+            "source_path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+            "status": "PASS_RECEIPT_BOUND"
+          }
+        ],
+        "backup_run_root": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_shared_service_integration_overlay\\20261107T005116Z-B9D97544"
+      },
+      "proofs": [
+        {
+          "bytes": 796318,
+          "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+          "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+          "status": "PASS"
+        },
+        {
+          "bytes": 12996,
+          "path": "definitions/c11d/production/C11E_D4_8_R1V_QUALIFICATION_ONLY_POLICY_V2.json",
+          "sha256": "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+          "status": "PASS"
+        },
+        {
+          "bytes": 26095,
+          "path": "artifacts/tests/c11e/e4a_d_composited_av_review/RUN_20261106T070808Z-62F31F9C/C11E_E4A7_D_COMPOSITED_CHALLENGE_AV_RECEIPT.json",
+          "sha256": "102cf07a0b8920318c3ba211a3bd4374c3e080018486363d701f81e65613aaa0",
+          "status": "PASS"
+        },
+        {
+          "bytes": 7653,
+          "path": "docs/current/e/C11E_E5_CROSS_FAMILY_AV_CLOSEOUT_20261116_V1.md",
+          "sha256": "520515803ceb44bde830f99c6fa9b413015d0fecd4c36c60c845128054cbb760",
+          "status": "PASS"
+        },
+        {
+          "bytes": 14969,
+          "path": "artifacts/tests/c11e/e4a6_reserved_bands_black/BLACK_BANDS_V2/e4a6_challenge_004_envelope.json",
+          "sha256": "2a62637072d34f2b68e11f92ddb1d7d981d870507e696c800396a8e15f8a527e",
+          "status": "PASS"
+        },
+        {
+          "bytes": 4810,
+          "path": "tools/c11d/d9/C11E_E4B_SHARED_SERVICE_INTEGRATION_V2_SOURCE_PINS.json",
+          "sha256": "c57c20abab5f58f32174d0b0cbef51d72b5c2ef473812d6d309a962c116df7be",
+          "status": "PASS"
+        },
+        {
+          "bytes": 7914,
+          "path": "tools/c11d/d9/C11E_E4B_SHARED_SERVICE_INTEGRATION_V3_SOURCE_PINS.json",
+          "sha256": "dc97cf4a3361414e46bf5996b1cbdb6adda384853da702104cd6876134e43328",
+          "status": "PASS"
+        },
+        {
+          "bytes": 17021,
+          "path": "artifacts/tests/c11e/e4b_shared_service_integration_recovery_v3/20261107T010101Z-A05C1878/C11E_E4B_SHARED_SERVICE_INTEGRATION_V3_RECOVERY_RECEIPT.json",
+          "sha256": "09f78d97c8797885056882b343e1ee54e3fc2bb75cf2320338c037f6ea893048",
+          "status": "PASS"
+        },
+        {
+          "bytes": 4136,
+          "path": "artifacts/tests/c11e/e4b_shared_service_integration_v3/20261107T010113Z-CCE37AD9/C11E_E4B_SHARED_SERVICE_INTEGRATION_RUN_RECEIPT_V3.json",
+          "sha256": "622ecf63186b17f50dfce23ab699385190d605a48222e5120d647af50a73ceaf",
+          "status": "PASS"
+        }
+      ],
+      "summary": {
+        "e1_intent": {
+          "delivery": {
+            "audio_enabled": false,
+            "presentation_profile_id": "social_default_v1",
+            "requested_profile_id": "REVIEW_720",
+            "resolved_profile_id": "REVIEW_720"
+          },
+          "editorial": {
+            "call_to_action": "FOLLOW FOR MORE",
+            "challenge_label": "BLOCKED CHALLENGE LABEL",
+            "language": "es",
+            "player_name": "BLOCKED PLAYER TEST",
+            "subtitle": "D HEADER SUBTITLE",
+            "title": "E4A.6 LIVE TITLE"
+          },
+          "editorial_field_consumption": {
+            "call_to_action": {
+              "consumer_status": "NOT_CONSUMED_E1",
+              "required_gate": "E2",
+              "resolved": true
+            },
+            "challenge_label": {
+              "consumer_status": "NOT_CONSUMED_E1",
+              "required_gate": "E2",
+              "resolved": true
+            },
+            "language": {
+              "consumer_status": "NOT_CONSUMED_E1",
+              "required_gate": "E2",
+              "resolved": true
+            },
+            "player_name": {
+              "consumer_status": "NOT_CONSUMED_E1",
+              "required_gate": "E2",
+              "resolved": true
+            },
+            "subtitle": {
+              "consumer_status": "NOT_CONSUMED_E1",
+              "required_gate": "E2",
+              "resolved": true
+            },
+            "title": {
+              "consumer_status": "NOT_CONSUMED_E1",
+              "required_gate": "E2",
+              "resolved": true
+            }
+          },
+          "execution_boundary": {
+            "d4_8": "BLOCKED",
+            "dispatch_authorized": false,
+            "media_created": false,
+            "production_execution": false,
+            "release_authority": "NONE",
+            "renderer_activation": false,
+            "renderer_dispatch_invoked": false,
+            "renderer_input_emitted": false
+          },
+          "family_adapter": {
+            "adapter_id": "c11e_challenges_adapter",
+            "renderer_input_emitted": false,
+            "status": "NOT_CONNECTED_E1",
+            "target_gate": "E2"
+          },
+          "identity": {
+            "editorial_hash": "f1075c8cc481d4dacbe461d9aea35e8257ce1b8f929eebad50fceca99cb083c7",
+            "intent_hash": "5656b24ec7cb44a08d2ee9df5c7eb57b64401f4bff3f9a892516c7e94a5e75e8",
+            "plan_hash": "d94f89d497cd1e02469cad2f016cd5cdd31afecac62f91635ace4a098aa50ebf",
+            "request_hash": "e4463a99e6ca4d5dd70737d4e3506c6b047c02f8c7f56b68af10c75400bd26f7"
+          },
+          "intent_sha256": "b0c2b2935d155c6cdb4020bce9a686dcfc710fd979b81d7ebbdb4c227347a0cf",
+          "music_contract": {
+            "audio_created": false,
+            "audio_enabled": false,
+            "contract_id": "C11E_E3_2_D3_V5_E1_MUSIC_CONTRACT_V1",
+            "contract_path": "definitions/c11e/music/C11E_E3_2_D3_V5_E1_MUSIC_CONTRACT_V1.json",
+            "contract_sha256": "12c59ce2a2135a49ce0d5968a29905a1e5890743507db1ee0039da1374efcfe8",
+            "contract_version": "1.0",
+            "dispatch_authorized": false,
+            "dispatchable": false,
+            "engine": {
+              "engine_id": "c11d_music_engine_v5",
+              "engine_version": "5.0",
+              "source_path": "tools/c11d/d3/c11d_music_engine_v5.py",
+              "source_sha256": "03ae7e2997796e0c67ca15c8886b1e5b290791a142b6631a572d1cba6eba4eb1",
+              "spec_path": "definitions/c11d/music/C11D_MUSIC_ENGINE_V5_SPEC_V1.json",
+              "spec_sha256": "8970f4e93c878285b727697f3d269f5ee464b6029fe79eabc5fcbf4245e9dbf2"
+            },
+            "engine_invoked": false,
+            "engine_request": null,
+            "ffmpeg_mux_invoked": false,
+            "music_seed": 840001,
+            "music_seed_field": "request.music_seed",
+            "release_authority": "NONE",
+            "renderer_invoked": false,
+            "route": "D3_V5_CHALLENGE_8BIT_PLANNING_BINDING_ONLY",
+            "status": "DISABLED_BY_REQUEST",
+            "style_profile": {
+              "profile_id": "challenge_8bit_v1",
+              "profile_version": "1.0",
+              "source_path": "definitions/c11d/music/C11D_CHALLENGE_8BIT_STYLE_PROFILE_V1.json",
+              "source_sha256": "0c877cbe6e1c288890da31fc4481a58e1051749b45a50b2290cbef5d1120d2de"
+            },
+            "unresolved_engine_parameters": [],
+            "variation_index": 0
+          },
+          "output": {
+            "created": false,
+            "overwrite_policy": "DENY_EXISTING",
+            "planned_root": "artifacts/production/c11e/E4A6-CH004-LIVE-20261105T214811Z-333CAD33",
+            "planned_root_exists": false
+          },
+          "request": {
+            "content_type": "challenges",
+            "mode": "REVIEW",
+            "presentation_options": {
+              "show_hook_countdown": true
+            },
+            "request_id": "E4A6-CH004-LIVE-20261105T214811Z-333CAD33",
+            "selection": {
+              "content_type": "challenges",
+              "difficulty_tier": null,
+              "family_id": "parking_v2",
+              "subtype_id": null,
+              "variant_id": "CHALLENGE_004",
+              "variant_scope_id": "challenge:CHALLENGE_004"
+            },
+            "variation_index": 0
+          },
+          "request_origin": "TEST",
+          "schema": "C11-E-PRODUCTION-INTENT-V1",
+          "schema_version": "1.1",
+          "seed_domains": {
+            "automatic_generation": false,
+            "cross_domain_sharing": "FORBIDDEN",
+            "gameplay": {
+              "field": "request.seed",
+              "value": 314159
+            },
+            "independent_domains": true,
+            "music": {
+              "field": "request.music_seed",
+              "value": 840001
+            },
+            "runtime_derivation": false
+          },
+          "service_version": "0.2.0-E3.2",
+          "source_identity": {
+            "c11c_manifest": {
+              "bytes": 796318,
+              "disposition": "IMMUTABLE_REFERENCE_ONLY",
+              "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+              "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+            },
+            "source_pins": [
+              {
+                "bytes": 19692,
+                "path": "tools/c11d/d9/universal_producer.py",
+                "sha256": "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1"
+              },
+              {
+                "bytes": 26574,
+                "path": "tools/c11d/d9/universal_editorial_model.py",
+                "sha256": "5c575be1942ba0613d66579d14db5cf9d7786e7062dfb001bd7be8a2e9c18ae5"
+              },
+              {
+                "bytes": 9183,
+                "path": "c11c-suite/c11c-producer/c11d_gui_request.py",
+                "sha256": "0e95109ffd3ba5655d28292309196349470ab7958a467f096543a2c98c22976e"
+              },
+              {
+                "bytes": 12692,
+                "path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+                "sha256": "50655c82521a353f1db6920f4d099cad92452ae369251f9fbde45cbaee4e8c53"
+              },
+              {
+                "bytes": 1761,
+                "path": "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json",
+                "sha256": "342a61338c80a2f1616e8e9f38986bd90f410257c0e321f99840380fb0fd804b"
+              },
+              {
+                "bytes": 3158,
+                "path": "profiles/delivery/c11c_video_delivery_profiles.json",
+                "sha256": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3"
+              },
+              {
+                "bytes": 32714,
+                "path": "c11c-suite/c11c-producer/producer_schema.json",
+                "sha256": "564f11fb4fee9221910dc373550650172eda4f106d6dc25532cc43cb8e6314a0"
+              },
+              {
+                "bytes": 1543,
+                "path": "challenges/CHALLENGE_004.json",
+                "sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71"
+              },
+              {
+                "bytes": 5256,
+                "path": "tools/c11d/d3/c11d_music_engine_v5.py",
+                "sha256": "03ae7e2997796e0c67ca15c8886b1e5b290791a142b6631a572d1cba6eba4eb1"
+              },
+              {
+                "bytes": 3313,
+                "path": "definitions/c11d/music/C11D_MUSIC_ENGINE_V5_SPEC_V1.json",
+                "sha256": "8970f4e93c878285b727697f3d269f5ee464b6029fe79eabc5fcbf4245e9dbf2"
+              },
+              {
+                "bytes": 2818,
+                "path": "definitions/c11d/music/C11D_CHALLENGE_8BIT_STYLE_PROFILE_V1.json",
+                "sha256": "0c877cbe6e1c288890da31fc4481a58e1051749b45a50b2290cbef5d1120d2de"
+              },
+              {
+                "bytes": 1943,
+                "path": "definitions/c11e/music/C11E_E3_2_D3_V5_E1_MUSIC_CONTRACT_V1.json",
+                "sha256": "12c59ce2a2135a49ce0d5968a29905a1e5890743507db1ee0039da1374efcfe8"
+              }
+            ]
+          },
+          "status": "PREPARED_E1_NOT_DISPATCHED"
+        },
+        "e4a7_receipt_status": "PASS_ISOLATED_E4A7_D_COMPOSITED_CHALLENGE_AV_TEST_ONLY",
+        "e4a7_run_id": "20261106T070808Z-62F31F9C",
+        "e4b_v3_run_status": "PASS_TEST_ONLY_SHARED_LOOP_BOUNDARY_PREPARATION_V3",
+        "e4b_v3_service_tests": "25/25_PASS",
+        "e5_operator_av_closeout": "PASS_TEST_ONLY_OPERATOR_A_V_ACCEPTED"
+      }
+    },
+    "model_json_semantic_delta": {
+      "allowed_difference_count": 6,
+      "allowed_differences": [
+        "content_types.visual_loops.d9_9_plan_compatible",
+        "content_types.visual_loops.d4_executable_compatible",
+        "content_types.visual_drills.d9_9_plan_compatible",
+        "content_types.visual_drills.d4_executable_compatible",
+        "content_types.visual_loops.request_plan_compatibility",
+        "content_types.visual_drills.request_plan_compatibility"
+      ],
+      "challenge_declaration_identical": true,
+      "classification_transitions": [
+        {
+          "current_value": "D9_9_UNIVERSAL_EDITORIAL_INTENT_PLAN_ONLY; D4_EXECUTABLE_COMPATIBILITY_NOT_PROVEN",
+          "historical_value": "PENDING_D9_9_UNIVERSAL_REQUEST_ADAPTER",
+          "meaning": "D9.9 plan-only; D4 executable compatibility not proven",
+          "path": "content_types.visual_loops.request_plan_compatibility"
+        },
+        {
+          "current_value": "D9_9_UNIVERSAL_EDITORIAL_INTENT_PLAN_ONLY; D4_EXECUTABLE_COMPATIBILITY_NOT_PROVEN",
+          "historical_value": "PENDING_D9_9_UNIVERSAL_REQUEST_ADAPTER",
+          "meaning": "D9.9 plan-only; D4 executable compatibility not proven",
+          "path": "content_types.visual_drills.request_plan_compatibility"
+        }
+      ],
+      "d4_executable_compatibility_claimed": false,
+      "flag_additions": 4,
+      "status": "PASS_EXACT_FOUR_FLAGS_AND_TWO_LOOP_DRILL_PLAN_ONLY_CLASSIFICATIONS"
+    },
+    "three_preimages": [
+      {
+        "backup_path": "artifacts/tests/c11e/e4b_shared_service_integration_overlay/20261107T005116Z-B9D97544/b/05.bak",
+        "current_bytes": 27585,
+        "current_sha256": "dac95fb698b52f96432a517d8ec3196a397e5e6bd3c025300350dd55ddce3afd",
+        "path": "tools/c11d/d9/universal_editorial_model.py",
+        "preimage_bytes": 26574,
+        "preimage_sha256": "5c575be1942ba0613d66579d14db5cf9d7786e7062dfb001bd7be8a2e9c18ae5",
+        "status": "PASS_EXACT_PREIMAGE_AND_CURRENT_PIN"
+      },
+      {
+        "backup_path": "artifacts/tests/c11e/e4b_shared_service_integration_overlay/20261107T005116Z-B9D97544/b/01.bak",
+        "current_bytes": 86687,
+        "current_sha256": "e5dbf9baa72d4c066ff8ba24006df954700d72a5b0f11f9f88aec653e84dce87",
+        "path": "c11c-suite/c11c-producer/c11e_production_service.py",
+        "preimage_bytes": 32885,
+        "preimage_sha256": "348997e575d985fe153a4f433f089c5f205be5d4d8f3853baf07be917a134951",
+        "status": "PASS_EXACT_PREIMAGE_AND_CURRENT_PIN"
+      },
+      {
+        "backup_path": "artifacts/tests/c11e/e4b_shared_service_integration_overlay/20261107T005116Z-B9D97544/b/04.bak",
+        "current_bytes": 12932,
+        "current_sha256": "dabb458fc2215156ddb5ebea7e8ebec811098886ce2858733ba9fb13f6075ccb",
+        "path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+        "preimage_bytes": 12692,
+        "preimage_sha256": "50655c82521a353f1db6920f4d099cad92452ae369251f9fbde45cbaee4e8c53",
+        "status": "PASS_EXACT_PREIMAGE_AND_CURRENT_PIN"
+      }
+    ],
+    "v1_adjudication": {
+      "proof": {
+        "diff": {
+          "bytes": 63902,
+          "path": "artifacts/tests/c11e/e6_ch004_source_pin_adjudication/E6CH004ADJ_20261118T101236Z_6C62AE7F/E6CH004ADJ_20261118T101236Z_6C62AE7F_SOURCE_DIFFS_V1.txt",
+          "sha256": "d4b277e9296adc3a0a61aeeb391f5931d978a646101f88679a56565a2735e6c2",
+          "sidecar": {
+            "path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e6_ch004_source_pin_adjudication\\E6CH004ADJ_20261118T101236Z_6C62AE7F\\E6CH004ADJ_20261118T101236Z_6C62AE7F_SOURCE_DIFFS_V1.txt.sha256",
+            "sha256": "d4b277e9296adc3a0a61aeeb391f5931d978a646101f88679a56565a2735e6c2",
+            "status": "PASS"
+          }
+        },
+        "report": {
+          "bytes": 11038,
+          "path": "artifacts/tests/c11e/e6_ch004_source_pin_adjudication/E6CH004ADJ_20261118T101236Z_6C62AE7F/E6CH004ADJ_20261118T101236Z_6C62AE7F_REPORT_V1.json",
+          "sha256": "d99cec7ac6b0edb71665eadfd25314bd4eebece0bca9e17f05fa9cf943fa6ebd",
+          "status": "PASS"
+        },
+        "report_sidecar": {
+          "path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e6_ch004_source_pin_adjudication\\E6CH004ADJ_20261118T101236Z_6C62AE7F\\E6CH004ADJ_20261118T101236Z_6C62AE7F_REPORT_V1.json.sha256",
+          "sha256": "d99cec7ac6b0edb71665eadfd25314bd4eebece0bca9e17f05fa9cf943fa6ebd",
+          "status": "PASS"
+        }
+      },
+      "summary": {
+        "e4b_lineage": {
+          "backup_receipt_bindings": [
+            {
+              "backup_path": "artifacts/tests/c11e/e4b_shared_service_integration_overlay/20261107T005116Z-B9D97544/b/05.bak",
+              "expected_absolute_path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_shared_service_integration_overlay\\20261107T005116Z-B9D97544\\b\\05.bak",
+              "expected_sha256": "5c575be1942ba0613d66579d14db5cf9d7786e7062dfb001bd7be8a2e9c18ae5",
+              "receipt_binding": "PASS",
+              "source_path": "tools/c11d/d9/universal_editorial_model.py"
+            },
+            {
+              "backup_path": "artifacts/tests/c11e/e4b_shared_service_integration_overlay/20261107T005116Z-B9D97544/b/01.bak",
+              "expected_absolute_path": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_shared_service_integration_overlay\\20261107T005116Z-B9D97544\\b\\01.bak",
+              "expected_sha256": "348997e575d985fe153a4f433f089c5f205be5d4d8f3853baf07be917a134951",
+              "receipt_binding": "PASS",
+              "source_path": "c11c-suite/c11c-producer/c11e_production_service.py"
+            }
+          ],
+          "backup_run_root": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS\\artifacts\\tests\\c11e\\e4b_shared_service_integration_overlay\\20261107T005116Z-B9D97544",
+          "proofs": [
+            {
+              "bytes": 4810,
+              "path": "tools/c11d/d9/C11E_E4B_SHARED_SERVICE_INTEGRATION_V2_SOURCE_PINS.json",
+              "sha256": "c57c20abab5f58f32174d0b0cbef51d72b5c2ef473812d6d309a962c116df7be",
+              "status": "PASS"
+            },
+            {
+              "bytes": 7914,
+              "path": "tools/c11d/d9/C11E_E4B_SHARED_SERVICE_INTEGRATION_V3_SOURCE_PINS.json",
+              "sha256": "dc97cf4a3361414e46bf5996b1cbdb6adda384853da702104cd6876134e43328",
+              "status": "PASS"
+            },
+            {
+              "bytes": 17021,
+              "path": "artifacts/tests/c11e/e4b_shared_service_integration_recovery_v3/20261107T010101Z-A05C1878/C11E_E4B_SHARED_SERVICE_INTEGRATION_V3_RECOVERY_RECEIPT.json",
+              "sha256": "09f78d97c8797885056882b343e1ee54e3fc2bb75cf2320338c037f6ea893048",
+              "status": "PASS"
+            },
+            {
+              "bytes": 4136,
+              "path": "artifacts/tests/c11e/e4b_shared_service_integration_v3/20261107T010113Z-CCE37AD9/C11E_E4B_SHARED_SERVICE_INTEGRATION_RUN_RECEIPT_V3.json",
+              "sha256": "622ecf63186b17f50dfce23ab699385190d605a48222e5120d647af50a73ceaf",
+              "status": "PASS"
+            }
+          ],
+          "summary": {
+            "post_qualification_change_reasons": {
+              "c11c-suite/c11c-producer/c11e_production_service.py": "E1 shared boundary orchestration for Loop; updates D9 resolver pin and fail-closed approvals/payload hashes",
+              "tools/c11d/d9/universal_editorial_model.py": "Returns explicit D9.9 and D4 compatibility flags and plan state"
+            },
+            "v2_source_patch_manifest_sha256": "c57c20abab5f58f32174d0b0cbef51d72b5c2ef473812d6d309a962c116df7be",
+            "v3_recovery_receipt_sha256": "09f78d97c8797885056882b343e1ee54e3fc2bb75cf2320338c037f6ea893048",
+            "v3_run_created_utc": null,
+            "v3_run_receipt_sha256": "622ecf63186b17f50dfce23ab699385190d605a48222e5120d647af50a73ceaf",
+            "v3_run_status": "PASS_TEST_ONLY_SHARED_LOOP_BOUNDARY_PREPARATION_V3"
+          }
+        },
+        "historical_preimage_count": "2/2",
+        "source_pin_adjudication": [
+          {
+            "backup_actual_bytes": 26574,
+            "backup_actual_sha256": "5c575be1942ba0613d66579d14db5cf9d7786e7062dfb001bd7be8a2e9c18ae5",
+            "current_actual_bytes": 27585,
+            "current_actual_sha256": "dac95fb698b52f96432a517d8ec3196a397e5e6bd3c025300350dd55ddce3afd",
+            "current_source_path": "tools/c11d/d9/universal_editorial_model.py",
+            "current_source_status": "PASS_CURRENT_PIN",
+            "diff_summary": {
+              "current_lines": 483,
+              "old_lines": 471,
+              "top_level_symbol_delta": {
+                "added": [],
+                "modified": [
+                  "build_catalog",
+                  "resolve_editorial_values",
+                  "resolve_selection"
+                ],
+                "removed": []
+              },
+              "unified_diff_added_lines": 13,
+              "unified_diff_removed_lines": 1
+            },
+            "e4b_backup_exists": true,
+            "e4b_backup_path": "artifacts/tests/c11e/e4b_shared_service_integration_overlay/20261107T005116Z-B9D97544/b/05.bak",
+            "expected_current_bytes": 27585,
+            "expected_current_sha256": "dac95fb698b52f96432a517d8ec3196a397e5e6bd3c025300350dd55ddce3afd",
+            "historical_e4a7_bytes": 26574,
+            "historical_e4a7_sha256": "5c575be1942ba0613d66579d14db5cf9d7786e7062dfb001bd7be8a2e9c18ae5",
+            "historical_preimage_status": "EXACT_SHA256_AND_BYTES_MATCH",
+            "post_qualification_e4b_change_reason": "Returns explicit D9.9 and D4 compatibility flags and plan state",
+            "source_path": "tools/c11d/d9/universal_editorial_model.py"
+          },
+          {
+            "backup_actual_bytes": 32885,
+            "backup_actual_sha256": "348997e575d985fe153a4f433f089c5f205be5d4d8f3853baf07be917a134951",
+            "current_actual_bytes": 86687,
+            "current_actual_sha256": "e5dbf9baa72d4c066ff8ba24006df954700d72a5b0f11f9f88aec653e84dce87",
+            "current_source_path": "c11c-suite/c11c-producer/c11e_production_service.py",
+            "current_source_status": "PASS_CURRENT_PIN",
+            "diff_summary": {
+              "current_lines": 1437,
+              "old_lines": 657,
+              "top_level_symbol_delta": {
+                "added": [
+                  "_assert_loop_operator_approvals",
+                  "_drill_source_text",
+                  "_load_d9_boundary_module",
+                  "_prepare_drill_family_boundary",
+                  "_prepare_loop_family_boundary",
+                  "_resolve_a3_review_manifest_lineage"
+                ],
+                "modified": [
+                  "_source_identity",
+                  "prepare_c11e_production_intent",
+                  "validate_c11e_production_intent"
+                ],
+                "removed": []
+              },
+              "unified_diff_added_lines": 793,
+              "unified_diff_removed_lines": 13
+            },
+            "e4b_backup_exists": true,
+            "e4b_backup_path": "artifacts/tests/c11e/e4b_shared_service_integration_overlay/20261107T005116Z-B9D97544/b/01.bak",
+            "expected_current_bytes": 86687,
+            "expected_current_sha256": "e5dbf9baa72d4c066ff8ba24006df954700d72a5b0f11f9f88aec653e84dce87",
+            "historical_e4a7_bytes": 32885,
+            "historical_e4a7_sha256": "348997e575d985fe153a4f433f089c5f205be5d4d8f3853baf07be917a134951",
+            "historical_preimage_status": "EXACT_SHA256_AND_BYTES_MATCH",
+            "post_qualification_e4b_change_reason": "E1 shared boundary orchestration for Loop; updates D9 resolver pin and fail-closed approvals/payload hashes",
+            "source_path": "c11c-suite/c11c-producer/c11e_production_service.py"
+          }
+        ],
+        "status": "PASS_HISTORICAL_PREIMAGES_RECOVERED_REVIEW_REQUIRED"
+      }
+    },
+    "v2_reconciliation": {
+      "proof": {
+        "bytes": 22701,
+        "path": "artifacts/tests/c11e/e6_d9_dependency_pin_reconciliation/E6D9PINREC_20261118T094345Z_2B9358D1/E6D9PINREC_20261118T094345Z_2B9358D1_REPORT_V1.json",
+        "sha256": "0e2c977f1122d9cfc69da255d8fa539720a23f00cdc2f4c030d48bd01019a59a",
+        "status": "PASS"
+      },
+      "summary": {
+        "counts": {
+          "accepted_source_pins": "33/33",
+          "additional_route_dependencies": "9/9",
+          "ch004_observed_current_hashes": "2/2",
+          "fixed_evidence_pins": "13/13"
+        },
+        "hydration": {
+          "check_count": 1803,
+          "failed_checks": 2,
+          "failure_categories": {
+            "historical_source_pin_divergence": 2,
+            "other_failures": 0
+          },
+          "historical_divergences": [
+            {
+              "actual_sha256": "dac95fb698b52f96432a517d8ec3196a397e5e6bd3c025300350dd55ddce3afd",
+              "disposition": "REQUIRES_READ_ONLY_SOURCE_DRIFT_ADJUDICATION_NO_AUTO_WAIVER",
+              "expected_sha256": "5c575be1942ba0613d66579d14db5cf9d7786e7062dfb001bd7be8a2e9c18ae5",
+              "json_pointer": "$.source_pins.d9_editorial.path",
+              "path": "tools/c11d/d9/universal_editorial_model.py"
+            },
+            {
+              "actual_sha256": "e5dbf9baa72d4c066ff8ba24006df954700d72a5b0f11f9f88aec653e84dce87",
+              "disposition": "REQUIRES_READ_ONLY_SOURCE_DRIFT_ADJUDICATION_NO_AUTO_WAIVER",
+              "expected_sha256": "348997e575d985fe153a4f433f089c5f205be5d4d8f3853baf07be917a134951",
+              "json_pointer": "$.source_pins.e1_service.path",
+              "path": "c11c-suite/c11c-producer/c11e_production_service.py"
+            }
+          ],
+          "passed_checks": 1801,
+          "run_id": "E6HYDRATE_20261118T073344Z_1A9D7C52",
+          "status": "BLOCKED_E6_REUSE_EVIDENCE_INCOMPLETE"
+        },
+        "status": "PASS_DEPENDENCY_PIN_RECONCILIATION_EXECUTION_HELD"
+      }
+    }
+  },
+  "ffmpeg_invoked": false,
+  "ffprobe_invoked": false,
+  "git_checks": "SKIPPED",
+  "godot_invoked": false,
+  "historical_preimages_restored": false,
+  "media_created": false,
+  "media_invoked": false,
+  "mux_invoked": false,
+  "project_root": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+  "release_authority": "NONE",
+  "renderer": "OFF",
+  "run_id": "E6CH004SEM_20261118T113817Z_462AEF1F",
+  "schema": "C11E-E6-CH004-SEMANTIC-NONINTERFERENCE-REVIEW-V3",
+  "schema_version": "3.0",
+  "source_file_pins": "ENFORCED",
+  "source_files_modified": false,
+  "status": "PASS_CH004_SEMANTIC_NONINTERFERENCE_CONFIRMED_REQUIRES_E6_LEDGER_REQUALIFICATION"
+}

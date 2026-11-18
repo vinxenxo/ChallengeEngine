@@ -1,0 +1,455 @@
+{
+  "accepted_33_source_pin_checks": [
+    {
+      "actual_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+      "expected_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "status": "PASS"
+    },
+    {
+      "actual_sha256": "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+      "expected_sha256": "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+      "path": "definitions/c11d/production/C11E_D4_8_R1V_QUALIFICATION_ONLY_POLICY_V2.json",
+      "status": "PASS"
+    },
+    {
+      "actual_sha256": "054ed52aefe45cc4d986c4621adbbdb6ca7cf36dc1c4a12cbd76238de86e21fd",
+      "expected_sha256": "054ed52aefe45cc4d986c4621adbbdb6ca7cf36dc1c4a12cbd76238de86e21fd",
+      "path": "artifacts/tests/c11e/e6_smoke18_audit/E6AUDITV2_20261116T235057Z_B7FA0492/E6_SMOKE18_READONLY_AUDIT_RECEIPT_V2.json",
+      "status": "PASS"
+    },
+    {
+      "actual_sha256": "764629384896a255cf992da89fa427c19f60f9b2e623b81ad17d909674b466b5",
+      "expected_sha256": "764629384896a255cf992da89fa427c19f60f9b2e623b81ad17d909674b466b5",
+      "path": "definitions/c11d/production/C11E_E4A_CHALLENGE_EDITORIAL_PRESENTATION_POLICY_APPROVAL_V1.json",
+      "status": "PASS"
+    },
+    {
+      "actual_sha256": "3a8e7bfc13a369acaf9d5abe9583f3e93e0990a3b1262b8a839e81ee873c6461",
+      "expected_sha256": "3a8e7bfc13a369acaf9d5abe9583f3e93e0990a3b1262b8a839e81ee873c6461",
+      "path": "docs/current/d/D1.5_PLATFORM_LAYOUT_TEMPLATE_CONTRACT.md",
+      "status": "PASS"
+    },
+    {
+      "actual_sha256": "eba81fff4c24ca75033c8f963665df1961136046c41fee0e88681fe55a631203",
+      "expected_sha256": "eba81fff4c24ca75033c8f963665df1961136046c41fee0e88681fe55a631203",
+      "path": "tools/c11d/d9/C11EChallengeLiveEditorialConsumer.gd",
+      "status": "PASS"
+    },
+    {
+      "actual_sha256": "9ea0219f681a912760de3bcdf2469f8a3812a7afe7fb3f5ac569664f354ac18e",
+      "expected_sha256": "9ea0219f681a912760de3bcdf2469f8a3812a7afe7fb3f5ac569664f354ac18e",
+      "path": "tools/c11d/d9/c11e_e4a6_challenge_live_editorial_envelope.py",
+      "status": "PASS"
+    },
+    {
+      "actual_sha256": "a31083dcad457b2621610ae68d180a9797cdeb12537a300150e53ec880ee06de",
+      "expected_sha256": "a31083dcad457b2621610ae68d180a9797cdeb12537a300150e53ec880ee06de",
+      "path": "tools/c11d/d9/c11e_e4a_challenge_av_review.py",
+      "status": "PASS"
+    },
+    {
+      "actual_sha256": "46b087683a3dcb460601c925373b84e390999d44d73141328285e6c8a633ba5d",
+      "expected_sha256": "46b087683a3dcb460601c925373b84e390999d44d73141328285e6c8a633ba5d",
+      "path": "c11c-suite/c11c-producer/c11e_e3_audio_pipeline.py",
+      "status": "PASS"
+    },
+    {
+      "actual_sha256": "564f11fb4fee9221910dc373550650172eda4f106d6dc25532cc43cb8e6314a0",
+      "expected_sha256": "564f11fb4fee9221910dc373550650172eda4f106d6dc25532cc43cb8e6314a0",
+      "path": "c11c-suite/c11c-producer/producer_schema.json",
+      "status": "PASS"
+    },
+    {
+      "actual_sha256": "e5dbf9baa72d4c066ff8ba24006df954700d72a5b0f11f9f88aec653e84dce87",
+      "expected_sha256": "e5dbf9baa72d4c066ff8ba24006df954700d72a5b0f11f9f88aec653e84dce87",
+      "path": "c11c-suite/c11c-producer/c11e_production_service.py",
+      "status": "PASS"
+    },
+    {
+      "actual_sha256": "102cf07a0b8920318c3ba211a3bd4374c3e080018486363d701f81e65613aaa0",
+      "expected_sha256": "102cf07a0b8920318c3ba211a3bd4374c3e080018486363d701f81e65613aaa0",
+      "path": "artifacts/tests/c11e/e4a_d_composited_av_review/RUN_20261106T070808Z-62F31F9C/C11E_E4A7_D_COMPOSITED_CHALLENGE_AV_RECEIPT.json",
+      "status": "PASS"
+    },
+    {
+      "actual_sha256": "d42782e8f5bb94ff0ede653a1c4624dc91541cc8203abf136b09a8fc288a7d82",
+      "expected_sha256": "d42782e8f5bb94ff0ede653a1c4624dc91541cc8203abf136b09a8fc288a7d82",
+      "path": "GeneradorMaestro.gd",
+      "status": "PASS"
+    },
+    {
+      "actual_sha256": "ec8925fa5b4ab996a791c8cf7f5b139470774720f57880c5b01b2d0aa5b57bea",
+      "expected_sha256": "ec8925fa5b4ab996a791c8cf7f5b139470774720f57880c5b01b2d0aa5b57bea",
+      "path": "challenges/CHALLENGE_001.json",
+      "status": "PASS"
+    },
+    {
+      "actual_sha256": "db5d70a28c460e986e785c6787447529372ac5ea3b5a7ff0507667decbe2a160",
+      "expected_sha256": "db5d70a28c460e986e785c6787447529372ac5ea3b5a7ff0507667decbe2a160",
+      "path": "challenges/CHALLENGE_002.json",
+      "status": "PASS"
+    },
+    {
+      "actual_sha256": "38cb0166482c5ba4862deef8ab75dad4a6e1524590b6850312bab5238f078419",
+      "expected_sha256": "38cb0166482c5ba4862deef8ab75dad4a6e1524590b6850312bab5238f078419",
+      "path": "challenges/CHALLENGE_003.json",
+      "status": "PASS"
+    },
+    {
+      "actual_sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71",
+      "expected_sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71",
+      "path": "challenges/CHALLENGE_004.json",
+      "status": "PASS"
+    },
+    {
+      "actual_sha256": "e173736fcbb0e340cd250be1111fa9d38489934d55cc0e0c93835c66f9596e30",
+      "expected_sha256": "e173736fcbb0e340cd250be1111fa9d38489934d55cc0e0c93835c66f9596e30",
+      "path": "challenges/CHALLENGE_005.json",
+      "status": "PASS"
+    },
+    {
+      "actual_sha256": "2d7d7397cbb0a2109f300859a5d7c0830ded0553522a5120f61750f5bc0b5694",
+      "expected_sha256": "2d7d7397cbb0a2109f300859a5d7c0830ded0553522a5120f61750f5bc0b5694",
+      "path": "challenges/CHALLENGE_006.json",
+      "status": "PASS"
+    },
+    {
+      "actual_sha256": "269f9588e5a6b7d253e2e944440cc41dc3a9db8967775ffa819edebe729a3a61",
+      "expected_sha256": "269f9588e5a6b7d253e2e944440cc41dc3a9db8967775ffa819edebe729a3a61",
+      "path": "challenges/CHALLENGE_007.json",
+      "status": "PASS"
+    },
+    {
+      "actual_sha256": "d17568882eb63ba2eb48649cb9cd46edafe122d72c0c5ed29275e79b8d6d5846",
+      "expected_sha256": "d17568882eb63ba2eb48649cb9cd46edafe122d72c0c5ed29275e79b8d6d5846",
+      "path": "tools/c11d/d9/c11e_challenge_editorial_presentation_adapter.gd",
+      "status": "PASS"
+    },
+    {
+      "actual_sha256": "a81ac55ec6ff5f0222c744c9e23f0f140141ca63e35a41df22e3d87c92fe3e64",
+      "expected_sha256": "a81ac55ec6ff5f0222c744c9e23f0f140141ca63e35a41df22e3d87c92fe3e64",
+      "path": "tools/c11d/d9/c11e_e6_challenge_plan_only_v1.py",
+      "status": "PASS"
+    },
+    {
+      "actual_sha256": "a0bc94acfe5c932bae4516b4822ef94ec5c6ee70d16d16d473ad75fc808dd2e8",
+      "expected_sha256": "a0bc94acfe5c932bae4516b4822ef94ec5c6ee70d16d16d473ad75fc808dd2e8",
+      "path": "tools/c11d/d9/test_c11e_e6_challenge_plan_only_v1.py",
+      "status": "PASS"
+    },
+    {
+      "actual_sha256": "866a3e584356c8a01f5d00a1dbe7df537ceb4d0e0f81512b5d3e393bb04d5c45",
+      "expected_sha256": "866a3e584356c8a01f5d00a1dbe7df537ceb4d0e0f81512b5d3e393bb04d5c45",
+      "path": "tools/c11d/d9/RUN_C11E_E6_CHALLENGE_PLAN_ONLY_V1.ps1",
+      "status": "PASS"
+    },
+    {
+      "actual_sha256": "d20b0f275c58a34881420705bb1990564d719427c550478c434345ced72805d3",
+      "expected_sha256": "d20b0f275c58a34881420705bb1990564d719427c550478c434345ced72805d3",
+      "path": "project.godot",
+      "status": "PASS"
+    },
+    {
+      "actual_sha256": "5271714b9a5c31aeda1d7347347f1429ca37a48c081e59e6ec42383626731de7",
+      "expected_sha256": "5271714b9a5c31aeda1d7347347f1429ca37a48c081e59e6ec42383626731de7",
+      "path": "Main.tscn",
+      "status": "PASS"
+    },
+    {
+      "actual_sha256": "79099cbb5fea9d9c5c519370b1c56d72c8394db14e9adf5b0bb744410e507c13",
+      "expected_sha256": "79099cbb5fea9d9c5c519370b1c56d72c8394db14e9adf5b0bb744410e507c13",
+      "path": "core/authoring/ChallengeMigrationAdapter.gd",
+      "status": "PASS"
+    },
+    {
+      "actual_sha256": "35a47ad126a2e11577933a03b251f47732e580693e5c08e45d3b6af047c8c9af",
+      "expected_sha256": "35a47ad126a2e11577933a03b251f47732e580693e5c08e45d3b6af047c8c9af",
+      "path": "core/execution/ChallengeTimelineBuilder.gd",
+      "status": "PASS"
+    },
+    {
+      "actual_sha256": "a0276e86ac27389f4abd0d5cd9b998e97a32162de44e2f917d7158255892ce71",
+      "expected_sha256": "a0276e86ac27389f4abd0d5cd9b998e97a32162de44e2f917d7158255892ce71",
+      "path": "core/authoring/ChallengeTimeLiine.gd",
+      "status": "PASS"
+    },
+    {
+      "actual_sha256": "f076e9090c3d13be63b7ccda91a5861576a4d32eb673380a95272b3b3fa27966",
+      "expected_sha256": "f076e9090c3d13be63b7ccda91a5861576a4d32eb673380a95272b3b3fa27966",
+      "path": "core/authoring/TemporalCore.gd",
+      "status": "PASS"
+    },
+    {
+      "actual_sha256": "d7c1c50f505853ebef376b75ac8ef675a4bab24d6733c96bc14a00db0d3904c4",
+      "expected_sha256": "d7c1c50f505853ebef376b75ac8ef675a4bab24d6733c96bc14a00db0d3904c4",
+      "path": "core/validation/ChallengeDefinitionValidator.gd",
+      "status": "PASS"
+    },
+    {
+      "actual_sha256": "187b1cf8ab96b9031785a0f36b0054a60383c97cb3d81906c7d9bbcd373bef24",
+      "expected_sha256": "187b1cf8ab96b9031785a0f36b0054a60383c97cb3d81906c7d9bbcd373bef24",
+      "path": "core/presentation/PresentationProfile.gd",
+      "status": "PASS"
+    },
+    {
+      "actual_sha256": "486191d276b4dbc62acc1ff43121ddb5eca8a74e0f22e270b5c429694f83ad49",
+      "expected_sha256": "486191d276b4dbc62acc1ff43121ddb5eca8a74e0f22e270b5c429694f83ad49",
+      "path": "core/validation/PresentationProfileValidator.gd",
+      "status": "PASS"
+    }
+  ],
+  "blockers": [],
+  "ch004_historical_divergence_observation_checks": [
+    {
+      "actual_sha256": "dac95fb698b52f96432a517d8ec3196a397e5e6bd3c025300350dd55ddce3afd",
+      "expected_observed_current_sha256": "dac95fb698b52f96432a517d8ec3196a397e5e6bd3c025300350dd55ddce3afd",
+      "path": "tools/c11d/d9/universal_editorial_model.py",
+      "status": "PASS"
+    },
+    {
+      "actual_sha256": "e5dbf9baa72d4c066ff8ba24006df954700d72a5b0f11f9f88aec653e84dce87",
+      "expected_observed_current_sha256": "e5dbf9baa72d4c066ff8ba24006df954700d72a5b0f11f9f88aec653e84dce87",
+      "path": "c11c-suite/c11c-producer/c11e_production_service.py",
+      "status": "PASS"
+    }
+  ],
+  "ch004_historical_source_pin_disposition": {
+    "c11c-suite/c11c-producer/c11e_production_service.py": {
+      "disposition": "HISTORICAL_E4A7_PIN_SUPERSEDED_BY_LATER_ACCEPTED_33_PIN_BASELINE_BUT_REUSE_NOT_AUTO_ACCEPTED",
+      "historical_expected_sha256": "348997e575d985fe153a4f433f089c5f205be5d4d8f3853baf07be917a134951",
+      "hydration_observed_sha256": "e5dbf9baa72d4c066ff8ba24006df954700d72a5b0f11f9f88aec653e84dce87"
+    },
+    "tools/c11d/d9/universal_editorial_model.py": {
+      "disposition": "UNRESOLVED_HISTORICAL_E4A7_PIN_DIVERGENCE_NO_AUTO_WAIVER",
+      "historical_expected_sha256": "5c575be1942ba0613d66579d14db5cf9d7786e7062dfb001bd7be8a2e9c18ae5",
+      "hydration_observed_sha256": "dac95fb698b52f96432a517d8ec3196a397e5e6bd3c025300350dd55ddce3afd"
+    }
+  },
+  "counts": {
+    "accepted_source_pins": "33/33",
+    "additional_route_dependencies": "9/9",
+    "ch004_observed_current_hashes": "2/2",
+    "fixed_evidence_pins": "13/13"
+  },
+  "created_utc": "2026-11-18T09:43:45.937877+00:00",
+  "d9_plan_reconciliation": {
+    "historical_ch004_blocker_present": true,
+    "linked_d_envelopes": 18,
+    "linked_e1_intents": 18,
+    "receipt_status": "PASS_D9_MULTISELECTOR_CAPTURE_GROUP_PLAN_READY_EXECUTION_HELD",
+    "selected_challenge_groups": 6,
+    "stale_nine_dependency_blocker_present": true
+  },
+  "disposition": "The nine route dependencies are superseded by the later accepted 33-pin receipt only when all 33 live hashes pass. This does not waive the two CH004 historical nested source-pin divergences, does not accept CH004 reuse, and does not authorize E6 media execution.",
+  "fixed_evidence_checks": [
+    {
+      "actual_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+      "bytes": 796318,
+      "expected_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+      "id": "frozen_manifest",
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "status": "PASS"
+    },
+    {
+      "actual_sha256": "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+      "bytes": 12996,
+      "expected_sha256": "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+      "id": "d4_8_policy",
+      "path": "definitions/c11d/production/C11E_D4_8_R1V_QUALIFICATION_ONLY_POLICY_V2.json",
+      "status": "PASS"
+    },
+    {
+      "actual_sha256": "41c62276465803dfb289a91b8a7f74c9b57c213dbad64c1323d6f626e3b2edd0",
+      "bytes": 25812,
+      "expected_sha256": "41c62276465803dfb289a91b8a7f74c9b57c213dbad64c1323d6f626e3b2edd0",
+      "id": "dependency_pin_receipt",
+      "path": "artifacts/tests/c11e/e6_runtime_dependency_pin_acceptance/E6DEPPINACCEPT_20261117T141326Z_C980FF81/E6_RUNTIME_DEPENDENCY_PIN_ACCEPTANCE_RECEIPT_V1.json",
+      "status": "PASS"
+    },
+    {
+      "actual_sha256": "8deb1c23022ecde3f0b66e7ff07778172adecbd6e6a7f6ec045f6698657b4190",
+      "bytes": 34308,
+      "expected_sha256": "8deb1c23022ecde3f0b66e7ff07778172adecbd6e6a7f6ec045f6698657b4190",
+      "id": "route_audit_receipt",
+      "path": "artifacts/tests/c11e/e6_challenge_capture_route_audit/E6ROUTEAUDIT_20261117T125614Z_54A34DBA/E6_CHALLENGE_CAPTURE_ROUTE_AUDIT_RECEIPT_V1.json",
+      "status": "PASS"
+    },
+    {
+      "actual_sha256": "144470d16a222a1f01f0b7a9edec699af18d18bac614f7db938021e1acc0db2d",
+      "bytes": 25857,
+      "expected_sha256": "144470d16a222a1f01f0b7a9edec699af18d18bac614f7db938021e1acc0db2d",
+      "id": "d9_plan_manifest",
+      "path": "artifacts/tests/c11e/e6_d9_capture_orchestration_prepare_only/E6CAPPLAN_20261118T082416Z_68342FCD/E6_D9_CAPTURE_ORCHESTRATION_PREPARE_ONLY_MANIFEST_V1.json",
+      "status": "PASS"
+    },
+    {
+      "actual_sha256": "2233fcda43861d7c2bf1d933f1270b84976d315b6f2439bb46d1d2e237653b74",
+      "bytes": 1047,
+      "expected_sha256": "2233fcda43861d7c2bf1d933f1270b84976d315b6f2439bb46d1d2e237653b74",
+      "id": "d9_plan_receipt",
+      "path": "artifacts/tests/c11e/e6_d9_capture_orchestration_prepare_only/E6CAPPLAN_20261118T082416Z_68342FCD/E6_D9_CAPTURE_ORCHESTRATION_PREPARE_ONLY_RECEIPT_V1.json",
+      "status": "PASS"
+    },
+    {
+      "actual_sha256": "054ed52aefe45cc4d986c4621adbbdb6ca7cf36dc1c4a12cbd76238de86e21fd",
+      "bytes": 31417,
+      "expected_sha256": "054ed52aefe45cc4d986c4621adbbdb6ca7cf36dc1c4a12cbd76238de86e21fd",
+      "id": "e6_smoke18_audit_receipt",
+      "path": "artifacts/tests/c11e/e6_smoke18_audit/E6AUDITV2_20261116T235057Z_B7FA0492/E6_SMOKE18_READONLY_AUDIT_RECEIPT_V2.json",
+      "status": "PASS"
+    },
+    {
+      "actual_sha256": "11f0eeba941f4740759132b3ba984eecf80c68a69aad27fe605a81a4ff8f5a77",
+      "bytes": 880211,
+      "expected_sha256": "11f0eeba941f4740759132b3ba984eecf80c68a69aad27fe605a81a4ff8f5a77",
+      "id": "hydration_v2_report",
+      "path": "artifacts/tests/c11e/e6_reuse_evidence_hydration_v2/E6HYDRATE_20261118T073344Z_1A9D7C52/E6HYDRATE_20261118T073344Z_1A9D7C52_REPORT_V2.json",
+      "status": "PASS"
+    },
+    {
+      "actual_content": "41c62276465803dfb289a91b8a7f74c9b57c213dbad64c1323d6f626e3b2edd0  E6_RUNTIME_DEPENDENCY_PIN_ACCEPTANCE_RECEIPT_V1.json",
+      "expected_content": "41c62276465803dfb289a91b8a7f74c9b57c213dbad64c1323d6f626e3b2edd0  E6_RUNTIME_DEPENDENCY_PIN_ACCEPTANCE_RECEIPT_V1.json",
+      "id": "sidecar",
+      "path": "artifacts/tests/c11e/e6_runtime_dependency_pin_acceptance/E6DEPPINACCEPT_20261117T141326Z_C980FF81/E6_RUNTIME_DEPENDENCY_PIN_ACCEPTANCE_RECEIPT_V1.json.sha256",
+      "status": "PASS"
+    },
+    {
+      "actual_content": "8deb1c23022ecde3f0b66e7ff07778172adecbd6e6a7f6ec045f6698657b4190  E6_CHALLENGE_CAPTURE_ROUTE_AUDIT_RECEIPT_V1.json",
+      "expected_content": "8deb1c23022ecde3f0b66e7ff07778172adecbd6e6a7f6ec045f6698657b4190  E6_CHALLENGE_CAPTURE_ROUTE_AUDIT_RECEIPT_V1.json",
+      "id": "sidecar",
+      "path": "artifacts/tests/c11e/e6_challenge_capture_route_audit/E6ROUTEAUDIT_20261117T125614Z_54A34DBA/E6_CHALLENGE_CAPTURE_ROUTE_AUDIT_RECEIPT_V1.json.sha256",
+      "status": "PASS"
+    },
+    {
+      "actual_content": "144470d16a222a1f01f0b7a9edec699af18d18bac614f7db938021e1acc0db2d  E6_D9_CAPTURE_ORCHESTRATION_PREPARE_ONLY_MANIFEST_V1.json",
+      "expected_content": "144470d16a222a1f01f0b7a9edec699af18d18bac614f7db938021e1acc0db2d  E6_D9_CAPTURE_ORCHESTRATION_PREPARE_ONLY_MANIFEST_V1.json",
+      "id": "sidecar",
+      "path": "artifacts/tests/c11e/e6_d9_capture_orchestration_prepare_only/E6CAPPLAN_20261118T082416Z_68342FCD/E6_D9_CAPTURE_ORCHESTRATION_PREPARE_ONLY_MANIFEST_V1.json.sha256",
+      "status": "PASS"
+    },
+    {
+      "actual_content": "2233fcda43861d7c2bf1d933f1270b84976d315b6f2439bb46d1d2e237653b74  E6_D9_CAPTURE_ORCHESTRATION_PREPARE_ONLY_RECEIPT_V1.json",
+      "expected_content": "2233fcda43861d7c2bf1d933f1270b84976d315b6f2439bb46d1d2e237653b74  E6_D9_CAPTURE_ORCHESTRATION_PREPARE_ONLY_RECEIPT_V1.json",
+      "id": "sidecar",
+      "path": "artifacts/tests/c11e/e6_d9_capture_orchestration_prepare_only/E6CAPPLAN_20261118T082416Z_68342FCD/E6_D9_CAPTURE_ORCHESTRATION_PREPARE_ONLY_RECEIPT_V1.json.sha256",
+      "status": "PASS"
+    },
+    {
+      "actual_content": "11f0eeba941f4740759132b3ba984eecf80c68a69aad27fe605a81a4ff8f5a77  E6HYDRATE_20261118T073344Z_1A9D7C52_REPORT_V2.json",
+      "expected_content": "11f0eeba941f4740759132b3ba984eecf80c68a69aad27fe605a81a4ff8f5a77  E6HYDRATE_20261118T073344Z_1A9D7C52_REPORT_V2.json",
+      "id": "sidecar",
+      "path": "artifacts/tests/c11e/e6_reuse_evidence_hydration_v2/E6HYDRATE_20261118T073344Z_1A9D7C52/E6HYDRATE_20261118T073344Z_1A9D7C52_REPORT_V2.json.sha256",
+      "status": "PASS"
+    }
+  ],
+  "governance": {
+    "audio_generated": false,
+    "batch_id_consumed": false,
+    "d4_8_overridden": false,
+    "d4_8_policy_sha256": "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+    "e6_test_only_authorization": "NOT_GRANTED_BY_THIS_AUDIT_GOVERNANCE_REVIEW_REQUIRED",
+    "ffmpeg_invoked": false,
+    "ffprobe_invoked": false,
+    "frozen_c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "godot_invoked": false,
+    "media_created": false,
+    "mux_invoked": false,
+    "production_dispatch": false,
+    "release_authority": "NONE",
+    "renderer_enabled": false
+  },
+  "hydration_v2_reconciliation": {
+    "check_count": 1803,
+    "failed_checks": 2,
+    "failure_categories": {
+      "historical_source_pin_divergence": 2,
+      "other_failures": 0
+    },
+    "historical_divergences": [
+      {
+        "actual_sha256": "dac95fb698b52f96432a517d8ec3196a397e5e6bd3c025300350dd55ddce3afd",
+        "disposition": "REQUIRES_READ_ONLY_SOURCE_DRIFT_ADJUDICATION_NO_AUTO_WAIVER",
+        "expected_sha256": "5c575be1942ba0613d66579d14db5cf9d7786e7062dfb001bd7be8a2e9c18ae5",
+        "json_pointer": "$.source_pins.d9_editorial.path",
+        "path": "tools/c11d/d9/universal_editorial_model.py"
+      },
+      {
+        "actual_sha256": "e5dbf9baa72d4c066ff8ba24006df954700d72a5b0f11f9f88aec653e84dce87",
+        "disposition": "REQUIRES_READ_ONLY_SOURCE_DRIFT_ADJUDICATION_NO_AUTO_WAIVER",
+        "expected_sha256": "348997e575d985fe153a4f433f089c5f205be5d4d8f3853baf07be917a134951",
+        "json_pointer": "$.source_pins.e1_service.path",
+        "path": "c11c-suite/c11c-producer/c11e_production_service.py"
+      }
+    ],
+    "passed_checks": 1801,
+    "run_id": "E6HYDRATE_20261118T073344Z_1A9D7C52",
+    "status": "BLOCKED_E6_REUSE_EVIDENCE_INCOMPLETE"
+  },
+  "project_root": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+  "route_dependency_reconciliation": {
+    "expected": 9,
+    "matched": 9,
+    "rows": [
+      {
+        "accepted_pin_sha256": "d20b0f275c58a34881420705bb1990564d719427c550478c434345ced72805d3",
+        "observed_sha256": "d20b0f275c58a34881420705bb1990564d719427c550478c434345ced72805d3",
+        "path": "project.godot",
+        "status": "ACCEPTED_MATCH"
+      },
+      {
+        "accepted_pin_sha256": "5271714b9a5c31aeda1d7347347f1429ca37a48c081e59e6ec42383626731de7",
+        "observed_sha256": "5271714b9a5c31aeda1d7347347f1429ca37a48c081e59e6ec42383626731de7",
+        "path": "Main.tscn",
+        "status": "ACCEPTED_MATCH"
+      },
+      {
+        "accepted_pin_sha256": "79099cbb5fea9d9c5c519370b1c56d72c8394db14e9adf5b0bb744410e507c13",
+        "observed_sha256": "79099cbb5fea9d9c5c519370b1c56d72c8394db14e9adf5b0bb744410e507c13",
+        "path": "core/authoring/ChallengeMigrationAdapter.gd",
+        "status": "ACCEPTED_MATCH"
+      },
+      {
+        "accepted_pin_sha256": "35a47ad126a2e11577933a03b251f47732e580693e5c08e45d3b6af047c8c9af",
+        "observed_sha256": "35a47ad126a2e11577933a03b251f47732e580693e5c08e45d3b6af047c8c9af",
+        "path": "core/execution/ChallengeTimelineBuilder.gd",
+        "status": "ACCEPTED_MATCH"
+      },
+      {
+        "accepted_pin_sha256": "a0276e86ac27389f4abd0d5cd9b998e97a32162de44e2f917d7158255892ce71",
+        "observed_sha256": "a0276e86ac27389f4abd0d5cd9b998e97a32162de44e2f917d7158255892ce71",
+        "path": "core/authoring/ChallengeTimeLiine.gd",
+        "status": "ACCEPTED_MATCH"
+      },
+      {
+        "accepted_pin_sha256": "f076e9090c3d13be63b7ccda91a5861576a4d32eb673380a95272b3b3fa27966",
+        "observed_sha256": "f076e9090c3d13be63b7ccda91a5861576a4d32eb673380a95272b3b3fa27966",
+        "path": "core/authoring/TemporalCore.gd",
+        "status": "ACCEPTED_MATCH"
+      },
+      {
+        "accepted_pin_sha256": "d7c1c50f505853ebef376b75ac8ef675a4bab24d6733c96bc14a00db0d3904c4",
+        "observed_sha256": "d7c1c50f505853ebef376b75ac8ef675a4bab24d6733c96bc14a00db0d3904c4",
+        "path": "core/validation/ChallengeDefinitionValidator.gd",
+        "status": "ACCEPTED_MATCH"
+      },
+      {
+        "accepted_pin_sha256": "187b1cf8ab96b9031785a0f36b0054a60383c97cb3d81906c7d9bbcd373bef24",
+        "observed_sha256": "187b1cf8ab96b9031785a0f36b0054a60383c97cb3d81906c7d9bbcd373bef24",
+        "path": "core/presentation/PresentationProfile.gd",
+        "status": "ACCEPTED_MATCH"
+      },
+      {
+        "accepted_pin_sha256": "486191d276b4dbc62acc1ff43121ddb5eca8a74e0f22e270b5c429694f83ad49",
+        "observed_sha256": "486191d276b4dbc62acc1ff43121ddb5eca8a74e0f22e270b5c429694f83ad49",
+        "path": "core/validation/PresentationProfileValidator.gd",
+        "status": "ACCEPTED_MATCH"
+      }
+    ],
+    "status": "PASS_9_OF_9_ALREADY_ACCEPTED"
+  },
+  "run_id": "E6D9PINREC_20261118T094345Z_2B9358D1",
+  "schema": "C11E-E6-D9-DEPENDENCY-PIN-RECONCILIATION-REPORT-V1",
+  "schema_version": "1.0",
+  "status": "PASS_DEPENDENCY_PIN_RECONCILIATION_EXECUTION_HELD"
+}

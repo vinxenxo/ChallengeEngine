@@ -1,0 +1,5 @@
+# C11-E First Prompt — V7
+
+Continue from the active Windows checkout `C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS`. Read the latest E6 CH004 semantic review V3 and Master Handover V7. The V3 run passed install/permission preflight and 26/26 tests but its audit allowlist incorrectly rejected two exact Loop/Drill request_plan_compatibility classifications in addition to the four expected flags; Challenge declaration remained identical. V4 adds uniquely named runner/test files, exact six-difference validation and report-aware PowerShell handling. Do not rerun V2/V3 installers or accepted E4 media.
+
+After V4 semantic PASS, CH004 is eligible for Smoke18 ledger requalification only. Reconcile exact nested receipts/hashes for CH004, six accepted Loop candidates and six Drill candidates, then prove the six-selector Challenge orchestration in PREPARE_ONLY. Preserve C11-C/D4.8, no Git checks, commits operator-managed. D4.8 remains BLOCKED; no media/render until separate E6 TEST_ONLY authorization resolves it.
