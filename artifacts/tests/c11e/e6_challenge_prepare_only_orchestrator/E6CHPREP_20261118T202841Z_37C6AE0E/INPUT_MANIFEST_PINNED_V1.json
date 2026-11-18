@@ -1,0 +1,273 @@
+{
+  "schema": "C11E-E6-CHALLENGE-PREPARE-ONLY-INPUT-MANIFEST-V1",
+  "schema_version": "1.0",
+  "status": "DRAFT_PLAN_ONLY_NOT_FROZEN_NOT_EXECUTION_AUTHORITY",
+  "selection": {
+    "decision": "PROPOSAL_NOT_FROZEN",
+    "candidate_selectors": [
+      "CHALLENGE_001",
+      "CHALLENGE_002",
+      "CHALLENGE_003",
+      "CHALLENGE_004",
+      "CHALLENGE_005",
+      "CHALLENGE_006",
+      "CHALLENGE_007"
+    ],
+    "excluded_selectors": [
+      {
+        "selector": "CHALLENGE_003",
+        "reason": "RNG-isolation pilot duplicates the selected CHALLENGE_004 gameplay seed; exclusion remains proposal-level."
+      },
+      {
+        "selector": "CHALLENGE_008",
+        "reason": "Held pending declared 11-second versus 12-second phase-sum discrepancy."
+      },
+      {
+        "selector": "CHALLENGE_009",
+        "reason": "Held pending declared 11-second versus 12-second phase-sum discrepancy."
+      }
+    ],
+    "expected_group_count": 6,
+    "expected_probe_count": 18,
+    "probe_variants": [
+      "A",
+      "B_REPEAT",
+      "C_CHANGED_MUSIC_SEED"
+    ],
+    "probe_rows_are_subruns_not_additional_smoke18_scenarios": true
+  },
+  "request_template": {
+    "mode": "REVIEW",
+    "content_type": "challenges",
+    "delivery_profile_id": "REVIEW_720",
+    "presentation_profile_id": "social_default_v1",
+    "variation_index": 0,
+    "audio_enabled": true,
+    "personalization_enabled": false,
+    "editorial_profile": {},
+    "production_override": {},
+    "presentation_options": {
+      "show_hook_countdown": true
+    },
+    "provenance": {
+      "source_revision": "C11E-E6-CHALLENGE-PREPARE-ONLY-ORCHESTRATOR-V1",
+      "request_origin": "TEST"
+    }
+  },
+  "music_fixture": {
+    "profile_id": "challenge_8bit_v1",
+    "profile_version": "1.0",
+    "tempo_bpm_proposal": 104,
+    "variation_index": 0,
+    "authority": "PROPOSAL_ONLY_NOT_AUTHORIZED",
+    "tempo_bpm_sent_to_e1": false,
+    "duration_seconds_sent_to_e1": false,
+    "e1_unresolved_parameters": [
+      "tempo_bpm",
+      "duration_seconds"
+    ]
+  },
+  "scenario_groups": [
+    {
+      "scenario_id": "E6-CH-001",
+      "selector": "CHALLENGE_001",
+      "canonical_definition_path": "challenges/CHALLENGE_001.json",
+      "canonical_definition_sha256": "ec8925fa5b4ab996a791c8cf7f5b139470774720f57880c5b01b2d0aa5b57bea",
+      "mechanic": "key",
+      "gameplay_seed": 193847,
+      "source_timebase": {
+        "fps": 60,
+        "duration_seconds": 9,
+        "frames": 540
+      },
+      "music_seed_authority": "PROPOSAL_ONLY_NOT_AUTHORIZED",
+      "probes": [
+        {
+          "variant": "A",
+          "music_seed": 840001,
+          "music_seed_status": "PROPOSAL_ONLY_NOT_AUTHORIZED"
+        },
+        {
+          "variant": "B_REPEAT",
+          "music_seed": 840001,
+          "music_seed_status": "PROPOSAL_ONLY_NOT_AUTHORIZED"
+        },
+        {
+          "variant": "C_CHANGED_MUSIC_SEED",
+          "music_seed": 840002,
+          "music_seed_status": "PROPOSAL_ONLY_NOT_AUTHORIZED"
+        }
+      ]
+    },
+    {
+      "scenario_id": "E6-CH-002",
+      "selector": "CHALLENGE_002",
+      "canonical_definition_path": "challenges/CHALLENGE_002.json",
+      "canonical_definition_sha256": "db5d70a28c460e986e785c6787447529372ac5ea3b5a7ff0507667decbe2a160",
+      "mechanic": "parking",
+      "gameplay_seed": 987654,
+      "source_timebase": {
+        "fps": 60,
+        "duration_seconds": 10,
+        "frames": 600
+      },
+      "music_seed_authority": "PROPOSAL_ONLY_NOT_AUTHORIZED",
+      "probes": [
+        {
+          "variant": "A",
+          "music_seed": 840001,
+          "music_seed_status": "PROPOSAL_ONLY_NOT_AUTHORIZED"
+        },
+        {
+          "variant": "B_REPEAT",
+          "music_seed": 840001,
+          "music_seed_status": "PROPOSAL_ONLY_NOT_AUTHORIZED"
+        },
+        {
+          "variant": "C_CHANGED_MUSIC_SEED",
+          "music_seed": 840002,
+          "music_seed_status": "PROPOSAL_ONLY_NOT_AUTHORIZED"
+        }
+      ]
+    },
+    {
+      "scenario_id": "E6-CH-004",
+      "selector": "CHALLENGE_004",
+      "canonical_definition_path": "challenges/CHALLENGE_004.json",
+      "canonical_definition_sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71",
+      "mechanic": "parking_v2",
+      "gameplay_seed": 314159,
+      "source_timebase": {
+        "fps": 60,
+        "duration_seconds": 15,
+        "frames": 900
+      },
+      "music_seed_authority": "PROPOSAL_ONLY_NOT_AUTHORIZED",
+      "probes": [
+        {
+          "variant": "A",
+          "music_seed": 840001,
+          "music_seed_status": "PROPOSAL_ONLY_NOT_AUTHORIZED"
+        },
+        {
+          "variant": "B_REPEAT",
+          "music_seed": 840001,
+          "music_seed_status": "PROPOSAL_ONLY_NOT_AUTHORIZED"
+        },
+        {
+          "variant": "C_CHANGED_MUSIC_SEED",
+          "music_seed": 840002,
+          "music_seed_status": "PROPOSAL_ONLY_NOT_AUTHORIZED"
+        }
+      ]
+    },
+    {
+      "scenario_id": "E6-CH-005",
+      "selector": "CHALLENGE_005",
+      "canonical_definition_path": "challenges/CHALLENGE_005.json",
+      "canonical_definition_sha256": "e173736fcbb0e340cd250be1111fa9d38489934d55cc0e0c93835c66f9596e30",
+      "mechanic": "hit_v1",
+      "gameplay_seed": 998877,
+      "source_timebase": {
+        "fps": 60,
+        "duration_seconds": 7,
+        "frames": 420
+      },
+      "music_seed_authority": "PROPOSAL_ONLY_NOT_AUTHORIZED",
+      "probes": [
+        {
+          "variant": "A",
+          "music_seed": 840001,
+          "music_seed_status": "PROPOSAL_ONLY_NOT_AUTHORIZED"
+        },
+        {
+          "variant": "B_REPEAT",
+          "music_seed": 840001,
+          "music_seed_status": "PROPOSAL_ONLY_NOT_AUTHORIZED"
+        },
+        {
+          "variant": "C_CHANGED_MUSIC_SEED",
+          "music_seed": 840002,
+          "music_seed_status": "PROPOSAL_ONLY_NOT_AUTHORIZED"
+        }
+      ]
+    },
+    {
+      "scenario_id": "E6-CH-006",
+      "selector": "CHALLENGE_006",
+      "canonical_definition_path": "challenges/CHALLENGE_006.json",
+      "canonical_definition_sha256": "2d7d7397cbb0a2109f300859a5d7c0830ded0553522a5120f61750f5bc0b5694",
+      "mechanic": "catch_v1",
+      "gameplay_seed": 884422,
+      "source_timebase": {
+        "fps": 60,
+        "duration_seconds": 9,
+        "frames": 540
+      },
+      "music_seed_authority": "PROPOSAL_ONLY_NOT_AUTHORIZED",
+      "probes": [
+        {
+          "variant": "A",
+          "music_seed": 840001,
+          "music_seed_status": "PROPOSAL_ONLY_NOT_AUTHORIZED"
+        },
+        {
+          "variant": "B_REPEAT",
+          "music_seed": 840001,
+          "music_seed_status": "PROPOSAL_ONLY_NOT_AUTHORIZED"
+        },
+        {
+          "variant": "C_CHANGED_MUSIC_SEED",
+          "music_seed": 840002,
+          "music_seed_status": "PROPOSAL_ONLY_NOT_AUTHORIZED"
+        }
+      ]
+    },
+    {
+      "scenario_id": "E6-CH-007",
+      "selector": "CHALLENGE_007",
+      "canonical_definition_path": "challenges/CHALLENGE_007.json",
+      "canonical_definition_sha256": "269f9588e5a6b7d253e2e944440cc41dc3a9db8967775ffa819edebe729a3a61",
+      "mechanic": "find_v1",
+      "gameplay_seed": 7770001,
+      "source_timebase": {
+        "fps": 60,
+        "duration_seconds": 10,
+        "frames": 600
+      },
+      "music_seed_authority": "PROPOSAL_ONLY_NOT_AUTHORIZED",
+      "probes": [
+        {
+          "variant": "A",
+          "music_seed": 840001,
+          "music_seed_status": "PROPOSAL_ONLY_NOT_AUTHORIZED"
+        },
+        {
+          "variant": "B_REPEAT",
+          "music_seed": 840001,
+          "music_seed_status": "PROPOSAL_ONLY_NOT_AUTHORIZED"
+        },
+        {
+          "variant": "C_CHANGED_MUSIC_SEED",
+          "music_seed": 840002,
+          "music_seed_status": "PROPOSAL_ONLY_NOT_AUTHORIZED"
+        }
+      ]
+    }
+  ],
+  "execution_boundary": {
+    "mode": "PREPARE_ONLY",
+    "dispatch_authorized": false,
+    "renderer_activation": false,
+    "production_execution": false,
+    "media_authorized": false,
+    "godot_invoked": false,
+    "ffmpeg_invoked": false,
+    "ffprobe_invoked": false,
+    "audio_generated": false,
+    "mux_invoked": false,
+    "batch_id_consumed": false,
+    "release_authority": "NONE",
+    "d4_8": "BLOCKED"
+  }
+}

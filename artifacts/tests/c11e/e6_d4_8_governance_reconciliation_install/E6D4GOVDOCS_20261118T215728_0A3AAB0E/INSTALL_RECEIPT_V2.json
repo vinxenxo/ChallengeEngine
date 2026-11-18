@@ -1,0 +1,50 @@
+{
+    "schema":  "C11E_E6_D4_8_GOVERNANCE_RECONCILIATION_INSTALL_RECEIPT_V2",
+    "run_id":  "E6D4GOVDOCS_20261118T215728_0A3AAB0E",
+    "status":  "PASS_ADD_ONLY_DOCUMENTATION_INSTALL",
+    "created_local":  "2026-11-18T21:57:28.0698317+01:00",
+    "package_manifest_sha256":  "5a2c32750488e5c8dbca30f5f381e3afc9547f49a3dd85f931808a3609dc5a2b",
+    "payload_expected":  4,
+    "payload_added":  4,
+    "payload_identical_skipped":  0,
+    "payload":  [
+                    {
+                        "path":  "docs/current/e/C11E_E6_D4_8_GOVERNANCE_RECONCILIATION_20261118_V2.md",
+                        "bytes":  6713,
+                        "sha256":  "f35b5540f83311498509e260a6dbcb122ea265826f0ad71de48f97f9d0b9af08",
+                        "disposition":  "ADDED_AND_VERIFIED"
+                    },
+                    {
+                        "path":  "docs/current/e/C11E_E6_D4_8_HISTORICAL_CONFLICT_MATRIX_20261118_V1.md",
+                        "bytes":  15378,
+                        "sha256":  "885ba562b687c62975968c20922aed946a6f43504ccdc6ef8919f4d89b3eb25a",
+                        "disposition":  "ADDED_AND_VERIFIED"
+                    },
+                    {
+                        "path":  "docs/current/e/C11E_MASTER_HANDOVER_20261118_V11.md",
+                        "bytes":  4545,
+                        "sha256":  "230e32824d895245e599a5dd01d485bd6d1f18726f329fec2931a367f1b7f603",
+                        "disposition":  "ADDED_AND_VERIFIED"
+                    },
+                    {
+                        "path":  "prompts/C11E_FIRST_PROMPT_20261118_E6_D4_8_GOVERNANCE_RECONCILIATION_V2.md",
+                        "bytes":  3965,
+                        "sha256":  "7c880dbbb1f61d3307ffab0379098b56d5f78a6ab5a0664d251ca5e36f0c6f50",
+                        "disposition":  "ADDED_AND_VERIFIED"
+                    }
+                ],
+    "governance":  {
+                       "d4_8":  "BLOCKED",
+                       "successor_policy_approved":  false,
+                       "e6_test_only_authorized":  false,
+                       "renderer":  "OFF",
+                       "production_dispatch":  false,
+                       "production_media":  false,
+                       "release_authority":  "NONE",
+                       "media_tools_invoked":  false,
+                       "batch_id_reserved":  false,
+                       "git_checks":  "SKIPPED",
+                       "commits":  "OPERATOR_MANAGED",
+                       "source_file_pins":  "ENFORCED"
+                   }
+}

@@ -1,0 +1,1540 @@
+{
+  "challenge_groups": [
+    {
+      "canonical_definition_path": "challenges/CHALLENGE_001.json",
+      "canonical_definition_sha256": "ec8925fa5b4ab996a791c8cf7f5b139470774720f57880c5b01b2d0aa5b57bea",
+      "gameplay_seed": 193847,
+      "mechanic": "key",
+      "phase_ranges": [
+        {
+          "end_frame": 0,
+          "phase": "HOOK",
+          "start_frame": 0,
+          "timebase": "SOURCE_FPS_HALF_OPEN"
+        },
+        {
+          "end_frame": 420,
+          "phase": "GAME",
+          "start_frame": 0,
+          "timebase": "SOURCE_FPS_HALF_OPEN"
+        },
+        {
+          "end_frame": 420,
+          "phase": "REVEAL",
+          "start_frame": 420,
+          "timebase": "SOURCE_FPS_HALF_OPEN"
+        },
+        {
+          "end_frame": 540,
+          "phase": "CTA",
+          "start_frame": 420,
+          "timebase": "SOURCE_FPS_HALF_OPEN"
+        }
+      ],
+      "probes": [
+        {
+          "envelope_sha256": "85cc987332ead05b9cccbe8fc24a0150976eb2e71b5bd9170a1fc0d304ef7d05",
+          "intent_sha256": "2759ffdccddc4fde0144f43d1ef586e509aaa3728195dd2ee72be600b2b36232",
+          "variant": "A"
+        },
+        {
+          "envelope_sha256": "14ef6a71299c91c1b18b30aaea9b140d71ad3d5500fc9a684f6f6cbec7b7e104",
+          "intent_sha256": "0b69449427bcd58d74f01b830a4fbb7bb34d08a5aa3b595998ea84aa9538751c",
+          "variant": "B_REPEAT"
+        },
+        {
+          "envelope_sha256": "ce64ddef0e74b418fe2cfbb3f1061d2641d8eb89f7552984dbe8528803fa8cc5",
+          "intent_sha256": "5ce34e7185eab94b2588ca84d4dfcefba07f4695e1c2b828453c89e586ee7c3f",
+          "variant": "C_CHANGED_MUSIC_SEED"
+        }
+      ],
+      "scenario_id": "E6-CH-001",
+      "scenario_status": "PREPARED_ONLY_NOT_E6_ACCEPTED",
+      "selector": "CHALLENGE_001",
+      "source_timebase": {
+        "duration_seconds": 9,
+        "fps": 60,
+        "frames": 540
+      }
+    },
+    {
+      "canonical_definition_path": "challenges/CHALLENGE_002.json",
+      "canonical_definition_sha256": "db5d70a28c460e986e785c6787447529372ac5ea3b5a7ff0507667decbe2a160",
+      "gameplay_seed": 987654,
+      "mechanic": "parking",
+      "phase_ranges": [
+        {
+          "end_frame": 180,
+          "phase": "HOOK",
+          "start_frame": 0,
+          "timebase": "SOURCE_FPS_HALF_OPEN"
+        },
+        {
+          "end_frame": 600,
+          "phase": "GAME",
+          "start_frame": 180,
+          "timebase": "SOURCE_FPS_HALF_OPEN"
+        },
+        {
+          "end_frame": 600,
+          "phase": "REVEAL",
+          "start_frame": 600,
+          "timebase": "SOURCE_FPS_HALF_OPEN"
+        },
+        {
+          "end_frame": 600,
+          "phase": "CTA",
+          "start_frame": 600,
+          "timebase": "SOURCE_FPS_HALF_OPEN"
+        }
+      ],
+      "probes": [
+        {
+          "envelope_sha256": "4a508a13a2b76cda85103c836c346f46c224086d9201fc1043e88e44b23a756f",
+          "intent_sha256": "c48ce5fb5d8e7e565eed99a3fda0d381b7a10978a8cf87d051e5a765a27afdea",
+          "variant": "A"
+        },
+        {
+          "envelope_sha256": "eae719119c912e103a8a98f94434d8816946944ee892f290a28112146de03ae5",
+          "intent_sha256": "0cdeed906de2817a517b734b51ce060102fac215e6c2ed9d5b216e227978aa1b",
+          "variant": "B_REPEAT"
+        },
+        {
+          "envelope_sha256": "c276436ba5ca9db2a9c8af180177a6563d4a9af1016305dd1b793674dc3fb6e5",
+          "intent_sha256": "fab30eb40ce93f0470ae96879c87b631c9e15b614e455e9421940ffbab312ccd",
+          "variant": "C_CHANGED_MUSIC_SEED"
+        }
+      ],
+      "scenario_id": "E6-CH-002",
+      "scenario_status": "PREPARED_ONLY_NOT_E6_ACCEPTED",
+      "selector": "CHALLENGE_002",
+      "source_timebase": {
+        "duration_seconds": 10,
+        "fps": 60,
+        "frames": 600
+      }
+    },
+    {
+      "canonical_definition_path": "challenges/CHALLENGE_004.json",
+      "canonical_definition_sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71",
+      "gameplay_seed": 314159,
+      "mechanic": "parking_v2",
+      "phase_ranges": [
+        {
+          "end_frame": 180,
+          "phase": "HOOK",
+          "start_frame": 0,
+          "timebase": "SOURCE_FPS_HALF_OPEN"
+        },
+        {
+          "end_frame": 600,
+          "phase": "GAME",
+          "start_frame": 180,
+          "timebase": "SOURCE_FPS_HALF_OPEN"
+        },
+        {
+          "end_frame": 780,
+          "phase": "REVEAL",
+          "start_frame": 600,
+          "timebase": "SOURCE_FPS_HALF_OPEN"
+        },
+        {
+          "end_frame": 900,
+          "phase": "CTA",
+          "start_frame": 780,
+          "timebase": "SOURCE_FPS_HALF_OPEN"
+        }
+      ],
+      "probes": [
+        {
+          "envelope_sha256": "181c04818e8f5eaa56b61eb24f517121463dea8b69c17d39a1327c5993a2a131",
+          "intent_sha256": "4a1a33a540cc5a23a77fb9169521e97e2008936ec388dd55f49295680d277cd4",
+          "variant": "A"
+        },
+        {
+          "envelope_sha256": "60f455f93c83ea1be6038f7062036caf656ec216dee186ff85ef1343e5eec6b1",
+          "intent_sha256": "b3ebe6981c8d26c16f1821a79d3a255392b3e2abc958bf1e3e248f276f86cc90",
+          "variant": "B_REPEAT"
+        },
+        {
+          "envelope_sha256": "42ce4373a9c8e4428abfc3bbc76df63fbbf2113a4361b00d698c973dbded8802",
+          "intent_sha256": "73c6d22cd7798a39eb472b5ada82ac42adbff9c18347c41db7a4aea935069e80",
+          "variant": "C_CHANGED_MUSIC_SEED"
+        }
+      ],
+      "scenario_id": "E6-CH-004",
+      "scenario_status": "PREPARED_ONLY_NOT_E6_ACCEPTED",
+      "selector": "CHALLENGE_004",
+      "source_timebase": {
+        "duration_seconds": 15,
+        "fps": 60,
+        "frames": 900
+      }
+    },
+    {
+      "canonical_definition_path": "challenges/CHALLENGE_005.json",
+      "canonical_definition_sha256": "e173736fcbb0e340cd250be1111fa9d38489934d55cc0e0c93835c66f9596e30",
+      "gameplay_seed": 998877,
+      "mechanic": "hit_v1",
+      "phase_ranges": [
+        {
+          "end_frame": 0,
+          "phase": "HOOK",
+          "start_frame": 0,
+          "timebase": "SOURCE_FPS_HALF_OPEN"
+        },
+        {
+          "end_frame": 420,
+          "phase": "GAME",
+          "start_frame": 0,
+          "timebase": "SOURCE_FPS_HALF_OPEN"
+        },
+        {
+          "end_frame": 420,
+          "phase": "REVEAL",
+          "start_frame": 420,
+          "timebase": "SOURCE_FPS_HALF_OPEN"
+        },
+        {
+          "end_frame": 420,
+          "phase": "CTA",
+          "start_frame": 420,
+          "timebase": "SOURCE_FPS_HALF_OPEN"
+        }
+      ],
+      "probes": [
+        {
+          "envelope_sha256": "6b53d44918d5faf26a28d93b13694cc727459dcb5ffaf892f757c078096b0be3",
+          "intent_sha256": "6e27835f4ecef733c137ac58faf7b0005ea5c25b3e07d70a0515d979b4e02f9f",
+          "variant": "A"
+        },
+        {
+          "envelope_sha256": "2a6c69ad0a7bba8d74810718978642fa86b93691e6877e0f7cfb500ddd0754df",
+          "intent_sha256": "5d31d81dbbbbb0e5bd24857e79a8158cddcbfa29386395e3f6cf9ab56c52fa19",
+          "variant": "B_REPEAT"
+        },
+        {
+          "envelope_sha256": "08a75cf9c2da100daafa336ac66a3f94548fd8a1da26e0bbcc9b9bbb835b78d1",
+          "intent_sha256": "1d1bd1a6063d93116d9d3109f5d1350b5ee62c685faa845b4e8b72b4e72cb100",
+          "variant": "C_CHANGED_MUSIC_SEED"
+        }
+      ],
+      "scenario_id": "E6-CH-005",
+      "scenario_status": "PREPARED_ONLY_NOT_E6_ACCEPTED",
+      "selector": "CHALLENGE_005",
+      "source_timebase": {
+        "duration_seconds": 7,
+        "fps": 60,
+        "frames": 420
+      }
+    },
+    {
+      "canonical_definition_path": "challenges/CHALLENGE_006.json",
+      "canonical_definition_sha256": "2d7d7397cbb0a2109f300859a5d7c0830ded0553522a5120f61750f5bc0b5694",
+      "gameplay_seed": 884422,
+      "mechanic": "catch_v1",
+      "phase_ranges": [
+        {
+          "end_frame": 0,
+          "phase": "HOOK",
+          "start_frame": 0,
+          "timebase": "SOURCE_FPS_HALF_OPEN"
+        },
+        {
+          "end_frame": 420,
+          "phase": "GAME",
+          "start_frame": 0,
+          "timebase": "SOURCE_FPS_HALF_OPEN"
+        },
+        {
+          "end_frame": 420,
+          "phase": "REVEAL",
+          "start_frame": 420,
+          "timebase": "SOURCE_FPS_HALF_OPEN"
+        },
+        {
+          "end_frame": 540,
+          "phase": "CTA",
+          "start_frame": 420,
+          "timebase": "SOURCE_FPS_HALF_OPEN"
+        }
+      ],
+      "probes": [
+        {
+          "envelope_sha256": "2f0a996f65d0d55c703d551e2897a8d740cd17375c36b9c7d4aef4d341b9fc01",
+          "intent_sha256": "b5b70968c64fd9c4badc6bd5a39e4252cf313c69c6b5edebb6507aabca77f1e6",
+          "variant": "A"
+        },
+        {
+          "envelope_sha256": "80f91904e78959162a5700b4a19510ee230e3ca8e074e89d7a77441186ecaace",
+          "intent_sha256": "160e45772eb68e1166caf9d254d28e784eb02eeab60620256ac9a5cb74ba6b17",
+          "variant": "B_REPEAT"
+        },
+        {
+          "envelope_sha256": "ae2de70f0f65d0a02b7b21251ed30e27e09a0f4e9b407344ad89b60b4a75601f",
+          "intent_sha256": "7e84e89d7916ac8d5641a1ed7d51a30ad52fa807f83d316f03ac0f10fc63299c",
+          "variant": "C_CHANGED_MUSIC_SEED"
+        }
+      ],
+      "scenario_id": "E6-CH-006",
+      "scenario_status": "PREPARED_ONLY_NOT_E6_ACCEPTED",
+      "selector": "CHALLENGE_006",
+      "source_timebase": {
+        "duration_seconds": 9,
+        "fps": 60,
+        "frames": 540
+      }
+    },
+    {
+      "canonical_definition_path": "challenges/CHALLENGE_007.json",
+      "canonical_definition_sha256": "269f9588e5a6b7d253e2e944440cc41dc3a9db8967775ffa819edebe729a3a61",
+      "gameplay_seed": 7770001,
+      "mechanic": "find_v1",
+      "phase_ranges": [
+        {
+          "end_frame": 180,
+          "phase": "HOOK",
+          "start_frame": 0,
+          "timebase": "SOURCE_FPS_HALF_OPEN"
+        },
+        {
+          "end_frame": 600,
+          "phase": "GAME",
+          "start_frame": 180,
+          "timebase": "SOURCE_FPS_HALF_OPEN"
+        },
+        {
+          "end_frame": 600,
+          "phase": "REVEAL",
+          "start_frame": 600,
+          "timebase": "SOURCE_FPS_HALF_OPEN"
+        },
+        {
+          "end_frame": 600,
+          "phase": "CTA",
+          "start_frame": 600,
+          "timebase": "SOURCE_FPS_HALF_OPEN"
+        }
+      ],
+      "probes": [
+        {
+          "envelope_sha256": "fc535cd177d00db43378a8bf38222a76d0d0ec93831f542a386b512313b95c24",
+          "intent_sha256": "1fe4da32a4fff7dfe1d745704e984defac575bed34805c915e8170442ca48e6b",
+          "variant": "A"
+        },
+        {
+          "envelope_sha256": "dbd62d6c2dfb1a295e1bb1d03bc8f298949dbd7a1c8b815850131b1c0e85201c",
+          "intent_sha256": "4c2241919d600ef2bc2e63a7097542b4bf218a7a67ff1d569a20fc1c040040d2",
+          "variant": "B_REPEAT"
+        },
+        {
+          "envelope_sha256": "89c8985057ce6ab3f59d1f7c2daaa5edfd54529f2bea1017bf6d128be98e67a6",
+          "intent_sha256": "93cef0a18e952950dc8dd672523b5c0088629ed43c4ccba05eac07f1264301ae",
+          "variant": "C_CHANGED_MUSIC_SEED"
+        }
+      ],
+      "scenario_id": "E6-CH-007",
+      "scenario_status": "PREPARED_ONLY_NOT_E6_ACCEPTED",
+      "selector": "CHALLENGE_007",
+      "source_timebase": {
+        "duration_seconds": 10,
+        "fps": 60,
+        "frames": 600
+      }
+    }
+  ],
+  "counts": {
+    "challenge_probe_subruns": 18,
+    "challenge_scenario_groups": 6,
+    "d_envelopes": 18,
+    "e1_intents": 18,
+    "smoke18_top_level_scenarios": 6
+  },
+  "created_utc": "2026-11-18T20:28:44.339556+00:00",
+  "d_envelopes": {
+    "expected": 18,
+    "passed": 18,
+    "rows": [
+      {
+        "envelope_sha256": "85cc987332ead05b9cccbe8fc24a0150976eb2e71b5bd9170a1fc0d304ef7d05",
+        "intent_hash": "47f34c347c521ec9b41ead6d5ac48ce2100ec34b357f3bcd9276818f10b09106",
+        "relative_path": "envelopes/CHALLENGE_001_A_D_ENVELOPE.json",
+        "request_id": "E6CHPREP_20261118T202841Z_37C6AE0E-CHALLENGE_001-A",
+        "scenario_id": "E6-CH-001",
+        "selector": "CHALLENGE_001",
+        "source_fps": 60,
+        "source_frames": 540,
+        "static_validation": "PASS_SCHEMA_IDENTITY_TIMEBASE_PHASES_GOVERNANCE",
+        "variant": "A"
+      },
+      {
+        "envelope_sha256": "14ef6a71299c91c1b18b30aaea9b140d71ad3d5500fc9a684f6f6cbec7b7e104",
+        "intent_hash": "556e65777a43e2907dabd5d3b8bd4c8bbb5f9f3e4e00fd438104c05f224e543d",
+        "relative_path": "envelopes/CHALLENGE_001_B_REPEAT_D_ENVELOPE.json",
+        "request_id": "E6CHPREP_20261118T202841Z_37C6AE0E-CHALLENGE_001-B_REPEAT",
+        "scenario_id": "E6-CH-001",
+        "selector": "CHALLENGE_001",
+        "source_fps": 60,
+        "source_frames": 540,
+        "static_validation": "PASS_SCHEMA_IDENTITY_TIMEBASE_PHASES_GOVERNANCE",
+        "variant": "B_REPEAT"
+      },
+      {
+        "envelope_sha256": "ce64ddef0e74b418fe2cfbb3f1061d2641d8eb89f7552984dbe8528803fa8cc5",
+        "intent_hash": "6e8a7c79c7634af109e3af8296ac70074b0597ff5e85da43ddd4c518c93f61de",
+        "relative_path": "envelopes/CHALLENGE_001_C_CHANGED_MUSIC_SEED_D_ENVELOPE.json",
+        "request_id": "E6CHPREP_20261118T202841Z_37C6AE0E-CHALLENGE_001-C_CHANGED_MUSIC_SEED",
+        "scenario_id": "E6-CH-001",
+        "selector": "CHALLENGE_001",
+        "source_fps": 60,
+        "source_frames": 540,
+        "static_validation": "PASS_SCHEMA_IDENTITY_TIMEBASE_PHASES_GOVERNANCE",
+        "variant": "C_CHANGED_MUSIC_SEED"
+      },
+      {
+        "envelope_sha256": "4a508a13a2b76cda85103c836c346f46c224086d9201fc1043e88e44b23a756f",
+        "intent_hash": "589fbbacee610237cdde5ad8d2cc818f87a1ddc05b95bf626c9d07c5b6c57063",
+        "relative_path": "envelopes/CHALLENGE_002_A_D_ENVELOPE.json",
+        "request_id": "E6CHPREP_20261118T202841Z_37C6AE0E-CHALLENGE_002-A",
+        "scenario_id": "E6-CH-002",
+        "selector": "CHALLENGE_002",
+        "source_fps": 60,
+        "source_frames": 600,
+        "static_validation": "PASS_SCHEMA_IDENTITY_TIMEBASE_PHASES_GOVERNANCE",
+        "variant": "A"
+      },
+      {
+        "envelope_sha256": "eae719119c912e103a8a98f94434d8816946944ee892f290a28112146de03ae5",
+        "intent_hash": "6b96878906b7eeb5b862c0896f0bdba9648d4db53bbb05c3fe2408e0aa09f3e2",
+        "relative_path": "envelopes/CHALLENGE_002_B_REPEAT_D_ENVELOPE.json",
+        "request_id": "E6CHPREP_20261118T202841Z_37C6AE0E-CHALLENGE_002-B_REPEAT",
+        "scenario_id": "E6-CH-002",
+        "selector": "CHALLENGE_002",
+        "source_fps": 60,
+        "source_frames": 600,
+        "static_validation": "PASS_SCHEMA_IDENTITY_TIMEBASE_PHASES_GOVERNANCE",
+        "variant": "B_REPEAT"
+      },
+      {
+        "envelope_sha256": "c276436ba5ca9db2a9c8af180177a6563d4a9af1016305dd1b793674dc3fb6e5",
+        "intent_hash": "e7059fcd8d2e654574deb9d4fdf0e44cfa6f0a3827f68b98ba4acf36a953ce2e",
+        "relative_path": "envelopes/CHALLENGE_002_C_CHANGED_MUSIC_SEED_D_ENVELOPE.json",
+        "request_id": "E6CHPREP_20261118T202841Z_37C6AE0E-CHALLENGE_002-C_CHANGED_MUSIC_SEED",
+        "scenario_id": "E6-CH-002",
+        "selector": "CHALLENGE_002",
+        "source_fps": 60,
+        "source_frames": 600,
+        "static_validation": "PASS_SCHEMA_IDENTITY_TIMEBASE_PHASES_GOVERNANCE",
+        "variant": "C_CHANGED_MUSIC_SEED"
+      },
+      {
+        "envelope_sha256": "181c04818e8f5eaa56b61eb24f517121463dea8b69c17d39a1327c5993a2a131",
+        "intent_hash": "e55854d8a0fda4c07c09ab36edffe89230142973001f78e1d5547473bd5d5525",
+        "relative_path": "envelopes/CHALLENGE_004_A_D_ENVELOPE.json",
+        "request_id": "E6CHPREP_20261118T202841Z_37C6AE0E-CHALLENGE_004-A",
+        "scenario_id": "E6-CH-004",
+        "selector": "CHALLENGE_004",
+        "source_fps": 60,
+        "source_frames": 900,
+        "static_validation": "PASS_SCHEMA_IDENTITY_TIMEBASE_PHASES_GOVERNANCE",
+        "variant": "A"
+      },
+      {
+        "envelope_sha256": "60f455f93c83ea1be6038f7062036caf656ec216dee186ff85ef1343e5eec6b1",
+        "intent_hash": "dbb03730b2ee2b2335b79fdf5ccdffa5a871b452b788589d1fe566846e4c6a84",
+        "relative_path": "envelopes/CHALLENGE_004_B_REPEAT_D_ENVELOPE.json",
+        "request_id": "E6CHPREP_20261118T202841Z_37C6AE0E-CHALLENGE_004-B_REPEAT",
+        "scenario_id": "E6-CH-004",
+        "selector": "CHALLENGE_004",
+        "source_fps": 60,
+        "source_frames": 900,
+        "static_validation": "PASS_SCHEMA_IDENTITY_TIMEBASE_PHASES_GOVERNANCE",
+        "variant": "B_REPEAT"
+      },
+      {
+        "envelope_sha256": "42ce4373a9c8e4428abfc3bbc76df63fbbf2113a4361b00d698c973dbded8802",
+        "intent_hash": "f3fb99657557fb3f6a0685eca8d9da739a172094d89d5ae85d26f44f09855497",
+        "relative_path": "envelopes/CHALLENGE_004_C_CHANGED_MUSIC_SEED_D_ENVELOPE.json",
+        "request_id": "E6CHPREP_20261118T202841Z_37C6AE0E-CHALLENGE_004-C_CHANGED_MUSIC_SEED",
+        "scenario_id": "E6-CH-004",
+        "selector": "CHALLENGE_004",
+        "source_fps": 60,
+        "source_frames": 900,
+        "static_validation": "PASS_SCHEMA_IDENTITY_TIMEBASE_PHASES_GOVERNANCE",
+        "variant": "C_CHANGED_MUSIC_SEED"
+      },
+      {
+        "envelope_sha256": "6b53d44918d5faf26a28d93b13694cc727459dcb5ffaf892f757c078096b0be3",
+        "intent_hash": "73782a573cefa04ad97433740595362abfd63ed3cee51834ab6087be94a2f89d",
+        "relative_path": "envelopes/CHALLENGE_005_A_D_ENVELOPE.json",
+        "request_id": "E6CHPREP_20261118T202841Z_37C6AE0E-CHALLENGE_005-A",
+        "scenario_id": "E6-CH-005",
+        "selector": "CHALLENGE_005",
+        "source_fps": 60,
+        "source_frames": 420,
+        "static_validation": "PASS_SCHEMA_IDENTITY_TIMEBASE_PHASES_GOVERNANCE",
+        "variant": "A"
+      },
+      {
+        "envelope_sha256": "2a6c69ad0a7bba8d74810718978642fa86b93691e6877e0f7cfb500ddd0754df",
+        "intent_hash": "cec32e99f02fb68b0b6351de83022dd45337d44ca206f47478208b48df37b41a",
+        "relative_path": "envelopes/CHALLENGE_005_B_REPEAT_D_ENVELOPE.json",
+        "request_id": "E6CHPREP_20261118T202841Z_37C6AE0E-CHALLENGE_005-B_REPEAT",
+        "scenario_id": "E6-CH-005",
+        "selector": "CHALLENGE_005",
+        "source_fps": 60,
+        "source_frames": 420,
+        "static_validation": "PASS_SCHEMA_IDENTITY_TIMEBASE_PHASES_GOVERNANCE",
+        "variant": "B_REPEAT"
+      },
+      {
+        "envelope_sha256": "08a75cf9c2da100daafa336ac66a3f94548fd8a1da26e0bbcc9b9bbb835b78d1",
+        "intent_hash": "bb30f74b0c1ce57ba83cbf34980a75fe9a26aa0f34495912872d620f2f9681e1",
+        "relative_path": "envelopes/CHALLENGE_005_C_CHANGED_MUSIC_SEED_D_ENVELOPE.json",
+        "request_id": "E6CHPREP_20261118T202841Z_37C6AE0E-CHALLENGE_005-C_CHANGED_MUSIC_SEED",
+        "scenario_id": "E6-CH-005",
+        "selector": "CHALLENGE_005",
+        "source_fps": 60,
+        "source_frames": 420,
+        "static_validation": "PASS_SCHEMA_IDENTITY_TIMEBASE_PHASES_GOVERNANCE",
+        "variant": "C_CHANGED_MUSIC_SEED"
+      },
+      {
+        "envelope_sha256": "2f0a996f65d0d55c703d551e2897a8d740cd17375c36b9c7d4aef4d341b9fc01",
+        "intent_hash": "7198529268772ca9c2af53a6de40396900da50b2c56a5506dc68437a09f6711d",
+        "relative_path": "envelopes/CHALLENGE_006_A_D_ENVELOPE.json",
+        "request_id": "E6CHPREP_20261118T202841Z_37C6AE0E-CHALLENGE_006-A",
+        "scenario_id": "E6-CH-006",
+        "selector": "CHALLENGE_006",
+        "source_fps": 60,
+        "source_frames": 540,
+        "static_validation": "PASS_SCHEMA_IDENTITY_TIMEBASE_PHASES_GOVERNANCE",
+        "variant": "A"
+      },
+      {
+        "envelope_sha256": "80f91904e78959162a5700b4a19510ee230e3ca8e074e89d7a77441186ecaace",
+        "intent_hash": "c4f8df6be89bf323c1350e28e3146336615e7e0041f1ee071397c66764b16171",
+        "relative_path": "envelopes/CHALLENGE_006_B_REPEAT_D_ENVELOPE.json",
+        "request_id": "E6CHPREP_20261118T202841Z_37C6AE0E-CHALLENGE_006-B_REPEAT",
+        "scenario_id": "E6-CH-006",
+        "selector": "CHALLENGE_006",
+        "source_fps": 60,
+        "source_frames": 540,
+        "static_validation": "PASS_SCHEMA_IDENTITY_TIMEBASE_PHASES_GOVERNANCE",
+        "variant": "B_REPEAT"
+      },
+      {
+        "envelope_sha256": "ae2de70f0f65d0a02b7b21251ed30e27e09a0f4e9b407344ad89b60b4a75601f",
+        "intent_hash": "c11070222263c56ba3e122a514276daf84d58c3a3c40f86257438db428f33d2c",
+        "relative_path": "envelopes/CHALLENGE_006_C_CHANGED_MUSIC_SEED_D_ENVELOPE.json",
+        "request_id": "E6CHPREP_20261118T202841Z_37C6AE0E-CHALLENGE_006-C_CHANGED_MUSIC_SEED",
+        "scenario_id": "E6-CH-006",
+        "selector": "CHALLENGE_006",
+        "source_fps": 60,
+        "source_frames": 540,
+        "static_validation": "PASS_SCHEMA_IDENTITY_TIMEBASE_PHASES_GOVERNANCE",
+        "variant": "C_CHANGED_MUSIC_SEED"
+      },
+      {
+        "envelope_sha256": "fc535cd177d00db43378a8bf38222a76d0d0ec93831f542a386b512313b95c24",
+        "intent_hash": "b2fb7b2d999c640f57f42a5e1e6d53a92535c4133005cd9afe4dd5426c8eb6d3",
+        "relative_path": "envelopes/CHALLENGE_007_A_D_ENVELOPE.json",
+        "request_id": "E6CHPREP_20261118T202841Z_37C6AE0E-CHALLENGE_007-A",
+        "scenario_id": "E6-CH-007",
+        "selector": "CHALLENGE_007",
+        "source_fps": 60,
+        "source_frames": 600,
+        "static_validation": "PASS_SCHEMA_IDENTITY_TIMEBASE_PHASES_GOVERNANCE",
+        "variant": "A"
+      },
+      {
+        "envelope_sha256": "dbd62d6c2dfb1a295e1bb1d03bc8f298949dbd7a1c8b815850131b1c0e85201c",
+        "intent_hash": "01b27d9d66b5d568f3a8ce132b11cd9192a220acbc698e44e930f7070798d136",
+        "relative_path": "envelopes/CHALLENGE_007_B_REPEAT_D_ENVELOPE.json",
+        "request_id": "E6CHPREP_20261118T202841Z_37C6AE0E-CHALLENGE_007-B_REPEAT",
+        "scenario_id": "E6-CH-007",
+        "selector": "CHALLENGE_007",
+        "source_fps": 60,
+        "source_frames": 600,
+        "static_validation": "PASS_SCHEMA_IDENTITY_TIMEBASE_PHASES_GOVERNANCE",
+        "variant": "B_REPEAT"
+      },
+      {
+        "envelope_sha256": "89c8985057ce6ab3f59d1f7c2daaa5edfd54529f2bea1017bf6d128be98e67a6",
+        "intent_hash": "fb68247dad2a4d42183d4661daddf9cf387471a41f42651b6f1d96aa928be045",
+        "relative_path": "envelopes/CHALLENGE_007_C_CHANGED_MUSIC_SEED_D_ENVELOPE.json",
+        "request_id": "E6CHPREP_20261118T202841Z_37C6AE0E-CHALLENGE_007-C_CHANGED_MUSIC_SEED",
+        "scenario_id": "E6-CH-007",
+        "selector": "CHALLENGE_007",
+        "source_fps": 60,
+        "source_frames": 600,
+        "static_validation": "PASS_SCHEMA_IDENTITY_TIMEBASE_PHASES_GOVERNANCE",
+        "variant": "C_CHANGED_MUSIC_SEED"
+      }
+    ],
+    "validation": "EXISTING_PLAN_ONLY_BUILDER_STATIC_SCHEMA_IDENTITY_TIMEBASE_PHASES_GOVERNANCE"
+  },
+  "e1_intents": {
+    "expected": 18,
+    "passed": 18,
+    "rows": [
+      {
+        "gameplay_seed": 193847,
+        "intent_sha256": "2759ffdccddc4fde0144f43d1ef586e509aaa3728195dd2ee72be600b2b36232",
+        "music_seed": 840001,
+        "music_seed_authority": "PROPOSAL_ONLY_NOT_AUTHORIZED",
+        "relative_path": "intents/CHALLENGE_001_A_E1_INTENT.json",
+        "request_id": "E6CHPREP_20261118T202841Z_37C6AE0E-CHALLENGE_001-A",
+        "scenario_id": "E6-CH-001",
+        "selector": "CHALLENGE_001",
+        "unresolved_music_parameters": [
+          "tempo_bpm",
+          "duration_seconds"
+        ],
+        "validation_status": "PASS_E1_PREPARATION_ONLY",
+        "variant": "A"
+      },
+      {
+        "gameplay_seed": 193847,
+        "intent_sha256": "0b69449427bcd58d74f01b830a4fbb7bb34d08a5aa3b595998ea84aa9538751c",
+        "music_seed": 840001,
+        "music_seed_authority": "PROPOSAL_ONLY_NOT_AUTHORIZED",
+        "relative_path": "intents/CHALLENGE_001_B_REPEAT_E1_INTENT.json",
+        "request_id": "E6CHPREP_20261118T202841Z_37C6AE0E-CHALLENGE_001-B_REPEAT",
+        "scenario_id": "E6-CH-001",
+        "selector": "CHALLENGE_001",
+        "unresolved_music_parameters": [
+          "tempo_bpm",
+          "duration_seconds"
+        ],
+        "validation_status": "PASS_E1_PREPARATION_ONLY",
+        "variant": "B_REPEAT"
+      },
+      {
+        "gameplay_seed": 193847,
+        "intent_sha256": "5ce34e7185eab94b2588ca84d4dfcefba07f4695e1c2b828453c89e586ee7c3f",
+        "music_seed": 840002,
+        "music_seed_authority": "PROPOSAL_ONLY_NOT_AUTHORIZED",
+        "relative_path": "intents/CHALLENGE_001_C_CHANGED_MUSIC_SEED_E1_INTENT.json",
+        "request_id": "E6CHPREP_20261118T202841Z_37C6AE0E-CHALLENGE_001-C_CHANGED_MUSIC_SEED",
+        "scenario_id": "E6-CH-001",
+        "selector": "CHALLENGE_001",
+        "unresolved_music_parameters": [
+          "tempo_bpm",
+          "duration_seconds"
+        ],
+        "validation_status": "PASS_E1_PREPARATION_ONLY",
+        "variant": "C_CHANGED_MUSIC_SEED"
+      },
+      {
+        "gameplay_seed": 987654,
+        "intent_sha256": "c48ce5fb5d8e7e565eed99a3fda0d381b7a10978a8cf87d051e5a765a27afdea",
+        "music_seed": 840001,
+        "music_seed_authority": "PROPOSAL_ONLY_NOT_AUTHORIZED",
+        "relative_path": "intents/CHALLENGE_002_A_E1_INTENT.json",
+        "request_id": "E6CHPREP_20261118T202841Z_37C6AE0E-CHALLENGE_002-A",
+        "scenario_id": "E6-CH-002",
+        "selector": "CHALLENGE_002",
+        "unresolved_music_parameters": [
+          "tempo_bpm",
+          "duration_seconds"
+        ],
+        "validation_status": "PASS_E1_PREPARATION_ONLY",
+        "variant": "A"
+      },
+      {
+        "gameplay_seed": 987654,
+        "intent_sha256": "0cdeed906de2817a517b734b51ce060102fac215e6c2ed9d5b216e227978aa1b",
+        "music_seed": 840001,
+        "music_seed_authority": "PROPOSAL_ONLY_NOT_AUTHORIZED",
+        "relative_path": "intents/CHALLENGE_002_B_REPEAT_E1_INTENT.json",
+        "request_id": "E6CHPREP_20261118T202841Z_37C6AE0E-CHALLENGE_002-B_REPEAT",
+        "scenario_id": "E6-CH-002",
+        "selector": "CHALLENGE_002",
+        "unresolved_music_parameters": [
+          "tempo_bpm",
+          "duration_seconds"
+        ],
+        "validation_status": "PASS_E1_PREPARATION_ONLY",
+        "variant": "B_REPEAT"
+      },
+      {
+        "gameplay_seed": 987654,
+        "intent_sha256": "fab30eb40ce93f0470ae96879c87b631c9e15b614e455e9421940ffbab312ccd",
+        "music_seed": 840002,
+        "music_seed_authority": "PROPOSAL_ONLY_NOT_AUTHORIZED",
+        "relative_path": "intents/CHALLENGE_002_C_CHANGED_MUSIC_SEED_E1_INTENT.json",
+        "request_id": "E6CHPREP_20261118T202841Z_37C6AE0E-CHALLENGE_002-C_CHANGED_MUSIC_SEED",
+        "scenario_id": "E6-CH-002",
+        "selector": "CHALLENGE_002",
+        "unresolved_music_parameters": [
+          "tempo_bpm",
+          "duration_seconds"
+        ],
+        "validation_status": "PASS_E1_PREPARATION_ONLY",
+        "variant": "C_CHANGED_MUSIC_SEED"
+      },
+      {
+        "gameplay_seed": 314159,
+        "intent_sha256": "4a1a33a540cc5a23a77fb9169521e97e2008936ec388dd55f49295680d277cd4",
+        "music_seed": 840001,
+        "music_seed_authority": "PROPOSAL_ONLY_NOT_AUTHORIZED",
+        "relative_path": "intents/CHALLENGE_004_A_E1_INTENT.json",
+        "request_id": "E6CHPREP_20261118T202841Z_37C6AE0E-CHALLENGE_004-A",
+        "scenario_id": "E6-CH-004",
+        "selector": "CHALLENGE_004",
+        "unresolved_music_parameters": [
+          "tempo_bpm",
+          "duration_seconds"
+        ],
+        "validation_status": "PASS_E1_PREPARATION_ONLY",
+        "variant": "A"
+      },
+      {
+        "gameplay_seed": 314159,
+        "intent_sha256": "b3ebe6981c8d26c16f1821a79d3a255392b3e2abc958bf1e3e248f276f86cc90",
+        "music_seed": 840001,
+        "music_seed_authority": "PROPOSAL_ONLY_NOT_AUTHORIZED",
+        "relative_path": "intents/CHALLENGE_004_B_REPEAT_E1_INTENT.json",
+        "request_id": "E6CHPREP_20261118T202841Z_37C6AE0E-CHALLENGE_004-B_REPEAT",
+        "scenario_id": "E6-CH-004",
+        "selector": "CHALLENGE_004",
+        "unresolved_music_parameters": [
+          "tempo_bpm",
+          "duration_seconds"
+        ],
+        "validation_status": "PASS_E1_PREPARATION_ONLY",
+        "variant": "B_REPEAT"
+      },
+      {
+        "gameplay_seed": 314159,
+        "intent_sha256": "73c6d22cd7798a39eb472b5ada82ac42adbff9c18347c41db7a4aea935069e80",
+        "music_seed": 840002,
+        "music_seed_authority": "PROPOSAL_ONLY_NOT_AUTHORIZED",
+        "relative_path": "intents/CHALLENGE_004_C_CHANGED_MUSIC_SEED_E1_INTENT.json",
+        "request_id": "E6CHPREP_20261118T202841Z_37C6AE0E-CHALLENGE_004-C_CHANGED_MUSIC_SEED",
+        "scenario_id": "E6-CH-004",
+        "selector": "CHALLENGE_004",
+        "unresolved_music_parameters": [
+          "tempo_bpm",
+          "duration_seconds"
+        ],
+        "validation_status": "PASS_E1_PREPARATION_ONLY",
+        "variant": "C_CHANGED_MUSIC_SEED"
+      },
+      {
+        "gameplay_seed": 998877,
+        "intent_sha256": "6e27835f4ecef733c137ac58faf7b0005ea5c25b3e07d70a0515d979b4e02f9f",
+        "music_seed": 840001,
+        "music_seed_authority": "PROPOSAL_ONLY_NOT_AUTHORIZED",
+        "relative_path": "intents/CHALLENGE_005_A_E1_INTENT.json",
+        "request_id": "E6CHPREP_20261118T202841Z_37C6AE0E-CHALLENGE_005-A",
+        "scenario_id": "E6-CH-005",
+        "selector": "CHALLENGE_005",
+        "unresolved_music_parameters": [
+          "tempo_bpm",
+          "duration_seconds"
+        ],
+        "validation_status": "PASS_E1_PREPARATION_ONLY",
+        "variant": "A"
+      },
+      {
+        "gameplay_seed": 998877,
+        "intent_sha256": "5d31d81dbbbbb0e5bd24857e79a8158cddcbfa29386395e3f6cf9ab56c52fa19",
+        "music_seed": 840001,
+        "music_seed_authority": "PROPOSAL_ONLY_NOT_AUTHORIZED",
+        "relative_path": "intents/CHALLENGE_005_B_REPEAT_E1_INTENT.json",
+        "request_id": "E6CHPREP_20261118T202841Z_37C6AE0E-CHALLENGE_005-B_REPEAT",
+        "scenario_id": "E6-CH-005",
+        "selector": "CHALLENGE_005",
+        "unresolved_music_parameters": [
+          "tempo_bpm",
+          "duration_seconds"
+        ],
+        "validation_status": "PASS_E1_PREPARATION_ONLY",
+        "variant": "B_REPEAT"
+      },
+      {
+        "gameplay_seed": 998877,
+        "intent_sha256": "1d1bd1a6063d93116d9d3109f5d1350b5ee62c685faa845b4e8b72b4e72cb100",
+        "music_seed": 840002,
+        "music_seed_authority": "PROPOSAL_ONLY_NOT_AUTHORIZED",
+        "relative_path": "intents/CHALLENGE_005_C_CHANGED_MUSIC_SEED_E1_INTENT.json",
+        "request_id": "E6CHPREP_20261118T202841Z_37C6AE0E-CHALLENGE_005-C_CHANGED_MUSIC_SEED",
+        "scenario_id": "E6-CH-005",
+        "selector": "CHALLENGE_005",
+        "unresolved_music_parameters": [
+          "tempo_bpm",
+          "duration_seconds"
+        ],
+        "validation_status": "PASS_E1_PREPARATION_ONLY",
+        "variant": "C_CHANGED_MUSIC_SEED"
+      },
+      {
+        "gameplay_seed": 884422,
+        "intent_sha256": "b5b70968c64fd9c4badc6bd5a39e4252cf313c69c6b5edebb6507aabca77f1e6",
+        "music_seed": 840001,
+        "music_seed_authority": "PROPOSAL_ONLY_NOT_AUTHORIZED",
+        "relative_path": "intents/CHALLENGE_006_A_E1_INTENT.json",
+        "request_id": "E6CHPREP_20261118T202841Z_37C6AE0E-CHALLENGE_006-A",
+        "scenario_id": "E6-CH-006",
+        "selector": "CHALLENGE_006",
+        "unresolved_music_parameters": [
+          "tempo_bpm",
+          "duration_seconds"
+        ],
+        "validation_status": "PASS_E1_PREPARATION_ONLY",
+        "variant": "A"
+      },
+      {
+        "gameplay_seed": 884422,
+        "intent_sha256": "160e45772eb68e1166caf9d254d28e784eb02eeab60620256ac9a5cb74ba6b17",
+        "music_seed": 840001,
+        "music_seed_authority": "PROPOSAL_ONLY_NOT_AUTHORIZED",
+        "relative_path": "intents/CHALLENGE_006_B_REPEAT_E1_INTENT.json",
+        "request_id": "E6CHPREP_20261118T202841Z_37C6AE0E-CHALLENGE_006-B_REPEAT",
+        "scenario_id": "E6-CH-006",
+        "selector": "CHALLENGE_006",
+        "unresolved_music_parameters": [
+          "tempo_bpm",
+          "duration_seconds"
+        ],
+        "validation_status": "PASS_E1_PREPARATION_ONLY",
+        "variant": "B_REPEAT"
+      },
+      {
+        "gameplay_seed": 884422,
+        "intent_sha256": "7e84e89d7916ac8d5641a1ed7d51a30ad52fa807f83d316f03ac0f10fc63299c",
+        "music_seed": 840002,
+        "music_seed_authority": "PROPOSAL_ONLY_NOT_AUTHORIZED",
+        "relative_path": "intents/CHALLENGE_006_C_CHANGED_MUSIC_SEED_E1_INTENT.json",
+        "request_id": "E6CHPREP_20261118T202841Z_37C6AE0E-CHALLENGE_006-C_CHANGED_MUSIC_SEED",
+        "scenario_id": "E6-CH-006",
+        "selector": "CHALLENGE_006",
+        "unresolved_music_parameters": [
+          "tempo_bpm",
+          "duration_seconds"
+        ],
+        "validation_status": "PASS_E1_PREPARATION_ONLY",
+        "variant": "C_CHANGED_MUSIC_SEED"
+      },
+      {
+        "gameplay_seed": 7770001,
+        "intent_sha256": "1fe4da32a4fff7dfe1d745704e984defac575bed34805c915e8170442ca48e6b",
+        "music_seed": 840001,
+        "music_seed_authority": "PROPOSAL_ONLY_NOT_AUTHORIZED",
+        "relative_path": "intents/CHALLENGE_007_A_E1_INTENT.json",
+        "request_id": "E6CHPREP_20261118T202841Z_37C6AE0E-CHALLENGE_007-A",
+        "scenario_id": "E6-CH-007",
+        "selector": "CHALLENGE_007",
+        "unresolved_music_parameters": [
+          "tempo_bpm",
+          "duration_seconds"
+        ],
+        "validation_status": "PASS_E1_PREPARATION_ONLY",
+        "variant": "A"
+      },
+      {
+        "gameplay_seed": 7770001,
+        "intent_sha256": "4c2241919d600ef2bc2e63a7097542b4bf218a7a67ff1d569a20fc1c040040d2",
+        "music_seed": 840001,
+        "music_seed_authority": "PROPOSAL_ONLY_NOT_AUTHORIZED",
+        "relative_path": "intents/CHALLENGE_007_B_REPEAT_E1_INTENT.json",
+        "request_id": "E6CHPREP_20261118T202841Z_37C6AE0E-CHALLENGE_007-B_REPEAT",
+        "scenario_id": "E6-CH-007",
+        "selector": "CHALLENGE_007",
+        "unresolved_music_parameters": [
+          "tempo_bpm",
+          "duration_seconds"
+        ],
+        "validation_status": "PASS_E1_PREPARATION_ONLY",
+        "variant": "B_REPEAT"
+      },
+      {
+        "gameplay_seed": 7770001,
+        "intent_sha256": "93cef0a18e952950dc8dd672523b5c0088629ed43c4ccba05eac07f1264301ae",
+        "music_seed": 840002,
+        "music_seed_authority": "PROPOSAL_ONLY_NOT_AUTHORIZED",
+        "relative_path": "intents/CHALLENGE_007_C_CHANGED_MUSIC_SEED_E1_INTENT.json",
+        "request_id": "E6CHPREP_20261118T202841Z_37C6AE0E-CHALLENGE_007-C_CHANGED_MUSIC_SEED",
+        "scenario_id": "E6-CH-007",
+        "selector": "CHALLENGE_007",
+        "unresolved_music_parameters": [
+          "tempo_bpm",
+          "duration_seconds"
+        ],
+        "validation_status": "PASS_E1_PREPARATION_ONLY",
+        "variant": "C_CHANGED_MUSIC_SEED"
+      }
+    ]
+  },
+  "execution": {
+    "audio_generated": false,
+    "batch_id_consumed": false,
+    "e6_test_only_authorized": false,
+    "ffmpeg_invoked": false,
+    "ffprobe_invoked": false,
+    "godot_invoked": false,
+    "media_created": false,
+    "mode": "PREPARE_ONLY",
+    "mux_invoked": false,
+    "production_dispatch": false,
+    "release_authority": "NONE",
+    "renderer_invoked": false,
+    "runtime_commands_emitted": false
+  },
+  "governance": {
+    "commits": "OPERATOR_MANAGED",
+    "d4_8": "BLOCKED",
+    "d4_8_overridden": false,
+    "e1": "PREPARE_ONLY",
+    "e6_accepted_scenarios": 0,
+    "e6_matrix_frozen": false,
+    "git_checks": "SKIPPED",
+    "production_dispatch": false,
+    "production_media": false,
+    "release_authority": "NONE",
+    "renderer": "OFF",
+    "source_file_pins": "ENFORCED"
+  },
+  "input_manifest": {
+    "copy_path": "artifacts/tests/c11e/e6_challenge_prepare_only_orchestrator/E6CHPREP_20261118T202841Z_37C6AE0E/INPUT_MANIFEST_PINNED_V1.json",
+    "copy_sha256": "4607831a94ecbb64b2f1cfb6ef3a7480e3f7315e8aee588a3ef9a93f97ce8878",
+    "copy_sidecar": "artifacts/tests/c11e/e6_challenge_prepare_only_orchestrator/E6CHPREP_20261118T202841Z_37C6AE0E/INPUT_MANIFEST_PINNED_V1.json.sha256",
+    "path": "definitions/c11d/production/C11E_E6_CHALLENGE_PREPARE_ONLY_INPUT_MANIFEST_V1.json",
+    "selection_decision": "PROPOSAL_NOT_FROZEN",
+    "sha256": "4607831a94ecbb64b2f1cfb6ef3a7480e3f7315e8aee588a3ef9a93f97ce8878",
+    "status": "DRAFT_PLAN_ONLY_NOT_FROZEN_NOT_EXECUTION_AUTHORITY"
+  },
+  "limitations": [
+    "This receipt proves E1 preparation and static D envelopes only; it does not prove Godot runtime or media output.",
+    "The selector set remains a proposal and is not frozen by this overlay.",
+    "Music seeds and tempo are proposal-only; E1 tempo_bpm and duration_seconds remain null.",
+    "D4.8 conflict is unchanged; no media execution authority is granted."
+  ],
+  "music_fixture": {
+    "authority": "PROPOSAL_ONLY_NOT_AUTHORIZED",
+    "duration_seconds_sent_to_e1": false,
+    "e1_unresolved_parameters": [
+      "tempo_bpm",
+      "duration_seconds"
+    ],
+    "profile_id": "challenge_8bit_v1",
+    "profile_version": "1.0",
+    "tempo_bpm_proposal": 104,
+    "tempo_bpm_sent_to_e1": false
+  },
+  "project_root": "C:\\Users\\vinxe\\Projects\\ChallengeEngineV01_STATELESS",
+  "run_id": "E6CHPREP_20261118T202841Z_37C6AE0E",
+  "schema": "C11E-E6-CHALLENGE-PREPARE-ONLY-ORCHESTRATOR-RECEIPT-V1",
+  "schema_version": "1.0",
+  "scope": "E6_CHALLENGE_SIX_SELECTOR_D9_PREPARE_ONLY_ORCHESTRATOR",
+  "source_pin_document": {
+    "checkout_pins": 23,
+    "path": "definitions/c11d/production/C11E_E6_CHALLENGE_PREPARE_ONLY_SOURCE_PINS_V1.json",
+    "pre_post_equal": true,
+    "sha256": "3b2333b2ae02158f27363577069dba519bff3975714d1cd95e569728425a09b6",
+    "upstream_evidence_pins": 5
+  },
+  "source_pins_post": [
+    {
+      "bytes": 796318,
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "role": "CHECKOUT_SOURCE",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+      "status": "PASS"
+    },
+    {
+      "bytes": 12996,
+      "path": "definitions/c11d/production/C11E_D4_8_R1V_QUALIFICATION_ONLY_POLICY_V2.json",
+      "role": "CHECKOUT_SOURCE",
+      "sha256": "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+      "status": "PASS"
+    },
+    {
+      "bytes": 1761,
+      "path": "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json",
+      "role": "CHECKOUT_SOURCE",
+      "sha256": "342a61338c80a2f1616e8e9f38986bd90f410257c0e321f99840380fb0fd804b",
+      "status": "PASS"
+    },
+    {
+      "bytes": 4200,
+      "path": "definitions/c11d/production/C11E_E4A_CHALLENGE_EDITORIAL_PRESENTATION_POLICY_APPROVAL_V1.json",
+      "role": "CHECKOUT_SOURCE",
+      "sha256": "764629384896a255cf992da89fa427c19f60f9b2e623b81ad17d909674b466b5",
+      "status": "PASS"
+    },
+    {
+      "bytes": 32714,
+      "path": "c11c-suite/c11c-producer/producer_schema.json",
+      "role": "CHECKOUT_SOURCE",
+      "sha256": "564f11fb4fee9221910dc373550650172eda4f106d6dc25532cc43cb8e6314a0",
+      "status": "PASS"
+    },
+    {
+      "bytes": 86687,
+      "path": "c11c-suite/c11c-producer/c11e_production_service.py",
+      "role": "CHECKOUT_SOURCE",
+      "sha256": "e5dbf9baa72d4c066ff8ba24006df954700d72a5b0f11f9f88aec653e84dce87",
+      "status": "PASS"
+    },
+    {
+      "bytes": 9183,
+      "path": "c11c-suite/c11c-producer/c11d_gui_request.py",
+      "role": "CHECKOUT_SOURCE",
+      "sha256": "0e95109ffd3ba5655d28292309196349470ab7958a467f096543a2c98c22976e",
+      "status": "PASS"
+    },
+    {
+      "bytes": 19692,
+      "path": "tools/c11d/d9/universal_producer.py",
+      "role": "CHECKOUT_SOURCE",
+      "sha256": "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1",
+      "status": "PASS"
+    },
+    {
+      "bytes": 27585,
+      "path": "tools/c11d/d9/universal_editorial_model.py",
+      "role": "CHECKOUT_SOURCE",
+      "sha256": "dac95fb698b52f96432a517d8ec3196a397e5e6bd3c025300350dd55ddce3afd",
+      "status": "PASS"
+    },
+    {
+      "bytes": 12932,
+      "path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+      "role": "CHECKOUT_SOURCE",
+      "sha256": "dabb458fc2215156ddb5ebea7e8ebec811098886ce2858733ba9fb13f6075ccb",
+      "status": "PASS"
+    },
+    {
+      "bytes": 35903,
+      "path": "tools/c11d/d9/c11e_e6_challenge_plan_only_v1.py",
+      "role": "CHECKOUT_SOURCE",
+      "sha256": "a81ac55ec6ff5f0222c744c9e23f0f140141ca63e35a41df22e3d87c92fe3e64",
+      "status": "PASS"
+    },
+    {
+      "bytes": 2907,
+      "path": "docs/current/d/D1.5_PLATFORM_LAYOUT_TEMPLATE_CONTRACT.md",
+      "role": "CHECKOUT_SOURCE",
+      "sha256": "3a8e7bfc13a369acaf9d5abe9583f3e93e0990a3b1262b8a839e81ee873c6461",
+      "status": "PASS"
+    },
+    {
+      "bytes": 3158,
+      "path": "profiles/delivery/c11c_video_delivery_profiles.json",
+      "role": "CHECKOUT_SOURCE",
+      "sha256": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3",
+      "status": "PASS"
+    },
+    {
+      "bytes": 5256,
+      "path": "tools/c11d/d3/c11d_music_engine_v5.py",
+      "role": "CHECKOUT_SOURCE",
+      "sha256": "03ae7e2997796e0c67ca15c8886b1e5b290791a142b6631a572d1cba6eba4eb1",
+      "status": "PASS"
+    },
+    {
+      "bytes": 1943,
+      "path": "definitions/c11e/music/C11E_E3_2_D3_V5_E1_MUSIC_CONTRACT_V1.json",
+      "role": "CHECKOUT_SOURCE",
+      "sha256": "12c59ce2a2135a49ce0d5968a29905a1e5890743507db1ee0039da1374efcfe8",
+      "status": "PASS"
+    },
+    {
+      "bytes": 3313,
+      "path": "definitions/c11d/music/C11D_MUSIC_ENGINE_V5_SPEC_V1.json",
+      "role": "CHECKOUT_SOURCE",
+      "sha256": "8970f4e93c878285b727697f3d269f5ee464b6029fe79eabc5fcbf4245e9dbf2",
+      "status": "PASS"
+    },
+    {
+      "bytes": 2818,
+      "path": "definitions/c11d/music/C11D_CHALLENGE_8BIT_STYLE_PROFILE_V1.json",
+      "role": "CHECKOUT_SOURCE",
+      "sha256": "0c877cbe6e1c288890da31fc4481a58e1051749b45a50b2290cbef5d1120d2de",
+      "status": "PASS"
+    },
+    {
+      "bytes": 1085,
+      "path": "challenges/CHALLENGE_001.json",
+      "role": "CHECKOUT_SOURCE",
+      "sha256": "ec8925fa5b4ab996a791c8cf7f5b139470774720f57880c5b01b2d0aa5b57bea",
+      "status": "PASS"
+    },
+    {
+      "bytes": 1218,
+      "path": "challenges/CHALLENGE_002.json",
+      "role": "CHECKOUT_SOURCE",
+      "sha256": "db5d70a28c460e986e785c6787447529372ac5ea3b5a7ff0507667decbe2a160",
+      "status": "PASS"
+    },
+    {
+      "bytes": 1543,
+      "path": "challenges/CHALLENGE_004.json",
+      "role": "CHECKOUT_SOURCE",
+      "sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71",
+      "status": "PASS"
+    },
+    {
+      "bytes": 917,
+      "path": "challenges/CHALLENGE_005.json",
+      "role": "CHECKOUT_SOURCE",
+      "sha256": "e173736fcbb0e340cd250be1111fa9d38489934d55cc0e0c93835c66f9596e30",
+      "status": "PASS"
+    },
+    {
+      "bytes": 1097,
+      "path": "challenges/CHALLENGE_006.json",
+      "role": "CHECKOUT_SOURCE",
+      "sha256": "2d7d7397cbb0a2109f300859a5d7c0830ded0553522a5120f61750f5bc0b5694",
+      "status": "PASS"
+    },
+    {
+      "bytes": 1388,
+      "path": "challenges/CHALLENGE_007.json",
+      "role": "CHECKOUT_SOURCE",
+      "sha256": "269f9588e5a6b7d253e2e944440cc41dc3a9db8967775ffa819edebe729a3a61",
+      "status": "PASS"
+    },
+    {
+      "bytes": 25857,
+      "path": "artifacts/tests/c11e/e6_d9_capture_orchestration_prepare_only/E6CAPPLAN_20261118T082416Z_68342FCD/E6_D9_CAPTURE_ORCHESTRATION_PREPARE_ONLY_MANIFEST_V1.json",
+      "role": "UPSTREAM_EVIDENCE",
+      "sha256": "144470d16a222a1f01f0b7a9edec699af18d18bac614f7db938021e1acc0db2d",
+      "status": "PASS"
+    },
+    {
+      "bytes": 1047,
+      "path": "artifacts/tests/c11e/e6_d9_capture_orchestration_prepare_only/E6CAPPLAN_20261118T082416Z_68342FCD/E6_D9_CAPTURE_ORCHESTRATION_PREPARE_ONLY_RECEIPT_V1.json",
+      "role": "UPSTREAM_EVIDENCE",
+      "sha256": "2233fcda43861d7c2bf1d933f1270b84976d315b6f2439bb46d1d2e237653b74",
+      "status": "PASS"
+    },
+    {
+      "bytes": 17895,
+      "path": "artifacts/tests/c11e/e6_challenge_consumer_contract/E6CHCONTRACT_20261117T005638Z_B3412977/E6_CHALLENGE_CONSUMER_CONTRACT_PREFLIGHT_RECEIPT_V1.json",
+      "role": "UPSTREAM_EVIDENCE",
+      "sha256": "e22abc1fc1779f60dd48abf4cdbf7960b7a3a02b2ef9bc0a7e975053f5effce8",
+      "status": "PASS"
+    },
+    {
+      "bytes": 31417,
+      "path": "artifacts/tests/c11e/e6_smoke18_audit/E6AUDITV2_20261116T235057Z_B7FA0492/E6_SMOKE18_READONLY_AUDIT_RECEIPT_V2.json",
+      "role": "UPSTREAM_EVIDENCE",
+      "sha256": "054ed52aefe45cc4d986c4621adbbdb6ca7cf36dc1c4a12cbd76238de86e21fd",
+      "status": "PASS"
+    },
+    {
+      "bytes": 11024,
+      "path": "artifacts/tests/c11e/e6_smoke18_reuse_requalification/E6SMK18REQUAL_20261118T141200Z_BA5AC046/E6_SMOKE18_REUSE_REQUALIFICATION_RECEIPT_V1.json",
+      "role": "ACTIVE_CHECKOUT_UPSTREAM_RECEIPT",
+      "sha256": "4d63b8caec7a975cc0362ee9d7a5924f5ab8371e8e8e1457e1d60956bf65ce33",
+      "status": "PASS"
+    }
+  ],
+  "source_pins_pre": [
+    {
+      "bytes": 796318,
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "role": "CHECKOUT_SOURCE",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+      "status": "PASS"
+    },
+    {
+      "bytes": 12996,
+      "path": "definitions/c11d/production/C11E_D4_8_R1V_QUALIFICATION_ONLY_POLICY_V2.json",
+      "role": "CHECKOUT_SOURCE",
+      "sha256": "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+      "status": "PASS"
+    },
+    {
+      "bytes": 1761,
+      "path": "definitions/c11d/production/C11D_UNIVERSAL_PRODUCER_REQUEST_D9_9_V1.json",
+      "role": "CHECKOUT_SOURCE",
+      "sha256": "342a61338c80a2f1616e8e9f38986bd90f410257c0e321f99840380fb0fd804b",
+      "status": "PASS"
+    },
+    {
+      "bytes": 4200,
+      "path": "definitions/c11d/production/C11E_E4A_CHALLENGE_EDITORIAL_PRESENTATION_POLICY_APPROVAL_V1.json",
+      "role": "CHECKOUT_SOURCE",
+      "sha256": "764629384896a255cf992da89fa427c19f60f9b2e623b81ad17d909674b466b5",
+      "status": "PASS"
+    },
+    {
+      "bytes": 32714,
+      "path": "c11c-suite/c11c-producer/producer_schema.json",
+      "role": "CHECKOUT_SOURCE",
+      "sha256": "564f11fb4fee9221910dc373550650172eda4f106d6dc25532cc43cb8e6314a0",
+      "status": "PASS"
+    },
+    {
+      "bytes": 86687,
+      "path": "c11c-suite/c11c-producer/c11e_production_service.py",
+      "role": "CHECKOUT_SOURCE",
+      "sha256": "e5dbf9baa72d4c066ff8ba24006df954700d72a5b0f11f9f88aec653e84dce87",
+      "status": "PASS"
+    },
+    {
+      "bytes": 9183,
+      "path": "c11c-suite/c11c-producer/c11d_gui_request.py",
+      "role": "CHECKOUT_SOURCE",
+      "sha256": "0e95109ffd3ba5655d28292309196349470ab7958a467f096543a2c98c22976e",
+      "status": "PASS"
+    },
+    {
+      "bytes": 19692,
+      "path": "tools/c11d/d9/universal_producer.py",
+      "role": "CHECKOUT_SOURCE",
+      "sha256": "9ad2adbf54946f2225ae2ed36b88abfc5717387f2ff03bbed684aa8bd32d87d1",
+      "status": "PASS"
+    },
+    {
+      "bytes": 27585,
+      "path": "tools/c11d/d9/universal_editorial_model.py",
+      "role": "CHECKOUT_SOURCE",
+      "sha256": "dac95fb698b52f96432a517d8ec3196a397e5e6bd3c025300350dd55ddce3afd",
+      "status": "PASS"
+    },
+    {
+      "bytes": 12932,
+      "path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+      "role": "CHECKOUT_SOURCE",
+      "sha256": "dabb458fc2215156ddb5ebea7e8ebec811098886ce2858733ba9fb13f6075ccb",
+      "status": "PASS"
+    },
+    {
+      "bytes": 35903,
+      "path": "tools/c11d/d9/c11e_e6_challenge_plan_only_v1.py",
+      "role": "CHECKOUT_SOURCE",
+      "sha256": "a81ac55ec6ff5f0222c744c9e23f0f140141ca63e35a41df22e3d87c92fe3e64",
+      "status": "PASS"
+    },
+    {
+      "bytes": 2907,
+      "path": "docs/current/d/D1.5_PLATFORM_LAYOUT_TEMPLATE_CONTRACT.md",
+      "role": "CHECKOUT_SOURCE",
+      "sha256": "3a8e7bfc13a369acaf9d5abe9583f3e93e0990a3b1262b8a839e81ee873c6461",
+      "status": "PASS"
+    },
+    {
+      "bytes": 3158,
+      "path": "profiles/delivery/c11c_video_delivery_profiles.json",
+      "role": "CHECKOUT_SOURCE",
+      "sha256": "967831513eb225e6eafd56496ce0d0a0b0f0e158d205b5985e7bba11b0534ae3",
+      "status": "PASS"
+    },
+    {
+      "bytes": 5256,
+      "path": "tools/c11d/d3/c11d_music_engine_v5.py",
+      "role": "CHECKOUT_SOURCE",
+      "sha256": "03ae7e2997796e0c67ca15c8886b1e5b290791a142b6631a572d1cba6eba4eb1",
+      "status": "PASS"
+    },
+    {
+      "bytes": 1943,
+      "path": "definitions/c11e/music/C11E_E3_2_D3_V5_E1_MUSIC_CONTRACT_V1.json",
+      "role": "CHECKOUT_SOURCE",
+      "sha256": "12c59ce2a2135a49ce0d5968a29905a1e5890743507db1ee0039da1374efcfe8",
+      "status": "PASS"
+    },
+    {
+      "bytes": 3313,
+      "path": "definitions/c11d/music/C11D_MUSIC_ENGINE_V5_SPEC_V1.json",
+      "role": "CHECKOUT_SOURCE",
+      "sha256": "8970f4e93c878285b727697f3d269f5ee464b6029fe79eabc5fcbf4245e9dbf2",
+      "status": "PASS"
+    },
+    {
+      "bytes": 2818,
+      "path": "definitions/c11d/music/C11D_CHALLENGE_8BIT_STYLE_PROFILE_V1.json",
+      "role": "CHECKOUT_SOURCE",
+      "sha256": "0c877cbe6e1c288890da31fc4481a58e1051749b45a50b2290cbef5d1120d2de",
+      "status": "PASS"
+    },
+    {
+      "bytes": 1085,
+      "path": "challenges/CHALLENGE_001.json",
+      "role": "CHECKOUT_SOURCE",
+      "sha256": "ec8925fa5b4ab996a791c8cf7f5b139470774720f57880c5b01b2d0aa5b57bea",
+      "status": "PASS"
+    },
+    {
+      "bytes": 1218,
+      "path": "challenges/CHALLENGE_002.json",
+      "role": "CHECKOUT_SOURCE",
+      "sha256": "db5d70a28c460e986e785c6787447529372ac5ea3b5a7ff0507667decbe2a160",
+      "status": "PASS"
+    },
+    {
+      "bytes": 1543,
+      "path": "challenges/CHALLENGE_004.json",
+      "role": "CHECKOUT_SOURCE",
+      "sha256": "6a674c02c2d8831a872691954f1cc40e2492193f9b136f60656730a7be686b71",
+      "status": "PASS"
+    },
+    {
+      "bytes": 917,
+      "path": "challenges/CHALLENGE_005.json",
+      "role": "CHECKOUT_SOURCE",
+      "sha256": "e173736fcbb0e340cd250be1111fa9d38489934d55cc0e0c93835c66f9596e30",
+      "status": "PASS"
+    },
+    {
+      "bytes": 1097,
+      "path": "challenges/CHALLENGE_006.json",
+      "role": "CHECKOUT_SOURCE",
+      "sha256": "2d7d7397cbb0a2109f300859a5d7c0830ded0553522a5120f61750f5bc0b5694",
+      "status": "PASS"
+    },
+    {
+      "bytes": 1388,
+      "path": "challenges/CHALLENGE_007.json",
+      "role": "CHECKOUT_SOURCE",
+      "sha256": "269f9588e5a6b7d253e2e944440cc41dc3a9db8967775ffa819edebe729a3a61",
+      "status": "PASS"
+    },
+    {
+      "bytes": 25857,
+      "path": "artifacts/tests/c11e/e6_d9_capture_orchestration_prepare_only/E6CAPPLAN_20261118T082416Z_68342FCD/E6_D9_CAPTURE_ORCHESTRATION_PREPARE_ONLY_MANIFEST_V1.json",
+      "role": "UPSTREAM_EVIDENCE",
+      "sha256": "144470d16a222a1f01f0b7a9edec699af18d18bac614f7db938021e1acc0db2d",
+      "status": "PASS"
+    },
+    {
+      "bytes": 1047,
+      "path": "artifacts/tests/c11e/e6_d9_capture_orchestration_prepare_only/E6CAPPLAN_20261118T082416Z_68342FCD/E6_D9_CAPTURE_ORCHESTRATION_PREPARE_ONLY_RECEIPT_V1.json",
+      "role": "UPSTREAM_EVIDENCE",
+      "sha256": "2233fcda43861d7c2bf1d933f1270b84976d315b6f2439bb46d1d2e237653b74",
+      "status": "PASS"
+    },
+    {
+      "bytes": 17895,
+      "path": "artifacts/tests/c11e/e6_challenge_consumer_contract/E6CHCONTRACT_20261117T005638Z_B3412977/E6_CHALLENGE_CONSUMER_CONTRACT_PREFLIGHT_RECEIPT_V1.json",
+      "role": "UPSTREAM_EVIDENCE",
+      "sha256": "e22abc1fc1779f60dd48abf4cdbf7960b7a3a02b2ef9bc0a7e975053f5effce8",
+      "status": "PASS"
+    },
+    {
+      "bytes": 31417,
+      "path": "artifacts/tests/c11e/e6_smoke18_audit/E6AUDITV2_20261116T235057Z_B7FA0492/E6_SMOKE18_READONLY_AUDIT_RECEIPT_V2.json",
+      "role": "UPSTREAM_EVIDENCE",
+      "sha256": "054ed52aefe45cc4d986c4621adbbdb6ca7cf36dc1c4a12cbd76238de86e21fd",
+      "status": "PASS"
+    },
+    {
+      "bytes": 11024,
+      "path": "artifacts/tests/c11e/e6_smoke18_reuse_requalification/E6SMK18REQUAL_20261118T141200Z_BA5AC046/E6_SMOKE18_REUSE_REQUALIFICATION_RECEIPT_V1.json",
+      "role": "ACTIVE_CHECKOUT_UPSTREAM_RECEIPT",
+      "sha256": "4d63b8caec7a975cc0362ee9d7a5924f5ab8371e8e8e1457e1d60956bf65ce33",
+      "status": "PASS"
+    }
+  ],
+  "status": "PASS_PREPARE_ONLY_18_E1_INTENTS_18_D_ENVELOPES_EXECUTION_HELD",
+  "upstream_evidence": {
+    "consumer_contract": {
+      "path": "artifacts/tests/c11e/e6_challenge_consumer_contract/E6CHCONTRACT_20261117T005638Z_B3412977/E6_CHALLENGE_CONSUMER_CONTRACT_PREFLIGHT_RECEIPT_V1.json",
+      "sha256": "e22abc1fc1779f60dd48abf4cdbf7960b7a3a02b2ef9bc0a7e975053f5effce8",
+      "status": "PASS_STATIC_CONSUMER_CONTRACT_18_OF_18_EXECUTION_HELD"
+    },
+    "prior_d9_multiselector_plan": {
+      "path": "artifacts/tests/c11e/e6_d9_capture_orchestration_prepare_only/E6CAPPLAN_20261118T082416Z_68342FCD/E6_D9_CAPTURE_ORCHESTRATION_PREPARE_ONLY_RECEIPT_V1.json",
+      "sha256": "2233fcda43861d7c2bf1d933f1270b84976d315b6f2439bb46d1d2e237653b74",
+      "status": "PASS_D9_MULTISELECTOR_CAPTURE_GROUP_PLAN_READY_EXECUTION_HELD"
+    },
+    "reuse_requalification": {
+      "path": "artifacts/tests/c11e/e6_smoke18_reuse_requalification/E6SMK18REQUAL_20261118T141200Z_BA5AC046/E6_SMOKE18_REUSE_REQUALIFICATION_RECEIPT_V1.json",
+      "sha256": "4d63b8caec7a975cc0362ee9d7a5924f5ab8371e8e8e1457e1d60956bf65ce33",
+      "status": "PASS_REUSE_EVIDENCE_LINKAGE_REQUALIFIED_NOT_E6_ACCEPTANCE"
+    },
+    "smoke18_readonly_audit": {
+      "path": "artifacts/tests/c11e/e6_smoke18_audit/E6AUDITV2_20261116T235057Z_B7FA0492/E6_SMOKE18_READONLY_AUDIT_RECEIPT_V2.json",
+      "sha256": "054ed52aefe45cc4d986c4621adbbdb6ca7cf36dc1c4a12cbd76238de86e21fd",
+      "status": "PASS_AUDIT_READ_ONLY_EVIDENCE_RECONCILED_EXECUTION_HELD"
+    }
+  },
+  "written_evidence_files": [
+    {
+      "bytes": 7669,
+      "path": "artifacts/tests/c11e/e6_challenge_prepare_only_orchestrator/E6CHPREP_20261118T202841Z_37C6AE0E/intents/CHALLENGE_001_A_E1_INTENT.json",
+      "sha256": "2759ffdccddc4fde0144f43d1ef586e509aaa3728195dd2ee72be600b2b36232"
+    },
+    {
+      "bytes": 14593,
+      "path": "artifacts/tests/c11e/e6_challenge_prepare_only_orchestrator/E6CHPREP_20261118T202841Z_37C6AE0E/envelopes/CHALLENGE_001_A_D_ENVELOPE.json",
+      "sha256": "85cc987332ead05b9cccbe8fc24a0150976eb2e71b5bd9170a1fc0d304ef7d05"
+    },
+    {
+      "bytes": 7683,
+      "path": "artifacts/tests/c11e/e6_challenge_prepare_only_orchestrator/E6CHPREP_20261118T202841Z_37C6AE0E/intents/CHALLENGE_001_B_REPEAT_E1_INTENT.json",
+      "sha256": "0b69449427bcd58d74f01b830a4fbb7bb34d08a5aa3b595998ea84aa9538751c"
+    },
+    {
+      "bytes": 14614,
+      "path": "artifacts/tests/c11e/e6_challenge_prepare_only_orchestrator/E6CHPREP_20261118T202841Z_37C6AE0E/envelopes/CHALLENGE_001_B_REPEAT_D_ENVELOPE.json",
+      "sha256": "14ef6a71299c91c1b18b30aaea9b140d71ad3d5500fc9a684f6f6cbec7b7e104"
+    },
+    {
+      "bytes": 7707,
+      "path": "artifacts/tests/c11e/e6_challenge_prepare_only_orchestrator/E6CHPREP_20261118T202841Z_37C6AE0E/intents/CHALLENGE_001_C_CHANGED_MUSIC_SEED_E1_INTENT.json",
+      "sha256": "5ce34e7185eab94b2588ca84d4dfcefba07f4695e1c2b828453c89e586ee7c3f"
+    },
+    {
+      "bytes": 14650,
+      "path": "artifacts/tests/c11e/e6_challenge_prepare_only_orchestrator/E6CHPREP_20261118T202841Z_37C6AE0E/envelopes/CHALLENGE_001_C_CHANGED_MUSIC_SEED_D_ENVELOPE.json",
+      "sha256": "ce64ddef0e74b418fe2cfbb3f1061d2641d8eb89f7552984dbe8528803fa8cc5"
+    },
+    {
+      "bytes": 7673,
+      "path": "artifacts/tests/c11e/e6_challenge_prepare_only_orchestrator/E6CHPREP_20261118T202841Z_37C6AE0E/intents/CHALLENGE_002_A_E1_INTENT.json",
+      "sha256": "c48ce5fb5d8e7e565eed99a3fda0d381b7a10978a8cf87d051e5a765a27afdea"
+    },
+    {
+      "bytes": 14613,
+      "path": "artifacts/tests/c11e/e6_challenge_prepare_only_orchestrator/E6CHPREP_20261118T202841Z_37C6AE0E/envelopes/CHALLENGE_002_A_D_ENVELOPE.json",
+      "sha256": "4a508a13a2b76cda85103c836c346f46c224086d9201fc1043e88e44b23a756f"
+    },
+    {
+      "bytes": 7687,
+      "path": "artifacts/tests/c11e/e6_challenge_prepare_only_orchestrator/E6CHPREP_20261118T202841Z_37C6AE0E/intents/CHALLENGE_002_B_REPEAT_E1_INTENT.json",
+      "sha256": "0cdeed906de2817a517b734b51ce060102fac215e6c2ed9d5b216e227978aa1b"
+    },
+    {
+      "bytes": 14634,
+      "path": "artifacts/tests/c11e/e6_challenge_prepare_only_orchestrator/E6CHPREP_20261118T202841Z_37C6AE0E/envelopes/CHALLENGE_002_B_REPEAT_D_ENVELOPE.json",
+      "sha256": "eae719119c912e103a8a98f94434d8816946944ee892f290a28112146de03ae5"
+    },
+    {
+      "bytes": 7711,
+      "path": "artifacts/tests/c11e/e6_challenge_prepare_only_orchestrator/E6CHPREP_20261118T202841Z_37C6AE0E/intents/CHALLENGE_002_C_CHANGED_MUSIC_SEED_E1_INTENT.json",
+      "sha256": "fab30eb40ce93f0470ae96879c87b631c9e15b614e455e9421940ffbab312ccd"
+    },
+    {
+      "bytes": 14670,
+      "path": "artifacts/tests/c11e/e6_challenge_prepare_only_orchestrator/E6CHPREP_20261118T202841Z_37C6AE0E/envelopes/CHALLENGE_002_C_CHANGED_MUSIC_SEED_D_ENVELOPE.json",
+      "sha256": "c276436ba5ca9db2a9c8af180177a6563d4a9af1016305dd1b793674dc3fb6e5"
+    },
+    {
+      "bytes": 7676,
+      "path": "artifacts/tests/c11e/e6_challenge_prepare_only_orchestrator/E6CHPREP_20261118T202841Z_37C6AE0E/intents/CHALLENGE_004_A_E1_INTENT.json",
+      "sha256": "4a1a33a540cc5a23a77fb9169521e97e2008936ec388dd55f49295680d277cd4"
+    },
+    {
+      "bytes": 14616,
+      "path": "artifacts/tests/c11e/e6_challenge_prepare_only_orchestrator/E6CHPREP_20261118T202841Z_37C6AE0E/envelopes/CHALLENGE_004_A_D_ENVELOPE.json",
+      "sha256": "181c04818e8f5eaa56b61eb24f517121463dea8b69c17d39a1327c5993a2a131"
+    },
+    {
+      "bytes": 7690,
+      "path": "artifacts/tests/c11e/e6_challenge_prepare_only_orchestrator/E6CHPREP_20261118T202841Z_37C6AE0E/intents/CHALLENGE_004_B_REPEAT_E1_INTENT.json",
+      "sha256": "b3ebe6981c8d26c16f1821a79d3a255392b3e2abc958bf1e3e248f276f86cc90"
+    },
+    {
+      "bytes": 14637,
+      "path": "artifacts/tests/c11e/e6_challenge_prepare_only_orchestrator/E6CHPREP_20261118T202841Z_37C6AE0E/envelopes/CHALLENGE_004_B_REPEAT_D_ENVELOPE.json",
+      "sha256": "60f455f93c83ea1be6038f7062036caf656ec216dee186ff85ef1343e5eec6b1"
+    },
+    {
+      "bytes": 7714,
+      "path": "artifacts/tests/c11e/e6_challenge_prepare_only_orchestrator/E6CHPREP_20261118T202841Z_37C6AE0E/intents/CHALLENGE_004_C_CHANGED_MUSIC_SEED_E1_INTENT.json",
+      "sha256": "73c6d22cd7798a39eb472b5ada82ac42adbff9c18347c41db7a4aea935069e80"
+    },
+    {
+      "bytes": 14673,
+      "path": "artifacts/tests/c11e/e6_challenge_prepare_only_orchestrator/E6CHPREP_20261118T202841Z_37C6AE0E/envelopes/CHALLENGE_004_C_CHANGED_MUSIC_SEED_D_ENVELOPE.json",
+      "sha256": "42ce4373a9c8e4428abfc3bbc76df63fbbf2113a4361b00d698c973dbded8802"
+    },
+    {
+      "bytes": 7671,
+      "path": "artifacts/tests/c11e/e6_challenge_prepare_only_orchestrator/E6CHPREP_20261118T202841Z_37C6AE0E/intents/CHALLENGE_005_A_E1_INTENT.json",
+      "sha256": "6e27835f4ecef733c137ac58faf7b0005ea5c25b3e07d70a0515d979b4e02f9f"
+    },
+    {
+      "bytes": 14595,
+      "path": "artifacts/tests/c11e/e6_challenge_prepare_only_orchestrator/E6CHPREP_20261118T202841Z_37C6AE0E/envelopes/CHALLENGE_005_A_D_ENVELOPE.json",
+      "sha256": "6b53d44918d5faf26a28d93b13694cc727459dcb5ffaf892f757c078096b0be3"
+    },
+    {
+      "bytes": 7685,
+      "path": "artifacts/tests/c11e/e6_challenge_prepare_only_orchestrator/E6CHPREP_20261118T202841Z_37C6AE0E/intents/CHALLENGE_005_B_REPEAT_E1_INTENT.json",
+      "sha256": "5d31d81dbbbbb0e5bd24857e79a8158cddcbfa29386395e3f6cf9ab56c52fa19"
+    },
+    {
+      "bytes": 14616,
+      "path": "artifacts/tests/c11e/e6_challenge_prepare_only_orchestrator/E6CHPREP_20261118T202841Z_37C6AE0E/envelopes/CHALLENGE_005_B_REPEAT_D_ENVELOPE.json",
+      "sha256": "2a6c69ad0a7bba8d74810718978642fa86b93691e6877e0f7cfb500ddd0754df"
+    },
+    {
+      "bytes": 7709,
+      "path": "artifacts/tests/c11e/e6_challenge_prepare_only_orchestrator/E6CHPREP_20261118T202841Z_37C6AE0E/intents/CHALLENGE_005_C_CHANGED_MUSIC_SEED_E1_INTENT.json",
+      "sha256": "1d1bd1a6063d93116d9d3109f5d1350b5ee62c685faa845b4e8b72b4e72cb100"
+    },
+    {
+      "bytes": 14652,
+      "path": "artifacts/tests/c11e/e6_challenge_prepare_only_orchestrator/E6CHPREP_20261118T202841Z_37C6AE0E/envelopes/CHALLENGE_005_C_CHANGED_MUSIC_SEED_D_ENVELOPE.json",
+      "sha256": "08a75cf9c2da100daafa336ac66a3f94548fd8a1da26e0bbcc9b9bbb835b78d1"
+    },
+    {
+      "bytes": 7674,
+      "path": "artifacts/tests/c11e/e6_challenge_prepare_only_orchestrator/E6CHPREP_20261118T202841Z_37C6AE0E/intents/CHALLENGE_006_A_E1_INTENT.json",
+      "sha256": "b5b70968c64fd9c4badc6bd5a39e4252cf313c69c6b5edebb6507aabca77f1e6"
+    },
+    {
+      "bytes": 14598,
+      "path": "artifacts/tests/c11e/e6_challenge_prepare_only_orchestrator/E6CHPREP_20261118T202841Z_37C6AE0E/envelopes/CHALLENGE_006_A_D_ENVELOPE.json",
+      "sha256": "2f0a996f65d0d55c703d551e2897a8d740cd17375c36b9c7d4aef4d341b9fc01"
+    },
+    {
+      "bytes": 7688,
+      "path": "artifacts/tests/c11e/e6_challenge_prepare_only_orchestrator/E6CHPREP_20261118T202841Z_37C6AE0E/intents/CHALLENGE_006_B_REPEAT_E1_INTENT.json",
+      "sha256": "160e45772eb68e1166caf9d254d28e784eb02eeab60620256ac9a5cb74ba6b17"
+    },
+    {
+      "bytes": 14619,
+      "path": "artifacts/tests/c11e/e6_challenge_prepare_only_orchestrator/E6CHPREP_20261118T202841Z_37C6AE0E/envelopes/CHALLENGE_006_B_REPEAT_D_ENVELOPE.json",
+      "sha256": "80f91904e78959162a5700b4a19510ee230e3ca8e074e89d7a77441186ecaace"
+    },
+    {
+      "bytes": 7712,
+      "path": "artifacts/tests/c11e/e6_challenge_prepare_only_orchestrator/E6CHPREP_20261118T202841Z_37C6AE0E/intents/CHALLENGE_006_C_CHANGED_MUSIC_SEED_E1_INTENT.json",
+      "sha256": "7e84e89d7916ac8d5641a1ed7d51a30ad52fa807f83d316f03ac0f10fc63299c"
+    },
+    {
+      "bytes": 14655,
+      "path": "artifacts/tests/c11e/e6_challenge_prepare_only_orchestrator/E6CHPREP_20261118T202841Z_37C6AE0E/envelopes/CHALLENGE_006_C_CHANGED_MUSIC_SEED_D_ENVELOPE.json",
+      "sha256": "ae2de70f0f65d0a02b7b21251ed30e27e09a0f4e9b407344ad89b60b4a75601f"
+    },
+    {
+      "bytes": 7674,
+      "path": "artifacts/tests/c11e/e6_challenge_prepare_only_orchestrator/E6CHPREP_20261118T202841Z_37C6AE0E/intents/CHALLENGE_007_A_E1_INTENT.json",
+      "sha256": "1fe4da32a4fff7dfe1d745704e984defac575bed34805c915e8170442ca48e6b"
+    },
+    {
+      "bytes": 14614,
+      "path": "artifacts/tests/c11e/e6_challenge_prepare_only_orchestrator/E6CHPREP_20261118T202841Z_37C6AE0E/envelopes/CHALLENGE_007_A_D_ENVELOPE.json",
+      "sha256": "fc535cd177d00db43378a8bf38222a76d0d0ec93831f542a386b512313b95c24"
+    },
+    {
+      "bytes": 7688,
+      "path": "artifacts/tests/c11e/e6_challenge_prepare_only_orchestrator/E6CHPREP_20261118T202841Z_37C6AE0E/intents/CHALLENGE_007_B_REPEAT_E1_INTENT.json",
+      "sha256": "4c2241919d600ef2bc2e63a7097542b4bf218a7a67ff1d569a20fc1c040040d2"
+    },
+    {
+      "bytes": 14635,
+      "path": "artifacts/tests/c11e/e6_challenge_prepare_only_orchestrator/E6CHPREP_20261118T202841Z_37C6AE0E/envelopes/CHALLENGE_007_B_REPEAT_D_ENVELOPE.json",
+      "sha256": "dbd62d6c2dfb1a295e1bb1d03bc8f298949dbd7a1c8b815850131b1c0e85201c"
+    },
+    {
+      "bytes": 7712,
+      "path": "artifacts/tests/c11e/e6_challenge_prepare_only_orchestrator/E6CHPREP_20261118T202841Z_37C6AE0E/intents/CHALLENGE_007_C_CHANGED_MUSIC_SEED_E1_INTENT.json",
+      "sha256": "93cef0a18e952950dc8dd672523b5c0088629ed43c4ccba05eac07f1264301ae"
+    },
+    {
+      "bytes": 14671,
+      "path": "artifacts/tests/c11e/e6_challenge_prepare_only_orchestrator/E6CHPREP_20261118T202841Z_37C6AE0E/envelopes/CHALLENGE_007_C_CHANGED_MUSIC_SEED_D_ENVELOPE.json",
+      "sha256": "89c8985057ce6ab3f59d1f7c2daaa5edfd54529f2bea1017bf6d128be98e67a6"
+    }
+  ]
+}
