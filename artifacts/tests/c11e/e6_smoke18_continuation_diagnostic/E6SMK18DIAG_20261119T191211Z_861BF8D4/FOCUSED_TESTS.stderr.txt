@@ -1,0 +1,27 @@
+test_01_exact_a3_bridge_fixture_passes (__main__.A3FixtureValidationTests.test_01_exact_a3_bridge_fixture_passes) ... ok
+test_02_new_pointer_mismatch_rejected (__main__.A3FixtureValidationTests.test_02_new_pointer_mismatch_rejected) ... ok
+test_03_old_pointer_mismatch_rejected (__main__.A3FixtureValidationTests.test_03_old_pointer_mismatch_rejected) ... ok
+test_04_transition_postimage_mismatch_rejected (__main__.A3FixtureValidationTests.test_04_transition_postimage_mismatch_rejected) ... ok
+test_05_transition_preimage_mismatch_rejected (__main__.A3FixtureValidationTests.test_05_transition_preimage_mismatch_rejected) ... ok
+test_06_transition_operation_mismatch_rejected (__main__.A3FixtureValidationTests.test_06_transition_operation_mismatch_rejected) ... ok
+test_07_additional_manifest_difference_rejected (__main__.A3FixtureValidationTests.test_07_additional_manifest_difference_rejected) ... ok
+test_08_current_pointer_mismatch_rejected (__main__.A3FixtureValidationTests.test_08_current_pointer_mismatch_rejected) ... ok
+test_09_bridge_allowed_pointer_path_mismatch_rejected (__main__.A3FixtureValidationTests.test_09_bridge_allowed_pointer_path_mismatch_rejected) ... ok
+test_10_consistent_all_pass_receipt_passes (__main__.ReceiptContractTests.test_10_consistent_all_pass_receipt_passes) ... ok
+test_11_pass_status_with_blocked_a3_is_rejected (__main__.ReceiptContractTests.test_11_pass_status_with_blocked_a3_is_rejected) ... ok
+test_12_report_count_mismatch_is_rejected (__main__.ReceiptContractTests.test_12_report_count_mismatch_is_rejected) ... ok
+test_13_missing_a3_row_is_rejected (__main__.ReceiptContractTests.test_13_missing_a3_row_is_rejected) ... ok
+test_14_fail_status_requires_blocked_overall_status (__main__.ReceiptContractTests.test_14_fail_status_requires_blocked_overall_status) ... ok
+test_15_exactly_eighteen_top_level_rows (__main__.Smoke18PlanningContractTests.test_15_exactly_eighteen_top_level_rows) ... ok
+test_16_family_counts_are_six_six_six (__main__.Smoke18PlanningContractTests.test_16_family_counts_are_six_six_six) ... ok
+test_17_thirteen_reuse_candidates_and_five_fresh_challenges (__main__.Smoke18PlanningContractTests.test_17_thirteen_reuse_candidates_and_five_fresh_challenges) ... ok
+test_18_challenge_probes_are_nested_and_seed_isolation_exact (__main__.Smoke18PlanningContractTests.test_18_challenge_probes_are_nested_and_seed_isolation_exact) ... ok
+test_19_no_matrix_row_is_e6_accepted_and_matrix_not_frozen (__main__.Smoke18PlanningContractTests.test_19_no_matrix_row_is_e6_accepted_and_matrix_not_frozen) ... ok
+test_20_operator_direction_prepares_test_only_without_production_authority (__main__.Smoke18PlanningContractTests.test_20_operator_direction_prepares_test_only_without_production_authority) ... ok
+test_21_current_doc_index_and_authority_are_present (__main__.Smoke18PlanningContractTests.test_21_current_doc_index_and_authority_are_present) ... ok
+test_22_execution_backlog_keeps_a3_as_first_gate (__main__.Smoke18PlanningContractTests.test_22_execution_backlog_keeps_a3_as_first_gate) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 0.009s
+
+OK

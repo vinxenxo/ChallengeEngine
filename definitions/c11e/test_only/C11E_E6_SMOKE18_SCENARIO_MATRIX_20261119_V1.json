@@ -1,0 +1,41 @@
+{
+  "schema": "C11E-E6-SMOKE18-SCENARIO-MATRIX-V1",
+  "status": "DRAFT_CANDIDATE_MATRIX_NOT_FROZEN_NOT_E6_ACCEPTED",
+  "date": "2026-11-19",
+  "scenario_count": 18,
+  "family_counts": {"challenges": 6, "visual_loops": 6, "visual_drills": 6},
+  "challenge_probe_count": 18,
+  "challenge_probe_semantics": "A_B_REPEAT_C_CHANGED_MUSIC_SEED_ARE_NESTED_SUBPROBES_WITHIN_SIX_CHALLENGE_SCENARIO_ROWS",
+  "reuse_candidate_count": 13,
+  "e6_accepted": 0,
+  "fresh_challenge_av_required": 5,
+  "rows": [
+    {"scenario_id":"E6-CH-01","family":"challenges","selector":"CHALLENGE_001","gameplay_seed":193847,"source_fps":60,"source_frames":540,"duration_seconds":9,"reuse_candidate":false,"e6_status":"FRESH_CHALLENGE_AV_REQUIRED","nested_probes":[{"id":"A","gameplay_seed":193847,"music_seed":840001},{"id":"B_REPEAT","gameplay_seed":193847,"music_seed":840001},{"id":"C_CHANGED_MUSIC_SEED","gameplay_seed":193847,"music_seed":840002}]},
+    {"scenario_id":"E6-CH-02","family":"challenges","selector":"CHALLENGE_002","gameplay_seed":987654,"source_fps":60,"source_frames":600,"duration_seconds":10,"reuse_candidate":false,"e6_status":"FRESH_CHALLENGE_AV_REQUIRED","nested_probes":[{"id":"A","gameplay_seed":987654,"music_seed":840001},{"id":"B_REPEAT","gameplay_seed":987654,"music_seed":840001},{"id":"C_CHANGED_MUSIC_SEED","gameplay_seed":987654,"music_seed":840002}]},
+    {"scenario_id":"E6-CH-04","family":"challenges","selector":"CHALLENGE_004","gameplay_seed":314159,"source_fps":60,"source_frames":900,"duration_seconds":15,"reuse_candidate":true,"reuse_anchor":"E4A.7_D_COMPOSITED_CHALLENGE_AV_RECEIPT","reuse_receipt_sha256":"102cf07a0b8920318c3ba211a3bd4374c3e080018486363d701f81e65613aaa0","e6_status":"REUSE_CANDIDATE_NOT_ACCEPTED","nested_probes":[{"id":"A","gameplay_seed":314159,"music_seed":840001},{"id":"B_REPEAT","gameplay_seed":314159,"music_seed":840001},{"id":"C_CHANGED_MUSIC_SEED","gameplay_seed":314159,"music_seed":840002}]},
+    {"scenario_id":"E6-CH-05","family":"challenges","selector":"CHALLENGE_005","gameplay_seed":998877,"source_fps":60,"source_frames":420,"duration_seconds":7,"reuse_candidate":false,"e6_status":"FRESH_CHALLENGE_AV_REQUIRED","nested_probes":[{"id":"A","gameplay_seed":998877,"music_seed":840001},{"id":"B_REPEAT","gameplay_seed":998877,"music_seed":840001},{"id":"C_CHANGED_MUSIC_SEED","gameplay_seed":998877,"music_seed":840002}]},
+    {"scenario_id":"E6-CH-06","family":"challenges","selector":"CHALLENGE_006","gameplay_seed":884422,"source_fps":60,"source_frames":540,"duration_seconds":9,"reuse_candidate":false,"e6_status":"FRESH_CHALLENGE_AV_REQUIRED","nested_probes":[{"id":"A","gameplay_seed":884422,"music_seed":840001},{"id":"B_REPEAT","gameplay_seed":884422,"music_seed":840001},{"id":"C_CHANGED_MUSIC_SEED","gameplay_seed":884422,"music_seed":840002}]},
+    {"scenario_id":"E6-CH-07","family":"challenges","selector":"CHALLENGE_007","gameplay_seed":7770001,"source_fps":60,"source_frames":600,"duration_seconds":10,"reuse_candidate":false,"e6_status":"FRESH_CHALLENGE_AV_REQUIRED","nested_probes":[{"id":"A","gameplay_seed":7770001,"music_seed":840001},{"id":"B_REPEAT","gameplay_seed":7770001,"music_seed":840001},{"id":"C_CHANGED_MUSIC_SEED","gameplay_seed":7770001,"music_seed":840002}]},
+    {"scenario_id":"E6-L-01","family":"visual_loops","selector":"fractal_bloom/radial_bloom","gameplay_seed":100006,"music_seed":500006,"fps":30,"duration_seconds":22,"reuse_candidate":true,"d_composition_required":true,"e6_status":"REUSE_CANDIDATE_PLUS_D_COMPOSITION_NOT_ACCEPTED"},
+    {"scenario_id":"E6-L-02","family":"visual_loops","selector":"geometric_waves/harmonic_membrane","gameplay_seed":100001,"music_seed":500001,"fps":30,"duration_seconds":23,"reuse_candidate":true,"d_composition_required":true,"e6_status":"REUSE_CANDIDATE_PLUS_D_COMPOSITION_NOT_ACCEPTED"},
+    {"scenario_id":"E6-L-03","family":"visual_loops","selector":"invisible_forces/dipole_field","gameplay_seed":100021,"music_seed":500021,"fps":30,"duration_seconds":22,"reuse_candidate":true,"d_composition_required":true,"e6_status":"REUSE_CANDIDATE_PLUS_D_COMPOSITION_NOT_ACCEPTED"},
+    {"scenario_id":"E6-L-04","family":"visual_loops","selector":"living_particles/swarm","gameplay_seed":100016,"music_seed":500016,"fps":30,"duration_seconds":20,"reuse_candidate":true,"d_composition_required":true,"e6_status":"REUSE_CANDIDATE_PLUS_D_COMPOSITION_NOT_ACCEPTED"},
+    {"scenario_id":"E6-L-05","family":"visual_loops","selector":"sacred_symmetry/astrolabe","gameplay_seed":100011,"music_seed":500011,"fps":30,"duration_seconds":23,"reuse_candidate":true,"d_composition_required":true,"e6_status":"REUSE_CANDIDATE_PLUS_D_COMPOSITION_NOT_ACCEPTED"},
+    {"scenario_id":"E6-L-06","family":"visual_loops","selector":"geometric_waves/interference_plane","gameplay_seed":100002,"music_seed":500002,"fps":30,"duration_seconds":23,"reuse_candidate":true,"d_composition_required":true,"e6_status":"REUSE_CANDIDATE_PLUS_D_COMPOSITION_NOT_ACCEPTED","family_profile_preservation":"KEEP_ORIGINAL_FULL_RANGE_YUVJ420P_H264_HIGH_AAC_LC_48KHZ_STEREO_PREDECESSOR_LINEAGE_NO_NORMALIZATION"},
+    {"scenario_id":"E6-DR-01","family":"visual_drills","selector":"tracking/tier-2","gameplay_seed":12345,"music_seed_ab":840001,"music_seed_c":840002,"reuse_candidate":true,"receipt_sha256":"f95e9b4e787f1b4f7db79b92428324f6de662ade55b260c7692d4440e2967ee7","e6_status":"REUSE_CANDIDATE_NOT_ACCEPTED"},
+    {"scenario_id":"E6-DR-02","family":"visual_drills","selector":"pursuit/tier-1","gameplay_seed":12345,"music_seed_ab":840001,"music_seed_c":840002,"reuse_candidate":true,"receipt_sha256":"57206b4560b917c7a7fe5e738c5afd5d900d293e01c99fcd554f0926acc6eee7","e6_status":"REUSE_CANDIDATE_NOT_ACCEPTED"},
+    {"scenario_id":"E6-DR-03","family":"visual_drills","selector":"saccade/tier-1","gameplay_seed":12345,"music_seed_ab":840001,"music_seed_c":840002,"reuse_candidate":true,"receipt_sha256":"930ba103153fbca0226a0b7abd1226b46dfd3c2e523204e83e6cb39f1282e606","e6_status":"REUSE_CANDIDATE_NOT_ACCEPTED"},
+    {"scenario_id":"E6-DR-04","family":"visual_drills","selector":"peripheral_scan/tier-1","gameplay_seed":12345,"music_seed_ab":840001,"music_seed_c":840002,"reuse_candidate":true,"receipt_sha256":"eb290666163df0e89daac9c683a95a39c38d536c5da735def15cd3a19964083b","e6_status":"REUSE_CANDIDATE_NOT_ACCEPTED"},
+    {"scenario_id":"E6-DR-05","family":"visual_drills","selector":"tracking/tier-5","gameplay_seed":12345,"music_seed_ab":840001,"music_seed_c":840002,"reuse_candidate":true,"receipt_sha256":"6e55dc3fd4fc13745347cc641d29103fbfb7fa90dee932910f920703690c3c61","e6_status":"REUSE_CANDIDATE_NOT_ACCEPTED"},
+    {"scenario_id":"E6-DR-06","family":"visual_drills","selector":"peripheral_scan/tier-5","gameplay_seed":12345,"music_seed_ab":840001,"music_seed_c":840002,"reuse_candidate":true,"receipt_sha256":"5644ffa386c2d1388e7dd657cb566c796a87de93b22c28db84197dbb8ad3a224","e6_status":"REUSE_CANDIDATE_NOT_ACCEPTED"}
+  ],
+  "governance": {
+    "e6_accepted": 0,
+    "d4_8": "BLOCKED",
+    "renderer": "OFF",
+    "production_dispatch": false,
+    "production_media": false,
+    "release_authority": "NONE",
+    "matrix_frozen": false
+  }
+}

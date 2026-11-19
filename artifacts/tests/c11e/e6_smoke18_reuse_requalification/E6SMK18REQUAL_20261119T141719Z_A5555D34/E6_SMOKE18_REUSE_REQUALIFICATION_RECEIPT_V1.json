@@ -1,0 +1,242 @@
+{
+  "schema": "C11E-E6-SMOKE18-REUSE-REQUALIFICATION-RECEIPT-V1",
+  "run_id": "E6SMK18REQUAL_20261119T141719Z_A5555D34",
+  "created_utc": "2026-11-19T14:17:19.939309+00:00",
+  "status": "PASS_REUSE_EVIDENCE_LINKAGE_REQUALIFIED_NOT_E6_ACCEPTANCE",
+  "checks": [
+    {
+      "id": "frozen_c11c_manifest",
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "expected_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+      "actual_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+      "bytes": 796318,
+      "expected_bytes": 796318,
+      "status": "PASS"
+    },
+    {
+      "id": "d4_8_policy",
+      "path": "definitions/c11d/production/C11E_D4_8_R1V_QUALIFICATION_ONLY_POLICY_V2.json",
+      "expected_sha256": "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+      "actual_sha256": "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+      "bytes": 12996,
+      "expected_bytes": null,
+      "status": "PASS"
+    },
+    {
+      "id": "d9_editorial_resolver_current",
+      "path": "tools/c11d/d9/universal_editorial_model.py",
+      "expected_sha256": "dac95fb698b52f96432a517d8ec3196a397e5e6bd3c025300350dd55ddce3afd",
+      "actual_sha256": "dac95fb698b52f96432a517d8ec3196a397e5e6bd3c025300350dd55ddce3afd",
+      "bytes": 27585,
+      "expected_bytes": null,
+      "status": "PASS"
+    },
+    {
+      "id": "e1_production_service_current",
+      "path": "c11c-suite/c11c-producer/c11e_production_service.py",
+      "expected_sha256": "e5dbf9baa72d4c066ff8ba24006df954700d72a5b0f11f9f88aec653e84dce87",
+      "actual_sha256": "e5dbf9baa72d4c066ff8ba24006df954700d72a5b0f11f9f88aec653e84dce87",
+      "bytes": 86687,
+      "expected_bytes": null,
+      "status": "PASS"
+    },
+    {
+      "id": "hydration_v2_report",
+      "path": "artifacts/tests/c11e/e6_reuse_evidence_hydration_v2/E6HYDRATE_20261118T073344Z_1A9D7C52/E6HYDRATE_20261118T073344Z_1A9D7C52_REPORT_V2.json",
+      "expected_sha256": "11f0eeba941f4740759132b3ba984eecf80c68a69aad27fe605a81a4ff8f5a77",
+      "actual_sha256": "11f0eeba941f4740759132b3ba984eecf80c68a69aad27fe605a81a4ff8f5a77",
+      "bytes": 880211,
+      "expected_bytes": 880211,
+      "status": "PASS"
+    },
+    {
+      "id": "hydration_v2_report_sidecar",
+      "path": "artifacts/tests/c11e/e6_reuse_evidence_hydration_v2/E6HYDRATE_20261118T073344Z_1A9D7C52/E6HYDRATE_20261118T073344Z_1A9D7C52_REPORT_V2.json.sha256",
+      "actual_content": "11f0eeba941f4740759132b3ba984eecf80c68a69aad27fe605a81a4ff8f5a77  E6HYDRATE_20261118T073344Z_1A9D7C52_REPORT_V2.json",
+      "expected_content": "11f0eeba941f4740759132b3ba984eecf80c68a69aad27fe605a81a4ff8f5a77  E6HYDRATE_20261118T073344Z_1A9D7C52_REPORT_V2.json",
+      "status": "PASS"
+    },
+    {
+      "id": "ch004_semantic_review_v4_report",
+      "path": "artifacts/tests/c11e/e6_ch004_semantic_noninterference/E6CH004SEM_20261118T113817Z_462AEF1F/E6CH004SEM_20261118T113817Z_462AEF1F_REPORT_V3.json",
+      "expected_sha256": "ded460447cf69f9360d5761627b0ae6a191a6c687043d8ae2ba4eeeeb01a105a",
+      "actual_sha256": "ded460447cf69f9360d5761627b0ae6a191a6c687043d8ae2ba4eeeeb01a105a",
+      "bytes": 32687,
+      "expected_bytes": null,
+      "status": "PASS"
+    },
+    {
+      "id": "ch004_semantic_review_v4_sidecar",
+      "path": "artifacts/tests/c11e/e6_ch004_semantic_noninterference/E6CH004SEM_20261118T113817Z_462AEF1F/E6CH004SEM_20261118T113817Z_462AEF1F_REPORT_V3.json.sha256",
+      "actual_content": "ded460447cf69f9360d5761627b0ae6a191a6c687043d8ae2ba4eeeeb01a105a  E6CH004SEM_20261118T113817Z_462AEF1F_REPORT_V3.json",
+      "expected_content": "ded460447cf69f9360d5761627b0ae6a191a6c687043d8ae2ba4eeeeb01a105a  E6CH004SEM_20261118T113817Z_462AEF1F_REPORT_V3.json",
+      "status": "PASS"
+    },
+    {
+      "id": "ch004_e4a7_receipt",
+      "path": "artifacts/tests/c11e/e4a_d_composited_av_review/RUN_20261106T070808Z-62F31F9C/C11E_E4A7_D_COMPOSITED_CHALLENGE_AV_RECEIPT.json",
+      "expected_sha256": "102cf07a0b8920318c3ba211a3bd4374c3e080018486363d701f81e65613aaa0",
+      "actual_sha256": "102cf07a0b8920318c3ba211a3bd4374c3e080018486363d701f81e65613aaa0",
+      "bytes": 26095,
+      "expected_bytes": null,
+      "status": "PASS"
+    },
+    {
+      "id": "e5_operator_av_closeout",
+      "path": "docs/current/e/C11E_E5_CROSS_FAMILY_AV_CLOSEOUT_20261116_V1.md",
+      "expected_sha256": "520515803ceb44bde830f99c6fa9b413015d0fecd4c36c60c845128054cbb760",
+      "actual_sha256": "520515803ceb44bde830f99c6fa9b413015d0fecd4c36c60c845128054cbb760",
+      "bytes": 7653,
+      "expected_bytes": null,
+      "status": "PASS"
+    },
+    {
+      "id": "e6_d9_plan_manifest",
+      "path": "artifacts/tests/c11e/e6_d9_capture_orchestration_prepare_only/E6CAPPLAN_20261118T082416Z_68342FCD/E6_D9_CAPTURE_ORCHESTRATION_PREPARE_ONLY_MANIFEST_V1.json",
+      "expected_sha256": "144470d16a222a1f01f0b7a9edec699af18d18bac614f7db938021e1acc0db2d",
+      "actual_sha256": "144470d16a222a1f01f0b7a9edec699af18d18bac614f7db938021e1acc0db2d",
+      "bytes": 25857,
+      "expected_bytes": null,
+      "status": "PASS"
+    },
+    {
+      "id": "e6_d9_plan_receipt",
+      "path": "artifacts/tests/c11e/e6_d9_capture_orchestration_prepare_only/E6CAPPLAN_20261118T082416Z_68342FCD/E6_D9_CAPTURE_ORCHESTRATION_PREPARE_ONLY_RECEIPT_V1.json",
+      "expected_sha256": "2233fcda43861d7c2bf1d933f1270b84976d315b6f2439bb46d1d2e237653b74",
+      "actual_sha256": "2233fcda43861d7c2bf1d933f1270b84976d315b6f2439bb46d1d2e237653b74",
+      "bytes": 1047,
+      "expected_bytes": null,
+      "status": "PASS"
+    },
+    {
+      "id": "e6_smoke18_readonly_audit_receipt",
+      "path": "artifacts/tests/c11e/e6_smoke18_audit/E6AUDITV2_20261116T235057Z_B7FA0492/E6_SMOKE18_READONLY_AUDIT_RECEIPT_V2.json",
+      "expected_sha256": "054ed52aefe45cc4d986c4621adbbdb6ca7cf36dc1c4a12cbd76238de86e21fd",
+      "actual_sha256": "054ed52aefe45cc4d986c4621adbbdb6ca7cf36dc1c4a12cbd76238de86e21fd",
+      "bytes": 31417,
+      "expected_bytes": null,
+      "status": "PASS"
+    },
+    {
+      "id": "E6-DR-01_e4c_receipt",
+      "path": "artifacts/production/c11e/E4C-TRK-T2-6239dd21/E4C_DRILL_AV_QUALIFICATION_RECEIPT.json",
+      "expected_sha256": "f95e9b4e787f1b4f7db79b92428324f6de662ade55b260c7692d4440e2967ee7",
+      "actual_sha256": "f95e9b4e787f1b4f7db79b92428324f6de662ade55b260c7692d4440e2967ee7",
+      "bytes": 83131,
+      "expected_bytes": null,
+      "status": "PASS"
+    },
+    {
+      "id": "E6-DR-02_e4c_receipt",
+      "path": "artifacts/production/c11e/E4C-PRS-T1-b3abbe94/E4C_DRILL_AV_QUALIFICATION_RECEIPT.json",
+      "expected_sha256": "57206b4560b917c7a7fe5e738c5afd5d900d293e01c99fcd554f0926acc6eee7",
+      "actual_sha256": "57206b4560b917c7a7fe5e738c5afd5d900d293e01c99fcd554f0926acc6eee7",
+      "bytes": 83156,
+      "expected_bytes": null,
+      "status": "PASS"
+    },
+    {
+      "id": "E6-DR-03_e4c_receipt",
+      "path": "artifacts/production/c11e/E4C-SAC-T1-57fdf44b/E4C_DRILL_AV_QUALIFICATION_RECEIPT.json",
+      "expected_sha256": "930ba103153fbca0226a0b7abd1226b46dfd3c2e523204e83e6cb39f1282e606",
+      "actual_sha256": "930ba103153fbca0226a0b7abd1226b46dfd3c2e523204e83e6cb39f1282e606",
+      "bytes": 83133,
+      "expected_bytes": null,
+      "status": "PASS"
+    },
+    {
+      "id": "E6-DR-04_e4c_receipt",
+      "path": "artifacts/production/c11e/E4C-PSC-T1-b342a227/E4C_DRILL_AV_QUALIFICATION_RECEIPT.json",
+      "expected_sha256": "eb290666163df0e89daac9c683a95a39c38d536c5da735def15cd3a19964083b",
+      "actual_sha256": "eb290666163df0e89daac9c683a95a39c38d536c5da735def15cd3a19964083b",
+      "bytes": 83256,
+      "expected_bytes": null,
+      "status": "PASS"
+    },
+    {
+      "id": "E6-DR-05_e4c_receipt",
+      "path": "artifacts/production/c11e/E4C-TRK-T5-6239dd21/E4C_DRILL_AV_QUALIFICATION_RECEIPT.json",
+      "expected_sha256": "6e55dc3fd4fc13745347cc641d29103fbfb7fa90dee932910f920703690c3c61",
+      "actual_sha256": "6e55dc3fd4fc13745347cc641d29103fbfb7fa90dee932910f920703690c3c61",
+      "bytes": 83132,
+      "expected_bytes": null,
+      "status": "PASS"
+    },
+    {
+      "id": "E6-DR-06_e4c_receipt",
+      "path": "artifacts/production/c11e/E4C-PSC-T5-b342a227/E4C_DRILL_AV_QUALIFICATION_RECEIPT.json",
+      "expected_sha256": "5644ffa386c2d1388e7dd657cb566c796a87de93b22c28db84197dbb8ad3a224",
+      "actual_sha256": "5644ffa386c2d1388e7dd657cb566c796a87de93b22c28db84197dbb8ad3a224",
+      "bytes": 83256,
+      "expected_bytes": null,
+      "status": "PASS"
+    },
+    {
+      "id": "loop22_interference_plane_A",
+      "path": "artifacts/tests/c11e/e4b_loop22_av/L22_191801_27ABF3/delivery_av/geometric/A/L22_191801_27ABF3_R02_A_AV_720.mp4",
+      "expected_sha256": "a2fdb135a201a5ce9f91c19b51c65be53ab0d0aaeced6829633958195d7f0131",
+      "actual_sha256": "a2fdb135a201a5ce9f91c19b51c65be53ab0d0aaeced6829633958195d7f0131",
+      "bytes": 10500987,
+      "expected_bytes": 10500987,
+      "status": "PASS"
+    },
+    {
+      "id": "loop22_interference_plane_B",
+      "path": "artifacts/tests/c11e/e4b_loop22_av/L22_191801_27ABF3/delivery_av/geometric/B/L22_191801_27ABF3_R02_B_AV_720.mp4",
+      "expected_sha256": "a2fdb135a201a5ce9f91c19b51c65be53ab0d0aaeced6829633958195d7f0131",
+      "actual_sha256": "a2fdb135a201a5ce9f91c19b51c65be53ab0d0aaeced6829633958195d7f0131",
+      "bytes": 10500987,
+      "expected_bytes": 10500987,
+      "status": "PASS"
+    }
+  ],
+  "check_count": 21,
+  "passed_checks": 21,
+  "failed_checks": 0,
+  "candidate_summary": {
+    "smoke18_rows": 18,
+    "reconciled_reuse_candidates": 13,
+    "e6_accepted": 0,
+    "fresh_challenge_av_required": 5
+  },
+  "hydration_v2_original_result_preserved": {
+    "checks": 1803,
+    "passed": 1801,
+    "failed": 2,
+    "failure_categories": {
+      "historical_source_pin_divergence": 2,
+      "other_failures": 0
+    },
+    "report_sha256": "11f0eeba941f4740759132b3ba984eecf80c68a69aad27fe605a81a4ff8f5a77"
+  },
+  "ch004_v4_semantic_review": {
+    "sha256": "ded460447cf69f9360d5761627b0ae6a191a6c687043d8ae2ba4eeeeb01a105a",
+    "status": "PASS_CH004_SEMANTIC_NONINTERFERENCE_CONFIRMED_REQUIRES_E6_LEDGER_REQUALIFICATION",
+    "disposition": "ELIGIBLE_FOR_E6_LEDGER_REQUALIFICATION_NOT_ACCEPTED"
+  },
+  "loop22_media_rehash": {
+    "A_sha256": "a2fdb135a201a5ce9f91c19b51c65be53ab0d0aaeced6829633958195d7f0131",
+    "B_sha256": "a2fdb135a201a5ce9f91c19b51c65be53ab0d0aaeced6829633958195d7f0131",
+    "bytes_each": 10500987,
+    "status": "PASS"
+  },
+  "governance": {
+    "e1": "PREPARE_ONLY",
+    "d4_8": "BLOCKED",
+    "d4_8_overridden": false,
+    "renderer": "OFF",
+    "production_dispatch": false,
+    "production_media": false,
+    "godot_invoked": false,
+    "ffmpeg_invoked": false,
+    "ffprobe_invoked": false,
+    "audio_generated": false,
+    "mux_invoked": false,
+    "batch_id_consumed": false,
+    "release_authority": "NONE",
+    "source_files_modified": false,
+    "git_checks": "SKIPPED",
+    "commits": "OPERATOR_MANAGED",
+    "source_file_pins": "ENFORCED"
+  }
+}

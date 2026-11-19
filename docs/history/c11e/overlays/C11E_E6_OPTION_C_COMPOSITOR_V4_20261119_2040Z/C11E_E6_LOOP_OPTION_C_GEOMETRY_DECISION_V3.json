@@ -1,0 +1,106 @@
+{
+  "schema": "C11E-E6-LOOP-OPTION-C-GEOMETRY-DECISION-V3",
+  "date": "2026-11-19",
+  "decision_status": "APPROVED_GEOMETRY_RETAINED_RESAMPLER_IMPLEMENTATION_ONLY",
+  "geometry_authority": "EXPLICIT_OPERATOR_APPROVAL_IN_CHAT_2026-11-19",
+  "canvas": {
+    "width": 720,
+    "height": 1280,
+    "pixel_format": "RGB24",
+    "background_rgb": [
+      0,
+      0,
+      0
+    ]
+  },
+  "regions": {
+    "header": {
+      "x": 0,
+      "y": 0,
+      "width": 720,
+      "height": 192
+    },
+    "content": {
+      "x": 108,
+      "y": 192,
+      "width": 504,
+      "height": 896
+    },
+    "footer": {
+      "x": 0,
+      "y": 1088,
+      "width": 720,
+      "height": 192
+    },
+    "left_gutter": {
+      "x": 0,
+      "y": 192,
+      "width": 108,
+      "height": 896
+    },
+    "right_gutter": {
+      "x": 612,
+      "y": 192,
+      "width": 108,
+      "height": 896
+    }
+  },
+  "source_contract": {
+    "aspect_ratio": "9:16",
+    "crop": false,
+    "non_uniform_scaling": false,
+    "upscale": false,
+    "source_mutation": false
+  },
+  "transform": {
+    "resampler": "EXACT_RATIONAL_AREA_BOX_V1",
+    "implementation": "PURE_PYTHON_STANDARD_LIBRARY_INTEGER_OVERLAP_WEIGHTS",
+    "floating_point_resampling": false,
+    "external_dependencies": [],
+    "reason": "Remove undeclared Pillow runtime dependency; use deterministic exact pixel-area averaging for fixed 7/10 downscale.",
+    "quality_status": "IMPLEMENTATION_CHOICE_REQUIRES_SYNTHETIC_VISUAL_REVIEW_NOT_OPERATOR_QUALITY_ACCEPTANCE",
+    "known_tradeoff": "Area averaging is deterministic and avoids ringing; sharpness may differ from LANCZOS and must be judged from synthetic visual fixtures.",
+    "performance_status": "NOT_QUALIFIED_FOR_30FPS_OR_SMOKE18_THROUGHPUT",
+    "local_build_observation": {
+      "python": "3.13.5",
+      "platform": "Linux build environment",
+      "iterations": 3,
+      "mean_seconds_per_720x1280_frame": 0.818,
+      "acceptance": "INFORMATIONAL_ONLY_NOT_TARGET_WINDOWS_BENCHMARK"
+    }
+  },
+  "editorial": {
+    "text_rasterization": "NOT_IMPLEMENTED_IN_THIS_STEP",
+    "font_or_typography_approval": "PENDING_SEPARATE_REVIEW",
+    "header_reserved_for": [
+      "title",
+      "subtitle"
+    ],
+    "footer_reserved_for": [
+      "call_to_action"
+    ]
+  },
+  "music": {
+    "route": "PRESERVE_EXISTING_C11C_FAMILY_MUSIC",
+    "audio_generated": false,
+    "mux_invoked": false
+  },
+  "installer_v3_disposition": {
+    "status": "FAIL_CLOSED_PRETRANSACTION",
+    "reason": "PILLOW_LANCZOS_PREFLIGHT_FAILED_MODULE_NOT_FOUND",
+    "python_version": "3.13.14",
+    "transaction_started": false,
+    "project_payload_mutation": false
+  },
+  "governance": {
+    "c11c_modified": false,
+    "d4_8_v2_modified": false,
+    "renderer": "OFF",
+    "d4_8": "BLOCKED",
+    "e6_accepted": 0,
+    "release_authority": "NONE",
+    "git_checks": "SKIPPED",
+    "commits": "OPERATOR_MANAGED",
+    "source_file_pins": "ENFORCED"
+  }
+}

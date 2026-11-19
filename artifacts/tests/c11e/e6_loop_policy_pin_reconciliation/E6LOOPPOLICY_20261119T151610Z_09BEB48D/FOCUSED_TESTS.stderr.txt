@@ -1,0 +1,27 @@
+test_01_exact_schema (__main__.LoopPolicyDecisionTests.test_01_exact_schema) ... ok
+test_02_requires_five_rows (__main__.LoopPolicyDecisionTests.test_02_requires_five_rows) ... ok
+test_03_rejects_duplicate_decision_id (__main__.LoopPolicyDecisionTests.test_03_rejects_duplicate_decision_id) ... ok
+test_04_rejects_missing_decision_id_set (__main__.LoopPolicyDecisionTests.test_04_rejects_missing_decision_id_set) ... ok
+test_05_rejects_proposal_path_change (__main__.LoopPolicyDecisionTests.test_05_rejects_proposal_path_change) ... ok
+test_06_rejects_proposal_hash_change (__main__.LoopPolicyDecisionTests.test_06_rejects_proposal_hash_change) ... ok
+test_07_requires_approve_as_proposed (__main__.LoopPolicyDecisionTests.test_07_requires_approve_as_proposed) ... ok
+test_08_rejects_scope_renderer_activation (__main__.LoopPolicyDecisionTests.test_08_rejects_scope_renderer_activation) ... ok
+test_09_rejects_scope_media_creation (__main__.LoopPolicyDecisionTests.test_09_rejects_scope_media_creation) ... ok
+test_10_rejects_d4_8_unblock (__main__.LoopPolicyDecisionTests.test_10_rejects_d4_8_unblock) ... ok
+test_11_rejects_release_authority (__main__.LoopPolicyDecisionTests.test_11_rejects_release_authority) ... ok
+test_12_rejects_policy_mutation_flag (__main__.LoopPolicyDecisionTests.test_12_rejects_policy_mutation_flag) ... ok
+test_13_rejects_historical_packet_mutation_flag (__main__.LoopPolicyDecisionTests.test_13_rejects_historical_packet_mutation_flag) ... ok
+test_14_rejects_different_c11c_baseline (__main__.LoopPolicyDecisionTests.test_14_rejects_different_c11c_baseline) ... ok
+test_15_path_traversal_rejected (__main__.LoopPolicyDecisionTests.test_15_path_traversal_rejected) ... ok
+test_16_absolute_path_rejected (__main__.LoopPolicyDecisionTests.test_16_absolute_path_rejected) ... ok
+test_17_windows_drive_path_rejected (__main__.LoopPolicyDecisionTests.test_17_windows_drive_path_rejected) ... ok
+test_18_c11c_hash_constant_exact (__main__.LoopPolicyDecisionTests.test_18_c11c_hash_constant_exact) ... ok
+test_19_d4_8_remains_blocked (__main__.LoopPolicyDecisionTests.test_19_d4_8_remains_blocked) ... ok
+test_20_five_proposals_only (__main__.LoopPolicyDecisionTests.test_20_five_proposals_only) ... ok
+test_21_no_audio_or_dispatch_authority (__main__.LoopPolicyDecisionTests.test_21_no_audio_or_dispatch_authority) ... ok
+test_22_exact_a3_lineage_constants (__main__.LoopPolicyDecisionTests.test_22_exact_a3_lineage_constants) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 0.004s
+
+OK

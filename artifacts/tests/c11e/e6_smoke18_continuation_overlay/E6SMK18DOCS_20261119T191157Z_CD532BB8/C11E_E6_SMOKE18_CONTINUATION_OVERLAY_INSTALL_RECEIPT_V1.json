@@ -1,0 +1,94 @@
+{
+    "schema":  "C11E-E6-SMOKE18-CONTINUATION-OVERLAY-INSTALL-RECEIPT-V1",
+    "run_id":  "E6SMK18DOCS_20261119T191157Z_CD532BB8",
+    "status":  "PASS_ADD_ONLY_DOCUMENTATION_OVERLAY",
+    "package_zip_sha256":  "c40fed1fdfcba788d878d5b356802899292b55b1a9c7b14b4474e7723e38dfba",
+    "package_manifest_sha256":  "03874595cf55169359a06c632fc12711e2304164ff7cd2c687842818fbfe80d8",
+    "payload_count":  12,
+    "added_count":  12,
+    "identical_skip_count":  0,
+    "payloads":  [
+                     {
+                         "path":  "docs/current/e/C11E_CURRENT_AUTHORITY_20261119_V1.md",
+                         "sha256":  "26bf46bca5ceb2e70809d4c35e4d414b242eebd093ed2cce9b6873cc4a2a4036",
+                         "bytes":  2942,
+                         "result":  "ADD"
+                     },
+                     {
+                         "path":  "docs/current/e/C11E_CURRENT_DOC_INDEX_20261119_V1.md",
+                         "sha256":  "c25166cbed56909f8adb0533f7b8b2b9f69cf0028a178a5fbcb269d8f0aa434a",
+                         "bytes":  2584,
+                         "result":  "ADD"
+                     },
+                     {
+                         "path":  "docs/current/e/C11E_E6_EXECUTION_BACKLOG_20261119_V1.md",
+                         "sha256":  "08fb852a9838fc8296ef57ae8edb1a77e800ee025679ff0aaa559905bdaa6ad4",
+                         "bytes":  2631,
+                         "result":  "ADD"
+                     },
+                     {
+                         "path":  "docs/current/e/C11E_E6_SMOKE18_EXECUTION_ROADMAP_20261119_V120.md",
+                         "sha256":  "86d1c718b844b54a9394eb14313e461639d185402cfedd8edf7bd179d956e975",
+                         "bytes":  11057,
+                         "result":  "ADD"
+                     },
+                     {
+                         "path":  "docs/master-prompts/C11E_MASTER_HANDOVER_20261119_V14.md",
+                         "sha256":  "87aaa88c99e33cc59dab37b75cdd1d7e08fd80b9622217e1802a5b0130be3da7",
+                         "bytes":  5899,
+                         "result":  "ADD"
+                     },
+                     {
+                         "path":  "prompts/C11E_CONTINUATION_MASTER_PROMPT_20261119_V184.md",
+                         "sha256":  "e52acd430d2d4e4b4ac224544f1fbc00a0b2213daa78a5cb1a8c1d3dac362807",
+                         "bytes":  4464,
+                         "result":  "ADD"
+                     },
+                     {
+                         "path":  "prompts/C11E_NEXT_WINDOW_START_PROMPT_20261119_V184.md",
+                         "sha256":  "6bc51074c2d4a44f7595dda35d44ba430e60ab1d51db361e84c38d2609728a0b",
+                         "bytes":  1884,
+                         "result":  "ADD"
+                     },
+                     {
+                         "path":  "docs/current/e/C11E_E6_LOOP_OPTION_C_COMPOSITOR_CONTRACT_20261119_V1.md",
+                         "sha256":  "9f36a642fab15b8668069e9250a3e8d1ca6ef15329a95e1dea36e07215e23bb3",
+                         "bytes":  6518,
+                         "result":  "ADD"
+                     },
+                     {
+                         "path":  "docs/current/e/C11E_E6_CHALLENGE_EDITORIAL_SUCCESSOR_CONTRACT_20261119_V1.md",
+                         "sha256":  "323f59f890f166bf1782b22d14b9061e3b69f67970348cca20660f24a1f673cc",
+                         "bytes":  5296,
+                         "result":  "ADD"
+                     },
+                     {
+                         "path":  "docs/current/e/C11E_E6_SMOKE18_TEST_ONLY_AUTHORIZATION_FRAMEWORK_20261119_V1.md",
+                         "sha256":  "2a98b8365e6fcc8e2ec36077d5d39a4fea6793b3d7d0f4692e0a69921ca57ca8",
+                         "bytes":  4574,
+                         "result":  "ADD"
+                     },
+                     {
+                         "path":  "definitions/c11e/test_only/C11E_E6_SMOKE18_SCENARIO_MATRIX_20261119_V1.json",
+                         "sha256":  "98e391738c0409c5d9d94576195d48cabcd885957434858062a44a44fe77fb75",
+                         "bytes":  7147,
+                         "result":  "ADD"
+                     },
+                     {
+                         "path":  "definitions/c11e/test_only/C11E_E6_SMOKE18_TEST_ONLY_AUTHORIZATION_DRAFT_20261119_V1.json",
+                         "sha256":  "244caf60073428e9e9dc5e4af50502be845d097403c0c951cb2626136d813a56",
+                         "bytes":  2319,
+                         "result":  "ADD"
+                     }
+                 ],
+    "governance":  {
+                       "production_source_files_modified":  false,
+                       "c11c_modified":  false,
+                       "d4_8_v2_modified":  false,
+                       "renderer_invoked":  false,
+                       "media_tools_invoked":  false,
+                       "git_checks":  "SKIPPED",
+                       "commits":  "OPERATOR_MANAGED",
+                       "source_file_pins":  "ENFORCED"
+                   }
+}

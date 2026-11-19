@@ -1,0 +1,209 @@
+{
+  "schema": "C11E-E6-LOOP-POLICY-PIN-RECONCILIATION-RECEIPT-V2",
+  "created_utc": "2026-11-19T18:46:56.769064+00:00",
+  "status": "PASS_LOOP_POLICY_DECISIONS_RECONCILED_NOT_COMPOSITOR_ACCEPTANCE",
+  "check_count": 18,
+  "passed_checks": 17,
+  "failed_checks": 0,
+  "failures": [],
+  "checks": [
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "bytes": 796318,
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+      "status": "PASS",
+      "id": "frozen_c11c_manifest"
+    },
+    {
+      "path": "definitions/c11d/production/C11E_D4_8_R1V_QUALIFICATION_ONLY_POLICY_V2.json",
+      "bytes": 12996,
+      "sha256": "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+      "status": "PASS",
+      "id": "d4_8_policy_v2"
+    },
+    {
+      "path": "tools/c11d/d9/universal_editorial_model.py",
+      "bytes": 27585,
+      "sha256": "dac95fb698b52f96432a517d8ec3196a397e5e6bd3c025300350dd55ddce3afd",
+      "status": "PASS",
+      "id": "d9_editorial_resolver"
+    },
+    {
+      "path": "c11c-suite/c11c-producer/c11e_production_service.py",
+      "bytes": 86687,
+      "sha256": "e5dbf9baa72d4c066ff8ba24006df954700d72a5b0f11f9f88aec653e84dce87",
+      "status": "PASS",
+      "id": "e1_production_service"
+    },
+    {
+      "path": "docs/current/e/C11E_E4B_OPERATOR_POLICY_DECISION_RECORD_20261106_V1.json",
+      "bytes": 3737,
+      "sha256": "49efd5494f351f09d7597c4699e9c12e361b36884b6bfadacd822e6ff1480e04",
+      "status": "PASS",
+      "id": "e4b_operator_decision_record"
+    },
+    {
+      "path": "docs/current/e/C11E_E4C_A3_REVIEW_MANIFEST_LINEAGE_RECONCILIATION_20261110_V2.json",
+      "bytes": 4770,
+      "sha256": "aec0e387f167f4b821b7d94f06a67f78f498be939fe3cda857d20ce550819cac",
+      "status": "PASS",
+      "id": "a3_lineage_bridge"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1.json",
+      "bytes": 8591,
+      "sha256": "5702092bc1c88e4b333dd30cc150f0d383cd2006121037b0198905c75a3af795",
+      "status": "PASS",
+      "id": "a3_review_manifest_current"
+    },
+    {
+      "path": "docs/history/c11e/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1_PRE_D98_LINEAGE_REFRESH_20261106.json",
+      "bytes": 8591,
+      "sha256": "2075da9c33c689861a68d3bd8fb19b7ed593c6e76010ab200880746aa6d1a470",
+      "status": "PASS",
+      "id": "a3_review_manifest_historical_archive"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_UNIFIED_PRESENTATION_REGION_POLICY_PROPOSAL_V1.json",
+      "bytes": 9440,
+      "sha256": "101092bb32127bb8854a501a9215c0b6cf69581594383903716907d49719c01a",
+      "status": "PASS",
+      "id": "proposal_A.1_SHARED_PRESENTATION_REGIONS",
+      "json": "PASS"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_LOOP_DRILL_EDITORIAL_FIELD_WINDOW_PROPOSAL_V1.json",
+      "bytes": 8376,
+      "sha256": "609a4d183aac07c2cbe1abaf41444160fdd137217faffbead3aef618320d57dc",
+      "status": "PASS",
+      "id": "proposal_A.3_LOOP_DRILL_EDITORIAL_WINDOWS",
+      "json": "PASS"
+    },
+    {
+      "path": "definitions/c11d/production/C11E_E4B_LOOP_EDITORIAL_COMPOSITION_PROPOSAL_V1.json",
+      "bytes": 5528,
+      "sha256": "9e206704665ea85226ecc10854be9f679c32fe9ed7efb690a829f6e8456d43da",
+      "status": "PASS",
+      "id": "proposal_E4B_LOOP_COMPOSITION",
+      "json": "PASS"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_UNIFIED_DELIVERY_TIMEBASE_POLICY_PROPOSAL_V1.json",
+      "bytes": 9507,
+      "sha256": "41a62b0766db47cd99772f28642ef67766314f20f0f7891789d6b7497bbfee85",
+      "status": "PASS",
+      "id": "proposal_B.1_UNIFIED_DELIVERY_TIMEBASE",
+      "json": "PASS"
+    },
+    {
+      "path": "definitions/c11d/production/D_RENDERER_UNIFIED_AUDIO_MUSIC_DELIVERY_POLICY_PROPOSAL_V1.json",
+      "bytes": 7457,
+      "sha256": "3dd4874e1b6506de6d9ddbe6ad1b567a284b94cc00ef1bac0d35d1731af05e23",
+      "status": "PASS",
+      "id": "proposal_D.1_AUDIO_MUSIC_DELIVERY_ENVELOPE",
+      "json": "PASS"
+    },
+    {
+      "id": "five_exact_operator_decisions",
+      "status": "PASS",
+      "decision_ids": [
+        "A.1_SHARED_PRESENTATION_REGIONS",
+        "A.3_LOOP_DRILL_EDITORIAL_WINDOWS",
+        "B.1_UNIFIED_DELIVERY_TIMEBASE",
+        "D.1_AUDIO_MUSIC_DELIVERY_ENVELOPE",
+        "E4B_LOOP_COMPOSITION"
+      ],
+      "decision_count": 5,
+      "scope_boundary": "PASS"
+    },
+    {
+      "id": "a3_lineage_single_pointer_reconciliation",
+      "status": "PASS_SINGLE_POINTER_LINEAGE_RECONCILIATION",
+      "historical_pointer": "50655c82521a353f1db6920f4d099cad92452ae369251f9fbde45cbaee4e8c53",
+      "current_pointer": "dabb458fc2215156ddb5ebea7e8ebec811098886ce2858733ba9fb13f6075ccb",
+      "installed_transition": {
+        "operation": "PINNED_REPLACE",
+        "preimage_sha256": "2075da9c33c689861a68d3bd8fb19b7ed593c6e76010ab200880746aa6d1a470",
+        "postimage_sha256": "5702092bc1c88e4b333dd30cc150f0d383cd2006121037b0198905c75a3af795",
+        "only_changed_json_pointer": "/source_lineage/6/sha256"
+      },
+      "review_manifest": "definitions/c11d/production/D_RENDERER_EDITORIAL_REVIEW_MANIFEST_V1.json",
+      "model_pin": {
+        "path": "definitions/c11d/personalization/C11D_UNIVERSAL_EDITORIAL_MODEL_V1.json",
+        "bytes": 12932,
+        "sha256": "dabb458fc2215156ddb5ebea7e8ebec811098886ce2858733ba9fb13f6075ccb",
+        "status": "PASS"
+      }
+    },
+    {
+      "id": "e1_loop_policy_enforcement_seam",
+      "status": "PASS",
+      "markers": 6
+    },
+    {
+      "id": "loop_d_source_modules_compile",
+      "status": "PASS",
+      "modules": [
+        {
+          "path": "tools/c11d/d9/editorial_render_bridge.py",
+          "bytes": 10868,
+          "status": "PASS_IN_MEMORY_COMPILE"
+        },
+        {
+          "path": "tools/c11d/d9/d_render_adapter.py",
+          "bytes": 15051,
+          "status": "PASS_IN_MEMORY_COMPILE"
+        },
+        {
+          "path": "tools/c11d/d9/c11e_e4b_loop_family_stage_contract.py",
+          "bytes": 19331,
+          "status": "PASS_IN_MEMORY_COMPILE"
+        }
+      ]
+    },
+    {
+      "id": "loop_d9_10_contract_documents",
+      "status": "PASS",
+      "documents": [
+        {
+          "path": "definitions/c11d/production/C11D_EDITORIAL_RENDER_BRIDGE_D9_10_V1.json",
+          "bytes": 4990,
+          "json_object": true,
+          "status": "PASS"
+        },
+        {
+          "path": "definitions/c11d/production/C11D_RENDER_ADAPTER_BOUNDARY_D9_10_V1.json",
+          "bytes": 3497,
+          "json_object": true,
+          "status": "PASS"
+        }
+      ]
+    }
+  ],
+  "governance": {
+    "c11c_frozen_baseline_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "d4_8": "BLOCKED",
+    "d9_10": "PREPARE_ONLY",
+    "d9_14": "BLOCKED",
+    "d9_16": "BLOCKED",
+    "d9_17": "BLOCKED_NO_GO",
+    "d10": "BLOCKED_FOR_PROMOTION",
+    "renderer": "OFF",
+    "renderer_native_input_emitted": false,
+    "production_dispatch": false,
+    "production_media": false,
+    "godot_invoked": false,
+    "ffmpeg_invoked": false,
+    "ffprobe_invoked": false,
+    "audio_generated": false,
+    "mux_invoked": false,
+    "batch_id_consumed": false,
+    "release_authority": "NONE",
+    "source_files_modified": false,
+    "git_checks": "SKIPPED",
+    "commits": "OPERATOR_MANAGED",
+    "source_file_pins": "ENFORCED",
+    "loop_compositor_accepted": false,
+    "e6_accepted": 0
+  }
+}
