@@ -1,0 +1,123 @@
+{
+  "binding_run": {
+    "install_receipt_path": "artifacts/tests/c11e/e6_challenge_editorial_binding_install/E6CHEDITORIALBINDINST_20261119T074334Z_D3D46775/INSTALL_RECEIPT_V1.json",
+    "install_receipt_sha256": "0fb637e97dcdd18f32e769d22f15a540481034641b7116fb1693eaf2c1e139aa",
+    "manifest_name": "E6_CHALLENGE_EDITORIAL_BINDING_MANIFEST_V1.json",
+    "manifest_sha256": "1e0cf76c7664d3224678f887b9915afad21ce27eef71e4e73e16a4e6a54e8ff3",
+    "receipt_name": "E6_CHALLENGE_EDITORIAL_BINDING_RECEIPT_V1.json",
+    "receipt_sha256": "ef0e2b7b6c3efdbb6a715730b783da79c0c13f5ca9df34e00e2ce6cbfcbc6b83",
+    "root": "artifacts/tests/c11e/e6_challenge_editorial_binding_prepare_only/E6CHEDITORIALBIND_20261119T074340Z_361029B4",
+    "run_id": "E6CHEDITORIALBIND_20261119T074340Z_361029B4"
+  },
+  "binding_source_inputs_sha256": "9750c12f08bdbb55505e4f800699003be73a360f36941c946495cc9323dae95a",
+  "created_date": "2026-11-19",
+  "expected_counts": {
+    "editorial_slots": 54,
+    "envelopes": 18,
+    "fields_per_envelope": 6,
+    "omitted_zero_window": 27,
+    "probes": 18,
+    "selectors": 6,
+    "visible": 27
+  },
+  "field_contract": {
+    "call_to_action": {
+      "region": "FOOTER",
+      "windows": [
+        "CTA"
+      ]
+    },
+    "challenge_label": {
+      "fixture": "UNKNOWN_NON_VISUAL",
+      "region": "CHALLENGE_OVERLAY",
+      "windows": [
+        "HOOK",
+        "GAME"
+      ]
+    },
+    "language": {
+      "fixture": "es_OR_UNKNOWN_NON_VISUAL",
+      "region": "METADATA",
+      "windows": []
+    },
+    "player_name": {
+      "fixture": "UNKNOWN_NON_VISUAL",
+      "region": "CHALLENGE_OVERLAY",
+      "windows": [
+        "HOOK",
+        "GAME"
+      ]
+    },
+    "subtitle": {
+      "region": "HEADER",
+      "windows": [
+        "HOOK"
+      ]
+    },
+    "title": {
+      "region": "HEADER",
+      "windows": [
+        "HOOK"
+      ]
+    }
+  },
+  "governance": {
+    "d4_8": "BLOCKED",
+    "e6_test_only_execution_authorized": false,
+    "ffmpeg_invoked": false,
+    "ffprobe_invoked": false,
+    "godot_invoked": false,
+    "media_created": false,
+    "production_dispatch": false,
+    "release_authority": "NONE",
+    "renderer": "OFF"
+  },
+  "runtime_source_pins": [
+    {
+      "bytes": 26367,
+      "path": "tools/c11d/d9/C11EChallengeLiveEditorialConsumer.gd",
+      "sha256": "eba81fff4c24ca75033c8f963665df1961136046c41fee0e88681fe55a631203"
+    },
+    {
+      "bytes": 14167,
+      "path": "tools/c11d/d9/c11e_challenge_editorial_presentation_adapter.gd",
+      "sha256": "d17568882eb63ba2eb48649cb9cd46edafe122d72c0c5ed29275e79b8d6d5846"
+    },
+    {
+      "bytes": 4200,
+      "path": "definitions/c11d/production/C11E_E4A_CHALLENGE_EDITORIAL_PRESENTATION_POLICY_APPROVAL_V1.json",
+      "sha256": "764629384896a255cf992da89fa427c19f60f9b2e623b81ad17d909674b466b5"
+    },
+    {
+      "bytes": 2907,
+      "path": "docs/current/d/D1.5_PLATFORM_LAYOUT_TEMPLATE_CONTRACT.md",
+      "sha256": "3a8e7bfc13a369acaf9d5abe9583f3e93e0990a3b1262b8a839e81ee873c6461"
+    },
+    {
+      "bytes": 12996,
+      "path": "definitions/c11d/production/C11E_D4_8_R1V_QUALIFICATION_ONLY_POLICY_V2.json",
+      "sha256": "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07"
+    },
+    {
+      "bytes": 796318,
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953"
+    }
+  ],
+  "schema": "C11E-E6-CHALLENGE-LIVE-CONSUMER-READBACK-PREPARE-ONLY-INPUTS-V1",
+  "schema_version": "1.0",
+  "selectors": [
+    "CHALLENGE_001",
+    "CHALLENGE_002",
+    "CHALLENGE_004",
+    "CHALLENGE_005",
+    "CHALLENGE_006",
+    "CHALLENGE_007"
+  ],
+  "status": "PINNED_INPUTS_PREPARE_ONLY_NOT_RUNTIME_AUTHORIZATION",
+  "variants": [
+    "A",
+    "B_REPEAT",
+    "C_CHANGED_MUSIC_SEED"
+  ]
+}

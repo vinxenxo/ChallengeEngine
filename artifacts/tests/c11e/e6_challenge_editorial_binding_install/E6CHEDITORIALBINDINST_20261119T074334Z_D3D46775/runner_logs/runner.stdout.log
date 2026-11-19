@@ -1,0 +1,64 @@
+========== PYTHON_VERSION STDOUT ==========
+Python 3.13.14
+
+========== PYTHON_VERSION STDERR ==========
+PYTHON_VERSION_EXIT=0
+PYTHON_VERSION=PASS/3.13.14
+========== PY_COMPILE STDOUT ==========
+========== PY_COMPILE STDERR ==========
+PY_COMPILE_EXIT=0
+========== UNIT_TESTS STDOUT ==========
+========== UNIT_TESTS STDERR ==========
+test_01_zero_hook_suppresses_title_and_subtitle_without_fallback (test_c11e_e6_challenge_editorial_binding_prepare_only_v1.ZeroWindowSemanticsTests.test_01_zero_hook_suppresses_title_and_subtitle_without_fallback) ... ok
+test_02_zero_cta_suppresses_cta_without_fallback (test_c11e_e6_challenge_editorial_binding_prepare_only_v1.ZeroWindowSemanticsTests.test_02_zero_cta_suppresses_cta_without_fallback) ... ok
+test_03_positive_hook_and_cta_bind_all_three (test_c11e_e6_challenge_editorial_binding_prepare_only_v1.ZeroWindowSemanticsTests.test_03_positive_hook_and_cta_bind_all_three) ... ok
+test_04_zero_hook_and_cta_suppress_all_three (test_c11e_e6_challenge_editorial_binding_prepare_only_v1.ZeroWindowSemanticsTests.test_04_zero_hook_and_cta_suppress_all_three) ... ok
+test_05_zero_window_never_moves_into_game (test_c11e_e6_challenge_editorial_binding_prepare_only_v1.ZeroWindowSemanticsTests.test_05_zero_window_never_moves_into_game) ... ok
+test_06_zero_window_has_empty_value_hash (test_c11e_e6_challenge_editorial_binding_prepare_only_v1.ZeroWindowSemanticsTests.test_06_zero_window_has_empty_value_hash) ... ok
+test_07_positive_window_has_exact_fixture_hash (test_c11e_e6_challenge_editorial_binding_prepare_only_v1.ZeroWindowSemanticsTests.test_07_positive_window_has_exact_fixture_hash) ... ok
+test_08_original_input_is_not_mutated (test_c11e_e6_challenge_editorial_binding_prepare_only_v1.ZeroWindowSemanticsTests.test_08_original_input_is_not_mutated) ... ok
+test_09_e1_intent_unknown_values_are_preserved (test_c11e_e6_challenge_editorial_binding_prepare_only_v1.ZeroWindowSemanticsTests.test_09_e1_intent_unknown_values_are_preserved) ... ok
+test_10_player_and_challenge_identity_remain_nonvisual (test_c11e_e6_challenge_editorial_binding_prepare_only_v1.ZeroWindowSemanticsTests.test_10_player_and_challenge_identity_remain_nonvisual) ... ok
+test_11_zero_width_interval_is_accepted_as_empty_not_invalid (test_c11e_e6_challenge_editorial_binding_prepare_only_v1.ZeroWindowSemanticsTests.test_11_zero_width_interval_is_accepted_as_empty_not_invalid) ... ok
+test_12_negative_or_reversed_ranges_fail_closed (test_c11e_e6_challenge_editorial_binding_prepare_only_v1.ZeroWindowSemanticsTests.test_12_negative_or_reversed_ranges_fail_closed) ... ok
+test_13_policy_window_cannot_be_widened (test_c11e_e6_challenge_editorial_binding_prepare_only_v1.ZeroWindowSemanticsTests.test_13_policy_window_cannot_be_widened) ... ok
+test_14_layout_and_policy_pins_are_mandatory (test_c11e_e6_challenge_editorial_binding_prepare_only_v1.ZeroWindowSemanticsTests.test_14_layout_and_policy_pins_are_mandatory) ... ok
+test_15_only_challenge_envelopes_are_accepted (test_c11e_e6_challenge_editorial_binding_prepare_only_v1.ZeroWindowSemanticsTests.test_15_only_challenge_envelopes_are_accepted) ... ok
+test_16_only_exact_six_fields_are_accepted (test_c11e_e6_challenge_editorial_binding_prepare_only_v1.ZeroWindowSemanticsTests.test_16_only_exact_six_fields_are_accepted) ... ok
+test_17_duplicate_fields_fail_closed (test_c11e_e6_challenge_editorial_binding_prepare_only_v1.ZeroWindowSemanticsTests.test_17_duplicate_fields_fail_closed) ... ok
+test_18_fixture_values_must_be_nonempty (test_c11e_e6_challenge_editorial_binding_prepare_only_v1.ZeroWindowSemanticsTests.test_18_fixture_values_must_be_nonempty) ... ok
+test_19_source_range_must_match_exact_phase (test_c11e_e6_challenge_editorial_binding_prepare_only_v1.ZeroWindowSemanticsTests.test_19_source_range_must_match_exact_phase) ... ok
+test_20_seed_isolation_A_B_repeat_C_music_changed (test_c11e_e6_challenge_editorial_binding_prepare_only_v1.ZeroWindowSemanticsTests.test_20_seed_isolation_A_B_repeat_C_music_changed) ... ok
+test_21_gameplay_seed_change_fails (test_c11e_e6_challenge_editorial_binding_prepare_only_v1.ZeroWindowSemanticsTests.test_21_gameplay_seed_change_fails) ... ok
+test_22_A_B_music_seed_change_fails (test_c11e_e6_challenge_editorial_binding_prepare_only_v1.ZeroWindowSemanticsTests.test_22_A_B_music_seed_change_fails) ... ok
+test_23_C_music_seed_must_change (test_c11e_e6_challenge_editorial_binding_prepare_only_v1.ZeroWindowSemanticsTests.test_23_C_music_seed_must_change) ... ok
+test_24_no_release_or_renderer_authority_in_module (test_c11e_e6_challenge_editorial_binding_prepare_only_v1.ZeroWindowSemanticsTests.test_24_no_release_or_renderer_authority_in_module) ... ok
+
+----------------------------------------------------------------------
+Ran 24 tests in 0.021s
+
+OK
+
+UNIT_TESTS_EXIT=0
+UNIT_TESTS=24/24_PASS
+========== CHALLENGE_BINDING_PREPARE_ONLY STDOUT ==========
+CHALLENGE_SELECTORS=6/6
+NESTED_PROBES=18/18
+BOUND_D_ENVELOPES=18/18
+EDITORIAL_FIELD_SLOTS=54; VISIBLE=27; ZERO_WINDOW_SUPPRESSED=27
+ZERO_WINDOW_POLICY=OMIT_NO_PHASE_FALLBACK
+SOURCE_PINS=PASS/29
+PREDECESSOR_RECEIPTS_AND_SIDECARS=PASS/6
+RUNTIME_EDITORIAL_READBACK=NOT_PROVEN
+GODOT=NOT_INVOKED; FFMPEG=NOT_INVOKED; FFPROBE=NOT_INVOKED
+D4_8=BLOCKED; RENDERER=OFF; E6_ACCEPTED=0; MATRIX_FROZEN=FALSE; RELEASE_AUTHORITY=NONE
+BINDING_MANIFEST=C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\tests\c11e\e6_challenge_editorial_binding_prepare_only\E6CHEDITORIALBIND_20261119T074340Z_361029B4\E6_CHALLENGE_EDITORIAL_BINDING_MANIFEST_V1.json
+BINDING_MANIFEST_SHA256=1e0cf76c7664d3224678f887b9915afad21ce27eef71e4e73e16a4e6a54e8ff3
+BINDING_RECEIPT=C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS\artifacts\tests\c11e\e6_challenge_editorial_binding_prepare_only\E6CHEDITORIALBIND_20261119T074340Z_361029B4\E6_CHALLENGE_EDITORIAL_BINDING_RECEIPT_V1.json
+BINDING_RECEIPT_SHA256=ef0e2b7b6c3efdbb6a715730b783da79c0c13f5ca9df34e00e2ce6cbfcbc6b83
+BINDING_PREPARE_ONLY=PASS
+
+========== CHALLENGE_BINDING_PREPARE_ONLY STDERR ==========
+CHALLENGE_BINDING_PREPARE_ONLY_EXIT=0
+CHALLENGE_EDITORIAL_BINDING_PREPARE_ONLY=PASS
+RUNNER_LOG_ROOT=C:\Users\vinxe\AppData\Local\Temp\C11E_E6_CHALLENGE_BIND_26f279cd6cc148e580309ff6d634ba19

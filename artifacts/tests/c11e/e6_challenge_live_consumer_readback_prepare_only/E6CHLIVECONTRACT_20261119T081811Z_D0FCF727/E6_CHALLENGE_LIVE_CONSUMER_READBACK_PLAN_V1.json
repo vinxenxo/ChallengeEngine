@@ -1,0 +1,3150 @@
+{
+  "binding_install_receipt_sha256": "0fb637e97dcdd18f32e769d22f15a540481034641b7116fb1693eaf2c1e139aa",
+  "binding_manifest_sha256": "1e0cf76c7664d3224678f887b9915afad21ce27eef71e4e73e16a4e6a54e8ff3",
+  "binding_receipt_sha256": "ef0e2b7b6c3efdbb6a715730b783da79c0c13f5ca9df34e00e2ce6cbfcbc6b83",
+  "binding_run_id": "E6CHEDITORIALBIND_20261119T074340Z_361029B4",
+  "consumer_source_pins": {
+    "adapter_sha256": "d17568882eb63ba2eb48649cb9cd46edafe122d72c0c5ed29275e79b8d6d5846",
+    "adapter_static_contract": "PASS",
+    "consumer_sha256": "eba81fff4c24ca75033c8f963665df1961136046c41fee0e88681fe55a631203",
+    "consumer_static_contract": "PASS",
+    "gdscript_runtime_executed": false
+  },
+  "counts": {
+    "envelopes_static_compatible": 18,
+    "frame_sample_vectors": 117,
+    "omitted_zero_window_field_slots": 27,
+    "probes": 18,
+    "selectors": 6,
+    "visible_field_slots": 27
+  },
+  "engine_invocation": "NOT_AUTHORIZED",
+  "governance": {
+    "audio_generated": false,
+    "d4_8": "BLOCKED",
+    "e6_accepted": 0,
+    "e6_test_only_execution_authorized": false,
+    "ffmpeg_invoked": false,
+    "ffprobe_invoked": false,
+    "godot_invoked": false,
+    "matrix_frozen": false,
+    "media_created": false,
+    "mux_invoked": false,
+    "production_dispatch": false,
+    "release_authority": "NONE",
+    "renderer": "OFF"
+  },
+  "limitations": [
+    "This is static compatibility validation of exact D envelopes against pinned GDScript source and an offline frame-vector plan.",
+    "The GDScript consumer and adapter were not executed in Godot; runtime editorial readback and pixel output remain unproven.",
+    "Frame vectors specify expected D header/footer activity and native ownership for a future separately authorized runtime pass.",
+    "No D4.8 policy, E1 intent, source envelope, canonical Challenge, C11-C, or production runtime file is modified."
+  ],
+  "outputs": [
+    {
+      "bound_envelope_path": "artifacts/tests/c11e/e6_challenge_editorial_binding_prepare_only/E6CHEDITORIALBIND_20261119T074340Z_361029B4/envelopes/CHALLENGE_001_A_E6_BOUND_D_ENVELOPE_V1.json",
+      "bound_envelope_sha256": "be8ef0d780cf2a886473953d14b9d13603f4f1df220c1461919c952cdc1ae802",
+      "consumer_contract": "PASS_STATIC",
+      "cta_frames": 120,
+      "frame_sample_count": 6,
+      "hook_frames": 0,
+      "omitted_zero_window_fields": [
+        "title",
+        "subtitle"
+      ],
+      "selector": "CHALLENGE_001",
+      "source_envelope_sha256": "85cc987332ead05b9cccbe8fc24a0150976eb2e71b5bd9170a1fc0d304ef7d05",
+      "source_intent_sha256": "2759ffdccddc4fde0144f43d1ef586e509aaa3728195dd2ee72be600b2b36232",
+      "variant": "A",
+      "visible_fields": [
+        "call_to_action"
+      ]
+    },
+    {
+      "bound_envelope_path": "artifacts/tests/c11e/e6_challenge_editorial_binding_prepare_only/E6CHEDITORIALBIND_20261119T074340Z_361029B4/envelopes/CHALLENGE_001_B_REPEAT_E6_BOUND_D_ENVELOPE_V1.json",
+      "bound_envelope_sha256": "a0945682a3610a4c48827babf942d489a5adea87bb9580490a259738c2b18d8e",
+      "consumer_contract": "PASS_STATIC",
+      "cta_frames": 120,
+      "frame_sample_count": 6,
+      "hook_frames": 0,
+      "omitted_zero_window_fields": [
+        "title",
+        "subtitle"
+      ],
+      "selector": "CHALLENGE_001",
+      "source_envelope_sha256": "14ef6a71299c91c1b18b30aaea9b140d71ad3d5500fc9a684f6f6cbec7b7e104",
+      "source_intent_sha256": "0b69449427bcd58d74f01b830a4fbb7bb34d08a5aa3b595998ea84aa9538751c",
+      "variant": "B_REPEAT",
+      "visible_fields": [
+        "call_to_action"
+      ]
+    },
+    {
+      "bound_envelope_path": "artifacts/tests/c11e/e6_challenge_editorial_binding_prepare_only/E6CHEDITORIALBIND_20261119T074340Z_361029B4/envelopes/CHALLENGE_001_C_CHANGED_MUSIC_SEED_E6_BOUND_D_ENVELOPE_V1.json",
+      "bound_envelope_sha256": "7c403082681099be1b63d01973511ea7f79f7e8d15d89115a3b0c555a56028e3",
+      "consumer_contract": "PASS_STATIC",
+      "cta_frames": 120,
+      "frame_sample_count": 6,
+      "hook_frames": 0,
+      "omitted_zero_window_fields": [
+        "title",
+        "subtitle"
+      ],
+      "selector": "CHALLENGE_001",
+      "source_envelope_sha256": "ce64ddef0e74b418fe2cfbb3f1061d2641d8eb89f7552984dbe8528803fa8cc5",
+      "source_intent_sha256": "5ce34e7185eab94b2588ca84d4dfcefba07f4695e1c2b828453c89e586ee7c3f",
+      "variant": "C_CHANGED_MUSIC_SEED",
+      "visible_fields": [
+        "call_to_action"
+      ]
+    },
+    {
+      "bound_envelope_path": "artifacts/tests/c11e/e6_challenge_editorial_binding_prepare_only/E6CHEDITORIALBIND_20261119T074340Z_361029B4/envelopes/CHALLENGE_002_A_E6_BOUND_D_ENVELOPE_V1.json",
+      "bound_envelope_sha256": "2c477978f7edaf77cded373aedf4cf3f7ad74eb93740dd894d61287bfc69602b",
+      "consumer_contract": "PASS_STATIC",
+      "cta_frames": 0,
+      "frame_sample_count": 6,
+      "hook_frames": 180,
+      "omitted_zero_window_fields": [
+        "call_to_action"
+      ],
+      "selector": "CHALLENGE_002",
+      "source_envelope_sha256": "4a508a13a2b76cda85103c836c346f46c224086d9201fc1043e88e44b23a756f",
+      "source_intent_sha256": "c48ce5fb5d8e7e565eed99a3fda0d381b7a10978a8cf87d051e5a765a27afdea",
+      "variant": "A",
+      "visible_fields": [
+        "title",
+        "subtitle"
+      ]
+    },
+    {
+      "bound_envelope_path": "artifacts/tests/c11e/e6_challenge_editorial_binding_prepare_only/E6CHEDITORIALBIND_20261119T074340Z_361029B4/envelopes/CHALLENGE_002_B_REPEAT_E6_BOUND_D_ENVELOPE_V1.json",
+      "bound_envelope_sha256": "80195369e9de754eb4cfe916ea3f1af138af743ba67f63d33197c3f9d66f3d0b",
+      "consumer_contract": "PASS_STATIC",
+      "cta_frames": 0,
+      "frame_sample_count": 6,
+      "hook_frames": 180,
+      "omitted_zero_window_fields": [
+        "call_to_action"
+      ],
+      "selector": "CHALLENGE_002",
+      "source_envelope_sha256": "eae719119c912e103a8a98f94434d8816946944ee892f290a28112146de03ae5",
+      "source_intent_sha256": "0cdeed906de2817a517b734b51ce060102fac215e6c2ed9d5b216e227978aa1b",
+      "variant": "B_REPEAT",
+      "visible_fields": [
+        "title",
+        "subtitle"
+      ]
+    },
+    {
+      "bound_envelope_path": "artifacts/tests/c11e/e6_challenge_editorial_binding_prepare_only/E6CHEDITORIALBIND_20261119T074340Z_361029B4/envelopes/CHALLENGE_002_C_CHANGED_MUSIC_SEED_E6_BOUND_D_ENVELOPE_V1.json",
+      "bound_envelope_sha256": "c38763138c537db50a325ca4e6f63b4e2ed527b2aa2e4b828d2e0d0aaa517eab",
+      "consumer_contract": "PASS_STATIC",
+      "cta_frames": 0,
+      "frame_sample_count": 6,
+      "hook_frames": 180,
+      "omitted_zero_window_fields": [
+        "call_to_action"
+      ],
+      "selector": "CHALLENGE_002",
+      "source_envelope_sha256": "c276436ba5ca9db2a9c8af180177a6563d4a9af1016305dd1b793674dc3fb6e5",
+      "source_intent_sha256": "fab30eb40ce93f0470ae96879c87b631c9e15b614e455e9421940ffbab312ccd",
+      "variant": "C_CHANGED_MUSIC_SEED",
+      "visible_fields": [
+        "title",
+        "subtitle"
+      ]
+    },
+    {
+      "bound_envelope_path": "artifacts/tests/c11e/e6_challenge_editorial_binding_prepare_only/E6CHEDITORIALBIND_20261119T074340Z_361029B4/envelopes/CHALLENGE_004_A_E6_BOUND_D_ENVELOPE_V1.json",
+      "bound_envelope_sha256": "67cd1de1a554afb47144560e6f347233a10717a04533e7ce51f793c29209a0d9",
+      "consumer_contract": "PASS_STATIC",
+      "cta_frames": 120,
+      "frame_sample_count": 12,
+      "hook_frames": 180,
+      "omitted_zero_window_fields": [],
+      "selector": "CHALLENGE_004",
+      "source_envelope_sha256": "181c04818e8f5eaa56b61eb24f517121463dea8b69c17d39a1327c5993a2a131",
+      "source_intent_sha256": "4a1a33a540cc5a23a77fb9169521e97e2008936ec388dd55f49295680d277cd4",
+      "variant": "A",
+      "visible_fields": [
+        "title",
+        "subtitle",
+        "call_to_action"
+      ]
+    },
+    {
+      "bound_envelope_path": "artifacts/tests/c11e/e6_challenge_editorial_binding_prepare_only/E6CHEDITORIALBIND_20261119T074340Z_361029B4/envelopes/CHALLENGE_004_B_REPEAT_E6_BOUND_D_ENVELOPE_V1.json",
+      "bound_envelope_sha256": "cdc186e59a7e7c559b38aa52896abf0ccfca9003348c56a623a1c6d3a04bf31e",
+      "consumer_contract": "PASS_STATIC",
+      "cta_frames": 120,
+      "frame_sample_count": 12,
+      "hook_frames": 180,
+      "omitted_zero_window_fields": [],
+      "selector": "CHALLENGE_004",
+      "source_envelope_sha256": "60f455f93c83ea1be6038f7062036caf656ec216dee186ff85ef1343e5eec6b1",
+      "source_intent_sha256": "b3ebe6981c8d26c16f1821a79d3a255392b3e2abc958bf1e3e248f276f86cc90",
+      "variant": "B_REPEAT",
+      "visible_fields": [
+        "title",
+        "subtitle",
+        "call_to_action"
+      ]
+    },
+    {
+      "bound_envelope_path": "artifacts/tests/c11e/e6_challenge_editorial_binding_prepare_only/E6CHEDITORIALBIND_20261119T074340Z_361029B4/envelopes/CHALLENGE_004_C_CHANGED_MUSIC_SEED_E6_BOUND_D_ENVELOPE_V1.json",
+      "bound_envelope_sha256": "2fbbdd83a9f5f7ba9f47422cd82313a5cca39aacba7f7dc63148c35e3daa3e28",
+      "consumer_contract": "PASS_STATIC",
+      "cta_frames": 120,
+      "frame_sample_count": 12,
+      "hook_frames": 180,
+      "omitted_zero_window_fields": [],
+      "selector": "CHALLENGE_004",
+      "source_envelope_sha256": "42ce4373a9c8e4428abfc3bbc76df63fbbf2113a4361b00d698c973dbded8802",
+      "source_intent_sha256": "73c6d22cd7798a39eb472b5ada82ac42adbff9c18347c41db7a4aea935069e80",
+      "variant": "C_CHANGED_MUSIC_SEED",
+      "visible_fields": [
+        "title",
+        "subtitle",
+        "call_to_action"
+      ]
+    },
+    {
+      "bound_envelope_path": "artifacts/tests/c11e/e6_challenge_editorial_binding_prepare_only/E6CHEDITORIALBIND_20261119T074340Z_361029B4/envelopes/CHALLENGE_005_A_E6_BOUND_D_ENVELOPE_V1.json",
+      "bound_envelope_sha256": "6b53d44918d5faf26a28d93b13694cc727459dcb5ffaf892f757c078096b0be3",
+      "consumer_contract": "PASS_STATIC",
+      "cta_frames": 0,
+      "frame_sample_count": 3,
+      "hook_frames": 0,
+      "omitted_zero_window_fields": [
+        "title",
+        "subtitle",
+        "call_to_action"
+      ],
+      "selector": "CHALLENGE_005",
+      "source_envelope_sha256": "6b53d44918d5faf26a28d93b13694cc727459dcb5ffaf892f757c078096b0be3",
+      "source_intent_sha256": "6e27835f4ecef733c137ac58faf7b0005ea5c25b3e07d70a0515d979b4e02f9f",
+      "variant": "A",
+      "visible_fields": []
+    },
+    {
+      "bound_envelope_path": "artifacts/tests/c11e/e6_challenge_editorial_binding_prepare_only/E6CHEDITORIALBIND_20261119T074340Z_361029B4/envelopes/CHALLENGE_005_B_REPEAT_E6_BOUND_D_ENVELOPE_V1.json",
+      "bound_envelope_sha256": "2a6c69ad0a7bba8d74810718978642fa86b93691e6877e0f7cfb500ddd0754df",
+      "consumer_contract": "PASS_STATIC",
+      "cta_frames": 0,
+      "frame_sample_count": 3,
+      "hook_frames": 0,
+      "omitted_zero_window_fields": [
+        "title",
+        "subtitle",
+        "call_to_action"
+      ],
+      "selector": "CHALLENGE_005",
+      "source_envelope_sha256": "2a6c69ad0a7bba8d74810718978642fa86b93691e6877e0f7cfb500ddd0754df",
+      "source_intent_sha256": "5d31d81dbbbbb0e5bd24857e79a8158cddcbfa29386395e3f6cf9ab56c52fa19",
+      "variant": "B_REPEAT",
+      "visible_fields": []
+    },
+    {
+      "bound_envelope_path": "artifacts/tests/c11e/e6_challenge_editorial_binding_prepare_only/E6CHEDITORIALBIND_20261119T074340Z_361029B4/envelopes/CHALLENGE_005_C_CHANGED_MUSIC_SEED_E6_BOUND_D_ENVELOPE_V1.json",
+      "bound_envelope_sha256": "08a75cf9c2da100daafa336ac66a3f94548fd8a1da26e0bbcc9b9bbb835b78d1",
+      "consumer_contract": "PASS_STATIC",
+      "cta_frames": 0,
+      "frame_sample_count": 3,
+      "hook_frames": 0,
+      "omitted_zero_window_fields": [
+        "title",
+        "subtitle",
+        "call_to_action"
+      ],
+      "selector": "CHALLENGE_005",
+      "source_envelope_sha256": "08a75cf9c2da100daafa336ac66a3f94548fd8a1da26e0bbcc9b9bbb835b78d1",
+      "source_intent_sha256": "1d1bd1a6063d93116d9d3109f5d1350b5ee62c685faa845b4e8b72b4e72cb100",
+      "variant": "C_CHANGED_MUSIC_SEED",
+      "visible_fields": []
+    },
+    {
+      "bound_envelope_path": "artifacts/tests/c11e/e6_challenge_editorial_binding_prepare_only/E6CHEDITORIALBIND_20261119T074340Z_361029B4/envelopes/CHALLENGE_006_A_E6_BOUND_D_ENVELOPE_V1.json",
+      "bound_envelope_sha256": "9486eb8e47298260fe8bc15d20567162dc8cb73a9331173e394a8ce0007445da",
+      "consumer_contract": "PASS_STATIC",
+      "cta_frames": 120,
+      "frame_sample_count": 6,
+      "hook_frames": 0,
+      "omitted_zero_window_fields": [
+        "title",
+        "subtitle"
+      ],
+      "selector": "CHALLENGE_006",
+      "source_envelope_sha256": "2f0a996f65d0d55c703d551e2897a8d740cd17375c36b9c7d4aef4d341b9fc01",
+      "source_intent_sha256": "b5b70968c64fd9c4badc6bd5a39e4252cf313c69c6b5edebb6507aabca77f1e6",
+      "variant": "A",
+      "visible_fields": [
+        "call_to_action"
+      ]
+    },
+    {
+      "bound_envelope_path": "artifacts/tests/c11e/e6_challenge_editorial_binding_prepare_only/E6CHEDITORIALBIND_20261119T074340Z_361029B4/envelopes/CHALLENGE_006_B_REPEAT_E6_BOUND_D_ENVELOPE_V1.json",
+      "bound_envelope_sha256": "658bd88069974dd1b5c86a381df9996f3d570622986f637eac7ff9a0b8f6db0b",
+      "consumer_contract": "PASS_STATIC",
+      "cta_frames": 120,
+      "frame_sample_count": 6,
+      "hook_frames": 0,
+      "omitted_zero_window_fields": [
+        "title",
+        "subtitle"
+      ],
+      "selector": "CHALLENGE_006",
+      "source_envelope_sha256": "80f91904e78959162a5700b4a19510ee230e3ca8e074e89d7a77441186ecaace",
+      "source_intent_sha256": "160e45772eb68e1166caf9d254d28e784eb02eeab60620256ac9a5cb74ba6b17",
+      "variant": "B_REPEAT",
+      "visible_fields": [
+        "call_to_action"
+      ]
+    },
+    {
+      "bound_envelope_path": "artifacts/tests/c11e/e6_challenge_editorial_binding_prepare_only/E6CHEDITORIALBIND_20261119T074340Z_361029B4/envelopes/CHALLENGE_006_C_CHANGED_MUSIC_SEED_E6_BOUND_D_ENVELOPE_V1.json",
+      "bound_envelope_sha256": "b26b7329d4a94f2a365e0d65984da4371068b58d194ccd0f84388fefb7dba366",
+      "consumer_contract": "PASS_STATIC",
+      "cta_frames": 120,
+      "frame_sample_count": 6,
+      "hook_frames": 0,
+      "omitted_zero_window_fields": [
+        "title",
+        "subtitle"
+      ],
+      "selector": "CHALLENGE_006",
+      "source_envelope_sha256": "ae2de70f0f65d0a02b7b21251ed30e27e09a0f4e9b407344ad89b60b4a75601f",
+      "source_intent_sha256": "7e84e89d7916ac8d5641a1ed7d51a30ad52fa807f83d316f03ac0f10fc63299c",
+      "variant": "C_CHANGED_MUSIC_SEED",
+      "visible_fields": [
+        "call_to_action"
+      ]
+    },
+    {
+      "bound_envelope_path": "artifacts/tests/c11e/e6_challenge_editorial_binding_prepare_only/E6CHEDITORIALBIND_20261119T074340Z_361029B4/envelopes/CHALLENGE_007_A_E6_BOUND_D_ENVELOPE_V1.json",
+      "bound_envelope_sha256": "f5b11c166a0af8f8171fe4a81c17a4cbb699dba699d7f382b8b786c89ff9e82e",
+      "consumer_contract": "PASS_STATIC",
+      "cta_frames": 0,
+      "frame_sample_count": 6,
+      "hook_frames": 180,
+      "omitted_zero_window_fields": [
+        "call_to_action"
+      ],
+      "selector": "CHALLENGE_007",
+      "source_envelope_sha256": "fc535cd177d00db43378a8bf38222a76d0d0ec93831f542a386b512313b95c24",
+      "source_intent_sha256": "1fe4da32a4fff7dfe1d745704e984defac575bed34805c915e8170442ca48e6b",
+      "variant": "A",
+      "visible_fields": [
+        "title",
+        "subtitle"
+      ]
+    },
+    {
+      "bound_envelope_path": "artifacts/tests/c11e/e6_challenge_editorial_binding_prepare_only/E6CHEDITORIALBIND_20261119T074340Z_361029B4/envelopes/CHALLENGE_007_B_REPEAT_E6_BOUND_D_ENVELOPE_V1.json",
+      "bound_envelope_sha256": "a275462646d4a326ed1774a650affe9dc6e21fc0fd9a184060aaf31580ee9ea8",
+      "consumer_contract": "PASS_STATIC",
+      "cta_frames": 0,
+      "frame_sample_count": 6,
+      "hook_frames": 180,
+      "omitted_zero_window_fields": [
+        "call_to_action"
+      ],
+      "selector": "CHALLENGE_007",
+      "source_envelope_sha256": "dbd62d6c2dfb1a295e1bb1d03bc8f298949dbd7a1c8b815850131b1c0e85201c",
+      "source_intent_sha256": "4c2241919d600ef2bc2e63a7097542b4bf218a7a67ff1d569a20fc1c040040d2",
+      "variant": "B_REPEAT",
+      "visible_fields": [
+        "title",
+        "subtitle"
+      ]
+    },
+    {
+      "bound_envelope_path": "artifacts/tests/c11e/e6_challenge_editorial_binding_prepare_only/E6CHEDITORIALBIND_20261119T074340Z_361029B4/envelopes/CHALLENGE_007_C_CHANGED_MUSIC_SEED_E6_BOUND_D_ENVELOPE_V1.json",
+      "bound_envelope_sha256": "b7db5bd742479bf11ae5c8d55254ea29e47928ec653945c3120ec114412d4de4",
+      "consumer_contract": "PASS_STATIC",
+      "cta_frames": 0,
+      "frame_sample_count": 6,
+      "hook_frames": 180,
+      "omitted_zero_window_fields": [
+        "call_to_action"
+      ],
+      "selector": "CHALLENGE_007",
+      "source_envelope_sha256": "89c8985057ce6ab3f59d1f7c2daaa5edfd54529f2bea1017bf6d128be98e67a6",
+      "source_intent_sha256": "93cef0a18e952950dc8dd672523b5c0088629ed43c4ccba05eac07f1264301ae",
+      "variant": "C_CHANGED_MUSIC_SEED",
+      "visible_fields": [
+        "title",
+        "subtitle"
+      ]
+    }
+  ],
+  "run_id": "E6CHLIVECONTRACT_20261119T081811Z_D0FCF727",
+  "runtime_frame_plans": [
+    {
+      "frame_samples": [
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 0
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 210
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 419
+        },
+        {
+          "expected_d_footer_active": true,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "D_C11C_SHARED_FOOTER",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "CTA",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 420
+        },
+        {
+          "expected_d_footer_active": true,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "D_C11C_SHARED_FOOTER",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "CTA",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 480
+        },
+        {
+          "expected_d_footer_active": true,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "D_C11C_SHARED_FOOTER",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "CTA",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 539
+        }
+      ],
+      "phase_frames": {
+        "CTA": {
+          "duration": 120,
+          "end": 540,
+          "start": 420
+        },
+        "GAME": {
+          "duration": 420,
+          "end": 420,
+          "start": 0
+        },
+        "HOOK": {
+          "duration": 0,
+          "end": 0,
+          "start": 0
+        },
+        "REVEAL": {
+          "duration": 0,
+          "end": 420,
+          "start": 420
+        }
+      },
+      "selector": "CHALLENGE_001",
+      "source_fps": 60,
+      "total_frames": 540,
+      "variant": "A"
+    },
+    {
+      "frame_samples": [
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 0
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 210
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 419
+        },
+        {
+          "expected_d_footer_active": true,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "D_C11C_SHARED_FOOTER",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "CTA",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 420
+        },
+        {
+          "expected_d_footer_active": true,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "D_C11C_SHARED_FOOTER",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "CTA",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 480
+        },
+        {
+          "expected_d_footer_active": true,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "D_C11C_SHARED_FOOTER",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "CTA",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 539
+        }
+      ],
+      "phase_frames": {
+        "CTA": {
+          "duration": 120,
+          "end": 540,
+          "start": 420
+        },
+        "GAME": {
+          "duration": 420,
+          "end": 420,
+          "start": 0
+        },
+        "HOOK": {
+          "duration": 0,
+          "end": 0,
+          "start": 0
+        },
+        "REVEAL": {
+          "duration": 0,
+          "end": 420,
+          "start": 420
+        }
+      },
+      "selector": "CHALLENGE_001",
+      "source_fps": 60,
+      "total_frames": 540,
+      "variant": "B_REPEAT"
+    },
+    {
+      "frame_samples": [
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 0
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 210
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 419
+        },
+        {
+          "expected_d_footer_active": true,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "D_C11C_SHARED_FOOTER",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "CTA",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 420
+        },
+        {
+          "expected_d_footer_active": true,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "D_C11C_SHARED_FOOTER",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "CTA",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 480
+        },
+        {
+          "expected_d_footer_active": true,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "D_C11C_SHARED_FOOTER",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "CTA",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 539
+        }
+      ],
+      "phase_frames": {
+        "CTA": {
+          "duration": 120,
+          "end": 540,
+          "start": 420
+        },
+        "GAME": {
+          "duration": 420,
+          "end": 420,
+          "start": 0
+        },
+        "HOOK": {
+          "duration": 0,
+          "end": 0,
+          "start": 0
+        },
+        "REVEAL": {
+          "duration": 0,
+          "end": 420,
+          "start": 420
+        }
+      },
+      "selector": "CHALLENGE_001",
+      "source_fps": 60,
+      "total_frames": 540,
+      "variant": "C_CHANGED_MUSIC_SEED"
+    },
+    {
+      "frame_samples": [
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": true,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "CONDITIONAL_HEADER_ACTIVE_AND_SHOW_HOOK_COUNTDOWN_AND_NATIVE_HOOK_TEXT_NONEMPTY",
+          "phase": "HOOK",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 0
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": true,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "CONDITIONAL_HEADER_ACTIVE_AND_SHOW_HOOK_COUNTDOWN_AND_NATIVE_HOOK_TEXT_NONEMPTY",
+          "phase": "HOOK",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 90
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": true,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "CONDITIONAL_HEADER_ACTIVE_AND_SHOW_HOOK_COUNTDOWN_AND_NATIVE_HOOK_TEXT_NONEMPTY",
+          "phase": "HOOK",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 179
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 180
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 390
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 599
+        }
+      ],
+      "phase_frames": {
+        "CTA": {
+          "duration": 0,
+          "end": 600,
+          "start": 600
+        },
+        "GAME": {
+          "duration": 420,
+          "end": 600,
+          "start": 180
+        },
+        "HOOK": {
+          "duration": 180,
+          "end": 180,
+          "start": 0
+        },
+        "REVEAL": {
+          "duration": 0,
+          "end": 600,
+          "start": 600
+        }
+      },
+      "selector": "CHALLENGE_002",
+      "source_fps": 60,
+      "total_frames": 600,
+      "variant": "A"
+    },
+    {
+      "frame_samples": [
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": true,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "CONDITIONAL_HEADER_ACTIVE_AND_SHOW_HOOK_COUNTDOWN_AND_NATIVE_HOOK_TEXT_NONEMPTY",
+          "phase": "HOOK",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 0
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": true,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "CONDITIONAL_HEADER_ACTIVE_AND_SHOW_HOOK_COUNTDOWN_AND_NATIVE_HOOK_TEXT_NONEMPTY",
+          "phase": "HOOK",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 90
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": true,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "CONDITIONAL_HEADER_ACTIVE_AND_SHOW_HOOK_COUNTDOWN_AND_NATIVE_HOOK_TEXT_NONEMPTY",
+          "phase": "HOOK",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 179
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 180
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 390
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 599
+        }
+      ],
+      "phase_frames": {
+        "CTA": {
+          "duration": 0,
+          "end": 600,
+          "start": 600
+        },
+        "GAME": {
+          "duration": 420,
+          "end": 600,
+          "start": 180
+        },
+        "HOOK": {
+          "duration": 180,
+          "end": 180,
+          "start": 0
+        },
+        "REVEAL": {
+          "duration": 0,
+          "end": 600,
+          "start": 600
+        }
+      },
+      "selector": "CHALLENGE_002",
+      "source_fps": 60,
+      "total_frames": 600,
+      "variant": "B_REPEAT"
+    },
+    {
+      "frame_samples": [
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": true,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "CONDITIONAL_HEADER_ACTIVE_AND_SHOW_HOOK_COUNTDOWN_AND_NATIVE_HOOK_TEXT_NONEMPTY",
+          "phase": "HOOK",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 0
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": true,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "CONDITIONAL_HEADER_ACTIVE_AND_SHOW_HOOK_COUNTDOWN_AND_NATIVE_HOOK_TEXT_NONEMPTY",
+          "phase": "HOOK",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 90
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": true,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "CONDITIONAL_HEADER_ACTIVE_AND_SHOW_HOOK_COUNTDOWN_AND_NATIVE_HOOK_TEXT_NONEMPTY",
+          "phase": "HOOK",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 179
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 180
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 390
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 599
+        }
+      ],
+      "phase_frames": {
+        "CTA": {
+          "duration": 0,
+          "end": 600,
+          "start": 600
+        },
+        "GAME": {
+          "duration": 420,
+          "end": 600,
+          "start": 180
+        },
+        "HOOK": {
+          "duration": 180,
+          "end": 180,
+          "start": 0
+        },
+        "REVEAL": {
+          "duration": 0,
+          "end": 600,
+          "start": 600
+        }
+      },
+      "selector": "CHALLENGE_002",
+      "source_fps": 60,
+      "total_frames": 600,
+      "variant": "C_CHANGED_MUSIC_SEED"
+    },
+    {
+      "frame_samples": [
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": true,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "CONDITIONAL_HEADER_ACTIVE_AND_SHOW_HOOK_COUNTDOWN_AND_NATIVE_HOOK_TEXT_NONEMPTY",
+          "phase": "HOOK",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 0
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": true,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "CONDITIONAL_HEADER_ACTIVE_AND_SHOW_HOOK_COUNTDOWN_AND_NATIVE_HOOK_TEXT_NONEMPTY",
+          "phase": "HOOK",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 90
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": true,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "CONDITIONAL_HEADER_ACTIVE_AND_SHOW_HOOK_COUNTDOWN_AND_NATIVE_HOOK_TEXT_NONEMPTY",
+          "phase": "HOOK",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 179
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 180
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 390
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 599
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "REVEAL",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 600
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "REVEAL",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 690
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "REVEAL",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 779
+        },
+        {
+          "expected_d_footer_active": true,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "D_C11C_SHARED_FOOTER",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "CTA",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 780
+        },
+        {
+          "expected_d_footer_active": true,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "D_C11C_SHARED_FOOTER",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "CTA",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 840
+        },
+        {
+          "expected_d_footer_active": true,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "D_C11C_SHARED_FOOTER",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "CTA",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 899
+        }
+      ],
+      "phase_frames": {
+        "CTA": {
+          "duration": 120,
+          "end": 900,
+          "start": 780
+        },
+        "GAME": {
+          "duration": 420,
+          "end": 600,
+          "start": 180
+        },
+        "HOOK": {
+          "duration": 180,
+          "end": 180,
+          "start": 0
+        },
+        "REVEAL": {
+          "duration": 180,
+          "end": 780,
+          "start": 600
+        }
+      },
+      "selector": "CHALLENGE_004",
+      "source_fps": 60,
+      "total_frames": 900,
+      "variant": "A"
+    },
+    {
+      "frame_samples": [
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": true,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "CONDITIONAL_HEADER_ACTIVE_AND_SHOW_HOOK_COUNTDOWN_AND_NATIVE_HOOK_TEXT_NONEMPTY",
+          "phase": "HOOK",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 0
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": true,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "CONDITIONAL_HEADER_ACTIVE_AND_SHOW_HOOK_COUNTDOWN_AND_NATIVE_HOOK_TEXT_NONEMPTY",
+          "phase": "HOOK",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 90
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": true,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "CONDITIONAL_HEADER_ACTIVE_AND_SHOW_HOOK_COUNTDOWN_AND_NATIVE_HOOK_TEXT_NONEMPTY",
+          "phase": "HOOK",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 179
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 180
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 390
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 599
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "REVEAL",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 600
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "REVEAL",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 690
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "REVEAL",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 779
+        },
+        {
+          "expected_d_footer_active": true,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "D_C11C_SHARED_FOOTER",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "CTA",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 780
+        },
+        {
+          "expected_d_footer_active": true,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "D_C11C_SHARED_FOOTER",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "CTA",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 840
+        },
+        {
+          "expected_d_footer_active": true,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "D_C11C_SHARED_FOOTER",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "CTA",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 899
+        }
+      ],
+      "phase_frames": {
+        "CTA": {
+          "duration": 120,
+          "end": 900,
+          "start": 780
+        },
+        "GAME": {
+          "duration": 420,
+          "end": 600,
+          "start": 180
+        },
+        "HOOK": {
+          "duration": 180,
+          "end": 180,
+          "start": 0
+        },
+        "REVEAL": {
+          "duration": 180,
+          "end": 780,
+          "start": 600
+        }
+      },
+      "selector": "CHALLENGE_004",
+      "source_fps": 60,
+      "total_frames": 900,
+      "variant": "B_REPEAT"
+    },
+    {
+      "frame_samples": [
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": true,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "CONDITIONAL_HEADER_ACTIVE_AND_SHOW_HOOK_COUNTDOWN_AND_NATIVE_HOOK_TEXT_NONEMPTY",
+          "phase": "HOOK",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 0
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": true,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "CONDITIONAL_HEADER_ACTIVE_AND_SHOW_HOOK_COUNTDOWN_AND_NATIVE_HOOK_TEXT_NONEMPTY",
+          "phase": "HOOK",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 90
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": true,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "CONDITIONAL_HEADER_ACTIVE_AND_SHOW_HOOK_COUNTDOWN_AND_NATIVE_HOOK_TEXT_NONEMPTY",
+          "phase": "HOOK",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 179
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 180
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 390
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 599
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "REVEAL",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 600
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "REVEAL",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 690
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "REVEAL",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 779
+        },
+        {
+          "expected_d_footer_active": true,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "D_C11C_SHARED_FOOTER",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "CTA",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 780
+        },
+        {
+          "expected_d_footer_active": true,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "D_C11C_SHARED_FOOTER",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "CTA",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 840
+        },
+        {
+          "expected_d_footer_active": true,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "D_C11C_SHARED_FOOTER",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "CTA",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 899
+        }
+      ],
+      "phase_frames": {
+        "CTA": {
+          "duration": 120,
+          "end": 900,
+          "start": 780
+        },
+        "GAME": {
+          "duration": 420,
+          "end": 600,
+          "start": 180
+        },
+        "HOOK": {
+          "duration": 180,
+          "end": 180,
+          "start": 0
+        },
+        "REVEAL": {
+          "duration": 180,
+          "end": 780,
+          "start": 600
+        }
+      },
+      "selector": "CHALLENGE_004",
+      "source_fps": 60,
+      "total_frames": 900,
+      "variant": "C_CHANGED_MUSIC_SEED"
+    },
+    {
+      "frame_samples": [
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 0
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 210
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 419
+        }
+      ],
+      "phase_frames": {
+        "CTA": {
+          "duration": 0,
+          "end": 420,
+          "start": 420
+        },
+        "GAME": {
+          "duration": 420,
+          "end": 420,
+          "start": 0
+        },
+        "HOOK": {
+          "duration": 0,
+          "end": 0,
+          "start": 0
+        },
+        "REVEAL": {
+          "duration": 0,
+          "end": 420,
+          "start": 420
+        }
+      },
+      "selector": "CHALLENGE_005",
+      "source_fps": 60,
+      "total_frames": 420,
+      "variant": "A"
+    },
+    {
+      "frame_samples": [
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 0
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 210
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 419
+        }
+      ],
+      "phase_frames": {
+        "CTA": {
+          "duration": 0,
+          "end": 420,
+          "start": 420
+        },
+        "GAME": {
+          "duration": 420,
+          "end": 420,
+          "start": 0
+        },
+        "HOOK": {
+          "duration": 0,
+          "end": 0,
+          "start": 0
+        },
+        "REVEAL": {
+          "duration": 0,
+          "end": 420,
+          "start": 420
+        }
+      },
+      "selector": "CHALLENGE_005",
+      "source_fps": 60,
+      "total_frames": 420,
+      "variant": "B_REPEAT"
+    },
+    {
+      "frame_samples": [
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 0
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 210
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 419
+        }
+      ],
+      "phase_frames": {
+        "CTA": {
+          "duration": 0,
+          "end": 420,
+          "start": 420
+        },
+        "GAME": {
+          "duration": 420,
+          "end": 420,
+          "start": 0
+        },
+        "HOOK": {
+          "duration": 0,
+          "end": 0,
+          "start": 0
+        },
+        "REVEAL": {
+          "duration": 0,
+          "end": 420,
+          "start": 420
+        }
+      },
+      "selector": "CHALLENGE_005",
+      "source_fps": 60,
+      "total_frames": 420,
+      "variant": "C_CHANGED_MUSIC_SEED"
+    },
+    {
+      "frame_samples": [
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 0
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 210
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 419
+        },
+        {
+          "expected_d_footer_active": true,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "D_C11C_SHARED_FOOTER",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "CTA",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 420
+        },
+        {
+          "expected_d_footer_active": true,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "D_C11C_SHARED_FOOTER",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "CTA",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 480
+        },
+        {
+          "expected_d_footer_active": true,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "D_C11C_SHARED_FOOTER",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "CTA",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 539
+        }
+      ],
+      "phase_frames": {
+        "CTA": {
+          "duration": 120,
+          "end": 540,
+          "start": 420
+        },
+        "GAME": {
+          "duration": 420,
+          "end": 420,
+          "start": 0
+        },
+        "HOOK": {
+          "duration": 0,
+          "end": 0,
+          "start": 0
+        },
+        "REVEAL": {
+          "duration": 0,
+          "end": 420,
+          "start": 420
+        }
+      },
+      "selector": "CHALLENGE_006",
+      "source_fps": 60,
+      "total_frames": 540,
+      "variant": "A"
+    },
+    {
+      "frame_samples": [
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 0
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 210
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 419
+        },
+        {
+          "expected_d_footer_active": true,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "D_C11C_SHARED_FOOTER",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "CTA",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 420
+        },
+        {
+          "expected_d_footer_active": true,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "D_C11C_SHARED_FOOTER",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "CTA",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 480
+        },
+        {
+          "expected_d_footer_active": true,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "D_C11C_SHARED_FOOTER",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "CTA",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 539
+        }
+      ],
+      "phase_frames": {
+        "CTA": {
+          "duration": 120,
+          "end": 540,
+          "start": 420
+        },
+        "GAME": {
+          "duration": 420,
+          "end": 420,
+          "start": 0
+        },
+        "HOOK": {
+          "duration": 0,
+          "end": 0,
+          "start": 0
+        },
+        "REVEAL": {
+          "duration": 0,
+          "end": 420,
+          "start": 420
+        }
+      },
+      "selector": "CHALLENGE_006",
+      "source_fps": 60,
+      "total_frames": 540,
+      "variant": "B_REPEAT"
+    },
+    {
+      "frame_samples": [
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 0
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 210
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 419
+        },
+        {
+          "expected_d_footer_active": true,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "D_C11C_SHARED_FOOTER",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "CTA",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 420
+        },
+        {
+          "expected_d_footer_active": true,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "D_C11C_SHARED_FOOTER",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "CTA",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 480
+        },
+        {
+          "expected_d_footer_active": true,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "D_C11C_SHARED_FOOTER",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "CTA",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 539
+        }
+      ],
+      "phase_frames": {
+        "CTA": {
+          "duration": 120,
+          "end": 540,
+          "start": 420
+        },
+        "GAME": {
+          "duration": 420,
+          "end": 420,
+          "start": 0
+        },
+        "HOOK": {
+          "duration": 0,
+          "end": 0,
+          "start": 0
+        },
+        "REVEAL": {
+          "duration": 0,
+          "end": 420,
+          "start": 420
+        }
+      },
+      "selector": "CHALLENGE_006",
+      "source_fps": 60,
+      "total_frames": 540,
+      "variant": "C_CHANGED_MUSIC_SEED"
+    },
+    {
+      "frame_samples": [
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": true,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "CONDITIONAL_HEADER_ACTIVE_AND_SHOW_HOOK_COUNTDOWN_AND_NATIVE_HOOK_TEXT_NONEMPTY",
+          "phase": "HOOK",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 0
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": true,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "CONDITIONAL_HEADER_ACTIVE_AND_SHOW_HOOK_COUNTDOWN_AND_NATIVE_HOOK_TEXT_NONEMPTY",
+          "phase": "HOOK",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 90
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": true,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "CONDITIONAL_HEADER_ACTIVE_AND_SHOW_HOOK_COUNTDOWN_AND_NATIVE_HOOK_TEXT_NONEMPTY",
+          "phase": "HOOK",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 179
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 180
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 390
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 599
+        }
+      ],
+      "phase_frames": {
+        "CTA": {
+          "duration": 0,
+          "end": 600,
+          "start": 600
+        },
+        "GAME": {
+          "duration": 420,
+          "end": 600,
+          "start": 180
+        },
+        "HOOK": {
+          "duration": 180,
+          "end": 180,
+          "start": 0
+        },
+        "REVEAL": {
+          "duration": 0,
+          "end": 600,
+          "start": 600
+        }
+      },
+      "selector": "CHALLENGE_007",
+      "source_fps": 60,
+      "total_frames": 600,
+      "variant": "A"
+    },
+    {
+      "frame_samples": [
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": true,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "CONDITIONAL_HEADER_ACTIVE_AND_SHOW_HOOK_COUNTDOWN_AND_NATIVE_HOOK_TEXT_NONEMPTY",
+          "phase": "HOOK",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 0
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": true,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "CONDITIONAL_HEADER_ACTIVE_AND_SHOW_HOOK_COUNTDOWN_AND_NATIVE_HOOK_TEXT_NONEMPTY",
+          "phase": "HOOK",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 90
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": true,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "CONDITIONAL_HEADER_ACTIVE_AND_SHOW_HOOK_COUNTDOWN_AND_NATIVE_HOOK_TEXT_NONEMPTY",
+          "phase": "HOOK",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 179
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 180
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 390
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 599
+        }
+      ],
+      "phase_frames": {
+        "CTA": {
+          "duration": 0,
+          "end": 600,
+          "start": 600
+        },
+        "GAME": {
+          "duration": 420,
+          "end": 600,
+          "start": 180
+        },
+        "HOOK": {
+          "duration": 180,
+          "end": 180,
+          "start": 0
+        },
+        "REVEAL": {
+          "duration": 0,
+          "end": 600,
+          "start": 600
+        }
+      },
+      "selector": "CHALLENGE_007",
+      "source_fps": 60,
+      "total_frames": 600,
+      "variant": "B_REPEAT"
+    },
+    {
+      "frame_samples": [
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": true,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "CONDITIONAL_HEADER_ACTIVE_AND_SHOW_HOOK_COUNTDOWN_AND_NATIVE_HOOK_TEXT_NONEMPTY",
+          "phase": "HOOK",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 0
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": true,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "CONDITIONAL_HEADER_ACTIVE_AND_SHOW_HOOK_COUNTDOWN_AND_NATIVE_HOOK_TEXT_NONEMPTY",
+          "phase": "HOOK",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 90
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": true,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "CONDITIONAL_HEADER_ACTIVE_AND_SHOW_HOOK_COUNTDOWN_AND_NATIVE_HOOK_TEXT_NONEMPTY",
+          "phase": "HOOK",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 179
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 180
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 390
+        },
+        {
+          "expected_d_footer_active": false,
+          "expected_d_header_active": false,
+          "expected_mount_count": 1,
+          "expected_native_cta_owner": "C_CHALLENGE_PRESENTATION_UI",
+          "expected_reserved_header_footer_bands": "BLACK",
+          "native_hook_migration": "FALSE",
+          "phase": "GAME",
+          "required_runtime_observation": [
+            "header_active",
+            "footer_active",
+            "native_cta_owner",
+            "native_hook_label_visibility",
+            "countdown_visibility",
+            "reserved_band_black",
+            "mount_count"
+          ],
+          "source_frame": 599
+        }
+      ],
+      "phase_frames": {
+        "CTA": {
+          "duration": 0,
+          "end": 600,
+          "start": 600
+        },
+        "GAME": {
+          "duration": 420,
+          "end": 600,
+          "start": 180
+        },
+        "HOOK": {
+          "duration": 180,
+          "end": 180,
+          "start": 0
+        },
+        "REVEAL": {
+          "duration": 0,
+          "end": 600,
+          "start": 600
+        }
+      },
+      "selector": "CHALLENGE_007",
+      "source_fps": 60,
+      "total_frames": 600,
+      "variant": "C_CHANGED_MUSIC_SEED"
+    }
+  ],
+  "runtime_readback": "NOT_PERFORMED",
+  "schema": "C11E-E6-CHALLENGE-LIVE-CONSUMER-READBACK-PLAN-V1",
+  "status": "PASS_STATIC_CONSUMER_CONTRACT_18_ENVELOPES_RUNTIME_READBACK_NOT_PERFORMED"
+}

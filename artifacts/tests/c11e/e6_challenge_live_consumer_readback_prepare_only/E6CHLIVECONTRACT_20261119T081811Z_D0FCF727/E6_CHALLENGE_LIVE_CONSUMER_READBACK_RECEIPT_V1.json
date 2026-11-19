@@ -1,0 +1,28 @@
+{
+  "binding_install_receipt_sha256": "0fb637e97dcdd18f32e769d22f15a540481034641b7116fb1693eaf2c1e139aa",
+  "binding_manifest_sha256": "1e0cf76c7664d3224678f887b9915afad21ce27eef71e4e73e16a4e6a54e8ff3",
+  "binding_receipt_sha256": "ef0e2b7b6c3efdbb6a715730b783da79c0c13f5ca9df34e00e2ce6cbfcbc6b83",
+  "consumer_compatibility": "PASS_STATIC",
+  "governance": {
+    "audio_generated": false,
+    "d4_8": "BLOCKED",
+    "e6_accepted": 0,
+    "e6_test_only_execution_authorized": false,
+    "ffmpeg_invoked": false,
+    "ffprobe_invoked": false,
+    "godot_invoked": false,
+    "matrix_frozen": false,
+    "media_created": false,
+    "mux_invoked": false,
+    "production_dispatch": false,
+    "release_authority": "NONE",
+    "renderer": "OFF"
+  },
+  "plan_path": "artifacts\\tests\\c11e\\e6_challenge_live_consumer_readback_prepare_only\\E6CHLIVECONTRACT_20261119T081811Z_D0FCF727\\E6_CHALLENGE_LIVE_CONSUMER_READBACK_PLAN_V1.json",
+  "plan_sha256": "e6ee9c9ac850df2a5579c26743c116392ade1ae349fb905a36b55f907dd43e82",
+  "run_id": "E6CHLIVECONTRACT_20261119T081811Z_D0FCF727",
+  "runtime_editorial_readback": "NOT_PERFORMED",
+  "schema": "C11E-E6-CHALLENGE-LIVE-CONSUMER-READBACK-RECEIPT-V1",
+  "source_pins": 6,
+  "status": "PASS_STATIC_CONSUMER_CONTRACT_18_ENVELOPES_RUNTIME_READBACK_NOT_PERFORMED"
+}
