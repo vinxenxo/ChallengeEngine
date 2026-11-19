@@ -1,0 +1,139 @@
+{
+    "schema":  "C11E-E6-POST-QIMAGE-L1-PHASE-RECONCILIATION-INSTALL-RECEIPT-V2",
+    "install_id":  "E6L1RECONV2INST_20261119T233910Z_B1730E95",
+    "created_utc":  "2026-11-19T23:39:10.2894687Z",
+    "status":  "PASS_ADD_ONLY",
+    "package_zip_sha256":  "30c2725cfd85965d0a69523630f914118db37b9b289a3c0c8f96d2f3568e5d64",
+    "package_members":  19,
+    "destination_count":  18,
+    "add_count":  18,
+    "skip_identical_count":  0,
+    "documentation_files":  15,
+    "installed_files":  [
+                            {
+                                "path":  "tools/c11d/d9/c11e_e6_post_qimage_l1_reconciliation_v2.py",
+                                "sha256":  "78038ed9b5ab40e1c0bfb0f19ec86a041e3462d79ec79b2b1c5897401ad126e4",
+                                "bytes":  34106,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "tools/c11d/d9/RUN_C11E_E6_POST_QIMAGE_L1_RECONCILIATION_V2.ps1",
+                                "sha256":  "389c429c6b448dda5efc158c39261a75cbc8a13985112acf8ead204c4402ef4b",
+                                "bytes":  2956,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "tests/c11e/e6_post_qimage_l1_reconciliation_v2/test_c11e_e6_post_qimage_l1_reconciliation_v2.py",
+                                "sha256":  "3505a82caf32e5ab6b4fa99c9c9e24898361f76abf296686b4d098cb6c4265ca",
+                                "bytes":  8092,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_POST_QIMAGE_L1_RECONCILIATION_V2_20261120/README.md",
+                                "sha256":  "8e4ba536f1070bac85dd7e58eb4e0f8aef2af7d3da7569947cda1ece878acee4",
+                                "bytes":  1248,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_POST_QIMAGE_L1_RECONCILIATION_V2_20261120/INCIDENT_REMEDIATION.md",
+                                "sha256":  "73265474f3feff3d7c6b5b4c89d50af6874e04b3e312e23bf8668305bf301895",
+                                "bytes":  790,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_POST_QIMAGE_L1_RECONCILIATION_V2_20261120/PHASE_RECONCILIATION.md",
+                                "sha256":  "fdeb47385bd8ddb23228f49b20697660bf9dab3e1338326cf5a6df373e247250",
+                                "bytes":  1217,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_POST_QIMAGE_L1_RECONCILIATION_V2_20261120/RUNBOOK.md",
+                                "sha256":  "fe79d4904bdbd0298444ac2299a8556d14b0e4f11614b957c1276aff9568f621",
+                                "bytes":  1241,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_POST_QIMAGE_L1_RECONCILIATION_V2_20261120/BUILD_VALIDATION.md",
+                                "sha256":  "7d29c9ec16a7566f1065b174d27c725018db67d1840196e0410fa4eca57366d6",
+                                "bytes":  1125,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_CURRENT_AUTHORITY_20261120_V180.md",
+                                "sha256":  "042ffac3d1c2cd8fe17fad7caab5beb82c3e0317e62e860441fca66f43a153d6",
+                                "bytes":  1960,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261120_V176.md",
+                                "sha256":  "509bb07c0c203034051425f25f7cfc56c64646f3fb27d40c2209ff22306d266f",
+                                "bytes":  1825,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_CURRENT_DOC_INDEX_20261120_V177.md",
+                                "sha256":  "b6c3e40aa933d79ce3bd5d5bedc9a9ed4b4949e5c20929107de868f698b68f26",
+                                "bytes":  1533,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_INSTALLER_INCIDENT_REGISTER_20261120_V57.md",
+                                "sha256":  "6a61471e38cab512cab3a4b0214dd60ea3f488b0c5dfb8e740af49c44f49c56a",
+                                "bytes":  1913,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/current/e/C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261120_V125.md",
+                                "sha256":  "88546518226da00639950b99cbd5e4d642d4eb8d2e83ef35010b8db0ab055fef",
+                                "bytes":  1931,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_E6_PHASE_LEDGER_20261120_V26.md",
+                                "sha256":  "7684dbf0a7a05a00202e6bc44633c60400a916805071d4732bb9317fc9cd184b",
+                                "bytes":  1641,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_E6_NEXT_GATES_20261120_V5.md",
+                                "sha256":  "b9ffa4f7fe9ebccd318fbb657ca45b522880562de713d6641a548399eb48450f",
+                                "bytes":  1268,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "prompts/C11E_CONTINUATION_MASTER_PROMPT_20261120_V189.md",
+                                "sha256":  "c578fc2a65242fdc1fb8058b8619f35c7c2c405c6accd6ac4e205edc8acc50a2",
+                                "bytes":  1387,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "prompts/C11E_NEXT_WINDOW_START_PROMPT_20261120_V190.md",
+                                "sha256":  "5695234706de848f12156581db14d694cdb957567c793a6f59974f1ef3ebc849",
+                                "bytes":  740,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "prompts/C11E_E6_NEXT_PHASE_START_PROMPT_20261120_V2.md",
+                                "sha256":  "33054fc4be0940022f187e37d8bcb137c804cbf86c8c58263b09157fb1ea950a",
+                                "bytes":  953,
+                                "status":  "ADDED_AND_VERIFIED"
+                            }
+                        ],
+    "c11c_manifest_sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "d4_8_v2_sha256":  "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+    "source_files_modified":  false,
+    "c11c_modified":  false,
+    "d4_8_v2_modified":  false,
+    "godot_invoked":  false,
+    "ffmpeg_invoked":  false,
+    "ffprobe_invoked":  false,
+    "audio_generated":  false,
+    "mux_invoked":  false,
+    "renderer_invoked":  false,
+    "production_dispatch":  false,
+    "e6_accepted":  0,
+    "release_authority":  "NONE",
+    "git_checks":  "SKIPPED",
+    "commits":  "OPERATOR_MANAGED",
+    "source_file_pins":  "ENFORCED"
+}

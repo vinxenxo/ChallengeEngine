@@ -1,0 +1,125 @@
+{
+    "schema":  "C11E-E6-OPTION-C-NATIVE-QT-PROBE-INSTALL-RECEIPT-V2",
+    "install_id":  "E6QTI21_20261119T212302Z_84D555E8",
+    "installer_revision":  "V2.1_RECOVERY",
+    "created_utc":  "2026-11-19T21:23:02.9206654Z",
+    "status":  "PASS_ADD_ONLY",
+    "package_zip_sha256":  "9963860cbd811320fcb4b60c213489e48615ab0c879f93ad0c3e933c04c0e852",
+    "package_members":  18,
+    "add_count":  16,
+    "skip_identical_count":  0,
+    "installed_files":  [
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_OPTION_C_NATIVE_QT_PROBE_V2_1_RECOVERY_20261119/C11E_E6_OPTION_C_NATIVE_QT_PROBE_V2_1_INSTALLER_RECOVERY.md",
+                                "sha256":  "14444ce905e8df20650ead6fb8c5a07184ce3d6073df11798cbd6946eb4050c5",
+                                "bytes":  4164,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_OPTION_C_NATIVE_QT_PROBE_V2_20261119/C11E_C11C_FACTORY_TO_DE_REPLACEMENT_ARCHITECTURE_V1.md",
+                                "sha256":  "b4dfc58d3ed4e2660795b10e6f706d1922ca87f1a00dbfd43c87764695db3dfb",
+                                "bytes":  12208,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_OPTION_C_NATIVE_QT_PROBE_V2_20261119/C11E_C11C_HISTORICAL_SOURCE_EVIDENCE_INVENTORY_V1.json",
+                                "sha256":  "34a22d8eb59f8a26c87222b10ebb6345e04d1fbabfe8a947f196cbd9109a727e",
+                                "bytes":  4224,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_OPTION_C_NATIVE_QT_PROBE_V2_20261119/C11E_E6_OPTION_C_A3_ADJUDICATOR_REPAIR_V2.md",
+                                "sha256":  "7d5eacecc48685fc09039653cf293595facdc5ad3ba6f51131e92c4766148376",
+                                "bytes":  3565,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_OPTION_C_NATIVE_QT_PROBE_V2_20261119/C11E_E6_OPTION_C_NATIVE_QT_PROBE_V2_INSTALLER_AND_RECOVERY.md",
+                                "sha256":  "7bdd956112f5aaaa819c8afb400cd3dcf5eaea93c49dd18df2292e46dbd59d6e",
+                                "bytes":  3303,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_OPTION_C_NATIVE_QT_PROBE_V2_20261119/C11E_E6_OPTION_C_NATIVE_QT_PROBE_V2_MASTER_HANDOVER.md",
+                                "sha256":  "637ea36180074021ea047970bf16e583749ea94ed8f64b652db7ac243fb8cbff",
+                                "bytes":  4147,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_OPTION_C_NATIVE_QT_PROBE_V2_20261119/C11E_E6_OPTION_C_NATIVE_QT_PROBE_V2_RUNBOOK.md",
+                                "sha256":  "561a0017d0c0652f1f476b3cbd9d6f247eb89bacc6c230fbb1bf5e980cb699e1",
+                                "bytes":  3860,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_OPTION_C_NATIVE_QT_PROBE_V2_20261119/C11E_E6_OPTION_C_NATIVE_QT_PROBE_V2_START_PROMPT.md",
+                                "sha256":  "531ca88017468ea4b707df0e0f50a89e5bee05530bb07b81caffce4b219875ad",
+                                "bytes":  1896,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_OPTION_C_NATIVE_QT_PROBE_V2_20261119/C11E_E6_PHASE_LEDGER_AND_NEXT_GATES_V21.md",
+                                "sha256":  "d608cf40f25d6e9d8df9b5bb4d09e1634d60a8589dfd63050ccdf481d724576b",
+                                "bytes":  4139,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "tools/c11d/d9/c11e_e6_option_c_native_qt_probe_v2/README.md",
+                                "sha256":  "d7f4d146685f40372eeacb429ef85eef15a3e7490612b74569865a98c7e7f147",
+                                "bytes":  894,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "tools/c11d/d9/c11e_e6_option_c_native_qt_probe_v2/RUN_C11E_E6_OPTION_C_NATIVE_QT_PROBE_V2.py",
+                                "sha256":  "60117203ff4b5aa2553b2e557b5d3d9a12b77ab1ae9b347f16985120fe5b4a78",
+                                "bytes":  22406,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "tools/c11d/d9/c11e_e6_option_c_native_qt_probe_v2/payload/tests/c11e/test_c11e_e6_option_c_qimage_frame_compositor_v1.py",
+                                "sha256":  "9e0017ec5112372b9fb683e6dce4b42f6233db9cdb82fe787b7e0f92a6204306",
+                                "bytes":  6528,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "tools/c11d/d9/c11e_e6_option_c_native_qt_probe_v2/payload/tools/c11d/d9/c11e_e6_option_c_qimage_frame_compositor_v1.py",
+                                "sha256":  "850054e6212f7e6f59be5550ec194df3d1a1ca69acb343c53b76803b007721e1",
+                                "bytes":  6483,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "tools/c11d/d9/c11e_e6_option_c_native_qt_probe_v2/reference/e6_option_c_target_benchmark.zip",
+                                "sha256":  "f3c432f8faac86aee7b95533d7d85cdd2feb7868b12fbfcf4d6b6cac7c416dad",
+                                "bytes":  194775,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "tools/c11d/d9/c11e_e6_option_c_native_qt_probe_v2/support/__init__.py",
+                                "sha256":  "7f29de031d6d219dc531a8bd2bc37e68b5719d61e8ed86e13c517df0a908a9b6",
+                                "bytes":  56,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "tools/c11d/d9/c11e_e6_option_c_native_qt_probe_v2/support/a3_lineage_adjudicator_v2.py",
+                                "sha256":  "269dbca4f314cc0cd1f6068d15869e450f020fbb8c2409f60d781481493d0680",
+                                "bytes":  13655,
+                                "status":  "ADDED_AND_VERIFIED"
+                            }
+                        ],
+    "c11c_manifest_sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "d4_8_v2_sha256":  "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+    "source_files_modified":  false,
+    "c11c_modified":  false,
+    "d4_8_v2_modified":  false,
+    "renderer_invoked":  false,
+    "godot_invoked":  false,
+    "ffmpeg_invoked":  false,
+    "ffprobe_invoked":  false,
+    "audio_generated":  false,
+    "mux_invoked":  false,
+    "media_created":  false,
+    "git_checks":  "SKIPPED",
+    "commits":  "OPERATOR_MANAGED",
+    "source_file_pins":  "ENFORCED",
+    "release_authority":  "NONE"
+}

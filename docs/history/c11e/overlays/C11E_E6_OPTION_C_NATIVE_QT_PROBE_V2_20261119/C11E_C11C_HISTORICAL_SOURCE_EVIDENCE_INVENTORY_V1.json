@@ -1,0 +1,102 @@
+{
+  "schema": "C11E-C11C-HISTORICAL-SOURCE-EVIDENCE-INVENTORY-V1",
+  "reference_archive": {
+    "filename": "ChallengeEngineV01_STATELESS-LATEST.zip",
+    "bytes": 74572127,
+    "sha256": "5514652fd5b140cf126b80c7de82379eb0081c4797e4b311111a964f0b7d8a96",
+    "application": "READ_ONLY_REFERENCE_ONLY_NOT_ACTIVE_CHECKOUT_AUTHORITY"
+  },
+  "frozen_manifest": {
+    "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+    "bytes": 796318,
+    "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "status": "MATCHES_ACTIVE_FROZEN_C11C_MANIFEST"
+  },
+  "historical_files": [
+    {
+      "path": "tools/prototypes/c11c_bulk/run_c11c_production.ps1",
+      "bytes": 11039,
+      "sha256": "21e60e7bb1e493735b4b726c66e6adf3d77395ab1b98bdb0a21b1bd02bead2dc",
+      "role": "generic_family_delivery_and_production_copy"
+    },
+    {
+      "path": "tools/prototypes/c11c_bulk/run_c11c_visual_drill_review.ps1",
+      "bytes": 26925,
+      "sha256": "c10191e23a20701be1eecc5d646e85bd4c0e9a1123ccbd6ffc3741fb0fb81ada",
+      "role": "drill_review_capture_audio_mux_and_review_artifacts"
+    },
+    {
+      "path": "tools/qa/c11/run_c11c_complete_video_review.ps1",
+      "bytes": 9302,
+      "sha256": "89c25bdfb21a5e55fdb6b28598986002ae68ea24ea42e94c32d8c5ba046f67b6",
+      "role": "52_video_review_corpus_and_worker_isolation"
+    },
+    {
+      "path": "tools/qa/c11/run_c11c_challenge_bulk_qa.ps1",
+      "bytes": 15597,
+      "sha256": "c3572a8d7c3ed0ee1d8ebad5aceff62e19236217b69eb415b9f0234a6339f859",
+      "role": "challenge_seed_determinism_and_delivery_qa"
+    },
+    {
+      "path": "tools/prototypes/c11c_geometric_waves_v1/run_prototype.ps1",
+      "bytes": 12946,
+      "sha256": "661bd61df61bc633e4b87cd4b9413c4317c8d4b6068194245aea7d40fcb5c7cd",
+      "role": "visual_loop_family_pipeline_reference"
+    },
+    {
+      "path": "tools/prototypes/c11c_common/C11CMovieCapture.ps1",
+      "bytes": 1943,
+      "sha256": "916e95ebc01006efb436097df032626e666e3b1d80e2c50490c0eb2a3934ba1b",
+      "role": "temporary_capture_override_preserve_restore"
+    },
+    {
+      "path": "tools/prototypes/c11c_common/generate_c11c_family_music.py",
+      "bytes": 16382,
+      "sha256": "41bb8f9842ac941ea86c838f272b11bd0642973b26e92defa006721a3d8cb84d",
+      "role": "deterministic_family_music_generator"
+    },
+    {
+      "path": "tools/prototypes/c11c_common/C11CSafeAmbient.py",
+      "bytes": 1739,
+      "sha256": "c376fd44a3115f0d800213d95e28143363748e16c7b5800369fcadbf237fb02c",
+      "role": "legacy_compatibility_delegator_to_family_music_generator"
+    },
+    {
+      "path": "tools/prototypes/c11c_bulk/run_c11c_visual_loop_longform_production.ps1",
+      "bytes": 13682,
+      "sha256": "dc1f4ba51a7b534209d557bcb0b9971041b27ac25fcd0b306906de901418f6b2",
+      "role": "visual_loop_and_longform_production"
+    },
+    {
+      "path": "tools/prototypes/c11c_bulk/run_c11c_challenge_production.ps1",
+      "bytes": 18191,
+      "sha256": "c3fed414912f50efed1687e258c48c5e85c08989a473ed12c38dc9784db171d5",
+      "role": "challenge_production_entrypoint"
+    },
+    {
+      "path": "profiles/presentation/c11c_visual_music_profiles.json",
+      "bytes": 7038,
+      "sha256": "b78706c5a9adbf1581d925f522b76cc3419983177de213734cc79996af5cbf58",
+      "role": "family_music_profile_source_of_truth"
+    },
+    {
+      "path": "core/presentation/C11CVisualEditorialLayer.gd",
+      "bytes": 19047,
+      "sha256": "f8f718c067a4d7a088cc16f244cc40209e7183bec93e44d8cb66eb6dd404cf7d",
+      "role": "shared_visual_editorial_layer"
+    },
+    {
+      "path": "core/presentation/UnifiedSocialFrame.gd",
+      "bytes": 2087,
+      "sha256": "d80c07103f56a2abfe34be60547285e61b0d03b50a5ed93c3c72d4241f6585ba",
+      "role": "shared_social_frame"
+    },
+    {
+      "path": "core/presentation/C11CVisualMusicProfile.gd",
+      "bytes": 1636,
+      "sha256": "5636052329383f7668f69f2b3caa341a95a4050cf8fc8ebad255baaf85794d5d",
+      "role": "runtime_music_profile_metadata"
+    }
+  ],
+  "verification_note": "Hashes and sizes were read from the read-only reference ZIP and compared where possible to the frozen manifest authority. They do not authorize extraction, execution or source replacement."
+}

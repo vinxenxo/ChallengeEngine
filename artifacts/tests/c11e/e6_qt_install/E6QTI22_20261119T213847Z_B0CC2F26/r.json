@@ -1,0 +1,83 @@
+{
+    "schema":  "C11E-E6-OPTION-C-NATIVE-QT-PROBE-INSTALL-RECEIPT-V2",
+    "install_id":  "E6QTI22_20261119T213847Z_B0CC2F26",
+    "installer_revision":  "V2.2_A3_DOMAIN_FIX",
+    "created_utc":  "2026-11-19T21:38:48.0885010Z",
+    "status":  "PASS_ADD_ONLY",
+    "package_zip_sha256":  "057a2061e261d9dab82a2ccf26b7cf25e910613018d1df320cf45ddbda661287",
+    "package_members":  11,
+    "add_count":  9,
+    "skip_identical_count":  0,
+    "installed_files":  [
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_OPTION_C_NATIVE_QT_PROBE_V2_2_A3_DOMAIN_FIX_20261119/C11E_E6_OPTION_C_NATIVE_QT_PROBE_V2_2_A3_DOMAIN_REPAIR.md",
+                                "sha256":  "4512f73e95d6db03ad9780bda5cd2f22fec2a4f982a35a1e61e5838d3aac0ecc",
+                                "bytes":  5138,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_OPTION_C_NATIVE_QT_PROBE_V2_2_A3_DOMAIN_FIX_20261119/C11E_E6_OPTION_C_NATIVE_QT_PROBE_V2_2_INSTALL_RUNBOOK.md",
+                                "sha256":  "f6bb65f51a611fc20c19354f1e6f4f3a37f2776d6e624de472ad0ae515a08144",
+                                "bytes":  4096,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_OPTION_C_NATIVE_QT_PROBE_V2_2_A3_DOMAIN_FIX_20261119/prompts/C11E_CONTINUATION_MASTER_PROMPT_20261119_V2_2.md",
+                                "sha256":  "b4cc501bd25a19dd358ea52b3c14c984800492f36d1df41b5ce77d3b1f5f177d",
+                                "bytes":  3330,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_OPTION_C_NATIVE_QT_PROBE_V2_2_A3_DOMAIN_FIX_20261119/prompts/C11E_E6_OPTION_C_NATIVE_QT_PROBE_V2_2_START_PROMPT.md",
+                                "sha256":  "57bf0ae728b30da56d8c985bb5347fe736c5d0c2abef00c200802a188adbee1d",
+                                "bytes":  2006,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "tools/c11d/d9/c11e_e6_option_c_native_qt_probe_v2_2/RUN_C11E_E6_OPTION_C_NATIVE_QT_PROBE_V2_2.py",
+                                "sha256":  "5693e4d498df40d2a3043c4678ff7c57d4882cba60ca30137989413383b66825",
+                                "bytes":  23244,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "tools/c11d/d9/c11e_e6_option_c_native_qt_probe_v2_2/support/__init__.py",
+                                "sha256":  "082bb13da5a95cfa865bed2025b7b187c15be82c374802b29dd673b29626c533",
+                                "bytes":  44,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "tools/c11d/d9/c11e_e6_option_c_native_qt_probe_v2_2/support/a3_lineage_adjudicator_v3.py",
+                                "sha256":  "2094769bba1993f26ca40f36a1070e871d06e0c9b01443d4a3a846136a07e5b7",
+                                "bytes":  15312,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "tools/c11d/d9/c11e_e6_option_c_native_qt_probe_v2_2/tests/__init__.py",
+                                "sha256":  "e4723865e175c9c4fb2b870b33affb43cb6bb23f4c112c259a4e1b54e1f17d41",
+                                "bytes":  27,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "tools/c11d/d9/c11e_e6_option_c_native_qt_probe_v2_2/tests/test_a3_lineage_adjudicator_v3.py",
+                                "sha256":  "c29ab829a44c588b910b0e64f847b1f722668a2652ab6d26ee551f4eba4d3846",
+                                "bytes":  7508,
+                                "status":  "ADDED_AND_VERIFIED"
+                            }
+                        ],
+    "c11c_manifest_sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "d4_8_v2_sha256":  "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+    "source_files_modified":  false,
+    "c11c_modified":  false,
+    "d4_8_v2_modified":  false,
+    "renderer_invoked":  false,
+    "godot_invoked":  false,
+    "ffmpeg_invoked":  false,
+    "ffprobe_invoked":  false,
+    "audio_generated":  false,
+    "mux_invoked":  false,
+    "media_created":  false,
+    "git_checks":  "SKIPPED",
+    "commits":  "OPERATOR_MANAGED",
+    "source_file_pins":  "ENFORCED",
+    "release_authority":  "NONE"
+}

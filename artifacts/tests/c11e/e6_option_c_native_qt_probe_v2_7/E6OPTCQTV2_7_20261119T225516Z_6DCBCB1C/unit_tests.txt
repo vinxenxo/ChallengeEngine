@@ -1,0 +1,42 @@
+test_35_gradient_fixture_has_nonblack_content (qimage_target_tests_v2_7.BandedSamplingTests.test_35_gradient_fixture_has_nonblack_content) ... ok
+test_36_checkerboard_output_stays_in_source_channel_bounds (qimage_target_tests_v2_7.BandedSamplingTests.test_36_checkerboard_output_stays_in_source_channel_bounds) ... ok
+test_37_checkerboard_reduction_is_not_binary_at_sample (qimage_target_tests_v2_7.BandedSamplingTests.test_37_checkerboard_reduction_is_not_binary_at_sample) ... ok
+test_01_plan_schema_and_backend (qimage_target_tests_v2_7.GeometryTests.test_01_plan_schema_and_backend) ... ok
+test_02_canvas_exact (qimage_target_tests_v2_7.GeometryTests.test_02_canvas_exact) ... ok
+test_03_content_rect_exact (qimage_target_tests_v2_7.GeometryTests.test_03_content_rect_exact) ... ok
+test_04_header_exact (qimage_target_tests_v2_7.GeometryTests.test_04_header_exact) ... ok
+test_05_footer_exact (qimage_target_tests_v2_7.GeometryTests.test_05_footer_exact) ... ok
+test_06_left_gutter_exact (qimage_target_tests_v2_7.GeometryTests.test_06_left_gutter_exact) ... ok
+test_07_right_gutter_exact (qimage_target_tests_v2_7.GeometryTests.test_07_right_gutter_exact) ... ok
+test_08_aspect_ratio (qimage_target_tests_v2_7.GeometryTests.test_08_aspect_ratio) ... ok
+test_09_no_crop_or_distortion (qimage_target_tests_v2_7.GeometryTests.test_09_no_crop_or_distortion) ... ok
+test_10_no_upscale (qimage_target_tests_v2_7.GeometryTests.test_10_no_upscale) ... ok
+test_11_editorial_not_drawn (qimage_target_tests_v2_7.GeometryTests.test_11_editorial_not_drawn) ... ok
+test_12_audio_or_media_not_created (qimage_target_tests_v2_7.GeometryTests.test_12_audio_or_media_not_created) ... ok
+test_13_zero_width_rejected (qimage_target_tests_v2_7.GeometryTests.test_13_zero_width_rejected) ... ok
+test_14_zero_height_rejected (qimage_target_tests_v2_7.GeometryTests.test_14_zero_height_rejected) ... ok
+test_15_boolean_dimension_rejected (qimage_target_tests_v2_7.GeometryTests.test_15_boolean_dimension_rejected) ... ok
+test_16_noninteger_dimension_rejected (qimage_target_tests_v2_7.GeometryTests.test_16_noninteger_dimension_rejected) ... ok
+test_17_aspect_mismatch_rejected (qimage_target_tests_v2_7.GeometryTests.test_17_aspect_mismatch_rejected) ... ok
+test_18_upscale_rejected (qimage_target_tests_v2_7.GeometryTests.test_18_upscale_rejected) ... ok
+test_19_output_image_dimensions (qimage_target_tests_v2_7.PixelTests.test_19_output_image_dimensions) ... ok
+test_20_output_is_rgb888 (qimage_target_tests_v2_7.PixelTests.test_20_output_is_rgb888) ... ok
+test_21_output_stride (qimage_target_tests_v2_7.PixelTests.test_21_output_stride) ... ok
+test_22_output_exact_byte_count (qimage_target_tests_v2_7.PixelTests.test_22_output_exact_byte_count) ... ok
+test_23_header_is_black (qimage_target_tests_v2_7.PixelTests.test_23_header_is_black) ... ok
+test_24_footer_is_black (qimage_target_tests_v2_7.PixelTests.test_24_footer_is_black) ... ok
+test_25_left_gutter_is_black (qimage_target_tests_v2_7.PixelTests.test_25_left_gutter_is_black) ... ok
+test_26_right_gutter_is_black (qimage_target_tests_v2_7.PixelTests.test_26_right_gutter_is_black) ... ok
+test_27_constant_content_rgb_preserved (qimage_target_tests_v2_7.PixelTests.test_27_constant_content_rgb_preserved) ... ok
+test_28_source_bytes_unchanged (qimage_target_tests_v2_7.PixelTests.test_28_source_bytes_unchanged) ... ok
+test_29_repeat_output_deterministic (qimage_target_tests_v2_7.PixelTests.test_29_repeat_output_deterministic) ... ok
+test_30_bytearray_rejected (qimage_target_tests_v2_7.PixelTests.test_30_bytearray_rejected) ... ok
+test_31_wrong_buffer_size_rejected (qimage_target_tests_v2_7.PixelTests.test_31_wrong_buffer_size_rejected) ... ok
+test_32_alpha_or_non_rgb_output_not_emitted (qimage_target_tests_v2_7.PixelTests.test_32_alpha_or_non_rgb_output_not_emitted) ... ok
+test_33_image_null_false (qimage_target_tests_v2_7.PixelTests.test_33_image_null_false) ... ok
+test_34_plan_serialization_stable (qimage_target_tests_v2_7.PixelTests.test_34_plan_serialization_stable) ... ok
+
+----------------------------------------------------------------------
+Ran 37 tests in 0.433s
+
+OK

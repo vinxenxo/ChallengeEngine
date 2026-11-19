@@ -1,0 +1,3 @@
+# Next-window start — C11-E Option C V2.7
+
+Use only the active checkout `C:\Users\vinxe\Projects\ChallengeEngineV01_STATELESS`; never restore the uploaded reference ZIP over it. Read current authority V178, gate matrix V174, index V175, and V2.7 overlay ledger/runbook/prompts. V2.6 was rolled back after a PS5.1 `Where-Object` binding error; V2.7 is the add-only fix. Do not repeat V2.4 17 tests or V2.5 accepted installer. First verify V2.7 install and 8 import tests; then run the V2.7 native Qt runner once. No real frame/renderer until L1 PASS, resampler review, read-only source closure, and separate D4.8 successor + E6 TEST_ONLY authorization.

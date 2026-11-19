@@ -1,0 +1,76 @@
+{
+  "schema": "C11E-E6-SMOKE18-TEST-ONLY-AUTHORIZATION-DRAFT-V2",
+  "status": "OPERATOR_PROGRESS_AUTHORIZED_SUCCESSOR_PREPARATION_ONLY_NOT_EXECUTION_AUTHORIZED",
+  "created_utc_date": "2026-11-19",
+  "supersedes_for_preparation_only": {
+    "path": "definitions/c11e/test_only/C11E_E6_SMOKE18_TEST_ONLY_AUTHORIZATION_DRAFT_20261119_V1.json",
+    "sha256": "244caf60073428e9e9dc5e4af50502be845d097403c0c951cb2626136d813a56"
+  },
+  "operator_direction": {
+    "decision": "APPROVE_CONTINUATION_FOR_READ_ONLY_PHASE_RECONCILIATION_AND_BOUNDED_SUCCESSOR_PREPARATION_ONLY; NO_RENDER_PERMISSION_GRANTED",
+    "scope": "E6_TEST_ONLY_SMOKE18_PREPARATION_ONLY",
+    "authority_source": "EXPLICIT_OPERATOR_CONTINUATION_APPROVAL_IN_CONVERSATION; LIMITED_TO_PREPARE_ONLY_SCOPE",
+    "prepare_successor_policy": true,
+    "prepare_exact_execution_manifest": true,
+    "production_promotion_authorized": false,
+    "release_authority": "NONE"
+  },
+  "target_matrix": {
+    "path": "definitions/c11e/test_only/C11E_E6_SMOKE18_SCENARIO_MATRIX_20261119_V1.json",
+    "sha256": "98e391738c0409c5d9d94576195d48cabcd885957434858062a44a44fe77fb75",
+    "status": "DRAFT_CANDIDATE_NOT_FROZEN"
+  },
+  "scope": {
+    "top_level_scenarios": 18,
+    "family_counts": {
+      "challenges": 6,
+      "visual_loops": 6,
+      "visual_drills": 6
+    },
+    "challenge_nested_probes": 18,
+    "reuse_candidates": 13,
+    "e6_accepted": 0
+  },
+  "verified_preconditions": {
+    "loop_v2_receipt_consistency_and_a3_lineage_pass": true,
+    "option_c_native_qimage_synthetic_stage_pass": true,
+    "challenge_static_consumer_contract_pass": true,
+    "ch004_historical_preimages_and_semantic_review_pass": true,
+    "smoke18_reuse_linkage_21_of_21_pass": true
+  },
+  "remaining_preconditions": {
+    "qimage_resampler_operator_visual_review": false,
+    "loop_real_frame_source_closure": false,
+    "loop_one_copied_frame_l2_l3_pass": false,
+    "loop_six_selector_d_pixel_consumer_pass": false,
+    "challenge_runtime_editorial_readback_pass": false,
+    "drill_runtime_editorial_readback_pass": false,
+    "13_reuse_candidates_individually_accepted_or_retained": false,
+    "smoke18_matrix_frozen": false,
+    "exact_tool_paths_versions_hashes_live_revalidated": false,
+    "exact_argv_allowlist_and_process_counts_pinned": false,
+    "fresh_output_roots_and_stop_conditions_pinned": false,
+    "scoped_d4_8_successor_final_issued_and_approved": false,
+    "e6_test_only_execution_manifest_final_issued": false,
+    "separate_explicit_operator_execution_authorization": false
+  },
+  "execution_state": {
+    "media_processes_authorized_to_start_now": false,
+    "batch_id_consumed": false,
+    "godot_invoked": false,
+    "ffmpeg_invoked": false,
+    "ffprobe_invoked": false,
+    "audio_generated": false,
+    "mux_invoked": false,
+    "renderer_input_emitted": false,
+    "production_dispatch": false,
+    "release_authority": "NONE"
+  },
+  "immutability": {
+    "c11c_frozen_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "d4_8_v2_sha256": "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+    "d4_8_v2_modified": false,
+    "c11c_modified": false
+  },
+  "note": "This record preserves authorization to prepare the bounded route only. The preparation PASSes are evidence gates, not runtime execution permission. No media process, renderer, BatchId, E6 acceptance or promotion is enabled."
+}

@@ -1,0 +1,145 @@
+{
+    "schema":  "C11E-E6-OPTION-C-NATIVE-QT-PROBE-INSTALL-RECEIPT-V2",
+    "install_id":  "E6QTI27_20261119T225450Z_CBA13490",
+    "installer_revision":  "V2.7_PS51_DOCS_TRANSACTION_AND_QIMAGE_SOURCE_PIN_FIX",
+    "created_utc":  "2026-11-19T22:54:50.7078242Z",
+    "status":  "PASS_ADD_ONLY",
+    "package_zip_sha256":  "5a6b008047d702014100987f814ae7d98bd75c1f909fa2da0eb75b872f85eb27",
+    "package_members":  20,
+    "install_destinations":  18,
+    "add_count":  18,
+    "skip_identical_count":  0,
+    "installed_files":  [
+                            {
+                                "path":  "tools/c11d/d9/c11e_e6_option_c_native_qt_probe_v2_7/RUN_C11E_E6_OPTION_C_NATIVE_QT_PROBE_V2_7.py",
+                                "sha256":  "5a5cb96542657f232e48a7111efbea10931789bdf6b8623846099bd465586328",
+                                "bytes":  30655,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "tools/c11d/d9/c11e_e6_option_c_native_qt_probe_v2_7/support/__init__.py",
+                                "sha256":  "e732cfd0694f280d1c2d1c23e46a4eca4660abec9aeb36b82ca1b02194366fae",
+                                "bytes":  65,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "tools/c11d/d9/c11e_e6_option_c_native_qt_probe_v2_7/support/a3_lineage_adjudicator_v4.py",
+                                "sha256":  "1dc0fe7eb5c1ca3e97d42f9806f8c1da2fc8cf1f7674c2d4776f8d649ada1dd4",
+                                "bytes":  15054,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "tools/c11d/d9/c11e_e6_option_c_native_qt_probe_v2_7/support/qimage_import_bootstrap_v1.py",
+                                "sha256":  "e57d313cdc8577af29730ab27a9474aa71520684517aca7a1c58175434ddb161",
+                                "bytes":  2526,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "tools/c11d/d9/c11e_e6_option_c_native_qt_probe_v2_7/support/reference/diagnose_c11e_e6_loop_policy_v2_receipt.py",
+                                "sha256":  "90375a6c21550d67e6aa1f374d5e5c8dcd7c06b630c51b34ad83313fbb7b2fc2",
+                                "bytes":  15536,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "tools/c11d/d9/c11e_e6_option_c_native_qt_probe_v2_7/tests/__init__.py",
+                                "sha256":  "c29a82db9ce5dea8af7e41937cab70a261f230416f7968f0de6533e5fd7f6115",
+                                "bytes":  65,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "tools/c11d/d9/c11e_e6_option_c_native_qt_probe_v2_7/tests/test_qimage_import_bootstrap_v1.py",
+                                "sha256":  "14911a6f109b9ee2367502b29451155f6d96802916331839bb14bd10249573bb",
+                                "bytes":  4322,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_OPTION_C_NATIVE_QT_PROBE_V2_7_PS51_DOCS_FIX_20261119/BUILD_VALIDATION.md",
+                                "sha256":  "f6b930e2ceb067e402f4fae6b58647645bb75738f25676ce7b2ade76eef0c6d4",
+                                "bytes":  1636,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_OPTION_C_NATIVE_QT_PROBE_V2_7_PS51_DOCS_FIX_20261119/INSTALLER_FAILURE_REMEDIATION.md",
+                                "sha256":  "8e476eeb960f9c6156dcf940e8d94866e9ed0ee4e2cb9b465458f0d6afdcd8f8",
+                                "bytes":  2201,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_OPTION_C_NATIVE_QT_PROBE_V2_7_PS51_DOCS_FIX_20261119/INSTALL_RUNBOOK.md",
+                                "sha256":  "49806147da8615233ce5d7e5fee63dd72ed16546e3eab3ada6c99ac0645be0c3",
+                                "bytes":  2854,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_OPTION_C_NATIVE_QT_PROBE_V2_7_PS51_DOCS_FIX_20261119/NEXT_PHASE_GATE_PLAN_V3.md",
+                                "sha256":  "20890b34ce1e3352beb8f12d87ad74e9f8506f5115ba4142dc408c795ae9d9ce",
+                                "bytes":  2245,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_OPTION_C_NATIVE_QT_PROBE_V2_7_PS51_DOCS_FIX_20261119/PHASE_LEDGER_V24.md",
+                                "sha256":  "7749178e1c2fa20090db2113c41009e939b3aee0ffeb68dfb91fb14c24d2f199",
+                                "bytes":  5645,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_OPTION_C_NATIVE_QT_PROBE_V2_7_PS51_DOCS_FIX_20261119/README.md",
+                                "sha256":  "3f6bf7ec846175c98f7e32fb712f0f9e9b32620c257b63297b094966fd3ba99e",
+                                "bytes":  1577,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_CURRENT_DOC_INDEX_20261119_V175.md",
+                                "sha256":  "7cda99b1e7a1abf5b937d8407b17344064bd5d977f12834967bbc1228d4fb3db",
+                                "bytes":  1448,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261119_V174.md",
+                                "sha256":  "156bb2f0b752937c326a7083b44433bc2ce8e127ba5958fa7c45415da11130ac",
+                                "bytes":  1840,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_OPTION_C_NATIVE_QT_PROBE_V2_7_PS51_DOCS_FIX_20261119/prompts/CONTINUATION_MASTER_PROMPT.md",
+                                "sha256":  "6834496333f31c59bb4375b8250e2d26197965ec205857a93ba8dd18abf715b4",
+                                "bytes":  2778,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_OPTION_C_NATIVE_QT_PROBE_V2_7_PS51_DOCS_FIX_20261119/prompts/NEXT_WINDOW_START_PROMPT.md",
+                                "sha256":  "07816f91a338c2cae40de20c0955b94c88084e2964624b8ee989102920419595",
+                                "bytes":  654,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_OPTION_C_NATIVE_QT_PROBE_V2_7_PS51_DOCS_FIX_20261119/prompts/START_PROMPT.md",
+                                "sha256":  "0d700db09f25a7862212210eb618552e9a7d342d9d2f2e3ba77c2a26835339f1",
+                                "bytes":  548,
+                                "status":  "ADDED_AND_VERIFIED"
+                            }
+                        ],
+    "documentation_roots":  [
+                                "docs/history/c11e/overlays/C11E_E6_OPTION_C_NATIVE_QT_PROBE_V2_7_PS51_DOCS_FIX_20261119",
+                                "docs/current/e"
+                            ],
+    "documentation_files":  11,
+    "current_doc_index":  "docs/current/e/C11E_CURRENT_DOC_INDEX_20261119_V175.md",
+    "gate_matrix":  "docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261119_V174.md",
+    "c11c_manifest_sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "d4_8_v2_sha256":  "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+    "source_files_modified":  false,
+    "c11c_modified":  false,
+    "d4_8_v2_modified":  false,
+    "renderer_invoked":  false,
+    "godot_invoked":  false,
+    "ffmpeg_invoked":  false,
+    "ffprobe_invoked":  false,
+    "audio_generated":  false,
+    "mux_invoked":  false,
+    "media_created":  false,
+    "git_checks":  "SKIPPED",
+    "commits":  "OPERATOR_MANAGED",
+    "source_file_pins":  "ENFORCED",
+    "release_authority":  "NONE"
+}

@@ -1,0 +1,138 @@
+{
+  "schema": "C11E-E6-SMOKE18-TEST-ONLY-SUCCESSOR-POLICY-DRAFT-V3",
+  "schema_version": "1.0",
+  "policy_id": "C11E_E6_SMOKE18_SUCCESSOR_POLICY_DRAFT_V3",
+  "created_date": "2026-11-19",
+  "status": "DRAFT_PREPARED_NOT_APPROVED_NOT_EXECUTION_AUTHORIZED",
+  "supersedes_for_scope_only": {
+    "draft_policy_id": "C11E_E6_SMOKE18_SUCCESSOR_POLICY_DRAFT_V2",
+    "draft_policy_sha256": "86620daa1fe87b946da5c27a2a1b228d566bc341709371f537b112d5f8100ec0",
+    "original_d4_8_policy_id": "C11E_D4_8_R1V_QUALIFICATION_ONLY_POLICY_V2",
+    "original_d4_8_sha256": "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+    "original_policy": "IMMUTABLE_BLOCKED_UNCHANGED"
+  },
+  "purpose": "Update the evidence ledger after the native QImage synthetic L1 PASS and CH004/Challenge static evidence; prepare but do not authorize bounded Smoke18 successor execution.",
+  "scope": {
+    "top_level_scenarios": 18,
+    "challenge": 6,
+    "visual_loop": 6,
+    "visual_drill": 6,
+    "challenge_nested_subruns": 18,
+    "nested_labels": [
+      "A",
+      "B_REPEAT",
+      "C_CHANGED_MUSIC_SEED"
+    ],
+    "matrix_path": "definitions/c11e/test_only/C11E_E6_SMOKE18_SCENARIO_MATRIX_20261119_V1.json",
+    "matrix_sha256": "98e391738c0409c5d9d94576195d48cabcd885957434858062a44a44fe77fb75",
+    "matrix_state": "DRAFT_CANDIDATE_MATRIX_NOT_FROZEN_NOT_E6_ACCEPTED",
+    "challenge_003": "EXCLUDED_CURRENT_SAMPLE_SEED_DUPLICATES_CH004; KEEP_EXPLICIT_IN_MATRIX",
+    "challenge_008_009": "HELD_11_SECOND_DECLARATION_VS_12_SECOND_PHASE_SUM"
+  },
+  "evidence_updates": {
+    "option_c_native_qimage_l1": {
+      "status": "PASS_QIMAGE_STAGE_BENCHMARKED_NOT_END_TO_END",
+      "receipt_sha256": "95819ea730283ded149faa490b21e0df392341366a853b3c0913318fb203d783",
+      "source_pins": "23/23_PASS",
+      "tests": "37/37_PASS",
+      "iterations": 7,
+      "p50_ms": 4.7681,
+      "p95_ms": 5.5743,
+      "fps_at_p95": 179.3947,
+      "python": "3.13.14",
+      "pyside6": "6.11.2",
+      "meaning": "SYNTHETIC_NATIVE_PIXEL_STAGE_ONLY_NOT_LOOP_CONSUMER_OR_END_TO_END"
+    },
+    "a3_loop_lineage": {
+      "loop_policy_v2_receipt_sha256": "5afc42ca84480ba1d025d288f2653d009e85af053fff5b62133e067a17dfb4be",
+      "a3_v4_adjudication": "PASS_AS_REPORTED_BY_PINNED_V2_7_RUNNER",
+      "a3_single_pointer_status": "PASS_SINGLE_POINTER_LINEAGE_RECONCILIATION",
+      "meaning": "A3_RECONCILIATION_ONLY_NOT_SIX_SELECTOR_D_COMPOSITOR_ACCEPTANCE"
+    },
+    "challenge_static_consumer": {
+      "receipt_sha256": "b12e3e45e48917b6f4af7aa6b0e54f113473e17825641482f6c39763feab1eb0",
+      "plan_sha256": "e6ee9c9ac850df2a5579c26743c116392ade1ae349fb905a36b55f907dd43e82",
+      "status": "PASS_STATIC_CONSUMER_CONTRACT_18_ENVELOPES_RUNTIME_READBACK_NOT_PERFORMED",
+      "envelopes": 18,
+      "frame_vectors": 117,
+      "visible_slots": 27,
+      "zero_window_suppressed": 27,
+      "runtime_readback": "NOT_PERFORMED"
+    },
+    "ch004": {
+      "source_adjudication_sha256": "d99cec7ac6b0edb71665eadfd25314bd4eebece0bca9e17f05fa9cf943fa6ebd",
+      "historical_preimages": "2/2_EXACT",
+      "semantic_review_v3_sha256": "ded460447cf69f9360d5761627b0ae6a191a6c687043d8ae2ba4eeeeb01a105a",
+      "semantic_review": "7/7_PASS",
+      "reuse_disposition": "ELIGIBLE_FOR_E6_LEDGER_REQUALIFICATION_NOT_ACCEPTED",
+      "smoke18_requalification_receipt_sha256": "2071d276429fa102c080018ee1421f5397cc3c5be74a7b0451e2ccad2ced494d",
+      "manual_acceptance": "NOT_GRANTED_BY_THIS_DRAFT"
+    }
+  },
+  "evidence_and_entry_conditions": {
+    "reuse_candidates_total": 13,
+    "e6_accepted_scenarios": 0,
+    "fresh_challenge_av_required": 5,
+    "challenge004": "ELIGIBLE_REUSE_CANDIDATE_NOT_ACCEPTED; exact row predicates and human acceptance still govern",
+    "six_loop_rows": "ALL_SIX_D_OWNED_COMPOSITES_AND_ROW_RECEIPTS_STILL_REQUIRED",
+    "six_drill_rows": "ROW_LEVEL_EDITORIAL_READBACK_AND_E6_PREDICATES_STILL_REQUIRED",
+    "visual_resampler_review": "PENDING_OPERATOR_REVIEW_OF_THREE_V2_7_SYNTHETIC_PREVIEWS",
+    "loop_real_frame_source_closure": "NOT_COMPLETE; exact ordered RGB24 bytes/stride/color/timebase must be proven from source evidence"
+  },
+  "approved_test_only_fixtures": {
+    "challenge_music": {
+      "profile_id": "challenge_8bit_v1",
+      "A_seed": 840001,
+      "B_seed": 840001,
+      "C_seed": 840002,
+      "tempo_bpm": 104,
+      "variation_index": 0,
+      "duration": "derive from canonical Challenge timeline; verify only under final separately approved execution",
+      "e1_tempo_bpm": "MUST_REMAIN_NULL",
+      "e1_duration_seconds": "MUST_REMAIN_NULL",
+      "status": "OPERATOR_APPROVED_TEST_ONLY_FIXTURE_ONLY"
+    },
+    "family_editorial": {
+      "status": "OPERATOR_APPROVED_TEST_ONLY_FIXTURE_ONLY; VISUAL COPY REVIEW PENDING",
+      "fixture_sha256": "a63aeb9b97be29c716d6ab8a1f303ef66843a5eb9fb4f972a4ac6cd89f0a78aa",
+      "challenge": "E6 family-specific Spanish fixture",
+      "visual_loop": "E6 family-specific Spanish fixture",
+      "visual_drill": "E6 family-specific Spanish fixture"
+    },
+    "loop_audio": "PRESERVE_EXISTING_C11C_FAMILY_MUSIC_NO_CHALLENGE_D3_SUBSTITUTION",
+    "drill_audio": "PRESERVE_EXISTING_C11C_FAMILY_MUSIC_NO_CHALLENGE_D3_SUBSTITUTION"
+  },
+  "loop_design_decisions": {
+    "A1_A3_operator_decisions": "RECONCILED_IN_PINNED_LOOP_POLICY_V2_RECEIPT; A3 V4 PASS",
+    "option_c_geometry": "APPROVED_720X1280_BODY_504X896_AT_108_192",
+    "resampler": "SMOOTHTRANSFORMATION_SYNTHETIC_STAGE_PASS_VISUAL_QUALITY_NOT_APPROVED",
+    "six_selector_d_pixel_consumer": "NOT_IMPLEMENTED_OR_NOT_ADMITTED_BY_THIS_DRAFT"
+  },
+  "authorization_gates": {
+    "native_qimage_synthetic_stage": "PASS",
+    "operator_preview_review": "REQUIRED",
+    "loop_exact_source_closure": "REQUIRED",
+    "one_copied_frame_l2": "REQUIRES_SEPARATE_SCOPED_SUCCESSOR_POLICY_AND_TEST_ONLY_MANIFEST",
+    "six_selector_loop_d_consumer": "REQUIRED_AFTER_L2_L3",
+    "challenge_runtime_readback": "REQUIRED_UNDER_SEPARATE_SCOPE",
+    "drill_runtime_readback": "REQUIRED_UNDER_SEPARATE_SCOPE",
+    "matrix_freeze": "NOT_AUTHORIZED",
+    "toolchain_live_rehash_and_exact_argv": "REQUIRED_BEFORE_FINAL_AUTHORIZATION",
+    "separate_operator_execution_authorization": "REQUIRED"
+  },
+  "explicit_non_authorizations": {
+    "godot": false,
+    "ffmpeg": false,
+    "ffprobe": false,
+    "audio_generation": false,
+    "mux": false,
+    "media_creation": false,
+    "renderer_activation": false,
+    "production_dispatch": false,
+    "batch_id_reserved": false,
+    "d4_8_v2_mutation": false,
+    "c11c_mutation": false,
+    "release_authority": "NONE",
+    "promotion": false
+  }
+}
