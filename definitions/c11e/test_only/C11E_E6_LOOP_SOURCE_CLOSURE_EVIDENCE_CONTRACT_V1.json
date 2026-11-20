@@ -1,0 +1,89 @@
+{
+  "schema": "C11E-E6-LOOP-SOURCE-CLOSURE-EVIDENCE-CONTRACT-V1",
+  "status": "READ_ONLY_AUDIT_CONTRACT_NOT_EXECUTION_AUTHORIZATION",
+  "scenario_matrix": {
+    "path": "definitions/c11e/test_only/C11E_E6_SMOKE18_SCENARIO_MATRIX_20261119_V1.json",
+    "sha256": "98e391738c0409c5d9d94576195d48cabcd885957434858062a44a44fe77fb75",
+    "status": "DRAFT_CANDIDATE_MATRIX_NOT_FROZEN_NOT_E6_ACCEPTED"
+  },
+  "selectors": [
+    {
+      "scenario_id": "E6-L-01",
+      "selector": "fractal_bloom/radial_bloom",
+      "R1P_index": 6,
+      "source_evidence": "R1V"
+    },
+    {
+      "scenario_id": "E6-L-02",
+      "selector": "geometric_waves/harmonic_membrane",
+      "R1P_index": 1,
+      "source_evidence": "R1V"
+    },
+    {
+      "scenario_id": "E6-L-03",
+      "selector": "invisible_forces/dipole_field",
+      "R1P_index": 21,
+      "source_evidence": "R1V"
+    },
+    {
+      "scenario_id": "E6-L-04",
+      "selector": "living_particles/swarm",
+      "R1P_index": 16,
+      "source_evidence": "R1V"
+    },
+    {
+      "scenario_id": "E6-L-05",
+      "selector": "sacred_symmetry/astrolabe",
+      "R1P_index": 11,
+      "source_evidence": "R1V"
+    },
+    {
+      "scenario_id": "E6-L-06",
+      "selector": "geometric_waves/interference_plane",
+      "R1P_index": 2,
+      "source_evidence": "Loop22"
+    }
+  ],
+  "input_lineage": {
+    "R1P": "PASS_PARAMETER_PAYLOAD_MATERIALIZED_IN_MEMORY_NOT_RENDERER_INPUT",
+    "R1V": "PASS_R1V_AV_FIVE_FAMILY_QUALIFICATION_10_OF_10_PENDING_OPERATOR_VISUAL_AUDIO_REVIEW plus operator closeout",
+    "Loop22": "PASS_E4B_LOOP22_AV_QUALIFICATION_44_OF_44_PENDING_OPERATOR_VISUAL_AUDIO_REVIEW plus operator closeout"
+  },
+  "source_contract": {
+    "width": 720,
+    "height": 1280,
+    "fps": 30,
+    "time_base": "1/15360",
+    "pts_step": 512,
+    "encoded_pixel_format": "yuvj420p",
+    "encoded_color_range": "pc",
+    "decoded_pixel_format": "yuv420p",
+    "decoded_bytes_per_frame": 1382400,
+    "frames_written_to_disk": false
+  },
+  "qimage_contract": {
+    "pixel_format": "RGB24",
+    "stride": 2160,
+    "bytes_per_frame": 2764800,
+    "real_rgb24_buffers_materialized": false
+  },
+  "unresolved": {
+    "color_primaries": null,
+    "color_transfer": null,
+    "color_space": null,
+    "conversion_policy_approved": false,
+    "operator_resampler_visual_review": "PENDING"
+  },
+  "prohibitions": {
+    "godot": false,
+    "ffmpeg": false,
+    "ffprobe": false,
+    "audio": false,
+    "mux": false,
+    "renderer": false,
+    "dispatch": false,
+    "production_media": false,
+    "e6_accepted": 0,
+    "release_authority": "NONE"
+  }
+}

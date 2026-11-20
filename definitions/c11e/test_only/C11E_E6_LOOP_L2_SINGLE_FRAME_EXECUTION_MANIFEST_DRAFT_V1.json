@@ -1,0 +1,21 @@
+{
+  "schema": "C11E-E6-LOOP-L2-SINGLE-FRAME-EXECUTION-MANIFEST-DRAFT-V1",
+  "status": "DRAFT_UNARMED_NOT_APPROVED",
+  "execution_authorized": false,
+  "process_invocations": 0,
+  "selected_selector": null,
+  "selected_frame_index": null,
+  "input_path": null,
+  "input_sha256": null,
+  "rgb24_byte_count": null,
+  "width": null,
+  "height": null,
+  "stride": null,
+  "color_conversion": "NOT_DEFINED",
+  "output_root": null,
+  "expected_outputs": [],
+  "timeout_seconds": null,
+  "stop_on_first_failure": true,
+  "policy_sha256": null,
+  "governance_approval": "NOT_GRANTED"
+}
