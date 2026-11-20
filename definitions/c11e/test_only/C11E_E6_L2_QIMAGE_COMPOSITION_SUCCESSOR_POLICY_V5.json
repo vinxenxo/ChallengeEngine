@@ -1,0 +1,64 @@
+{
+  "schema": "C11E-E6-L2-QIMAGE-COMPOSITION-SUCCESSOR-POLICY-V5",
+  "policy_id": "C11E_E6_L2_QIMAGE_COMPOSITION_REPAIR_V5",
+  "revision": 5,
+  "status": "USER_APPROVED_NARROW_TEST_ONLY_REPAIR_FROM_CAPTURED_V4_RGB24",
+  "approval_basis": {
+    "date": "2026-11-20",
+    "source": "explicit_user_approval_to_continue_L2_visual_probe",
+    "scope": "correct V4 QImage module loading and complete one QImage composition from the already captured V4 RGB24 evidence; no new Godot process"
+  },
+  "supersedes": "V4 QImage-import portion only; does not alter V4 capture receipt or D4.8 V2",
+  "execution_authorized": true,
+  "source_capture": {
+    "run_id": "E6L2RGB24V4_20261120T095847Z_A8AA1CA7",
+    "receipt_sha256": "b36f319a3b7e3290be965dfc1bfa28fdff789b6054e89fc9c3cba182130aad88",
+    "rgb24_sha256": "a0803353be7dca53a75903a1c863bd814a4367b534e698018d8ab434f5506d03",
+    "rgb24_bytes": 2764800,
+    "source_frame_png_sha256": "39ae0a4df012faf1b2fd087443ccadf963bb59610affc2756c1732fa42669908"
+  },
+  "scope": {
+    "selector_id": "E6-L-01",
+    "family_id": "fractal_bloom",
+    "grammar_id": "radial_bloom",
+    "gameplay_seed": 100006,
+    "frame_index": 0,
+    "max_qimage_compositions": 1,
+    "godot_invocations": 0,
+    "active_checkout_source_writes": false,
+    "v4_evidence": "READ_ONLY"
+  },
+  "technical_correction": {
+    "failure": "AttributeError: NoneType object has no attribute __dict__ when dataclasses process postponed annotations",
+    "cause": "importlib module_from_spec followed by exec_module without inserting module into sys.modules",
+    "fix": "insert module into sys.modules before exec_module; remove partial entry only if execution fails"
+  },
+  "prohibited": [
+    "new Godot invocation",
+    "FFmpeg",
+    "FFprobe",
+    "audio generation",
+    "mux",
+    "historical MP4 decode",
+    "YUV-to-RGB conversion",
+    "BT.709 assumption",
+    "production renderer",
+    "production dispatch",
+    "BatchId",
+    "Smoke18",
+    "six-selector widening",
+    "C11-C writes",
+    "D4.8 modification",
+    "release promotion"
+  ],
+  "governance": {
+    "c11c_frozen_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "d4_8_v2_sha256": "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+    "d4_8_v2_modified": false,
+    "e6_accepted": 0,
+    "release_authority": "NONE",
+    "git_checks": "SKIPPED",
+    "commits": "OPERATOR_MANAGED",
+    "source_file_pins": "ENFORCED"
+  }
+}

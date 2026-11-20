@@ -1,0 +1,137 @@
+{
+  "schema": "C11E-E6-L3-LOOP-NEGATIVE-CONTROLS-EXECUTION-MANIFEST-V1",
+  "manifest_id": "C11E_E6_L3_LOOP_NEGATIVE_CONTROLS_V1",
+  "revision": 1,
+  "status": "AUTHORIZED_SINGLE_RUN_READ_ONLY_TECHNICAL_AUDIT_PENDING_OPERATOR_VISUAL_REVIEW",
+  "policy_id": "C11E_E6_L3_LOOP_NEGATIVE_CONTROLS_V1",
+  "predecessor": {
+    "l2_v5_run_id": "E6L2QIMGV5_20261120T104658Z_1B5CBDC6",
+    "l2_v5_receipt_sha256": "192182958c08bf5c00b4756181481ebfea974eea06f9fe88af3cd9597e0fd340",
+    "l2_v5_status": "PASS_L2_QIMAGE_COMPOSITION_FROM_V4_CAPTURE_PENDING_OPERATOR_VISUAL_REVIEW",
+    "l2_v5_install_receipt_sha256": "b41c661909c385f592f0b81ab79206e8aafd73951e5430907c78675ac3af431b",
+    "v4_capture_receipt_sha256": "b36f319a3b7e3290be965dfc1bfa28fdff789b6054e89fc9c3cba182130aad88",
+    "v4_install_receipt_sha256": "2afb58e86cddfa6bea3c412071f3ba0ca882a95af8c8274382d478d34ef840eb"
+  },
+  "selector": [
+    "E6-L-01",
+    "fractal_bloom",
+    "radial_bloom",
+    100006,
+    0
+  ],
+  "geometry": {
+    "canvas": [
+      720,
+      1280
+    ],
+    "content_rect": [
+      108,
+      192,
+      504,
+      896
+    ],
+    "header_band": [
+      0,
+      0,
+      720,
+      192
+    ],
+    "footer_band": [
+      0,
+      1088,
+      720,
+      192
+    ],
+    "left_gutter": [
+      0,
+      0,
+      108,
+      1280
+    ],
+    "right_gutter": [
+      612,
+      0,
+      108,
+      1280
+    ]
+  },
+  "pixel_contract": {
+    "format": "RGB24",
+    "width": 720,
+    "height": 1280,
+    "stride_bytes": 2160,
+    "bytes": 2764800,
+    "source_format": "RGBA8",
+    "alpha_all_opaque": true
+  },
+  "expected_artifacts": {
+    "source_frame.png": {
+      "sha256": "39ae0a4df012faf1b2fd087443ccadf963bb59610affc2756c1732fa42669908",
+      "bytes": 590089
+    },
+    "source_frame.rgb24": {
+      "sha256": "a0803353be7dca53a75903a1c863bd814a4367b534e698018d8ab434f5506d03",
+      "bytes": 2764800
+    },
+    "composited_frame.png": {
+      "sha256": "6e2039590b086d0c93f66f848be833175618606368ecba14f7b1e200cb5e333c",
+      "bytes": 326107
+    },
+    "composited_frame.rgb24": {
+      "sha256": "d029c31de5d81335b3026ac7d85c902ddfd00d3b1b44a02d0991c5eab28a7b66",
+      "bytes": 2764800
+    },
+    "capture_metadata.json": {
+      "sha256": "aa37687434e714a15f1124282d81015f64e77a441b8a470ea1b98b80d2ad0679",
+      "bytes": 1144
+    },
+    "C11E_E6_L2_QIMAGE_COMPOSITION_RECEIPT_V5.json": {
+      "sha256": "192182958c08bf5c00b4756181481ebfea974eea06f9fe88af3cd9597e0fd340",
+      "bytes": 4044
+    },
+    "C11E_E6_L2_DIRECT_RGB24_VISUAL_PROBE_RECEIPT_V4.json": {
+      "sha256": "b36f319a3b7e3290be965dfc1bfa28fdff789b6054e89fc9c3cba182130aad88",
+      "bytes": 2621
+    }
+  },
+  "negative_controls": [
+    "wrong_dimensions",
+    "wrong_byte_count",
+    "wrong_stride",
+    "altered_source_hash",
+    "frame_order_mismatch",
+    "historical_mp4_source",
+    "write_into_protected_evidence",
+    "write_outside_l3_output_root",
+    "incorrect_geometry"
+  ],
+  "limits": {
+    "godot": 0,
+    "ffmpeg": 0,
+    "ffprobe": 0,
+    "audio": 0,
+    "mux": 0,
+    "qimage_composition": 0,
+    "media": 0,
+    "dispatch": 0,
+    "batch_id": 0
+  },
+  "outputs": {
+    "root": "artifacts/tests/c11e/e6_l3_loop_negative_controls_v1/<unique_run_id>",
+    "files": [
+      "C11E_E6_L3_LOOP_NEGATIVE_CONTROLS_RECEIPT_V1.json",
+      "C11E_E6_L3_LOOP_NEGATIVE_CONTROLS_RECEIPT_V1.json.sha256",
+      "L3_AUDIT_REPORT_V1.json"
+    ]
+  },
+  "governance": {
+    "c11c_frozen_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "d4_8_v2_sha256": "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+    "d4_8_v2_modified": false,
+    "e6_accepted": 0,
+    "release_authority": "NONE",
+    "git_checks": "SKIPPED",
+    "commits": "OPERATOR_MANAGED",
+    "source_file_pins": "ENFORCED"
+  }
+}

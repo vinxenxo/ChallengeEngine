@@ -1,0 +1,175 @@
+{
+    "schema":  "C11E-E6-L2-DIRECT-RGB24-VISUAL-PROBE-INSTALL-RECEIPT-V1",
+    "install_id":  "E6L2RGB24INST_20261120T082820Z_3EAFF7DE",
+    "created_utc":  "2026-11-20T08:28:20.1182772Z",
+    "status":  "PASS_ADD_ONLY",
+    "package_zip_sha256":  "84f155bc29301a4a8f760b30d71b09445c631c8631b6084ac2acbb6e526b708a",
+    "package_members":  29,
+    "destination_count":  24,
+    "add_count":  24,
+    "skip_identical_count":  0,
+    "installed_files":  [
+                            {
+                                "path":  "definitions/c11e/test_only/C11E_E6_L2_DIRECT_RGB24_SOURCE_PIN_MANIFEST_V1.json",
+                                "sha256":  "818cba0ff72463d36c0010878cc1d4980b2d1b6215b1e62330e04d7a6ddde0ac",
+                                "bytes":  4464,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "definitions/c11e/test_only/C11E_E6_L2_DIRECT_RGB24_VISUAL_PROBE_EXECUTION_MANIFEST_V1.json",
+                                "sha256":  "82b583bbbfaadb5c9d7037a2288e7b1eb991f2795b2a422c57f5e4e13429686f",
+                                "bytes":  6363,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "definitions/c11e/test_only/C11E_E6_L2_DIRECT_RGB24_VISUAL_PROBE_SUCCESSOR_POLICY_V1.json",
+                                "sha256":  "64560bce8aa58aa916a0b550c035115dfb31bfbf87f8d566c31a1a2a51bee7b7",
+                                "bytes":  3477,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/current/e/C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261120_V129.md",
+                                "sha256":  "f2880077a3b67ecf25829453589cc094e11d20cd2d92944405d01dcf1d7394b0",
+                                "bytes":  1486,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_CURRENT_AUTHORITY_20261120_V184.md",
+                                "sha256":  "17b1c809309b4497801849eacc70c02732ddc70bd04c2648ffc56bf7fdf37fb6",
+                                "bytes":  1826,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_CURRENT_DOC_INDEX_20261120_V181.md",
+                                "sha256":  "d9166a2b945604e328642ff66afeb23d4500f26c4e94ee6959d45e43cb6249b4",
+                                "bytes":  854,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_E6_NEXT_GATES_20261120_V9.md",
+                                "sha256":  "0a89caf8848a8e1bbc51484b54871cb1d7bdbb47337692b86d322c8d5d21cb79",
+                                "bytes":  1257,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_E6_PHASE_LEDGER_20261120_V30.md",
+                                "sha256":  "b57e1b71433af7828be207757d90fe8d0c2f1299735229a441847339f05e0b07",
+                                "bytes":  1017,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261120_V180.md",
+                                "sha256":  "67f7e509561ad3b22c58215e7af109803c2e9df9bc0b044b9280c116ab470dfe",
+                                "bytes":  1532,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_INSTALLER_INCIDENT_REGISTER_20261120_V61.md",
+                                "sha256":  "96929449d4f6ea7d179d656840ad8b1896f46bfe4abfb54a7d711e5c46778e43",
+                                "bytes":  816,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_L2_DIRECT_RGB24_VISUAL_PROBE_V1_20261120/01_PHASE_README.md",
+                                "sha256":  "cae0599de56449ae7ae9a438dde0b04358c6f8af583542359fc74ed171db3449",
+                                "bytes":  2015,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_L2_DIRECT_RGB24_VISUAL_PROBE_V1_20261120/02_SOURCE_LINEAGE_AND_PIXEL_CONTRACT.md",
+                                "sha256":  "af967a839b3bb241c1819c74f5bda4d10c859e90c23c87ac560d1381ec6900e2",
+                                "bytes":  1209,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_L2_DIRECT_RGB24_VISUAL_PROBE_V1_20261120/03_EXECUTION_BOUNDARY_AND_STOP_CONDITIONS.md",
+                                "sha256":  "221454ce5293b3e447b5028ab2a618b2b37917a01a31718f5a34ebb2e6e46922",
+                                "bytes":  1062,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_L2_DIRECT_RGB24_VISUAL_PROBE_V1_20261120/04_INSTALLER_TRANSACTION_DESIGN.md",
+                                "sha256":  "f6687bcf5d1e6e75aad2b53df98f82c439160119134f466448623d4eadbf3b0e",
+                                "bytes":  1085,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_L2_DIRECT_RGB24_VISUAL_PROBE_V1_20261120/05_EXPECTED_EVIDENCE_AND_REVIEW.md",
+                                "sha256":  "606849a53c46705287d5b93971dc3b141c8640d9c54527ba505c7528e79f4372",
+                                "bytes":  805,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_L2_DIRECT_RGB24_VISUAL_PROBE_V1_20261120/06_BUILD_AND_TARGET_VALIDATION.md",
+                                "sha256":  "c9749f5651bf1526f135326a9b06ecd568c0efed47e4b769121314851b5c7a93",
+                                "bytes":  630,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "prompts/C11E_CONTINUATION_MASTER_PROMPT_20261120_V197.md",
+                                "sha256":  "94080fe75c4d800d97aae6ed8ae01c9f1a343117a2097098611c6317ae7d4e75",
+                                "bytes":  1943,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "prompts/C11E_E6_L2_DIRECT_RGB24_VISUAL_PROBE_START_PROMPT_V1.md",
+                                "sha256":  "5450d7cbc55494231a9dda843196891bc208c2646e25f70a47914d84c7b2b3c6",
+                                "bytes":  882,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "prompts/C11E_NEXT_WINDOW_START_PROMPT_20261120_V197.md",
+                                "sha256":  "5677b234e6ce4a49412f1f559920d70895536daa4fa40e237442be55f64ee96a",
+                                "bytes":  926,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "tests/c11e/e6_l2_direct_rgb24_visual_probe_v1/__init__.py",
+                                "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                                "bytes":  0,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "tests/c11e/e6_l2_direct_rgb24_visual_probe_v1/test_direct_rgb24_manifest.py",
+                                "sha256":  "781f665cf31dbedab8f36a833916fd8502a6c5731800bd6c1c569cade53f8465",
+                                "bytes":  6119,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "tools/c11d/d9/RUN_C11E_E6_L2_DIRECT_RGB24_VISUAL_PROBE_V1.ps1",
+                                "sha256":  "883dd587eed466262f4891f02946f74a0a81498f3c60b38aa03f3152ee9310ae",
+                                "bytes":  1936,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "tools/c11d/d9/RUN_C11E_E6_L2_DIRECT_RGB24_VISUAL_PROBE_V1.py",
+                                "sha256":  "ca5d0dbfe76314cdb883d4827b1d59d86ae2f0184c8fe7dc78ffd2d9edcbdf35",
+                                "bytes":  21706,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "tools/c11d/d9/c11e_e6_l2_direct_rgb24_visual_probe_v1/CaptureLoopFrame.gd",
+                                "sha256":  "dbdb2190d6c93356357fe66615b3819323b36fd42789fdfbc9fc356d5a4fe57d",
+                                "bytes":  5752,
+                                "status":  "ADDED_AND_VERIFIED"
+                            }
+                        ],
+    "c11c_manifest_sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "d4_8_v2_sha256":  "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+    "source_files_modified":  false,
+    "c11c_modified":  false,
+    "d4_8_v2_modified":  false,
+    "runner_executed":  false,
+    "godot_invoked":  false,
+    "ffmpeg_invoked":  false,
+    "ffprobe_invoked":  false,
+    "audio_generated":  false,
+    "mux_invoked":  false,
+    "renderer_production":  false,
+    "production_dispatch":  false,
+    "e6_accepted":  0,
+    "release_authority":  "NONE",
+    "git_checks":  "SKIPPED",
+    "commits":  "OPERATOR_MANAGED",
+    "source_file_pins":  "ENFORCED"
+}

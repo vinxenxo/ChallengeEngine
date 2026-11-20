@@ -1,0 +1,151 @@
+{
+  "schema": "C11E-E6-L3-LOOP-NEGATIVE-CONTROLS-REPORT-V1",
+  "run_id": "E6L3NCV1_20261120T115843Z_14E0F410",
+  "status": "PASS_L3_TECHNICAL_NEGATIVE_CONTROLS_PENDING_OPERATOR_VISUAL_REVIEW",
+  "predecessor": {
+    "v5_run_id": "E6L2QIMGV5_20261120T104658Z_1B5CBDC6",
+    "v5_receipt_sha256": "192182958c08bf5c00b4756181481ebfea974eea06f9fe88af3cd9597e0fd340",
+    "v4_capture_receipt_sha256": "b36f319a3b7e3290be965dfc1bfa28fdff789b6054e89fc9c3cba182130aad88",
+    "v4_install_receipt_sha256": "2afb58e86cddfa6bea3c412071f3ba0ca882a95af8c8274382d478d34ef840eb",
+    "v5_install_receipt_sha256": "b41c661909c385f592f0b81ab79206e8aafd73951e5430907c78675ac3af431b"
+  },
+  "positive_checks": {
+    "source_png_rgb24_identity": {
+      "png": "source_frame.png",
+      "png_sha256": "39ae0a4df012faf1b2fd087443ccadf963bb59610affc2756c1732fa42669908",
+      "rgb24": "source_frame.rgb24",
+      "rgb24_sha256": "a0803353be7dca53a75903a1c863bd814a4367b534e698018d8ab434f5506d03",
+      "bytes": 2764800,
+      "png_rgb24_byte_identity": true,
+      "png_color_type": 6
+    },
+    "composite_png_rgb24_identity": {
+      "png": "composited_frame.png",
+      "png_sha256": "6e2039590b086d0c93f66f848be833175618606368ecba14f7b1e200cb5e333c",
+      "rgb24": "composited_frame.rgb24",
+      "rgb24_sha256": "d029c31de5d81335b3026ac7d85c902ddfd00d3b1b44a02d0991c5eab28a7b66",
+      "bytes": 2764800,
+      "png_rgb24_byte_identity": true,
+      "png_color_type": 2
+    },
+    "geometry": {
+      "reserved_regions": {
+        "header_band": {
+          "pixels": 138240,
+          "black_pixels": 138240,
+          "all_black": true
+        },
+        "footer_band": {
+          "pixels": 138240,
+          "black_pixels": 138240,
+          "all_black": true
+        },
+        "left_gutter": {
+          "pixels": 138240,
+          "black_pixels": 138240,
+          "all_black": true
+        },
+        "right_gutter": {
+          "pixels": 138240,
+          "black_pixels": 138240,
+          "all_black": true
+        }
+      },
+      "content_rect_nonblack_pixels": 451584,
+      "content_rect": [
+        108,
+        192,
+        504,
+        896
+      ],
+      "canvas": [
+        720,
+        1280
+      ]
+    },
+    "source_and_output_dimensions": "720x1280",
+    "rgb24_stride": 2160,
+    "rgb24_bytes": 2764800,
+    "process_scope": {
+      "godot": 0,
+      "ffmpeg": 0,
+      "ffprobe": 0,
+      "audio": 0,
+      "mux": 0,
+      "qimage_composition": 0,
+      "dispatch": 0,
+      "batch_id": 0
+    }
+  },
+  "negative_controls": [
+    {
+      "id": "wrong_dimensions",
+      "status": "REJECTED_AS_EXPECTED"
+    },
+    {
+      "id": "wrong_byte_count",
+      "status": "REJECTED_AS_EXPECTED"
+    },
+    {
+      "id": "wrong_stride",
+      "status": "REJECTED_AS_EXPECTED"
+    },
+    {
+      "id": "altered_source_hash",
+      "status": "REJECTED_AS_EXPECTED"
+    },
+    {
+      "id": "frame_order_mismatch",
+      "status": "REJECTED_AS_EXPECTED"
+    },
+    {
+      "id": "historical_mp4_source",
+      "status": "REJECTED_AS_EXPECTED"
+    },
+    {
+      "id": "write_into_protected_evidence",
+      "status": "REJECTED_AS_EXPECTED"
+    },
+    {
+      "id": "write_outside_l3_output_root",
+      "status": "REJECTED_AS_EXPECTED"
+    },
+    {
+      "id": "incorrect_geometry",
+      "status": "REJECTED_AS_EXPECTED"
+    }
+  ],
+  "source_immutability": {
+    "protected_inputs_before_after_equal": true,
+    "protected_source_pin_count": 20,
+    "protected_manifest_input_count": 16,
+    "protected_evidence_file_count": 13,
+    "l3_source_manifest_sha256": "b7cb8eabea84ac99486c5800b655cf2f060f0d61c4f1003f8242e4a6d46e5f25",
+    "source_files_modified": false
+  },
+  "visual_review": {
+    "assistant_preliminary_visual_inspection": "NO_OBVIOUS_CLIPPING_OR_GEOMETRY_ARTIFACT_OBSERVED",
+    "operator_visual_review": "PENDING_OPERATOR_VISUAL_REVIEW",
+    "smooth_transformation_acceptance": "PENDING_OPERATOR_DECISION"
+  },
+  "governance": {
+    "c11c_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "d4_8_v2_sha256": "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+    "c11c_modified": false,
+    "d4_8_v2_modified": false,
+    "source_files_modified": false,
+    "godot_invocations": 0,
+    "qimage_compositions": 0,
+    "ffmpeg_invoked": false,
+    "ffprobe_invoked": false,
+    "audio_generated": false,
+    "mux_invoked": false,
+    "renderer_production": false,
+    "production_dispatch": false,
+    "e6_accepted": 0,
+    "release_authority": "NONE",
+    "git_checks": "SKIPPED",
+    "commits": "OPERATOR_MANAGED",
+    "source_file_pins": "ENFORCED"
+  }
+}

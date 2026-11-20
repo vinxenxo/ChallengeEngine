@@ -1,0 +1,106 @@
+{
+  "schema": "C11E-E6-L2-QIMAGE-COMPOSITION-REPAIR-RECEIPT-V5",
+  "run_id": "E6L2QIMGV5_20261120T104658Z_1B5CBDC6",
+  "created_utc": "2026-11-20T10:46:58.458756+00:00",
+  "status": "PASS_L2_QIMAGE_COMPOSITION_FROM_V4_CAPTURE_PENDING_OPERATOR_VISUAL_REVIEW",
+  "l2_ready": false,
+  "scope": "ONE_QIMAGE_COMPOSITION_FROM_ALREADY_CAPTURED_V4_RGB24_EVIDENCE_NO_NEW_GODOT",
+  "source_capture_run_id": "E6L2RGB24V4_20261120T095847Z_A8AA1CA7",
+  "source_capture_receipt_sha256": "b36f319a3b7e3290be965dfc1bfa28fdff789b6054e89fc9c3cba182130aad88",
+  "source_rgb24_sha256": "a0803353be7dca53a75903a1c863bd814a4367b534e698018d8ab434f5506d03",
+  "source_frame_png_sha256": "39ae0a4df012faf1b2fd087443ccadf963bb59610affc2756c1732fa42669908",
+  "qimage_module_sha256": "850054e6212f7e6f59be5550ec194df3d1a1ca69acb343c53b76803b007721e1",
+  "python_version": "3.13.14",
+  "pyside6_version": "6.11.2",
+  "godot_invocations": 0,
+  "audio_generated": false,
+  "ffmpeg_invoked": false,
+  "ffprobe_invoked": false,
+  "mux_invoked": false,
+  "historical_mp4_consumed": false,
+  "bt709_assumed": false,
+  "color_transform_applied": false,
+  "renderer_production": false,
+  "production_dispatch": false,
+  "e6_accepted": 0,
+  "release_authority": "NONE",
+  "c11c_modified": false,
+  "d4_8_v2_modified": false,
+  "source_files_modified": false,
+  "visual_resampler_review": "PENDING_OPERATOR_VISUAL_REVIEW",
+  "artifacts": {
+    "source_frame.png": {
+      "bytes": 590089,
+      "sha256": "39ae0a4df012faf1b2fd087443ccadf963bb59610affc2756c1732fa42669908"
+    },
+    "source_frame.rgb24": {
+      "bytes": 2764800,
+      "sha256": "a0803353be7dca53a75903a1c863bd814a4367b534e698018d8ab434f5506d03"
+    },
+    "capture_metadata.json": {
+      "bytes": 1144,
+      "sha256": "aa37687434e714a15f1124282d81015f64e77a441b8a470ea1b98b80d2ad0679"
+    },
+    "godot_import.log": {
+      "bytes": 3565,
+      "sha256": "9f7ca4e42666d6b72bac0a8ebe2f557d0055fb440b90f2cba5e59c19053e8570"
+    },
+    "godot_capture.log": {
+      "bytes": 580,
+      "sha256": "f27be5cae4260dfbb0bbd4ad1efe799d9d2c2431480add1af97b6e99de708ed1"
+    },
+    "C11E_E6_L2_DIRECT_RGB24_VISUAL_PROBE_RECEIPT_V4.json": {
+      "bytes": 2621,
+      "sha256": "b36f319a3b7e3290be965dfc1bfa28fdff789b6054e89fc9c3cba182130aad88"
+    },
+    "C11E_E6_L2_DIRECT_RGB24_VISUAL_PROBE_RECEIPT_V4.json.sha256": {
+      "bytes": 120,
+      "sha256": "fa4002f20f2a0a9438e198617c30bb6b166e88a866db453f0c886078fb4d7403"
+    },
+    "composited_frame.png": {
+      "bytes": 326107,
+      "sha256": "6e2039590b086d0c93f66f848be833175618606368ecba14f7b1e200cb5e333c"
+    },
+    "composited_frame.rgb24": {
+      "bytes": 2764800,
+      "sha256": "d029c31de5d81335b3026ac7d85c902ddfd00d3b1b44a02d0991c5eab28a7b66"
+    }
+  },
+  "qimage_module_import": "PASS_SYS_MODULE_REGISTERED_BEFORE_EXEC_MODULE",
+  "qimage_composition_count": 1,
+  "compositor_backend": "PYSIDE6_QIMAGE_CPP_SMOOTH_TRANSFORMATION_V1",
+  "compositor_output_format": "RGB24",
+  "compositor_output_width": 720,
+  "compositor_output_height": 1280,
+  "compositor_output_stride_bytes": 2160,
+  "compositor_output_bytes": 2764800,
+  "compositor_output_rgb24_sha256": "d029c31de5d81335b3026ac7d85c902ddfd00d3b1b44a02d0991c5eab28a7b66",
+  "compositor_output_png_sha256": "6e2039590b086d0c93f66f848be833175618606368ecba14f7b1e200cb5e333c",
+  "geometry": {
+    "canvas": "720x1280",
+    "content_rect": [
+      108,
+      192,
+      504,
+      896
+    ],
+    "header_height": 192,
+    "footer_y": 1088,
+    "footer_height": 192,
+    "side_gutters": 108,
+    "body_black_bands": true
+  },
+  "colorimetry": {
+    "primaries": "UNDECLARED",
+    "transfer": "UNDECLARED",
+    "matrix": "UNDECLARED",
+    "bt709_assumed": false,
+    "color_transform_applied": false,
+    "operation": "QImage RGB24 resampling only"
+  },
+  "l2_probe": "PASS_TEST_ONLY_FROM_PRIOR_CAPTURE_NOT_FAMILY_ACCEPTANCE",
+  "l3_negative_controls": "NOT_RUN",
+  "l4_six_loop_selectors": "NOT_RUN",
+  "smoke18": "NOT_AUTHORIZED_BY_THIS_MANIFEST",
+  "completed_utc": "2026-11-20T10:46:59.133983+00:00"
+}

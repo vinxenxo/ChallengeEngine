@@ -1,0 +1,34 @@
+{
+  "schema": "C11E-E6-LOOP-L2-SUCCESSOR-POLICY-DRAFT-V2",
+  "status": "DRAFT_UNARMED_NOT_APPROVED",
+  "supersedes": null,
+  "D4_8_V2_sha256": "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+  "execution_authorized": false,
+  "process_invocations": 0,
+  "executable_path": null,
+  "executable_sha256": null,
+  "tool_version": null,
+  "arguments": [],
+  "input_paths": [],
+  "input_sha256": [],
+  "output_roots": [],
+  "stop_on_first_failure": true,
+  "prohibited_side_effects": [
+    "source_write",
+    "Godot",
+    "FFmpeg",
+    "FFprobe",
+    "audio",
+    "mux",
+    "renderer_dispatch",
+    "production_media"
+  ],
+  "unresolved_colorimetry": {
+    "color_space": null,
+    "color_primaries": null,
+    "color_transfer": null,
+    "conversion_approval": false
+  },
+  "approval": "NOT_GRANTED",
+  "release_authority": "NONE"
+}

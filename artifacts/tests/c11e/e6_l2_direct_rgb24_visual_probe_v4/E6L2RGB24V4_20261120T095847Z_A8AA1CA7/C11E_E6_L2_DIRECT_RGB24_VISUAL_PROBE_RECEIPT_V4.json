@@ -1,0 +1,72 @@
+{
+  "schema": "C11E-E6-L2-DIRECT-RGB24-VISUAL-PROBE-RECEIPT-V4",
+  "run_id": "E6L2RGB24V4_20261120T095847Z_A8AA1CA7",
+  "created_utc": "2026-11-20T09:58:47.827527+00:00",
+  "status": "BLOCKED_L2_DIRECT_RGB24_VISUAL_PROBE",
+  "l2_ready": false,
+  "scope": "ONE_TEST_ONLY_DIRECT_RECAPTURE_AND_QIMAGE_COMPOSITION_FIXED_SUBVIEWPORT",
+  "selector": {
+    "selector_id": "E6-L-01",
+    "family_id": "fractal_bloom",
+    "grammar_id": "radial_bloom",
+    "gameplay_seed": 100006,
+    "music_seed": 500006,
+    "frame_index": 0
+  },
+  "source_origin": "C11C_SCENE_DIRECT_VIEWPORT_RECAPTURE_NOT_HISTORICAL_MP4_FRAME",
+  "source_pins_verified": true,
+  "predecessor_closure_receipt_sha256": "4763bf2e9b7e23ece40801407d615b80a58d84b91b33353c668d70d06502da4b",
+  "predecessor_qimage_receipt_sha256": "95819ea730283ded149faa490b21e0df392341366a853b3c0913318fb203d783",
+  "godot_executable_sha256": "8ec33ba6a6a953226170cda2a56a58810f6617261a71d6bd6d6ba7cce5e7b79d",
+  "godot_executable_bytes": 179589128,
+  "godot_invocations": 2,
+  "godot_processes": [
+    {
+      "purpose": "ISOLATED_TEST_PROJECT_IMPORT_AND_CLASS_SCAN",
+      "argv": [
+        "--headless",
+        "--editor",
+        "--path",
+        "C:\\Users\\vinxe\\AppData\\Local\\Temp\\c11eL2_4ac97fba\\project",
+        "--import",
+        "--quit"
+      ],
+      "exit_code": 0,
+      "log_sha256": "9f7ca4e42666d6b72bac0a8ebe2f557d0055fb440b90f2cba5e59c19053e8570"
+    },
+    {
+      "purpose": "ONE_FRAME_GODOT_VIEWPORT_CAPTURE",
+      "argv": [
+        "--path",
+        "C:\\Users\\vinxe\\AppData\\Local\\Temp\\c11eL2_4ac97fba\\project",
+        "--script",
+        "res://tools/c11d/d9/c11e_e6_l2_direct_rgb24_visual_probe_v4/CaptureLoopFrame.gd"
+      ],
+      "exit_code": 0,
+      "log_sha256": "f27be5cae4260dfbb0bbd4ad1efe799d9d2c2431480add1af97b6e99de708ed1"
+    }
+  ],
+  "historical_mp4_consumed": false,
+  "colorimetry": {
+    "primaries": "UNDECLARED",
+    "transfer": "UNDECLARED",
+    "matrix": "UNDECLARED",
+    "bt709_assumed": false,
+    "yuv_to_rgb_conversion": false,
+    "direct_rgba8_capture": true
+  },
+  "audio_generated": false,
+  "ffmpeg_invoked": false,
+  "ffprobe_invoked": false,
+  "mux_invoked": false,
+  "renderer_production": false,
+  "production_dispatch": false,
+  "e6_accepted": 0,
+  "release_authority": "NONE",
+  "d4_8_v2_modified": false,
+  "c11c_modified": false,
+  "source_files_modified": false,
+  "artifacts": {},
+  "blocking_error": "AttributeError:'NoneType' object has no attribute '__dict__'",
+  "completed_utc": "2026-11-20T09:59:00.388429+00:00"
+}

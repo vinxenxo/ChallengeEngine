@@ -1,0 +1,48 @@
+{
+  "schema": "C11E-E6-LOOP-SOURCE-CLOSURE-EVIDENCE-CONTRACT-V2",
+  "status": "READ_ONLY_AUDIT_CONTRACT_NOT_EXECUTION_AUTHORIZATION",
+  "audit_v2": {
+    "expected_status_if_all_source_evidence_is_unchanged": "PASS_LOOP_SOURCE_PROVENANCE_RECONCILED_WITH_COLORIMETRY_AND_VISUAL_REVIEW_PENDING",
+    "expected_pass_checks": 116,
+    "expected_pending_checks": 2,
+    "expected_blocked_checks": 0,
+    "expectation_is_conditional_not_a_synthetic_result": true
+  },
+  "v1_false_negative_corrections": [
+    "D4_8_V2 auditor SHA literal corrected; frozen file remains unchanged",
+    "QImage V2.7 nested qimage_tests object validated by fields, not scalar comparison",
+    "L1 V2 e6_accepted read from phase_state and governance; both must equal zero"
+  ],
+  "scenario_matrix": {
+    "path": "definitions/c11e/test_only/C11E_E6_SMOKE18_SCENARIO_MATRIX_20261119_V1.json",
+    "sha256": "98e391738c0409c5d9d94576195d48cabcd885957434858062a44a44fe77fb75",
+    "status": "DRAFT_CANDIDATE_MATRIX_NOT_FROZEN_NOT_E6_ACCEPTED"
+  },
+  "selectors": [
+    {"scenario_id":"E6-L-01","selector":"fractal_bloom/radial_bloom","R1P_index":6,"source_evidence":"R1V"},
+    {"scenario_id":"E6-L-02","selector":"geometric_waves/harmonic_membrane","R1P_index":1,"source_evidence":"R1V"},
+    {"scenario_id":"E6-L-03","selector":"invisible_forces/dipole_field","R1P_index":21,"source_evidence":"R1V"},
+    {"scenario_id":"E6-L-04","selector":"living_particles/swarm","R1P_index":16,"source_evidence":"R1V"},
+    {"scenario_id":"E6-L-05","selector":"sacred_symmetry/astrolabe","R1P_index":11,"source_evidence":"R1V"},
+    {"scenario_id":"E6-L-06","selector":"geometric_waves/interference_plane","R1P_index":2,"source_evidence":"Loop22"}
+  ],
+  "source_contract": {
+    "width":720,"height":1280,"fps":30,"time_base":"1/15360","pts_step":512,
+    "encoded_pixel_format":"yuvj420p","encoded_color_range":"pc",
+    "decoded_pixel_format":"yuv420p","decoded_bytes_per_frame":1382400,
+    "frames_written_to_disk":false
+  },
+  "qimage_contract": {
+    "pixel_format":"RGB24","stride":2160,"bytes_per_frame":2764800,
+    "real_rgb24_buffers_materialized":false
+  },
+  "unresolved": {
+    "color_primaries":null,"color_transfer":null,"color_space":null,
+    "conversion_policy_approved":false,"operator_resampler_visual_review":"PENDING"
+  },
+  "prohibitions": {
+    "godot":false,"ffmpeg":false,"ffprobe":false,"audio":false,"mux":false,
+    "renderer":false,"dispatch":false,"production_media":false,
+    "e6_accepted":0,"release_authority":"NONE"
+  }
+}

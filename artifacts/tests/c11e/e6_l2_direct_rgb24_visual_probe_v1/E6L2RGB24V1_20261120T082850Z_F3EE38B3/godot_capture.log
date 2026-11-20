@@ -1,0 +1,76 @@
+Godot Engine v4.7.1.stable.mono.official.a13da4feb - https://godotengine.org
+OpenGL API 3.3.0 - Build 32.0.101.8132 - Compatibility - Using Device: Intel - Intel(R) Arc(TM) Graphics
+
+SCRIPT ERROR: Parse Error: Could not find type "TypographyLabel" in the current scope.
+   at: GDScript::reload (res://core/presentation/C11CVisualTypography.gd:41)
+   GDScript backtrace (most recent call first):
+       [0] _capture_once (res://tools/c11d/d9/c11e_e6_l2_direct_rgb24_visual_probe_v1/CaptureLoopFrame.gd:21)
+SCRIPT ERROR: Parse Error: Could not find type "TypographyLabel" in the current scope.
+   at: GDScript::reload (res://core/presentation/C11CVisualTypography.gd:48)
+   GDScript backtrace (most recent call first):
+       [0] _capture_once (res://tools/c11d/d9/c11e_e6_l2_direct_rgb24_visual_probe_v1/CaptureLoopFrame.gd:21)
+SCRIPT ERROR: Parse Error: Could not find type "TypographyLabel" in the current scope.
+   at: GDScript::reload (res://core/presentation/C11CVisualTypography.gd:55)
+   GDScript backtrace (most recent call first):
+       [0] _capture_once (res://tools/c11d/d9/c11e_e6_l2_direct_rgb24_visual_probe_v1/CaptureLoopFrame.gd:21)
+SCRIPT ERROR: Compile Error: Failed to compile depended scripts.
+   at: GDScript::reload (res://core/presentation/C11CVisualEditorialLayer.gd:0)
+   GDScript backtrace (most recent call first):
+       [0] _capture_once (res://tools/c11d/d9/c11e_e6_l2_direct_rgb24_visual_probe_v1/CaptureLoopFrame.gd:21)
+SCRIPT ERROR: Compile Error: Failed to compile depended scripts.
+   at: GDScript::reload (res://tools/prototypes/c11c_fractal_bloom_v1/FractalBloomPrototype.gd:0)
+   GDScript backtrace (most recent call first):
+       [0] _capture_once (res://tools/c11d/d9/c11e_e6_l2_direct_rgb24_visual_probe_v1/CaptureLoopFrame.gd:21)
+ERROR: Failed to load script "res://tools/prototypes/c11c_fractal_bloom_v1/FractalBloomPrototype.gd" with error "Compilation failed".
+   at: load (modules/gdscript/gdscript_resource_format.cpp:46)
+   GDScript backtrace (most recent call first):
+       [0] _capture_once (res://tools/c11d/d9/c11e_e6_l2_direct_rgb24_visual_probe_v1/CaptureLoopFrame.gd:21)
+SCRIPT ERROR: Invalid call. Nonexistent function 'apply_header_to_label' in base 'GDScript'.
+   at: C11CVisualEditorialLayer._new_label (res://core/presentation/C11CVisualEditorialLayer.gd:237)
+   GDScript backtrace (most recent call first):
+       [0] _new_label (res://core/presentation/C11CVisualEditorialLayer.gd:237)
+       [1] mount (res://core/presentation/C11CVisualEditorialLayer.gd:85)
+       [2] _mount_editorial (res://tools/prototypes/c11c_fractal_bloom_v1/FractalBloomPrototype.gd:88)
+       [3] _build_scene (res://tools/prototypes/c11c_fractal_bloom_v1/FractalBloomPrototype.gd:72)
+       [4] _ready (res://tools/prototypes/c11c_fractal_bloom_v1/FractalBloomPrototype.gd:57)
+       [5] _capture_once (res://tools/c11d/d9/c11e_e6_l2_direct_rgb24_visual_probe_v1/CaptureLoopFrame.gd:29)
+SCRIPT ERROR: Invalid call. Nonexistent function 'apply_footer_to_label' in base 'GDScript'.
+   at: C11CVisualEditorialLayer._new_label (res://core/presentation/C11CVisualEditorialLayer.gd:235)
+   GDScript backtrace (most recent call first):
+       [0] _new_label (res://core/presentation/C11CVisualEditorialLayer.gd:235)
+       [1] mount (res://core/presentation/C11CVisualEditorialLayer.gd:91)
+       [2] _mount_editorial (res://tools/prototypes/c11c_fractal_bloom_v1/FractalBloomPrototype.gd:88)
+       [3] _build_scene (res://tools/prototypes/c11c_fractal_bloom_v1/FractalBloomPrototype.gd:72)
+       [4] _ready (res://tools/prototypes/c11c_fractal_bloom_v1/FractalBloomPrototype.gd:57)
+       [5] _capture_once (res://tools/c11d/d9/c11e_e6_l2_direct_rgb24_visual_probe_v1/CaptureLoopFrame.gd:29)
+ERROR: Required object "rp_child" is null.
+   at: add_child (scene/main/node.cpp:1715)
+   GDScript backtrace (most recent call first):
+       [0] mount (res://core/presentation/C11CVisualEditorialLayer.gd:98)
+       [1] _mount_editorial (res://tools/prototypes/c11c_fractal_bloom_v1/FractalBloomPrototype.gd:88)
+       [2] _build_scene (res://tools/prototypes/c11c_fractal_bloom_v1/FractalBloomPrototype.gd:72)
+       [3] _ready (res://tools/prototypes/c11c_fractal_bloom_v1/FractalBloomPrototype.gd:57)
+       [4] _capture_once (res://tools/c11d/d9/c11e_e6_l2_direct_rgb24_visual_probe_v1/CaptureLoopFrame.gd:29)
+ERROR: Required object "rp_child" is null.
+   at: add_child (scene/main/node.cpp:1715)
+   GDScript backtrace (most recent call first):
+       [0] mount (res://core/presentation/C11CVisualEditorialLayer.gd:99)
+       [1] _mount_editorial (res://tools/prototypes/c11c_fractal_bloom_v1/FractalBloomPrototype.gd:88)
+       [2] _build_scene (res://tools/prototypes/c11c_fractal_bloom_v1/FractalBloomPrototype.gd:72)
+       [3] _ready (res://tools/prototypes/c11c_fractal_bloom_v1/FractalBloomPrototype.gd:57)
+       [4] _capture_once (res://tools/c11d/d9/c11e_e6_l2_direct_rgb24_visual_probe_v1/CaptureLoopFrame.gd:29)
+SCRIPT ERROR: Cannot call method 'add_theme_font_size_override' on a null value.
+   at: C11CVisualEditorialLayer.apply_render_model (res://core/presentation/C11CVisualEditorialLayer.gd:149)
+   GDScript backtrace (most recent call first):
+       [0] apply_render_model (res://core/presentation/C11CVisualEditorialLayer.gd:149)
+       [1] _mount_editorial (res://tools/prototypes/c11c_fractal_bloom_v1/FractalBloomPrototype.gd:127)
+       [2] _build_scene (res://tools/prototypes/c11c_fractal_bloom_v1/FractalBloomPrototype.gd:72)
+       [3] _ready (res://tools/prototypes/c11c_fractal_bloom_v1/FractalBloomPrototype.gd:57)
+       [4] _capture_once (res://tools/c11d/d9/c11e_e6_l2_direct_rgb24_visual_probe_v1/CaptureLoopFrame.gd:29)
+C11E_L2_CAPTURE=BLOCKED/IMAGE_DIMENSIONS_MISMATCH:658x1170
+ERROR: 4 RID allocations of type 'PN18TextServerAdvanced22ShapedTextDataAdvancedE' were leaked at exit.
+ERROR: 1 RID allocations of type 'PN18TextServerAdvanced12FontAdvancedE' were leaked at exit.
+WARNING: 2 RIDs of type "CanvasItem" were leaked.
+   at: _free_rids (servers/rendering/renderer_canvas_cull.cpp:2735)
+WARNING: 7 ObjectDB instances were leaked at exit (run with `--verbose` for details).
+   at: cleanup (core/object/object.cpp:2536)

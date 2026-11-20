@@ -1,0 +1,53 @@
+Godot Engine v4.7.1.stable.mono.official.a13da4feb - https://godotengine.org
+
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Started Inicialización del proyecto (5 steps)[39m[0m
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Escaneando la estructura del archivo...[39m[0m
+[  16% ] [90m[1mfirst_scan_filesystem[22m | Cargando nombres de clases globales...[39m[0m
+[  33% ] [90m[1mfirst_scan_filesystem[22m | Verificando GDExtensions...[39m[0m
+[  50% ] [90m[1mfirst_scan_filesystem[22m | Creando scripts de carga automática...[39m[0m
+[  66% ] [90m[1mfirst_scan_filesystem[22m | Inicializando plugins...[39m[0m
+[  83% ] [90m[1mfirst_scan_filesystem[22m | Iniciando escaneo de archivos...[39m[0m
+[92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+[0m
+[   0% ] [90m[1mupdate_scripts_classes[22m | Started Registrando clases globales... (16 steps)[39m[0m
+[   0% ] [90m[1mupdate_scripts_classes[22m | TypographyLabel[39m[0m
+[   5% ] [90m[1mupdate_scripts_classes[22m | C11CVisualEditorialLayer[39m[0m
+[  11% ] [90m[1mupdate_scripts_classes[22m | C11CVisualTypography[39m[0m
+[  17% ] [90m[1mupdate_scripts_classes[22m | PresentationProfile[39m[0m
+[  23% ] [90m[1mupdate_scripts_classes[22m | UnifiedSocialFrame[39m[0m
+[  29% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  35% ] [90m[1mupdate_scripts_classes[22m | C11CColorBoost[39m[0m
+[  41% ] [90m[1mupdate_scripts_classes[22m | C11CEditorialColors[39m[0m
+[  47% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  52% ] [90m[1mupdate_scripts_classes[22m | C11CPaletteBank[39m[0m
+[  58% ] [90m[1mupdate_scripts_classes[22m | C11CTheme[39m[0m
+[  64% ] [90m[1mupdate_scripts_classes[22m | C11CVariationProfile[39m[0m
+[  70% ] [90m[1mupdate_scripts_classes[22m | C11CVisualLoopDuration[39m[0m
+[  76% ] [90m[1mupdate_scripts_classes[22m | TechnobabbleGenerator[39m[0m
+[  82% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  88% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[92m[ DONE ][39m [1mupdate_scripts_classes[22m
+[0m
+[   0% ] [90m[1m_update_scan_actions[22m | Started Escaneando acciones... (2 steps)[39m[0m
+[   0% ] [90m[1m_update_scan_actions[22m | Inter-Bold.otf[39m[0m
+[  33% ] [90m[1m_update_scan_actions[22m | NotoSansMono-Regular.ttf[39m[0m
+[92m[ DONE ][39m [1m_update_scan_actions[22m
+[0m
+[   0% ] [90m[1mreimport[22m | Started (Re)Importación de Assets (2 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | Preparando archivos para reimportarlos...[39m[0m
+[  33% ] [90m[1mreimport[22m | Preparando archivos para reimportarlos...[39m[0m
+[   0% ] [90m[1mreimport[22m | Ejecutando operaciones de pre-reimportación...[39m[0m
+[   0% ] [90m[1mreimport[22m | Inter-Bold.otf[39m[0m
+[  33% ] [90m[1mreimport[22m | NotoSansMono-Regular.ttf[39m[0m
+[  66% ] [90m[1mreimport[22m | Finalizando la importación de recursos...[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
+[0m
+[   0% ] [90m[1mreimport[22m | Started (Re)Importación de Assets (2 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | Ejecutando operaciones post-reimportación...[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
+[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Started Cargando editor (5 steps)[39m[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Cargando diseño del editor...[39m[0m
+[  16% ] [90m[1mloading_editor_layout[22m | Cargando docks...[39m[0m
+[92m[ DONE ][39m [1mloading_editor_layout[22m
+[0m

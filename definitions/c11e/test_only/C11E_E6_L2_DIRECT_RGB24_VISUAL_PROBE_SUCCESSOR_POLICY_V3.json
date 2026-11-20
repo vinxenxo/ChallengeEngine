@@ -1,0 +1,94 @@
+{
+  "schema": "C11E-E6-L2-DIRECT-RGB24-VISUAL-PROBE-SUCCESSOR-POLICY-V3",
+  "policy_id": "C11E_E6_L2_DIRECT_RGB24_VISUAL_PROBE_V3",
+  "revision": 3,
+  "status": "USER_APPROVED_NARROW_TEST_ONLY_SCOPE_WITH_INSTALLER_TRANSACTION_REPAIR",
+  "approval_basis": {
+    "date": "2026-11-20",
+    "source": "explicit_user_instruction_in_current_conversation",
+    "scope": "repair V2 installer receipt-sidecar temp path length defect only; preserve same one frame, selector, capture method, two Godot invocations and no scope widening",
+    "interpretation": "one_new_test_only_direct_recap of a single pinned C11-C Loop frame and one QImage composition"
+  },
+  "supersedes": "V2 only for the same one-frame TEST_ONLY scope; D4.8 V2 remains immutable and BLOCKED",
+  "execution_authorized": true,
+  "scope": {
+    "selector_id": "E6-L-01",
+    "family_id": "fractal_bloom",
+    "grammar_id": "radial_bloom",
+    "gameplay_seed": 100006,
+    "frame_index": 0,
+    "max_captured_frames": 1,
+    "max_composited_frames": 1,
+    "max_godot_processes": 2,
+    "max_qimage_compositions": 1,
+    "viewport": "FIXED_SUBVIEWPORT_720x1280"
+  },
+  "source_method": "DIRECT_GODOT_SUBVIEWPORT_RGBA8_TO_RGB24",
+  "historical_mp4_decode": false,
+  "colorimetry": {
+    "primaries": "UNDECLARED",
+    "transfer": "UNDECLARED",
+    "matrix": "UNDECLARED",
+    "bt709_assumption": false,
+    "yuv_to_rgb_conversion": false,
+    "allowed_operation": "validate opaque RGBA8 and copy R,G,B bytes in order; no colour transform"
+  },
+  "allowed_executables": [
+    {
+      "path": "C:\\Users\\vinxe\\AppData\\Local\\Microsoft\\WinGet\\Packages\\GodotEngine.GodotEngine.Mono_Microsoft.Winget.Source_8wekyb3d8bbwe\\Godot_v4.7.1-stable_mono_win64\\godot.exe",
+      "sha256": "8ec33ba6a6a953226170cda2a56a58810f6617261a71d6bd6d6ba7cce5e7b79d",
+      "bytes": 179589128,
+      "version_evidence": "4.7.1-stable_mono_win64 from prior R1V evidence; executable SHA/bytes mandatory at runtime"
+    }
+  ],
+  "allowed_processes": [
+    "Godot editor headless project import/class scan, once, temporary stage only",
+    "Godot one-frame viewport capture, once, temporary stage only",
+    "in-process Python/PySide6 QImage composition"
+  ],
+  "prohibited": [
+    "Godot Movie Maker/--write-movie",
+    "FFmpeg",
+    "FFprobe",
+    "audio generation",
+    "audio playback",
+    "mux",
+    "MP4 encode/decode",
+    "historical MP4 consumption",
+    "production renderer",
+    "production dispatch",
+    "BatchId",
+    "Smoke18",
+    "six-selector Loop widening",
+    "C11-C writes",
+    "D4.8 modification",
+    "release promotion"
+  ],
+  "write_scope": {
+    "active_checkout_source": "READ_ONLY",
+    "temporary_stage": "WRITE_ALLOWED_AND_DELETED_AFTER_RUN",
+    "artifact_root": "new_unique_artifacts_tests_c11e_e6_l2_direct_rgb24_visual_probe_v3_run_id_only",
+    "historical_receipts": "READ_ONLY"
+  },
+  "stop_conditions": [
+    "any source SHA mismatch",
+    "Godot executable SHA/byte mismatch",
+    "predecessor receipt or sidecar mismatch",
+    "non-opaque alpha",
+    "viewport or pixel format mismatch",
+    "RGB24 length/stride mismatch",
+    "any extra process invocation",
+    "any color transform requirement",
+    "any output path collision"
+  ],
+  "governance": {
+    "d4_8_v2_sha256": "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+    "d4_8_v2_modified": false,
+    "c11c_frozen_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "renderer": "OFF_FOR_PRODUCTION",
+    "media": "OFF",
+    "dispatch": "OFF",
+    "e6_accepted": 0,
+    "release_authority": "NONE"
+  }
+}

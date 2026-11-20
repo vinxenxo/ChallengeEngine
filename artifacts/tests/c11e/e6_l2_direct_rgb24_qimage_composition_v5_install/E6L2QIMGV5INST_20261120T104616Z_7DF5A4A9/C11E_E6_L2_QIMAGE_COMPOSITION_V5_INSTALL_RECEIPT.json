@@ -1,0 +1,180 @@
+{
+    "schema":  "C11E-E6-L2-QIMAGE-COMPOSITION-V5-INSTALL-RECEIPT",
+    "install_id":  "E6L2QIMGV5INST_20261120T104616Z_7DF5A4A9",
+    "created_utc":  "2026-11-20T10:46:16.6720095Z",
+    "status":  "PASS_ADD_ONLY",
+    "package_zip_sha256":  "e9e08a50e7b0d01198383b5790253647ceac5fb71ca19cef43d8de524e4e2e7a",
+    "package_members":  29,
+    "destination_count":  24,
+    "add_count":  24,
+    "skip_identical_count":  0,
+    "source_dependency_pins":  20,
+    "receipt_temp_layout":  "SHORT_SIBLING_FILENAMES",
+    "installed_files":  [
+                            {
+                                "path":  "definitions/c11e/test_only/C11E_E6_L2_QIMAGE_COMPOSITION_EXECUTION_MANIFEST_V5.json",
+                                "sha256":  "dd9095829f33df146c6c1788c3bf19e263c45aee059bc264fec7bca58c230402",
+                                "bytes":  2294,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "definitions/c11e/test_only/C11E_E6_L2_QIMAGE_COMPOSITION_SUCCESSOR_POLICY_V5.json",
+                                "sha256":  "7de176234f5021f9756188b824128b404c8f1db25cd89d14f29724edcbfd107b",
+                                "bytes":  2462,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "definitions/c11e/test_only/C11E_E6_L2_QIMAGE_REPAIR_SOURCE_MANIFEST_V5.json",
+                                "sha256":  "bda926f2d455024dd306c4615b70f1549da969c16094fda2b9b27735dcbb2d2a",
+                                "bytes":  4948,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/current/e/C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261120_V133.md",
+                                "sha256":  "963484630fe4dbd1e02be3b46ca0f6e3bb070aacd55efb30954a62ac0be4ad25",
+                                "bytes":  755,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_CURRENT_AUTHORITY_20261120_V188.md",
+                                "sha256":  "b15916d44fbb432dd0251da2c5d147785935ca0047cfb9a8453f4c3db925731f",
+                                "bytes":  959,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_CURRENT_DOC_INDEX_20261120_V185.md",
+                                "sha256":  "4d52f347451c95d7916610acaf56236e299fa1f050774727d5044db80ab1be43",
+                                "bytes":  618,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_E6_NEXT_GATES_20261120_V13.md",
+                                "sha256":  "175cc5e1fd51b09cec1d9cd4300c22fc162876da0ddbd86046e2b7f5de6694bb",
+                                "bytes":  623,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_E6_PHASE_LEDGER_20261120_V34.md",
+                                "sha256":  "3c87b9cd87003905e1562f1fb3bc06855b8778f0bc86184c144005f10db523d1",
+                                "bytes":  585,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261120_V184.md",
+                                "sha256":  "fc8201a0f7e73b695d7043618a32c31b698b3e7d04269595cb7ef5d98778ad27",
+                                "bytes":  774,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_INSTALLER_INCIDENT_REGISTER_20261120_V65.md",
+                                "sha256":  "0f6fc0c2a4c1b694f8a57aeeafef23f7291396574bd8849e8f2077a8e84e6c18",
+                                "bytes":  658,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_L2_QIMAGE_COMPOSITION_REPAIR_V5_20261120/01_V4_EVIDENCE_RECONCILIATION.md",
+                                "sha256":  "ceae9860ed672590754a51eb8d47c0259ffba3b51b9783d8c5487371691ab2d8",
+                                "bytes":  719,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_L2_QIMAGE_COMPOSITION_REPAIR_V5_20261120/02_ROOT_CAUSE_DATACLASSES_IMPORT.md",
+                                "sha256":  "38dd5617cf1af3cbbe60dd59383daaa698bbe41a553c5db3d304f081ea1362ad",
+                                "bytes":  724,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_L2_QIMAGE_COMPOSITION_REPAIR_V5_20261120/03_CAPTURE_VISUAL_INSPECTION.md",
+                                "sha256":  "ecfbdaec413f7ad69a7f64f4d3c01f198e587f2cb7dcf66e5a4689fab8117798",
+                                "bytes":  483,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_L2_QIMAGE_COMPOSITION_REPAIR_V5_20261120/04_V5_REPAIR_DESIGN.md",
+                                "sha256":  "e7f85572d6dd060e61f5e1426d2ad3e96f3787fbd04dd416f41aa2a985dc3c1c",
+                                "bytes":  586,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_L2_QIMAGE_COMPOSITION_REPAIR_V5_20261120/05_SCOPE_AND_GOVERNANCE.md",
+                                "sha256":  "53ad34006bbb416cb8ce07bd91c88f007cbb36e7c946d99533986ea23533333f",
+                                "bytes":  521,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_L2_QIMAGE_COMPOSITION_REPAIR_V5_20261120/06_ACCEPTANCE_AND_NEXT_GATES.md",
+                                "sha256":  "4eb1f57f7eb8d57dee8b21d26cb370f4ad42ee3980a7648c0f43cf40ca3114a9",
+                                "bytes":  407,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "prompts/C11E_CONTINUATION_MASTER_PROMPT_20261120_V201.md",
+                                "sha256":  "f7229ca2ea62b11ff8f52e9e5a2aa060123bae5a4d775974fd3847d0faf966bf",
+                                "bytes":  1102,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "prompts/C11E_E6_L2_QIMAGE_COMPOSITION_REPAIR_V5_START_PROMPT.md",
+                                "sha256":  "c48a16f6c948ca9e7d961a321b884a20958d3359d97029f59cdf2bc7b2f30ba3",
+                                "bytes":  669,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "prompts/C11E_NEXT_WINDOW_START_PROMPT_20261120_V201.md",
+                                "sha256":  "8983423c156ed5ddc0c82237d280219e4ab68522a59ff369dc738e10a2eabd93",
+                                "bytes":  682,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "tests/c11e/e6_l2_direct_rgb24_qimage_composition_v5/__init__.py",
+                                "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                                "bytes":  0,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "tests/c11e/e6_l2_direct_rgb24_qimage_composition_v5/test_l2_qimage_composition_v5.py",
+                                "sha256":  "3c67228221db636ab8bd1e38edd9b4f5a75cd07f632af666cd3d0ecb8246ac96",
+                                "bytes":  12788,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "tools/c11d/d9/RUN_C11E_E6_L2_QIMAGE_COMPOSITION_REPAIR_V5.ps1",
+                                "sha256":  "f5045b5194f68313c7b7e596c00ef0c20d95b878f96af808ac9719bcb44724b7",
+                                "bytes":  1455,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "tools/c11d/d9/RUN_C11E_E6_L2_QIMAGE_COMPOSITION_REPAIR_V5.py",
+                                "sha256":  "8453c9bfbcf4970cbe019134206b9d394577f8be3fe756a1769785114d6afa3c",
+                                "bytes":  20556,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "tools/c11d/d9/c11e_e6_l2_qimage_import_v5.py",
+                                "sha256":  "5599ef69282c27d61e7db3f7d095621fea622afd3a158047d91a7d3d438d94ca",
+                                "bytes":  1606,
+                                "status":  "ADDED_AND_VERIFIED"
+                            }
+                        ],
+    "c11c_manifest_sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "d4_8_v2_sha256":  "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+    "source_files_modified":  false,
+    "c11c_modified":  false,
+    "d4_8_v2_modified":  false,
+    "v1_receipts_modified":  false,
+    "runner_executed":  false,
+    "godot_invoked":  false,
+    "qimage_only_repair":  true,
+    "v4_evidence_read_only":  true,
+    "ffmpeg_invoked":  false,
+    "ffprobe_invoked":  false,
+    "audio_generated":  false,
+    "mux_invoked":  false,
+    "renderer_production":  false,
+    "production_dispatch":  false,
+    "e6_accepted":  0,
+    "release_authority":  "NONE",
+    "git_checks":  "SKIPPED",
+    "commits":  "OPERATOR_MANAGED",
+    "source_file_pins":  "ENFORCED"
+}

@@ -1,0 +1,66 @@
+{
+  "schema": "C11E-E6-L2-QIMAGE-COMPOSITION-EXECUTION-MANIFEST-V5",
+  "manifest_id": "C11E_E6_L2_QIMAGE_COMPOSITION_REPAIR_V5",
+  "revision": 5,
+  "status": "AUTHORIZED_NARROW_TEST_ONLY_REUSE_OF_V4_CAPTURE",
+  "selector": [
+    "E6-L-01",
+    "fractal_bloom",
+    "radial_bloom",
+    100006,
+    0
+  ],
+  "source_capture": {
+    "run_id": "E6L2RGB24V4_20261120T095847Z_A8AA1CA7",
+    "receipt_sha256": "b36f319a3b7e3290be965dfc1bfa28fdff789b6054e89fc9c3cba182130aad88",
+    "install_receipt_sha256": "2afb58e86cddfa6bea3c412071f3ba0ca882a95af8c8274382d478d34ef840eb",
+    "capture_metadata_sha256": "aa37687434e714a15f1124282d81015f64e77a441b8a470ea1b98b80d2ad0679",
+    "source_format": "RGBA8",
+    "source_rgba_bytes": 3686400,
+    "alpha_all_opaque": true,
+    "rgb24_bytes": 2764800,
+    "rgb24_stride_bytes": 2160,
+    "rgb24_sha256": "a0803353be7dca53a75903a1c863bd814a4367b534e698018d8ab434f5506d03",
+    "png_sha256": "39ae0a4df012faf1b2fd087443ccadf963bb59610affc2756c1732fa42669908",
+    "godot_processes_in_predecessor": 2,
+    "both_exit_code": 0
+  },
+  "qimage": {
+    "module_sha256": "850054e6212f7e6f59be5550ec194df3d1a1ca69acb343c53b76803b007721e1",
+    "backend": "PYSIDE6_QIMAGE_CPP_SMOOTH_TRANSFORMATION_V1",
+    "max_qimage_compositions": 1,
+    "output": "720x1280 RGB24; 2,764,800 bytes; stride 2160"
+  },
+  "colorimetry": {
+    "primaries": "UNDECLARED",
+    "transfer": "UNDECLARED",
+    "matrix": "UNDECLARED",
+    "bt709_assumed": false,
+    "yuv_to_rgb_conversion": false,
+    "allowed": "QImage RGB24 spatial resampling only"
+  },
+  "process_limit": {
+    "godot": 0,
+    "ffmpeg": 0,
+    "ffprobe": 0,
+    "audio": 0,
+    "mux": 0,
+    "media": 0,
+    "dispatch": 0,
+    "batch_id": 0
+  },
+  "write_scope": {
+    "active_checkout_source_writes": false,
+    "v4_evidence": "READ_ONLY",
+    "new_artifacts": "artifacts/tests/c11e/e6_l2_direct_rgb24_qimage_composition_v5/<unique_run_id>"
+  },
+  "governance": {
+    "git_checks": "SKIPPED",
+    "commits": "OPERATOR_MANAGED",
+    "source_file_pins": "ENFORCED",
+    "c11c_frozen_manifest_sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "d4_8_v2_sha256": "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+    "e6_accepted": 0,
+    "release_authority": "NONE"
+  }
+}

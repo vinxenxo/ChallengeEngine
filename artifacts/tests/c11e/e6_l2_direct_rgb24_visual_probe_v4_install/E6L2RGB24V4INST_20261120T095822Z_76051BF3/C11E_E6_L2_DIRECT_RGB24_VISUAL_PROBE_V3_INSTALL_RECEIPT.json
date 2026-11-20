@@ -1,0 +1,178 @@
+{
+    "schema":  "C11E-E6-L2-DIRECT-RGB24-VISUAL-PROBE-V3-INSTALL-RECEIPT",
+    "install_id":  "E6L2RGB24V4INST_20261120T095822Z_76051BF3",
+    "created_utc":  "2026-11-20T09:58:22.8306658Z",
+    "status":  "PASS_ADD_ONLY",
+    "package_zip_sha256":  "efeceafacea1c2dd37788a143d5e3dfd139b31951e483bee44221a5b6b201579",
+    "package_members":  29,
+    "destination_count":  24,
+    "add_count":  24,
+    "skip_identical_count":  0,
+    "source_dependency_pins":  20,
+    "receipt_temp_layout":  "SHORT_SIBLING_FILENAMES",
+    "installed_files":  [
+                            {
+                                "path":  "definitions/c11e/test_only/C11E_E6_L2_DIRECT_RGB24_SOURCE_PIN_MANIFEST_V4.json",
+                                "sha256":  "e1ef1c96c457cbd79ba9f547a344bb4dcc01a5e8b16650c95ef58ad68f0ffba1",
+                                "bytes":  4928,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "definitions/c11e/test_only/C11E_E6_L2_DIRECT_RGB24_VISUAL_PROBE_EXECUTION_MANIFEST_V4.json",
+                                "sha256":  "e908e94ceb2d58befc0c2dddef6365e6aa92a794257bc1feda6a51a59b22b87a",
+                                "bytes":  9774,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "definitions/c11e/test_only/C11E_E6_L2_DIRECT_RGB24_VISUAL_PROBE_SUCCESSOR_POLICY_V4.json",
+                                "sha256":  "636320684897e4ea65a968fd5db4cfb1190da0985dc5a34540ea33319ed10aa1",
+                                "bytes":  3661,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/current/e/C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261120_V132.md",
+                                "sha256":  "04f4962a8dafdd858ddf20594723e5c18fe8fdbabfea77aefbbf7c689a8b2d0f",
+                                "bytes":  1524,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_CURRENT_AUTHORITY_20261120_V187.md",
+                                "sha256":  "d43047d6184a26edce2c65332aa205571d6e64583449764992720b3c481fba1a",
+                                "bytes":  1524,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_CURRENT_DOC_INDEX_20261120_V184.md",
+                                "sha256":  "afec44c72d7cff05830f5d6e5844457c793b4bbd70a0e59fe81132a3842d076e",
+                                "bytes":  701,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_E6_NEXT_GATES_20261120_V12.md",
+                                "sha256":  "7c927ab025ff23bfe76c840083a7faff666f04cde4877a05d05806d2265f60b8",
+                                "bytes":  962,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_E6_PHASE_LEDGER_20261120_V33.md",
+                                "sha256":  "770a0314aea6371e3a3cefb3fe52c94556fe68cbf868084c9db8c5eef66e4f41",
+                                "bytes":  797,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261120_V183.md",
+                                "sha256":  "f2a69058a7af60aa63fe3be4bc78fe33ef9517633815da24f4d45a8cb0454913",
+                                "bytes":  1342,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_INSTALLER_INCIDENT_REGISTER_20261120_V64.md",
+                                "sha256":  "aa5d994c41f0a1ca44e057839a7f45b8a12bbc3effcf4829c19fc5735bfc33e9",
+                                "bytes":  774,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_L2_DIRECT_RGB24_VISUAL_PROBE_V4_RUNNER_TEST_PIN_REPAIR_20261120/01_V3_FAILURE_ANALYSIS.md",
+                                "sha256":  "382e7c245b74190c4b6ef8bb077647e3a5309e58f70f0bedce3fa3b1049dd734",
+                                "bytes":  1348,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_L2_DIRECT_RGB24_VISUAL_PROBE_V4_RUNNER_TEST_PIN_REPAIR_20261120/02_TEST_FIXTURE_CONTRACT.md",
+                                "sha256":  "2272a87f62fabc66007d3a482549e9f3df42c8da1785db600e931d0e43540e35",
+                                "bytes":  619,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_L2_DIRECT_RGB24_VISUAL_PROBE_V4_RUNNER_TEST_PIN_REPAIR_20261120/03_RUNNER_CAPTURE_PIN_RECONCILIATION.md",
+                                "sha256":  "f6225a935df2dc4978a3f4a2195d631bcc56ee4dd5c6003822e8fad797d8a87c",
+                                "bytes":  763,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_L2_DIRECT_RGB24_VISUAL_PROBE_V4_RUNNER_TEST_PIN_REPAIR_20261120/04_SCOPE_AND_EXECUTION_BOUNDARY.md",
+                                "sha256":  "297533ba219783edd0900b5947f4fb9e8cf1ba67b9a9e9eafa06f4656efb1bbe",
+                                "bytes":  582,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_L2_DIRECT_RGB24_VISUAL_PROBE_V4_RUNNER_TEST_PIN_REPAIR_20261120/05_INSTALLER_AND_PACKAGE_TRANSACTION.md",
+                                "sha256":  "1fe7a125f023dd14359fd34e2f68bfc4cae2659687cf3fc2cff3b4268135d7b1",
+                                "bytes":  623,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_L2_DIRECT_RGB24_VISUAL_PROBE_V4_RUNNER_TEST_PIN_REPAIR_20261120/06_ACCEPTANCE_AND_REMAINING_GATES.md",
+                                "sha256":  "faf279571319d670df3a44dc2345fb527bca7b988b449538bfe64df0bac87acc",
+                                "bytes":  606,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "prompts/C11E_CONTINUATION_MASTER_PROMPT_20261120_V200.md",
+                                "sha256":  "7f0fbea47431363645c5def7701e8bbda1b81ffcc1403fe95824c71bac566098",
+                                "bytes":  1950,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "prompts/C11E_E6_L2_DIRECT_RGB24_VISUAL_PROBE_V4_START_PROMPT.md",
+                                "sha256":  "0c1d1499eff13f193381834b4704c3397d4f5e0817e6450b1c09405170e98238",
+                                "bytes":  981,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "prompts/C11E_NEXT_WINDOW_START_PROMPT_20261120_V200.md",
+                                "sha256":  "0346f18e72161a1c7578ad05fe9814687bccc72a6914cf87c108b940a01906e8",
+                                "bytes":  1061,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "tests/c11e/e6_l2_direct_rgb24_visual_probe_v4/__init__.py",
+                                "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                                "bytes":  0,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "tests/c11e/e6_l2_direct_rgb24_visual_probe_v4/test_l2_direct_rgb24_v4.py",
+                                "sha256":  "8d65bd228527cf1044dbe2a482e8cb986aa88a39bd6ccf75c83516417beefdfc",
+                                "bytes":  15651,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "tools/c11d/d9/RUN_C11E_E6_L2_DIRECT_RGB24_VISUAL_PROBE_V4.ps1",
+                                "sha256":  "b3c72c877342f11d1ec92f8d1d046370a8d5b2fbf14b3f7869f6765211eff0e7",
+                                "bytes":  1898,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "tools/c11d/d9/RUN_C11E_E6_L2_DIRECT_RGB24_VISUAL_PROBE_V4.py",
+                                "sha256":  "ed98cd792a55e0ac19d5698e364a86a52ecf7121395f7eb6550d98a20eb56483",
+                                "bytes":  22621,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "tools/c11d/d9/c11e_e6_l2_direct_rgb24_visual_probe_v4/CaptureLoopFrame.gd",
+                                "sha256":  "f7edeba719558db4b4e6151d1ba2a14ebb490ee63b27f66fdc1c748192bc81d9",
+                                "bytes":  6640,
+                                "status":  "ADDED_AND_VERIFIED"
+                            }
+                        ],
+    "c11c_manifest_sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "d4_8_v2_sha256":  "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+    "source_files_modified":  false,
+    "c11c_modified":  false,
+    "d4_8_v2_modified":  false,
+    "v1_receipts_modified":  false,
+    "runner_executed":  false,
+    "godot_invoked":  false,
+    "ffmpeg_invoked":  false,
+    "ffprobe_invoked":  false,
+    "audio_generated":  false,
+    "mux_invoked":  false,
+    "renderer_production":  false,
+    "production_dispatch":  false,
+    "e6_accepted":  0,
+    "release_authority":  "NONE",
+    "git_checks":  "SKIPPED",
+    "commits":  "OPERATOR_MANAGED",
+    "source_file_pins":  "ENFORCED"
+}

@@ -1,0 +1,3 @@
+# L2 QImage Composition Repair V5 start prompt
+
+Install the V5 24-destination ADD_ONLY overlay into the active checkout using a fresh ZIP extraction folder. Require PS 5.1 AST PASS, 29/29 package members, C11-C/D4.8 pins, V4 capture evidence pins, and all postimages. Run the V5 tests once (63 focused tests). Then run `RUN_C11E_E6_L2_QIMAGE_COMPOSITION_REPAIR_V5.ps1` once. The runner must reuse `E6L2RGB24V4_20261120T095847Z_A8AA1CA7`, launch no Godot, verify source PNG/RGB24 equality, register the QImage module in `sys.modules` before loading, and perform one QImage composition. Preserve V4; write only a new V5 receipt and artifacts. No media/production action.

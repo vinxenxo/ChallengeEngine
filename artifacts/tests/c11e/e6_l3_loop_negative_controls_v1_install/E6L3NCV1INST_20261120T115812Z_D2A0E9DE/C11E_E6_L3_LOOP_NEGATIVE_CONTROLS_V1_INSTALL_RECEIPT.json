@@ -1,0 +1,182 @@
+{
+    "schema":  "C11E-E6-L3-LOOP-NEGATIVE-CONTROLS-V1-INSTALL-RECEIPT",
+    "install_id":  "E6L3NCV1INST_20261120T115812Z_D2A0E9DE",
+    "created_utc":  "2026-11-20T11:58:12.9658326Z",
+    "status":  "PASS_ADD_ONLY",
+    "package_zip_sha256":  "8e1b38c3cf34d20cfc803d9f11973d42fbfdb43297bce4ea2f16fb4fff00fda2",
+    "package_members":  29,
+    "destination_count":  24,
+    "add_count":  24,
+    "skip_identical_count":  0,
+    "v4_v5_predecessor_receipts":  4,
+    "predecessor_sidecars_verified":  4,
+    "v5_evidence_preflight":  "PASS",
+    "v5_source_pins":  20,
+    "receipt_temp_layout":  "SHORT_SIBLING_FILENAMES",
+    "installed_files":  [
+                            {
+                                "path":  "definitions/c11e/test_only/C11E_E6_L3_LOOP_NEGATIVE_CONTROL_EXECUTION_MANIFEST_V1.json",
+                                "sha256":  "75de20a6abfa833d38ec9ebee37c93798746abc50d2e227b40b9eba83cc9f8f9",
+                                "bytes":  3808,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "definitions/c11e/test_only/C11E_E6_L3_LOOP_NEGATIVE_CONTROL_POLICY_V1.json",
+                                "sha256":  "91dfaa22757e02c9387662d38717663f67ac8c58fd950a3a2b4404aeab07045a",
+                                "bytes":  2786,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "definitions/c11e/test_only/C11E_E6_L3_LOOP_NEGATIVE_CONTROL_REPORT_SCHEMA_V1.json",
+                                "sha256":  "1b0d4b58639f8f0c75608609af418f05d745f53d91d28c4dba9bd9dbefd6b5c9",
+                                "bytes":  644,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "definitions/c11e/test_only/C11E_E6_L3_LOOP_NEGATIVE_CONTROL_SOURCE_MANIFEST_V1.json",
+                                "sha256":  "b7cb8eabea84ac99486c5800b655cf2f060f0d61c4f1003f8242e4a6d46e5f25",
+                                "bytes":  4886,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/current/e/C11D_TO_C11E_FULL_FAMILY_ROADMAP_20261120_V134.md",
+                                "sha256":  "713923dfae51eea434f05f96bf6489150fcf8e3cb18526d67fc76380054d416a",
+                                "bytes":  1118,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_CURRENT_AUTHORITY_20261120_V189.md",
+                                "sha256":  "475b7a975694e63400652360501b702252d31a063103103a567e94e5bbc31229",
+                                "bytes":  947,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_CURRENT_DOC_INDEX_20261120_V186.md",
+                                "sha256":  "e00507001ce9baccc7d46af556480d07c0782c3f889b1ef829ad8bf9b48c28a3",
+                                "bytes":  527,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_E6_NEXT_GATES_20261120_V14.md",
+                                "sha256":  "c7900efe9f1b0ec941b1601918e7239f30e4581bcd7132f2fe71ac732cf334a3",
+                                "bytes":  876,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_E6_PHASE_LEDGER_20261120_V35.md",
+                                "sha256":  "13d8dc990f7b2eb8646b65fc51eccd7c9c3b364095888cd3fd4ac675e56b9e64",
+                                "bytes":  758,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_GATES_ACCEPTANCE_MATRIX_20261120_V185.md",
+                                "sha256":  "4075dd8290accd58c95989936bf010db6ce73a78b43eb5409c59ded2897c1e2f",
+                                "bytes":  917,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/current/e/C11E_INSTALLER_INCIDENT_REGISTER_20261120_V66.md",
+                                "sha256":  "09a6989bc60348749bf6f05b52ed8d6d0422dad3a4cd9c58248bf74859eafcfd",
+                                "bytes":  678,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_L3_LOOP_NEGATIVE_CONTROLS_V1_20261120/01_V5_EVIDENCE_RECONCILIATION.md",
+                                "sha256":  "cd37a62391f548756bbdd94675f3e67311f769b6d6cc3e6f297fa97988aa9394",
+                                "bytes":  672,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_L3_LOOP_NEGATIVE_CONTROLS_V1_20261120/02_PIXEL_AND_GEOMETRY_PROOFS.md",
+                                "sha256":  "fb418fba5262b95f8d91f69ea37a12968619af6c545d257d41430facf059ff72",
+                                "bytes":  507,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_L3_LOOP_NEGATIVE_CONTROLS_V1_20261120/03_NEGATIVE_CONTROLS.md",
+                                "sha256":  "87a1f29e94316b00ce2595ea4057b0951e3521da71d96622c30982a32b04b27d",
+                                "bytes":  419,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_L3_LOOP_NEGATIVE_CONTROLS_V1_20261120/04_SOURCE_IMMUTABILITY_AND_TRANSACTION.md",
+                                "sha256":  "5e2acf55f2f44e8c3582519c424ccf14c403f3a15648a57c4054a96943085700",
+                                "bytes":  749,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_L3_LOOP_NEGATIVE_CONTROLS_V1_20261120/05_VISUAL_REVIEW_NOT_AUTO_ACCEPTED.md",
+                                "sha256":  "33d9576ab4463a413c2a735a9b763458b083c9fd30bcc0022eb1cd7ef0b0b719",
+                                "bytes":  677,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "docs/history/c11e/overlays/C11E_E6_L3_LOOP_NEGATIVE_CONTROLS_V1_20261120/06_SCOPE_AND_NEXT_GATES.md",
+                                "sha256":  "e8681636a47d9ffbda00172b365c4cc7e54133c04a9d380e42066770901328cd",
+                                "bytes":  560,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "prompts/C11E_CONTINUATION_MASTER_PROMPT_20261120_V202.md",
+                                "sha256":  "3cf3ff7dbf53ebe86d2d4dff235ead8744f63af8d81cd95bbf4fe39cb6baa44e",
+                                "bytes":  1108,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "prompts/C11E_E6_L3_LOOP_NEGATIVE_CONTROLS_V1_START_PROMPT.md",
+                                "sha256":  "b7a98d3d5b4804ef3a3110a861fc21a2e24ef2e94e21f9d348b980d7c5d22a4c",
+                                "bytes":  776,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "prompts/C11E_NEXT_WINDOW_START_PROMPT_20261120_V202.md",
+                                "sha256":  "8072e52ab6c1527c949a2c47ac84dc230707fc23a7458e0c2ed09b8211e0b6ee",
+                                "bytes":  867,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "tests/c11e/e6_l3_loop_negative_controls_v1/__init__.py",
+                                "sha256":  "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+                                "bytes":  1,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "tests/c11e/e6_l3_loop_negative_controls_v1/test_l3_loop_negative_controls_v1.py",
+                                "sha256":  "e11132bf005d2c35b03f1cda1317a45c3df5a010834c473948bbf1f3957799db",
+                                "bytes":  15743,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "tools/c11d/d9/RUN_C11E_E6_L3_LOOP_NEGATIVE_CONTROLS_V1.ps1",
+                                "sha256":  "6ca2285d11705163a42990cf4bff3743bb7a808981ff664bad34ab2518cf3595",
+                                "bytes":  1595,
+                                "status":  "ADDED_AND_VERIFIED"
+                            },
+                            {
+                                "path":  "tools/c11d/d9/c11e_e6_l3_loop_negative_controls_v1.py",
+                                "sha256":  "d21442839de01dde8fe1acf94869b2584b327558ed8c1200cf387456613a2e7e",
+                                "bytes":  32398,
+                                "status":  "ADDED_AND_VERIFIED"
+                            }
+                        ],
+    "c11c_manifest_sha256":  "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+    "d4_8_v2_sha256":  "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+    "source_files_modified":  false,
+    "c11c_modified":  false,
+    "d4_8_v2_modified":  false,
+    "v4_v5_evidence_modified":  false,
+    "runner_executed":  false,
+    "godot_invoked":  false,
+    "qimage_composed":  false,
+    "ffmpeg_invoked":  false,
+    "ffprobe_invoked":  false,
+    "audio_generated":  false,
+    "mux_invoked":  false,
+    "renderer_production":  false,
+    "production_dispatch":  false,
+    "e6_accepted":  0,
+    "release_authority":  "NONE",
+    "git_checks":  "SKIPPED",
+    "commits":  "OPERATOR_MANAGED",
+    "source_file_pins":  "ENFORCED"
+}

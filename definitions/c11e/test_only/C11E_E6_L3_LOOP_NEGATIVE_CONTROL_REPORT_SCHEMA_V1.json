@@ -1,0 +1,22 @@
+{
+  "schema": "C11E-E6-L3-LOOP-NEGATIVE-CONTROLS-REPORT-SCHEMA-V1",
+  "required_top_level": [
+    "schema",
+    "run_id",
+    "status",
+    "predecessor",
+    "positive_checks",
+    "negative_controls",
+    "source_immutability",
+    "visual_review",
+    "governance"
+  ],
+  "negative_control_status_values": [
+    "REJECTED_AS_EXPECTED",
+    "FAILED_TO_REJECT"
+  ],
+  "visual_review_values": [
+    "PENDING_OPERATOR_VISUAL_REVIEW"
+  ],
+  "global_acceptance_rule": "L3 technical audit may PASS while L2_READY and L3_READY remain false until operator visual resampler decision is explicitly recorded in a separately pinned decision artifact."
+}

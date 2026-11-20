@@ -1,0 +1,123 @@
+{
+  "schema": "C11E-E6-L2-DIRECT-RGB24-SOURCE-PIN-MANIFEST-V4",
+  "snapshot_origin": "ChallengeEngineV01_STATELESS-LATEST-20112026.zip evidence snapshot; all pins are revalidated against the active checkout before runtime",
+  "source_files": [
+    {
+      "path": "assets/fonts/Inter-Bold.otf",
+      "sha256": "9fc6261e817d0b1b2bf1953d8799bb1c837d11aeebbf83ae352e7b4d6de6425d",
+      "bytes": 631880
+    },
+    {
+      "path": "assets/fonts/NotoSansMono-Regular.ttf",
+      "sha256": "6b692c4b6d15ccf59f1c1fe8d11cb8a92f51960f3e9f1f523781755a3af7e29f",
+      "bytes": 510612
+    },
+    {
+      "path": "core/presentation/C11CVisualEditorialLayer.gd",
+      "sha256": "f8f718c067a4d7a088cc16f244cc40209e7183bec93e44d8cb66eb6dd404cf7d",
+      "bytes": 19047
+    },
+    {
+      "path": "core/presentation/C11CVisualTypography.gd",
+      "sha256": "9ee823a28cef721a26f66436b5b168d92f5b9d1597ed6e4e3f518debb0910633",
+      "bytes": 2211
+    },
+    {
+      "path": "core/presentation/PresentationProfile.gd",
+      "sha256": "187b1cf8ab96b9031785a0f36b0054a60383c97cb3d81906c7d9bbcd373bef24",
+      "bytes": 8837
+    },
+    {
+      "path": "core/presentation/UnifiedSocialFrame.gd",
+      "sha256": "d80c07103f56a2abfe34be60547285e61b0d03b50a5ed93c3c72d4241f6585ba",
+      "bytes": 2087
+    },
+    {
+      "path": "core/presentation/UnifiedSocialFrame.tscn",
+      "sha256": "a89051019ab78bc35757acaa8b46a3b62526432bfa86582f07a66187e80e1b4b",
+      "bytes": 1471
+    },
+    {
+      "path": "core/presentation/components/TypographyLabel.gd",
+      "sha256": "d7c6ec47b33baec983a239dfe6218037d4126dc1532130c92d4202d56e6e8866",
+      "bytes": 1240,
+      "role": "TRANSITIVE_GLOBAL_CLASS_DEPENDENCY_FOR_C11C_VISUAL_TYPOGRAPHY"
+    },
+    {
+      "path": "tools/prototypes/c11c_common/C11CColorBoost.gd",
+      "sha256": "ea585997b03aba00a13c3cb87640a7c626081316b43306093265757dd09c6607",
+      "bytes": 478
+    },
+    {
+      "path": "tools/prototypes/c11c_common/C11CEditorialColors.gd",
+      "sha256": "46326fbd732d514b5bfa2d964b99bdd14f2933dd01ec65689749bf40fda32632",
+      "bytes": 1827
+    },
+    {
+      "path": "tools/prototypes/c11c_common/C11CHeaderAnimatorV2.gd",
+      "sha256": "44c4a9a11c334e6e84fcc1413667accac175781787866c3d6b894beeba3ea255",
+      "bytes": 9631
+    },
+    {
+      "path": "tools/prototypes/c11c_common/C11CPaletteBank.gd",
+      "sha256": "6b64d99afb148b0dc5b0f8e27b50558e9b77df4d2fdff98d52495d81d53fdd14",
+      "bytes": 16138
+    },
+    {
+      "path": "tools/prototypes/c11c_common/C11CTheme.gd",
+      "sha256": "7e73c62221ca8149a174b4633900b732b67047e0eddd20ee73e9d8f2f83cab64",
+      "bytes": 255
+    },
+    {
+      "path": "tools/prototypes/c11c_common/C11CVariationProfile.gd",
+      "sha256": "f7df994d8842183275bc331decd75762a153f3100248c7cc8b590e34c1347e2d",
+      "bytes": 13703
+    },
+    {
+      "path": "tools/prototypes/c11c_common/C11CVisualLoopDuration.gd",
+      "sha256": "4ea0b0decbd3a22ade42023e819a74872f312b63facc1163dc73a7c656fdbaf8",
+      "bytes": 1048
+    },
+    {
+      "path": "tools/prototypes/c11c_common/TechnobabbleGenerator.gd",
+      "sha256": "f2fbef4ee4b8b07d1b4ebe7781bc5d987e37c43a5f5eb317397a377288890c9f",
+      "bytes": 7054
+    },
+    {
+      "path": "tools/prototypes/c11c_fractal_bloom_v1/FractalBloom.gdshader",
+      "sha256": "38288d4342afa2196b0e40aad7eddbbc012fab7e7664499ce2b0c302f658ba7c",
+      "bytes": 10052
+    },
+    {
+      "path": "tools/prototypes/c11c_fractal_bloom_v1/FractalBloomPrototype.gd",
+      "sha256": "b596ecba5eeae80ba615d7cb8a741dffcab9db4c44296e660f4f9d6919cc5c55",
+      "bytes": 11196
+    },
+    {
+      "path": "tools/prototypes/c11c_fractal_bloom_v1/FractalBloomPrototype.tscn",
+      "sha256": "806bed600f7550e7aa5c10175359c7ce545581ce206dc73e31c7c265cc398d5e",
+      "bytes": 224
+    },
+    {
+      "path": "tools/prototypes/c11c_fractal_bloom_v1/FractalBloomRenderer.gd",
+      "sha256": "78102f64829bda24ae56d50b5ad16a69b8674569b22133509e335649f08861f7",
+      "bytes": 3478
+    }
+  ],
+  "qimage_module": {
+    "path": "tools/c11d/d9/c11e_e6_option_c_native_qt_probe_v2/payload/tools/c11d/d9/c11e_e6_option_c_qimage_frame_compositor_v1.py",
+    "sha256": "850054e6212f7e6f59be5550ec194df3d1a1ca69acb343c53b76803b007721e1"
+  },
+  "godot_capture_harness": {
+    "path": "tools/c11d/d9/c11e_e6_l2_direct_rgb24_visual_probe_v4/CaptureLoopFrame.gd",
+    "sha256": "f7edeba719558db4b4e6151d1ba2a14ebb490ee63b27f66fdc1c748192bc81d9",
+    "bytes": 6640
+  },
+  "notes": [
+    "V4 reconciles the runner capture-script SHA/byte pin with the actual V4 GDScript postimage.",
+    "Installer source is a ZIP root member and is supplied to the focused test suite via C11E_L2_INSTALLER_SOURCE; it is not a repository-root destination.",
+    "V1, V2 and V3 receipts/package history are immutable. Active checkout revalidation remains mandatory."
+  ],
+  "manifest_id": "C11E_E6_L2_DIRECT_RGB24_SOURCE_PIN_MANIFEST_V4",
+  "revision": 4
+}

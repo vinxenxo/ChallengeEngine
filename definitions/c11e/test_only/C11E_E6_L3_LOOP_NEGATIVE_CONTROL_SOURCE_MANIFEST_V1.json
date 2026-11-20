@@ -1,0 +1,95 @@
+{
+  "schema": "C11E-E6-L3-LOOP-NEGATIVE-CONTROLS-SOURCE-MANIFEST-V1",
+  "manifest_id": "C11E_E6_L3_LOOP_NEGATIVE_CONTROLS_SOURCE_V1",
+  "revision": 1,
+  "protected_inputs": [
+    {
+      "path": "artifacts/tests/c11e/e6_l2_direct_rgb24_qimage_composition_v5/E6L2QIMGV5_20261120T104658Z_1B5CBDC6/C11E_E6_L2_QIMAGE_COMPOSITION_RECEIPT_V5.json",
+      "sha256": "192182958c08bf5c00b4756181481ebfea974eea06f9fe88af3cd9597e0fd340",
+      "bytes": 4044
+    },
+    {
+      "path": "artifacts/tests/c11e/e6_l2_direct_rgb24_qimage_composition_v5/E6L2QIMGV5_20261120T104658Z_1B5CBDC6/C11E_E6_L2_DIRECT_RGB24_VISUAL_PROBE_RECEIPT_V4.json",
+      "sha256": "b36f319a3b7e3290be965dfc1bfa28fdff789b6054e89fc9c3cba182130aad88",
+      "bytes": 2621
+    },
+    {
+      "path": "artifacts/tests/c11e/e6_l2_direct_rgb24_qimage_composition_v5/E6L2QIMGV5_20261120T104658Z_1B5CBDC6/C11E_E6_L2_DIRECT_RGB24_VISUAL_PROBE_V3_INSTALL_RECEIPT.json",
+      "sha256": "2afb58e86cddfa6bea3c412071f3ba0ca882a95af8c8274382d478d34ef840eb",
+      "bytes": 11308
+    },
+    {
+      "path": "artifacts/tests/c11e/e6_l2_direct_rgb24_qimage_composition_v5/E6L2QIMGV5_20261120T104658Z_1B5CBDC6/C11E_E6_L2_DIRECT_RGB24_VISUAL_PROBE_V3_INSTALL_RECEIPT.json.sha256",
+      "sha256": "eb02033f4fab40add8e198d05dde91d867d463c8fd6b87f72c4ab5c90e548608",
+      "bytes": 127
+    },
+    {
+      "path": "artifacts/tests/c11e/e6_l2_direct_rgb24_qimage_composition_v5/E6L2QIMGV5_20261120T104658Z_1B5CBDC6/C11E_E6_L2_DIRECT_RGB24_VISUAL_PROBE_RECEIPT_V4.json.sha256",
+      "sha256": "fa4002f20f2a0a9438e198617c30bb6b166e88a866db453f0c886078fb4d7403",
+      "bytes": 120
+    },
+    {
+      "path": "artifacts/tests/c11e/e6_l2_direct_rgb24_qimage_composition_v5/E6L2QIMGV5_20261120T104658Z_1B5CBDC6/C11E_E6_L2_QIMAGE_COMPOSITION_RECEIPT_V5.json.sha256",
+      "sha256": "50b731e81e5dd7ba208f2ec8af5bdad0f126a94896a75d7bf6c7490135735b06",
+      "bytes": 112
+    },
+    {
+      "path": "artifacts/tests/c11e/e6_l2_direct_rgb24_qimage_composition_v5_install/E6L2QIMGV5INST_20261120T104616Z_7DF5A4A9/C11E_E6_L2_QIMAGE_COMPOSITION_V5_INSTALL_RECEIPT.json.sha256",
+      "sha256": "2c7b5f9dbcef76a7fd9d720f6570a8af07ada8855ac7ee18802b555143b52dab",
+      "bytes": 120
+    },
+    {
+      "path": "artifacts/tests/c11e/e6_l2_direct_rgb24_qimage_composition_v5/E6L2QIMGV5_20261120T104658Z_1B5CBDC6/capture_metadata.json",
+      "sha256": "aa37687434e714a15f1124282d81015f64e77a441b8a470ea1b98b80d2ad0679",
+      "bytes": 1144
+    },
+    {
+      "path": "artifacts/tests/c11e/e6_l2_direct_rgb24_qimage_composition_v5/E6L2QIMGV5_20261120T104658Z_1B5CBDC6/source_frame.png",
+      "sha256": "39ae0a4df012faf1b2fd087443ccadf963bb59610affc2756c1732fa42669908",
+      "bytes": 590089
+    },
+    {
+      "path": "artifacts/tests/c11e/e6_l2_direct_rgb24_qimage_composition_v5/E6L2QIMGV5_20261120T104658Z_1B5CBDC6/source_frame.rgb24",
+      "sha256": "a0803353be7dca53a75903a1c863bd814a4367b534e698018d8ab434f5506d03",
+      "bytes": 2764800
+    },
+    {
+      "path": "artifacts/tests/c11e/e6_l2_direct_rgb24_qimage_composition_v5/E6L2QIMGV5_20261120T104658Z_1B5CBDC6/composited_frame.png",
+      "sha256": "6e2039590b086d0c93f66f848be833175618606368ecba14f7b1e200cb5e333c",
+      "bytes": 326107
+    },
+    {
+      "path": "artifacts/tests/c11e/e6_l2_direct_rgb24_qimage_composition_v5/E6L2QIMGV5_20261120T104658Z_1B5CBDC6/composited_frame.rgb24",
+      "sha256": "d029c31de5d81335b3026ac7d85c902ddfd00d3b1b44a02d0991c5eab28a7b66",
+      "bytes": 2764800
+    },
+    {
+      "path": "artifacts/tests/c11e/e6_l2_direct_rgb24_qimage_composition_v5_install/E6L2QIMGV5INST_20261120T104616Z_7DF5A4A9/C11E_E6_L2_QIMAGE_COMPOSITION_V5_INSTALL_RECEIPT.json",
+      "sha256": "b41c661909c385f592f0b81ab79206e8aafd73951e5430907c78675ac3af431b",
+      "bytes": 11177
+    },
+    {
+      "path": "definitions/c11e/test_only/C11E_E6_L2_QIMAGE_REPAIR_SOURCE_MANIFEST_V5.json",
+      "sha256": "bda926f2d455024dd306c4615b70f1549da969c16094fda2b9b27735dcbb2d2a",
+      "bytes": 4948
+    },
+    {
+      "path": "release/C11C_FREEZE_PACKAGE_MANIFEST.json",
+      "sha256": "e405d08e4d166b1ad95953558f4a088e73eea9527e6e89244beb4096eac4b953",
+      "bytes": 796318
+    },
+    {
+      "path": "definitions/c11d/production/C11E_D4_8_R1V_QUALIFICATION_ONLY_POLICY_V2.json",
+      "sha256": "0866b53ad4fcdebe74d01f66864b2dfb00eb644ca28dcd59301c8f3208239c07",
+      "bytes": 12996
+    }
+  ],
+  "source_dependency_manifest": {
+    "path": "definitions/c11e/test_only/C11E_E6_L2_QIMAGE_REPAIR_SOURCE_MANIFEST_V5.json",
+    "sha256": "bda926f2d455024dd306c4615b70f1549da969c16094fda2b9b27735dcbb2d2a",
+    "bytes": 4948,
+    "expected_source_file_count": 20,
+    "qimage_module_sha256": "850054e6212f7e6f59be5550ec194df3d1a1ca69acb343c53b76803b007721e1"
+  },
+  "immutable": "All entries are read-only. The L3 runner must hash every protected input both before and after its audit."
+}
